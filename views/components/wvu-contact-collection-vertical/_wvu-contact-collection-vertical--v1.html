@@ -120,7 +120,16 @@
         {% endfor %}
       {% endcapture %}
 
-      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+      <div class="row {{ rowClasses }}">
+        <div class="col-xl-8 mx-md-auto">
+          {{ loopContent }}
+        </div>
+        {% if page.data.ifBackpageRemoveSidebar != '1' %}
+          {% if component.removeSidebar != '1' and component.align != 'right' %}
+            {% render "components/wvu-sidebar" component: component, number: sidebarNumber %}
+          {% endif %}
+        {% endif %}
+      </div>
 
       {% if edit_mode or page.content[component.region_names.postscript] != blank %}
         <div class="mt-4">
