@@ -1,10 +1,10 @@
 {%- liquid
   assign inumber = component.number | default: 1
-  assign componentSidebar = component.name | append: "-sidebar-" | append: inumber
-  assign componentSidebarPostscript = component.name | append: "-sidebar-" | append: inumber | append: "__postscript"
+  assign componentSidebar = component.name | append: "-sidebar"
+  assign componentSidebarPostscript = component.name | append: "-sidebar-" | append: "__postscript"
 -%}
 
-<aside class="wvu-sidebar col-md-3 mt-4 mt-md-0" aria-label="{{ componentSidebar }}">
+<aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start" aria-label="{{ componentSidebar }}">
   <div class="sticky-top pt-3 mt-n3">
     {% if edit_mode or page.content[componentSidebar] != blank %}
       <div class="mb-3">
