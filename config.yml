@@ -118,6 +118,12 @@ custom_site_attributes:
   - twitter_widget_id
   - youtube_url
 
+## Component Versions
+# Set the version of each component here when we have new versions
+component_versions:
+  backpage: 1
+  page_collection_vertical: 1
+
 ## Template Config
 # Specify which templates show up by default when creating a page
 default_templates:

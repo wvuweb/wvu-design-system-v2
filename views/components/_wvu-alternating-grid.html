@@ -2,7 +2,7 @@
 
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.data.component_version_alternating-grid | default: themeVersion
+  assign componentVersion = site.component_versions.alternating-grid | default: themeVersion
   assign scope = scope | default: slot.scope
 
   if componentVersion >= '2' and scope == 'site'

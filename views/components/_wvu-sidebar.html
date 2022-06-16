@@ -2,7 +2,7 @@
 
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.data.component_version_sidebar | default: themeVersion
+  assign componentVersion = site.component_versions.sidebar | default: themeVersion
   assign basename = "sidebar"
 %}
 

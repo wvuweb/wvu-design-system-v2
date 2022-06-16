@@ -2,7 +2,7 @@
 
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.data.component_version_horizontal_subnav | default: themeVersion
+  assign componentVersion = site.component_versions.horizontal_subnav | default: themeVersion
 %}
 
 {%- define_component component %}

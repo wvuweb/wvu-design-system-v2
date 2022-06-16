@@ -2,7 +2,7 @@
 
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.data.component_version_quicklinks | default: themeVersion
+  assign componentVersion = site.component_versions.quicklinks | default: themeVersion
   assign scope = scope | default: slot.scope
 
   if scope == 'site'

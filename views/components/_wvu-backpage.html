@@ -28,6 +28,5 @@
 
 {% case componentVersion %}
   {% when '1' %}{% render "components/wvu-backpage/wvu-backpage--v1" component: component %}
-  {% when '2' %}{% render "components/wvu-backpage/wvu-backpage--v2" component: component %}
   {% else %}{% render "components/wvu-backpage/wvu-backpage--v1" component: component %}
 {% endcase %}
