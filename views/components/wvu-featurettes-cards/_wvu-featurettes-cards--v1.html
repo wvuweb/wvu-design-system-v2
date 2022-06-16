@@ -1,5 +1,7 @@
 {%- liquid
 
+  assign componentLimit = component.limit | default: 3
+
   if page.content[component.region_names.rowClasses] != blank
     assign rowClasses = page.content[component.region_names.rowClasses]
   else
@@ -13,7 +15,7 @@
     assign itemClasses = page.content[component.region_names.itemClasses] | default: defaultItemClasses
   endif
 
-  assign range = (1..component.limit)
+  assign range = (1..componentLimit)
 
   if component.reverseItems == '1'
     assign range = range | reverse

@@ -9,7 +9,7 @@
   <figure>
     {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Image</span>{% endif %}
     {% editable_region_block name: component.region_names.main, scope: component.scope %}
-      <img src="https://designsystem.sandbox.wvu.edu/files/7f5da73f-36df-4693-a2c8-f01398b3adbd/1720x1720" alt="Cheerleaders waving a flag">
+      <img class="w-100" src="https://designsystem.sandbox.wvu.edu/files/7f5da73f-36df-4693-a2c8-f01398b3adbd/1720x1720" alt="Cheerleaders waving a flag">
     {% endeditable_region_block %}
   </figure>
   {% if edit_mode or page.content[captionRegion] != blank %}
