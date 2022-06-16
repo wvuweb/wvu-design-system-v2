@@ -5,7 +5,7 @@ WVU Design System v2
 
 **Developers name(s):** Adam Glenn
 
-**Github repository URL:** [https://bitbucket.org/wvudigital/wvu-design-system-v2/src/master/](https://bitbucket.org/wvudigital/wvu-design-system-v2/src/master/)
+**Github repository URL:** [https://github.com/wvuweb/wvu-design-system-v2](https://github.com/wvuweb/wvu-design-system-v2)
 
 **Documentation website URL:** [https://designsystem.sandbox.wvu.edu](https://designsystem.sandbox.wvu.edu)
 
