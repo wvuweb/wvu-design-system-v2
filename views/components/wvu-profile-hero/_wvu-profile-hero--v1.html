@@ -1,59 +1,30 @@
-{%- liquid
-  assign defaultHeaderLabelClasses = 'text-uppercase iowan-old-style-black text-wvu-blue wvu-text-letter-spacing wvu-bar wvu-bar--bottom wvu-bar--center'
-  assign headerLabelClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: '__header-label-classes'
-  assign headerLabelEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: '__header-label'
--%}
-
 {% capture component_content %}
-  <div class="p-3 wvu-bg-topo-dark">
-    <div class="{{ component.classes | strip }}" {{ component.bgStyler | strip }}>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 pb-6">
-          <div class="bg-white p-3 text-center wvu-z-index-content mb-6">
-
-            {%- if edit_mode or page.content[headerLabelEditableRegionName] != blank %}
-              {% if edit_mode %}
-                <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header label classes:
-                  <pre class="mb-0 text-white">{% editable_region name: headerLabelClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
-                  {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
-                  <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ defaultHeaderLabelClasses }}</pre>
-                </small>
-              {% endif %}
-              <div class="{{ page.content[headerLabelClassesEditableRegionName] | default: defaultHeaderLabelClasses }}">
-                {% editable_region name: headerLabelEditableRegionName, scope: component.scope, type: "simple", placeholder="Header Label" %}
-              </div>
-            {% endif %}
-
-            {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
-            {% if edit_mode %}
-              <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
-                <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
-                {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
-                <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
-              </small>
-            {% endif %}
-            {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
-            {% comment %}<!-- For the h1, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-            <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
-              {% comment %}<!-- Use the editable region name for th header section of the hero, which you defined above. -->{% endcomment %}
-              {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="Firstname Lastname" %}
-            </h2>
-            {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
-            {% comment %}<!-- Editable region for main content. -->{% endcomment %}
-            {% editable_region_block name: component.region_names.main scope: component.scope %}
-              <p class="helvetica-neue-light">
-                Crank this out out of scope, for we need to make the new version clean and sexy are
-                we in agreeance. What's the status on the deliverables for eow? UI. Meeting
-                assassin. Please advise soonest red flag, but circle back or can we parallel
-                path so highlights. Pushback race without a finish line. My capacity
-                is full in an ideal world.
-              </p>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Call to Action</a>
-            {% endeditable_region_block %}
-          </div>
-        </div>
+  <div class="container position-relative wvu-z-index-content" data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom">
+    <div class="row py-5{% if page.data.hero_text_alignment == '1' %} justify-content-end{% endif %}">
+      <div class="col col-md-6 {% if component.align == 'right' %}ms-md-auto{% elsif component.align == 'middle' %}mx-md-auto{% endif %}">
+        {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+        {% endif %}
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% comment %}<!-- For the h1, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+        <h1 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+          {% comment %}<!-- Use the editable region name for th header section of the hero, which you defined above. -->{% endcomment %}
+          {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="The future will be built by those who are willing to get up and go after it." %}
+        </h1>
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
+        {% comment %}<!-- Editable region for main content. -->{% endcomment %}
+        {% editable_region_block name: component.region_names.main scope: component.scope %}
+          <p class="h1 pt-2 iowan-old-style-italic">Jane Schmoe, Biology, Class of ’22</p>
+          <p class="lead py-2">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Call to Action</a>
+        {% endeditable_region_block %}
       </div>
     </div>
   </div>
