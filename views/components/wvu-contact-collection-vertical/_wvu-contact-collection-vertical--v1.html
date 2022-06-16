@@ -1,5 +1,6 @@
 {%- liquid
   assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
@@ -59,7 +60,7 @@
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
-          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+          <div class="{{ itemClasses }}">
 
             <div class="row">
               <div class="col-lg-4">
