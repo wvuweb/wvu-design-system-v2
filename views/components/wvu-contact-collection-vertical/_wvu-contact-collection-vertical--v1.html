@@ -60,9 +60,10 @@
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            {% if item.data.thumbnail_url_sq != blank %}
-              <div class="row mb-1">
-                <div class="col-6 mx-auto col-sm-4 col-md-6">
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="mb-2 position-relative">
                   {% if item.data.thumbnail_url_sq != blank %}
                     {%- capture itemThumbnailSrc %}
                       {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
@@ -71,50 +72,52 @@
                   {% endif %}
                 </div>
               </div>
-            {% endif %}
+              <div class="col-lg-8">
 
-            <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
-              {% if item.content['wvu-profile-1__name'] != blank %}
-                {{ item.content['wvu-profile-1__name'] }}
-              {% else %}
-                {{ item.alternate_name | default: item.name }}
-              {% endif %}
-            </{{ htag }}>
-
-            <div class="mb-2">
-              {% if item.content.wvu-profile-1__title != blank %}
-                <p class="helvetica-neue-light">{{ item.content.wvu-backpage-header-1__subhead }}</p>
-              {% endif %}
-
-              {% if item.content.wvu-profile-1__phone != blank %}
-                <p class="mb-0">
-                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ item.content.wvu-profile-1__phone }}">{{ item.content.wvu-profile-1__phone }}</a>
-                </p>
-              {% endif %}
-              {% if item.content.wvu-profile-1__email != blank %}
-                <p class="mb-0">
-                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content.wvu-profile-1__email }}">{{ item.content.wvu-profile-1__email }}</a>
-                </p>
-              {% endif %}
-              {% if item.content.wvu-profile-1__office != blank %}
-                <p class="mb-0">
-                  {% if item.content.wvu-profile-1__office-url != blank %}
-                    <span class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
+                <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
+                  {% if item.content['wvu-profile-1__name'] != blank %}
+                    {{ item.content['wvu-profile-1__name'] }}
                   {% else %}
-                    <span class="fa-solid fa-building"> {{ item.content.wvu-profile-1__office }}</span>
+                    {{ item.alternate_name | default: item.name }}
                   {% endif %}
-                </p>
-              {% endif %}
-            </div>
+                </{{ htag }}>
 
-            {% if itemReadMoreButtonText != 'none' %}
-              {% if item.data.link_text != blank %}
-                {% assign link_text = item.data.link_text %}
-              {% else %}
-                {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
-              {% endif %}
-              <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
-            {% endif %}
+                <div class="mb-2">
+                  {% if item.content.wvu-profile-1__title != blank %}
+                    <p class="helvetica-neue-light">{{ item.content.wvu-backpage-header-1__subhead }}</p>
+                  {% endif %}
+
+                  {% if item.content.wvu-profile-1__phone != blank %}
+                    <p class="mb-0">
+                      <span class="fa-solid fa-phone"></span> <a href="tel:{{ item.content.wvu-profile-1__phone }}">{{ item.content.wvu-profile-1__phone }}</a>
+                    </p>
+                  {% endif %}
+                  {% if item.content.wvu-profile-1__email != blank %}
+                    <p class="mb-0">
+                      <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content.wvu-profile-1__email }}">{{ item.content.wvu-profile-1__email }}</a>
+                    </p>
+                  {% endif %}
+                  {% if item.content.wvu-profile-1__office != blank %}
+                    <p class="mb-0">
+                      {% if item.content.wvu-profile-1__office-url != blank %}
+                        <span class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
+                      {% else %}
+                        <span class="fa-solid fa-building"> {{ item.content.wvu-profile-1__office }}</span>
+                      {% endif %}
+                    </p>
+                  {% endif %}
+                </div>
+
+                {% if itemReadMoreButtonText != 'none' %}
+                  {% if item.data.link_text != blank %}
+                    {% assign link_text = item.data.link_text %}
+                  {% else %}
+                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+                  {% endif %}
+                  <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+                {% endif %}
+              </div>
+            </div>
           </div>
         {% endfor %}
       {% endcapture %}
