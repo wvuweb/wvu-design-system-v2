@@ -6,7 +6,7 @@
 
 .wvu-calendar {
   padding-left: 0;
-  li { margin-bottom: $spacer / 4; display: inline-block; width: 100%;
+  li { margin-bottom: $spacer * 0.25; display: inline-block; width: 100%;
     .eventDate { float: left; margin-right: 4%; width: 10%; text-align: center; padding-bottom: 6px; border-radius: 6px; display: inline-block;
     }
     .eventMonth { font-size: .8em; text-transform: uppercase; }
@@ -54,7 +54,7 @@
 }
 
 .wvu-calendar-widget__item {
-  margin-bottom: $spacer / 2;
+  margin-bottom: $spacer * 0.5;
 }
 
 .wvu-calendar-widget__day {
@@ -62,7 +62,7 @@
 }
 
 .wvu-calendar-widget { padding-left: 0;
-  li { margin-bottom: $spacer / 4; display: inline-block; width: 100%;
+  li { margin-bottom: $spacer * 0.25; display: inline-block; width: 100%;
     .eventDate { float: left; margin-right: 4%; width: 10%; text-align: center; padding-bottom: 6px; border-radius: 6px;
     }
     .calEventMonth { font-size: .8em; text-transform: uppercase; }
@@ -81,7 +81,7 @@
     flex-flow: row wrap;
     li {
       width: 33%;
-      padding: 0 0 $spacer / 2 0;
+      padding: 0 0 $spacer * 0.5 0;
       vertical-align: top;
     }
   }

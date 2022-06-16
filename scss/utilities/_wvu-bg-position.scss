@@ -62,7 +62,7 @@ $i: 100;
                                     (xl, $wvu-bp-xl) {
       .wvu-bg-position-#{$bp-value}-#{$bg-class}--#{$i} {
         @media (min-width: $breakpoint) {
-          background-position: $bg-property round(percentage($i/100)) $global-important;
+          background-position: $bg-property round(percentage($i * 0.01)) $global-important;
         }
       }
     }

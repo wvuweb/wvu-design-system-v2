@@ -2,13 +2,13 @@
 
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.columns | default: themeVersion
+  assign componentVersion = site.component_versions.columns_2_1_1 | default: themeVersion
   assign scope = scope | default: slot.scope
 
   if scope == 'site'
-    assign basename = "site-columns"
+    assign basename = "site-columns-2-1-1"
   else
-    assign basename = "columns"
+    assign basename = "columns-2-1-1"
   endif
 %}
 
@@ -16,12 +16,11 @@
   {
     "baseName": "{{ basename }}",
     "defaultComponentClasses": null,
-    "defaultItemClasses": "col",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-columns/wvu-columns--v1" component: component %}
-  {% else %}{% render "components/wvu-columns/wvu-columns--v1" component: component %}
+  {% when '1' %}{% render "components/wvu-columns-2-1-1/wvu-columns-2-1-1--v1" component: component %}
+  {% else %}{% render "components/wvu-columns-2-1-1/wvu-columns-2-1-1--v1" component: component %}
 {% endcase %}

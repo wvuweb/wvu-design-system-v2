@@ -1,6 +1,6 @@
 {%- liquid
-  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.itemClasses
-  assign componentLimit = component.limit | default: 1
+  assign columnOneRegionName = component.name | append: "__column-1"
+  assign columnTwoRegionName = component.name | append: "__column-2"
 -%}
 
 {% capture component_content %}
@@ -20,12 +20,12 @@
     {%- endif %}
 
     <div class="row">
-      {% for i in componentLimit %}
-        {%- capture componentPanel %}{{ component.name }}__panel-{{ i }}{% endcapture %}
-        <div class="{{ itemClasses }}">
-          {% editable_region name: componentPanel scope: component.scope %}
-        </div>
-      {% endfor %}
+      <div class="col-md-4">
+        {% editable_region name: columnOneRegionName scope: component.scope %}
+      </div>
+      <div class="col-md-8">
+        {% editable_region name: columnTwoRegionName scope: component.scope %}
+      </div>
     </div>
 
     {%- if edit_mode or page.content[component.region_names.postscript] != blank %}
