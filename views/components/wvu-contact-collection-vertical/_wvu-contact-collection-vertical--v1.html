@@ -60,7 +60,7 @@
           <div class="{{ itemClasses }}">
 
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="mb-2 position-relative">
                   {% if item.data.thumbnail_url_sq != blank %}
                     {%- capture itemThumbnailSrc %}
@@ -70,7 +70,7 @@
                   {% endif %}
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-9">
 
                 <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
                   {% if item.content['wvu-profile-1__name'] != blank %}
