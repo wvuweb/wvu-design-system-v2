@@ -6,7 +6,7 @@
       {% when 5 or 6 or 9 or 10 %}{% assign columnClasses = 'col-sm-6 col-lg-4' %}
       {% else %}{% assign columnClasses = 'col-sm-6 col-lg-4 col-xl-3' %}
     {% endcase %}
-  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'testimonials' or 'site-testimonials' %}
+  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'featurettes-cards' or 'site-featurettes-cards' or 'testimonials' or 'site-testimonials' %}
     {% assign columnClasses = 'col-md-6 col-lg-4' %}
   {% when 'page-collection-colored-boxes' or 'site-page-collection-colored-boxes' %}
     {% case numberOfItems %}
@@ -26,7 +26,7 @@
     {%- if numberOfItems > 4 %}
       {% assign columnClasses = columnClasses | append: ' mb-4' %}
     {%- endif %}
-  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'testimonials' or 'site-testimonials' %}
+  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'featurettes-cards' or 'site-featurettes-cards' or 'testimonials' or 'site-testimonials' %}
     {%- if numberOfItems > 3 %}
       {% assign columnClasses = columnClasses | append: ' mb-3' %}
     {% else %}
