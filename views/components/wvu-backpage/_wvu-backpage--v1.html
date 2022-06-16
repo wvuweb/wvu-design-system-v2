@@ -1,0 +1,29 @@
+{% assign sidebarNumber = component.number %}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content" data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom">
+    <div class="row">
+      {% if page.data.ifBackpageRemoveSidebar != '1' %}
+        {% if component.removeSidebar != '1' and component.align == 'right' %}
+          {% render "components/wvu-sidebar" component: component %}
+        {% endif %}
+      {% endif %}
+      <div class="col-md-8 me-md-auto">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="lead mb-3 mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        {% endeditable_region_block %}
+      </div>
+      {% if page.data.ifBackpageRemoveSidebar != '1' %}
+        {% if component.removeSidebar != '1' and component.align != 'right' %}
+          {% render "components/wvu-sidebar" component: component, number: sidebarNumber %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

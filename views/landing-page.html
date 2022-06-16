@@ -1,0 +1,14 @@
+---
+layout: default
+custom_data_attributes:
+  - ifBackpageRemoveNav:
+    type: checkbox
+    title: If backpage, remove nav
+  - ifBackpageRemoveSidebar:
+    type: checkbox
+    title: If backpage, remove sidebar
+---
+
+{% render "components/wvu-hero" number: 1, main: true %}
+
+{% render "components/wvu-pages-collection" number: 1 %}

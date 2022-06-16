@@ -1,0 +1,35 @@
+{% capture component_content %}
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-8 mx-md-auto wvu-z-index-content">
+
+        {%- if edit_mode or page.content[component.region_names.header] != blank %}
+          <div class="wvu-z-index-content">
+            {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+            {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+            {% editable_region_block name: component.region_names.header scope: component.scope %}
+              <h2 id="lede-text-1-label" class="display-3 wvu-shout sr-only">Lede Text Headline</h2>
+            {% endeditable_region_block %}
+          </div>
+        {%- endif %}
+
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Lede text classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+          <span class="d-inline-block badge bg-primary mb-1">Lede Text</span>
+        {% endif %}
+        <p class="mb-0 {{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+          {% comment %}<!-- Editable region for main content. -->{% endcomment %}
+          {% editable_region name: component.region_names.main, scope: component.scope, type: "simple", placeholder: 'Feature creep. No scraps hit the floor those options are already baked in with this model strategic high-level 30,000 ft view so baseline the procedure and samepage your department, for quick-win so customer centric.' %}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

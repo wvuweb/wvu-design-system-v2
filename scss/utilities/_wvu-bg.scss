@@ -1,0 +1,26 @@
+// WVU BG Utilties
+//==================================================
+// Various utilities that adjust your background image.
+
+.wvu-bg-none, %wvu-bg-none {
+  background-image: none $global-important;
+}
+
+.wvu-bg-sm-none, %wvu-bg-sm-none {
+  @media (max-width: $wvu-bp-sm) {
+    background-image: none $global-important;
+  }
+}
+
+.wvu-bg-size-contain, %wvu-bg-size-contain {
+  background-size: contain $global-important;
+}
+
+.wvu-bg-size-cover, %wvu-bg-size-cover {
+  background-size: cover $global-important;
+}
+
+// Example usage:
+// <section class="wvu-bg-size-cover">
+//   ...
+// </section>

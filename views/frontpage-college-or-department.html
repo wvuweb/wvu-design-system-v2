@@ -1,0 +1,57 @@
+---
+layout: default
+custom_data_attributes:
+  - removeColoredBoxes:
+    type: checkbox
+    title: Remove Colored Boxes
+  - removeCalendarEvents:
+    type: checkbox
+    title: Remove Calendar Events
+  - removeActionHero:
+    type: checkbox
+    title: Remove Action Hero
+  - removeArticleCollection:
+    type: checkbox
+    title: Remove News
+  - removePhotoGrid:
+    type: checkbox
+    title: Remove Profiles
+  - removeQuicklinks:
+    type: checkbox
+    title: Remove Quicklinks
+  - showBoxesIfHidden:
+    type: checkbox
+    title: Show Boxes Even if Pages are Hidden
+  - showArticlesIfHidden:
+    type: checkbox
+    title: Show Articles Even if Hidden
+---
+
+{% assign componentShowBoxesIfHidden = page.data.showBoxesIfHidden | default: '0' %}
+{% assign componentShowArticlesIfHidden = page.data.showArticlesIfHidden | default: '0' %}
+
+{% render "components/wvu-hero" number: 1, main: true %}
+
+{% if page.data.removeColoredBoxes != 1 %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden %}
+{% endif %}
+
+{% if page.data.removeCalendarEvents != 1 %}
+  {% render "components/wvu-calendar-events" number: 1 %}
+{% endif %}
+
+{% if page.data.removeActionHero != 1 %}
+  {% render "components/wvu-action-hero" number: 1 %}
+{% endif %}
+
+{% if page.data.removeArticleCollection != 1 %}
+  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden %}
+{% endif %}
+
+{% if page.data.removePhotoGrid != 1 %}
+  {% render "components/wvu-photo-grid" number: 1, limit: 2 %}
+{% endif %}
+
+{% if page.data.removeQuicklinks != 1 %}
+  {% render "components/wvu-quicklinks" number: 1 %}
+{% endif %}

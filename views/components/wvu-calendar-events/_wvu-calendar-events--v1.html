@@ -1,0 +1,31 @@
+{% capture component_content %}
+  <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Calendar Events Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+
+      {% if edit_mode %}
+        <div class="p-3 alert alert-info my-3">
+          <p class="mb-0">Use the region below to <a href="#">insert a calendar feed</a>.</p>
+        </div>
+      {% endif %}
+      {% editable_region name: component.region_names.main scope: site.scope %}
+
+      {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+        {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+          <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

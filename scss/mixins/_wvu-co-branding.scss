@@ -1,0 +1,23 @@
+// WVU Co-Branding
+//==================================================
+// Styles an element (logo or type) that can be paired with the Flying WV in your site’s masthead.
+
+@mixin wvu-co-branding($is-important: $global-important) {
+  @include helvetica-neue-bold();
+  font-size: .8rem $is-important;
+  line-height: 1em $is-important;
+  @media (min-width: $wvu-bp-sm) {
+    font-size: 1rem $is-important;
+  }
+  @media (min-width: $wvu-bp-md) {
+    font-size: 1.5rem $is-important;
+  }
+  img {
+    max-width: 8em $is-important;
+  }
+}
+
+// Example usage:
+// .wvu-co-branding {
+//   @include wvu-co-branding();
+// }

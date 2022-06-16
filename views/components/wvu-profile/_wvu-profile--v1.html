@@ -1,0 +1,105 @@
+{% parse_json rNames %}
+  {
+    "profileName": "wvu-{{ component.name }}__name",
+    "main": "wvu-{{ component.name }}__main",
+    "profileTitle": "wvu-{{ component.name }}__title",
+    "major": "wvu-{{ component.name }}__major",
+    "graduationYear": "wvu-{{ component.name }}__graduation-year",
+    "organization": "wvu-{{ component.name }}__organization",
+    "subhead": "wvu-{{ component.name }}__subhead",
+    "phone": "wvu-{{ component.name }}__phone",
+    "email": "wvu-{{ component.name }}__email",
+    "office": "wvu-{{ component.name }}__office",
+    "officeURL": "wvu-{{ component.name }}__office-url",
+    "website": "wvu-{{ component.name }}__website",
+    "quote": "wvu-{{ component.name }}__quote",
+    "headerLabel": "wvu-{{ component.name }}__header-label"
+  }
+{% endparse_json %}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-6 col-lg-5 col-xl-4 mb-3 mb-md-0">
+        <div class="row">
+          <div class="col-xl-10 me-xl-auto">
+            <div class="mb-1">
+              {% if page.data.thumbnail_url_sq != blank %}
+                {% assign thumbnailSrc = page.data.thumbnail_url_sq | build_image_url: format: '1600x1200.jpg' %}
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}/381x255.jpg" srcset="{{ thumbnailSrc }}/960x640.jpg, {{ thumbnailSrc }}/586x286.jpg, {{ thumbnailSrc }}/381x255.jpg, {{ thumbnailSrc }}/286x191.jpg, {{ thumbnailSrc }}/279x186.jpg, {{ thumbnailSrc }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+              {% elsif page.data.thumbnail_url != blank %}
+                {% assign thumbnailSrc = page.data.thumbnail_url | build_image_url: format: '1600x1200.jpg' %}
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}/381x255.jpg" srcset="{{ thumbnailSrc }}/960x640.jpg, {{ thumbnailSrc }}/586x286.jpg, {{ thumbnailSrc }}/381x255.jpg, {{ thumbnailSrc }}/286x191.jpg, {{ thumbnailSrc }}/279x186.jpg, {{ thumbnailSrc }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-7 col-xl-8 wvu-backpage-main">
+
+        <h1 class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom" id="{{ component.name }}-label">{{ page.alternate_name | default: page.name }}</h1>
+
+        {% if edit_mode or page.content[rNames.profileName] != blank %}
+          {% if edit_mode %}
+            <span class="d-inline-block badge bg-primary mb-1">Name (if different from page title)</span>
+          {% endif %}
+          <div class="fs-2 mb-0 helvetica-neue-bold">
+            {% editable_region name: rNames.profileName, scope: component.scope, type: "simple" %}
+          </div>
+        {% endif %}
+
+        {% if page.template_name == 'student' %}
+          {% if edit_mode or page.content[rNames.major] != blank %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Major</span>{% endif %}
+            <div class="helvetica-neue-light fs-5">
+              {% editable_region name: rNames.major, scope: component.scope, type: "simple" %}
+            </div>
+          {% endif %}
+          {% if edit_mode or page.content[rNames.graduationYear] != blank %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Graduation Year</span>{% endif %}
+            <div class="helvetica-neue-light">
+              {% editable_region name: rNames.graduationYear, scope: component.scope, type: "simple" %}
+            </div>
+          {% endif %}
+        {% else %}
+          {% if edit_mode or page.content[rNames.profileTitle] != blank %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Title</span>{% endif %}
+            <div class="helvetica-neue-light">
+              {% editable_region name: rNames.profileTitle, scope: component.scope, type: "simple" %}
+            </div>
+          {% endif %}
+          {% if edit_mode or page.content[rNames.organization] != blank %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Organization</span>{% endif %}
+            <div class="helvetica-neue-light">
+              {% editable_region name: rNames.organization, scope: component.scope, type: "simple" %}
+            </div>
+          {% endif %}
+          <div class="mt-3 mb-3 p-3 bg-light">
+            {% render "includes/wvu-contact-info/wvu-contact-info--v1" component: component, regionNames: rNames %}
+          </div>
+        {% endif %}
+
+        {% if edit_mode or page.content[rNames.quote] != blank %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Quote</span>{% endif %}
+          <div class="iowan-old-style-black-italic h3 mt-3">
+            <p>“{% editable_region name: rNames.quote scope: component.scope, type: "simple" %}”</p>
+          </div>
+        {% endif %}
+
+        {% if edit_mode or page.content[rNames.main] != blank %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main</span>{% endif %}
+          <div class="mt-3">
+            {% editable_region_block name: rNames.main, scope: component.scope %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            {% endeditable_region_block %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

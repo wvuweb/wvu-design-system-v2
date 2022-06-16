@@ -1,0 +1,58 @@
+// WVU Column Count
+//==================================================
+// Utilities that allow you to create a different number of text columns at different breakpoints. Good for doing lists of quicklinks.
+
+.wvu-column-count-2, %wvu-column-count-2 {
+  column-count: 2 $global-important;
+}
+
+.wvu-column-count-3, %wvu-column-count-3 {
+  column-count: 3 $global-important;
+}
+
+.wvu-column-count-4, %wvu-column-count-4 {
+  column-count: 4 $global-important;
+}
+
+.wvu-column-count-5, %wvu-column-count-5 {
+  column-count: 5 $global-important;
+}
+
+@each $bp-value, $breakpoint in (xs, $wvu-bp-xs),
+                                (sm, $wvu-bp-sm),
+                                (md, $wvu-bp-md),
+                                (lg, $wvu-bp-lg),
+                                (xl, $wvu-bp-xl) {
+  @media (min-width: $breakpoint) {
+    .wvu-column-count-#{$bp-value}-1 {
+      column-count: 1 $global-important;
+    }
+    .wvu-column-count-#{$bp-value}-2 {
+      column-count: 2 $global-important;
+    }
+    .wvu-column-count-#{$bp-value}-3 {
+      column-count: 3 $global-important;
+    }
+    .wvu-column-count-#{$bp-value}-4 {
+      column-count: 4 $global-important;
+    }
+    .wvu-column-count-#{$bp-value}-5 {
+      column-count: 5 $global-important;
+    }
+  }
+}
+
+// Example usage:
+// <section aria-labelledby="quicklinks-1-label" class="py-5 text-wvu-blue wvu-bg-pattern-gold">
+//   <div class="container wvu-z-index-content">
+//     <div class="row">
+//       <div class="col-lg-4">
+//         ...
+//       </div>
+//       <div class="col-lg-8">
+//         <ul class="list-unstyled wvu-column-count-3">
+//           ...
+//         </ul>
+//       </div>
+//   </div>
+// </section>

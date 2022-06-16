@@ -1,0 +1,54 @@
+// Some base styles that Bootstrap doesn’t provide.
+
+body {
+  @include helvetica-neue($is-important: null); // Disable !important in this instance.
+}
+
+strong,
+b {
+  @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
+}
+
+a {
+  &:focus {
+    outline: auto 2px Highlight; // for non-webkit browsers
+    outline: auto 5px -webkit-focus-ring-color; // for webkit browsers
+  }
+}
+
+blockquote {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: .8;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Inside a backpage main, add some padding to certain elements when they trail others. This allows us to group blocks of text with headings, etc. to improve scannability.
+
+.wvu-backpage-main {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+  }
+  a + h2, button + h2, img + h2, ol + h2, ul + h2, div + h2, p + h2, pre + h2, table + h2, blockquote + h2, fieldset + h2, figure + h2, figcaption + h2, h1 + h2 { margin-top: $spacer * 2; }
+  a + h3, button + h3, img + h3, ol + h3, ul + h3, div + h3, p + h3, pre + h3, table + h3, blockquote + h3, fieldset + h3, figure + h3, figcaption + h3, h2 + h3 { margin-top: $spacer * 2; }
+  a + h4, button + h4, img + h4, ol + h4, ul + h4, div + h4, p + h4, pre + h4, table + h4, blockquote + h4, fieldset + h3, figure + h4, figcaption + h4, h3 + h4 { margin-top: $spacer * 2; }
+  a + h5, button + h5, img + h5, ol + h5, ul + h5, div + h5, p + h5, pre + h5, table + h5, blockquote + h5, fieldset + h5, figure + h5, figcaption + h5, h4 + h5 { margin-top: $spacer * 2; }
+  a + h6, button + h6, img + h6, ol + h6, ul + h6, div + h6, p + h6, pre + h6, table + h6, blockquote + h6, fieldset + h6, figure + h6, figcaption + h6, h5 + h6 { margin-top: $spacer * 2; }
+  a + .lead, button + .lead, ol + .lead, ul + .lead, div + .lead, p + .lead, pre + .lead, table + .lead, blockquote + .lead, fieldset + .lead, h1 .lead, h2 .lead, h3 .lead, h4 .lead, h5 .lead, h6 .lead { margin-top: $spacer * 1.5;}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
+}

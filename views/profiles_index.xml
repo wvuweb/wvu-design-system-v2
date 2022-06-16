@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<profiles>
+  {% assign profiles = site.pages | filter_pages: order: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopTagsMatch, hidden: component.showHidden %}
+  {% for profile in profiles.all %}
+    <profile>
+      <name><![CDATA[{{ page.alternate_name | default: page.name }}]]></name>
+      <image_url>{{ site.domain }}{{ profile.data.thumbnail_url }}</image_url>
+      <url>{{ page.url }}</url>
+      <job_title><![CDATA[{{ profile.content['wvu-backpage-header-1__subhead'] }}]]></job_title>
+      <phone>{{ profile.content['wvu-profile-1__phone'] }}</phone>
+      <email><![CDATA[{{ profile.content['wvu-profile-1__email'] }}]]></email>
+      <short_description><![CDATA[{{ profile.data.description }}" />]]></short_description>
+      <quote><![CDATA[<r:page:content name="wvu-profile-1__quote" />]]></quote>
+    </profile>
+  {% endfor %}
+</profiles>

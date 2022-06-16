@@ -1,0 +1,6 @@
+{% render "blog_index--v1" %}
+
+{% comment %}
+  <!-- Looking to customize this RSS file? -->
+  <!-- Grab the contents from the code repo in Bitbucket, paste that here & customize away! -->
+{% endcomment %}

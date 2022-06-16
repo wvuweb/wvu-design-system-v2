@@ -1,0 +1,7 @@
+// Limit the max height of an image in the masthead. This is so when a user inserts a custom logo in place of the standard lockup, or pairs the lockup with a custom logo, it doesn’t break the masthead.
+
+.wvu-masthead {
+  img {
+    max-height: 90px $global-important;
+  }
+}

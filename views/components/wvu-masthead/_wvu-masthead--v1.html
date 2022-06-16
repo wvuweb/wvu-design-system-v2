@@ -1,0 +1,73 @@
+<!-- Markup -->
+<div class="wvu-masthead bg-wvu-blue">
+  <div class="container">
+    <div class="row">
+      <div class="align-self-center col">
+        {% capture link_text_color %}text-white{% endcapture %}
+
+        {% comment %}<!-- If we have an alternate logo but no co-brand, just display the logo. If both, display lockup and alternate logo as the co-brand. -->{% endcomment %}
+        {% if site.data.has_alternate_logo != blank %}
+          {% if site.data.has_co_brand == blank %}
+            <a class="d-block position-relative my-3 text-decoration-none" href="/">
+              <span class="sr-only">West Virginia University </span>
+              <img class="my-n2" src="https://{{ site.domain }}{{ site.data.has_alternate_logo }}" alt="{{ site.name }}" />
+            </a>
+          {% else %}
+            <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
+              <span class="sr-only">West Virginia University </span>
+              <span class="wvu-logo-lockup mt-n1">
+                {{ site.data.masthead_title | default: site.name }} (version 2)
+              </span>
+              {% if site.data.has_co_brand == '1' %}
+                <span class="wvu-co-branding d-inline-block align-self-center mx-2 my-n2 p-2 border-start">
+                  {% if site.data.has_alternate_logo != blank %}
+                    <img src="https://{{ site.domain }}{{ site.data.has_alternate_logo }}" alt="{{ site.name }}" />
+                  {% endif %}
+                  {% if site.data.co_brand_subtitle != blank %}
+                    <span class="d-block helvetica-neue-light small">{{ site.data.co_brand_subtitle }}</span>
+                  {% endif %}
+                </span>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% else %}
+          <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
+            <span class="sr-only">West Virginia University </span>
+            <span class="wvu-logo-lockup mt-n1">
+              {{ site.data.masthead_title | default: site.name }}
+            </span>
+            {% if site.data.has_co_brand != blank %}
+              <span class="wvu-co-branding d-inline-block align-self-center mx-2 {% if site.data.co_brand_subtitle != blank %}my-n2 {% endif %}p-2 border-start">
+                {% if site.data.has_alternate_logo != blank %}
+                  <img src="https://{{ site.domain }}{{ site.data.has_alternate_logo }}" alt="Logo: {{ site.name }}" />
+                {% else %}
+                  {{ site.data.has_co_brand }}
+                {% endif %}
+                {% if site.data.co_brand_subtitle != blank %}
+                  <span class="d-block helvetica-neue-light small">{{ site.data.co_brand_subtitle }}</span>
+                {% endif %}
+              </span>
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
+      <div class="col-12 col-lg-4 d-flex flex-column">
+        {% if site.data.masthead_college_link_title != blank %}
+          <a href="{{ site.data.masthead_college_link_address }}" class="small text-decoration-none bg-wvu-gold text-wvu-blue d-block px-2 py-1">{{ site.data.masthead_college_link_title }}</a>
+        {% endif %}
+        <div class="px-0 flex-grow-1 d-flex align-content-center justify-content-center justify-content-lg-end my-2">
+          {% if site.data.apply_link_1 != blank %}
+            <a href="{{ site.data.apply_link_1_url }}" class="mb-3 mb-lg-0 align-self-center btn mb-1 btn-outline-wvu-accent--light-blue">{{ site.data.apply_link_1 }}</a>
+          {% endif %}
+          {% if site.data.apply_link_2 != blank %}
+            <a href="{{ site.data.apply_link_2_url }}" class="mb-3 mb-lg-0 align-self-center btn mb-1 btn-outline-wvu-accent--orange ms-1">{{ site.data.apply_link_2 }}</a>
+          {% endif %}
+          {% if site.data.apply_link_3 != blank %}
+            <a href="{{ site.data.apply_link_3_url }}" class="mb-3 mb-lg-0 align-self-center btn mb-1 btn-outline-wvu-gold ms-1">{{ site.data.apply_link_3 }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End markup -->

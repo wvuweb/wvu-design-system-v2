@@ -1,0 +1,79 @@
+// Adding a lead utility class that contains helvetica neue light
+
+.lead {
+  @include helvetica-neue-light();
+}
+
+// Making sure links within an element styled with text-white also remain white.
+
+.text-white {
+  a:link {
+    color: white;
+  }
+}
+
+// NOTE: These override Bootstrap’s .display classes. We want different sizes than Bootstrap provides by default.
+
+.display-1 {
+  font-size: 3rem $global-important;
+}
+
+.display-2 {
+  font-size: 3rem $global-important;
+}
+
+.display-3 {
+  font-size: 3rem $global-important;
+}
+.display-4 {
+  font-size: 3rem $global-important;
+}
+
+@include media-breakpoint-up(sm) {
+  .display-1 {
+    font-size: 4.5rem $global-important;
+  }
+  .display-2 {
+    font-size: 3rem $global-important;
+  }
+  .display-3 {
+    font-size: 3rem $global-important;
+  }
+  .display-4 {
+    font-size: 3rem $global-important;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .display-1 {
+    font-size: 5rem $global-important;
+  }
+  .display-2 {
+    font-size: 3rem $global-important;
+  }
+  .display-3 {
+    font-size: 3rem $global-important;
+  }
+  .display-4 {
+    font-size: 3rem $global-important;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .display-1 {
+    font-size: $display1-size $global-important;
+  }
+  .display-2 {
+    font-size: $display2-size $global-important;
+  }
+  .display-3 {
+    font-size: $display3-size $global-important;
+  }
+  .display-4 {
+    font-size: $display4-size $global-important;
+  }
+}
+
+.text-shadow {
+  text-shadow: $text-shadow $global-important;
+}

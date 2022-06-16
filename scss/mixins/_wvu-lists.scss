@@ -1,0 +1,9 @@
+@mixin font-awesome-arrow() {
+  font: var(--fa-font-solid) $global-important;
+  content: "\f0a9" $global-important;
+}
+
+@mixin font-awesome-chevron() {
+  font: var(--fa-font-solid) $global-important;
+  content: "\f105" $global-important;
+}

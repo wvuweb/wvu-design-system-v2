@@ -1,0 +1,104 @@
+// ---Import all the things!---
+//    Pay attention to how you order your Sass files.
+//    Variables & Utilities (mixins) should almost always come before Vendor & Partial files.
+
+// Functions (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// Include WVU Variables
+@import 'wvu-variables';
+
+// Plugins
+
+// Remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/utilities";
+
+// Layout & components
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/accordion";
+@import "../node_modules/bootstrap/scss/breadcrumb";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/badge";
+@import "../node_modules/bootstrap/scss/alert";
+@import "../node_modules/bootstrap/scss/placeholders";
+@import "../node_modules/bootstrap/scss/progress";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/toasts";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/tooltip";
+@import "../node_modules/bootstrap/scss/popover";
+@import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/spinners";
+@import "../node_modules/bootstrap/scss/offcanvas";
+
+// Helpers
+@import "../node_modules/bootstrap/scss/helpers";
+
+// Utilities
+@import "../node_modules/bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
+
+// WVU Components
+@import 'mixins/wvu-bar';
+@import 'mixins/wvu-bg-blend-mode';
+@import 'mixins/wvu-bg-pattern';
+@import 'mixins/wvu-bg-tint';
+@import 'mixins/wvu-bg-vignetting';
+@import 'mixins/wvu-co-branding';
+@import 'mixins/wvu-gradient';
+@import 'mixins/wvu-logo-lockup';
+@import 'mixins/wvu-slash';
+@import 'mixins/wvu-lists';
+@import 'mixins/wvu-type';
+@import 'utilities/wvu-active-nav-link';
+@import 'utilities/wvu-bar';
+@import 'utilities/wvu-bg';
+@import 'utilities/wvu-bg-blend-mode';
+@import 'utilities/wvu-bg-pattern';
+@import 'utilities/wvu-bg-position';
+@import 'utilities/wvu-bg-tint';
+@import 'utilities/wvu-bg-vignetting';
+@import 'utilities/wvu-border';
+@import 'utilities/wvu-column-count';
+@import 'utilities/wvu-co-branding';
+@import 'utilities/wvu-gradient';
+@import 'utilities/wvu-logo-lockup';
+@import 'utilities/wvu-overflow';
+@import 'utilities/wvu-slash';
+@import 'utilities/wvu-type';
+@import 'utilities/wvu-lists';
+@import 'utilities/wvu-z-index';
+
+// Custom
+// @import '4-custom/wvu-nav';
+
+@import 'custom/btn';
+@import 'custom/fas';
+@import 'custom/mercury-textarea';
+@import 'custom/multi-collapse';
+@import 'custom/nav';
+@import 'custom/prettyprint';
+@import 'custom/text';
+@import 'custom/wvu-base';
+@import 'custom/wvu-breadcrumbs';
+@import 'custom/wvu-calendar-widget';
+@import 'custom/wvu-gallery';
+@import 'custom/wvu-masthead';
+@import 'custom/wvu-nav-dropdowns';

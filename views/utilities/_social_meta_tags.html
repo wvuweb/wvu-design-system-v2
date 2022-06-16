@@ -1,0 +1,19 @@
+<meta property="og:title" content="{{ site.name }} | {{ page.alternate_name | default: page.name }}" />
+<meta property="og:description" content="{{ page.meta_description }}" />
+
+{% assign thumbnailurl = page.slug | append: "-thumbnail" %}
+{% assign social_img = site | first_random_image_tagged_with: label: thumbnailurl %}
+{% if social_img %}
+  {% assign social_img_url = social_img | image_path: size: "1200x630" %}
+  <meta property="og:image" content="https://{{ site.domain }}{{ social_img_url }}" />
+  <meta name="twitter:image" content="https://{{ site.domain }}{{ social_img_url }}" />
+{% endif %}
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ page.url }}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="{{ site.name }}" />
+<meta name="twitter:creator" content="{{ site.data.twitter_handle }}" />
+<meta name="twitter:title" content="{{ page.alternate_name | default: page.name }}" />
+<meta name="twitter:description" content="{{ page.meta_description }}" />

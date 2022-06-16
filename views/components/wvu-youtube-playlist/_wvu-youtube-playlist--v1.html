@@ -1,0 +1,30 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div id="js-ytpp__scroll-to">
+
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="featurettes-{{ component.number }}-label" class="display-3 wvu-shout">Playlist Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+
+      <p class="js-warning"><strong>Oops.</strong> You have Javascript disabled. Kindly <a title="Instructions on how to enable javascript" href="http://enable-javascript.com/">enable javascript</a> to view these videos on this site or see the playlist on YouTube via the link below.</p>
+      <div class="wvu-youtube-playlist__container"></div>
+      <p class="no-js-fallback">You can also <a href="https://www.youtube.com/playlist?list={{ page.data.youtube_playlist_id }} />">view this playlist on YouTube</a>.</p>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var pl_id = "{{ page.data.youtube_playlist_id }}" // Add your Playlist's ID (found in the URL) via Page Properties > Custom Data
+  </script>
+  <script src="https://static.wvu.edu/youtube-playlist-player/js/youtube-playlist-player.min.js"></script>
+{% endcontent_for %}

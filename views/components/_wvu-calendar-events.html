@@ -1,0 +1,26 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_calendar_events | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-calendar-events"
+  else
+    assign basename = "calendar-events"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": null,
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-calendar-events/wvu-calendar-events--v1" component: component %}
+  {% else %}{% render "components/wvu-calendar-events/wvu-calendar-events--v1" component: component %}
+{% endcase %}

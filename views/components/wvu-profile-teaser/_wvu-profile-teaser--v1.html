@@ -1,0 +1,99 @@
+{%- liquid
+
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+-%}
+
+{% capture component_content %}
+
+  {% for item in items.all %}
+    {% assign itemCount = itemCount | plus: 1 %}
+  {% endfor %}
+
+  {% if itemCount == 0 %}
+    <div class="container mb-4">
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+    </div>
+  {% endif %}
+
+  {% for item in items.all limit: 1 %}
+
+    {% liquid
+      if item.data.alternate_url != blank
+        assign link_href = item.data.alternate_url
+      else
+        assign link_href = item.url
+      endif
+    %}
+
+    {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+    <div class="container wvu-z-index-content">
+
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-2 mb-lg-1 text-center">
+          <div class="row">
+            <div class="col-6 mr-auto col-md-12 col-lg-10 col-xl-8 me-lg-0 ms-lg-auto">
+              {% if item.data.thumbnail_url != blank %}
+                {%- capture itemThumbnailSrc %}
+                  {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
+                {%- endcapture %}
+                <img class="rounded-circle shadow text-center" src="{{ itemThumbnailSrc | strip }}/400x400.jpg" alt="Placeholder">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-6">
+          {% if item.content['wvu-profile-1__header-label'] != blank %}
+            <p class="text-uppercase">
+              {{ item.content['wvu-profile-1__header-label'] }}
+            </p>
+          {% endif %}
+
+          <h2 class="{{ itemHeaderClasses }}" id="{{ component.name }}-label">{{ page.alternate_name | default: page.name }}</h2>
+
+          {% if item.content['wvu-profile-1__name'] != blank %}
+            <p class="h3 iowan-old-style-italic mb-2">
+              {{ item.content['wvu-profile-1__name'] }}
+            </p>
+          {% endif %}
+
+          <p class="{{ itemBodyClasses }}">
+            {%- if item.data.description != blank %}
+              {{ item.data.description }}
+            {% else %}
+              {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+            {%- endif %}
+          </p>
+
+          {% if itemReadMoreButtonText != 'none' %}
+            {% if item.data.link_text != blank %}
+              {% assign link_text = item.data.link_text %}
+            {% else %}
+              {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+            {% endif %}
+            <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

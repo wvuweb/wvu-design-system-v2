@@ -1,0 +1,10 @@
+.wvu-border {
+  border: $spacer * 1.5 solid white $global-important;
+}
+
+.wvu-border-thick {
+  border: 2rem solid white $global-important;
+  @media (min-width: $wvu-bp-lg) {
+    border: 6rem solid white $global-important;
+  }
+}

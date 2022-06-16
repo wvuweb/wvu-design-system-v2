@@ -1,0 +1,77 @@
+{%- liquid
+  assign root = site.root_page
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+-%}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    {%- if edit_mode or page.content[component.region_names.header] != blank %}
+      {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+      {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+      {% editable_region_block name: component.region_names.header scope: component.scope %}
+        <h2 id="featurettes-{{ component.number }}-label" class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom sr-only">Directory Headline</h2>
+      {% endeditable_region_block %}
+    {%- endif %}
+
+    <div class="table-responsive-md">
+      <table class="table">
+        <tbody>
+          {% for item in items.all %}
+            <tr class="border-bottom border-light">
+              <td class="py-2 w-25">
+                <div class="row">
+                  <div class="col-4">
+                    {% if item.data.thumbnail_url_sq != blank %}
+                      <img class="rounded-circle shadow d-inline-block" src="{{ item.data.thumbnail_url_sq }}" alt="{{ item.data.thumbnail_url_sq }}" />
+                    {% endif %}
+                  </div>
+                  <div class="col-8 align-self-center">
+                    {% if item.content['wvu-profile-1__name'] != blank %}
+                      <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
+                    {% else %}
+                      <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
+                    {% endif %}
+                    {%- if item.content['wvu-profile-1__subhead'] != blank %}
+                      <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__subhead'] }}</small>
+                    {%- endif %}
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">
+                {%- if item.content['wvu-profile-1__phone'] != blank %}
+                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ item.content['wvu-profile-1__phone'] }}">{{ item.content['wvu-profile-1__phone'] }}</a>
+                {%- endif %}
+              </td>
+              <td class="align-middle">
+                {%- if item.content['wvu-profile-1__email'] != blank %}
+                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ page.content['wvu-profile-1__email'] }}"> {{ item.content['wvu-profile-1__email'] }}</a>
+                {%- endif %}
+              </td>
+              <td class="align-middle">
+                {%- if item.content['wvu-profile-1__office'] != blank %}
+                  <span class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
+                {%- endif %}
+              </td>
+              <td class="align-middle">
+                <span class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">Profile<span class="sr-only">: {{ page.name }}</span></a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% assign pagination = items | blog_pagination %}
+    {% if pagination.total_pages > 1 %}
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a type="button" href="{{ pagination.next_page_url }}" class="btn btn-secondary page-link{% if pagination.is_last_page %} disabled{% endif %}">Older Articles</a>
+        <a type="button" href="{{ pagination.prev_page_url }}" class="btn btn-secondary page-link{% if pagination.is_first_page %} disabled{% endif %}">Newer Articles</a>
+      </div>
+    {% endif %}
+
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

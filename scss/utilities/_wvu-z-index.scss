@@ -1,0 +1,34 @@
+// WVU Z-Index
+//==================================================
+// These utilities adjust an element’s z-index property. Use these when using background effects, else the background effects could display on top of your text.
+
+.wvu-z-index-0, %wvu-z-index-0 {
+  position: relative;
+  z-index: 0;
+}
+
+.wvu-z-index-breadcrumbs, %wvu-z-index-breadcrumbs {
+  position: relative;
+  z-index: $wvu-z-index-breadcrumbs;
+}
+
+.wvu-z-index-content, %wvu-z-index-content {
+  position: relative;
+  z-index: $wvu-z-index-content;
+}
+
+.wvu-z-index-max, %wvu-z-index-max {
+  position: relative;
+  z-index: 99999;
+}
+
+// Example usage:
+// <section class="py-5 bg-wvu-blue text-white text-center wvu-bg-vignetting--50 wvu-bg-pattern-blue">
+//   <div class="container wvu-z-index-content">
+//       <div class="wvu-z-index-content">
+//         <h2 id="featurettes-1-label" class="display-3 wvu-shout">Featurettes Headline</h2>
+//           <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
+//       </div>
+//       ...
+//   </div>
+// </section>

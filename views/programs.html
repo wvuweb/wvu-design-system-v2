@@ -1,0 +1,20 @@
+---
+layout: default
+custom_data_attributes:
+  - contentful_api_string:
+    title: Contentful API String
+  - disable_delivery_method:
+    type: checkbox
+    title: Disable DeliveryMethod
+  - disable_program_type:
+    type: checkbox
+    title: Disable Program Type
+  - ifBackpageRemoveNav:
+    type: checkbox
+    title: If backpage, remove nav
+  - ifBackpageRemoveSidebar:
+    type: checkbox
+    title: If backpage, remove sidebar
+---
+
+{% render "components/wvu-program-listing" number: 1, main: true, limit: 100 %}

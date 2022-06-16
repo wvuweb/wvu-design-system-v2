@@ -1,0 +1,22 @@
+{% if page.data.submenu_start_depth != blank %}
+  {% assign submenuStartDepth = page.data.submenu_start_depth %}
+{% else %}
+  {% assign submenuStartDepth = 2 %}
+{% endif %}
+
+{% if page.data.submenu_max_depth != blank %}
+  {% assign submenuMaxDepth = page.data.submenu_max_depth %}
+{% else %}
+  {% assign submenuMaxDepth = 3 %}
+{% endif %}
+
+{% if edit_mode %}
+  <div class="alert alert-info p-2 mb-3">
+    <p class="mb-0 small">The current page depth is <strong>{{ page.depth }}</strong> (in case you need to know where to start your submenu depth). Did you know you can manually <a href="/design-system/how-to-guides/">set the start depth and max depth of your subnav</a> for this page.</p>
+  </div>
+{% endif %}
+{% if component.hideSubnav != true %}
+  <div class="mb-3">
+    {% ancestor_menu start_depth: submenuStartDepth, max_depth: submenuMaxDepth, ul_class: "nav flex-column border-start border-muted ps-1 mb-3", li_class: "nav-item", link_class: "nav-link text-decoration-none", active_class: "active", open_class: "nav-secondary--open" %}
+  </div>
+{% endif %}

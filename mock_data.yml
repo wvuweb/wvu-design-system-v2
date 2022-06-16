@@ -1,0 +1,990 @@
+hammer_nav:
+  disabled: false
+
+shared_themes:
+  "Code": "code"
+  "University Relations: WVU Design System": "wvu-design-system"
+
+show_editable_regions: false  #If true a div with `border: 1px dashed red` will be injected into the content of the region
+
+editable_region:
+  main: This is content for the main editable region. Change what it says in the mock_data.yml file.
+  sidebar: Sidebar stuff.
+  contact: |
+    <p><strong>Division of Virginia West Advancement</strong></p>
+    <p>1111 WVU Road Suite 250 | P.O. Box 6202 | Morgantown, WV 26506-6202</p>
+    <p><strong>Phone:</strong> 304.293.5600 | <strong>Fax:</strong> 304.293.8279 | <strong>Email:</strong> <a href="mailto:firstname.lastname@mail.wvu.edu">firstname.lastname@mail.wvu.edu</a></p>
+  search-content: ""
+  wvu-action-hero-1__header: "Action Hero Header"
+  wvu-action-hero-1__main: |
+    <p class="lead pb-2">
+      This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+    </p>
+    <a class="btn btn-wvu-blue btn-lg" href="#" role="button">Call to Action</a>
+    <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--dark-blue">Secondary Call to Action</a></p>
+  wvu-action-hero-card-1__header: "Action Hero Card Header"
+  wvu-action-hero-card-1__main: |
+    <p class="lead mb-2">
+      <%= Faker::Lorem.paragraph(1) %>
+    </p>
+    <p class="mb-2"><%= Faker::Lorem.paragraph(1) %>
+    </p>
+    <p>
+      <a href="#" class="btn btn-primary">Call to Action</a>
+    </p>
+  wvu-action-hero-card-1-default-component-classes: "wvu-bg-blend-mode-lighten wvu-bg-pattern-grid bg-wvu-blue"
+  wvu-action-hero-split-1__header: "Action Hero Header"
+  wvu-action-hero-split-1__main: |
+    <p class="iowan-old-style-italic text-wvu-blue h1">Center for Cool Innovation</p>
+    <p class="lead mb-4"><%= Faker::Lorem.paragraph(6) %></p>
+    <a href="#" class="btn btn-primary">Action Item</a>
+  wvu-action-hero-two-column-1__header: "Action Hero Header"
+  wvu-action-hero-two-column-1__main: |
+    <p class="h3 mb-3 helvetica-neue-light"><%= Faker::Lorem.paragraph(6) %>
+    </p>
+    <a href="#" class="btn btn-primary mb-1">Call to Action</a>
+  wvu-agenda-item__main: ""
+  wvu-agenda-item__time: ""
+  wvu-big-search-1__header: "Big Search Header"
+  wvu-big-search-1__main: |
+    <p class="helvetica-neue-light h3">Type your search term below.</p>
+  wvu-big-search-1__postscript: |
+    <p>Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
+  wvu-blog-article-1__main: |
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+    <figure class="mt-4 mx-lg-n5">
+    <img alt="Pom Poms in a crowd" data-asset-id="127904" data-asset-version="960x640"
+    src="https://designsystem.sandbox.wvu.edu/files/0bad594b-5c78-485a-b465-7798861067a2/960x640">
+    </figure>
+    <figcaption class="mb-4">
+    <small class="d-block iowan-old-style">
+      <%= Faker::Lorem.paragraph(2) %>
+    </small>
+    </figcaption>
+    <p>
+    <%= Faker::Lorem.paragraph(6) %>
+    </p>
+    <blockquote class="iowan-old-style-black-italic h2 wvu-bar wvu-bar--center my-4 pb-1 text-center mx-lg-n5"><%= Faker::Lorem.paragraph(1) %>
+    <span class="d-block iowan-old-style text-uppercase wvu-letter-spacing h5 mt-2">Joe Schmoe</span>
+    </blockquote>
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+  wvu-blog-article-hero-1__subhead: |
+    <p class="helvetica-neue-bold h2">Subhead goes here.</p>
+  wvu-blog-index-1__main: ""
+  wvu-contact-info-1__address: |
+    <h2 class="h5 iowan-old-style-black">
+      <span class="fas fa-map-marker-alt position-absolute"></span>
+      <span class="pl-3 d-block">Find Us at the office</span>
+    </h2>
+    <address class="pl-3">
+      <small class="d-block">
+        <strong>West Virginia University</strong>
+        <br> 1345 Market St, Suite 900
+        <br> Morgantown, WV 26505
+        <br>
+      </small>
+    </address>
+  wvu-contact-info-1__form: |
+    <form class="px-3 py-4">
+      <h2>Or fill out our form.</h2>
+      <div class="form-group">
+        <label id="username-label" for="exampleFormControlInput1">Username</label>
+        <input aria-labelledby="username-label" type="text" class="form-control" id="exampleFormControlInput1"
+        placeholder="name@example.com" autocomplete="off" style="background-image: url(&quot;&quot;); cursor: auto;"
+        data:image="" background-repeat:="" no-repeat="" background-attachment:="" scroll=""
+        background-size:="" background-position:="">
+      </div>
+      <div class="form-group">
+        <label id="password-label" for="exampleFormControlInput1">Password</label>
+        <input aria-labelledby="password-label" type="password" class="form-control" id="exampleFormControlInput2"
+        placeholder="••••••••" autocomplete="off" style="background-image: url(&quot;&quot;); cursor: auto;"
+        data:image="" background-repeat:="" no-repeat="" background-attachment:="" scroll=""
+        background-size:="" background-position:="" cursor:="" auto="">
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+      <p class="mt-2 small">
+        <a href="#">Forgot password?</a>
+      </p>
+    </form>
+  wvu-contact-info-1__header: |
+    <p class="helvetica-neue-light h2 mb-3 pr-md-3"><%= Faker::Lorem.paragraph(1) %></p>
+  wvu-contact-info-1__phone: |
+    <h2 class="h5 iowan-old-style-black mt-3">
+      <span class="fas fa-phone position-absolute"></span>
+      <span class="pl-3 d-block">By Phone or Email</span>
+    </h2>
+    <address class="pl-3 mb-4">
+      <small class="d-block">
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+        <br>
+        <strong>Full Name</strong>
+        <br>
+        <a href="mailto:#">first.last@example.com</a>
+      </small>
+    </address>
+  wvu-directory-1__header: |
+    <h2>Staff Directory Headline</h2>
+  wvu-editable-region-1__main: ""
+  wvu-faculty-profile-1__figcaption: "<%= Faker::Lorem.paragraph(2) %>"
+  wvu-faculty-profile-1__figure: |
+    <img alt="Placeholder" src="https://via.placeholder.com/1200x800" />
+  wvu-faculty-profile-1__main: |
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+    <p><%= Faker::Lorem.paragraph(6) %></p>
+  wvu-faculty-profile-1__sidebar-top: |
+    <p class="helvetica-neue-light h5 mb-3"><%= Faker::Lorem.paragraph(6) %></p>
+  wvu-featurettes-1__header: |
+    <h2 class="display-3 wvu-shout">Featurettes Headline</h2>
+    <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
+  wvu-featurettes-1-button-text: "Read More"
+  wvu-featurettes-1-item-header-classes: "mb-4"
+  wvu-featurettes-1__postscript: |
+    <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+  wvu-footer-1__main: |
+    <address class="mb-4">
+      <p>
+        <strong>Organization Name</strong><br>
+        Address Line 1<br>
+        Address Line 2<br>
+      </p>
+      <p>
+        <a class="fas fa-phone" href="tel:3041234567">(304) 123-4567</a><br>
+        <a class="fas fa-envelope" href="mailto:email@mail.wvu.edu">email@mail.wvu.edu</a>
+      </p>
+    </address>
+  wvu-full-bleed-photo-1__main: |
+    <img src="https://designsystem.sandbox.wvu.edu/files/7f5da73f-36df-4693-a2c8-f01398b3adbd/1720x1720" alt="Cheerleaders waving a flag">
+  wvu-full-bleed-photo-1__caption: "<%= Faker::Lorem.paragraph(5) %>"
+  wvu-full-bleed-photo-1-caption-classes: "d-block wvu-p-max-width"
+  wvu-twitter-widget-1__header: |
+    <h2 id="twitter-widget-1-label" class="lede text-center pt-5">Follow us on Twitter</h2>
+  wvu-hero-1__header: "It Starts Now"
+  wvu-hero-1__main: |
+    <p class="lead py-2"><%= Faker::Hacker.say_something_smart %> <%= Faker::Hacker.say_something_smart %></p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Call to Action</a>
+  wvu-lede-text-1__main: "<%= Faker::Lorem.paragraph(5) %>"
+  wvu-log-in-1__main: |
+    <form class="px-3 py-4">
+      <h2>Log In</h2>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Username</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" autocomplete="off" style="background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAYdJREFUOBGVVLuKwkAUPTErioVgY5WF2AhpFKz8AC0W0vgTK9injvkMt7HyB6zWSuy1s1WRXUJQ0cJCxSLOnSSzcYmaDGTmPs45M3fuEMmyrA/XdXvse0eMIUnSD4N9drvdb4KnkpCJ4G/0RTYNEoi1swf35jAnFU68snO5HMrl8h0skYCqqmg0GtEC2WxWJDKZDNhlCT+cE0HfeKNV13XUajUMBgPs93t0Oh3Yto1+v3+X+08mP1EJUQKSaZouJeiY5/OZY6iEy+UShRcxVuIvc9riBAGZEK/IhGGtVNjS43dAgWej2WyiUqlAlmWs12sMh0OcTicuIk7wTOBwOGA+n2O5XELTNJRKJQFP+W9bBKKM6XSK4/GIfD4Px3G4UIAjgXYckXq9DkVRsN1ukU6nAz7+XosIeUbQHfKIcL1eUa1W0Wq1MB6PMZlMODDWJRqGgd1uh0KhwEmbzYavND0UoD77rcJoNEKxWOS1LxYLrFYrLkCYhwIMQXdDPxplNptxQngiMmFuABiQmENn7wkAAAAASUVORK5CYII="); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Password</label>
+        <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="••••••••" autocomplete="off" style="background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAYdJREFUOBGVVLuKwkAUPTErioVgY5WF2AhpFKz8AC0W0vgTK9injvkMt7HyB6zWSuy1s1WRXUJQ0cJCxSLOnSSzcYmaDGTmPs45M3fuEMmyrA/XdXvse0eMIUnSD4N9drvdb4KnkpCJ4G/0RTYNEoi1swf35jAnFU68snO5HMrl8h0skYCqqmg0GtEC2WxWJDKZDNhlCT+cE0HfeKNV13XUajUMBgPs93t0Oh3Yto1+v3+X+08mP1EJUQKSaZouJeiY5/OZY6iEy+UShRcxVuIvc9riBAGZEK/IhGGtVNjS43dAgWej2WyiUqlAlmWs12sMh0OcTicuIk7wTOBwOGA+n2O5XELTNJRKJQFP+W9bBKKM6XSK4/GIfD4Px3G4UIAjgXYckXq9DkVRsN1ukU6nAz7+XosIeUbQHfKIcL1eUa1W0Wq1MB6PMZlMODDWJRqGgd1uh0KhwEmbzYavND0UoD77rcJoNEKxWOS1LxYLrFYrLkCYhwIMQXdDPxplNptxQngiMmFuABiQmENn7wkAAAAASUVORK5CYII="); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+      <p class="mt-2 small">
+        <a href="#">Forgot password?</a>
+      </p>
+    </form>
+  wvu-major-1__main: |
+    <p><%= Faker::Lorem.paragraph(5) %></p>
+    <p><%= Faker::Lorem.paragraph(5) %></p>
+  wvu-photo-gallery-1__header: ""
+  wvu-profile-1__download: |
+    <a href="#">Download</a>
+  wvu-profile-1__main: |
+    <p><%= Faker::Lorem.paragraph(5) %></p>
+    <p><%= Faker::Lorem.paragraph(5) %></p>
+  wvu-profile-1__quote: "<%= Faker::Lorem.paragraph(3) %>"
+  wvu-profile-teaser-1__image: |
+    <img class="rounded-circle shadow" src="https://via.placeholder.com/960x960" alt="Placeholder" />
+  wvu-profile-teaser-1__main: |
+    <p class="text-uppercase">
+      Label goes here
+    </p>
+    <h2 class="wvu-shout h1">Firstname Lastname</h2>
+    <p class="h3 iowan-old-style-italic mb-2">
+      Subhead goes here.
+    </p>
+    <p class="mb-0">
+      <p><%= Faker::Lorem.paragraph(3) %></p>
+    </p>
+    <p class="mb-0 mt-2">
+      <a class="btn btn-primary btn-sm" href="#">Call to Action</a>
+    </p>
+  wvu-profile-teaser-1__postscript: |
+    <h2 class="wvu-shout">Also See:</h2>
+    <ul class="wvu-ul-slashes wvu-ul-slashes--gold">
+      <li>
+        <a href="#">Related Link 1</a>
+      </li>
+      <li>
+        <a href="#">Related Link 2</a>
+      </li>
+      <li>
+        <a href="#">Related Link 3</a>
+      </li>
+      <li>
+        <a href="#">Related Link 4</a>
+      </li>
+    </ul>
+  wvu-profiles-1__header: |
+    <h2 class="display-3 wvu-shout">Profiles Headline</h2>
+    <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+  wvu-quicklinks-1__header: "Quicklinks"
+  wvu-quicklinks-1__main: |
+    <ul class="list-unstyled wvu-column-count-3">
+      <li>
+        <a class="text-wvu-blue" href="https://housing.wvu.edu/apply-for-housing">Apply for Housing</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://admissions.wvu.edu/how-to-apply">Apply to WVU</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://studentaccounts.wvu.edu/billing">Billing / Pay Tuition</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="http://wvu.bncollege.com/">Bookstore</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://provost.wvu.edu/academic-calendar">Calendar (Academic)</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://calendar.wvu.edu/">Calendar (Main)</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://visit.wvu.edu/tours">Campus Tours</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://star.wvu.edu/pls/starprod/bwckschd.p_disp_dyn_sched">Course Schedule</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="http://catalog.wvu.edu/">Courses</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://diningservices.wvu.edu/menus">Dining Menus</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://directory.wvu.edu/">Directory</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://ecampus.wvu.edu/">eCampus</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://studentaccounts.wvu.edu/refunds">Get Your Refund</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://graduateadmissions.wvu.edu/academics/graduate-programs">Graduate Programs</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://it.wvu.edu/">Information Technology Services</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://lib.wvu.edu/">Libraries</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://www.wvu.edu/academics/programs">Majors</a>
+      </li>
+      <li>
+        <a class="text-wvu-blue" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=39990">Mounty Bounty Deposits</a>
+      </li>
+    </ul>
+  wvu-quicklinks-1__postscript: |
+    <p class="mb-0">View <a class="text-wvu-blue" href="#">all quicklinks</a>.</p>
+  wvu-stat-sheet-1__header: "Estimate your scholarships."
+  wvu-stat-sheet-1__main: |
+    <p class="lead py-2 w-75 mx-auto">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Call to Action</a>
+  wvu-stat-sheet-1__stats: |
+    <h2 class="wvu-h3">Tuition Rates</h2>
+    <p class="mb-2">Looking for a quick ballpark figure? We have you covered.</p>
+    <table class="table mb-2">
+      <tbody>
+        <tr>
+          <th class="helvetica-neue-bold border-0">Tuition Rates</th>
+          <th class="helvetica-neue-bold border-0">Cost Per Year</th>
+        </tr>
+        <tr>
+          <td class="border-wvu-neutral--black">In-state tuition and fees</td>
+          <td class="border-wvu-neutral--black">$8,976</td>
+        </tr>
+        <tr>
+          <td class="border-wvu-neutral--black">Out-of-state tuition and fees</td>
+          <td class="border-wvu-neutral--black">$25,320</td>
+        </tr>
+        <tr>
+          <td class="border-wvu-neutral--black">Room and board expenses</td>
+          <td class="border-wvu-neutral--black">$10,284</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="wvu-text--micro">
+      <small class="d-block">
+        <em>(Rates for 2019-20. Rates are subject to change. Listed costs are
+          based on two semesters with a minimum of 12 credits each. Room and board
+          costs are based on double occupancy in a residence hall and a 15-meal plan.)</em>
+      </small>
+    </p>
+  wvu-twitter-widget-1__header: |
+    <h2 class="mb-0 display-4">Twitter Widget Headline</h2>
+    <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+  wvu-video-feature-1__header: |
+    <h2 class="display-4 wvu-shout">Video Feature Headline</h2>
+    <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+  wvu-video-feature-1__main: |
+    <iframe title="We love WVU!" class="embed-responsive-item" src="https://www.youtube.com/embed/vAv2SRTOyvc" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  wvu-video-feature-1__postscript: |
+    <p class="mb-0">View <a href="#" class="text-wvu-gold">more videos</a>.</p>
+
+site:
+  id: 26
+  name: "My Site Title Name"
+  domain: "designsystem.sandbox.wvu.edu"
+  data:
+    apply_link_1: "Apply Now"
+    apply_link_1_url: "https://admissions.wvu.edu/how-to-apply"
+    apply_link_2: "Visit WVU"
+    apply_link_2_url: "https://admissions.wvu.edu/visit"
+    apply_link_3: "Request Information"
+    apply_link_3_url: "https://admissions.wvu.edu/request-information"
+    classes_wvu_backpage_header__h1: ""
+    classes_wvu-footer-links: ""
+    co_brand_subtitle: null # Options: null | string (eg: "Master of Science")
+    default_content_01: ""
+    default_content_02: ""
+    default_content_03: ""
+    disable_component_styler: ""
+    emergency_alert_json_url: "" # Options: null | string (URL). Test via: https://gist.githubusercontent.com/wvuwebgist/3912fe763055eee51a20cf1f72f332d3/raw/bcae6d40d460fcb9ad1505e3f9ac9ee89439bf45/emergency-alert-test.json
+    facebook_url: "#"
+    flickr_url: "#"
+    github_url: "#"
+    google_site_verification: ""
+    has_alternate_logo: null # Options: null | *slug* to a logo image, eg /files/path/to/image.jpg
+    has_co_brand: null # Options: null | string
+    has_standard_footer: ""
+    hide_instructions: ""
+    instagram_url: "#"
+    is_demo_site: ""
+    jquery_defer: ""
+    linkedin_url: "#"
+    masthead_college_link_address: null # Options: null | string (eg: https://davis.wvu.edu/)
+    masthead_college_link_title: null # Options: null | string (eg: "Davis College")
+    masthead_color: "blue" # Options: blue | gold
+    masthead_link_2_address: ""
+    masthead_link_2_title: ""
+    masthead_logo_url: ""
+    masthead_title: null # Options: null | string
+    nav_dropdowns: true # Options: null | true
+    syndication_url: "#"
+    show_apply_links: ""
+    show_instructions: ""
+    sidebar_sticky_site: ""
+    slot_11: ""
+    slot_11_custom: ""
+    slot_11_where_to_display: "as_full_width_block"
+    slot_11_is_main: "0"
+    slot_11_align: "left"
+    slot_11_featurettes_style: "profiles"
+    slot_11_featurettes_id: ""
+    slot_11_number: 1
+    slot_11_loop_by: "sort_order"
+    slot_11_loop_labels_match: "all"
+    slot_11_loop_order: "asc"
+    slot_11_scope: 0
+    slot_11_show_hidden: 0
+    slot_11_limit: 4
+    slot_12: ""
+    slot_12_custom: ""
+    slot_12_where_to_display: "as_full_width_block"
+    slot_12_is_main: "0"
+    slot_12_align: "left"
+    slot_12_featurettes_style: "card-columns"
+    slot_12_featurettes_id: ""
+    slot_12_number: 1
+    slot_12_loop_by: "sort_order"
+    slot_12_loop_labels_match: "all"
+    slot_12_loop_order: "asc"
+    slot_12_scope: 0
+    slot_12_show_hidden: 0
+    slot_12_limit: 4
+    slot_13: ""
+    slot_13_custom: ""
+    slot_13_where_to_display: "as_full_width_block"
+    slot_13_is_main: "0"
+    slot_13_align: "left"
+    slot_13_featurettes_style: "blog"
+    slot_13_featurettes_id: 1
+    slot_13_number: 1
+    slot_13_loop_by: "sort_order"
+    slot_13_loop_labels_match: "all"
+    slot_13_loop_order: "asc"
+    slot_13_scope: 0
+    slot_13_show_hidden: 0
+    slot_13_limit: 4
+    twitter_handle: "WestVirginiaU"
+    twitter_url: "#"
+    twitter_widget_id: ""
+    youtube_url: "#"
+
+root: true
+
+page:
+  id: 1 # This number must match the ID of the current blog you want to display
+  name: "Home"
+  slug: "home"
+  meta_description: "Hello World"
+  title: "This is the best Test page ever!"
+  alternate_name: "Some other name"
+  depth: 1
+  updated_at: today
+  created_at: two weeks ago
+  published_at: now
+  default_page: false
+  data:
+    some_key: some_data_value
+    another_key: some_other_value
+    slot_1: "hero"
+    slot_1_custom: ""
+    slot_1_where_to_display: "as_full_width_block"
+    slot_1_is_main: "0"
+    slot_1_align: "left"
+    slot_1_featurettes_style: "default"
+    slot_1_featurettes_id: ""
+    slot_1_number: 1
+    slot_1_loop_by: "sort_order"
+    slot_1_loop_labels_match: "all"
+    slot_1_loop_order: "asc"
+    slot_1_scope: 0
+    slot_1_show_hidden: 0
+    slot_1_limit: 4
+    slot_2: "action-hero"
+    slot_2_custom: ""
+    slot_2_number: 1
+    slot_2_where_to_display: "as_full_width_block"
+    slot_2_is_main: "0"
+    slot_2_align: "left"
+    slot_2_featurettes_style: "default"
+    slot_2_featurettes_id: ""
+    slot_2_number: 1
+    slot_2_loop_by: "sort_order"
+    slot_2_loop_labels_match: "all"
+    slot_2_loop_order: "asc"
+    slot_2_scope: 0
+    slot_2_show_hidden: 0
+    slot_2_limit: 4
+    slot_3: "lede-text"
+    slot_3_custom: ""
+    slot_3_number: 1
+    slot_3_where_to_display: "as_full_width_block"
+    slot_3_is_main: "0"
+    slot_3_align: "left"
+    slot_3_featurettes_style: "default"
+    slot_3_featurettes_id: ""
+    slot_3_number: 1
+    slot_3_loop_by: "sort_order"
+    slot_3_loop_labels_match: "all"
+    slot_3_loop_order: "asc"
+    slot_3_scope: 0
+    slot_3_show_hidden: 0
+    slot_3_limit: 4
+    slot_4: "featurettes"
+    slot_4_custom: ""
+    slot_4_number: 1
+    slot_4_where_to_display: "as_full_width_block"
+    slot_4_is_main: "0"
+    slot_4_align: "left"
+    slot_4_featurettes_style: "default"
+    slot_4_featurettes_id: ""
+    slot_4_number: 1
+    slot_4_loop_by: "sort_order"
+    slot_4_loop_labels_match: "all"
+    slot_4_loop_order: "asc"
+    slot_4_scope: 0
+    slot_4_show_hidden: 0
+    slot_4_limit: 4
+    slot_5: ""
+    slot_5_custom: ""
+    slot_5_number: 1
+    slot_5_where_to_display: "as_full_width_block"
+    slot_5_is_main: "0"
+    slot_5_align: "left"
+    slot_5_featurettes_style: "default"
+    slot_5_featurettes_id: ""
+    slot_5_number: 1
+    slot_5_loop_by: "sort_order"
+    slot_5_loop_labels_match: "all"
+    slot_5_loop_order: "asc"
+    slot_5_scope: 0
+    slot_5_show_hidden: 0
+    slot_5_limit: 4
+    slot_6: ""
+    slot_6_custom: ""
+    slot_6_number: 1
+    slot_6_where_to_display: "as_full_width_block"
+    slot_6_is_main: "0"
+    slot_6_align: "left"
+    slot_6_featurettes_style: "default"
+    slot_6_featurettes_id: ""
+    slot_6_number: 1
+    slot_6_loop_by: "sort_order"
+    slot_6_loop_labels_match: "all"
+    slot_6_loop_order: "asc"
+    slot_6_scope: 0
+    slot_6_show_hidden: 0
+    slot_6_limit: 4
+    slot_7: ""
+    slot_7_custom: ""
+    slot_7_number: 1
+    slot_7_where_to_display: "as_full_width_block"
+    slot_7_is_main: "0"
+    slot_7_align: "left"
+    slot_7_featurettes_style: "default"
+    slot_7_featurettes_id: ""
+    slot_7_number: 1
+    slot_7_loop_by: "sort_order"
+    slot_7_loop_labels_match: "all"
+    slot_7_loop_order: "asc"
+    slot_7_scope: 0
+    slot_7_show_hidden: 0
+    slot_7_limit: 4
+    slot_8: ""
+    slot_8_custom: ""
+    slot_8_number: 1
+    slot_8_where_to_display: "as_full_width_block"
+    slot_8_is_main: "0"
+    slot_8_align: "left"
+    slot_8_featurettes_style: "default"
+    slot_8_featurettes_id: ""
+    slot_8_number: 1
+    slot_8_loop_by: "sort_order"
+    slot_8_loop_labels_match: "all"
+    slot_8_loop_order: "asc"
+    slot_8_scope: 0
+    slot_8_show_hidden: 0
+    slot_8_limit: 4
+    slot_9: ""
+    slot_9_custom: ""
+    slot_9_number: 1
+    slot_9_where_to_display: "as_full_width_block"
+    slot_9_is_main: "0"
+    slot_9_align: "left"
+    slot_9_featurettes_style: "default"
+    slot_9_featurettes_id: ""
+    slot_9_number: 1
+    slot_9_loop_by: "sort_order"
+    slot_9_loop_labels_match: "all"
+    slot_9_loop_order: "asc"
+    slot_9_scope: 0
+    slot_9_show_hidden: 0
+    slot_9_limit: 4
+    slot_10: ""
+    slot_10_custom: ""
+    slot_10_number: 1
+    slot_10_where_to_display: "as_full_width_block"
+    slot_10_is_main: "0"
+    slot_10_align: "left"
+    slot_10_featurettes_style: "default"
+    slot_10_featurettes_id: ""
+    slot_10_number: 1
+    slot_10_loop_by: "sort_order"
+    slot_10_loop_labels_match: "all"
+    slot_10_loop_order: "asc"
+    slot_10_scope: 0
+    slot_10_show_hidden: 0
+    slot_10_limit: 4
+  content:
+    search-content: ""
+    shared_content: |
+      <p><%= Faker::Lorem.paragraph(2) %></p>
+      <p><%= Faker::Lorem.paragraph(2) %></p>
+    shared_content_2: |
+      <p><%= Faker::Lorem.paragraph(2) %></p>
+      <p><%= Faker::Lorem.paragraph(2) %></p>
+    wvu-action-hero-1-header-classes: " "
+    wvu-action-hero-1-classes: " "
+    wvu-action-hero-card-1__header: "Action Hero Card Header"
+    wvu-action-hero-card-1-classes: "wvu-bg-blend-mode-lighten wvu-bg-pattern-grid bg-wvu-blue"
+    wvu-action-hero-card-1-header-classes: "display-3 wvu-shout text-wvu-blue mb-2 "
+    wvu-action-hero-split-1__header: "Action Hero Header"
+    wvu-action-hero-split-1__main: |
+      <p class="iowan-old-style-italic text-wvu-blue h1">Center for Cool Innovation</p>
+      <p class="lead mb-4">For even more hands-on experience and to improve the oral health of children
+        and adults across the state, School of Dentistry students must accumulate
+        125 hours or more of community engagement work prior to graduation.</p>
+      <a href="#" class="btn btn-primary">Action Item</a>
+    wvu-action-hero-split-1-classes: "wvu-bg-position-spacer-md-top wvu-bg-position-center-left--70 wvu-bg-position-xl-center-right--80"
+    wvu-action-hero-split-1-header-classes: "wvu-shout display-3 text-wvu-accent--burnt-orange "
+    wvu-action-hero-two-column-1__header: "Action Hero Header"
+    wvu-action-hero-two-column-1__main: |
+      <p class="h3 mb-3 helvetica-neue-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+      </p>
+      <a href="#" class="btn btn-primary mb-1">Call to Action</a>
+    wvu-action-hero-two-column-1-classes: "bg-wvu-neutral--black text-white wvu-bg-vignetting"
+    wvu-action-hero-two-column-1-header-classes: "display-2 wvu-shout wvu-text-first-line-gold "
+    wvu-agenda-item__main: "Event description."
+    wvu-agenda-item__time: "8:00 a.m. - 10:00 a.m."
+    wvu-agenda-item-1-classes: " "
+    wvu-big-search-1__header: ""
+    wvu-big-search-1__main: ""
+    wvu-big-search-1__postscript: ""
+    wvu-big-search-1-classes: "text-center wvu-bg-pattern-gold text-wvu-blue"
+    wvu-big-search-1-header-classes: "display-2 wvu-shout mb-3"
+    wvu-blog-article-hero-1__subhead: "Blog article hero subhead."
+    wvu-blog-article-hero-1-classes: "bg-dark text-white wvu-bg-position-center wvu-bg-size-cover wvu-bg-vignetting "
+    wvu-blog-article-hero-1-header-classes: "display-2 iowan-old-style "
+    wvu-blog-index-1__main: ""
+    wvu-breadcrumbs-classes: ""
+    wvu-contact-info-1__address: ""
+    wvu-contact-info-1__form: ""
+    wvu-contact-info-1__header: "Contact info lead."
+    wvu-contact-info-1__phone: ""
+    wvu-contact-info-1-classes: "py-5"
+    wvu-directory-1__header: ""
+    wvu-directory-1-classes: "pt-5 pb-2 mb-3"
+    wvu-editable-region-1__main: ""
+    wvu-event-agenda-1-classes: "py-5"
+    wvu-faculty-profile-1__figcaption: ""
+    wvu-faculty-profile-1__figure: ""
+    wvu-faculty-profile-1__main: ""
+    wvu-faculty-profile-1__sidebar-top: ""
+    wvu-faculty-profile-1-classes: ""
+    wvu-featurettes-1__header: " "
+    wvu-featurettes-1__postscript: " "
+    wvu-featurettes-1-button-text: "Read More"
+    wvu-featurettes-1-classes: "py-5"
+    wvu-featurettes-1-default-component-classes: " "
+    wvu-featurettes-1-item-body-classes: " "
+    wvu-featurettes-1-item-button-classes: " "
+    wvu-featurettes-1-item-classes: " "
+    wvu-featurettes-1-item-header-classes: " "
+    wvu-footer-1-classes: "py-4 bg-light"
+    wvu-full-bleed-photo-1__caption: "<%= Faker::Lorem.paragraph(5) %>"
+    wvu-full-bleed-photo-1-caption-classes: ""
+    wvu-full-bleed-photo-1-classes: "my-4"
+    wvu-hero-1-classes: " "
+    wvy-hero-1-default-component-classes: " "
+    wvu-hero-1-header-classes: " "
+    wvu-lede-text-1-classes: "bg-light helvetica-neue-light text-center h3 mb-0"
+    wvu-lede-text-1-header-classes: ""
+    wvu-log-in-1-classes: "bg-wvu-neutral--dark-gray py-5 wvu-bg-position-bottom wvu-bg-pattern-grid-zoomed-transparent wvu-bg-blend-mode-luminosity--80 wvu-overflow-hidden"
+    wvu-major-1-classes: ""
+    wvu-photo-gallery-1__header: ""
+    wvu-profile-1__download: |
+      <a href="#">Download</a>
+    wvu-profile-1__email: "firstname.lastname@mail.wvu.edu"
+    wvu-profile-1__main: ""
+    wvu-profile-1__office: "ESB 111"
+    wvu-profile-1__office-url: "#"
+    wvu-profile-1__phone: "(304) 123-4567"
+    wvu-profile-1__quote: ""
+    wvu-profile-1__website: "#"
+    wvu-profile-teaser-1-classes: "py-5"
+    wvu-profiles-1__header: ""
+    wvu-quicklinks-1__postscript: ""
+    wvu-quicklinks-1-classes: "py-5 text-wvu-blue wvu-bg-pattern-gold"
+    wvu-quicklinks-1-header-classes: "wvu-shout"
+    wvu-social-media-1-classes: "py-4 bg-wvu-neutral--black text-white"
+    wvu-social-media-1-header-classes: "wvu-shout display-3"
+    wvu-social-media-1-link-classes: ""
+    wvu-stat-sheet-1-classes: "mb-0 wvu-overflow-hidden text-white bg-wvu-neutral--black wvu-bg-blend-mode-luminosity--80"
+    wvu-stat-sheet-1-header-classes: "display-3 wvu-shout"
+    wvu-stat-sheet-1-stat-classes: "bg-wvu-gold text-wvu-neutral--black py-5 px-3"
+    wvu-twitter-widget-1__header: ""
+    wvu-twitter-widget-1__twitter-classes: "helvetica-neue-light "
+    wvu-twitter-widget-1-classes: "py-5 bg-wvu-neutral--dark-gray text-white wvu-bg-position-center wvu-bg-blend-mode-luminosity--90"
+    wvu-video-feature-1__header: ""
+    wvu-video-feature-1__postscript: ""
+    wvu-video-feature-1-classes: "py-5 bg-wvu-neutral--black wvu-bg-vignetting text-white text-center"
+
+pages:
+  - id: 2
+    name: "Study of Birds"
+    slug: "study-of-birds"
+    url: "#study-of-birds"
+    meta_description: <%= Faker::Lorem.paragraph(5) %>
+    title: "Study of Birds"
+    alternate_name: "Ornithology"
+    depth: 1
+    content:
+      wvu-agenda-item__main: "Event description."
+      wvu-agenda-item__time: "8:00 a.m. - 10:00 a.m."
+      wvu-backpage-header-1__label: |
+        <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
+      wvu-backpage-header-1__subhead: "Subhead goes here."
+      wvu-featurettes-1__header: ""
+      wvu-featurettes-1-button-text: "Read More"
+      wvu-featurettes-1-item-button-classes: ""
+      wvu-featurettes-1-item-classes: ""
+      wvu-featurettes-1-item-header-classes: "mb-4"
+      wvu-profile-1__email: "firstname.lastname@mail.wvu.edu"
+      wvu-profile-1__office: "ESB 2291"
+      wvu-profile-1__office-url: "#"
+      wvu-profile-1__phone: "(304) 123-4567"
+      wvu-profile-1__profile-title: "Very Important Person"
+    data:
+      description: <%= Faker::Lorem.paragraph(1) %>
+      thumbnail_alt: "Placeholder"
+      thumbnail_url_sq: "https://via.placeholder.com/960x960"
+    tags:
+      - "home-featurettes-1"
+  - id: 3
+    name: "Study of Fish"
+    slug: "study-of-fish"
+    url: "#study-of-fish"
+    meta_description: <%= Faker::Lorem.paragraph(5) %>
+    title: "Study of Fish"
+    alternate_name: "Ichthyology"
+    depth: 1
+    default_page: true
+    content:
+      wvu-agenda-item__main: "Event description."
+      wvu-agenda-item__time: "8:00 a.m. - 10:00 a.m."
+      wvu-backpage-header-1__label: |
+        <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
+      wvu-backpage-header-1__subhead: "Subhead goes here."
+      wvu-featurettes-1__header: ""
+      wvu-featurettes-1-button-text: "Read More"
+      wvu-featurettes-1-item-button-classes: ""
+      wvu-featurettes-1-item-classes: ""
+      wvu-featurettes-1-item-header-classes: "mb-4"
+      wvu-profile-1__email: "firstname.lastname@mail.wvu.edu"
+      wvu-profile-1__office: "ESB 2291"
+      wvu-profile-1__office-url: "#"
+      wvu-profile-1__phone: "(304) 123-4567"
+      wvu-profile-1__profile-title: "Very Important Person"
+    data:
+      some_key: some_data_value
+      another_key: some_other_value
+      description: <%= Faker::Lorem.paragraph(1) %>
+      slot_1: backpage
+      slot_1_custom: ""
+      slot_1_where_to_display: "as_full_width_block"
+      slot_1_is_main: "0"
+      slot_1_align: "left"
+      slot_1_featurettes_style: "default"
+      slot_1_featurettes_id: ""
+      slot_1_number: 1
+      slot_1_loop_by: "sort_order"
+      slot_1_loop_labels_match: "all"
+      slot_1_loop_order: "asc"
+      slot_1_scope: 0
+      slot_1_show_hidden: 0
+      thumbnail_alt: "Placeholder"
+      thumbnail_url_sq: "https://via.placeholder.com/960x960"
+
+if_page_depth_eq: 1
+if_page_depth_gt: 1
+
+files:
+  # Hero:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-hero-1-background"
+    alt_text: "Fall Woodburn"
+  # Action Hero Card:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-action-hero-card-1-background"
+    alt_text: "Fall Woodburn"
+  # Action Hero Split:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-action-hero-split-1-background"
+    alt_text: "Fall Woodburn"
+  # Action Hero Two Column:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-action-hero-two-column-1-background"
+    alt_text: "Fall Woodburn"
+  # Blog Article Hero Two Column:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-blog-article-hero-1-background"
+    alt_text: "Fall Woodburn"
+  # Log-In:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-log-in-1-background"
+    alt_text: "Fall Woodburn"
+    # Stat Sheet:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-stat-sheet-1-background"
+    alt_text: "Fall Woodburn"
+    # Twitter Widget:
+  - image_url: "/files/225e0ebe-d50b-422c-9a92-2e06864328b6/1780x1780?cb=1553729523" # NOTE: Be sure to link to your own photo!
+    label: "home-twitter-widget-1-background"
+    alt_text: "Fall Woodburn"
+
+site_menu: |
+  <ul class="wvu-nav__items menu-items navbar-nav mr-auto">
+    <li class="active">
+      <a class="nav-link px-2 px-lg-1" href="/">Home</a>
+    </li>
+    <li class="dropdown">
+      <a class="nav-link px-2 px-lg-1" href="#">How to Apply</a>
+      <ul class="sub-menu small bg-wvu-neutral--black px-1 mx-n1">
+        <li><a class="nav-link px-2 px-lg-1" href="#">Check Your Status</a></li>
+        <li><a class="nav-link px-2 px-lg-1" href="#">First-Time Freshmen</a></li>
+        <li><a class="nav-link px-2 px-lg-1" href="#">Transfer Students</a></li>
+        <li><a class="nav-link px-2 px-lg-1" href="#">International Undergraduate Students</a></li>
+        <li><a class="nav-link px-2 px-lg-1" href="#">Change of Campus Students</a></li>
+        <li><a class="nav-link px-2 px-lg-1" href="#">Graduate Students</a></li>
+      </ul>
+    </li>
+    <li><a class="nav-link px-2 px-lg-1" href="#">Academics</a></li>
+    <li><a class="nav-link px-2 px-lg-1" href="#">Cost and Aid</a></li>
+    <li><a class="nav-link px-2 px-lg-1" href="#">Information For</a></li>
+    <li><a class="nav-link px-2 px-lg-1" href="#">Admitted Students</a></li>
+    <li><a class="nav-link px-2 px-lg-1" href="#"><%= Faker::Coffee.blend_name %></a></li>
+    <li><a class="nav-link px-2 px-lg-1" href="#"><%= Faker::Superhero.name %></a></li>
+  </ul>
+
+sub_menu: |
+  <ul>
+    <li class="active"><a href="#"><%= Faker::Lorem.word.capitalize %></a></li>
+    <li><a href="#"><%= Faker::Lorem.word.capitalize %></a></li>
+    <li><a href="#"><%= Faker::Lorem.word.capitalize %></a></li>
+    <li><a href="#"><%= Faker::Lorem.word.capitalize %></a></li>
+    <li><a href="#"><%= Faker::Lorem.word.capitalize %></a></li>
+  </ul>
+
+ancestor_menu: |
+  <% pages = %w(Page1 Page2 Page3 Page4 Page5) %>
+  <ul>
+    <% pages.each do |page| %>
+      <li><a href="#"><%= page %></a></li>
+    <% end %>
+  </ul>
+
+breadcrumbs: |
+  <ul class="wvu-breadcrumbs__crumbs">
+    <li><a href="/">Home</a></li>
+    <li class="active">Page</li>
+  </ul>
+
+blog:
+  - id: 1 # This number must match the ID from the `page` key to display the content below.
+    name: Blog Name
+    articles:
+      - article:
+        id: 11
+        name: "This is my most recent blog post and hopefully long enough to span two lines."
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          wvu-blog-article-1__main: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph %>
+        tags:
+          - some-tag
+          - some-other-tag
+          - wvu-featurettes-1
+        published_at: "2 days ago"
+      - article:
+        id: 22
+        name: <%= Faker::Lorem.sentence(1) %>
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          wvu-blog-article-1__main: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+        tags:
+          - some-other-tag
+        published_at: "2 weeks ago"
+      - article:
+        id: 33
+        name: "My First Blog Post"
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          wvu-blog-article-1__main: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+        tags:
+          - some-tag
+        published_at: "6 months ago"
+    archive:
+      monthly:
+        - item:
+            date: January 2016
+            count: 5
+            url: '#'
+        - item:
+            date: December 2015
+            count: 4
+            url: '#'
+        - item:
+            date: November 2015
+            count: 3
+            url: '#'
+        - item:
+            date: October 2015
+            count: 2
+            url: '#'
+  - id: 2 # This number must match the ID from the `page` key to display the content below.
+    name: Blog Name 2
+    articles:
+      - article:
+        id: 44
+        name: <%= Faker::Lorem.sentence(1) %>
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          some_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+        tags:
+          - some-tag
+          - some-other-tag
+        published_at: "4 days ago"
+      - article:
+        id: 55
+        name: <%= Faker::Lorem.sentence(1) %>
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          some_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+        tags:
+          - some-tag
+        published_at: "3 months ago"
+      - article:
+        id: 66
+        name: <%= Faker::Lorem.sentence(1) %>
+        title: <%= Faker::Lorem.sentence(1) %>
+        created_by:
+          first_name: <%= Faker::Name.first_name %>
+          last_name: <%= Faker::Name.last_name %>
+        content:
+          some_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+          some_other_region: |
+            <%= Faker::Lorem.paragraph(4) %>
+        tags:
+          - some-other-tag
+        published_at: "2 years ago"
+    archive:
+      monthly:
+        - item:
+            date: "January 2016"
+            count: 5
+            url: '#'
+        - item:
+            date: "December 2015"
+            count: 4
+            url: '#'
+        - item:
+            date: "November 2015"
+            count: 3
+            url: '#'
+        - item:
+            date: "October 2015"
+            count: 2
+            url: '#'

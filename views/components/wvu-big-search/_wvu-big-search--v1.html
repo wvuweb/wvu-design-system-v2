@@ -1,0 +1,47 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+
+    {% if edit_mode or page.content[component.region_names.header] != blank %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+      {% editable_region_block name: component.region_names.header scope: component.scope %}
+        <h2 id="big-search-{{ component.number }}-label" class="display-2 wvu-shout mb-2">Big Search Header</h2>
+        <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
+      {% endeditable_region_block %}
+    {% endif %}
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col-md-6 mx-auto">
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search" aria-label="Big Site Search">
+              <label id="big-search-label" for="q">
+                <span class="sr-only">Search</span>
+              </label>
+              <input type="hidden" name="q" value="site:{{ site.domain }}">
+              <input id="sort" name="sort" type="hidden" value="date:D:L:d1" />
+              <input id="output" name="output" type="hidden" value="xml_no_dtd" />
+              <input id="ie" name="ie" type="hidden" value="UTF-8" />
+              <input id="oe" name="oe" type="hidden" value="UTF-8" />
+              <input id="proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend" />
+              <input id="client" name="client" type="hidden" value="default_frontend" />
+              <div class="input-group shadow-sm w-100">
+                <input id="q" class="form-control p-2 h1 mb-0" name="q" type="search" placeholder="Type in your search term." aria-label="Big Site Search">
+                <button class="btn btn-primary px-3 px-lg-4" name="btnG" type="submit"><span class="h5 mb-0 d-block"><i class="fa-solid fa-magnifying-glass"></i></span><span class="sr-only">Search</span></span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+      {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+        <p class="mb-0">Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
+      {% endeditable_region_block %}
+    {% endif %}
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

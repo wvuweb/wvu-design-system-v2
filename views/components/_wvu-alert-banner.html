@@ -1,0 +1,18 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_alert_banner | default: themeVersion
+  assign basename = "alert-banner"
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-alert-banner/wvu-alert-banner--v1" component: component %}
+  {% else %}{% render "components/wvu-alert-banner/wvu-alert-banner--v1" component: component %}
+{% endcase %}

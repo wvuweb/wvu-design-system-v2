@@ -1,0 +1,23 @@
+---
+layout: default
+custom_data_attributes:
+  - removeSocialMedia:
+    type: checkbox
+    title: Remove Social Media
+---
+
+{% render "components/wvu-hero" number: 1, main: true %}
+
+{% render "components/wvu-featurettes" number: 1 %}
+
+{% render "components/wvu-action-hero" number: 1 %}
+
+{% render "components/wvu-featurettes" number: 2 %}
+
+{% if page.data.removeSocialMedia != '1' %}
+  {% render "components/wvu-social-media" number: 1 %}
+{% endif %}
+
+{% if page.data.removeTwitterWidget != '1' %}
+  {% render "components/wvu-twitter-widget" number: 1 %}
+{% endif %}

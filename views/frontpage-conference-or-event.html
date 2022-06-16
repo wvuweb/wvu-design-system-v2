@@ -1,0 +1,28 @@
+---
+layout: default
+custom_data_attributes:
+  - removeCalendarEvents:
+    type: checkbox
+    title: Remove Calendar Events
+  - removePeopleCollection:
+    type: checkbox
+    title: Remove Speakers
+  - showPeopleIfHidden:
+    type: checkbox
+    title: Show Speaker Even if Hidden
+  - limit:
+    title: Speaker Limit
+---
+
+{% assign componentShowPeopleIfHidden = page.data.showPeopleIfHidden | default: '0' %}
+{% assign compnentLimit = page.data.limit | default: 4 %}
+
+{% render "components/wvu-hero" number: 1, main: true %}
+
+{% if page.data.removeCalendarEvents != 1 %}
+  {% render "components/wvu-calendar-events" number: 1 %}
+{% endif %}
+
+{% if page.data.removePeopleCollection != 1 %}
+  {% render "components/wvu-people-collection" number: 1, limit: componentLimit %}
+{% endif %}

@@ -1,0 +1,105 @@
+{%- liquid
+  assign twitterLinkClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__twitter-classes"
+  assign twitterLinkClasses = page.content[twitterLinkClassesEditableRegionName] | default: component.defaultTwitterLinkClasses
+-%}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row d-flex mx-0">
+      <div class="wvu-z-index-content mb-4">
+        {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+          <span class="d-inline-block badge bg-primary mb-1">Header:</span>
+        {% endif %}
+        {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Twitter Widget Header' %}</h2>
+        {% if edit_mode %}
+          <span class="d-inline-block badge bg-primary mb-1">Main:</span>
+        {% endif %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      </div>
+      {% comment %}<!-- Use this div to pull in tweets. -->{% endcomment %}
+      <div id="exampleProfile"></div>
+      <div class="mt-4">
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Twitter link classes:
+            <pre class="mb-0 text-white">{% editable_region name: twitterLinkClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ twitterLinkClasses }}</pre>
+          </small>
+          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% endif %}
+        <div class="d-inline-block h3"><span class="fab fa-twitter"></span></div>
+        <a href="https://twitter.com/{{ site.data.twitter_handle }}" class="h3 {{ twitterLinkClasses }}">
+          {{ site.data.twitter_handle }}
+        </a>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+  {% link_javascript name: "vendor/twitter-fetcher/twitterFetcher_min" %}
+
+  <script defer>
+    // Adding aria-labelledby's and id's to tweet elements to avoid duplicate link text
+    var configProfile = {
+      'profile': {
+        'screenName': '{{ site.data.twitter_handle }}'
+      },
+      'domId': 'exampleProfile',
+      'maxTweets': 4,
+      'enableLinks': true,
+      'showUser': false,
+      'showTime': true,
+      'showImages': false,
+      'showInteraction': false,
+      'customCallback': formatTweets,
+      'lang': 'en'
+    };
+    twitterFetcher.fetch(configProfile);
+
+    String.prototype.supplant = function (o) {
+      return this.replace(/\${([^\${}]*)}/g, function (a, b) {
+        var r = o[b];
+        return typeof r === 'string' || typeof r === 'number' ? r : a;
+      });
+    };
+
+    function formatTweets (tweets) {
+      var config = {
+        domId: 'exampleProfile',
+        wrap_string: '<div class="row">${itemHTML}</div>',
+        item_string: '<div class="col border-left border-wvu-neutral--light-gray">${tweet}</div>'
+      };
+      var element = document.getElementById(config.domId);
+      var html = '';
+      var itemHTML = '';
+      tweets.forEach(function (tweet, index) {
+        var ariaId = index + 1;
+        var dom = new DOMParser().parseFromString(tweet, 'text/html');
+        dom.querySelectorAll('.tweet')[0].setAttribute('id', 'aria__tweet--' + ariaId);
+        dom.querySelectorAll('.timeposted a')[0].setAttribute('aria-labelledby', 'aria__tweet--' + ariaId);
+        var tweetContent = dom.querySelectorAll('body')[0].innerHTML;
+        itemHTML += config.item_string.supplant({
+          ariaId: ariaId,
+          tweet: tweetContent
+        });
+      });
+      html = config.wrap_string.supplant({
+        itemHTML: itemHTML
+      });
+      element.innerHTML = html;
+    }
+
+  </script>
+{% endcontent_for %}

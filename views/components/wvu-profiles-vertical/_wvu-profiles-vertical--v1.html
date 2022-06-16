@@ -1,0 +1,69 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    {% if edit_mode or page.content[component.region_names.header] !=  blank %}
+      <div class="mb-4">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header, scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout">Profiles Headline</h2>
+          <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      </div>
+    {% endif %}
+    <div class="row">
+      <div class="col-md-8{% if component.componentDisplayContext == 'as_full_width_block' %} mx-auto{% endif %}">
+        {% assign profiles = site.pages | filter_pages: order: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopTagsMatch, hidden: component.showHidden %}
+        {% for profile in profiles.all %}
+          <div class="row mb-5">
+            <div class="col-md-3 mr-ml-auto mb-1 text-center">
+              {% if profile.data.thumbnail_url_sq != blank %}
+                <img class="rounded-circle shadow text-center" src="{{ profile.data.thumbnail_url_sq }}/381x255.jpg" srcset="{{ profile.data.thumbnail_url_sq }}/960x640.jpg 960w, {{ profile.data.thumbnail_url_sq }}/586x286.jpg 586w, {{ profile.data.thumbnail_url_sq }}/381x255.jpg 381w, {{ profile.data.thumbnail_url_sq }}/286x191.jpg 281w, {{ profile.data.thumbnail_url_sq }}/279x186.jpg, {{ profile.data.thumbnail_url_sq }}/217x145.jpg" sizes="(min-width: 1200px) 279px, (min-width: 768px) 586px, 960px" alt="{{ profile.data.thumbnail_alt }}">
+              {% endif %}
+            </div>
+            <div class="col-md-8">
+              <h2 class="iowan-old-style-italic mb-0">{{ profile.alternate_name | default: profile.name }}</h2>
+              {% if profile.content['wvu-backpage-header-1__subhead'] != blank %}
+                <p class="helvetica-neue-light">
+                  <small class="d-block">{{ profile.content['wvu-backpage-header-1__subhead'] }}</small>
+                </p>
+              {% endif %}
+              {% if profile.content['wvu-profile-1__phone'] != blank %}
+                <p class="mb-0">
+                  <small class="d-block">
+                    <a href="tel:{{ profile.content['wvu-profile-1__phone'] }}" class="fas fa-phone"> {{ profile.content['wvu-profile-1__phone'] }}</a>
+                  </small>
+                </p>
+              {% endif %}
+              {% if profile.content['wvu-profile-1__email'] != blank %}
+                <p class="mb-0">
+                  <small class="d-block">
+                    <a href="mailto:{{ profile.content['wvu-profile-1__email'] }}" class="fas fa-envelope"> {{ profile.content['wvu-profile-1__email'] }}</a>
+                  </small>
+                </p>
+              {% endif %}
+              {% if profile.content['wvu-profile-1__office'] != blank %}
+                <p class="mb-0">
+                  <small class="d-block">
+                    {% if profile.content['wvu-profile-1__office-url'] != blank %}
+                      <a href="tel:{{ profile.content['wvu-profile-1__office-url'] }}" class="fas fa-building"> {{ profile.content['wvu-profile-1__office'] }}</a>
+                    {% else %}
+                      <span class="fas fa-building"> {{ profile.content['wvu-profile-1__office']}}</span>
+                    {% endif %}
+                  </small>
+                </p>
+              {% endif %}
+              <p class="mt-2">
+                {% if profile.data.description != blank %}{{ profile.data.description }}{% endif %}
+              </p>
+              <p class="mb-0 mt-2">
+                <a class="btn btn-primary btn-sm" href="{% if profile.data.alternate_url != blank %}{{ profile.data.alternate_url }}{% else %}{{ profile.url }}{% endif %}">View Profile<span class="sr-only">: {{ profile.name }}</span></a>
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

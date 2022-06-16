@@ -1,0 +1,4 @@
+{% assign ariaLabelRegionName = component.name | append: '-aria-label' %}
+<{{ component.tag_name }} {{ component.tag_id }} {% if component.main != true %}{% if page.content[ariaLabelRegionName] != blank %}aria-label="{{ page.content[ariaLabelRegionName] }}"{% else %}{{ component.aria }}{% endif %}{% endif %} class="{{ component.display_class }} {{ component.mainTagClasses | strip }} {{ component.classes | strip }}" {{ component.bgStyler | strip }}>
+{{ content }}
+</{{ component.tag_name }}>

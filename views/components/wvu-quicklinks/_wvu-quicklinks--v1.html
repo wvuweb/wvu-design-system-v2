@@ -1,0 +1,92 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-lg-4">
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+          <span class="d-inline-block badge bg-primary mb-1">Header</span>
+        {% endif %}
+        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+          {% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Quicklinks' %}
+        </h2>
+      </div>
+      <div class="col-lg-8">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Quicklinks</span>{% endif %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <ul class="list-unstyled wvu-column-count-3">
+            <li>
+              <a class="text-wvu-blue" href="https://housing.wvu.edu/apply-for-housing">Apply for Housing</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://admissions.wvu.edu/how-to-apply">Apply to WVU</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://studentaccounts.wvu.edu/billing">Billing / Pay Tuition</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="http://wvu.bncollege.com/">Bookstore</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://provost.wvu.edu/academic-calendar">Calendar (Academic)</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://calendar.wvu.edu/">Calendar (Main)</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://visit.wvu.edu/tours">Campus Tours</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://star.wvu.edu/pls/starprod/bwckschd.p_disp_dyn_sched">Course Schedule</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="http://catalog.wvu.edu/">Courses</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://diningservices.wvu.edu/menus">Dining Menus</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://directory.wvu.edu/">Directory</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://ecampus.wvu.edu/">eCampus</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://studentaccounts.wvu.edu/refunds">Get Your Refund</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://graduateadmissions.wvu.edu/academics/graduate-programs">Graduate Programs</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://it.wvu.edu/">Information Technology Services</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://lib.wvu.edu/">Libraries</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://www.wvu.edu/academics/programs">Majors</a>
+            </li>
+            <li>
+              <a class="text-wvu-blue" href="https://wvu.teamdynamix.com/TDClient/KB/ArticleDet?ID=39990">Mounty Bounty Deposits</a>
+            </li>
+          </ul>
+        {% endeditable_region_block %}
+      </div>
+    </div>
+    {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+      <div class="mt-2 wvu-z-index-content">
+        <div class="wvu-z-index-content mb-2">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+          {% editable_region_block name: component.region_names.postscript, scope: component.scope %}
+            <p class="mb-0">View <a class="text-wvu-blue" href="#">All quicklinks</a>.</p>
+          {% endeditable_region_block %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

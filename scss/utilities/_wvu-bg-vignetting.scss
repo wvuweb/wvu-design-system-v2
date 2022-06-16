@@ -1,0 +1,31 @@
+// WVU BG Vignetting
+//==================================================
+// Utility class that lets you add a vignetting effect to your background image to separate the image from your text.
+
+.wvu-bg-vignetting, %wvu-bg-vignetting {
+  @include wvu-bg-vignetting($wvu-vignetting-opacity, left);
+}
+
+// Use modifier classes to adjust the opacity.
+
+$i: 90;
+@while $i > 0 {
+  .wvu-bg-vignetting--#{$i} {
+    @extend %wvu-bg-vignetting;
+    &:before {
+      opacity: $i * .01 $global-important;
+    }
+  }
+  $i: $i - 10;
+}
+
+// If the subject of your image is on the left, shift the vignetting to the right to allow the viewer to focus on the subject.
+
+.wvu-bg-vignetting--right, %wvu-bg-vignetting--right {
+  @include wvu-bg-vignetting($wvu-vignetting-opacity, right);
+}
+
+// Example usage:
+// <section class="jumbotron jumbotron-fluid mb-0 wvu-overflow-hidden wvu-bg-size-cover bg-dark text-white wvu-bg-position-center wvu-bg-size-cover wvu-bg-vignetting" style="background-image: url(/files/8aa49c0c-ca6f-495b-af9d-72fd45761700/1780x1780?cb=1559048457)">
+//   ...
+// </section>

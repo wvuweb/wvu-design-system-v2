@@ -1,0 +1,102 @@
+{%- liquid
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign defaultItemColors = "wvu-accent--burnt-orange,wvu-accent--blue,wvu-accent--brown,wvu-accent--green,wvu-accent--red,wvu-neutral--dark-gray"
+  assign customItemColorsRegion = component.name | append: '__item-colors'
+  assign customItemColors = page.content[customItemColorsRegion] | split: ','
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign i = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  if page.content[customItemColorsRegion] != blank
+    assign itemColors = page.content[customItemColorsRegion] | split: ','
+  else
+    assign itemColors = defaultItemColors | split: ','
+  endif
+-%}
+
+{% capture component_content %}
+  <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
+
+    {% if edit_mode %}
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% endif %}
+    {% endif %}
+
+    {% capture loopContent %}
+      {% for item in items.all %}
+
+        {% liquid
+          if item.data.alternate_url != blank
+            assign link_href = item.data.alternate_url
+          else
+            assign link_href = item.url
+          endif
+        %}
+
+        {%- capture itemThumbnailSrc %}
+          {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
+        {%- endcapture %}
+
+        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} bg-{{ itemColors[i] }}">
+          <div class="px-0 col-lg-6">
+            <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ itemThumbnailSrc | strip }}/1600x1200.jpg); padding-top: 66.6667%">
+            </div>
+          </div>
+
+          <div class="px-0 col-lg-6 d-flex align-items-center">
+            <div class="col-xl-10 col-xxl-8">
+              <div class="p-3 p-md-4 p-xl-5">
+                <{{ htag }} class="{{ itemHeaderClasses }}">{{ item.name }}</{{ htag }}>
+
+                {% if item.content['wvu-profile-1__name'] != blank %}
+                  <p class="h2 text-white iowan-old-style-black pt-2 mb-1">
+                    {{ item.content['wvu-profile-1__name'] }}
+                  </p>
+                {% endif %}
+
+                {% render "includes/wvu-profile-info/wvu-profile-info--v1" profileItem: item %}
+
+                <p class="card-text mt-2 mb-0 fs-5 text-white">
+                  {%- if item.data.description != blank %}
+                    {{ item.data.description }}
+                  {% else %}
+                    {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+                  {%- endif %}
+                </p>
+
+                <p class="mt-2 mb-0">
+                  {% if itemReadMoreButtonText != 'none' %}
+                    {% if item.data.link_text != blank %}
+                      {% assign link_text = item.data.link_text %}
+                    {% else %}
+                      {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+                    {% endif %}
+                    <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% assign i = i | plus: 1 %}
+
+      {% endfor %}
+    {% endcapture %}
+
+    {{ loopContent }}
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

@@ -1,0 +1,19 @@
+---
+layout: default
+custom_data_attributes:
+  - ifBackpageRemoveNav:
+    type: checkbox
+    title: If backpage, remove nav
+  - ifBackpageRemoveSidebar:
+    type: checkbox
+    title: If backpage, remove sidebar
+  - disable_articles_author:
+    type: checkbox
+    title: Disable Author for Articles
+  - limit:
+    title: Limit
+---
+
+{% assign articleLimit = page.data.limit | default: 10 %}
+
+{% render "components/wvu-article-index" number: 1, main: true, limit: articleLimit %}

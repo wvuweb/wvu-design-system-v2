@@ -1,0 +1,168 @@
+// WVU BG Pattern
+//==================================================
+// Adds a WVU-branded background pattern to an element (weave, grid, topo map, etc.)
+
+@mixin wvu-gradient($gradient-type, $is-important: $global-important) {
+  @if $gradient-type == 'wvu-blue' {
+    background-color: $wvu-blue $is-important;
+    background-image: url($wvu-gradient-mesh-blue) $is-important;
+    background-position: center $is-important;
+    background-size: cover $is-important;
+  }
+  @if $gradient-type == 'wvu-gold' {
+    background-color: $wvu-gold $is-important;
+    background-image: url($wvu-gold-pattern) $is-important;
+    background-position: center $is-important;
+    background-size: cover $is-important;
+  }
+  @if $gradient-type == 'wvu-transparent' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-white-pattern);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'slashes-gold-blue' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-slashes-gold-blue);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'slashes-gold-blue-white' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-slashes-gold-blue-white);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'grid' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-grid-pattern);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'grid-transparent' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-grid-pattern-transparent);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'grid-zoomed' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-grid-pattern-zoomed);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'grid-zoomed-transparent' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-grid-pattern-zoomed-transparent);
+      background-position: center;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'topo-dark' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-topo-map-black);
+      background-position: center;
+      opacity: $wvu-topo-map-opacity;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+  @if $gradient-type == 'topo-light' {
+    background-size: cover;
+    position: relative;
+    &:before {
+      background-image: url($wvu-topo-map-white);
+      background-position: center;
+      opacity: $wvu-topo-map-opacity;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: $wvu-z-index-grid;
+    }
+  }
+}
+
+// Usage example:
+// .wvu-bg-pattern-gold, %wvu-bg-pattern-gold {
+//   @include wvu-bg-pattern(wvu-gold);
+// }

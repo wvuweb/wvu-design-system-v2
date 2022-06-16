@@ -1,0 +1,27 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_contact_info | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-contact-info"
+  else
+    assign basename = "contact-info"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-contact-info/wvu-contact-info--v1" component: component %}
+  {% else %}{% render "components/wvu-contact-info/wvu-contact-info--v1" component: component %}
+{% endcase %}

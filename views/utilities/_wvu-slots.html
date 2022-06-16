@@ -1,0 +1,66 @@
+{% comment %}<!-- Slots for context: {{ forContext | default: 'default' }} -->{% endcomment %}
+{% if slots == blank and forContext != blank %}
+  {% assign slots = page.slots | where: 'where_to_display', forContext %}
+{% endif %}
+
+{% for slot in slots %}
+  {% if slot.value != blank and slot.custom == blank %}
+    {% case slot.value %}
+      {% when 'action-hero' %}{% render "components/wvu-action-hero" slot: slot %}
+      {% when 'action-hero-banner' %}{% render "components/wvu-action-hero-banner" slot: slot %}
+      {% when 'action-hero-card' %}{% render "components/wvu-action-hero-card" slot: slot %}
+      {% when 'action-hero-split' %}{% render "components/wvu-action-hero-split" slot: slot %}
+      {% when 'action-hero-two-column' %}{% render "components/wvu-action-hero-two-column" slot: slot %}
+      {% when 'alternating-grid' %}{% render "components/wvu-alternating-grid" slot: slot %}
+      {% when 'article' %}{% render "components/wvu-article" slot: slot %}
+      {% when 'article-collection' %}{% render "components/wvu-article-collection" slot: slot %}
+      {% when 'article-index' %}{% render "components/wvu-article-index" slot: slot %}
+      {% when 'backpage' %}{% render "components/wvu-backpage" slot: slot %}
+      {% when 'big-search' %}{% render "components/wvu-big-search" slot: slot %}
+      {% when 'calendar-events' %}{% render "components/wvu-calendar-events" slot: slot %}
+      {% when 'cards' %}{% render "components/wvu-cards" slot: slot %}
+      {% when 'cards-w-overlay' %}{% render "components/wvu-cards-w-overlay" slot: slot %}
+      {% when 'columns' %}{% render "components/wvu-columns" slot: slot %}
+      {% when 'contact-collection' %}{% render "components/wvu-contact-collection" slot: slot %}
+      {% when 'contact-collection-vertical' %}{% render "components/wvu-contact-collection-vertical" slot: slot %}
+      {% when 'contact-info' %}{% render "components/wvu-contact-info" slot: slot %}
+      {% when 'directory' %}{% render "components/wvu-directory" slot: slot %}
+      {% when 'editable-region' %}{% render "components/wvu-editable-region" slot: slot %}
+      {% when 'event-agenda' %}{% render "components/wvu-event-agenda" slot: slot %}
+      {% when 'faculty-profile' %}{% render "components/wvu-faculty-profile" slot: slot %}
+      {% when 'featurettes' %}{% render "components/wvu-featurettes" slot: slot %}
+      {% when 'full-bleed-photo' %}{% render "components/wvu-full-bleed-photo" slot: slot %}
+      {% when 'hero' %}{% render "components/wvu-hero" slot: slot %}
+      {% when 'hero-w-subnav' %}{% render "components/wvu-hero-w-subnav" slot: slot %}
+      {% when 'hero-w-video' %}{% render "components/wvu-hero-w-video" slot: slot %}
+      {% when 'lede-text' %}{% render "components/wvu-lede-text" slot: slot %}
+      {% when 'page-collection' %}{% render "components/wvu-page-collection" slot: slot %}
+      {% when 'page-collection-colored-boxes' %}{% render "components/wvu-page-collection-colored-boxes" slot: slot %}
+      {% when 'page-collection-icons' %}{% render "components/wvu-page-collection-icons" slot: slot %}
+      {% when 'page-collection-vertical' %}{% render "components/wvu-page-collection-vertical" slot: slot %}
+      {% when 'page-collection-vertical-icons' %}{% render "components/wvu-page-collection-vertical-icons" slot: slot %}
+      {% when 'people-collection' %}{% render "components/wvu-people-collection" slot: slot %}
+      {% when 'photo-gallery' %}{% render "components/wvu-photo-gallery" slot: slot %}
+      {% when 'photo-grid' %}{% render "components/wvu-photo-grid" slot: slot %}
+      {% when 'profile' %}{% render "components/wvu-profile" slot: slot %}
+      {% when 'profile-hero' %}{% render "components/wvu-profile-hero" slot: slot %}
+      {% when 'profile-hero-w-border' %}{% render "components/wvu-profile-hero-w-border" slot: slot %}
+      {% when 'profile-teaser' %}{% render "components/wvu-profile-teaser" slot: slot %}
+      {% when 'profiles-vertical' %}{% render "components/wvu-profiles-vertical" slot: slot %}
+      {% when 'program-listing' %}{% render "components/wvu-program-listing" slot: slot %}
+      {% when 'quicklinks' %}{% render "components/wvu-quicklinks" slot: slot %}
+      {% when 'social-media' %}{% render "components/wvu-social-media" slot: slot %}
+      {% when 'stat-sheet' %}{% render "components/wvu-stat-sheet" slot: slot %}
+      {% when 'testimonials' %}{% render "components/wvu-testimonials" slot: slot %}
+      {% when 'testimonials-fancy' %}{% render "components/wvu-testimonials-fancy" slot: slot %}
+      {% when 'timeline' %}{% render "components/wvu-timeline" slot: slot %}
+      {% when 'twitter-widget' %}{% render "components/wvu-twitter-widget" slot: slot %}
+      {% when 'subnav' %}{% render "components/wvu-subnav" slot: slot %}
+      {% when 'video-feature' %}{% render "components/wvu-video-feature" slot: slot %}
+      {% when 'youtube-playlist' %}{% render "components/wvu-youtube-playlist" slot: slot %}
+      {% else %}ERROR: Unsupported component '{{ slot.value }}'
+    {% endcase %}
+  {% elsif slot.custom != blank %}
+    {% render "utilities/custom_components" slot: slot %}
+  {% endif %}
+{% endfor %}

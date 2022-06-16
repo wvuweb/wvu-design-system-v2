@@ -1,0 +1,30 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_testimonials_fancy | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-testimonials-fancy"
+  else
+    assign basename = "testimonials-fancy"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "py-5 text-center",
+    "defaultRowClasses": "justify-content-left",
+    "defaultItemClasses": "col-md-6 col-lg-4",
+    "defaultItemHeaderClasses": "pt-6 pt-md-0 wvu-shout text-wvu-gold ms-n4",
+    "defaultItemBodyClasses": null,
+    "mainTagClasses": null
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-testimonials-fancy/wvu-testimonials-fancy--v1" component: component %}
+  {% else %}{% render "components/wvu-testimonials-fancy/wvu-testimonials-fancy--v1" component: component %}
+{% endcase %}

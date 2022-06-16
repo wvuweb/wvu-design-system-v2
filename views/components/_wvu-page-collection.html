@@ -1,0 +1,33 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_page_collection | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-page-collection"
+  else
+    assign basename = "page-collection"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": null,
+    "defaultRowClasses": "justify-content-left",
+    "defaultItemClasses": null,
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "btn btn-primary btn-sm",
+    "defaultItemButtonText": "Read More",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-page-collection/wvu-page-collection--v1" component: component %}
+  {% else %}{% render "components/wvu-page-collection/wvu-page-collection--v1" component: component %}
+{% endcase %}

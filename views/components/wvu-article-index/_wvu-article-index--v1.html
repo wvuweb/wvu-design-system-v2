@@ -1,0 +1,74 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+
+    <div class="row">
+      <div class="col-md-8 me-md-auto">
+
+        {% if edit_mode or page.content[component.region_names.main] != blank %}
+          <div class="mb-4">
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Intro</span>{% endif %}
+            {% editable_region_block name: component.region_names.main %}<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>{% endeditable_region_block %}
+          </div>
+        {% endif %}
+
+        {%- assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day %}
+
+        {% if articles.size > 0 %}
+          {% capture article_list_content %}
+            {% for article in articles.all %}
+              <article class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <div class="row">
+                  {% if article.data.thumbnail_url != blank %}
+                    <div class="col-md-3">
+                      <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
+                    </div>
+                  {% endif %}
+                  <div class="col-md-9{% if article.data.thumbnail_url != blank %} mt-3 mt-md-0{% else %} ml-md-auto{% endif %}">
+                    <strong><h2 itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2></strong>
+
+                    <p class="small d-block">
+                      {% if page.data.disable_articles_author != '1' %}
+                        {% if article.data.article_hide_author != '1' %}
+                          {{ article.content['wvu-article-1__author'] | default: article.author.full_name }} |
+                        {% endif %}
+                      {% endif %}
+                      <time itemprop="datePublished" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+                    </p> <!-- /.wvu-article__meta -->
+
+                    <div class="mb-2" itemprop="articleBody">
+                      {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
+                    </div> <!-- /.wvu-article__body -->
+                    <p><a class="btn btn-primary" href="{{ article.url }}">Read More<span class="sr-only">: {{ article.name }}</span></a></p>
+                  </div>
+                </div>
+              </article> <!-- /.wvu-article -->
+            {% endfor %}
+          {% endcapture %}
+
+          <div class="wvu-articles">
+            {{ article_list_content }}
+          </div> <!-- /.wvu-articles -->
+
+          {% assign pagination = articles | blog_pagination %}
+          {% if pagination.total_pages > 1 %}
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a type="button" href="{{ pagination.next_page_url }}" class="btn btn-secondary page-link{% if pagination.is_last_page %} disabled{% endif %}">Older Articles</a>
+              <a type="button" href="{{ pagination.prev_page_url }}" class="btn btn-secondary page-link{% if pagination.is_first_page %} disabled{% endif %}">Newer Articles</a>
+            </div>
+          {% endif %}
+        {% else %}
+          <p>No blog posts found. Try again later, perhaps?</p>
+        {% endif %}
+      </div>
+
+      <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0">
+        <div class="sticky-top pt-3 mt-n3">
+          {% render "components/wvu-article-archive" component: component %}
+        </div>
+      </aside>
+    </div>
+  </div> <!-- /.container -->
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

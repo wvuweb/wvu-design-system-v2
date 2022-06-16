@@ -1,0 +1,66 @@
+{% capture imageRegion %}wvu-{{ component.name }}__image{% endcapture %}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-3 mb-2 mb-lg-1 text-center">
+        <div class="row">
+          <div class="col-6 mr-auto col-md-12 col-lg-10 col-xl-8 mr-lg-0 ml-lg-auto">
+            {% editable_region_block name: imageRegion, scope: component.scope %}
+              <a href="#"><img class="rounded-circle shadow text-center" src="https://via.placeholder.com/960x960" alt="Placeholder"></a>
+            {% endeditable_region_block %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-lg-8 mb-3 mb-lg-0">
+            {% editable_region_block name: component.region_names.main, scope: component.scope %}
+              <p class="text-uppercase">
+                Label goes here
+              </p>
+              <h2 class="wvu-shout h1" id="{{ component.name }}-label">Headline Goes Here</h2>
+              <p class="h3 iowan-old-style-italic mb-2">
+                Name goes here.
+              </p>
+              <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <p class="mb-0 mt-2">
+                <a class="btn btn-primary btn-sm" href="#">Call to Action</a>
+              </p>
+            {% endeditable_region_block %}
+          </div>
+          <div class="col-lg-4">
+            {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+              <div class="wvu-bg-tint--10">
+                <div class="wvu-z-index-content p-3">
+                  {% editable_region_block name: component.region_names.postscript, scope: component.scope %}
+                    <h2 class="wvu-shout">Also See:</h2>
+                    <ul class="wvu-ul-slashes wvu-ul-slashes--gold">
+                      <li>
+                        <a href="#">Related Link 1</a>
+                      </li>
+                      <li>
+                        <a href="#">Related Link 2</a>
+                      </li>
+                      <li>
+                        <a href="#">Related Link 3</a>
+                      </li>
+                      <li>
+                        <a href="#">Related Link 4</a>
+                      </li>
+                    </ul>
+                  {% endeditable_region_block %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

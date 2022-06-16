@@ -1,0 +1,56 @@
+// WVU BG Patterns
+//==================================================
+// Utility classes that apply a background pattern to an element (weave, grid, topo map).
+
+.wvu-bg-pattern-gold, %wvu-bg-pattern-gold {
+  @include wvu-bg-pattern(wvu-gold);
+}
+
+.wvu-bg-pattern-blue, %wvu-bg-pattern-blue {
+  @include wvu-bg-pattern(wvu-blue);
+}
+
+.wvu-bg-pattern-transparent, %wvu-bg-pattern-transparent {
+  @include wvu-bg-pattern(wvu-transparent);
+}
+
+.wvu-bg-pattern-slashes-gold-blue, %wvu-bg-pattern-slashes-gold-blue {
+  @include wvu-bg-pattern(slashes-gold-blue);
+}
+
+.wvu-bg-pattern-slashes-gold-blue-white, %wvu-bg-pattern-slashes-gold-blue-white {
+  @include wvu-bg-pattern(slashes-gold-blue-white);
+}
+
+.wvu-bg-pattern-grid, %wvu-bg-pattern-grid {
+  @include wvu-bg-pattern(grid);
+}
+
+.wvu-bg-pattern-grid-zoomed, %wvu-bg-pattern-grid-zoomed {
+  @include wvu-bg-pattern(grid-zoomed);
+}
+
+.wvu-bg-pattern-grid-transparent, %wvu-bg-pattern-grid-transparent {
+  @include wvu-bg-pattern(grid-transparent);
+}
+
+.wvu-bg-pattern-grid-zoomed-transparent, %wvu-bg-pattern-grid-zoomed-transparent {
+  @include wvu-bg-pattern(grid-zoomed-transparent);
+}
+
+.wvu-bg-topo-dark, %wvu-bg-topo-dark {
+  @include wvu-bg-pattern(topo-dark);
+}
+
+.wvu-bg-topo-light, %wvu-bg-topo-light {
+  @include wvu-bg-pattern(topo-light);
+}
+
+.wvu-bg-topo-partial-dark, %wvu-bg-topo-partial-dark {
+  @include wvu-bg-pattern(topo-partial-dark);
+}
+
+// Example usage:
+// <section class="wvu-bg-topo-dark">
+//   ...
+// </section>

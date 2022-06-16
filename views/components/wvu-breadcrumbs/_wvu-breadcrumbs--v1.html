@@ -1,0 +1,15 @@
+{% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
+{% assign componentClassesBreadcrumbs = "wvu-slash-list ps-0" | append: " " | append: breadcrumbLinkClasses %}
+{% case page.template_name %}
+  {% when 'article' or 'profile' or 'student' or 'faculty-member' %}
+  {% else %}
+    {% assign breadcrumbPosition = 'position-absolute' %}
+{% endcase %}
+
+<section class="wvu-breadcrumbs py-2 w-100 {{ breadcrumbPosition }} wvu-z-index-breadcrumbs {{ breadcrumbLinkClasses }}" aria-label="Breadcrumb Links">
+  <div class="container position-relative wvu-z-index-content small">
+    {% breadcrumbs ul_class: componentClassesBreadcrumbs, link_class: breadcrumbLinkClasses %}
+  </div>
+</section>
+
+{% render "includes/wvu-component-footer" component: component %}

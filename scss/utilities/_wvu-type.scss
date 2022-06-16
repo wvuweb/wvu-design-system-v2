@@ -1,0 +1,162 @@
+// WVU Header Max Width
+//==================================================
+// When using a display header, you usually don’t want it extending too long. Use this utility to limit header’s width.
+
+.wvu-header-max-width, %wvu-header-max-width {
+  @include wvu-header-max-width();
+}
+
+// Example usage:
+// <h2 class="wvu-header-max-width">
+//   My Header
+// </h2>
+
+// WVU Paragraph Max Width
+//==================================================
+// Use this utility to set a max width for paragraphs to improve legibility.
+
+.wvu-p-max-width, %wvu-p-max-width {
+  max-width: $wvu-p-measure $global-important;
+}
+
+// Example usage:
+// <p class="wvu-p-max-width">
+//   ...
+// </p>
+
+// WVU First Line Gold
+//==================================================
+// If you have a header, particularly one that uses WVU Shout, sometimes you want the top line to be gold and the bottom white. Just apply this utility.
+
+.wvu-text-first-line-gold, %wvu-text-first-line-gold {
+  @include wvu-first-line-gold();
+}
+
+// Example usage:
+// <h2 class="wvu-shout display-4 wvu-first-line-gold">
+//   My Header
+// </h2>
+
+// WVU Quote
+//==================================================
+// Let’s say you want to call out a quote. Use this utility to insert an opening quotation mark before your text.
+
+.wvu-quote, %wvu-quote {
+  @include wvu-quote();
+}
+
+// Example usage:
+// <p class="wvu-quote iowan-old-style h4">
+//   ...
+// </p>
+
+// Use a modifer class to change the color of the quotation mark.
+
+@each $quote-color, $text-color in $theme-colors {
+  .wvu-quote--#{$quote-color} {
+    @extend %wvu-quote;
+    &:before {
+      color: $text-color;
+    }
+  }
+}
+
+// WVU Typography Options
+//==================================================
+// Use these utility classes to apply different typefaces to text elements.
+
+// NOTE: You must include the fonts.com script for the web fonts you see here.
+
+.wvu-shout, %wvu-shout {
+  @include wvu-shout();
+}
+
+.helvetica-neue, %helvetica-neue {
+  @include helvetica-neue();
+}
+
+.helvetica-neue-bold, %helvetica-neue-bold {
+  @include helvetica-neue-bold();
+}
+
+.helvetica-neue-light, %helvetica-neue-light {
+  @include helvetica-neue-light();
+}
+
+.helvetica-neue-condensed-black, %helvetica-neue-condensed-black {
+  @include wvu-shout();
+}
+
+.iowan-old-style, %iowan-old-style {
+  @include iowan-old-style();
+}
+
+.iowan-old-style-italic, %iowan-old-style-italic {
+  @include iowan-old-style-italic();
+}
+
+.iowan-old-style-black, %iowan-old-style-black {
+  @include iowan-old-style-black();
+}
+
+.iowan-old-style-black-italic, %iowan-old-style-black-italic {
+  @include iowan-old-style-black-italic();
+}
+
+// Usage example:
+// <p class="iowan-old-style">
+//   ...
+// </p>
+
+// WVU Letter Spacing
+//==================================================
+// This utility is good for elements that are all caps and uses Iowan Old Style. It gives your text a more formal look.
+
+.wvu-text-letter-spacing, %wvu-text-letter-spacing {
+  @include wvu-text-letter-spacing();
+}
+
+// Usage example:
+// <p class="text-uppercase iowan-old-style wvu-text-letter-spacing">
+//   ...
+// </p>
+
+// Typography Pallette
+//===================================================
+// Use this to set the typography palette for a backpage section
+
+.wvu-backpage-main {
+  &.wvu-typography-palette {
+    h2 {
+      @include wvu-shout();
+      @include wvu-bar($wvu-gold, top);
+      color: $wvu-blue;
+      font-size: $h1-font-size * 1.33;
+      margin-top: $spacer * 2;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    h3 {
+      font-size: $h1-font-size;
+    }
+    h4 {
+      font-size: $h2-font-size;
+    }
+    h5 {
+      font-size: $h3-font-size;
+    }
+    h6 {
+      font-size: $h4-font-size;
+    }
+    h2 + h3, h3 + h4, h4 + h5, h5 + h6 {
+      margin-top: $spacer * 1;
+    }
+    a + h2, button + h2, img + h2, ol + h2, ul + h2, div + h2, p + h2, pre + h2, table + h2, blockquote + h2, fieldset + h2, figure + h2, figcaption + h2, table + h2 { margin-top: 1em }
+    a + h3, button + h3, img + h3, ol + h3, ul + h3, div + h3, p + h3, pre + h3, table + h3, blockquote + h3, fieldset + h3, figure + h3, figcaption + h3, table + h3 { margin-top: 1em }
+    a + h4, button + h4, img + h4, ol + h4, ul + h4, div + h4, p + h4, pre + h4, table + h4, blockquote + h4, fieldset + h3, figure + h4, figcaption + h4, table + h4 { margin-top: 1em }
+    a + h5, button + h5, img + h5, ol + h5, ul + h5, div + h5, p + h5, pre + h5, table + h5, blockquote + h5, fieldset + h5, figure + h5, figcaption + h5, table + h5 { margin-top: 1em }
+    a + h6, button + h6, img + h6, ol + h6, ul + h6, div + h6, p + h6, pre + h6, table + h6, blockquote + h6, fieldset + h6, figure + h6, figcaption + h6, table + h6 { margin-top: 1em }
+    a + .lead, button + .lead, ol + .lead, ul + .lead, div + .lead, p + .lead, pre + .lead, table + .lead, blockquote + .lead, fieldset + .lead, h1 .lead, h2 .lead, h3 .lead, h4 .lead, h5 .lead, h6 .lead { margin-top: $spacer * 1.5;}
+  }
+}

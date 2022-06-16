@@ -1,0 +1,22 @@
+<section class="wvu-alert-banner py-2 mb-0 {{ site.data.alert_banner_classes | default: 'alert alert-info' }}" aria-label="Alert">
+  <div class="container py-2">
+    <div class="d-flex justify-content-between">
+      <div>
+      {% editable_region_block name: 'alert-banner' scope: 'site' %}
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      {% endeditable_region_block %}
+      </div>
+      <button type="button" class="btn-close ms-2" aria-label="Close Alert Banner"></button>
+    </div>
+  </div>
+</section>
+
+{% content_for "page_js" %}
+  <script>
+    var alertBanner = document.querySelector('.wvu-alert-banner')
+    var closeButton = document.querySelector('.wvu-alert-banner button')
+    closeButton.addEventListener('click', event => {
+      alertBanner.classList.add('d-none')
+    })
+  </script>
+{% endcontent_for %}

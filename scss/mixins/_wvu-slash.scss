@@ -1,0 +1,137 @@
+// WVU Slash
+//==================================================
+// Adds a gold, white, or blue WVU-branded slash to a text element.
+
+@mixin wvu-slash($color, $width, $height, $position, $is-important: $global-important) {
+  position: relative $is-important;
+  z-index: 0 $is-important;
+  &:before {
+    background-color: $color;
+    content: '' $is-important;
+    position: absolute $is-important;
+    right: 0;
+    left: -.5em;
+    height: $wvu-slash-height-tall;
+    max-height: 15rem $is-important;
+    top: -25%;
+    width: $wvu-slash-width;
+    opacity: 1 $is-important;
+    z-index: $wvu-z-index-slash $is-important;
+    -ms-transform: skewX(149deg) $is-important; /* IE 9 */
+    -webkit-transform: skewX(149deg) $is-important; /* Safari */
+    transform: skewX(149deg) $is-important;
+  }
+  @if $height == 'static' {
+    &:before {
+      height: $wvu-slash-height $is-important;
+      top: -.25em $is-important;
+    }
+  }
+  @if $color == 'white' {
+    &:before {
+      background-color: $wvu-neutral--white $is-important;
+    }
+  }
+  @if $color == 'blue' {
+    &:before {
+      background-color: $wvu-blue $is-important;
+    }
+  }
+  @if $width == 'skinny' {
+    &:before {
+      left: -.25em $is-important;
+      width: $wvu-slash-width * .5 $is-important;
+    }
+  }
+  @if $position == 'center' {
+    display: inline-block $is-important;
+    &:before {
+      left: auto $is-important;
+      right: calc(50% - .5em) $is-important;
+    }
+  }
+  @if $position == 'center-bottom' {
+    display: inline-block $is-important;
+    &:before {
+      bottom: 0 $is-important;
+      left: auto $is-important;
+      right: calc(50% - .5em) $is-important;
+      top: auto $is-important;
+    }
+  }
+  @if $position == 'right' {
+    display: inline-block $is-important;
+    &:before {
+      left: auto $is-important;
+      right: -1em $is-important;
+    }
+  }
+  @if $position == 'right-bottom' {
+    display: inline-block $is-important;
+    &:before {
+      bottom: 0 $is-important;
+      left: auto $is-important;
+      right: -1em $is-important;
+      top: auto $is-important;
+    }
+  }
+}
+
+// Example usage:
+// .wvu-slash {
+//   @include wvu-slash($wvu-gold, normal, left);
+// }
+
+// WVU Slashes
+//==================================================
+// Adds gold, white, or blue WVU-branded slashes to list items of an element.
+
+@mixin wvu-slashes($color, $is-important: $global-important) {
+  list-style-type: none;
+  li {
+    display: block $is-important;
+    position: relative $is-important;
+    z-index: 0 $is-important;
+    &:before {
+      background-color: $color $is-important;
+      content: '' $is-important;
+      height: 1em $is-important;
+      position: absolute $is-important;
+      width: .5em $is-important;
+      left: -1.5rem $is-important;
+      top: .25em $is-important;
+      z-index: $wvu-z-index-slash $is-important;
+      -ms-transform: skewX(149deg) $is-important; /* IE 9 */
+      -webkit-transform: skewX(149deg) $is-important; /* Safari */
+      transform: skewX(149deg) $is-important;
+    }
+  }
+}
+
+// Example usage:
+// .wvu-ul-slashes {
+//   @include wvu-slashes($wvu-gold);
+// }
+
+// WVU Slash List
+//==================================================
+// Adds a forward slash before each item in a list. Used mainly for breadcrumbs.
+
+@mixin wvu-slash-list() {
+  li {
+    display: inline-block;
+    &:before {
+      content: ' / '
+    }
+    &:first-child {
+      &:before {
+        content: '';
+      }
+    }
+  }
+}
+
+// Example usage:
+// .wvu-slash-list {
+//   @include wvu-slash-list();
+// }

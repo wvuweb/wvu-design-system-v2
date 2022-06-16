@@ -1,0 +1,55 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    {% if edit_mode or page.content[component.region_names.header] != blank %}
+      <div class="wvu-z-index-content mb-4">
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header, scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout">Gallery Headline</h2>
+          <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      </div>
+    {% endif %}
+    <div class="row js-wvu-lightbox-gallery">
+      {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
+      {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
+      {% for image in images.all %}
+        <div class="col-md-4 col-lg-3 mb-3">
+          <a href="{{ image | image_url: size: '960x640' }}" title="{{ image.description }}">
+            <img src="{{ image | image_url: size: '480x320' }}" alt="{{ immage.alt_text }}" />
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+  {% link_javascript name: "vendor/magnific-popup/jquery.magnific-popup.min" %}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+  		$('.js-wvu-lightbox-gallery').magnificPopup({
+  		  delegate: 'a', // child items selector, by clicking on it popup will open
+  		  type: 'image',
+  		  gallery: {
+  		    enabled: true, // set to true to enable gallery
+
+  		    preload: [0,2], // read about this option in next Lazy-loading section
+
+  		    navigateByImgClick: true,
+
+  		    arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
+
+  		    tPrev: 'Previous (Left arrow key)', // title for left button
+  		    tNext: 'Next (Right arrow key)', // title for right button
+  		    tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
+  		  }
+  		  // other options
+  		});
+  	});
+  </script>
+{% endcontent_for %}

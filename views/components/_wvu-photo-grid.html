@@ -1,0 +1,32 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_photo_grid | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-photo-grid"
+  else
+    assign basename = "photo-grid"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": null,
+    "defaultHeaderClasses": "h2 helvetica-neue-bold text-white wvu-bar wvu-bar--bottom wvu-header-max-width mb-1 mt-0 text-white",
+    "defaultItemClasses": null,
+    "defaultItemHeaderClasses": "wvu-bar wvu-bar--bottom",
+    "defaultItemBodyClasses": "h2 text-white iowan-old-style-black pt-2 mb-1",
+    "defaultItemButtonClasses": "btn btn-primary btn-sm",
+    "defaultItemButtonText": "View Profile",
+    "mainTagClasses": null
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-photo-grid/wvu-photo-grid--v1" component: component %}
+  {% else %}{% render "components/wvu-photo-grid/wvu-photo-grid--v1" component: component %}
+{% endcase %}

@@ -1,0 +1,14 @@
+// WVU First Line Gold
+//==================================================
+// If you have a header, particularly one that uses WVU Shout, sometimes you want the top line to be gold and the bottom white. Just apply this utility class.
+
+.wvu-first-line-gold, %wvu-first-line-gold {
+  &::first-line {
+    color: $wvu-gold $global-important;
+  }
+}
+
+// Example usage:
+// <h2 class="display-2 wvu-shout wvu-text-first-line-gold">
+//   It Starts Now
+// </h2>

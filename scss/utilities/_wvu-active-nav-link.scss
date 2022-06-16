@@ -1,0 +1,43 @@
+// WVU Active Nav Link
+//==================================================
+// This just adds a gold bar to the top of the nav item that is active in your primary navigation.
+
+@media (min-width: $wvu-bp-xs) {
+  .wvu-nav {
+    position: relative;
+    .active {
+      background-color: transparent $global-important;
+    }
+    > ul {
+      > li {
+        > .active {
+          &:before {
+            border-left: 3px solid $wvu-gold;
+            content: '';
+            left: 0;
+            top: 0;
+            position: absolute;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $wvu-bp-lg) {
+  .wvu-nav {
+    > ul {
+      > li {
+        > .active {
+          &:before {
+            border-left: 0px;
+            border-top: 3px solid $wvu-gold;
+            height: auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

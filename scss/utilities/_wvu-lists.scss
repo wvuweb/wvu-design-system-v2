@@ -1,0 +1,381 @@
+.wvu-ul-arrows {
+  list-style-type: none $global-important;
+  padding-left: 0 $global-important;
+  li {
+    padding-left: 1.5em $global-important;
+    position: relative $global-important;
+    &::before {
+      display: none $global-important;
+      @include font-awesome-arrow();
+    }
+    svg {
+      color: $gray-500 $global-important;
+      left: 0 $global-important;
+      margin-right: .5em $global-important;
+      margin-top: .25em $global-important;
+      position: absolute $global-important;
+      top: 0 $global-important;
+    }
+  }
+}
+
+.wvu-ul-arrows--wvu-blue {
+  li {
+    svg {
+      color: $wvu-blue $global-important;
+    }
+  }
+}
+
+.wvu-ul-arrows--wvu-gold {
+  li {
+    svg {
+      color: $wvu-gold $global-important;
+    }
+  }
+}
+
+.wvu-ul-arrows--white {
+  li {
+    svg {
+      color: white $global-important;
+    }
+  }
+}
+
+.wvu-ul-chevrons {
+  list-style-type: none $global-important;
+  padding-left: 0 $global-important;
+  li {
+    padding-left: 1.5em $global-important;
+    position: relative $global-important;
+    &::before {
+      display: none $global-important;
+      @include font-awesome-chevron();
+    }
+    svg {
+      color: $gray-500 $global-important;
+      left: 0 $global-important;
+      margin-right: .5em $global-important;
+      margin-top: .25em $global-important;
+      position: absolute $global-important;
+      top: 0 $global-important;
+    }
+  }
+}
+
+.wvu-ul-chevrons--wvu-blue {
+  li {
+    svg {
+      color: $wvu-blue $global-important;
+    }
+  }
+}
+
+.wvu-ul-chevrons--wvu-gold {
+  li {
+    svg {
+      color: $wvu-gold $global-important;
+    }
+  }
+}
+
+.wvu-ul-chevrons--white {
+  li {
+    svg {
+      color: white $global-important;
+    }
+  }
+}
+
+ol.wvu-ol-big-numbers {
+  counter-reset: listCounter;
+  list-style-type: none $global-important;
+  padding-left: 0 $global-important;
+  li {
+    counter-increment: listCounter;
+    margin-bottom: 0 $global-important;
+    min-height: 6rem $global-important;
+    padding-left: 8.5rem $global-important;
+    padding-bottom: $spacer / 2 $global-important;
+    padding-top: $spacer / 2 $global-important;
+    position: relative $global-important;
+    &::before {
+      align-items: center $global-important;
+      background-color: $wvu-blue;
+      border-radius: 50% $global-important;
+      color: white $global-important;
+      content: counter(listCounter);
+      display: flex $global-important;
+      font-size: 3.5rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      left: 0 $global-important;
+      padding: 3rem $global-important;
+      position: absolute $global-important;
+      top: 0 $global-important;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+  }
+}
+
+ol.wvu-ol-big-numbers-wvu-gold {
+  &::before {
+    background-color: $wvu-gold $global-important;
+    color: $wvu-blue $global-important;
+  }
+}
+
+ol.wvu-ol-big-numbers-wvu-white {
+  &::before {
+    background-color: white $global-important;
+    color: $wvu-blue $global-important;
+  }
+}
+
+ol.wvu-ol-small-numbers {
+  counter-reset: listCounter;
+  list-style-type: none $global-important;
+  padding-left: 0 $global-important;
+  li {
+    counter-increment: listCounter;
+    margin-bottom: 0 $global-important;
+    padding-left: 4.5rem $global-important;
+    padding-bottom: $spacer / 2 $global-important;
+    padding-top: .75rem $global-important;
+    min-height: 6rem $global-important;
+    position: relative $global-important;
+    &::before {
+      align-items: center $global-important;
+      background-color: $wvu-blue;
+      border-radius: 50% $global-important;
+      color: white $global-important;
+      content: counter(listCounter);
+      display: flex $global-important;
+      font-size: 1.5rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      left: 0 $global-important;
+      padding: 1.5rem $global-important;
+      position: absolute $global-important;
+      top: 0 $global-important;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+  }
+}
+
+ol.wvu-ol-small-numbers-wvu-gold {
+  &::before {
+    background-color: $wvu-gold $global-important;
+    color: $wvu-blue $global-important;
+  }
+}
+
+ol.wvu-ol-small-numbers-wvu-white {
+  &::before {
+    background-color: white $global-important;
+    color: $wvu-blue $global-important;
+  }
+}
+
+ol.wvu-ol-progress {
+  counter-reset: listCounter;
+  list-style-type: none $global-important;
+  margin-left: 3.25rem $global-important;
+  padding-left: 0 $global-important;
+  li {
+    border-left: 4px solid $gray-500 $global-important;
+    counter-increment: listCounter;
+    min-height: 6rem $global-important;
+    padding-bottom: $spacer;
+    padding-left: 6.5rem $global-important;
+    padding-top: $spacer / 2;
+    position: relative $global-important;
+    &::before {
+      align-items: center $global-important;
+      background-color: $gray-500;
+      border-radius: 50% $global-important;
+      border-width: 4px $global-important;
+      color: $white;
+      content: counter(listCounter);
+      display: flex $global-important;
+      font-size: 3.5rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      left: -3.25rem $global-important;
+      padding: 3rem $global-important;
+      position: absolute;
+      top: 0 $global-important;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+    &:last-child {
+      border-left-color: transparent $global-important;
+    }
+    &.active {
+      margin: -2px $global-important;
+      &::before {
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
+        border-color: white $global-important;
+        border-style: solid $global-important;
+        outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+}
+
+ol.wvu-ol-progress-small {
+  counter-reset: listCounter;
+  list-style-type: none $global-important;
+  padding-left: 1.5rem $global-important;
+  li {
+    border-left: 4px solid $gray-500 $global-important;
+    counter-increment: listCounter;
+    min-height: 6rem $global-important;
+    padding-bottom: $spacer;
+    padding-left: 3.5rem $global-important;
+    padding-top: $spacer / 4;
+    position: relative $global-important;
+    &::before {
+      align-items: center $global-important;
+      background-color: $gray-500;
+      border-radius: 50% $global-important;
+      border-width: 4px $global-important;
+      color: $white;
+      content: counter(listCounter);
+      display: flex $global-important;
+      font-size: 1.5rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      left: -1.625rem $global-important;
+      padding: 1.5rem $global-important;
+      position: absolute;
+      top: 0 $global-important;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+    &:last-child {
+      border-left-color: transparent $global-important;
+    }
+    &.active {
+      &::before {
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
+        border-color: white $global-important;
+        border-style: solid $global-important;
+        margin: -4px $global-important;
+        outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+}
+
+ol.wvu-ol-progress-horizontal {
+  counter-reset: listCounter;
+  display: grid $global-important;
+  grid-auto-columns: 1fr $global-important;
+  grid-auto-flow: column $global-important;
+  list-style-type: none $global-important;
+  padding-left: 0 $global-important;
+  li {
+    counter-increment: listCounter;
+    flex: 1 1 auto $global-important;
+    padding-bottom: 1rem $global-important;
+    padding-top: $spacer / 2;
+    position: relative $global-important;
+    text-align: center;
+    &::before {
+      align-items: center $global-important;
+      background-color: $gray-500;
+      border-radius: 50% $global-important;
+      border-width: 4px $global-important;
+      color: $white;
+      content: counter(listCounter);
+      display: flex $global-important;
+      font-size: 1rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      bottom: -1.123rem $global-important;
+      left: calc(50% - 1rem) $global-important;
+      padding: 1rem $global-important;
+      position: absolute;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+    &:after {
+      background-color: $gray-500 $global-important;
+      bottom: -2px $global-important;
+      content: '' $global-important;
+      height: 4px $global-important;
+      left: 50% $global-important;
+      position: absolute $global-important;
+      width: 100% $global-important;
+      z-index: -1 $global-important;
+    }
+    &:last-child {
+      border-left-color: transparent $global-important;
+      &:after {
+        display: none $global-important;
+      }
+    }
+    &.active {
+      &::before {
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
+        border-color: white $global-important;
+        border-style: solid $global-important;
+        left: calc(50% - 1rem + 2px) $global-important;
+        margin: -2px $global-important;
+        outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+}
+
+ul.wvu-ul-timeline {
+  list-style-type: none $global-important;
+  margin-left: 3.25rem $global-important;
+  padding-left: 0 $global-important;
+  li {
+    border-left: 4px solid $gray-500 $global-important;
+    border-top: 1px solid $gray-500 $global-important;
+    min-height: 6rem $global-important;
+    padding-bottom: $spacer $global-important;
+    padding-left: 6.5rem $global-important;
+    padding-top: $spacer * .25 $global-important;
+    position: relative $global-important;
+    &::before {
+      align-items: center $global-important;
+      background-color: $gray-500;
+      border-radius: 50% $global-important;
+      border-width: 4px $global-important;
+      content: '' $global-important;
+      display: flex $global-important;
+      font-size: 3.5rem $global-important;
+      height: 0 $global-important;
+      justify-content: center $global-important;
+      left: -1.13rem $global-important;
+      padding: 1rem $global-important;
+      position: absolute $global-important;
+      top: -1rem $global-important;
+      width: 0 $global-important;
+      @include wvu-shout();
+    }
+    &:last-child {
+      border-left-color: transparent $global-important;
+    }
+    &.active {
+      margin: -2px $global-important;
+      &::before {
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
+        border-color: white $global-important;
+        border-style: solid $global-important;
+        outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+}

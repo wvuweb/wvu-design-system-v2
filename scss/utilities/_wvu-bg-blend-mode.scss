@@ -1,0 +1,33 @@
+// WVU BG Blend Mode Lighten
+//==================================================
+// Utility class to add a lighten effect to a background image.
+
+.wvu-bg-blend-mode-lighten, %wvu-bg-blend-mode-lighten {
+  @include wvu-bg-blend-mode(lighten);
+}
+
+// WVU BG Blend Mode Luminosity
+//==================================================
+// Utility class to add a multiply effect to a background image. The element needs to have a background color applied for this to work.
+
+.wvu-bg-blend-mode-luminosity, %wvu-bg-blend-mode-luminosity {
+  @include wvu-bg-blend-mode(luminosity);
+}
+
+// Add modifier values (10 - 90 in increments of 10) that adjust the contrast of the “luminosity” effect created by the utility above.
+
+$i: 90;
+@while $i > 0 {
+  .wvu-bg-blend-mode-luminosity--#{$i} {
+    @extend %wvu-bg-blend-mode-luminosity;
+    &:before {
+      opacity: $i * .01 $global-important;
+    }
+  }
+  $i: $i - 10;
+}
+
+// Example usage:
+// <section class="wvu-bg-blend-mode-luminosity bg-wvu-accent--burnt-orange" style="background-image: url(/files/8aa49c0c-ca6f-495b-af9d-72fd45761700/1720x1720);">
+//   ...
+// </section>

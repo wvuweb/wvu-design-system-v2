@@ -1,0 +1,259 @@
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-3">
+
+        <div id="options" class="clearfix combo-filters">
+          <div class="clearfix">
+            <h3 class="mb-3">Filters</h3>
+
+            {% if page.data.disableProgramType != '1' %}
+              <div class="option-combo program-type">
+                <h4 class="h6 small text-uppercase mb-1">Program Type</h4>
+
+                <div class="filter option-set filter-button-group button-group btn-group-vertical js-radio-button-group w-100" data-filter-group="program-type">
+                  <a href="#filter-program-type-any" class="button selected active btn btn-secondary w-100 text-start" data-filter-value="">Any</a>
+                  <a href="#filter-program-type-bachelors" class="button btn btn-secondary w-100 text-start" data-filter-value=".bachelors">Bachelor’s</a>
+                  <a href="#filter-program-type-masters" class="button btn btn-secondary w-100 text-start" data-filter-value=".masters">Master’s</a>
+                  <a href="#filter-program-type-doctoral" class="button btn btn-secondary w-100 text-start" data-filter-value=".doctoral">Doctoral</a>
+                  <a href="#filter-program-type-certificate" class="button btn btn-secondary w-100 text-start" data-filter-value=".certificate">Certificate</a>
+                  <a href="#filter-program-type-minor" class="button btn btn-secondary w-100 text-start" data-filter-value=".minor">Minor</a>
+                </div>
+
+              </div>
+            {% endif %}
+
+            {% if page.data.disableDeliveryMethod != '1' %}
+              <div class="option-combo delivery-option mt-4">
+                <h4 class="h6 small text-uppercase mb-1">Delivery Option</h4>
+
+                <div class="filter option-set filter-button-group button-group btn-group-vertical js-radio-button-group w-100" data-filter-group="delivery-option">
+                  <a href="#filter-delivery-option-any" class="button selected active btn btn-secondary w-100 text-start" data-filter-value="" class="selected">Any</a>
+                  <a href="#filter-delivery-option-in-person" class="button btn btn-secondary w-100 text-start" data-filter-value=".in-person">In-Person</a>
+                  <a href="#filter-delivery-option-online" class="button btn btn-secondary w-100 text-start" data-filter-value=".online">Online</a>
+                </div>
+
+              </div>
+            {% endif %}
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-9">
+
+        <div id="container" class="grid clearfix">
+          {% assign programAPIEndpoint = page.data.contentful_api_string %}
+          {% assign programEntries = programAPIEndpoint | web_request | parse_json %}
+          {% for programEntry in programEntries limit: component.limit %}
+            <div class="w-100 mb-3 element-item {{ programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase }} {{ programEntry.type.title }} {% if programEntry.type.title != 'Minor' %}non-minor{% endif %} {{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {{ programEntry.type.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}" id="{{ programEntry.slug }}" data-include-minor="{% if programEntry.hepcLevel.title == 'Minor' %}show-minor{% else %}hide-minor{% endif %}" data-program-type="{{ programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase }}" data-school="{{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }}" data-delivery-option="{% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}">
+
+              <div class="pt-1 bg-wvu-gold">
+                <div class="bg-white">
+                  <div class="row align-items-stretch">
+                    <div class="col-lg">
+                      <div class="px-3 pt-3 pb-2 px-xl-4 pt-xl-4 pb-xl-3 bg-white h-100">
+
+                        <h3 class="mb-0 h1 text-wvu-blue">
+                          {{ programEntry.title }}
+                        </h3>
+
+                        {% if programEntry.degreeDesignation.title %}
+                          <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.degreeDesignation.title | replace: "'", '’' }}</div>
+                        {% else %}
+                          <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.type.title | replace: "'", '’' }}</div>
+                        {% endif %}
+                        {% for deliveryOption in programEntry.courseDeliveryOptions %}
+                          {% if deliveryOption == 'Online' %}
+                            <div class="badge bg-primary"><i class="fa-solid fa-laptop"></i> Online</div>
+                          {% endif %}
+                        {% endfor %}
+
+                        <div class="mt-3">
+                          {{ programEntry.descriptionTeaser }}
+
+                          {% assign myAreas = programEntry.areasOfEmphasis %}
+                          {% assign areasOfEmphasisCount = myAreas | size %}
+                          {% if areasOfEmphasisCount >= 1 %}
+                          <h3 class="border-bottom border-light h5 mt-3">Areas of Emphasis</h3>
+                          <ul class="list-unstyled">
+                            {% for area in programEntry.areasOfEmphasis %}
+                              <li><span class="fa-solid fa-angle-right text-wvu-gold"></span> {{ area.title }}</li>
+                            {% endfor %}
+                          </ul>
+                          {% endif %}
+                        </div>
+
+                      </div>
+                    </div>
+                    {% if programEntry.webAddressAdmissions %}
+                      <div class="col-lg-4">
+
+                        <div class="bg-white p-3 py-lg-4 pl-lg-0 pr-lg-4 h-100">
+                          <div class="btn-group-vertical w-100 shadow-sm">
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__description">
+                              <i class="fa-solid fa-file-alt text-center" style="width: 2rem;"></i> Overview
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__opportunities">
+                              <i class="fa-solid fa-clipboard-list text-center" style="width: 2rem;"></i> Fast Facts
+                            </a>
+                            <!-- <a class="btn btn-light text-start w-100 d-flex align-items-center" href="#">
+                              <i class="fa-solid fa-sort text-center" style="width: 2rem;"></i> Rankings
+                            </a> -->
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__careers">
+                              <i class="fa-solid fa-user-tie text-center" style="width: 2rem;"></i> Careers
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__courses">
+                              <i class="fa-solid fa-pencil-alt text-center" style="width: 2rem;"></i> Courses
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__cost">
+                              <i class="fa-solid fa-dollar-sign text-center" style="width: 2rem;"></i> Costs and Aid
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__requirements">
+                              <i class="fa-solid fa-tasks text-center" style="width: 2rem;"></i> Requirements
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__related-programs">
+                              <i class="fa-solid fa-arrows-alt-h text-center" style="width: 2rem;"></i> Related Programs
+                            </a>
+                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__related-pathways">
+                              <i class="fa-solid fa-code-branch text-center" style="width: 2rem;"></i> Related Pathways
+                            </a>
+                          </div>
+                        </div>
+
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+
+  {% link_javascript name: "vendor/isotope/jquery-1.7.1.min, vendor/isotope/jquery.ba-bbq.min, vendor/isotope/jquery.isotope.min" %}
+
+  <script>
+
+    $(function(){
+
+      var $container = $('.grid');
+      var initialOptions = {
+        itemSelector : '.element-item',
+        masonry: {
+          columnWidth: 80
+        },
+        getSortData: {
+          programType: function( $elem ) {
+            return $elem.attr('data-program-type');
+          },
+          school: function( $elem ) {
+            return $elem.attr('data-school');
+          },
+          includeMinor: function( $elem ) {
+            return $elem.attr('data-include-minor');
+          },
+          deliveryOption: function( $elem ) {
+            return $elem.attr('data-delivery-option');
+          }
+        }
+      };
+      // build a hash for all our options
+      var options = {
+        // special hash for combination filters
+        comboFilters: {}
+      };
+
+      // filter buttons
+      $('.filter').on( 'click', 'a', function( event ) {
+        event.preventDefault();
+        var $this = $(this);
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return false;
+        }
+
+        // console.log('hello world');
+        var $optionSet = $this.parents('.option-set');
+        var group = $optionSet.attr('data-filter-group');
+        options.comboFilters[ group ] = $this.attr('data-filter-value');
+        $.bbq.pushState( options );
+      });
+
+      var $sortBy = $('#sort-by').on( 'click', 'a', function( event ) {
+        event.preventDefault();
+        var $this = $(this);
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return false;
+        }
+        options.sortBy = $this.attr('data-option-value');
+        // console.log( options );
+        $.bbq.pushState( options );
+      });
+
+      function selectLink( $link ) {
+        $link.parents('.option-set').find('.selected').removeClass('selected');
+        $link.parents('.option-set').find('.active').removeClass('active');
+        $link.addClass('selected')
+        $link.addClass('active')
+      }
+
+      var location = window.location;
+      var $comboFilterOptionSets = $('.combo-filters .option-set');
+
+      function getComboFilterSelector( comboFilters ) {
+        // build filter
+        var isoFilters = [];
+        var filterValue, $link, $optionSet;
+        for ( var prop in comboFilters ) {
+          filterValue = comboFilters[ prop ];
+          isoFilters.push( filterValue );
+          // change selected combo filter link
+          $optionSet = $comboFilterOptionSets.filter('[data-filter-group="' + prop + '"]');
+          $link = $optionSet.find('a[data-filter-value="' + filterValue + '"]');
+          selectLink( $link );
+        }
+        var selector = isoFilters.join('');
+        return selector;
+      }
+
+      $( window ).on( 'hashchange', function() {
+        // get options from hash
+        if ( location.hash ) {
+          $.extend( options, $.deparam.fragment( location.hash, true ) );
+        }
+        // build options from hash and initial options
+        var isoOptions = $.extend( {}, initialOptions, options );
+
+        if ( options.comboFilters ) {
+          isoOptions.filter = getComboFilterSelector( options.comboFilters );
+        }
+
+        // change selected link for sortBy
+        if ( options.sortBy ) {
+          var $link = $sortBy.find('a[data-option-value="' + options.sortBy + '"]');
+          selectLink( $link );
+        }
+
+        $container.isotope( isoOptions );
+      })
+        // trigger hashchange to capture initial hash options
+        .trigger( 'hashchange' );
+
+    });
+
+    // $('.dropdown-toggle-programs').dropdown()
+  </script>
+
+{% endcontent_for %}

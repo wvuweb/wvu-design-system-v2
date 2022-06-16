@@ -1,0 +1,13 @@
+---
+layout: default
+custom_data_attributes:
+  - removeQuicklinks:
+    type: checkbox
+    title: Remove Quicklinks
+---
+
+{% render "components/wvu-hero" number: 1, main: true %}
+
+{% if page.data.removeQuicklinks != 1 %}
+  {% render "components/wvu-quicklinks" number: 1 %}
+{% endif %}

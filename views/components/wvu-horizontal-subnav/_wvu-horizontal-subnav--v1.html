@@ -1,0 +1,24 @@
+{% assign root = site.root_page %}
+{% assign items = page.ancestors %}
+{% for item in items.all %}
+  {% if item.data.subsection_landing_page == '1' %}
+    {% assign needsSubsectionMenu = 'true' %}
+    {% assign subsectionName = item.name %}
+    {% assign subsectionLink = item.url %}
+    {% assign submenuDepth = item.depth | plus: 1 %}
+  {% elsif page.data.subsection_landing_page == '1' %}
+    {% assign needsSubsectionMenu = 'true' %}
+    {% assign subsectionName = page.name %}
+    {% assign subsectionLink = page.url %}
+    {% assign submenuDepth = page.depth | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<section class="navbar navbar-expand-lg p-xl-0 navbar-dark bg-wvu-neutral--dark-gray d-table w-100">
+  <div class="container">
+    <div class="d-md-flex align-items-stretch">
+      <a href="{{ subsectionLink }}" class="wvu-shout text-wvu-gold text-decoration-none d-inline-block py-2 ms-2 ms-lg-0 me-2">{{ subsectionName }}</a>
+      {% ancestor_menu start_depth: submenuDepth, max_depth: submenuDepth, ul_class: "small wvu-nav__items menu-items navbar-nav mr-auto", li_class: "nav-item h-100", link_class: "h-100 py-1 d-md-flex align-items-center text-decoration-none text-light iowan-old-style-black nav-link px-2 px-lg-1", active_class: "bg-wvu-neutral--light-gray text-dark", open_class: "nav-secondary--open" %}
+    </div> <!-- /.nav-collapse -->
+  </div> <!-- /.container -->
+</section>

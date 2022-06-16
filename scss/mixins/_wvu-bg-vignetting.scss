@@ -1,0 +1,91 @@
+// WVU BG Vignetting
+//==================================================
+// Adds a vignetting effect to an element’s background image.
+
+@mixin wvu-bg-vignetting($wvu-vignetting-opacity, $wvu-vignetting-alignment, $is-important: $global-important) {
+  background-size: cover $is-important;
+  position: relative;
+  @if $wvu-vignetting-alignment == 'left' {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: radial-gradient(farthest-side at 90% 55%, transparent, #000 131%);
+      opacity: $wvu-vignetting-opacity;
+      z-index: $wvu-z-index-vignetting;
+    }
+    &.wvu-bg-pattern-grid {
+      &:before {
+        background-image: url($wvu-grid-pattern), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-transparent {
+      &:before {
+        background-image: url($wvu-grid-pattern-transparent), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-zoomed {
+      &:before {
+        background-image: url($wvu-grid-pattern-zoomed), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-zoomed-transparent {
+      &:before {
+        background-image: url($wvu-grid-pattern-zoomed-transparent), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-slashes-gold-blue {
+      &:before {
+        background-image: url($wvu-slashes-gold-blue), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-slashes-gold-blue-white {
+      &:before {
+        background-image: url($wvu-slashes-gold-blue-white), radial-gradient(farthest-side at 90% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+  }
+  @if $wvu-vignetting-alignment == 'right' {
+    &:before {
+      background-image: radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+    }
+    &.wvu-bg-pattern-grid {
+      &:before {
+        background-image: url($wvu-grid-pattern), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-transparent {
+      &:before {
+        background-image: url($wvu-grid-pattern-transparent), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-zoomed {
+      &:before {
+        background-image: url($wvu-grid-pattern-zoomed), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-grid-zoomed-transparent {
+      &:before {
+        background-image: url($wvu-grid-pattern-zoomed-transparent), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-slashes-gold-blue {
+      &:before {
+        background-image: url($wvu-slashes-gold-blue), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+    &.wvu-bg-pattern-slashes-gold-blue-white {
+      &:before {
+        background-image: url($wvu-slashes-gold-blue-white), radial-gradient(farthest-side at 30% 55%, transparent, #000 131%) $is-important;
+      }
+    }
+  }
+}
+
+// Example usage:
+// .wvu-bg-vignetting, %wvu-bg-vignetting {
+//   @include wvu-bg-vignetting($wvu-vignetting-opacity, left);
+// }

@@ -1,0 +1,27 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_action_hero_two_column | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-action-hero-two-column"
+  else
+    assign basename = "action-hero-two-column"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "position-relative wvu-bg-size-cover bg-wvu-neutral--black text-white wvu-bg-vignetting",
+    "defaultHeaderClasses": "display-2 wvu-shout text-wvu-gold",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-action-hero-two-column/wvu-action-hero-two-column--v1" component: component %}
+  {% else %}{% render "components/wvu-action-hero-two-column/wvu-action-hero-two-column--v1" component: component %}
+{% endcase %}

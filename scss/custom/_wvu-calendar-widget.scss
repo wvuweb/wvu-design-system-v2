@@ -1,0 +1,126 @@
+// This is for styling a calendar feed generated from calendar.wvu.edu
+
+.cs-rss-snippet {
+  padding: 1em 0;
+}
+
+.wvu-calendar {
+  padding-left: 0;
+  li { margin-bottom: $spacer / 4; display: inline-block; width: 100%;
+    .eventDate { float: left; margin-right: 4%; width: 10%; text-align: center; padding-bottom: 6px; border-radius: 6px; display: inline-block;
+    }
+    .eventMonth { font-size: .8em; text-transform: uppercase; }
+    .eventDay { display: block; font-size: 1.5em; line-height: .8em; clear: both; }
+    .eventInfo { float: left; width: 86%; display: inline-block;}
+    .eventTime { font-weight: bold; }
+    .eventName { display: block; }
+  }
+  &.wvu-calendar--flex {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: stretch;
+      flex-flow: row wrap;
+      li {
+        width: 33%;
+        padding: 0 1em 1em 0;
+      }
+    }
+  }
+}
+
+.wvu-calendar {
+  li {
+    .eventDate {
+      font-weight: bold;
+    }
+  }
+}
+
+.ua-calendar-widget {
+  a {
+    text-decoration: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+}
+
+.wvu-calendar-widget__date {
+  border: 1px solid tint($black, 50%);
+  border-radius: 3px;
+  line-height: 1.2em;
+  padding: .5em 0;
+  text-align: center;
+}
+
+.wvu-calendar-widget__item {
+  margin-bottom: $spacer / 2;
+}
+
+.wvu-calendar-widget__day {
+  font-size: 1.5rem;
+}
+
+.wvu-calendar-widget { padding-left: 0;
+  li { margin-bottom: $spacer / 4; display: inline-block; width: 100%;
+    .eventDate { float: left; margin-right: 4%; width: 10%; text-align: center; padding-bottom: 6px; border-radius: 6px;
+    }
+    .calEventMonth { font-size: .8em; text-transform: uppercase; }
+    .calEventDay { display: block; font-size: 1.5em; line-height: .8em; clear: both; }
+    .eventInfo { float: left; width: 86%;}
+    .eventTime { font-weight: bold; }
+    .eventName { display: block; }
+  }
+}
+
+.wvu-calendar-widget--flex { padding-left: 0;
+  li { padding-right: 1em; }
+  @include media-breakpoint-up(md) {
+    display: flex;
+    align-items: stretch;
+    flex-flow: row wrap;
+    li {
+      width: 33%;
+      padding: 0 0 $spacer / 2 0;
+      vertical-align: top;
+    }
+  }
+}
+
+.main, .wvu-diptych__panel, .wvu-polyptych__panel, .wvu-triptych__panel, .wvu-quadriptych__panel, .wvu-pentaptych__panel, .wvu-sidebar {
+  .wvu-calendar {
+    &.wvu-calendar--flex {
+      @include media-breakpoint-up(md) {
+        display: block;
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .wvu-calendar-widget__container {
+    padding: 0;
+  }
+}
+
+// Layout
+// ==========================================
+
+.wvu-calendar-widget__date {
+  @include make-col-ready;
+  @include media-breakpoint-up(md) {
+    @include make-col(2);
+  }
+}
+
+.wvu-calendar-widget__item {
+  @include make-col-ready;
+  @include make-col(12);
+}
+
+.wvu-calendar-widget__details {
+  @include make-col-ready;
+  @include media-breakpoint-up(md) {
+    @include make-col(10);
+  }
+}

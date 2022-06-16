@@ -1,0 +1,60 @@
+// WVU Bar
+//==================================================
+// Utility that adds a gold bar to a header element (can be top, bottom and/or centered).
+
+.wvu-bar, %wvu-bar {
+  @include wvu-bar($wvu-bar-color, top);
+  &.wvu-bar--bottom {
+    @include wvu-bar($wvu-bar-color, bottom);
+  }
+  &.wvu-bar--center {
+    display: inline-block $global-important;
+    &:before, &:after {
+      left: 50% $global-important;
+      margin-left: -($wvu-bar-width * .5) $global-important;
+    }
+  }
+  &.wvu-bar--white {
+    &:before, &:after {
+      background-color: white $global-important;
+    }
+  }
+  &.wvu-bar--blue {
+    &:before, &:after {
+      background-color: $wvu-blue $global-important;
+    }
+  }
+  &.wvu-bar--transparent-dark {
+    &:before, &:after {
+      background-color: black $global-important;
+      opacity: .25 $global-important;
+    }
+  }
+  &.wvu-bar--transparent-light {
+    &:before, &:after {
+      background-color: white $global-important;
+      opacity: .25 $global-important;
+    }
+  }
+}
+
+// .text-center .wvu-bar {
+//   display: inline-block $global-important;
+//   &:before, &:after {
+//     left: 50% $global-important;
+//     margin-left: -($wvu-bar-width * .5) $global-important;
+//   }
+// }
+//
+// .text-start .wvu-bar {
+//   display: inline-block $global-important;
+//   &:before, &:after {
+//     left: 0 $global-important;
+//     margin-left: 0 $global-important;
+//   }
+// }
+
+// Example usage:
+// <h2 class="wvu-shout wvu-bar">
+//   My Header
+// </h2>

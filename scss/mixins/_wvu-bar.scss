@@ -1,0 +1,41 @@
+// WVU Bar
+//==================================================
+// Adds a gold or white bar above or below a header.
+
+@mixin wvu-bar($wvu-bar-color, $wvu-bar-position, $global-important: $global-important) {
+  position: relative $global-important;
+  @if $wvu-bar-position == 'top' {
+    // margin-top: $spacer * 2 $global-important;
+    padding-top: 1.5rem;
+    &:before {
+      background-color: $wvu-bar-color $global-important;
+      content: '' $global-important;
+      height: 1rem * .5 $global-important;
+      position: absolute $global-important;
+      top: 0rem $global-important;
+      width: $wvu-bar-width $global-important;
+    }
+  }
+  @if $wvu-bar-position == 'bottom' {
+    padding-bottom: 1rem $global-important;
+    margin-bottom: 1rem $global-important;
+    padding-top: 0 $global-important;
+    &:before {
+      display: none $global-important;
+    }
+    &:after {
+      background-color: $wvu-bar-color $global-important;
+      bottom: 0 $global-important;
+      content: '' $global-important;
+      height: 1rem * .5 $global-important;
+      left: 0 $global-important;
+      position: absolute $global-important;
+      width: $wvu-bar-width $global-important;
+    }
+  }
+}
+
+// Usage example:
+// .wvu-bar {
+//   @include wvu-bar($wvu-bar-color, top);
+// }

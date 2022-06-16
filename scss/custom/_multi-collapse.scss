@@ -1,0 +1,5 @@
+// Sometimes the text area in Mercury collapses and the user can’t click inside. This ensures taht doesn’t happen.
+
+.multi-collapse.collapse.show textarea {
+  min-height: 24px $global-important;
+}

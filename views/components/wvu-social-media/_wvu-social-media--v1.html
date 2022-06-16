@@ -1,0 +1,91 @@
+{% assign linkClassesRegion = 'wvu-' | append: component.name | append: '-link-classes' %}
+
+{% capture component_content %}
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 mb-3 mb-md-0 d-md-flex align-items-center">
+        {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+        {% endif %}
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">Connect With Us</h2>
+      </div>
+      <div class="col-md-8 align-self-center">
+        <ul class="list-inline float-md-end align-middle mb-0">
+          {% comment %}<!-- This is where you can add utility classes that will apply to the social media links. -->{% endcomment %}
+          {% if edit_mode %}
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Link classes:
+              <pre class="mb-0 text-white">{% editable_region name: linkClassesRegion, type: "simple", scope: component.scope %}</pre>
+            </small>
+          {% endif %}
+          {% if site.data.facebook_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-facebook h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.facebook_url }}">
+                <span class="fab fa-facebook position-absolute"></span><span class="sr-only">Facebook</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.twitter_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-twitter h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.twitter_url }}">
+                <span class="fab fa-twitter position-absolute"></span><span class="sr-only">Twitter</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.flickr_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-flickr h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.flickr_url }}">
+                <span class="fab fa-flickr position-absolute"></span><span class="sr-only">Flickr</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.instagram_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-instagram h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.instagram_url }}">
+                <span class="fab fa-instagram position-absolute"></span><span class="sr-only">Instagram</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.linkedin_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-linkedin h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.linkedin_url }}">
+                <span class="fab fa-linkedin position-absolute"></span><span class="sr-only">LinkedIn</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.syndication_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-syndication h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.syndication_url }}">
+                <span class="fas fa-rss position-absolute"></span><span class="sr-only">RSS</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.youtube_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-youtube h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.youtube_url }}">
+                <span class="fab fa-youtube position-absolute"></span><span class="sr-only">YouTube</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.github_url != blank %}
+            <li class="list-inline-item">
+              <a class="bg-github h4 mb-0 text-decoration-none d-flex align-items-center justify-content-center rounded-circle p-3 {{ page.content[linkClassesRegion] }}" href="{{ site.data.github_url }}">
+                <span class="fab fa-github position-absolute"></span><span class="sr-only">Github</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

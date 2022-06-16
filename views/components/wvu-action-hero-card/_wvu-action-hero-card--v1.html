@@ -1,0 +1,55 @@
+{%- liquid
+  assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
+-%}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content" data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom">
+    <div class="row justify-content-center pt-1">
+
+      {% capture block_content %}
+        {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
+        {% if edit_mode %}
+          <div class="small wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <div class="mb-1 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
+            <p class="mb-0"><strong class="text-muted">Default classes:</strong> {{ component.defaultHeaderClasses }}</p>
+          </div>
+          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% endif %}
+        {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+        <h2 id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</h2>
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
+        {% comment %}<!-- Editable region for main content. -->{% endcomment %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="lead mb-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+          <p>
+            <a href="#" class="btn btn-primary">Call to Action</a>
+          </p>
+        {% endeditable_region_block %}
+      {% endcapture %}
+
+      {% if component.full_width_or_backpage? %}
+        <div class="col-md-9">
+          <div class="pt-1 bg-wvu-gold shadow">
+            <div class="bg-white p-3 p-md-4">
+              {{ block_content }}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        {{ block_content }}
+      {% endif %}
+
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

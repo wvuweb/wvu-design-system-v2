@@ -1,0 +1,266 @@
+<section class="border-top py-5">
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-8 me-md-auto">
+        <h2 class="h1 wvu-bar wvu-bar--bottom">Shared CleanSlate Partial</h2>
+        <p class="text-uppercase">
+          {% if page.data.isDynamic == '1' %}
+            <strong>Type:</strong> <span class="helvetica-neue-light">Dynamic (pulls data from other pages in site)</span>
+          {% else %}
+            <strong>Type:</strong> <span class="helvetica-neue-light">Static (uses editable regions)</span)
+          {% endif %}
+        </p>
+
+        <p>This component corresponds to the latest version of the shared <code>{{ page.slug }}</code> partial in CleanSlate.
+        CleanSlate developers can use this component by
+        <a href="/wvu-design-system/shared-cleanslate-partials/theme-development-and-site-configuration-how-tos-and-tips/add-a-shared-partial-to-a-template">adding a shared partial to a template</a>. Below are the
+        available configuration options for this component.</p>
+
+        <nav class="mt-3">
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            {% if edit_mode or page.content["theme-partial"] != blank or page.content["code-example"] != blank %}
+              <a class="nav-item nav-link active text-decoration-none" id="nav-theme-tab" data-bs-toggle="tab" href="#nav-theme" role="tab" aria-controls="nav-theme" aria-selected="true">Theme Partial</a>
+            {% endif %}
+            {% if edit_mode or page.content["super-template"] != blank %}
+              <a class="nav-item nav-link text-decoration-none" id="nav-template-tab" data-bs-toggle="tab" href="#nav-template" role="tab" aria-controls="nav-template" aria-selected="false">Super Template</a>
+            {% endif %}
+            {% if edit_mode or page.content["site-data"] != blank %}
+              <a class="nav-item nav-link text-decoration-none" id="nav-site-tab" data-bs-toggle="tab" href="#nav-site" role="tab" aria-controls="nav-site" aria-selected="false">Site Data</a>
+            {% endif %}
+            {% if edit_mode or page.content["page-data"] != blank %}
+              <a class="nav-item nav-link text-decoration-none" id="nav-page-tab" data-bs-toggle="tab" href="#nav-page" role="tab" aria-controls="nav-page" aria-selected="false">Page Data</a>
+            {% endif %}
+          </div>
+        </nav>
+
+        <div class="tab-content border-start border-bottom border-end bg-white" id="nav-tabContent">
+          {% if edit_mode or page.content["theme-partial"] != blank or page.content["code-example"] != blank %}
+            <div class="tab-pane fade show active p-3" id="nav-theme" role="tabpanel" aria-labelledby="nav-theme-tab">
+              {% if edit_mode or page.content["theme-partial"] != blank %}
+                <h3>Parameters</h3>
+                {% editable_region_block name: "theme-partial" %}
+                  <table class="table mb-2">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Options</th>
+                        <th scope="col" class="w-50">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <code>featurettesStyle</code>
+                        </td>
+                        <td>
+                          <ul class="list-unstyled mb-0">
+                            <li>
+                              <code>default</code>
+                            </li>
+                            <li>
+                              <code>editable-regions</code>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>Sets the layout of the featurettes (see examples above). Options win an
+                          <code>-editable-regions</code> suffix will provide editable regions for
+                          the user to enter content manually. Otherwise content will be
+                          <a href="https://cleanslate.wvu.edu/sites/1486/pages/140062/editor" data-page-id="140062">pulled in dynamically using labels</a>.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <code>limit</code>
+                        </td>
+                        <td>
+                          <code>1, 2, 3</code>
+                        </td>
+                        <td>Sets the number of items that will appear in the component.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <code>showHidden</code>
+                        </td>
+                        <td>
+                          <ul class="list-unstyled mb-0">
+                            <li>
+                              <code>true</code>
+                            </li>
+                            <li>
+                              <code>false</code>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>If set to <code>true</code>, shows items even if they’re hidden from your
+                          site’s navigation.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {% endeditable_region_block %}
+              {% endif %}
+              <h3>Code Example</h3>
+              <div class="p-3 bg-light">
+                <pre class="mb-0"><code>{% editable_region_block name: "code-example", type: simple %}&lt;&gt;{% endeditable_region_block %}</code></pre>
+              </div>
+            </div>
+          {% endif %}
+          {% if edit_mode or page.content["super-template"] != blank %}
+            <div class="tab-pane fade p-3" id="nav-template" role="tabpanel" aria-labelledby="nav-template-tab">
+              <h3>Setup</h3>
+              <p>From the CleanSlate Pages dashboard, assign the Super Template to a page. In
+      the page properties, navigate to the Slots tab. Assign a <code>{{ page.slug }}</code> partial
+      to one of the slots.</p>
+              <h3 class="mt-3">Configuration</h3>
+              {% editable_region_block name: "super-template" %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Options</th>
+                      <th scope="col" class="w-50">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Limit
+                      </td>
+                      <td>
+                        1, 2, 3
+                      </td>
+                      <td>Sets the number of items that will appear in the component.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Show Hidden
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0">
+                          <li>
+                            Checked
+                          </li>
+                          <li>
+                            Unchecked
+                          </li>
+                        </ul>
+                      </td>
+                      <td>If <strong>checked</strong>, shows items even if they’re hidden from your
+                        site’s navigation.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              {% endeditable_region_block %}
+            </div>
+          {% endif %}
+          {% if edit_mode or page.content["site-data"] != blank %}
+            <div class="tab-pane fade p-3" id="nav-site" role="tabpanel" aria-labelledby="nav-site-tab">
+              <h3>Configuration</h3>
+              {% editable_region_block name: "site-data" %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Options</th>
+                      <th scope="col" class="w-50">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Limit
+                      </td>
+                      <td>
+                        1, 2, 3
+                      </td>
+                      <td>Sets the number of items that will appear in the component.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Show Hidden
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0">
+                          <li>
+                            Checked
+                          </li>
+                          <li>
+                            Unchecked
+                          </li>
+                        </ul>
+                      </td>
+                      <td>If <strong>checked</strong>, shows items even if they’re hidden from your
+                        site’s navigation.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              {% endeditable_region_block %}
+            </div>
+          {% endif %}
+          {% if edit_mode or page.content["page-data"] != blank %}
+            <div class="tab-pane fade p-3" id="nav-page" role="tabpanel" aria-labelledby="nav-page-tab">
+              <h3>Configuration</h3>
+              {% editable_region_block name: "page-data" %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Options</th>
+                      <th scope="col" class="w-50">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Limit
+                      </td>
+                      <td>
+                        1, 2, 3
+                      </td>
+                      <td>Sets the number of items that will appear in the component.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Show Hidden
+                      </td>
+                      <td>
+                        <ul class="list-unstyled mb-0">
+                          <li>
+                            Checked
+                          </li>
+                          <li>
+                            Unchecked
+                          </li>
+                        </ul>
+                      </td>
+                      <td>If <strong>checked</strong>, shows items even if they’re hidden from your
+                        site’s navigation.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              {% endeditable_region_block %}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+      <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0" aria-label="{{ componentSidebar }}">
+        <div class="sticky-top pt-3 mt-n3">
+          <div class="mb-3">
+            <h2 class="border-top border-wvu-accent--light-blue text-uppercase h6 pt-2">How-Tos and Tips</h2>
+            <ul class="list-unstyled ps-0">
+              {% assign howToLabel = page.slug | append: '-how-to' %}
+              {% assign root = site.root_page %}
+              {% assign howToItems = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: howToLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
+              {% for item in howToItems %}
+                <li class="d-flex"><span class="fa-solid fa-circle-arrow-right text-wvu-gold me-1" style="margin-top: 6px;"></span><a href="{{ item.url }}" class="text-decoration-none">{{ item.alternate_name | default: item.name }}</a></li>
+              {% endfor %}
+              <li class="d-flex"><span class="fa-solid fa-circle-arrow-right text-wvu-gold me-1" style="margin-top: 6px;"></span><a href="/wvu-design-system/shared-cleanslate-partials/theme-development-and-site-configuration-how-tos-and-tips/" class="text-decoration-none">Add a Shared Partial to a Template</a></li>
+              {% if page.parent.slug != 'essential-elements' %}
+                <li class="d-flex"><span class="fa-solid fa-circle-arrow-right text-wvu-gold me-1" style="margin-top: 6px;"></span><a href="/wvu-design-system/shared-cleanslate-partials/content-and-style-editing-how-tos-and-tips/style-content-using-the-style-editor" class="text-decoration-none">Style Content Using the Style Editor</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

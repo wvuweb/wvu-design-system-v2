@@ -1,0 +1,26 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_big_search | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-big-search"
+  else
+    assign basename = "big-search"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "text-center wvu-bg-pattern-gold text-wvu-blue",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-big-search/wvu-big-search--v1" component: component %}
+  {% else %}{% render "components/wvu-big-search/wvu-big-search--v1" component: component %}
+{% endcase %}

@@ -1,0 +1,27 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_profile_hero | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-profile-hero"
+  else
+    assign basename = "profile-hero"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "p-4 wvu-bg-position-center-top wvu-bg-size-cover",
+    "defaultHeaderClasses": "iowan-old-style-black-italic text-wvu-accent--dark-green",
+    "mainTagClasses": null
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-profile-hero/wvu-profile-hero--v1" component: component %}
+  {% else %}{% render "components/wvu-profile-hero/wvu-profile-hero--v1" component: component %}
+{% endcase %}

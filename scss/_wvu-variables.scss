@@ -1,0 +1,365 @@
+// Typography
+//==================================================
+
+// Helvetica Neue
+$helvetica-neue-fallback: 'Helvetica Neue', Helvetica, 'Helvetica LT Std', 'Helvetica CY', Arial, 'Lucida Grande', sans-serif !default;
+$helvetica-neue: 'HelveticaNeueW01-55Roma', $helvetica-neue-fallback;
+
+// Webfonts from Fonts.com
+$helvetica-neue-light: 'HelveticaNeueW01-45Ligh', $helvetica-neue-fallback !default;
+$helvetica-neue-bold: 'Helvetica Neue LT W01_75 Bold', $helvetica-neue-fallback !default;
+$helvetica-neue-condensed-black: 'HelveticaNeueW01-97Blac', $helvetica-neue-fallback !default;
+
+// Iowan
+$iowan-fallback: Iowan, Georgia, 'Times New Roman', Times, serif !default;
+$iowan-old-style: 'IowanOldStyleW01-Roman', $iowan-fallback !default;
+$iowan-old-style-italic: 'IowanOldStyleW01-Italic1120392', $iowan-fallback !default;
+$iowan-old-style-black: 'IowanOldStyleW01-Black', $iowan-fallback !default;
+$iowan-old-style-black-italic: 'IowanOldStyleW01-BlackI', $iowan-fallback !default;
+
+// Shout
+$wvu-shout-fallback: 'Arial Narrow', Impact, Charcoal, 'Arial Black', $helvetica-neue-fallback !default;
+$wvu-shout-font-family: $helvetica-neue-condensed-black !default;
+
+// Font size
+$wvu-font-size-base: 1rem !default;
+
+// Paragraph measure
+$wvu-p-measure: 48rem !default;
+
+// Line height
+$wvu-shout-line-height: 0.80487em !default;
+$wvu-traditional-audience-line-height: 1.16666666667em !default;
+
+// Audiences
+$wvu-traditional-audience: $iowan-old-style !default;
+$narrow-audience: $iowan-old-style-italic !default;
+
+// Tracking
+$wvu-letter-spacing-width: 2px !default;
+
+// Color
+//==================================================
+
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
+$primary:       $blue;
+$secondary:     $gray-600;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-900;
+
+// Primary
+$wvu-blue: #002855;
+$wvu-gold: #EAAA00;
+
+// Neutral
+$wvu-neutral--white: #F9F9F9;
+$wvu-neutral--black: #2C2A29;
+$wvu-neutral--dark-gray: #333F48;
+$wvu-neutral--light-gray: #A2AAAD;
+$wvu-neutral--dark-brown: #6E6259;
+$wvu-neutral--brown: #7C736A;
+$wvu-neutral--light-brown: #BFB8AF;
+
+// Accent
+$wvu-accent--dark-blue: #0033A0;
+$wvu-accent--blue: #005EB8;
+$wvu-accent--light-blue: #9BD3DD;
+$wvu-accent--brown: #4B3D2A;
+$wvu-accent--mustard: #8F701E;
+$wvu-accent--orange: #ED8B00;
+$wvu-accent--dark-green: #0D5257;
+$wvu-accent--green: #657A68;
+$wvu-accent--light-green: #9ABEAA;
+$wvu-accent--red: #BE3A34;
+$wvu-accent--burnt-orange: #CD4C08;
+$wvu-accent--yellow: #FDDA24;
+
+// Breadcrumbs
+$wvu-breadcrumbs-color: #8F9699;
+
+// Social Media
+
+$facebook: #3b5998;
+$twitter: #00acee;
+$flickr: #ff0084;
+$instagram: #8a3ab9;
+$linkedin: #0e76a8;
+$syndication: #ee802f;
+$youtube: #c4302b;
+$github: #171515;
+
+// Masthead
+//==================================================
+$wvu-flying-wv-w-signature: 'https://static.wvu.edu/global/images/logos/wvu/wvu-logo--2.0.0.svg' !default;
+$wvu-flying-wv-w-signature--blue: 'https://static.wvu.edu/global/images/logos/wvu/wvu-logo__blue--2.0.0.svg' !default;
+
+// Hero Elements
+//==================================================
+$wvu-shout-font-size-medium: 4.5em !default;
+$wvu-shout-font-size-long: 3em !default;
+$wvu-shout-margin: 0 0 .5em !default;
+
+// Hero Typography
+$wvu-hero-font-color: white !default;
+$wvu-hero-title-typeface: $wvu-shout-font-family !default;
+$wvu-hero-vignetting-opacity: .85 !default;
+$wvu-typography-line-length: 45rem !default;
+$wvu-tint-opacity: .9 !default;
+$wvu-vignetting-opacity: .85 !default;
+
+$wvu-slash-width: .5em !default;
+$wvu-slash-height: 1.25em !default;
+$wvu-slash-height-tall: 150% !default;
+
+$wvu-blue-pattern: "https://static.wvu.edu/global/images/patterns/wvu/background__blue--1.0.0.svg";
+$wvu-gold-pattern: "https://static.wvu.edu/global/images/patterns/wvu/background__gold--1.0.0.svg";
+$wvu-white-pattern: "https://static.wvu.edu/global/images/patterns/wvu/background__white--1.0.0.svg";
+$wvu-slashes-gold-blue: "https://static.wvu.edu/global/images/patterns/wvu/background__slash-grouping-gold-blue--1.0.0.svg";
+$wvu-slashes-gold-blue-white: "https://static.wvu.edu/global/images/patterns/wvu/background__slash-grouping-gold-blue-white--1.0.0.svg";
+$wvu-grid-pattern: "https://static.wvu.edu/global/images/patterns/wvu/background__grid--1.0.0.svg";
+$wvu-grid-pattern-transparent: "https://static.wvu.edu/global/images/patterns/wvu/background__grid-transparent--1.0.0.svg";
+$wvu-grid-pattern-zoomed: "https://static.wvu.edu/global/images/patterns/wvu/background__grid-zoomed--1.0.0.svg";
+$wvu-grid-pattern-zoomed-transparent: "https://static.wvu.edu/global/images/patterns/wvu/background__grid-zoomed-transparent--1.0.0.svg";
+$wvu-topo-map-black: "https://static.wvu.edu/global/images/patterns/wvu/background__topo-black--2.0.0.svg";
+$wvu-topo-map-white: "https://static.wvu.edu/global/images/patterns/wvu/background__topo-white--2.0.0.svg";
+$wvu-topo-map-partial-black: "/images/topo-partial.svg";
+$wvu-topo-map-opacity: 1 !default;
+$wvu-gradient-mesh-blue: "/images/gradient-mesh-blue.jpg";
+
+// Make !important configurable
+$global-important: !important !default; // Set to `null` to remove !important from all CSS property values, except where explicitly defined otherwise in mixin @includes.
+
+// WVU Elements
+$wvu-bar-color: $wvu-gold !default;
+$wvu-bar-position: 'top' !default;
+$wvu-bar-width: 7rem !default;
+
+// Z-index for vignetting. slash, grid
+$wvu-z-index-content: 3 !default;
+$wvu-z-index-breadcrumbs: 999999 !default;
+$wvu-z-index-primary-nav: 9999999 !default;
+$wvu-z-index-grid: 0 !default;
+$wvu-z-index-slash: -1 !default;
+$wvu-z-index-angle-container: -1 !default;
+$wvu-z-index-vignetting: 1 !default;
+
+// WVU Breakpoints
+$wvu-bp-xs: 0 !default;
+$wvu-bp-sm: 576px !default;
+$wvu-bp-md: 768px !default;
+$wvu-bp-lg: 992px !default;
+$wvu-bp-xl: 1400px !default;
+
+$wvu-bp-nav: $wvu-bp-lg;
+
+$wvu-breakpoints: (
+  $wvu-bp-xs,
+  $wvu-bp-sm,
+  $wvu-bp-md,
+  $wvu-bp-lg,
+  $wvu-bp-xl
+);
+
+// Bootstrap Overrides
+//==================================================
+$sizes: (
+  10: 10%,
+  20: 20%,
+  25: 25%,
+  30: 30%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  70: 70%,
+  75: 75%,
+  80: 80%,
+  90: 90%,
+  100: 100%,
+  auto: auto
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "white": $white,
+  "wvu-blue": $wvu-blue,
+  "wvu-gold": $wvu-gold,
+  "wvu-neutral--white": $wvu-neutral--white,
+  "wvu-neutral--black": $wvu-neutral--black,
+  "wvu-neutral--dark-gray": $wvu-neutral--dark-gray,
+  "wvu-neutral--light-gray": $wvu-neutral--light-gray,
+  "wvu-neutral--dark-brown": $wvu-neutral--dark-brown,
+  "wvu-neutral--brown": $wvu-neutral--brown,
+  "wvu-neutral--light-brown": $wvu-neutral--light-brown,
+  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue": $wvu-accent--blue,
+  "wvu-accent--light-blue": $wvu-accent--light-blue,
+  "wvu-accent--brown": $wvu-accent--brown,
+  "wvu-accent--mustard": $wvu-accent--mustard,
+  "wvu-accent--orange": $wvu-accent--orange,
+  "wvu-accent--dark-green": $wvu-accent--dark-green,
+  "wvu-accent--green": $wvu-accent--green,
+  "wvu-accent--light-green": $wvu-accent--light-green,
+  "wvu-accent--red": $wvu-accent--red,
+  "wvu-accent--burnt-orange": $wvu-accent--burnt-orange,
+  "wvu-accent--yellow": $wvu-accent--yellow,
+  "facebook": $facebook,
+  "twitter": $twitter,
+  "flickr": $flickr,
+  "instagram": $instagram,
+  "linkedin": $linkedin,
+  "syndication": $syndication,
+  "youtube": $youtube,
+  "github": $github
+);
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "white": $white,
+  "wvu-blue": $wvu-blue,
+  "wvu-gold": $wvu-gold,
+  "wvu-neutral--white": $wvu-neutral--white,
+  "wvu-neutral--black": $wvu-neutral--black,
+  "wvu-neutral--dark-gray": $wvu-neutral--dark-gray,
+  "wvu-neutral--light-gray": $wvu-neutral--light-gray,
+  "wvu-neutral--dark-brown": $wvu-neutral--dark-brown,
+  "wvu-neutral--brown": $wvu-neutral--brown,
+  "wvu-neutral--light-brown": $wvu-neutral--light-brown,
+  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue": $wvu-accent--blue,
+  "wvu-accent--light-blue": $wvu-accent--light-blue,
+  "wvu-accent--brown": $wvu-accent--brown,
+  "wvu-accent--mustard": $wvu-accent--mustard,
+  "wvu-accent--orange": $wvu-accent--orange,
+  "wvu-accent--dark-green": $wvu-accent--dark-green,
+  "wvu-accent--green": $wvu-accent--green,
+  "wvu-accent--light-green": $wvu-accent--light-green,
+  "wvu-accent--red": $wvu-accent--red,
+  "wvu-accent--burnt-orange": $wvu-accent--burnt-orange,
+  "wvu-accent--yellow": $wvu-accent--yellow,
+  "facebook": $facebook,
+  "twitter": $twitter,
+  "flickr": $flickr,
+  "instagram": $instagram,
+  "linkedin": $linkedin,
+  "syndication": $syndication,
+  "youtube": $youtube,
+  "github": $github
+);
+
+$dark-theme-colors: (
+  "wvu-blue",
+  "wvu-neutral--black",
+  "wvu-neutral--dark-gray",
+  "wvu-neutral--dark-brown",
+  "wvu-neutral--brown",
+  "wvu-accent--dark-blue",
+  "wvu-accent--blue",
+  "wvu-accent--brown",
+  "wvu-accent--mustard",
+  "wvu-accent--dark-green",
+  "wvu-accent--green",
+  "wvu-accent--red",
+  "wvu-accent--burnt-orange"
+);
+
+$light-theme-colors: (
+  "wvu-gold",
+  "wvu-neutral--white",
+  "wvu-neutral--light-gray",
+  "wvu-neutral--light-brown",
+  "wvu-accent--light-blue",
+  "wvu-accent--orange",
+  "wvu-accent--light-green",
+  "wvu-accent--yellow"
+);
+
+$grid-breakpoints: (
+  xs: $wvu-bp-xs,
+  sm: $wvu-bp-sm,
+  md: $wvu-bp-md,
+  lg: $wvu-bp-lg,
+  xl: $wvu-bp-xl
+);
+
+$container-max-widths: (
+  xl: 1360px
+);
+
+$spacer: 2rem;
+
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 6)
+);
+
+$blue: #006FE6;
+$card-border-radius: 0;
+$card-border-width: 0;
+$card-bg: transparent;
+$dark: $wvu-neutral--black;
+$display1-size: 7rem;
+$display2-size: 5rem;
+$display3-size: 4rem;
+$display4-size: 3.5rem;
+$font-size-base: 1rem;
+$emphasized-link-hover-darken-percentage: 0%;
+$font-family-sans-serif: $helvetica-neue-fallback;
+$jumbotron-bg: transparent;
+$jumbotron-padding: 4rem;
+$lead-font-size: ($font-size-base * 1.5);
+$link-decoration: underline;
+$pink: #DB1A74;
+$small-font-size: 80%;
+$nameSpace: 'wvu';
+$text-shadow: 2px 2px black;
+
+$enable-negative-margins: true;

@@ -1,0 +1,33 @@
+// WVU Logo Lockup
+//==================================================
+// Pairs the Flying WV with the name of your unit or organization below. The primary idenfifier of your site, displays in the masthead.
+
+@mixin wvu-logo-lockup($is-important: $global-important) {
+  @include helvetica-neue();
+  background-image: url($wvu-flying-wv-w-signature) $is-important;
+  background-repeat: no-repeat $is-important;
+  background-position: 0 -0.09em $is-important;
+  background-size: 22.25em 3.5em $is-important;
+  color: white $is-important;
+  display: inline-block $is-important;
+  font-size: .5rem $is-important;
+  font-weight: normal $is-important;
+  line-height: 1.4em $is-important;
+  max-width: 27em $is-important;
+  min-width: 22.2em $is-important;
+  padding-top: 3em $is-important;
+  padding-left: 4em $is-important;
+  text-transform: uppercase $is-important;
+  @media (min-width: $wvu-bp-md) {
+    font-size: .8rem $is-important;
+  }
+  &.wvu-logo-lockup--blue {
+    background-image: url($wvu-flying-wv-w-signature--blue) $is-important;
+    color: $wvu-blue $is-important;
+  }
+}
+
+// Example usage:
+// .wvu-logo-lockup {
+//   @include wvu-logo-lockup();
+// }

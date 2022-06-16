@@ -1,0 +1,7 @@
+{% assign pageThumbnailSrcTruncated = thumbnailSrc | split: 'iles/d/' %}
+{% if pageThumbnailSrcTruncated.size == 1 %}
+  {% assign pageThumbnailSrcTruncated = pageThumbnailSrcTruncated | split: 'iles/' %}
+{% endif %}
+{% assign fileId = pageThumbnailSrcTruncated[1] | split: '/' %}
+{% assign newPageThumbnailSrc = 'https://' | append: site.domain | append: '/files/' | append: fileId[0] %}
+{{ newPageThumbnailSrc }}

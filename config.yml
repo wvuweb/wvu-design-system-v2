@@ -1,0 +1,142 @@
+## Basic Theme Info
+name: WVU Design System
+description: WVU Design System Theme
+
+engine: liquid
+
+import_themes:
+  - git@github.com:wvuweb/wvu-design-system-liquid.git
+  - git@bitbucket.org:wvudigital/code-liquid.git
+
+## Attributes, Data and Variables
+custom_data_attributes:
+  - activate_header_subnav:
+    type: checkbox
+    title: Activate Header Subnav
+  - add_horizontal_subnav:
+    type: checkbox
+    title: Add Horizontal Subnav
+  - alternate_url:
+    title: Alternate URL
+  - backpage_header:
+    type: checkbox
+    title: Remove Header
+  - badge_label:
+    title: Badge Label
+  - article_has_hero:
+    type: checkbox
+    title: If blog article, show hero
+  - article_index_hide_author:
+    type: checkbox
+    title: Hide blog index author?
+  - breadcrumbs:
+    type: checkbox
+    title: Remove Breadcrumbs
+  - content_keys
+  - description:
+    type: text
+    rows: 6
+    tile: Description
+    required: false
+    maxlength: 255
+  - header_label:
+    type: checkbox
+    title: Show header label
+  - header_subhead:
+    type: checkbox
+    title: Show header subhead
+  - icon_code:
+    title: Icon Code
+  - include_masonry:
+    type: checkbox
+    title: Include Masonry
+  - link_text:
+    title: Link text
+  - search_action
+  - submenu_start_depth:
+    title: Submenu Start Depth
+  - submenu_max_depth:
+    title: Submenu Max Depth
+  - subsection_landing_page:
+    type: checkbox
+    title: Subsection Landing Page
+  - thumbnail_alt:
+    title: Thumbnail Alt Text
+  - thumbnail_url:
+    title: Thumnbail URL
+  - thumbnail_url_sq:
+    title: Thumnbail URL Square
+  - youtube_playlist_id:
+    title: YouTube Playlist ID
+
+custom_site_attributes:
+  - activate_alert_banner
+  - alert_banner_classes
+  - apply_link_1
+  - apply_link_1_url
+  - apply_link_2
+  - apply_link_2_url
+  - apply_link_3
+  - apply_link_3_url
+  - classes_wvu_backpage_header
+  - classes_wvu_backpage_header__h1
+  - classes_wvu_backpage_header__subhead
+  - classes_wvu_breadcrumbs
+  - classes_wvu_footer_links
+  - co_brand_subtitle
+  - component_version_action_hero_card
+  - component_version_backpage
+  - component_version_featurettes
+  - component_version_hero
+  - component_version_masthead
+  - component_version_nav
+  - disable_component_styler
+  - disable_primary_nav
+  - emergency_alert_json_url
+  - enable_keywords
+  - facebook_url
+  - flickr_url
+  - github_url
+  - google_site_verification
+  - has_alternate_logo
+  - has_co_brand
+  - has_standard_footer
+  - instagram_url
+  - is_demo_site
+  - linkedin_url
+  - masthead_college_link_address
+  - masthead_college_link_title
+  - masthead_color
+  - masthead_link_2_address
+  - masthead_link_2_title
+  - masthead_logo_url
+  - masthead_title
+  - nav_dropdowns
+  - syndication_url
+  - show_apply_links
+  - show_instructions
+  - sidebar_sticky_site
+  - slot_00_masthead
+  - slot_00_nav
+  - theme_version
+  - twitter_handle
+  - twitter_url
+  - twitter_widget_id
+  - youtube_url
+
+## Template Config
+# Specify which templates show up by default when creating a page
+default_templates:
+  content: backpage
+  blog: article_index
+  article: article
+  error: error
+
+## Optimizations
+css:
+  # Turn CSS compression on/off.
+  compress: true
+js:
+  # Turn JavaScript compression and mangling on/off
+  compress: true
+  mangle: true

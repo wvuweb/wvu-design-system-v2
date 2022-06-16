@@ -1,0 +1,4 @@
+{% case slot.custom %}
+  {% when 'custom-example' %}{% render "components/custom/custom-example" slot: slot %}
+  {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
+{% endcase %}

@@ -1,0 +1,40 @@
+{%- case component.baseName %}
+  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-e' or 'site-page-collection-e' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' %}
+    {% case numberOfItems %}
+      {% when 1 or 2 or 3 %}{% assign columnClasses = 'col-sm-6 col-md-4' %}
+      {% when 4 %}{% assign columnClasses = 'col-sm-6 col-lg-3' %}
+      {% when 5 or 6 or 9 or 10 %}{% assign columnClasses = 'col-sm-6 col-lg-4' %}
+      {% else %}{% assign columnClasses = 'col-sm-6 col-lg-4 col-xl-3' %}
+    {% endcase %}
+  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'testimonials' or 'site-testimonials' %}
+    {% assign columnClasses = 'col-md-6 col-lg-4' %}
+  {% when 'page-collection-colored-boxes' or 'site-page-collection-colored-boxes' %}
+    {% case numberOfItems %}
+      {% when 1 or 2 or 3 or 4 or 5 %}{% assign columnClasses = 'col' %}
+      {% when 6 or 9 %}{% assign columnClasses = 'col-lg-4' %}
+      {% else %}{% assign columnClasses = 'col-lg-3' %}
+    {% endcase %}
+  {% when 'photo-grid' %}
+    {% case numberOfItems %}
+      {% when 1 %}{% assign columnClasses = 'col' %}
+      {% when 3 %}{% assign columnClasses = 'col col-lg-6 col-xl-4' %}
+      {% else %}{% assign columnClasses = 'col col-lg-6' %}
+    {% endcase %}
+{%- endcase %}
+{% case component.baseName %}
+  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' %}
+    {%- if numberOfItems > 4 %}
+      {% assign columnClasses = columnClasses | append: ' mb-4' %}
+    {%- endif %}
+  {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'testimonials' or 'site-testimonials' %}
+    {%- if numberOfItems > 3 %}
+      {% assign columnClasses = columnClasses | append: ' mb-3' %}
+    {% else %}
+      {% assign columnClasses = columnClasses | append: ' mb-3 mb-lg-0' %}
+    {%- endif %}
+  {% when 'page-collection-colored-boxes' or 'site-page-collection-colored-boxes' %}
+    {%- if numberOfItems > 5 %}
+      {% assign columnClasses = columnClasses | append: ' mb-3' %}
+    {%- endif %}
+{%- endcase %}
+{{ columnClasses }}

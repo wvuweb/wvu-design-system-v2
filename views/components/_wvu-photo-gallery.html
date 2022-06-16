@@ -1,0 +1,28 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.data.component_version_photo_gallery | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-photo-gallery"
+  else
+    assign basename = "photo-gallery"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "py-5",
+    "defaultHeaderClasses": "mb-4",
+    "mainTagClasses": "wvu-gallery"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
+  {% else %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
+{% endcase %}

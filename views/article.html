@@ -1,0 +1,18 @@
+---
+layout: default
+custom_data_attributes:
+  - article_has_hero:
+    type: checkbox
+    title: Show hero?
+  - article_hide_author:
+    type: checkbox
+    title: Hide author?
+  - ifBackpageRemoveNav:
+    type: checkbox
+    title: If backpage, remove nav
+  - ifBackpageRemoveSidebar:
+    type: checkbox
+    title: If backpage, remove sidebar
+---
+
+{% render "components/wvu-article" number: 1, main: true %}

@@ -1,0 +1,122 @@
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit
+  endif
+-%}
+
+{% capture component_content %}
+  <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        <div class="mb-4">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+          {% editable_region_block name: component.region_names.header scope: component.scope %}
+            <h2 id="{{ component.name }}-label" class="display-3 wvu-shout">People Collection Headline</h2>
+            <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+          {% endeditable_region_block %}
+        </div>
+      {% endif %}
+
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+        {% assign itemClasses = itemClasses | strip %}
+      {% endif %}
+
+      {% capture loopContent %}
+
+        {% for item in items.all %}
+
+          {% liquid
+            if item.data.alternate_url != blank
+              assign link_href = item.data.alternate_url
+            else
+              assign link_href = item.url
+            endif
+          %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+            {% if item.data.thumbnail_url_sq != blank %}
+              <div class="row mb-1">
+                <div class="col-6 mx-auto col-sm-4 col-md-6">
+                  {% if item.data.thumbnail_url_sq != blank %}
+                    {%- capture itemThumbnailSrc %}
+                      {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
+                    {%- endcapture %}
+                    <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+
+            <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
+              {% if item.content['wvu-profile-1__name'] != blank %}
+                {{ item.content['wvu-profile-1__name'] }}
+              {% else %}
+                {{ item.alternate_name | default: item.name }}
+              {% endif %}
+            </{{ htag }}>
+            {% if item.content.wvu-profile-1__title != blank %}
+              <p class="helvetica-neue-light">{{ item.content.wvu-profile-1__title }}</p>
+            {% endif %}
+
+            {%- if item.data.description != blank %}
+              <p class="{{ itemBodyClasses }}">
+                {{ item.data.description }}
+              </p>
+            {% else %}
+              {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+            {%- endif %}
+
+            {% if itemReadMoreButtonText != 'none' %}
+              {% if item.data.link_text != blank %}
+                {% assign link_text = item.data.link_text %}
+              {% else %}
+                {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+              {% endif %}
+              <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+
+      {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+        <div class="mt-4">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+          {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+            <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+          {% endeditable_region_block %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}

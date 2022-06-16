@@ -1,0 +1,9 @@
+.btn {
+  text-decoration: none $global-important;
+}
+
+@each $text-color in $light-theme-colors {
+  .btn-#{$text-color} {
+    color: $wvu-neutral--black $global-important;
+  }
+}

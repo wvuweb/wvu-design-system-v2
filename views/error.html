@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<main id="wvu-main-content">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-md-8">
+        {% if edit_mode %}
+          <p><strong>Main body text:</strong></p>
+        {% endif %}
+        {% editable_region_block name: "main" %}
+          <p>Let’s see if we can help you find what you’re looking for:</p>
+          <ul>
+            <li>Check that the web address you entered doesn’t contain a typo.</li>
+            <li>Try searching this site for the page you’re looking for or enter your search terms on <a href="https://search.wvu.edu">search.wvu.edu</a>.</li>
+            <li><a href="http://www.google.com/">Google it</a>.</li>
+          </ul>
+        {% endeditable_region_block %}
+      </div>
+    </div>
+  </div> <!-- /.container -->
+</main>

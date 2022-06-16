@@ -1,0 +1,14 @@
+// WVU Logo Lockup
+//==================================================
+// Utility class that pairs the Flying WV with the name of your unit or organization below. The primary idenfifier of your site, displays in the masthead.
+
+.wvu-logo-lockup, %wvu-logo-lockup {
+  @include wvu-logo-lockup();
+}
+
+// Example usage:
+// <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-md-start text-white" href="/">
+//   <div class="wvu-logo-lockup mt-n1">
+//     Masthead Title
+//   </div>
+// </a>

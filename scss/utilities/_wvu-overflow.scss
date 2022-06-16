@@ -1,0 +1,7 @@
+// WVU Overflow Hidden
+//==================================================
+// Utility class sets overflow to hidden on an element. Useful for making sure a slash or background effect do not spill over into adjacent elements.
+
+.wvu-overflow-hidden, %wvu-overflow-hidden {
+  overflow: hidden $global-important;
+}

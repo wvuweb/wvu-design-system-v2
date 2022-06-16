@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    {% comment %}<!-- meta charset gets set automatically by CleanSlate -->{% endcomment %}
+    {% if page.is_home_page? %}
+      <title>{{ site.name }} at West Virginia University</title>
+      <link rel="canonical" href="{{ site.url }}">
+    {% else %}
+      <title>{{ page.alternate_name | default: page.name }} | {{ site.name }} | West Virginia University</title>
+      <link rel="canonical" href="{{ page.url }}" >
+    {% endif %}
+    <meta name="description" content="{{ page.meta_description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="{{ site.data.google_site_verification }}" />
+
+    {% render "utilities/social_meta_tags" %}
+
+    {% comment %}
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    {% endcomment %}
+
+    {% link_stylesheet name: "styles" %}
+
+    {% if page.data.youtube_playlist_id != blank %}
+      <link rel="stylesheet" href="https://static.wvu.edu/youtube-playlist-player/stylesheets/styles.css">
+    {% endif %}
+
+    {% unless edit_mode or page.template_name == 'component_doc' %}
+      <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/a140e17a00.js" crossorigin="anonymous"></script>
+    {% endunless %}
+
+    {% if edit_mode or page.template_name == 'component_doc' %}
+      <script src="https://kit.fontawesome.com/ba40ea27ab.js" crossorigin="anonymous"></script>
+    {% endif %}
+
+  </head>
+
+  <body class="{{ page.template_name }} page--{{ page.id }} page--{{ page.slug }} {% if edit_mode %}page--edit-mode page--hide-instructions-{{ site.data.hide_instructions }}{% endif %}">
+
+    <header aria-label="masthead">
+      <a class="sr-only sr-only-focusable" href="#wvu-main-content">Skip to main content</a>
+
+      {% if page.name == "Home" and site.data.activate_alert_banner == '1' %}
+        {% render "components/wvu-alert-banner" %}
+      {% endif %}
+      {% render "components/wvu-masthead" %}
+      {% render "components/wvu-nav" %}
+      {% if page.data.add_horizontal_subnav == '1' %}
+        {% render "components/wvu-horizontal-subnav" %}
+      {% endif %}
+
+      {% case page.template_name %}
+        {% when 'frontpage' or 'frontpage-college-or-department' or 'frontpage-conference-or-event' or 'frontpage-faculty-member' or 'frontpage-magazine' or 'frontpage-student-org' %}
+        {% when 'article' or 'profile' or 'student' or 'faculty-member' %}
+          {% if page.data.breadcrumbs != '1' %}
+            {% render "components/wvu-breadcrumbs" %}
+          {% endif %}
+        {% else %}
+          {% if page.data.breadcrumbs != '1' %}
+            {% render "components/wvu-breadcrumbs" %}
+          {% endif %}
+          {% if page.data.backpage_header != '1' %}
+            {% render "components/wvu-backpage-header" %}
+          {% endif %}
+      {% endcase %}
+    </header>
+
+    {{ __TEMPLATE_CONTENT__ }}
+
+    {% render "components/wvu-footer" scope: 'site' %}
+
+    {% comment %}
+      <!-- Helvetica Neue Light, Bold, & Condensed Black + Iowan Old Style, Italic, Black, & Black Italic web font from fonts.com. -->
+      <!-- Valid for *.wvu.edu, *.wvutech.edu, *.potomacstatecollege.edu & localhost. -->
+      <!-- Email web_services@mail.wvu.edu to get your domain added to this list. -->
+    {% endcomment %}
+    <script src="https://fast.fonts.net/jsapi/36d8cd92-7cc7-499b-b169-0eed9d670283.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    {% comment %}
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+    {% endcomment %}
+
+    {% link_javascript name: "vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom, vendor/twitter-fetcher/twitterFetcher_min, vendor/fontfaceobserver/fontfaceobserver, fontfaceobserver__custom" %}
+
+    {% if page.data.include_masonry == '1' %}
+      <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    {% endif %}
+
+    {{ content_for.page_js }}
+
+  </body>
+</html>

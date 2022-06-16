@@ -1,0 +1,138 @@
+{% if site.data.disable_component_styler == blank and edit_mode %}
+  <!-- Component Styler -->
+  {% unless page.data_saved? %}
+    {% assign instanceNumber = '1' %}
+    {% if component.baseName == "breadcrumbs" %}
+      {% assign component.name = "breadcrumbs-1" %}
+      {% assign component.classes = "wvu-breadcrumbs-1-classes" %}
+    {% endif %}
+  {% endunless %}
+
+  {% assign iconClassesRegionName = component.name | append: '__icon-classes' %}
+  {% assign ariaLabelRegionName = component.name | append: '-aria-label' %}
+  {% assign customItemColorsRegion = component.name | append: '__item-colors' %}
+
+  <button class="editpanelbutton wvu-z-index-max text-white p-1 rounded-sm d-inline-block btn btn-sm btn-wvu-neutral--black wvu-grow-shadow wvu-z-index-content position-absolute mt-n4 ml-1 ms-1" data-bs-toggle="collapse" data-bs-target="#editpanel-{{ component.name }}" role="button" aria-expanded="false" aria-controls="editpanel-{{ component.name }}"><small class="d-block"><i class="far fa-edit"></i> Edit <span class="text-capitalize">{{ component.baseName | replace: '-', ' ' }}</span> {{ component.number }} Styles</small></button>
+  <section class="editpanel px-2 px-md-5 pt-2 pb-3 mb-0 text-light bg-wvu-neutral--black position-relative collapse multi-collapse" id="editpanel-{{ component.name }}">
+    <p class="mb-0">
+      <!-- Region Name: {{component.region_names.classes}} -->
+      <span class="d-inline-block badge badge-secondary">Utility classes:</span> <div class="text-monospace wvu-z-index-max position-relative">{% editable_region name: component.region_names.classes, scope: component.scope, type: "simple" %}</div>
+    </p>
+    <p class="mt-1 small">
+      {% if component.defaultComponentClasses != blank %}
+        <strong class="text-muted">Default classes:</strong> <pre class="text-muted">{{ component.defaultComponentClasses }}</pre>
+      {% endif %}
+    </p>
+    <p class="mt-1 small mb-2">
+      Please see the <a href="/wvu-design-system/utilities/utilities-cheat-sheet" class="text-wvu-gold">Utilities Cheat Sheet</a> to know what utilties to apply.
+    </p>
+    <p class="mt-1 small">
+      <strong class="text-muted">Label for background image:</strong> <span class="badge bg-secondary">{{ page.slug }}-{{ component.name }}-background</span>
+    </p>
+    {% if component.baseName == 'photo-gallery' %}
+      <p class="mt-1">
+        <small><strong class="text-muted">Apply this label to your photos to include in this gallery:</strong></small> <span class="badge badge-pill badge-secondary">{{ page.slug }}-photo-gallery-{{ component.number }}</span>
+      </p>
+    {% endif %}
+    <h2 class="mt-1 h6 small mb-1">
+      Aria Label (if this component has no header):
+    </h2>
+    <p class="mt-1 small text-muted mb-2">
+      {% editable_region name: ariaLabelRegionName, type: 'simple', scope: component.scope %}
+    </p>
+    {% if component.baseName == 'alternating-grid' or component.baseName == 'page-collection-colored-boxes' %}
+      <h2 class="mt-1 h6 small mb-1">
+        Item Colors (a comma-separated list of background colors):
+      </h2>
+      {% editable_region name: customItemColorsRegion, type: 'simple', scope: component.scope %}
+      <p class="mt-1 small text-muted mb-2">
+        <strong>Default Item Colors:</strong> wvu-accent--burnt-orange,wvu-accent--blue,wvu-accent--brown,wvu-accent--green,wvu-accent--red,wvu-neutral--dark-gray
+      </p>
+    {% endif %}
+    {% case component.baseName %}
+      {% when 'alternating-grid' or 'site-alternating-grid' or 'article-collection' or 'site-article-collection' or 'cards' or 'site-cards' or 'contact-collection' or 'site-contact-collection' or 'page-collection' or 'site-page-collection' or 'page-collection-colored-boxes' or 'site-page-collection-colored-boxes' or 'page-collection-icons' or 'site-page-collection-icons' or 'page-collection-vertical' or 'site-page-collection-vertical' or 'page-collection-vertical-icons' or 'site-page-collection-vertical-icons' or 'profile-teaser' or 'site-profile-teaser' or 'testimonials' or 'site-testimonials' %}
+        <div class="row mt-3">
+          <div class="col-lg text-white">
+            <p class="mb-1 small">
+              <r:edit_mode_only>Utility classes for row:</r:edit_mode_only>
+                {% editable_region name: component.region_names.rowClasses, type: "simple", scope: component.scope %}
+            </p>
+            <p class="text-muted mb-0 mt-1 small">
+              {% if component.defaultRowClasses != blank %}
+                <strong>Default classes:</strong> {{ component.defaultRowClasses }}
+              {% else %}
+                <strong>Default classes:</strong> N/A
+              {% endif %}
+            </p>
+          </div>
+          <div class="col-lg text-white">
+            <p class="mb-1 small">
+              {% if edit_mode %}Utility classes for items:{% endif %}
+              {% editable_region name: component.region_names.itemClasses, type: "simple", scope: component.scope %}
+            </p>
+            <p class="text-muted mb-0 mt-1 small">
+              <strong>Default classes:</strong> {{ footerItemClasses | default: "N/A" }}
+            </p>
+          </div>
+          {% case component.baseName %}
+            {% when 'alternating-grid' or 'article-collection' or 'cards' or 'contact-collection' or 'page-collection' or 'page-collection-colored-boxes' or 'page-collection-icons' or 'page-collection-vertical' or 'page-collection-vertical-icons' or 'profile-teaser' or 'testimonials' %}
+              <div class="col-lg text-white">
+                <p class="mb-1 small">
+                  {% if edit_mode %}Utility classes for item headers:{% endif %}
+                  {% editable_region name: component.region_names.itemHeaderClasses, type: "simple", scope: component.scope %}
+                </p>
+                <p class="text-muted mb-0 mt-1 small">
+                  {% if component.defaultItemHeaderClasses != blank %}
+                    <strong>Default classes:</strong> {{ component.defaultItemHeaderClasses }}
+                  {% endif %}
+                </p>
+              </div>
+              <div class="col-lg text-white">
+                <p class="mb-1 small">
+                  {% if edit_mode %}Utility classes for item body copy:{% endif %}
+                  {% editable_region name: component.region_names.itemBodyClasses, type: "simple", scope: component.scope %}
+                </p>
+                <p class="text-muted mb-0 mt-1 small">
+                  {% if component.defaultItemBodyClasses != blank %}
+                    <strong>Default classes:</strong> {{ component.defaultItemBodyClasses }}
+                  {% else %}
+                    <strong>Default classes:</strong> N/A
+                  {% endif %}
+                </p>
+              </div>
+              <div class="col-lg text-white">
+                <p class="mb-1 small">
+                  {% if edit_mode %}Utility classes for buttons:{% endif %}
+                  {% editable_region name: component.region_names.itemButtonClasses, type: "simple", scope: component.scope %}
+                </p>
+                <p class="text-muted mb-0 mt-1 small">
+                  {% if component.defaultItemButtonClasses != blank %}
+                    <strong>Default classes:</strong> {{ component.defaultItemButtonClasses }}
+                  {% endif %}
+                </p>
+              </div>
+              <div class="col-lg text-white">
+                <p class="mb-1 small">
+                  {% if edit_mode %}Collection Items Button Text:{% endif %}
+                  {% editable_region name: component.region_names.readMoreButtonText, type: "simple", scope: component.scope, placeholder="Read More" %}
+                </p>
+                <p class="text-muted mb-0 mt-1 small">
+                  <strong>Default button text:</strong> Read More (type “none” to remove the buttons entirely)
+                </p>
+              </div>
+          {% endcase %}
+        </div>
+    {% endcase %}
+    {% case component.baseName %}
+      {% when 'page-collection-icons' or 'page-collection-vertical-icons' %}<div class="col-lg text-white">
+        <p class="mb-1 small">
+          {% if edit_mode %}Utility classes for icons:{% endif %}
+          {% editable_region name: iconClassesRegionName, type: "simple", scope: component.scope %}
+        </p>
+        <p class="text-muted mb-0 mt-1 small">
+          <strong>Default classes:</strong> {{ component.defaultIconClasses }}
+        </p>
+      </div>
+    {% endcase %}
+  </section>
+{% endif %}

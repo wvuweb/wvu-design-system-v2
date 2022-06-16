@@ -1,0 +1,9 @@
+// Bootstrap’s link classes don’t have a text decoration by default and we don’t want them to. However, this becomes a problem in a link list like breadcrumbs, so we have to add a decoration.
+
+.wvu-breadcrumbs {
+  color: $wvu-breadcrumbs-color;
+  a, a:link, a:visited, a:hover {
+    color: $wvu-breadcrumbs-color;
+    text-decoration: underline;
+  }
+}
