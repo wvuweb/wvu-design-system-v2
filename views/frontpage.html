@@ -1,12 +1,33 @@
 ---
 layout: default
 custom_data_attributes:
+  - limit:
+    title: Featured Pages Limit
+  - removeFeaturedPages:
+    type: checkbox
+    title: Remove Featured Pages
+  - removeCalendarEvents:
+    type: checkbox
+    title: Remove Calendar Events
   - removeQuicklinks:
     type: checkbox
     title: Remove Quicklinks
+  - showFeaturedPagesIfHidden:
+    type: checkbox
+    title: Show Featured Pages if Hidden
 ---
 
+{% assign featuredPagesLimit = page.data.limit | default: 4 %}
+
 {% render "components/wvu-hero" number: 1, main: true %}
+
+{% if page.data.removeFeaturedPages != 1 %}
+  {% render "components/wvu-page-collection" number: 1, limit: featuredPagesLimit, showHidden: componentShowFeaturedPagesIfHidden %}
+{% endif %}
+
+{% if page.data.removeCalendarEvents != 1 %}
+  {% render "components/wvu-calendar-events" number: 1 %}
+{% endif %}
 
 {% if page.data.removeQuicklinks != 1 %}
   {% render "components/wvu-quicklinks" number: 1 %}

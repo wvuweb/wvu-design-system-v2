@@ -1,5 +1,6 @@
 {%- liquid
-  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.itemClasses
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
   assign componentLimit = component.limit | default: 1
   assign range = (1..componentLimit)
 -%}
@@ -18,7 +19,7 @@
       {% endeditable_region_block %}
     {%- endif %}
 
-    <div class="row">
+    <div class="row {{ rowClasses }}">
       {% for i in range %}
         {%- capture componentPanel %}{{ component.name }}__panel-{{ i }}{% endcapture %}
         <div class="{{ itemClasses }}">

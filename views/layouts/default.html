@@ -34,7 +34,7 @@
       {% if page.name == "Home" and site.data.activate_alert_banner == '1' %}
         {% render "components/wvu-alert-banner" %}
       {% endif %}
-      
+
       {% render "components/wvu-masthead" %}
 
       {% render "components/wvu-nav" %}
@@ -45,7 +45,7 @@
 
       {% case page.template_name %}
         {% when 'frontpage' or 'frontpage-college-or-department' or 'frontpage-conference-or-event' or 'frontpage-faculty-member' or 'frontpage-magazine' or 'frontpage-student-org' %}
-        {% when 'article' or 'profile' or 'student' or 'faculty-member' %}
+        {% when 'article' or 'profile' or 'student' or 'faculty-member' or 'landing-page' %}
           {% if page.data.breadcrumbs != '1' %}
             {% render "components/wvu-breadcrumbs" %}
           {% endif %}

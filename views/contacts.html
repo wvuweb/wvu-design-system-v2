@@ -1,6 +1,8 @@
 ---
 layout: default
 custom_data_attributes:
+  - limit:
+    title: Limit
   - ifBackpageRemoveNav:
     type: checkbox
     title: If backpage, remove nav
@@ -9,4 +11,6 @@ custom_data_attributes:
     title: If backpage, remove sidebar
 ---
 
-{% render "components/wvu-profiles-vertical" number: 1, main: true %}
+{% assign componentLimit = page.data.limit | default: 10 %}
+
+{% render "components/wvu-contact-collection-vertical" number: 1, main: true, limit: componentLimit %}

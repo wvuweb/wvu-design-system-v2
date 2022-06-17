@@ -1,10 +1,11 @@
 {%- liquid
   assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
 -%}
 
 {% capture component_content %}
   <div class="container wvu-z-index-content" data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-    <div class="row justify-content-center pt-1">
+    <div class="row {% if component.align == 'left' %}justify-content-start {% elsif component.align == 'right '%}justify-content-end {% else %}justify-content-center {% endif %}pt-1">
 
       {% capture block_content %}
         {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}

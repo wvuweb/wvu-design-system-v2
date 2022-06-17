@@ -1,6 +1,8 @@
 ---
 layout: default
 custom_data_attributes:
+  - limit:
+    title: Page Collection Limit
   - ifBackpageRemoveNav:
     type: checkbox
     title: If backpage, remove nav
@@ -9,6 +11,8 @@ custom_data_attributes:
     title: If backpage, remove sidebar
 ---
 
+{% assign pageCollectionLimit = page.data.limit | default: 10 %}
+
 {% render "components/wvu-hero" number: 1, main: true %}
 
-{% render "components/wvu-pages-collection" number: 1 %}
+{% render "components/wvu-pages-collection" number: 1, limit: pageCollectionLimit %}
