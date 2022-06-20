@@ -30,6 +30,14 @@
               {% elsif page.data.thumbnail_url != blank %}
                 {% assign thumbnailSrc = page.data.thumbnail_url | build_image_url: format: '1600x1200.jpg' %}
                 <img class="card-img-top w-100" src="{{ thumbnailSrc }}/381x255.jpg" srcset="{{ thumbnailSrc }}/960x640.jpg, {{ thumbnailSrc }}/586x286.jpg, {{ thumbnailSrc }}/381x255.jpg, {{ thumbnailSrc }}/286x191.jpg, {{ thumbnailSrc }}/279x186.jpg, {{ thumbnailSrc }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+              {% else %}
+                {% if edit_mode %}
+                  <div class="alert alert-warning rounded p-3">
+                    <p class="mb-0">
+                      It looks like you haven’t added a photo to this profile yet. You can <a href="https://dsws.sandbox.wvu.edu/wvu-design-system/shared-cleanslate-partials/content-and-style-editing-how-to-and-tips/add-a-thumbnail-image-or-profile-photo-to-a-page">add a photo to a profile in the page properties</a>.
+                    </p>
+                  </div>
+                {% endif %}
               {% endif %}
             </div>
           </div>
