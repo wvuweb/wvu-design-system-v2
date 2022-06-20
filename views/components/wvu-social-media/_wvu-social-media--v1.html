@@ -4,18 +4,22 @@
   <div class="container">
     <div class="row text-center text-md-start">
       <div class="col-md-4 mb-3 mb-md-0 d-md-flex align-items-center">
-        {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
-        {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
-            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
-            {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
-            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
-          </small>
-        {% endif %}
-        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
-        {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">Connect With Us</h2>
+        <div>
+          {% if edit_mode %}
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+              <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+              {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
+              <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+            </small>
+          {% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+          <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">Connect With Us</h2>
+          {% if edit_mode %}
+            <div class="py-2 alert alert-info p-3">
+              You can add social media accounts to this component in your site settings. Find the field that corresponds to the account you want to add e.g. “facebook_url”, and enter your handle/username e.g. “https://www.facebook.com/westvirginiamountaineers” into the field.
+            </div>
+          {% endif %}
+        </div>
       </div>
       <div class="col-md-8 align-self-center">
         <ul class="list-inline float-md-end align-middle mb-0">
