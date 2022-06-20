@@ -6,7 +6,7 @@ custom_data_attributes:
     title: Show Featured Articles if Hidden
   - articleLimit:
     title: Article Limit
-  - removePagesCollection:
+  - removePageCollection:
     type: checkbox
     title: Remove Categories
   - categoryLimit:
@@ -20,6 +20,6 @@ custom_data_attributes:
 
 {% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
 
-{% if page.data.removePagesCollection != '1' %}
-  {% render "components/wvu-pages-collection" number: 1, limit: categoryLimit %}
+{% if page.data.removePageCollection != '1' %}
+  {% render "components/wvu-page-collection" number: 1, limit: categoryLimit %}
 {% endif %}
