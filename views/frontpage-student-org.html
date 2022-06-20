@@ -1,18 +1,29 @@
 ---
 layout: default
 custom_data_attributes:
+  - removePageCollection:
+    type: checkbox
+    title: Remove Featured Pages
+  - removeCalendarEvents:
+    type: checkbox
+    title: Remove Calendar Events
   - removeSocialMedia:
     type: checkbox
     title: Remove Social Media
+  - removeTwitterWidget:
+    type: checkbox
+    title: Remove Twitter Widget
 ---
 
 {% render "components/wvu-hero" number: 1, main: true %}
 
-{% render "components/wvu-featurettes" number: 1 %}
+{% if page.data.removePageCollection != '1' %}
+  {% render "components/wvu-page-collection" number: 1 %}
+{% endif %}
 
-{% render "components/wvu-action-hero" number: 1 %}
-
-{% render "components/wvu-featurettes" number: 2 %}
+{% if page.data.removeCalendarEvents != '1' %}
+  {% render "components/wvu-calendar-events" number: 1 %}
+{% endif %}
 
 {% if page.data.removeSocialMedia != '1' %}
   {% render "components/wvu-social-media" number: 1 %}

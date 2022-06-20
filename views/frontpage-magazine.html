@@ -1,13 +1,25 @@
 ---
 layout: default
+custom_data_attributes:
+  - showArticlesIfHidden:
+    type: checkbox
+    title: Show Featured Articles if Hidden
+  - articleLimit:
+    title: Article Limit
+  - removePagesCollection:
+    type: checkbox
+    title: Remove Categories
+  - categoryLimit:
+    title: Category Pages Limit
+  - showPagesIfHidden:
+    type: checkbox
+    title: Show Featured Articles if Hidden
 ---
 
 {% render "components/wvu-hero" number: 1, main: true %}
 
-{% render "components/wvu-featurettes" number: 1 %}
+{% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
 
-{% render "components/wvu-action-hero" number: 1 %}
-
-{% render "components/wvu-featurettes" number: 2 %}
-
-{% render "components/wvu-featurettes" number: 21, scope: "site" %}
+{% if page.data.removePagesCollection != '1' %}
+  {% render "components/wvu-pages-collection" number: 1, limit: categoryLimit %}
+{% endif %}
