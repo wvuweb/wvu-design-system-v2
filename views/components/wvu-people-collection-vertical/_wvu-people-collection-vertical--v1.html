@@ -70,7 +70,7 @@
               {% if item.data.thumbnail_url_sq != blank %}
                 <div class="col-md-4">
                   <div class="row mb-1">
-                    <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-xl-0 ms-xl-auto">
+                    <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
                       {% if item.data.thumbnail_url_sq != blank %}
                         {%- capture itemThumbnailSrc %}
                           {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
