@@ -1,0 +1,33 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign themeVersion = site.data.theme_version | default: '1'
+  assign componentVersion = site.component_versions.people_collection_vertical | default: themeVersion
+  assign scope = scope | default: slot.scope
+
+  if scope == 'site'
+    assign basename = "site-people-collection-vertical"
+  else
+    assign basename = "people-collection-vertical"
+  endif
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "text-center",
+    "defaultRowClasses": "justify-content-start",
+    "defaultItemClasses": "mb-4 col-lg-8 mx-md-auto text-start",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "btn btn-primary btn-sm",
+    "defaultItemButtonText": "Read More",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when '1' %}{% render "components/wvu-people-collection-vertical/wvu-people-collection-vertical--v1" component: component %}
+  {% else %}{% render "components/wvu-people-collection-vertical/wvu-people-collection-vertical--v1" component: component %}
+{% endcase %}
