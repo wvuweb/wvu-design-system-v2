@@ -10,23 +10,25 @@
             </noscript>
             {% if page.data.disableProgramType != '1' %}
               <div class="option-combo program-type">
-                <fieldset class="filter option-set js-radio-button-group" data-filter-group="program-type">
+                <fieldset>
                   <legend class="h6 small text-uppercase mb-1">Filter by Program Type:</legend>
-                  <div class="form-check form-check-inline">
-                    <input class="selected active form-check-input" type="radio" name="any" id="any" value="">
-                    <label class="form-check-label" for="any">Any</label>
+                  <div class="filter option-set js-radio-button-group" data-filter-group="program-type">
+                    <div class="form-check">
+                      <input class="selected active form-check-input" type="radio" name="any" id="any" value="">
+                      <label class="form-check-label" for="any">Any</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="bachelors" id="bachelors" value=".bachelors">
+                      <label class="form-check-label" for="bachelors">Bachelor’s</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="masters" id="masters" value=".masters">
+                      <label class="form-check-label" for="masters">Master’s</label>
+                    </div>
+                    <a href="#filter-program-type-doctoral" class="button btn btn-secondary w-100 text-start" data-filter-value=".doctoral">Doctoral</a>
+                    <a href="#filter-program-type-certificate" class="button btn btn-secondary w-100 text-start" data-filter-value=".certificate">Certificate</a>
+                    <a href="#filter-program-type-minor" class="button btn btn-secondary w-100 text-start" data-filter-value=".minor">Minor</a>
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="bachelors" id="bachelors" value=".bachelors">
-                    <label class="form-check-label" for="bachelors">Bachelor’s</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="masters" id="masters" value=".masters">
-                    <label class="form-check-label" for="masters">Master’s</label>
-                  </div>
-                  <a href="#filter-program-type-doctoral" class="button btn btn-secondary w-100 text-start" data-filter-value=".doctoral">Doctoral</a>
-                  <a href="#filter-program-type-certificate" class="button btn btn-secondary w-100 text-start" data-filter-value=".certificate">Certificate</a>
-                  <a href="#filter-program-type-minor" class="button btn btn-secondary w-100 text-start" data-filter-value=".minor">Minor</a>
                 </fieldset>
               </div>
             {% endif %}
