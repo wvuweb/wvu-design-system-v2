@@ -207,12 +207,12 @@
         $.bbq.pushState( options );
       });
 
-      // function selectLink( $link ) {
-      //   $link.parents('.option-set').find('.selected').removeClass('selected');
-      //   $link.parents('.option-set').find('.active').removeClass('active');
-      //   $link.addClass('selected')
-      //   $link.addClass('active')
-      // }
+      function selectLink( $link ) {
+        $link.parents('.option-set').find('.selected').removeClass('selected');
+        $link.parents('.option-set').find('.active').removeClass('active');
+        $link.addClass('selected')
+        $link.addClass('active')
+      }
 
       var location = window.location;
       var $comboFilterOptionSets = $('.combo-filters .option-set');
