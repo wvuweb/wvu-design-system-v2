@@ -13,7 +13,7 @@
                 <legend class="h6 small text-uppercase mb-1">Filter by Program Type:</legend>
                 <div class="filter option-set js-radio-button-group" data-filter-group="program-type">
                   <div class="form-check">
-                    <input href="#filter-program-type-any" class="form-check-input" type="radio" name="program-type" id="radioAny" data-filter-value="" checked>
+                    <input href="#filter-program-type-any" class="form-check-input active selected" type="radio" name="program-type" id="radioAny" data-filter-value="" checked>
                     <label class="form-check-label" for="radioAny">Any</label>
                   </div>
                   <div class="form-check">
@@ -210,8 +210,10 @@
       function selectLink( $link ) {
         $link.parents('.option-set').find('.selected').removeClass('selected');
         $link.parents('.option-set').find('.active').removeClass('active');
+        $link.parents('.option-set').find('.active').removeAttribute('checked');
         $link.addClass('selected')
         $link.addClass('active')
+        $link.addAttribute('checked')
       }
 
       var location = window.location;
