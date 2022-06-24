@@ -24,19 +24,34 @@
                     <input class="form-check-input" type="radio" name="program-type" id="radioMasters" data-filter-value=".masters">
                     <label class="form-check-label" for="radioMasters">Master’s</label>
                   </div>
-                  <a href="#filter-program-type-doctoral" class="button btn btn-secondary w-100 text-start" data-filter-value=".doctoral">Doctoral</a>
-                  <a href="#filter-program-type-certificate" class="button btn btn-secondary w-100 text-start" data-filter-value=".certificate">Certificate</a>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="program-type" id="radioDoctoral" data-filter-value=".doctoral">
+                    <label class="form-check-label" for="radioDoctoral">Doctoral</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="program-type" id="radioCertificate" data-filter-value=".certificate">
+                    <label class="form-check-label" for="radioCertificate">Certificate</label>
+                  </div>
                 </div>
               </fieldset>
             </div>
 
             <div class="option-combo delivery-option mt-4">
-              <legend class="h6 small text-uppercase mb-1">Filter by Delivery Option:</legend>
               <fieldset>
-                <div class="filter option-set filter-button-group button-group btn-group-vertical js-radio-button-group w-100" data-filter-group="delivery-option">
-                  <a href="#filter-delivery-option-any" class="button selected active btn btn-secondary w-100 text-start" data-filter-value="" class="selected">Any</a>
-                  <a href="#filter-delivery-option-in-person" class="button btn btn-secondary w-100 text-start" data-filter-value=".in-person">In-Person</a>
-                  <a href="#filter-delivery-option-online" class="button btn btn-secondary w-100 text-start" data-filter-value=".online">Online</a>
+                <legend class="h6 small text-uppercase mb-1">Filter by Delivery Option:</legend>
+                <div class="filter option-set js-radio-button-group w-100" data-filter-group="delivery-option">
+                  <div class="form-check">
+                    <input class="form-check-input active selected" type="radio" name="program-type" id="radioAny2" data-filter-value="" checked>
+                    <label class="form-check-label" for="radioAny2">Any</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="program-type" id="radioInPerson" data-filter-value=".in-person">
+                    <label class="form-check-label" for="radioInPerson">In Person</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="program-type" id="radioOnline" data-filter-value=".online">
+                    <label class="form-check-label" for="radioOnline">Online</label>
+                  </div>
                 </div>
               </fieldset>
             </div>
