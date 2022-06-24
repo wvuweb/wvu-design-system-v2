@@ -26,23 +26,20 @@
                   </div>
                   <a href="#filter-program-type-doctoral" class="button btn btn-secondary w-100 text-start" data-filter-value=".doctoral">Doctoral</a>
                   <a href="#filter-program-type-certificate" class="button btn btn-secondary w-100 text-start" data-filter-value=".certificate">Certificate</a>
-                  <a href="#filter-program-type-minor" class="button btn btn-secondary w-100 text-start" data-filter-value=".minor">Minor</a>
                 </div>
               </fieldset>
             </div>
 
-            {% if page.data.disableDeliveryMethod != '1' %}
-              <div class="option-combo delivery-option mt-4">
-                <legend class="h6 small text-uppercase mb-1">Filter by Delivery Option:</legend>
-                <fieldset>
-                  <div class="filter option-set filter-button-group button-group btn-group-vertical js-radio-button-group w-100" data-filter-group="delivery-option">
-                    <a href="#filter-delivery-option-any" class="button selected active btn btn-secondary w-100 text-start" data-filter-value="" class="selected">Any</a>
-                    <a href="#filter-delivery-option-in-person" class="button btn btn-secondary w-100 text-start" data-filter-value=".in-person">In-Person</a>
-                    <a href="#filter-delivery-option-online" class="button btn btn-secondary w-100 text-start" data-filter-value=".online">Online</a>
-                  </div>
-                </fieldset>
-              </div>
-            {% endif %}
+            <div class="option-combo delivery-option mt-4">
+              <legend class="h6 small text-uppercase mb-1">Filter by Delivery Option:</legend>
+              <fieldset>
+                <div class="filter option-set filter-button-group button-group btn-group-vertical js-radio-button-group w-100" data-filter-group="delivery-option">
+                  <a href="#filter-delivery-option-any" class="button selected active btn btn-secondary w-100 text-start" data-filter-value="" class="selected">Any</a>
+                  <a href="#filter-delivery-option-in-person" class="button btn btn-secondary w-100 text-start" data-filter-value=".in-person">In-Person</a>
+                  <a href="#filter-delivery-option-online" class="button btn btn-secondary w-100 text-start" data-filter-value=".online">Online</a>
+                </div>
+              </fieldset>
+            </div>
 
           </div>
 
@@ -183,7 +180,7 @@
       };
 
       // filter buttons
-      $('.filter').on( 'click', 'a', function( event ) {
+      $('.filter').on( 'click', 'input', function( event ) {
         event.preventDefault();
         var $this = $(this);
         // don't proceed if already selected
@@ -229,7 +226,7 @@
           isoFilters.push( filterValue );
           // change selected combo filter link
           $optionSet = $comboFilterOptionSets.filter('[data-filter-group="' + prop + '"]');
-          $link = $optionSet.find('a[data-filter-value="' + filterValue + '"]');
+          $link = $optionSet.find('input[data-filter-value="' + filterValue + '"]');
           selectLink( $link );
         }
         var selector = isoFilters.join('');
@@ -250,7 +247,7 @@
 
         // change selected link for sortBy
         if ( options.sortBy ) {
-          var $link = $sortBy.find('a[data-option-value="' + options.sortBy + '"]');
+          var $link = $sortBy.find('input[data-option-value="' + options.sortBy + '"]');
           selectLink( $link );
         }
 
