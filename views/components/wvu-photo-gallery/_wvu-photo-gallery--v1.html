@@ -13,13 +13,23 @@
     <div class="row js-wvu-lightbox-gallery">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
+      {% assign numberOfImages = 0 %}
       {% for image in images.all %}
         <div class="col-md-4 col-lg-3 mb-3">
           <a href="{{ image | image_url: size: '960x640' }}" title="{{ image.description }}">
             <img src="{{ image | image_url: size: '480x320' }}" alt="{{ immage.alt_text }}" />
           </a>
         </div>
+        {% assign numberOfImages = numberOfImages | plus: 1 %}
       {% endfor %}
+      {% if edit_mode and numberOfImages == 0 %}
+        <div class="alert alert-warning p-3 p-xl-4 my-4 mb-0 text-start">
+          <h2>Whoops!</h2>
+          <p class="mb-0">
+            It looks like you don’t have any images labeled yet. To get images to appear here, label the pages with <span class="badge rounded-pill bg-secondary">{{ page.slug }}-{{ component.name }}</span>. You can add labels to images from the Files tab in the CleanSlate dashboard by hovering over the image, clicking Edit, then entering your labels in the Labels field.
+          </p>
+        </div>
+      {% endif %}
     </div>
   </div>
 {% endcapture %}

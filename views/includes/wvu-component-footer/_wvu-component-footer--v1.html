@@ -29,11 +29,6 @@
     <p class="mt-1 small">
       <strong class="text-muted">Label for background image:</strong> <span class="badge bg-secondary">{{ page.slug }}-{{ component.name }}-background</span>
     </p>
-    {% if component.baseName == 'photo-gallery' %}
-      <p class="mt-1">
-        <small><strong class="text-muted">Apply this label to your photos to include in this gallery:</strong></small> <span class="badge badge-pill badge-secondary">{{ page.slug }}-photo-gallery-{{ component.number }}</span>
-      </p>
-    {% endif %}
     <h2 class="mt-1 h6 small mb-1">
       Aria Label (if this component has no header):
     </h2>
