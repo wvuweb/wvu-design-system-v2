@@ -195,7 +195,7 @@
         $.bbq.pushState( options );
       });
 
-      var $sortBy = $('#sort-by').on( 'click', 'a', function( event ) {
+      var $sortBy = $('#sort-by').on( 'click', 'input', function( event ) {
         event.preventDefault();
         var $this = $(this);
         // don't proceed if already selected
