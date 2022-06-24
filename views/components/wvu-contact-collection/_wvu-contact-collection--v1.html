@@ -83,7 +83,12 @@
 
             <div class="mb-2">
               {% if item.content.wvu-profile-1__title != blank %}
-                <p class="helvetica-neue-light">{{ item.content.wvu-backpage-header-1__subhead }}</p>
+                <p>
+                  <span class="d-block helvetica-neue-bold">{{ item.content.wvu-profile-1__title }}</span>
+                  {% if item.content.wvu-profile-1__organization != blank %}
+                    <span class="d-block helvetica-neue-light">{{ item.content.wvu-profile-1__title }}</span>
+                  {% endif %}
+                </p>
               {% endif %}
 
               {% if item.content.wvu-profile-1__phone != blank %}
