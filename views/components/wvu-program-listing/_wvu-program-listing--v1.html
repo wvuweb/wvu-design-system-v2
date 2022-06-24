@@ -211,9 +211,9 @@
         $link.parents('.option-set').find('.selected').removeClass('selected');
         $link.parents('.option-set').find('.active').removeClass('active');
         $link.parents('.option-set').find('.active').removeAttr('checked');
-        $link.addClass('selected')
-        $link.addClass('active')
-        $link.attr('checked')
+        $link.addClass('selected');
+        $link.addClass('active');
+        $link.attr('checked', 'checked');
       }
 
       var location = window.location;
