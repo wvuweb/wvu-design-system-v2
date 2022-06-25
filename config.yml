@@ -66,6 +66,9 @@ custom_data_attributes:
     title: Thumnbail URL
   - thumbnail_url_sq:
     title: Thumnbail URL Square
+  - useFACSS:
+    type: checkbox
+    title: Use FontAwesome CSS
   - youtube_playlist_id:
     title: YouTube Playlist ID
 

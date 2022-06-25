@@ -24,6 +24,12 @@
 
     <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/a140e17a00.js" crossorigin="anonymous"></script>
 
+    {% if page.data.useFACSS = '1' %}
+      <script src="https://kit.fontawesome.com/ba40ea27ab.js" crossorigin="anonymous"></script>
+    {% else %}
+      <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/a140e17a00.js" crossorigin="anonymous"></script>
+    {% endif %}
+
   </head>
 
   <body class="{{ page.template_name }} page--{{ page.id }} page--{{ page.slug }} {% if edit_mode %}page--edit-mode page--hide-instructions-{{ site.data.hide_instructions }}{% endif %}">
