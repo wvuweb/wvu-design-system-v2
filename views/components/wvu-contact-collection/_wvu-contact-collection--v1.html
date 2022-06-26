@@ -3,7 +3,7 @@
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
-  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText | downcase | strip
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText | strip
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
@@ -84,7 +84,7 @@
             <div class="mb-2">
               {% if item.content.wvu-profile-1__title != blank %}
                 <p>
-                  <span class="d-block helvetica-neue-bold">{{ item.content.wvu-profile-1__title }}</span>
+                  <span class="d-block helvetica-neue-bold text-uppercase">{{ item.content.wvu-profile-1__title }}</span>
                   {% if item.content.wvu-profile-1__organization != blank %}
                     <span class="d-block helvetica-neue-light">{{ item.content.wvu-profile-1__organization }}</span>
                   {% endif %}
