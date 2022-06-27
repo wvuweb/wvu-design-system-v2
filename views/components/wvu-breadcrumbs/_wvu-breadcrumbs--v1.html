@@ -1,7 +1,7 @@
 {% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
 {% assign componentClassesBreadcrumbs = "wvu-slash-list ps-0" | append: " " | append: breadcrumbLinkClasses %}
 {% case page.template_name %}
-  {% when 'article' or 'profile' or 'student' or 'faculty-member' %}
+  {% when 'profile' or 'student' or 'faculty-member' %}
   {% else %}
     {% assign breadcrumbPosition = 'position-absolute' %}
 {% endcase %}
