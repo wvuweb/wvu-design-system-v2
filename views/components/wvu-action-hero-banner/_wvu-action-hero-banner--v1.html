@@ -15,7 +15,7 @@
             <span class="d-inline-block badge bg-primary mb-1">Header</span>
           {% endif %}
           <h2 id="{{ component.name }}-label" class="{{ headerClasses }}">
-            Headline Goes Here
+            {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="It Starts Now" %}
           </h2>
           {% editable_region_block name: component.region_names.main, scope: component.scope %}
             <p class="lead pb-2 text-white">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
