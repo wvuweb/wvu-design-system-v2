@@ -1,0 +1,130 @@
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText | strip
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: 1
+  assign itemCount = 0
+  assign files = site.files | filter_files: tags: cv, limit: 1
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit
+  endif
+-%}
+
+{% capture component_content %}
+  <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+        {% assign itemClasses = itemClasses | strip %}
+      {% endif %}
+
+      {% capture loopContent %}
+
+        {% for item in items.all %}
+
+          {% liquid
+            if item.data.alternate_url != blank
+              assign link_href = item.data.alternate_url
+            else
+              assign link_href = item.url
+            endif
+          %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          {% if item.data.thumbnail_url_sq != blank %}
+            <div class="col-lg-6">
+              <div class="row mb-1">
+                <div class="col-6 mx-auto col-sm-4 col-md-6">
+                  {% if item.data.thumbnail_url_sq != blank %}
+                    {%- capture itemThumbnailSrc %}
+                      {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
+                    {%- endcapture %}
+                    <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <div class="col-lg-6">
+
+            <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
+              {% if item.content['wvu-profile-1__name'] != blank %}
+                {{ item.content['wvu-profile-1__name'] }}
+              {% else %}
+                {{ item.alternate_name | default: item.name }}
+              {% endif %}
+            </{{ htag }}>
+
+            <div class="mb-2">
+              {% if item.content.wvu-profile-1__title != blank %}
+                <p>
+                  <span class="d-block helvetica-neue-bold text-uppercase">{{ item.content.wvu-profile-1__title }}</span>
+                  {% if item.content.wvu-profile-1__organization != blank %}
+                    <span class="d-block helvetica-neue-light">{{ item.content.wvu-profile-1__organization }}</span>
+                  {% endif %}
+                </p>
+              {% endif %}
+
+              {% if item.content.wvu-profile-1__phone != blank %}
+                <p class="mb-0">
+                  <span class="fa-solid fa-phone"></span> <a href="tel:{{ item.content.wvu-profile-1__phone }}">{{ item.content.wvu-profile-1__phone }}</a>
+                </p>
+              {% endif %}
+              {% if item.content.wvu-profile-1__email != blank %}
+                <p class="mb-0">
+                  <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content.wvu-profile-1__email }}">{{ item.content.wvu-profile-1__email }}</a>
+                </p>
+              {% endif %}
+              {% if item.content.wvu-profile-1__office != blank %}
+                <p class="mb-0">
+                  {% if item.content.wvu-profile-1__office-url != blank %}
+                    <span class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
+                  {% else %}
+                    <span class="fa-solid fa-building"> {{ item.content.wvu-profile-1__office }}</span>
+                  {% endif %}
+                </p>
+              {% endif %}
+            </div>
+
+            {% if itemReadMoreButtonText != 'none' %}
+              {% if item.data.link_text != blank %}
+                {% assign link_text = item.data.link_text %}
+              {% else %}
+                {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+              {% endif %}
+              <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+            {% endif %}
+            {% for file in files.all %}
+              <a href="{{ file.url }}" class="btn btn-primary"><span class="fa-solid fa-file-pdf"></span> Download CV</a>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}
