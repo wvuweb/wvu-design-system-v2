@@ -4,7 +4,7 @@
     component - Contains the details about compoent which called this partial
 {% endcomment %}
 
-{% assign files = site.files | filter_files: tags: cv, tags_match: "all", limit: 1 %}
+{% assign files = site.files | filter_files: tags: "cv", tags_match: "all", limit: 1 %}
 
 {% if edit_mode or page.content[regionNames.phone] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
@@ -59,7 +59,7 @@
 
 {% if edit_mode %}
   <div class="p-2 alert alert-info">
-    <p class="mb-0 small"><strong>Note:</strong> you can offer a PDF (or any file format) of your CV for the user to download by uploading your CV, then <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/managing-files/grouping-files">labeling the file</a> with <span class="badge bg-secondary">cv</span>.</p>
+    <p class="mb-0 small"><strong>Note:</strong> You can offer a PDF (or any file format) of your CV for the user to download by uploading your CV, then <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/managing-files/grouping-files">labeling the file</a> with <span class="badge bg-secondary">cv</span>.</p>
   </div>
 {% endif %}
 
