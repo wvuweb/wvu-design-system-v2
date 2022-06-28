@@ -9,7 +9,7 @@
 {% if edit_mode or page.content[regionNames.phone] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
   <span class="d-block position-relative ps-2">
-    <span class="fas fa-phone ms-n2 position-absolute" style="top: 4px;"></span>
+    <span class="fa-solid fa-phone ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="tel:{{ page.content[regionNames.phone] }}">{{ page.content[regionNames.phone] }}</a>
     {% if edit_mode %}
       {% editable_region name: regionNames.phone, scope: component.scope, type: "simple" %}
@@ -19,7 +19,7 @@
 {% if edit_mode or page.content[regionNames.email] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Email</span>{% endif %}
   <span class="d-block position-relative ps-2">
-    <span class="far fa-envelope ms-n2 position-absolute" style="top: 4px;"></span>
+    <span class="fa-solid fa-envelope ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1" href="mailto:{{ page.content[regionNames.email] }}">{{ page.content[regionNames.email] }}</a>
     {% if edit_mode %}
       {% editable_region name: regionNames.email, scope: component.scope, type: "simple" %}
@@ -29,11 +29,11 @@
 {% if edit_mode or page.content[regionNames.office] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Office</span>{% endif %}
   <span class="d-block position-relative ps-2">
-    <span class="far fa-building ms-n2 position-absolute" style="top: 4px;"></span>
+    <span class="fa-solid fa-building ms-n2 position-absolute" style="top: 4px;"></span>
       {% if page.content[regionNames.officeURL] != blank %}
-        <a class="d-block ms-1" href="{{ page.content[regionNames.officeURL] }}">{{ page.content[regionNames.office] }}</a>
+        <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="{{ page.content[regionNames.officeURL] }}">{{ page.content[regionNames.office] }}</a>
       {% else %}
-        <span class="d-block ms-1">{{ page.content[regionNames.office] }}</span>
+        <span class="d-block ms-1{% if edit_mode %} d-none{% endif %}">{{ page.content[regionNames.office] }}</span>
       {% endif %}
     {% if edit_mode %}
       {% editable_region name: regionNames.office, scope: component.scope, type: "simple" %}
@@ -46,10 +46,19 @@
     {% endif %}
   </span>
 {% endif %}
+{% if edit_mode %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Office URL</span>{% endif %}
+  <span class="d-block position-relative ps-2">
+    <span class="fa-solid fa-link ms-n2 position-absolute" style="top: 4px;"></span>
+    {% if edit_mode %}
+      {% editable_region name: regionNames.officeURL, scope: component.scope, type: "simple" %}
+    {% endif %}
+  </span>
+{% endif %}
 {% if edit_mode or page.content[regionNames.website] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Website</span>{% endif %}
   <span class="d-block position-relative ps-2">
-    <span class="fas fa-link ms-n2 position-absolute" style="top: 4px;"></span>
+    <span class="fa-solid fa-link ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1" href="{{ page.content[regionNames.website] }}">Website<span class="sr-only">: {{ page.name }}</span></a>
     {% if edit_mode %}
       {% editable_region name: regionNames.website, scope: component.scope, type: "simple" %}
@@ -59,7 +68,7 @@
 
 {% if edit_mode %}
   <div class="p-2 alert alert-info my-2">
-    <p class="mb-0 small"><strong>Note:</strong> You can offer a PDF (or any file format) of your CV for the user to download by uploading your CV, then <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/managing-files/grouping-files">labeling the file</a> with <span class="badge bg-secondary">cv</span>.</p>
+    <p class="mb-0 small"><strong>Note:</strong> You can offer a PDF (or any file format) download of your CV by uploading your CV, then <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/managing-files/grouping-files">labeling the file</a> with <span class="badge bg-secondary">cv</span>.</p>
   </div>
 {% endif %}
 
