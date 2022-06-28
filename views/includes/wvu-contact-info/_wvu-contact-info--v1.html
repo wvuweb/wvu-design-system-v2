@@ -53,7 +53,7 @@
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Website</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span class="fa-solid fa-link ms-n2 position-absolute" style="top: 4px;"></span>
-    <a class="d-block ms-1" href="{{ page.content[regionNames.website] }}">Website<span class="sr-only">: {{ page.name }}</span></a>
+    <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="{{ page.content[regionNames.website] }}">Website<span class="sr-only">: {{ page.name }}</span></a>
     {% if edit_mode %}
       {% editable_region name: regionNames.website, scope: component.scope, type: "simple" %}
     {% endif %}
