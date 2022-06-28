@@ -45,6 +45,22 @@
       </p>
     {% endif %}
     {% case component.baseName %}
+      {% when 'featurettes' or 'featurettes-cards' %}
+        <div class="row mt-3">
+          <div class="col-lg text-white">
+            <p class="mb-1 small">
+              <r:edit_mode_only>Utility classes for row:</r:edit_mode_only>
+                {% editable_region name: component.region_names.rowClasses, type: "simple", scope: component.scope %}
+            </p>
+            <p class="text-muted mb-0 mt-1 small">
+              {% if component.defaultRowClasses != blank %}
+                <strong>Default classes:</strong> {{ component.defaultRowClasses }}
+              {% else %}
+                <strong>Default classes:</strong> N/A
+              {% endif %}
+            </p>
+          </div>
+        </div>
       {% when 'alternating-grid' or 'site-alternating-grid' or 'article-collection' or 'site-article-collection' or 'cards' or 'site-cards' or 'columns' or 'site-columns' or 'contact-collection' or 'site-contact-collection' or 'contact-collection-vertical' or 'site-contact-collection-vertical' or 'page-collection' or 'site-page-collection' or 'page-collection-colored-boxes' or 'site-page-collection-colored-boxes' or 'page-collection-icons' or 'site-page-collection-icons' or 'page-collection-vertical' or 'site-page-collection-vertical' or 'page-collection-vertical-icons' or 'site-page-collection-vertical-icons' or 'profile-teaser' or 'site-profile-teaser' or 'testimonials' or 'site-testimonials' %}
         <div class="row mt-3">
           <div class="col-lg text-white">
