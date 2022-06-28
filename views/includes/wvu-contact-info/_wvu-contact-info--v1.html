@@ -4,7 +4,7 @@
     component - Contains the details about compoent which called this partial
 {% endcomment %}
 
-{% assign files = site.files | filter_files: tags: cv, limit: 1 %}
+{% assign files = site.files | filter_files: tags: cv, tags_match: "all", limit: 1 %}
 
 {% if edit_mode or page.content[regionNames.phone] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
@@ -64,5 +64,5 @@
 {% endif %}
 
 {% for file in files.all %}
-  <a href="{{ file.url }}" class="btn btn-primary"><span class="fa-solid fa-file-pdf"></span> Download CV</a>
+  <a href="{{ file.url }}" class="btn btn-sm btn-primary"><span class="fa-solid fa-file-pdf"></span> Download CV</a>
 {% endfor %}
