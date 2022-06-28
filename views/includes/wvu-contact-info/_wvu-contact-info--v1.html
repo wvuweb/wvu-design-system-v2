@@ -4,7 +4,7 @@
     component - Contains the details about compoent which called this partial
 {% endcomment %}
 
-{% assign cvLabel = page.slug | append '-cv' %}
+{% assign cvLabel = page.slug | append: '-cv' %}
 {% assign files = site.files | filter_files: tags: cvLabel, tags_match: "all", limit: 1 %}
 
 {% if edit_mode or page.content[regionNames.phone] != blank %}
