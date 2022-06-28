@@ -38,12 +38,6 @@
     {% if edit_mode %}
       {% editable_region name: regionNames.office, scope: component.scope, type: "simple" %}
     {% endif %}
-    {% if edit_mode or page.content[regionNames.officeURL] != blank %}
-      {% if edit_mode %}
-        <span class="d-inline-block badge bg-primary mb-1">Office URL</span>
-        {% editable_region name: regionNames.officeURL, scope: component.scope, type: "simple" %}
-      {% endif %}
-    {% endif %}
   </span>
 {% endif %}
 {% if edit_mode %}
