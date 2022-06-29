@@ -6,7 +6,7 @@
   <div class="container">
     <ul class="wvu-ul-chevrons">
       {% for childPage in items %}
-        <li><a href="{{ item.url }}">{{ page.alternate_name | default: page.name }}</a></li>
+        <li><a href="{{ item.url }}">{{ item.alternate_name | default: item.name }}</a></li>
       {% endfor %}
     </ul>
   </div>
