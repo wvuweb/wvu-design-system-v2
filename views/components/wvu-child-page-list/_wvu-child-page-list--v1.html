@@ -1,0 +1,16 @@
+{%- liquid
+  assign items = page.children
+-%}
+
+{% capture component_content %}
+  <div class="container">
+    <ul class="wvu-ul-chevrons">
+      {% for childPage in items %}
+        <li><a href="{{ item.url }}">{{ page.alternate_name | default: page.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
