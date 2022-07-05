@@ -35,7 +35,7 @@
                       {% if part contains 'src=' %}
                         {% assign j = i | plus: 1 %}
                         {% assign itemThumbSRC = itemThumb[j] %}
-                      {% elsif i contains 'alt=' %}
+                      {% elsif part contains 'alt=' %}
                         {% assign k = i | plus: 1 %}
                         {% assign itemAlt = itemThumb[k] %}
                       {% endif %}
