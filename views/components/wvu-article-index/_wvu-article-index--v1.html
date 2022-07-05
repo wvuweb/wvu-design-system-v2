@@ -53,18 +53,14 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="mb-2" itemprop="articleBody">
-                      <!--
-                        {% for i in (1..5) %}
-                          {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
-                          {% assign articleTeaser = articleTeaser | strip_html | strip %}
-                          {% if articleTeaser != blank %}
-                            {% break %}
-                          {% endif %}
-                        {% endfor %}
-                        <p>{{ articleTeaser }}</p>
-                      -->
-                      {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
-
+                      {% for i in (1..5) %}
+                        {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
+                        {% assign articleTeaser = articleTeaser | strip_html | strip %}
+                        {% if articleTeaser != blank %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+                      <p>{{ articleTeaser }}</p>
                     </div> <!-- /.wvu-article__body -->
                     <p><a class="btn btn-primary" href="{{ article.url }}">Read More<span class="sr-only">: {{ article.name }}</span></a></p>
                   </div>
