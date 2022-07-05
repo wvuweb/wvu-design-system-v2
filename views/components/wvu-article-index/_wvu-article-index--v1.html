@@ -55,10 +55,14 @@
                     <div class="mb-2" itemprop="articleBody">
                       <!--
                         {% for i in (1..5) %}
-                          {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}{% endcapture -%}
+                          {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
                           {% assign articleTeaser = articleTeaser | strip_html | strip %}
                           {% if articleTeaser != blank %}
                             {% break %}
+                          {% else %}
+                            {% assign i | plus: 1 %}
+                            {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
+                            {% assign articleTeaser = articleTeaser | strip_html | strip %}
                           {% endif %}
                         {% endfor %}
                         <p>{{ articleTeaser }}</p>
