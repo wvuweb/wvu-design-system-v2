@@ -22,7 +22,7 @@
                   {% assign itemThumbSRC = itemThumb | split: '"' %}
 
                   {% assign i = 0 %}
-                  {% for parts in itemThumSRC %}
+                  {% for parts in itemThumbSRC %}
                     Part {{ i }}: {{ parts }}<br>
                     {% assign i = i | plus: 1 %}
                   {% endfor %}
