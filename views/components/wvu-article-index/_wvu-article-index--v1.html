@@ -19,18 +19,18 @@
               <article class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
-                  {% assign itemThumbSRC = itemThumb | split: '"' %}
+                  {% assign itemThumb = itemThumb | split: '"' %}
 
                   <!--
                   {% assign i = 0 %}
-                  {% for parts in itemThumbSRC %}
+                  {% for parts in itemThumb %}
                     Part {{ i }}: {{ parts }}<br>
                     {% assign i = i | plus: 1 %}
                   {% endfor %}
                   -->
 
-                  {% assign itemThumbSRC = itemThumbSRC[7] %}
-                  {% assign itemAlt = itemThumbSRC[1] %}
+                  {% assign itemThumbSRC = itemThumb[7] %}
+                  {% assign itemAlt = itemThumb[1] %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
