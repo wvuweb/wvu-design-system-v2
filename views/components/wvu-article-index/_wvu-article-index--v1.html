@@ -21,13 +21,15 @@
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
                   {% assign itemThumbSRC = itemThumb | split: '"' %}
 
+                  <!--
                   {% assign i = 0 %}
                   {% for parts in itemThumbSRC %}
                     Part {{ i }}: {{ parts }}<br>
                     {% assign i = i | plus: 1 %}
                   {% endfor %}
+                  -->
 
-                  {% assign itemThumbSRC = itemThumbSRC[3] %}
+                  {% assign itemThumbSRC = itemThumbSRC[7] %}
                   {% assign itemAlt = itemThumb.alt_text %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
