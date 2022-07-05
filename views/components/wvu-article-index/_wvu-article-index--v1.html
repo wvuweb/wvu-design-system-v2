@@ -55,7 +55,7 @@
                     <div class="mb-2" itemprop="articleBody">
                       {% assign articleTeaser = article.content['wvu-article-1__main'] | select_html: css_selector: 'p' %}
                       <!--
-                        {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 | strip_html }}
+                        {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 | strip_html | strip }}
                       -->
                       {% assign teaserHasImage = true %}
                       {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
