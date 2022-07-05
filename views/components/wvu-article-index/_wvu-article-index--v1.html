@@ -40,7 +40,7 @@
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
                     </div>
                   {% endif %}
-                  <div class="col-md-9{% if article.data.thumbnail_url != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
+                  <div class="col-md-9{% if article.data.thumbnail_url != blank and itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
                     <strong><h2 itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2></strong>
 
                     <p class="small d-block">
