@@ -15,7 +15,7 @@
       {% for image in images.all %}
         <div class="col-md-4 col-lg-3 mb-3">
           <a href="{{ image | image_url: size: '960x640' }}" title="{{ image.description }}">
-            <img src="{{ image | image_url: size: '480x320' }}" alt="{{ immage.alt_text }}" />
+            <img src="{{ image | image_url: size: '480x320' }}" alt="{{ image.alt_text }}" />
           </a>
         </div>
         {% assign numberOfImages = numberOfImages | plus: 1 %}

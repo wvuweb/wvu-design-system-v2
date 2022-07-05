@@ -22,6 +22,12 @@
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
                     </div>
+                  {% else %}
+                    <div class="col-md-3">
+                      {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
+                      {% assign itemAlt = itemThumb.alt_text %}
+                      <a aria-hidden="true" href="{{ article.url }}"><img src="{{ itemThumb }}" alt="{{ itemAlt }}" /></a>
+                    </div>
                   {% endif %}
                   <div class="col-md-9{% if article.data.thumbnail_url != blank %} mt-3 mt-md-0{% else %} ml-md-auto{% endif %}">
                     <strong><h2 itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2></strong>
