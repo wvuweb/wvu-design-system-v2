@@ -57,6 +57,7 @@
                       <!--
                         {% for articleP in articleTeaser %}
                           {{ articleP }}<br>
+                          {{ articleTeaser }}<br>
                         {% endfor %}
                       -->
                       {% assign teaserHasImage = articleTeaser | select_html: css_selector: 'img' %}
