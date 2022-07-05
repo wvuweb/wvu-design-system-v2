@@ -29,8 +29,13 @@
                   {% endfor %}
                   -->
 
-                  {% assign itemThumbSRC = itemThumb[7] %}
-                  {% assign itemAlt = itemThumb[1] %}
+                  {% if itemThumb contains 'https:' %}
+                    {% assign itemThumbSRC = itemThumb[1] %}
+                    {% assign itemAlt = itemThumb[3] %}
+                  {% else %}
+                    {% assign itemThumbSRC = itemThumb[7] %}
+                    {% assign itemAlt = itemThumb[1] %}
+                  {% endif %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
