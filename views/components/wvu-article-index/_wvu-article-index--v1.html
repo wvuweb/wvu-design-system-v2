@@ -30,18 +30,19 @@
                   -->
 
                   {% if itemThumb != blank %}
+                    {% assign i = 0 %}
                     {% for part in itemThumb %}
                       {% if part contains 'src=' %}
-                        {% assign j = part | plus: 1 %}
+                        {% assign j = i | plus: 1 %}
                         {% assign itemThumbSRC = itemThumb[j] %}
                       {% elsif i contains 'alt=' %}
-                        {% assign k = part | plus: 1 %}
+                        {% assign k = i | plus: 1 %}
                         {% assign itemAlt = itemThumb[k] %}
                       {% endif %}
-
+                      {% assign i = i | plus: 1%}
                       <!--
                       Part: {{ part }}<br>
-                      Index: {{ itemThumb.index }}
+                      Index: {{ itemThumb.index }}<br>
                       itemThumbSRC: {{ itemThumbSRC }}<br>
                       itemAlt: {{ itemAlt }}
                       -->
