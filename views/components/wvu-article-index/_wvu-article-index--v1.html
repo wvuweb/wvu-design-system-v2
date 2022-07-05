@@ -56,7 +56,7 @@
                       <!--
                         {% for i in (1..5) %}
                           {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}{% endcapture -%}
-                          {% articleTeaser = articleTeaser | strip_html | strip %}
+                          {% assign articleTeaser = articleTeaser | strip_html | strip %}
                           {% if articleTeaser != blank %}
                             {% break %}
                           {% endif %}
