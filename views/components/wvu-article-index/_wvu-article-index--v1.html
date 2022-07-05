@@ -30,7 +30,7 @@
                   -->
 
                   {% assign itemThumbSRC = itemThumbSRC[7] %}
-                  {% assign itemAlt = itemThumb.alt_text %}
+                  {% assign itemAlt = itemThumbSRC[1] %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
