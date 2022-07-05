@@ -26,8 +26,8 @@
                     <div class="col-md-3">
                       {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
                       {% assign itemThumb = itemThumb | split: '"' %}
-                      {% assign itemThumb = itemThumb[1] %}
-                      {% assign itemAlt = itemThumb.alt_text %}
+                      {% assign itemThumb = itemThumb[0] %}
+                      {% assign itemAlt = itemThumb[1] %}
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ itemThumb }}" alt="{{ itemAlt }}" /></a>
                     </div>
                   {% endif %}
