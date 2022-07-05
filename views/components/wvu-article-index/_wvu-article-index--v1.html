@@ -54,7 +54,7 @@
 
                     <div class="mb-2" itemprop="articleBody">
                       <!--
-                        {% for i in 1..10 %}
+                        {% for i in (1..5) %}
                           {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 | strip_html | strip }}{% endcapture -%}
                           {% if articleTeaser != blank %}
                             {% break %}
