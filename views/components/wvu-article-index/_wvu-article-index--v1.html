@@ -53,7 +53,8 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="mb-2" itemprop="articleBody">
-                      {% assign articleTeaser = article.content['wvu-article-1__main'] | select_html: css_selector: 'p' %}
+                      {% assign articleTeaser = article.content['wvu-article-1__main'] %}
+                      {% assign articleTeaser = articleTeaser | select_html: css_selector: 'p' %}
                       <!--
                         {% for articleP in articleTeaser %}
                           {{ articleP }}<br>
