@@ -30,8 +30,8 @@
                   -->
 
                   {% if itemThumb contains 'https:' %}
-                    {% assign itemThumbSRC = itemThumb[1] %}
-                    {% assign itemAlt = itemThumb[3] %}
+                    {% assign itemThumbSRC = itemThumb[3] %}
+                    {% assign itemAlt = itemThumb[1] %}
                   {% else %}
                     {% assign itemThumbSRC = itemThumb[7] %}
                     {% assign itemAlt = itemThumb[1] %}
