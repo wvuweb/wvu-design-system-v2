@@ -19,7 +19,8 @@
               <article class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
-                  {% assign itemThumbSRC = itemThumb.src %}
+                  {% assign itemThumbSRC = itemThumb | split: '"' %}
+                  {% assign itemThumbSRC = itemThumbSRC[1] %}
                   {% assign itemAlt = itemThumb.alt_text %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
