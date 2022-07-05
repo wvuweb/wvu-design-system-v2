@@ -59,7 +59,7 @@
                           {% if articleTeaser != blank %}
                             {% break %}
                           {% endif %}
-                        {% endif %}
+                        {% endfor %}
                         <p>{{ articleTeaser }}</p>
                       -->
                       {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
