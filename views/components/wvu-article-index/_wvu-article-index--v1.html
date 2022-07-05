@@ -62,7 +62,6 @@
                         {% endif %}
                         <p>{{ articleTeaser }}</p>
                       -->
-                      {% assign teaserHasImage = true %}
                       {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
 
                     </div> <!-- /.wvu-article__body -->
