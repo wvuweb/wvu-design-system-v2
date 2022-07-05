@@ -29,13 +29,18 @@
                   {% endfor %}
                   -->
 
-                  {% if itemThumb contains 'https:' %}
-                    {% assign itemThumbSRC = itemThumb[3] %}
-                    {% assign itemAlt = itemThumb[1] %}
-                  {% else %}
-                    {% assign itemThumbSRC = itemThumb[7] %}
-                    {% assign itemAlt = itemThumb[1] %}
+                  {% if itemThumb != blank %}
+                    {% for i in itemThumb %}
+                      {% if i contains 'src=' %}
+                        {% assign j = i | plus: 1 %}
+                        {% assign itemThumbSRC = itemThumb[j] %}
+                      {% elsif i contains 'alt=' %}
+                        {% assign k = i | plus: 1 %}
+                        {% assign itemAlt = itemThumb[k] %}
+                      {% endif %}
+                    {% endfor %}
                   {% endif %}
+
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
