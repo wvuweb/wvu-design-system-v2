@@ -21,14 +21,6 @@
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
                   {% assign itemThumb = itemThumb | split: '"' %}
 
-                  <!--
-                  {% assign i = 0 %}
-                  {% for parts in itemThumb %}
-                    Part {{ i }}: {{ parts }}<br>
-                    {% assign i = i | plus: 1 %}
-                  {% endfor %}
-                  -->
-
                   {% if itemThumb != blank %}
                     {% assign i = 0 %}
                     {% for part in itemThumb %}
