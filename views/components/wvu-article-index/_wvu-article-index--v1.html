@@ -53,6 +53,13 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="mb-2" itemprop="articleBody">
+                      {% assign articleTeaser = article.content['wvu-article-1__main'] | select_html: css_selector: 'p' %}
+                      <!--
+                        {% for articleP in articleTeaser %}
+                          {{ articleP }}<br>
+                        {% endfor %}
+                      -->
+                      {% assign teaserHasImage = articleTeaser | select_html: css_selector: 'img' %}
                       {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
                     </div> <!-- /.wvu-article__body -->
                     <p><a class="btn btn-primary" href="{{ article.url }}">Read More<span class="sr-only">: {{ article.name }}</span></a></p>
