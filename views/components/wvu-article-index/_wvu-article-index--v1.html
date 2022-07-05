@@ -20,7 +20,7 @@
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
                   {% assign itemThumbSRC = itemThumb | split: '"' %}
-                  {% assign itemThumbSRC = itemThumb[0] %}
+                  {% assign itemThumbSRC = itemThumbSRC[0] %}
                   {% assign itemAlt = itemThumb.alt_text %}
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
