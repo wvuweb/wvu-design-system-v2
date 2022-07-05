@@ -26,7 +26,7 @@
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
                     </div>
-                  {% else if itemThumb != blank %}
+                  {% elsif itemThumb != blank %}
                     <div class="col-md-3">
                       <a aria-hidden="true" href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
                     </div>
