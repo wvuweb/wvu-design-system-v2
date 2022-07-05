@@ -53,9 +53,14 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="mb-2" itemprop="articleBody">
-                      {% assign articleTeaser = article.content['wvu-article-1__main'] | select_html: css_selector: 'p' %}
                       <!--
-                        {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 | strip_html | strip }}
+                        {% for i in 1..10 %}
+                          {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 | strip_html | strip }}{% endcapture -%}
+                          {% if articleTeaser != blank %}
+                            {% break %}
+                          {% endif %}
+                        {% endif %}
+                        <p>{{ articleTeaser }}</p>
                       -->
                       {% assign teaserHasImage = true %}
                       {{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: 1 }}
