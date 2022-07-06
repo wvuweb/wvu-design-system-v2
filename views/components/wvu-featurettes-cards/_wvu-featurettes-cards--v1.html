@@ -34,7 +34,7 @@
           {% if edit_mode %}<span class="d-inline-block badge badge-primary mb-1">Header</span>{% endif %}
           {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
           {% editable_region_block name: component.region_names.header scope: component.scope %}
-            <h2 id="featurettes-*-label" class="display-3 wvu-shout">Featurettes Headline</h2>
+            <h2 id="{{ component.name }}-label" class="display-3 wvu-shout">Featurettes Headline</h2>
             <p class="h3 helvetica-neue-light">Subhead goes here.</p>
           {% endeditable_region_block %}
         </div>
@@ -51,9 +51,9 @@
           {% assign itemClasses = itemClasses | strip %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            <div class="card shadow">
+            <div class="card h-100 shadow">
               {%- if edit_mode or page.content[componentPanelPhoto] != blank %}
-                <div class="mb-2">
+                <div>
                   {% editable_region_block name: componentPanelPhoto, scope: component.scope %}
                     <img class="card-img-top" src="https://via.placeholder.com/960x640" alt="Placeholder">
                   {% endeditable_region_block %}
