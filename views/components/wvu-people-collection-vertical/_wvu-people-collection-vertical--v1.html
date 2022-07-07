@@ -67,26 +67,32 @@
           <div class="{{ itemClasses }}">
 
             <div class="row">
+
               {% if item.data.thumbnail_url_sq != blank %}
                 <div class="col-md-4">
                   <div class="row mb-1">
                     <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
-                      {% if item.data.thumbnail_url_sq != blank %}
-                        {%- capture itemThumbnailSrc %}
-                          {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
-                        {%- endcapture %}
-                        <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
-                      {% elsif item.data.thumbnail_url != blank %}
-                        {%- capture itemThumbnailSrc %}
-                          {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-                        {%- endcapture %}
-                        <img class="shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
-                      {% endif %}
+                      {%- capture itemThumbnailSrc %}
+                        {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
+                      {%- endcapture %}
+                      <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
+                    </div>
+                  </div>
+                </div>
+              {% elsif item.data.thumbnail_url != blank %}
+                <div class="col-md-4">
+                  <div class="row mb-1">
+                    <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
+                      {%- capture itemThumbnailSrc %}
+                        {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
+                      {%- endcapture %}
+                      <img class="shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   </div>
                 </div>
               {% endif %}
-              <div class="col-md-8">
+
+              <div class="col-md-8 ms-md-auto">
                 <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
                   {% if item.content['wvu-profile-1__name'] != blank %}
                     {{ item.content['wvu-profile-1__name'] }}
