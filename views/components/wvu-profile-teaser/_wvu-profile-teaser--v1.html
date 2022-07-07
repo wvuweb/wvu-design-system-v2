@@ -48,7 +48,7 @@
         <div class="col-md-3 mb-2 mb-lg-1 text-center">
           <div class="row">
             <div class="col-6 mr-auto col-md-12 col-lg-10 col-xl-8 me-lg-0 ms-lg-auto">
-              {% if item.data.thumbnail_url != blank %}
+              {% if item.data.thumbnail_url_sq != blank %}
                 {%- capture itemThumbnailSrc %}
                   {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
                 {%- endcapture %}
