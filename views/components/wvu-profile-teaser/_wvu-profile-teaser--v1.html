@@ -53,6 +53,11 @@
                   {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
                 {%- endcapture %}
                 <img class="rounded-circle shadow text-center" src="{{ itemThumbnailSrc | strip }}/400x400.jpg" alt="Placeholder">
+              {% elsif item.data.thumbnail_url != blank %}
+                {%- capture itemThumbnailSrc %}
+                  {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
+                {%- endcapture %}
+                <img class="shadow text-center" src="{{ itemThumbnailSrc | strip }}/400x400.jpg" alt="Placeholder">
               {% endif %}
             </div>
           </div>
