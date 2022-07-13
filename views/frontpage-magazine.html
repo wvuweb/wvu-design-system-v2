@@ -19,6 +19,7 @@ custom_data_attributes:
     title: Show Colored Boxes if Hidden
 ---
 
+{% assign articleLimit = page.data.articleLimit | default: 4 %}
 {% assign categoryLimit = page.data.categoryLimit | default: 4 %}
 
 {% render "components/wvu-hero" number: 1, main: true %}
@@ -26,5 +27,5 @@ custom_data_attributes:
 {% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
 
 {% if page.data.removePageCollection != '1' %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, hidden: showColoredBoxesIfHidden %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, showHidden: showColoredBoxesIfHidden %}
 {% endif %}
