@@ -19,6 +19,8 @@ custom_data_attributes:
     title: Show Colored Boxes if Hidden
 ---
 
+{% assign categoryLimit = page.data.categoryLimit | default: 4 %}
+
 {% render "components/wvu-hero" number: 1, main: true %}
 
 {% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
