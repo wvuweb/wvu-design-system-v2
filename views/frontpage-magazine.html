@@ -14,6 +14,9 @@ custom_data_attributes:
   - showPagesIfHidden:
     type: checkbox
     title: Show Featured Articles if Hidden
+  - showColoredBoxesIfHidden:
+    type: checkbox
+    title: Show Colored Boxes if Hidden
 ---
 
 {% render "components/wvu-hero" number: 1, main: true %}
@@ -21,5 +24,5 @@ custom_data_attributes:
 {% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
 
 {% if page.data.removePageCollection != '1' %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, hidden: showColoredBoxesIfHidden %}
 {% endif %}
