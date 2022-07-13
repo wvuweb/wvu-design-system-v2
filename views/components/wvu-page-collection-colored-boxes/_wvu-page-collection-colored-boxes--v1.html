@@ -77,7 +77,7 @@
                 {{ item.alternate_name | default: item.name }}
               </{{ htag }}>
               {%- if item.data.description != blank %}
-                <p class="{{ itemBodyClasses }} mb-0 flex-grow-1">
+                <p class="{{ itemBodyClasses }} flex-grow-1">
                   {{ item.data.description }}
                 </p>
               {% else %}
