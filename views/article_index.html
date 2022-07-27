@@ -1,12 +1,6 @@
 ---
 layout: default
 custom_data_attributes:
-  - ifBackpageRemoveNav:
-    type: checkbox
-    title: If backpage, remove nav
-  - ifBackpageRemoveSidebar:
-    type: checkbox
-    title: Remove sidebar
   - disable_articles_author:
     type: checkbox
     title: Disable Author for Articles
@@ -16,7 +10,6 @@ custom_data_attributes:
 
 {%- liquid
   assign articleLimit = page.data.limit | default: 10
-  assign removeSidebar = page.data.ifBackpageRemoveSidebar | default: false
 -%}
 
-{% render "components/wvu-article-index" number: 1, main: true, limit: articleLimit, removeSidebar: removeSidebar %}
+{% render "components/wvu-article-index" number: 1, main: true, limit: articleLimit %}
