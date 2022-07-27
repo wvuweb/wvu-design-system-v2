@@ -1,3 +1,7 @@
+{%- liquid
+  assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
+-%}
+
 {% capture component_content %}
   <div class="container wvu-z-index-content">
 
@@ -48,7 +52,7 @@
                     <strong><h2 itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2></strong>
 
                     <p class="small d-block">
-                      {% if page.data.disable_articles_author != '1' %}
+                      {% if disableAuthor != true %}
                         {% if article.data.article_hide_author != '1' %}
                           {{ article.content['wvu-article-1__author'] | default: article.author.full_name }} |
                         {% endif %}
