@@ -12,12 +12,22 @@ custom_data_attributes:
     title: Show Speaker Even if Hidden
   - limit:
     title: Speaker Limit
+  - alignHero
+    type: select
+    title: Hero Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
 ---
 
 {% assign componentShowPeopleIfHidden = page.data.showPeopleIfHidden | default: '0' %}
 {% assign compnentLimit = page.data.limit | default: 4 %}
+{% assign alignHero = page.data.alignHero | default: 'left' %}
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeCalendarEvents != 1 %}
   {% render "components/wvu-calendar-events" number: 1 %}

@@ -13,9 +13,20 @@ custom_data_attributes:
   - removeTwitterWidget:
     type: checkbox
     title: Remove Twitter Widget
+  - alignHero
+    type: select
+    title: Hero Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
 ---
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% assign alignHero = page.data.alignHero | default: 'left' %}
+
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removePageCollection != '1' %}
   {% render "components/wvu-page-collection" number: 1 %}

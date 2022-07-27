@@ -25,12 +25,22 @@ custom_data_attributes:
   - showArticlesIfHidden:
     type: checkbox
     title: Show Articles if Hidden
+  - alignHero
+    type: select
+    title: Hero Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
 ---
 
 {% assign componentShowBoxesIfHidden = page.data.showBoxesIfHidden | default: '0' %}
 {% assign componentShowArticlesIfHidden = page.data.showArticlesIfHidden | default: '0' %}
+{% assign alignHero = page.data.alignHero | default: 'left' %}
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeColoredBoxes != 1 %}
   {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden %}

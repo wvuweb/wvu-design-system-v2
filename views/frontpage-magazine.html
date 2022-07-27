@@ -17,12 +17,22 @@ custom_data_attributes:
   - showColoredBoxesIfHidden:
     type: checkbox
     title: Show Colored Boxes if Hidden
+  - alignHero
+    type: select
+    title: Hero Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
 ---
 
 {% assign articleLimit = page.data.articleLimit | default: 4 %}
 {% assign categoryLimit = page.data.categoryLimit | default: 4 %}
+{% assign alignHero = page.data.alignHero | default: 'left' %}
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
 
