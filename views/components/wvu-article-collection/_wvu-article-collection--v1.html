@@ -72,7 +72,7 @@
             <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>
 
             <p class="small d-block">
-              {% if item.parent.data.disable_articles_author != '1' or disableAuthor != '1' %}
+              {% if item.parent.data.disable_articles_author != '1' and disableAuthor != '1' %}
                 {% if item.data.article_hide_author != '1' %}
                   {{ item.content['wvu-article-1__author'] | default: item.author.full_name }} |
                 {% endif %}
