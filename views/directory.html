@@ -6,15 +6,11 @@ custom_data_attributes:
   - showHidden:
     type: checkbox
     title: Show if Hidden
-  - ifBackpageRemoveNav:
-    type: checkbox
-    title: If backpage, remove nav
-  - ifBackpageRemoveSidebar:
-    type: checkbox
-    title: If backpage, remove sidebar
 ---
 
-{% assign componentLimit = page.data.limit | default: 10 %}
-{% assign componentShowHidden = page.data.showHidden | default: false %}
+{%- liquid
+  assign componentLimit = page.data.limit | default: 10
+  assign componentShowHidden = page.data.showHidden | default: false
+-%}
 
 {% render "components/wvu-directory" number: 1, main: true, limit: componentLimit, showHidden: componentShowHidden %}

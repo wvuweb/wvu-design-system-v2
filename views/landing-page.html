@@ -1,18 +1,28 @@
 ---
 layout: default
 custom_data_attributes:
+  - alignHero:
+    title: Hero Alignment
+    type: select
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
   - limit:
     title: Page Collection Limit
-  - ifBackpageRemoveNav:
+  - showHidden:
     type: checkbox
-    title: If backpage, remove nav
-  - ifBackpageRemoveSidebar:
-    type: checkbox
-    title: If backpage, remove sidebar
+    title: Show Page Collection Items if Hidden
 ---
 
-{% assign pageCollectionLimit = page.data.limit | default: 10 %}
+{%- liquid
+  assign alignHero = page.data.alignHero | default: 'left'
+  assign pageCollectionLimit = page.data.limit | default: 10
+  assign showHidden = page.data.showHidden | default: 'false'
+-%}
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% render "components/wvu-page-collection" number: 1, limit: pageCollectionLimit %}
+{% render "components/wvu-page-collection" number: 1, limit: pageCollectionLimit, showHidden: showHidden %}

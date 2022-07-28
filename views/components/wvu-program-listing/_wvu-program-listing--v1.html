@@ -1,45 +1,50 @@
 {% capture component_content %}
-  <div class="container wvu-z-index-content">
+  <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 mb-4">
 
         <div id="options" class="clearfix combo-filters">
           <div class="clearfix">
-            <noscript>
-              <p class="text-start text-semi-muted">Please <a class="text-wvu-accent--dark-blue" href="https://www.enablejavascript.io/en">enable JavaScript</a> to make these filters work:</p>
-            </noscript>
-            <div class="option-combo program-type">
-              <fieldset>
-                <legend class="h6 small text-uppercase mb-1">Filter by Program Type:</legend>
-                <div class="filter option-set js-radio-button-group" data-filter-group="program-type">
-                  <div class="form-check">
-                    <input class="form-check-input active selected" type="radio" name="program-type" id="radioAny" data-filter-value="" checked>
-                    <label class="form-check-label" for="radioAny">Any</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="program-type" id="radioBachelors" data-filter-value=".bachelors">
-                    <label class="form-check-label" for="radioBachelors">Bachelor’s</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="program-type" id="radioMasters" data-filter-value=".masters">
-                    <label class="form-check-label" for="radioMasters">Master’s</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="program-type" id="radioDoctoral" data-filter-value=".doctoral">
-                    <label class="form-check-label" for="radioDoctoral">Doctoral</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="program-type" id="radioCertificate" data-filter-value=".certificate">
-                    <label class="form-check-label" for="radioCertificate">Certificate</label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
 
-            <div class="option-combo delivery-option mt-4">
-              <fieldset>
-                <legend class="h6 small text-uppercase mb-1">Filter by Delivery Option:</legend>
-                <div class="filter option-set js-radio-button-group w-100" data-filter-group="delivery-option">
+            {% if page.data.disableProgramType != '1' %}
+              <div class="option-combo program-type">
+                <fieldset>
+                  <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by Program Type:</legend>
+                  <div class="filter option-set js-radio-button-group" data-filter-group="program-type">
+                    <div class="form-check">
+                      <input class="form-check-input active selected" type="radio" name="program-type" id="radioAny" data-filter-value="" checked>
+                      <label class="form-check-label" for="radioAny">Any</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="program-type" id="radioBachelors" data-filter-value=".bachelors">
+                      <label class="form-check-label" for="radioBachelors">Bachelor’s</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="program-type" id="radioMasters" data-filter-value=".masters">
+                      <label class="form-check-label" for="radioMasters">Master’s</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="program-type" id="radioDoctoral" data-filter-value=".doctoral">
+                      <label class="form-check-label" for="radioDoctoral">Doctoral</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="program-type" id="radioCertificate" data-filter-value=".certificate">
+                      <label class="form-check-label" for="radioCertificate">Certificate</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              {% editable_region_block name: "show-minors", scope: "site" %}
+                <p class="mb-4"><a href="#">View Minors</a></p>
+              {% endeditable_region_block %}
+
+            {% endif %}
+
+            {% if page.data.disableDeliveryMethod != '1' %}
+              <div class="option-combo delivery-option">
+                <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by Delivery Option:</legend>
+                <div class="filter option-set js-radio-button-group" data-filter-group="delivery-option">
                   <div class="form-check">
                     <input class="form-check-input active selected" type="radio" name="delivery-option" id="radioAny2" data-filter-value="" checked>
                     <label class="form-check-label" for="radioAny2">Any</label>
@@ -53,20 +58,69 @@
                     <label class="form-check-label" for="radioOnline">Online</label>
                   </div>
                 </div>
-              </fieldset>
+              </div>
+            {% endif %}
+
+            {% comment %}
+            <div class="option-combo school mt-4">
+              <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by School:</legend>
+              <div class="filter option-set js-radio-button-group" data-filter-group="school">
+                <div class="form-check">
+                  <input class="form-check-input active selected" type="radio" name="school" id="radioAny3" data-filter-value="" checked>
+                  <label class="form-check-label" for="radioAny3">Any</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="school" id="radioCWB" data-filter-value=".school-of-counseling-and-well-being">
+                  <label class="form-check-label" for="radioCWB">School of Counseling and Well-Being</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="school" id="radioSOE" data-filter-value=".school-of-education">
+                  <label class="form-check-label" for="radioSOE">School of Education</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="school" id="radioSOSS" data-filter-value=".school-of-sport-sciences">
+                  <label class="form-check-label" for="radioSOSS">School of Sport Sciences</label>
+                </div>
+              </div>
             </div>
+            {% endcomment %}
 
           </div>
 
-        </div>
+        </div> <!-- #options -->
       </div>
       <div class="col-md-9">
 
         <div id="container" class="grid clearfix">
+
+          {% if edit_mode and page.data.contentful_api_string == blank %}
+            <div class="alert alert-warning">
+              <h2>Whoops!</h2>
+              <p class="mb-0">
+                It looks like you haven’t provided an API string to populate your program data. It should look like this: <strong>https://f09bec8ldd.execute-api.us-east-1.amazonaws.com/stable/programs?college=CAHS&type=major,certificate&sortby=title,typeOrder,hepcLevelOrder&projection=superthin</strong>. You can swap out values in the API string depending on which data to display. For example, swap the acronym of your college for “CAHS” to target your college’s programs. Paste this string into the <code>contentful_api_string</code> field in your page’s properties under the Custom Data tab.
+              </p>
+            </div>
+          {% endif %}
+
           {% assign programAPIEndpoint = page.data.contentful_api_string %}
           {% assign programEntries = programAPIEndpoint | web_request | parse_json %}
-          {% for programEntry in programEntries limit: component.limit %}
-            <div class="w-100 mb-3 element-item {{ programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase }} {{ programEntry.type.title }} {% if programEntry.type.title != 'Minor' %}non-minor{% endif %} {{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {{ programEntry.type.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}" id="{{ programEntry.slug }}" data-include-minor="{% if programEntry.hepcLevel.title == 'Minor' %}show-minor{% else %}hide-minor{% endif %}" data-program-type="{{ programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase }}" data-school="{{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }}" data-delivery-option="{% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}">
+          {% for programEntry in programEntries %}
+
+            {% assign webAddress = "" %}
+
+            {% if programEntry.webAddressAdmissions %}
+              {% assign webAddress = programEntry.webAddressAdmissions %}
+            {% elsif programEntry.webAddressCourseCatalog %}
+              {% assign webAddress = programEntry.webAddressCourseCatalog %}
+            {% endif %}
+
+            {% assign programType = programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase %}
+            {% assign school = programEntry.division.title | replace: " ", "-" | downcase %}
+            {% if programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+              {% assign school = "school-of-sport-sciences school-of-education school-of-counseling-and-well-being" %}
+            {% endif %}
+            {% assign majorMinor = programEntry.type.title %}
+            <div class="w-100 mb-3 element-item {{ programType }} {{ school }} {{ majorMinor }} {% if majorMinor != 'Minor' %}non-minor{% endif %} {{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {{ programEntry.type.title | replace: "'", '-' | replace: ' ', '-' | downcase }} {% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}" id="{{ programEntry.slug }}" data-include-minor="{% if programEntry.hepcLevel.title == 'Minor' %}show-minor{% else %}hide-minor{% endif %}" data-program-type="{{ programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase }}" data-school="{{ programEntry.collegeOrSchool.title | replace: "'", '-' | replace: ' ', '-' | downcase }}" data-delivery-option="{% for deliveryOption in programEntry.courseDeliveryOptions %}{% if deliveryOption != 'Online' %}in-person{% else %}{{ deliveryOption | replace: "'", '-' | replace: ' ', '-' | downcase }}{% endif %}{% endfor %}">
 
               <div class="pt-1 bg-wvu-gold">
                 <div class="bg-white">
@@ -74,9 +128,19 @@
                     <div class="col-lg">
                       <div class="px-3 pt-3 pb-2 px-xl-4 pt-xl-4 pb-xl-3 bg-white h-100">
 
-                        <h3 class="mb-0 h1 text-wvu-blue">
-                          {{ programEntry.title }}
-                        </h3>
+                        {% if programEntry.division.title != blank %}
+                          <div class="helvetica-neue-condensed-black mb-2 text-wvu-accent--burnt-orange">
+                            {{ programEntry.division.title }}
+                          </div>
+                        {% endif %}
+
+                        <h2 class="mb-0 h1 text-wvu-blue" id="{{ cardTitle }}">
+                          {% if webAddress != blank %}
+                            <a href="{{ webAddress }}" class="text-decoration-none text-wvu-blue">{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %}<span class="sr-only"> (Online)</span>{% endif %}<span class="sr-only"> {{ programEntry.degreeDesignation.title }}</span></a>
+                          {% else %}
+                            {{ programEntry.title }}
+                          {% endif %}
+                        </h2>
 
                         {% if programEntry.degreeDesignation.title %}
                           <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.degreeDesignation.title | replace: "'", '’' }}</div>
@@ -85,72 +149,111 @@
                         {% endif %}
                         {% for deliveryOption in programEntry.courseDeliveryOptions %}
                           {% if deliveryOption == 'Online' %}
-                            <div class="badge bg-primary"><i class="fa-solid fa-laptop"></i> Online</div>
+                            <div class="badge badge-primary"><span class="fa-solid fa-laptop"></span> Online</div>
                           {% endif %}
                         {% endfor %}
 
+                        <!-- descriptionTeaser has a <p> tag / html -->
                         <div class="mt-3">
                           {{ programEntry.descriptionTeaser }}
 
                           {% assign myAreas = programEntry.areasOfEmphasis %}
                           {% assign areasOfEmphasisCount = myAreas | size %}
                           {% if areasOfEmphasisCount >= 1 %}
-                          <h3 class="border-bottom border-light h5 mt-3">Areas of Emphasis</h3>
-                          <ul class="list-unstyled">
-                            {% for area in programEntry.areasOfEmphasis %}
-                              <li><span class="fa-solid fa-angle-right text-wvu-gold"></span> {{ area.title }}</li>
-                            {% endfor %}
-                          </ul>
+                            <h3 class="border-bottom border-light h5 mt-3">Areas of Emphasis</h3>
+                            <ul class="list-unstyled">
+                              {% for area in programEntry.areasOfEmphasis %}
+                                <li><span class="fa-solid fa-angle-right text-wvu-gold"></span> {{ area.title }}</li>
+                              {% endfor %}
+                            </ul>
                           {% endif %}
                         </div>
 
                       </div>
                     </div>
-                    {% if programEntry.webAddressAdmissions %}
+
+                    {% if webAddress != blank %}
                       <div class="col-lg-4">
-
                         <div class="bg-white p-3 py-lg-4 pl-lg-0 pr-lg-4 h-100">
-                          <div class="btn-group-vertical w-100 shadow-sm">
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__description">
-                              <i class="fa-solid fa-file-alt text-center" style="width: 2rem;"></i> Overview
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__opportunities">
-                              <i class="fa-solid fa-clipboard-list text-center" style="width: 2rem;"></i> Fast Facts
-                            </a>
-                            <!-- <a class="btn btn-light text-start w-100 d-flex align-items-center" href="#">
-                              <i class="fa-solid fa-sort text-center" style="width: 2rem;"></i> Rankings
-                            </a> -->
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__careers">
-                              <i class="fa-solid fa-user-tie text-center" style="width: 2rem;"></i> Careers
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__courses">
-                              <i class="fa-solid fa-pencil-alt text-center" style="width: 2rem;"></i> Courses
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__cost">
-                              <i class="fa-solid fa-dollar-sign text-center" style="width: 2rem;"></i> Costs and Aid
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__requirements">
-                              <i class="fa-solid fa-tasks text-center" style="width: 2rem;"></i> Requirements
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__related-programs">
-                              <i class="fa-solid fa-arrows-alt-h text-center" style="width: 2rem;"></i> Related Programs
-                            </a>
-                            <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions}}#sticky-page-nav__related-pathways">
-                              <i class="fa-solid fa-code-branch text-center" style="width: 2rem;"></i> Related Pathways
-                            </a>
-                          </div>
+                          {% if webAddress contains "https://online.wvu.edu/" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+                            <div class="btn-group-vertical w-100 shadow-sm">
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ webAddress }}">
+                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> View Program Page<span class="sr-only">: {{ programEntry.title }}</span>
+                              </a>
+                            </div>
+                          {% elsif webAddress contains "http://catalog.wvu.edu/" %}
+                            <div class="btn-group-vertical w-100 shadow-sm">
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ webAddress }}">
+                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>View in Course Catalog
+                              </a>
+                            </div>
+                          {% else %}
+                            <div class="btn-group-vertical w-100 shadow-sm">
+                              {% capture cardTitle %}{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %} (Online){% endif %} {{ programEntry.degreeDesignation.title }}{% endcapture %}
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#wvu-main-content">
+                                <span class="fa-solid fa-file-alt text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Overview
+                              </a>
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#degree-plan">
+                                <span class="fa-solid fa-clipboard-list text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Your Degree Plan
+                              </a>
+                              <!-- <a class="btn btn-light text-left w-100 d-flex align-items-center" href="#">
+                                <i class="fa-solid fa-sort text-center" style="width: 2rem;"></i> Rankings
+                              </a> -->
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#requirements">
+                                <span class="fa-solid fa-check-square text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Admission Requirements
+                              </a>
+                              {% if programEntry.hepcLevelKey == 'bachelor' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#tuition">
+                                  <span class="fa-solid fa-dollar-sign text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Tuition and Aid
+                                </a>
+                              {% endif %}
+                              {% comment %}
+                              <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#related-programs">
+                                <span class="fa-solid fa-arrows-alt-h text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Related Programs
+                              </a>
+                              {% endcomment %}
+                              {% if programEntry.hasCareers == 'true' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#careers">
+                                  <span class="fa-solid fa-user-tie text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Careers and Outcomes
+                                </a>
+                              {% endif %}
+                              {% if programEntry.hasFAQs == 'true' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#faqs">
+                                  <span class="fa-solid fa-question-circle text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Frequently Asked Questions
+                                </a>
+                              {% endif %}
+                              {% if programEntry.hasProfiles == 'true' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#community">
+                                  <span class="fa-solid fa-users text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Meet Your Community
+                                </a>
+                              {% endif %}
+                              {% if programEntry.hasPlaces == 'true' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#places">
+                                  <span class="fa-solid fa-university text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Places and Spaces
+                                </a>
+                              {% endif %}
+                              {% if programEntry.degreeDesignation.abbreviation != 'BMDS' %}
+                                <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#learning">
+                                  <span class="fa-solid fa-walking text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Learn By Doing
+                                </a>
+                              {% endif %}
+                            </div>
+                          {% endif %}
                         </div>
-
-                    </div>
+                      </div>
                     {% endif %}
                   </div>
+
+                  <!-- this should throw an accessibility error because
+                      the visually hidden text is in the middle of the button
+                      not either end -->
                 </div>
               </div>
             </div>
 
           {% endfor %}
 
-        </div>
+        </div> <!-- #container -->
       </div>
     </div>
   </div>
@@ -177,9 +280,9 @@
           programType: function( $elem ) {
             return $elem.attr('data-program-type');
           },
-          school: function( $elem ) {
-            return $elem.attr('data-school');
-          },
+          // school: function( $elem ) {
+          //   return $elem.attr('data-school');
+          // },
           includeMinor: function( $elem ) {
             return $elem.attr('data-include-minor');
           },
@@ -270,12 +373,12 @@
 
         $container.isotope( isoOptions );
       })
-
-      // trigger hashchange to capture initial hash options
-      .trigger( 'hashchange' );
+        // trigger hashchange to capture initial hash options
+        .trigger( 'hashchange' );
 
     });
 
+    // $('.dropdown-toggle-programs').dropdown()
   </script>
 
 {% endcontent_for %}

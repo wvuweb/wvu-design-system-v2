@@ -15,11 +15,23 @@ custom_data_attributes:
   - showFeaturedPagesIfHidden:
     type: checkbox
     title: Show Featured Pages if Hidden
+  - alignHero:
+    title: Hero Alignment
+    type: select
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
 ---
 
-{% assign featuredPagesLimit = page.data.limit | default: 4 %}
+{%- liquid
+  assign featuredPagesLimit = page.data.limit | default: 4
+  assign alignHero = page.data.alignHero | default: false
+-%}
 
-{% render "components/wvu-hero" number: 1, main: true %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeFeaturedPages != 1 %}
   {% render "components/wvu-page-collection" number: 1, limit: featuredPagesLimit, showHidden: componentShowFeaturedPagesIfHidden %}

@@ -26,15 +26,21 @@ custom_data_attributes:
       - [Right, right]
     include_blank: false
     default: left
+  - disable_articles_author:
+    type: checkbox
+    title: Disable Author for Articles
 ---
 
-{% assign articleLimit = page.data.articleLimit | default: 4 %}
-{% assign categoryLimit = page.data.categoryLimit | default: 4 %}
-{% assign alignHero = page.data.alignHero | default: 'left' %}
+{%- liquid
+  assign articleLimit = page.data.articleLimit | default: 4
+  assign categoryLimit = page.data.categoryLimit | default: 4
+  assign alignHero = page.data.alignHero | default: 'left'
+  assign disableAuthor = page.data.disable_articles_author | default: false
+-%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% render "components/wvu-article-collection" number: 1, limit: articleLimit %}
+{% render "components/wvu-article-collection" number: 1, limit: articleLimit, disableAuthor: disableAuthor %}
 
 {% if page.data.removePageCollection != '1' %}
   {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, showHidden: showColoredBoxesIfHidden %}
