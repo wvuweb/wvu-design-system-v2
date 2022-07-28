@@ -19,12 +19,19 @@ custom_data_attributes:
   - removeQuicklinks:
     type: checkbox
     title: Remove Quicklinks
+  - coloredBoxesLimit:
+    title: Colored Boxes Limit
   - showBoxesIfHidden:
     type: checkbox
     title: Show Boxes if Pages are Hidden
+  - articleLimit:
+    title: Article Limit
   - showArticlesIfHidden:
     type: checkbox
     title: Show Articles if Hidden
+  - disable_articles_author:
+    type: checkbox
+    title: Disable Author for Articles
   - alignHero:
     type: select
     title: Hero Alignment
@@ -36,14 +43,19 @@ custom_data_attributes:
     default: left
 ---
 
-{% assign componentShowBoxesIfHidden = page.data.showBoxesIfHidden | default: '0' %}
-{% assign componentShowArticlesIfHidden = page.data.showArticlesIfHidden | default: '0' %}
-{% assign alignHero = page.data.alignHero | default: 'left' %}
+{%- liquid
+  assign componentShowBoxesIfHidden = page.data.showBoxesIfHidden | default: '0'
+  assign componentShowArticlesIfHidden = page.data.showArticlesIfHidden | default: '0'
+  assign alignHero = page.data.alignHero | default: 'left'
+  assign articleLimit = page.data.articleLimit | default: 4
+  assign coloredBoxesLimit = page.data.coloredBoxesLimit | default: 4
+  assign disableAuthor = page.data.disable_articles_author | default: false
+-%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeColoredBoxes != 1 %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden, limit: coloredBoxesLimit %}
 {% endif %}
 
 {% if page.data.removeCalendarEvents != 1 %}
@@ -55,7 +67,7 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removeArticleCollection != 1 %}
-  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden %}
+  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden, limit: articleLimit, disableAuthor: disableAuthor %}
 {% endif %}
 
 {% if page.data.removePhotoGrid != 1 %}

@@ -40,7 +40,7 @@ custom_data_attributes:
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% render "components/wvu-article-collection" number: 1, limit: articleLimit, disableAuthor: disableAuthor %}
+{% render "components/wvu-article-collection" number: 1, limit: articleLimit, disableAuthor: disableAuthor, showHidden: showPagesIfHidden %}
 
 {% if page.data.removePageCollection != '1' %}
   {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, showHidden: showColoredBoxesIfHidden %}

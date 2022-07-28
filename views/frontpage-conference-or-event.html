@@ -23,9 +23,11 @@ custom_data_attributes:
     default: left
 ---
 
-{% assign componentShowPeopleIfHidden = page.data.showPeopleIfHidden | default: '0' %}
-{% assign compnentLimit = page.data.limit | default: 4 %}
-{% assign alignHero = page.data.alignHero | default: 'left' %}
+{%- liquid
+  assign componentShowPeopleIfHidden = page.data.showPeopleIfHidden | default: '0'
+  assign compnentLimit = page.data.limit | default: 4
+  assign alignHero = page.data.alignHero | default: 'left'
+-%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
@@ -34,5 +36,5 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removePeopleCollection != 1 %}
-  {% render "components/wvu-people-collection" number: 1, limit: componentLimit %}
+  {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden %}
 {% endif %}
