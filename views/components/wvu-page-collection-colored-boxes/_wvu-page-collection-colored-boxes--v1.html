@@ -70,8 +70,8 @@
           %}
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
-          {% capture bgColor %}bg-{{ itemColors[i] }}{% endcapture %}
-          {% assign bgColor = bgColor | default: 'bg-wvu-neutral--dark-gray' %}
+          {% capture bgColorListItem %}bg-{{ itemColors[i] }}{% endcapture %}
+          {% assign bgColor = bgColorListItem | default: 'bg-wvu-neutral--dark-gray' %}
 
           <div class="d-flex flex-column {{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             <a href="{{ link_href }}" class="d-block h-100 p-3 p-xl-4 text-decoration-none text-white {{ bgColor }}">
