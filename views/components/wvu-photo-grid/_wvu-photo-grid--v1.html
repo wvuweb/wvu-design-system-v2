@@ -24,19 +24,22 @@
 -%}
 
 {% capture component_content %}
-  <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
-
-    {% if edit_mode %}
-      {% if itemCount == 0 %}
-        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
-      {% endif %}
+  <div class="container wvu-z-index-content">
+    {% if edit_mode or page.content[component.region_names.header] !=  blank %}
+      <div class="mb-4">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header, scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout">Profiles Headline</h2>
+          <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      </div>
     {% endif %}
 
     {% if itemCount == 0 %}
       {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
     {% else %}
       {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
-      {% assign itemClasses = itemClasses | append: ' ' | append: columnClasses | strip %}
+      {% assign itemClasses = itemClasses | strip %}
     {% endif %}
 
     {% capture loopContent %}
