@@ -27,17 +27,13 @@
 {% capture component_content %}
   <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
 
-    {% if edit_mode %}
-      {% if itemCount == 0 %}
-        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
-      {% endif %}
-    {% endif %}
-
     {% if itemCount == 0 %}
-      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      <div class="container mb-4">
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      </div>
     {% else %}
       {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
-      {% assign itemClasses = itemClasses | append: ' ' | append: columnClasses | strip %}
+      {% assign itemClasses = itemClasses | strip %}
     {% endif %}
 
     {% capture loopContent %}
