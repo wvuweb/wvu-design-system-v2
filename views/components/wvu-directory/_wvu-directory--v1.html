@@ -32,8 +32,8 @@
                     {% else %}
                       <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
                     {% endif %}
-                    {%- if item.content['wvu-profile-1__subhead'] != blank %}
-                      <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__subhead'] }}</small>
+                    {%- if item.content['wvu-profile-1__title'] != blank %}
+                      <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
                     {%- endif %}
                   </div>
                 </div>
