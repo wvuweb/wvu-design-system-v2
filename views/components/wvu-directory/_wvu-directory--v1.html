@@ -10,7 +10,7 @@
       {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
       {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
       {% editable_region_block name: component.region_names.header scope: component.scope %}
-        <h2 id="featurettes-{{ component.number }}-label" class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom sr-only">Directory Headline</h2>
+        <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom sr-only">Directory Headline</h2>
       {% endeditable_region_block %}
     {%- endif %}
 
