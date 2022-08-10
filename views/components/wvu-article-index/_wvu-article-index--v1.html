@@ -41,11 +41,11 @@
 
                   {% if article.data.thumbnail_url != blank %}
                     <div class="col-md-3">
-                      <a aria-hidden="true" href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
+                      <a href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
                     </div>
                   {% elsif itemThumb != blank %}
                     <div class="col-md-3">
-                      <a aria-hidden="true" href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
+                      <a href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
                     </div>
                   {% endif %}
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
