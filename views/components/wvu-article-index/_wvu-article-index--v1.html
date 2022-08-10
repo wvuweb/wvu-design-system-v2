@@ -20,7 +20,7 @@
         {% if articles.size > 0 %}
           {% capture article_list_content %}
             {% for article in articles.all %}
-              <article class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
+              <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
                   {% assign itemThumb = itemThumb | split: '"' %}
@@ -73,7 +73,7 @@
                     <p><a class="btn btn-primary" href="{{ article.url }}">Read More<span class="sr-only">: {{ article.name }}</span></a></p>
                   </div>
                 </div>
-              </article> <!-- /.wvu-article -->
+              </div> <!-- /.wvu-article -->
             {% endfor %}
           {% endcapture %}
 
