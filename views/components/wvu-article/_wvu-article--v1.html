@@ -78,7 +78,7 @@
               {%- if article.blog.months_archive.size > 0 -%}
               <ul class="pl-2 wvu-blog-archive">
                 {%- for entry in article.blog.months_archive -%}
-                  <li><a href="{{ article.blog.path | append: '/' | append: entry[0] }}">{{ entry[0] | date: "%B %Y" }}</a> <span class="badge bg-wvu-neutral--dark-gray text-white">({{ entry[1] }})</span></li>
+                  <li><a href="{{ article.blog.path | append: '/' | append: entry[0] }}">{{ entry[0] | date: "%B %Y" }}</a> <span class="badge bg-wvu-neutral--dark-gray text-white">{{ entry[1] }}</span></li>
                 {%- endfor -%}
               </ul>
               {%- endif -%}
