@@ -1,10 +1,12 @@
-{% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
-{% assign componentClassesBreadcrumbs = "wvu-slash-list ps-0" | append: " " | append: breadcrumbLinkClasses %}
 {% case page.template_name %}
   {% when 'profile' or 'student' or 'faculty-member' %}
+    {% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: site.data.classes_wvu_breadcrumbs | default: 'text-wvu-neutral--dark-gray' %}
   {% else %}
+    {% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
     {% assign breadcrumbPosition = 'position-absolute' %}
 {% endcase %}
+
+{% assign componentClassesBreadcrumbs = "wvu-slash-list ps-0" | append: " " | append: breadcrumbLinkClasses %}
 
 <section class="wvu-breadcrumbs py-2 w-100 {{ breadcrumbPosition }} wvu-z-index-breadcrumbs {{ breadcrumbLinkClasses }}" aria-label="Breadcrumb Links">
   <div class="container position-relative wvu-z-index-content small">
