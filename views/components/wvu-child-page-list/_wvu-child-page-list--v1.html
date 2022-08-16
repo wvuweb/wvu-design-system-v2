@@ -5,7 +5,7 @@
 {% capture component_content %}
   <div class="container">
     <ul class="wvu-ul-chevrons">
-      {% if edit_mode or component.component.region_names.main != blank %}
+      {% if edit_mode or component.region_names.main != blank %}
         <div class="row mb-4">
           <div class="col-lg-8">
             {% editable_region name: component.region_names.main scope: component.scope %}
