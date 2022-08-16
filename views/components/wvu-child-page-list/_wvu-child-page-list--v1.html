@@ -5,6 +5,11 @@
 {% capture component_content %}
   <div class="container">
     <ul class="wvu-ul-chevrons">
+      {% if edit_mode or component.component.region_names.main != blank %}
+        <div class="mb-4">
+          {% editable_region name: component.region_names.main scope: component.scope %}
+        </div>
+      {% endif %}
       {% for childPage in items %}
         <li><a href="{{ childPage.url }}">{{ childPagealternate_name | default: childPage.name }}</a></li>
       {% endfor %}
