@@ -35,7 +35,9 @@
       </div>
       {% if edit_mode or page.content[videoDescriptionRegionName] != blank %}
         <div class="col-md-4 text-start">
-          <h3>{{ page.content[videoTitleRegionName] }}</h3>
+          {% if edit_mode or page.content[videoTitleRegionName] != blank %}
+            <h3>{{ page.content[videoTitleRegionName] }}</h3>
+          {% endif %}
           {% if edit_mode %}
             <div class="alert alert-warning p-2 my-2">
               <p class="mb-0">
