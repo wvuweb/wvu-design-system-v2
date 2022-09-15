@@ -31,10 +31,10 @@ custom_data_attributes:
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% if page.data.removeCalendarEvents != 1 %}
+{% if page.data.removeCalendarEvents != '1' %}
   {% render "components/wvu-calendar-events" number: 1 %}
 {% endif %}
 
-{% if page.data.removePeopleCollection != 1 %}
+{% if page.data.removePeopleCollection != '1' %}
   {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden %}
 {% endif %}
