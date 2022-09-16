@@ -28,9 +28,7 @@
   <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
 
     {% if edit_mode and itemCount == 0 %}
-      {% if itemCount == 0 %}
-        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
-      {% endif %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
     {% endif %}
 
     {% capture loopContent %}
