@@ -1,6 +1,8 @@
 ---
 layout: default
 custom_data_attributes:
+  - custom_people_labels:
+    title: Custom Labels for People
   - removeCalendarEvents:
     type: checkbox
     title: Remove Calendar Events
@@ -27,6 +29,7 @@ custom_data_attributes:
   assign componentShowPeopleIfHidden = page.data.showPeopleIfHidden | default: '0'
   assign compnentLimit = page.data.limit | default: 4
   assign alignHero = page.data.alignHero | default: 'left'
+  assign peopleLabels = page.data.custom_people_labels | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
@@ -36,5 +39,5 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removePeopleCollection != '1' %}
-  {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden %}
+  {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden, customLabels: peopleLabels %}
 {% endif %}

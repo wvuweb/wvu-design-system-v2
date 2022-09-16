@@ -10,6 +10,8 @@ custom_data_attributes:
       - [Right, right]
     include_blank: false
     default: left
+  - custom_page_labels:
+    title: Custom Labels for Page Collection
   - limit:
     title: Page Collection Limit
   - showHidden:
@@ -21,8 +23,9 @@ custom_data_attributes:
   assign alignHero = page.data.alignHero | default: 'left'
   assign pageCollectionLimit = page.data.limit | default: 10
   assign showHidden = page.data.showHidden | default: 'false'
+  assign customPageLabels = page.data.custom_page_labels | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% render "components/wvu-page-collection" number: 1, limit: pageCollectionLimit, showHidden: showHidden %}
+{% render "components/wvu-page-collection" number: 1, limit: pageCollectionLimit, showHidden: showHidden, customLabels: customPageLabels %}

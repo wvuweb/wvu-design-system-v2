@@ -1,6 +1,8 @@
 ---
 layout: default
 custom_data_attributes:
+  - custom_page_labels:
+    title: Custom Labels for Page Collection
   - limit:
     title: Featured Pages Limit
   - removeFeaturedPages:
@@ -29,12 +31,13 @@ custom_data_attributes:
 {%- liquid
   assign featuredPagesLimit = page.data.limit | default: 4
   assign alignHero = page.data.alignHero | default: false
+  assign customPageLabels = page.data.custom_page_labels | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeFeaturedPages != '1' %}
-  {% render "components/wvu-page-collection" number: 1, limit: featuredPagesLimit, showHidden: componentShowFeaturedPagesIfHidden %}
+  {% render "components/wvu-page-collection" number: 1, limit: featuredPagesLimit, showHidden: componentShowFeaturedPagesIfHidden, customLabels: customPageLabels %}
 {% endif %}
 
 {% if page.data.removeCalendarEvents != '1' %}

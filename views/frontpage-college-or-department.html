@@ -1,6 +1,12 @@
 ---
 layout: default
 custom_data_attributes:
+  - custom_colored_box_labels:
+    title: Custom Labels for Colored Boxes
+  - custom_article_labels:
+    title: Custom Labels for Articles
+  - custom_photo_grid_labels:
+    title: Custom Labels for Photo Grid
   - removeColoredBoxes:
     type: checkbox
     title: Remove Colored Boxes
@@ -50,12 +56,15 @@ custom_data_attributes:
   assign articleLimit = page.data.articleLimit | default: 4
   assign coloredBoxesLimit = page.data.coloredBoxesLimit | default: 4
   assign disableAuthor = page.data.disable_articles_author | default: false
+  assign coloredBoxLabels = page.data.custom_colored_box_labels | default: ""
+  assign articleLabels = page.data.custom_article_labels | default: ""
+  assign photoGridLabels = page.data.custom_photo_grid_labels | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeColoredBoxes != '1' %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden, limit: coloredBoxesLimit %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden, limit: coloredBoxesLimit, customLabels: coloredBoxLabels %}
 {% endif %}
 
 {% if page.data.removeCalendarEvents != '1' %}
@@ -67,11 +76,11 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removeArticleCollection != '1' %}
-  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden, limit: articleLimit, disableAuthor: disableAuthor %}
+  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden, limit: articleLimit, disableAuthor: disableAuthor, customLabels: articleLabels %}
 {% endif %}
 
 {% if page.data.removePhotoGrid != '1' %}
-  {% render "components/wvu-photo-grid" number: 1, limit: 2 %}
+  {% render "components/wvu-photo-grid" number: 1, limit: 2, customLabels: photoGridLabels %}
 {% endif %}
 
 {% if page.data.removeQuicklinks != '1' %}

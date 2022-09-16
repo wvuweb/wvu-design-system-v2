@@ -1,6 +1,10 @@
 ---
 layout: default
 custom_data_attributes:
+  - custom_article_labels:
+    title: Custom Labels for Articles
+  - custom_colored_box_labels:
+    title: Custom Labels for Colored Boxes
   - showArticlesIfHidden:
     type: checkbox
     title: Show Featured Articles if Hidden
@@ -36,12 +40,14 @@ custom_data_attributes:
   assign categoryLimit = page.data.categoryLimit | default: 4
   assign alignHero = page.data.alignHero | default: 'left'
   assign disableAuthor = page.data.disable_articles_author | default: false
+  assign coloredBoxLabels = page.data.custom_colored_box_labels | default: ""
+  assign articleLabels = page.data.custom_article_labels | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
-{% render "components/wvu-article-collection" number: 1, limit: articleLimit, disableAuthor: disableAuthor, showHidden: showPagesIfHidden %}
+{% render "components/wvu-article-collection" number: 1, limit: articleLimit, disableAuthor: disableAuthor, showHidden: showPagesIfHidden, customLabels: articleLabels %}
 
 {% if page.data.removePageCollection != '1' %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, showHidden: showColoredBoxesIfHidden %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, limit: categoryLimit, showHidden: showColoredBoxesIfHidden, customLabels: coloredBoxLabels %}
 {% endif %}
