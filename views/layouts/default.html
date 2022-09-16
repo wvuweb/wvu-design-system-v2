@@ -33,7 +33,7 @@
   <body class="{{ page.template_name }} page--{{ page.id }} page--{{ page.slug }} {% if edit_mode %}page--edit-mode page--hide-instructions-{{ site.data.hide_instructions }}{% endif %}">
 
     <header aria-label="masthead">
-      <a class="sr-only sr-only-focusable" href="#wvu-main-content">Skip to main content</a>
+      <a class="visually-hidden-focusable" href="#wvu-main-content">Skip to main content</a>
 
       {% if page.name == "Home" and site.data.activate_alert_banner == '1' %}
         {% render "components/wvu-alert-banner" %}
