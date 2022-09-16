@@ -9,7 +9,7 @@
   assign root = startPage | default: site.root_page
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   assign i = 0
-  assign itemCount == 0
+  assign itemCount = 0
 
   if page.content[component.region_names.header] != blank
     assign htag = 'h3'
