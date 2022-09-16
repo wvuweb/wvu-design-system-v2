@@ -1,8 +1,13 @@
+{% if component.customLabel == blank %}
+  assign itemLabels = component.itemLabels
+{% else %}
+  assign itemLabels = component.customLabel
+{% endif %}
 {% if edit_mode %}
   <div class="alert alert-warning p-3 p-xl-4 my-4 mb-0 text-start">
     <h2>Whoops!</h2>
     <p>
-      It looks like you don’t have any pages labeled yet. To get pages to appear here, label the pages with <span class="badge rounded-pill bg-secondary">{{ page.slug }}-{{ component.name }}</span>. You can add labels in the page properties.
+      It looks like you don’t have any pages labeled yet. To get pages to appear here, label the pages with <span class="badge rounded-pill bg-secondary">{{ itemLabels }}</span>. You can add labels in the page properties.
     </p>
     <p>
       If you have applied the correct label to your pages, but they still aren’t displaying, it may be because those pages are set to “Hide from Navigation” in their page properties or the “Show if Hidden” property for this component isn’t selected. Contact your organization’s Prof. Tech. for assistance.
