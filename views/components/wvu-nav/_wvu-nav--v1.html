@@ -15,7 +15,7 @@
       {% endif %}
     </div> <!-- /.nav-collapse -->
     <div class="d-flex align-items-center">
-      {% if site.data.facebook_url != blank and site.data.twitter_url != blank and site.data.flickr_url != blank and site.data.instagram_url != blank and site.data.linkedin_url != blank and site.data.syndication_url != blank and site.data.youtube_url != blank and site.data.github_url != blank %}
+      {% if site.data.facebook_url != blank or site.data.twitter_url != blank or site.data.flickr_url != blank or site.data.instagram_url != blank or site.data.linkedin_url != blank or site.data.syndication_url != blank or site.data.youtube_url != blank or site.data.github_url != blank %}
         <ul class="list-inline mb-0 me-2">
           {% if site.data.facebook_url != blank %}
             <li class="list-inline-item">
