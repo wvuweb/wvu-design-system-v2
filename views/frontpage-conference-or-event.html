@@ -39,5 +39,5 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removePeopleCollection != '1' %}
-  {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden, customLabels: peopleLabels %}
+  {% render "components/wvu-people-collection" number: 1, limit: componentLimit, showHidden: showPeopleIfHidden, customLabel: peopleLabels %}
 {% endif %}

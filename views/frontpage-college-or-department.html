@@ -64,7 +64,7 @@ custom_data_attributes:
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
 
 {% if page.data.removeColoredBoxes != '1' %}
-  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden, limit: coloredBoxesLimit, customLabels: coloredBoxLabels %}
+  {% render "components/wvu-page-collection-colored-boxes" number: 1, showHidden: componentShowBoxesIfHidden, limit: coloredBoxesLimit, customLabel: coloredBoxLabels %}
 {% endif %}
 
 {% if page.data.removeCalendarEvents != '1' %}
@@ -76,11 +76,11 @@ custom_data_attributes:
 {% endif %}
 
 {% if page.data.removeArticleCollection != '1' %}
-  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden, limit: articleLimit, disableAuthor: disableAuthor, customLabels: articleLabels %}
+  {% render "components/wvu-article-collection" number: 1, showHidden: componentShowArticlesIfHidden, limit: articleLimit, disableAuthor: disableAuthor, customLabel: articleLabels %}
 {% endif %}
 
 {% if page.data.removePhotoGrid != '1' %}
-  {% render "components/wvu-photo-grid" number: 1, limit: 2, customLabels: photoGridLabels %}
+  {% render "components/wvu-photo-grid" number: 1, limit: 2, customLabel: photoGridLabels %}
 {% endif %}
 
 {% if page.data.removeQuicklinks != '1' %}
