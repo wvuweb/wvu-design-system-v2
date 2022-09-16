@@ -9,6 +9,7 @@
   assign root = startPage | default: site.root_page
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   assign i = 0
+  assign itemCount == 0
 
   if page.content[component.region_names.header] != blank
     assign htag = 'h3'
@@ -26,7 +27,7 @@
 {% capture component_content %}
   <div data-aos="fade" data-aos-once="true" data-aos-anchor-placement="top-bottom" class="wvu-z-index-content">
 
-    {% if edit_mode %}
+    {% if edit_mode and itemCount == 0 %}
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
       {% endif %}

@@ -378,4 +378,18 @@ ul.wvu-ul-timeline {
       }
     }
   }
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ul-timeline-#{$color-name} {
+      li {
+        border-left: 4px solid $color-value $global-important;
+        border-top: 1px solid $color-value $global-important;
+        &::before {
+          background-color: $color-value $global-important;
+        }
+        &:last-child {
+          border-left-color: transparent $global-important;
+        }
+      }
+    }
+  }
 }
