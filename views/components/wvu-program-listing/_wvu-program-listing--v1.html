@@ -136,7 +136,7 @@
 
                         <h2 class="mb-0 h1 text-wvu-blue" id="{{ cardTitle }}">
                           {% if webAddress != blank %}
-                            <a href="{{ webAddress }}" class="text-decoration-none text-wvu-blue">{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %}<span class="sr-only"> (Online)</span>{% endif %}<span class="sr-only"> {{ programEntry.degreeDesignation.title }}</span></a>
+                            <a href="{{ webAddress }}" class="text-decoration-none text-wvu-blue">{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %}<span class="visually-hidden"> (Online)</span>{% endif %}<span class="visually-hidden"> {{ programEntry.degreeDesignation.title }}</span></a>
                           {% else %}
                             {{ programEntry.title }}
                           {% endif %}
@@ -178,63 +178,63 @@
                           {% if webAddress contains "https://online.wvu.edu/" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
                             <div class="btn-group-vertical w-100 shadow-sm">
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ webAddress }}">
-                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> View Program Page<span class="sr-only">: {{ programEntry.title }}</span>
+                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
                               </a>
                             </div>
                           {% elsif webAddress contains "http://catalog.wvu.edu/" %}
                             <div class="btn-group-vertical w-100 shadow-sm">
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ webAddress }}">
-                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>View in Course Catalog
+                                <span class="fa-solid fa-external-link-alt text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>View in Course Catalog
                               </a>
                             </div>
                           {% else %}
                             <div class="btn-group-vertical w-100 shadow-sm">
                               {% capture cardTitle %}{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %} (Online){% endif %} {{ programEntry.degreeDesignation.title }}{% endcapture %}
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#wvu-main-content">
-                                <span class="fa-solid fa-file-alt text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Overview
+                                <span class="fa-solid fa-file-alt text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Overview
                               </a>
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#degree-plan">
-                                <span class="fa-solid fa-clipboard-list text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Your Degree Plan
+                                <span class="fa-solid fa-clipboard-list text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Your Degree Plan
                               </a>
                               <!-- <a class="btn btn-light text-left w-100 d-flex align-items-center" href="#">
                                 <i class="fa-solid fa-sort text-center" style="width: 2rem;"></i> Rankings
                               </a> -->
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#requirements">
-                                <span class="fa-solid fa-check-square text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Admission Requirements
+                                <span class="fa-solid fa-check-square text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Admission Requirements
                               </a>
                               {% if programEntry.hepcLevelKey == 'bachelor' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#tuition">
-                                  <span class="fa-solid fa-dollar-sign text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Tuition and Aid
+                                  <span class="fa-solid fa-dollar-sign text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Tuition and Aid
                                 </a>
                               {% endif %}
                               {% comment %}
                               <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#related-programs">
-                                <span class="fa-solid fa-arrows-alt-h text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Related Programs
+                                <span class="fa-solid fa-arrows-alt-h text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Related Programs
                               </a>
                               {% endcomment %}
                               {% if programEntry.hasCareers == 'true' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#careers">
-                                  <span class="fa-solid fa-user-tie text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Careers and Outcomes
+                                  <span class="fa-solid fa-user-tie text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Careers and Outcomes
                                 </a>
                               {% endif %}
                               {% if programEntry.hasFAQs == 'true' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#faqs">
-                                  <span class="fa-solid fa-question-circle text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Frequently Asked Questions
+                                  <span class="fa-solid fa-question-circle text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Frequently Asked Questions
                                 </a>
                               {% endif %}
                               {% if programEntry.hasProfiles == 'true' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#community">
-                                  <span class="fa-solid fa-users text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Meet Your Community
+                                  <span class="fa-solid fa-users text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Meet Your Community
                                 </a>
                               {% endif %}
                               {% if programEntry.hasPlaces == 'true' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#places">
-                                  <span class="fa-solid fa-university text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Places and Spaces
+                                  <span class="fa-solid fa-university text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Places and Spaces
                                 </a>
                               {% endif %}
                               {% if programEntry.degreeDesignation.abbreviation != 'BMDS' %}
                                 <a class="btn btn-light text-left w-100 d-flex align-items-center" href="{{ programEntry.webAddressAdmissions }}#learning">
-                                  <span class="fa-solid fa-walking text-center" style="width: 2rem;"></span> <span class="sr-only">{{ cardTitle }}: </span>Learn By Doing
+                                  <span class="fa-solid fa-walking text-center" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Learn By Doing
                                 </a>
                               {% endif %}
                             </div>

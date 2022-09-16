@@ -55,7 +55,7 @@
                 {% if profile.data.description != blank %}{{ profile.data.description }}{% endif %}
               </p>
               <p class="mb-0 mt-2">
-                <a class="btn btn-primary btn-sm" href="{% if profile.data.alternate_url != blank %}{{ profile.data.alternate_url }}{% else %}{{ profile.url }}{% endif %}">View Profile<span class="sr-only">: {{ profile.name }}</span></a>
+                <a class="btn btn-primary btn-sm" href="{% if profile.data.alternate_url != blank %}{{ profile.data.alternate_url }}{% else %}{{ profile.url }}{% endif %}">View Profile<span class="visually-hidden">: {{ profile.name }}</span></a>
               </p>
             </div>
           </div>

@@ -9,12 +9,12 @@
         {% if site.data.has_alternate_logo != blank %}
           {% if site.data.has_co_brand == blank %}
             <a class="d-block position-relative my-3 text-decoration-none" href="/">
-              <span class="sr-only">West Virginia University </span>
+              <span class="visually-hidden">West Virginia University </span>
               <img class="my-n2" src="https://{{ site.domain }}{{ site.data.has_alternate_logo }}" alt="{{ site.name }}" />
             </a>
           {% else %}
             <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
-              <span class="sr-only">West Virginia University </span>
+              <span class="visually-hidden">West Virginia University </span>
               <span class="wvu-logo-lockup mt-n1">
                 {{ site.data.masthead_title | default: site.name }} (version 2)
               </span>
@@ -32,7 +32,7 @@
           {% endif %}
         {% else %}
           <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
-            <span class="sr-only">West Virginia University </span>
+            <span class="visually-hidden">West Virginia University </span>
             <span class="wvu-logo-lockup mt-n1">
               {{ site.data.masthead_title | default: site.name }}
             </span>
