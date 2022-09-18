@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
   <head>
-    {% comment %}<!-- meta charset gets set automatically by CleanSlate -->{% endcomment %}
+    {% comment %}<!-- meta charset/http-equiv gets set automatically by CleanSlate -->{% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% if page.is_home_page? %}
       <title>{{ site.name }} at West Virginia University</title>
-      <link rel="canonical" href="{{ site.url }}">
     {% else %}
       <title>{{ page.alternate_name | default: page.name }} | {{ site.name }} | West Virginia University</title>
-      <link rel="canonical" href="{{ page.url }}" >
     {% endif %}
-    <meta name="description" content="{{ page.meta_description }}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="{{ site.data.google_site_verification }}" />
-
-    {% render "utilities/social_meta_tags" %}
 
     {% link_stylesheet name: "styles" %}
 
@@ -28,8 +21,15 @@
       <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/a140e17a00.js" crossorigin="anonymous"></script>
     {% endif %}
 
+    {% if page.is_home_page? %}
+      <link rel="canonical" href="{{ site.url }}">
+    {% else %}
+      <link rel="canonical" href="{{ page.url }}" >
+    {% endif %}
+    <meta name="description" content="{{ page.meta_description }}" />
+    <meta name="google-site-verification" content="{{ site.data.google_site_verification }}" />
+    {% render "utilities/social_meta_tags" %}
   </head>
-
   <body class="{{ page.template_name }} page--{{ page.id }} page--{{ page.slug }} {% if edit_mode %}page--edit-mode page--hide-instructions-{{ site.data.hide_instructions }}{% endif %}">
 
     <header aria-label="masthead">
