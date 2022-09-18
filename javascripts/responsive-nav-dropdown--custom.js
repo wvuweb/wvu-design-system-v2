@@ -10,8 +10,8 @@ var navigation = responsiveNav(".nav-collapse", {
   menuItems: "menu-items",      // String: Class that is added only to top ul element
   subMenu: "sub-menu",
   openPos: "relative",          // String: Class that is added to sub menu ul elements
-  openDropdown: '<span class="sr-only">Open sub menu</span>',    // String: Label for opening sub menu
-  closeDropdown: '<span class="sr-only">Close sub menu</span>',  // String: Label for closing sub menu
+  openDropdown: '<span class="visually-hidden">Open sub menu</span>',    // String: Label for opening sub menu
+  closeDropdown: '<span class="visually-hidden">Close sub menu</span>',  // String: Label for closing sub menu
   open: function () {
     customToggle.innerHTML = '<img class="wvu-nav__menu-icon" src="https://static.wvu.edu/global/images/icons/wvu/hamburger-menu--1.0.0.svg" alt="" />Close Menu';
   },

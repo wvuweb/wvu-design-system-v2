@@ -98,7 +98,7 @@
                   {% if item.data.link_text != blank %}
                     {% assign link_text = item.data.link_text %}
                   {% else %}
-                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="sr-only">: {{ item.name }}</span>{% endcapture %}
+                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% endif %}
                   <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
                 {% endif %}
