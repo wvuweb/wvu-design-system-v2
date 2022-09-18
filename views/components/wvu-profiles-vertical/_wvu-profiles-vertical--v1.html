@@ -1,3 +1,8 @@
+{%- liquid
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign profiles = site.pages | filter_pages: order: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopTagsMatch, hidden: component.showHidden
+-%}
+
 {% capture component_content %}
   <div class="container wvu-z-index-content">
     {% if edit_mode or page.content[component.region_names.header] !=  blank %}
@@ -11,7 +16,6 @@
     {% endif %}
     <div class="row">
       <div class="col-md-8{% if component.componentDisplayContext == 'as_full_width_block' %} mx-auto{% endif %}">
-        {% assign profiles = site.pages | filter_pages: order: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopTagsMatch, hidden: component.showHidden %}
         {% for profile in profiles.all %}
           <div class="row mb-5">
             <div class="col-md-3 mr-ml-auto mb-1 text-center">

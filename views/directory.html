@@ -1,6 +1,8 @@
 ---
 layout: default
 custom_data_attributes:
+  - custom_directory_labels:
+    title: Custom Labels for Directory
   - limit:
     title: Limit
   - showHidden:
@@ -11,6 +13,7 @@ custom_data_attributes:
 {%- liquid
   assign componentLimit = page.data.limit | default: 10
   assign componentShowHidden = page.data.showHidden | default: false
+  assign directoryLabels = page.data.custom_directory_labels | default: ""
 -%}
 
-{% render "components/wvu-directory" number: 1, main: true, limit: componentLimit, showHidden: componentShowHidden %}
+{% render "components/wvu-directory" number: 1, main: true, limit: componentLimit, showHidden: componentShowHidden, customLabel: directoryLabels %}
