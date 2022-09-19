@@ -22,7 +22,7 @@
                 <span class="wvu-co-branding d-inline-block align-self-center mx-2 my-n2 p-2 border-start">
                   {% if site.data.has_alternate_logo != blank %}
                     {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90.jpg' %}
-                    <img src="{{ logoSRC }}" alt="{{ site.name }}" />
+                    <img src="{{ logoSrc }}" alt="{{ site.name }}" />
                   {% endif %}
                   {% if site.data.co_brand_subtitle != blank %}
                     <span class="d-block helvetica-neue-light small">{{ site.data.co_brand_subtitle }}</span>
@@ -41,7 +41,7 @@
               <span class="wvu-co-branding d-inline-block align-self-center mx-2 {% if site.data.co_brand_subtitle != blank %}my-n2 {% endif %}p-2 border-start">
                 {% if site.data.has_alternate_logo != blank %}
                   {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90.jpg' %}
-                  <img src="{{ logoSRC }}" alt="Logo: {{ site.name }}" />
+                  <img src="{{ logoSrc }}" alt="Logo: {{ site.name }}" />
                 {% else %}
                   {{ site.data.has_co_brand }}
                 {% endif %}
