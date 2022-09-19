@@ -10,7 +10,8 @@
           {% if site.data.has_co_brand == blank %}
             <a class="d-block position-relative my-3 text-decoration-none" href="/">
               <span class="visually-hidden">West Virginia University </span>
-              <img class="my-n2" src="https://{{ site.domain }}{{ site.data.has_alternate_logo }}" alt="{{ site.name }}" />
+              {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90.jpg' %}
+              <img class="my-n2" src="{{ logoSrc }}" alt="{{ site.name }}" />
             </a>
           {% else %}
             <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
