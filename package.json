@@ -1,32 +1,32 @@
 {
-  "name": "wvu-design-system",
+  "name": "wvu-design-system-v2",
   "version": "2.0.0",
-  "description": "WVU Design System",
+  "description": "WVU Design System v2",
   "main": "gulpfile.js",
   "scripts": {
     "prepare": "gulp moveJsFiles"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wvuweb/wvu-design-system"
+    "url": "https://github.com/wvuweb/wvu-design-system-v2"
   },
   "author": "May Day <may.day@mail.wvu.edu>",
   "license": "MIT",
   "engines": {
-    "node": ">=12.13.1",
-    "npm": ">=6.12.1"
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
   },
   "dependencies": {
-    "bootstrap": "~5.1",
-    "fontfaceobserver": "2.1.0",
-    "indent.js": "^0.3.5",
+    "bootstrap": "~5.2",
+    "fontfaceobserver": "2.3.0",
     "magnific-popup": "1.1.0",
     "responsive-nav": "samikeijonen/responsive-nav.js#2927f73cc443f3c07a26c84548b4cddb22893f72",
     "twitter-fetcher": "^18.0.4"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "*"
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "~5.1",
+    "sass": "~1.54"
   }
 }
