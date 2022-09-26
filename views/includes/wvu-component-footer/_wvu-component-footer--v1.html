@@ -12,7 +12,7 @@
   {% assign ariaLabelRegionName = component.name | append: '-aria-label' %}
   {% assign customItemColorsRegion = component.name | append: '__item-colors' %}
 
-  <button class="editpanelbutton wvu-z-index-max text-white p-1 rounded-sm d-inline-block btn btn-sm btn-wvu-neutral--black wvu-grow-shadow wvu-z-index-content position-absolute mt-n4 ml-1 ms-1" data-bs-toggle="collapse" data-bs-target="#editpanel-{{ component.name }}" role="button" aria-expanded="false" aria-controls="editpanel-{{ component.name }}"><small class="d-block"><i class="far fa-edit"></i> Edit <span class="text-capitalize">{{ component.baseName | replace: '-', ' ' }}</span> {{ component.number }} Styles</small></button>
+  <button class="editpanelbutton wvu-z-index-max text-white p-1 rounded-sm d-inline-block btn btn-sm btn-wvu-neutral--black wvu-grow-shadow wvu-z-index-content position-absolute {% if component.baseName == "breadcrumbs" %}mt-4 {% else %}mt-n4 {% endif %}ml-1 ms-1" data-bs-toggle="collapse" data-bs-target="#editpanel-{{ component.name }}" role="button" aria-expanded="false" aria-controls="editpanel-{{ component.name }}"><small class="d-block"><i class="far fa-edit"></i> Edit <span class="text-capitalize">{{ component.baseName | replace: '-', ' ' }}</span> {{ component.number }} Styles</small></button>
   <section class="editpanel px-2 px-md-5 pt-2 pb-3 mb-0 text-light bg-wvu-neutral--black position-relative collapse multi-collapse" id="editpanel-{{ component.name }}">
     <p class="mb-0">
       <!-- Region Name: {{component.region_names.classes}} -->
