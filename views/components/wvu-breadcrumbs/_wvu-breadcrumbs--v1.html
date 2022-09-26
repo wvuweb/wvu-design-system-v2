@@ -14,4 +14,8 @@
   </div>
 </section>
 
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+{% if edit_mode %}
+<div class="mt-4">
+  {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+</div>
+{% endif %}
