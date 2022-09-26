@@ -12,10 +12,9 @@
   <div class="container position-relative wvu-z-index-content small">
     {% breadcrumbs ul_class: componentClassesBreadcrumbs, link_class: breadcrumbLinkClasses %}
   </div>
+  {% if edit_mode %}
+    <div class="mt-4">
+      {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+    </div>
+  {% endif %}
 </section>
-
-{% if edit_mode %}
-<div class="mt-4">
-  {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
-</div>
-{% endif %}
