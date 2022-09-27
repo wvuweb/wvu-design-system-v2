@@ -1,8 +1,9 @@
 {%- liquid
+  assign componentLimit = component.limit | default: 200
   assign root = site.root_page
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: componentLimit
 -%}
 
 {% capture component_content %}
