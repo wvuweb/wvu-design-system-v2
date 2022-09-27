@@ -1,5 +1,5 @@
 {%- liquid
-  assign componentLimit = component.limit | default: 200
+  assign componentLimit = component.limit | default: "200"
   assign root = site.root_page
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign componentLabels = component.customLabel | default: component.itemLabels
