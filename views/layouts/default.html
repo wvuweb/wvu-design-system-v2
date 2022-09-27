@@ -9,6 +9,9 @@
       <title>{{ page.alternate_name | default: page.name }} | {{ site.name }} | West Virginia University</title>
     {% endif %}
 
+    <link rel="preconnect" href="https://static.wvu.edu">
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+
     {% link_stylesheet name: "styles" %}
 
     {% if page.data.youtube_playlist_id != blank %}
