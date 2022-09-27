@@ -9,8 +9,17 @@
       <title>{{ page.alternate_name | default: page.name }} | {{ site.name }} | West Virginia University</title>
     {% endif %}
 
+    <link rel="preconnect" href="https://cdn.fonts.net">
     <link rel="preconnect" href="https://static.wvu.edu">
     <link rel="preconnect" href="https://kit.fontawesome.com">
+
+    {% comment %}
+      <!-- Helvetica Neue Roman, Italic, Bold, Bold Italic, Light, & Condensed Black + -->
+      <!-- Iowan Old Style Roman, Italic, Black, & Black Italic web font from monotype.com. -->
+      <!-- Valid for *.wvu.edu, *.wvutech.edu, *.potomacstatecollege.edu & localhost. -->
+      <!-- Email web_services@mail.wvu.edu to get your domain added to this list. -->
+    {% endcomment %}
+    <link href="https://cdn.fonts.net/kit/b339d500-35c3-11ed-aaf7-06b70d83f6b0/b339d500-35c3-11ed-aaf7-06b70d83f6b0.css" rel="stylesheet" />
 
     {% link_stylesheet name: "styles" %}
 
@@ -71,18 +80,11 @@
 
     {% render "components/wvu-footer" scope: 'site' %}
 
-    {% comment %}
-      <!-- Helvetica Neue Light, Bold, & Condensed Black + Iowan Old Style, Italic, Black, & Black Italic web font from fonts.com. -->
-      <!-- Valid for *.wvu.edu, *.wvutech.edu, *.potomacstatecollege.edu & localhost. -->
-      <!-- Email web_services@mail.wvu.edu to get your domain added to this list. -->
-    {% endcomment %}
-    <script src="https://fast.fonts.net/jsapi/36d8cd92-7cc7-499b-b169-0eed9d670283.js"></script>
-
     <!-- Optional JavaScript -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    {% link_javascript name: "vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom, vendor/twitter-fetcher/twitterFetcher_min, vendor/fontfaceobserver/fontfaceobserver, fontfaceobserver__custom" %}
+    {% link_javascript name: "vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom, vendor/twitter-fetcher/twitterFetcher_min" %}
 
     {{ content_for.page_js }}
 

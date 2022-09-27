@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "bootstrap": "~5.1",
-    "fontfaceobserver": "2.1.0",
     "indent.js": "^0.3.5",
     "magnific-popup": "1.1.0",
     "responsive-nav": "samikeijonen/responsive-nav.js#2927f73cc443f3c07a26c84548b4cddb22893f72",
