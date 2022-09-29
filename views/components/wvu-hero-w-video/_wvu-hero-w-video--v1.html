@@ -43,7 +43,7 @@
           </div>
         {% endif %}
         {% assign videoId = page.content[videoUrlRegionName] | split: 'https://www.youtube.com/watch?v=' %}
-        {% assign videoID = videoID | split: 'https://youtu.be/' %}
+        {% assign videoId = videoID | split: 'https://youtu.be/' %}
         {% if page.content[videoUrlRegionName] != blank %}
           <div class="ratio ratio-16x9">
             <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ page.content[videoTitleRegionName] }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
