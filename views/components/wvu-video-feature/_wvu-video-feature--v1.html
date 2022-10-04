@@ -26,7 +26,11 @@
             {% editable_region name: videoTitleRegionName type: 'simple' %}
           </div>
         {% endif %}
-        {% assign videoId = page.content[videoUrlRegionName] | split: 'https://www.youtube.com/watch?v=' %}
+        {% if page.content[videoUrlRegionName] contains "https://www.youtube.com/watch?v=" %}
+          {% assign videoId = page.content[videoUrlRegionName] | split: 'https://www.youtube.com/watch?v=' %}
+        {% elsif page.content[videoUrlRegionName] contains "https://youtu.be/" %}
+          {% assign videoId = page.content[videoUrlRegionName] | split: 'https://youtu.be/' %}
+        {% endif %}
         {% if page.content[videoUrlRegionName] != blank %}
           <div class="ratio ratio-16x9">
             <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ page.content[videoTitleRegionName] }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

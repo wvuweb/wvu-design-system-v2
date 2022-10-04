@@ -9,6 +9,18 @@
       <title>{{ page.alternate_name | default: page.name }} | {{ site.name }} | West Virginia University</title>
     {% endif %}
 
+    <link rel="preconnect" href="https://cdn.fonts.net">
+    <link rel="preconnect" href="https://static.wvu.edu">
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+
+    {% comment %}
+      <!-- Helvetica Neue Roman, Italic, Bold, Bold Italic, Light, & Condensed Black + -->
+      <!-- Iowan Old Style Roman, Italic, Black, & Black Italic web font from monotype.com. -->
+      <!-- Valid for *.wvu.edu, *.wvutech.edu, *.potomacstatecollege.edu & localhost. -->
+      <!-- Email web_services@mail.wvu.edu to get your domain added to this list. -->
+    {% endcomment %}
+    <link href="https://cdn.fonts.net/kit/b339d500-35c3-11ed-aaf7-06b70d83f6b0/b339d500-35c3-11ed-aaf7-06b70d83f6b0.css" rel="stylesheet" />
+
     {% link_stylesheet name: "styles" %}
 
     {% if page.data.youtube_playlist_id != blank %}

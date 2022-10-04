@@ -25,11 +25,11 @@
           <div class="col-xl-10 me-xl-auto">
             <div class="mb-1">
               {% if page.data.thumbnail_url_sq != blank %}
-                {% assign thumbnailSrc = page.data.thumbnail_url_sq | build_image_url: format: '1600x1200.jpg' %}
-                <img class="card-img-top w-100" src="{{ thumbnailSrc }}/381x255.jpg" srcset="{{ thumbnailSrc }}/960x640.jpg, {{ thumbnailSrc }}/586x286.jpg, {{ thumbnailSrc }}/381x255.jpg, {{ thumbnailSrc }}/286x191.jpg, {{ thumbnailSrc }}/279x186.jpg, {{ thumbnailSrc }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+                {% assign thumbnailSrc = page.data.thumbnail_url_sq | build_image_url: format: '960x640' %}
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
               {% elsif page.data.thumbnail_url != blank %}
-                {% assign thumbnailSrc = page.data.thumbnail_url | build_image_url: format: '1600x1200.jpg' %}
-                <img class="card-img-top w-100" src="{{ thumbnailSrc }}/381x255.jpg" srcset="{{ thumbnailSrc }}/960x640.jpg, {{ thumbnailSrc }}/586x286.jpg, {{ thumbnailSrc }}/381x255.jpg, {{ thumbnailSrc }}/286x191.jpg, {{ thumbnailSrc }}/279x186.jpg, {{ thumbnailSrc }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+                {% assign thumbnailSrc = page.data.thumbnail_url | build_image_url: format: '960x640' %}
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
               {% else %}
                 {% if edit_mode %}
                   <div class="alert alert-warning rounded p-3">

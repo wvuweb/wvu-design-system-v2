@@ -1,7 +1,9 @@
 {%- liquid
+  assign componentLimit = component.limit | default: 200
   assign root = site.root_page
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: componentLimit
 -%}
 
 {% capture component_content %}
@@ -54,15 +56,23 @@
                   <span class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
                 {%- endif %}
               </td>
-              <td class="align-middle">
-                <span class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">Profile<span class="visually-hidden">: {{ page.name }}</span></a>
-              </td>
+              {% if itemReadMoreButtonText != 'none' %}
+                {% if item.data.link_text != blank %}
+                  {% assign link_text = item.data.link_text %}
+                {% else %}
+                  {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                {% endif %}
+                <td class="align-middle">
+                  <span class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
+                </td>
+              {% endif %}
             </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
 
+    {% comment %}
     {% assign pagination = items | blog_pagination %}
     {% if pagination.total_pages > 1 %}
       <div class="btn-group" role="group" aria-label="Basic example">
@@ -70,6 +80,7 @@
         <a type="button" href="{{ pagination.prev_page_url }}" class="btn btn-secondary page-link{% if pagination.is_first_page %} disabled{% endif %}">Newer Articles</a>
       </div>
     {% endif %}
+    {% endcomment %}
 
   </div>
 {% endcapture %}

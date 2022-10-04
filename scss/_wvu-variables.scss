@@ -3,22 +3,24 @@
 
 // Helvetica Neue
 $helvetica-neue-fallback: 'Helvetica Neue', Helvetica, 'Helvetica LT Std', 'Helvetica CY', Arial, 'Lucida Grande', sans-serif !default;
-$helvetica-neue: 'HelveticaNeueW01-55Roma', $helvetica-neue-fallback;
+$helvetica-neue: 'NeueHelvetica55Roman', $helvetica-neue-fallback !default;
+$wvu-shout-fallback: 'Arial Narrow', Impact, Charcoal, 'Arial Black', $helvetica-neue-fallback !default;
 
-// Webfonts from Fonts.com
-$helvetica-neue-light: 'HelveticaNeueW01-45Ligh', $helvetica-neue-fallback !default;
-$helvetica-neue-bold: 'Helvetica Neue LT W01_75 Bold', $helvetica-neue-fallback !default;
-$helvetica-neue-condensed-black: 'HelveticaNeueW01-97Blac', $helvetica-neue-fallback !default;
+// Webfonts from Monotype.com
+$helvetica-neue-light: 'NeueHelvetica45Light', $helvetica-neue-fallback !default;
+$helvetica-neue-bold: 'NeueHelvetica75Bold', $helvetica-neue-fallback !default;
+$helvetica-neue-italic: 'NeueHelvetica56Italic', $helvetica-neue-fallback !default;
+$helvetica-neue-bold-italic: 'NeueHelvetica76BoldItalic', $helvetica-neue-fallback !default;
+$helvetica-neue-condensed-black: 'NeueHelvetica97CondensedBlack', $wvu-shout-fallback !default;
 
 // Iowan
-$iowan-fallback: Iowan, Georgia, 'Times New Roman', Times, serif !default;
-$iowan-old-style: 'IowanOldStyleW01-Roman', $iowan-fallback !default;
-$iowan-old-style-italic: 'IowanOldStyleW01-Italic1120392', $iowan-fallback !default;
-$iowan-old-style-black: 'IowanOldStyleW01-Black', $iowan-fallback !default;
-$iowan-old-style-black-italic: 'IowanOldStyleW01-BlackI', $iowan-fallback !default;
+$iowan-fallback: Iowan, 'Times New Roman', Times, Georgia, serif !default;
+$iowan-old-style: 'IowanOldStyleBTRoman', $iowan-fallback !default;
+$iowan-old-style-italic: 'IowanOldStyleBTItalic', $iowan-fallback !default;
+$iowan-old-style-black: 'IowanOldStyleBTBlack', $iowan-fallback !default;
+$iowan-old-style-black-italic: 'IowanOldStyleBTBlackItalic', $iowan-fallback !default;
 
 // Shout
-$wvu-shout-fallback: 'Arial Narrow', Impact, Charcoal, 'Arial Black', $helvetica-neue-fallback !default;
 $wvu-shout-font-family: $helvetica-neue-condensed-black !default;
 
 // Font size
@@ -353,7 +355,7 @@ $display3-size: 4rem;
 $display4-size: 3.5rem;
 $font-size-base: 1rem;
 $emphasized-link-hover-darken-percentage: 0%;
-$font-family-sans-serif: $helvetica-neue-fallback;
+$font-family-sans-serif: $helvetica-neue;
 $jumbotron-bg: transparent;
 $jumbotron-padding: 4rem;
 $lead-font-size: ($font-size-base * 1.5);

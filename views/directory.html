@@ -11,7 +11,7 @@ custom_data_attributes:
 ---
 
 {%- liquid
-  assign componentLimit = page.data.limit | default: 10
+  assign componentLimit = page.data.limit | default: 200
   assign componentShowHidden = page.data.showHidden | default: false
   assign directoryLabels = page.data.custom_directory_labels | default: ""
 -%}
