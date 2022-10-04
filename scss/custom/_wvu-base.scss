@@ -1,4 +1,4 @@
-// Some base styles that Bootstrap doesn’t provide.
+// Some base styles that Bootstrap doesn't provide.
 
 body {
   @include helvetica-neue($is-important: null); // Disable !important in this instance.
@@ -6,6 +6,25 @@ body {
 
 strong,
 b {
+  @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
+}
+
+em,
+i {
+  @include helvetica-neue-italic($is-important: null); // Disable !important in this instance.
+}
+
+:where(strong) em,
+:where(strong) i,
+:where(b) em,
+:where(b) i, {
+  @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
+}
+
+:where(em) strong,
+:where(i) strong,
+:where(em) b,
+:where(i) b, {
   @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
 }
 

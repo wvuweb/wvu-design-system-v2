@@ -65,7 +65,7 @@
 //==================================================
 // Use these utility classes to apply different typefaces to text elements.
 
-// NOTE: You must include the fonts.com script for the web fonts you see here.
+// NOTE: You must include the Monotype (cdn.fonts.net) stylesheet for the web fonts you see here.
 
 .wvu-shout, %wvu-shout {
   @include wvu-shout();
@@ -77,6 +77,14 @@
 
 .helvetica-neue-bold, %helvetica-neue-bold {
   @include helvetica-neue-bold();
+}
+
+.helvetica-neue-italic, %helvetica-neue-italic {
+  @include helvetica-neue-italic();
+}
+
+.helvetica-neue-bold-italic, %helvetica-neue-bold-italic {
+  @include helvetica-neue-bold-italic();
 }
 
 .helvetica-neue-light, %helvetica-neue-light {
