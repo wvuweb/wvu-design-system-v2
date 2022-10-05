@@ -80,14 +80,7 @@
 
     {% render "components/wvu-footer" scope: 'site' %}
 
-    {% comment %}
-      <!-- Helvetica Neue Light, Bold, & Condensed Black + Iowan Old Style, Italic, Black, & Black Italic web font from fonts.com. -->
-      <!-- Valid for *.wvu.edu, *.wvutech.edu, *.potomacstatecollege.edu & localhost. -->
-      <!-- Email web_services@mail.wvu.edu to get your domain added to this list. -->
-    {% endcomment %}
-    <script src="https://fast.fonts.net/jsapi/36d8cd92-7cc7-499b-b169-0eed9d670283.js"></script>
-
-    {% link_javascript name: "vendor/bootstrap/bootstrap.bundle.min, vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom, vendor/twitter-fetcher/twitterFetcher_min, vendor/fontfaceobserver/fontfaceobserver, fontfaceobserver__custom" %}
+    {% link_javascript name: "vendor/bootstrap/bootstrap.bundle.min, vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom, vendor/twitter-fetcher/twitterFetcher_min" %}
 
     {{ content_for.page_js }}
 

@@ -7,7 +7,7 @@ WVU Design System v2
 
 **Github repository URL:** [https://github.com/wvuweb/wvu-design-system-v2](https://github.com/wvuweb/wvu-design-system-v2)
 
-**Documentation website URL:** [hhttps://dsws.sandbox.wvu.edu/](hhttps://dsws.sandbox.wvu.edu/)
+**Documentation website URL:** [https://dsws.sandbox.wvu.edu/](https://dsws.sandbox.wvu.edu/)
 
 **Dependencies necessary to work with this theme:** Node, npm, Sass.
 
