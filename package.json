@@ -17,7 +17,7 @@
     "npm": ">=8.15.0"
   },
   "dependencies": {
-    "bootstrap": "~5.2",
+    "bootstrap": "~5.2.2",
     "fontfaceobserver": "2.3.0",
     "magnific-popup": "1.1.0",
     "responsive-nav": "samikeijonen/responsive-nav.js#2927f73cc443f3c07a26c84548b4cddb22893f72",
