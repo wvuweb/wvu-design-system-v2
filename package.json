@@ -20,7 +20,7 @@
     "bootstrap": "~5.1",
     "fontfaceobserver": "2.3.0",
     "magnific-popup": "1.1.0",
-    "responsive-nav": "samikeijonen/responsive-nav.js#2927f73cc443f3c07a26c84548b4cddb22893f72",
+    "responsive-nav": "github:wvuweb/responsive-nav.js",
     "twitter-fetcher": "^18.0.4"
   },
   "devDependencies": {
