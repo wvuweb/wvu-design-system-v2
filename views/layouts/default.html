@@ -23,9 +23,7 @@
 
     {% link_stylesheet name: "styles" %}
 
-    {% if page.data.youtube_playlist_id != blank %}
-      <link rel="stylesheet" href="https://static.wvu.edu/youtube-playlist-player/stylesheets/styles.css">
-    {% endif %}
+    {{ content_for.header_extras }}
 
     {% if edit_mode or page.data.useFACSS == '1' %}
       <script src="https://kit.fontawesome.com/ba40ea27ab.js" crossorigin="anonymous"></script>
@@ -73,7 +71,6 @@
             {% render "components/wvu-backpage-header" %}
           {% endif %}
       {% endcase %}
-
     </header>
 
     {{ __TEMPLATE_CONTENT__ }}
