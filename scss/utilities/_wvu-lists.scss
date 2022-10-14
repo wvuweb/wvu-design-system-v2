@@ -2,7 +2,6 @@
   list-style-type: none $global-important;
   padding-left: 0 $global-important;
   li {
-    padding-left: 1.5em $global-important;
     position: relative $global-important;
     &::before {
       @include font-awesome-arrow();
@@ -32,7 +31,6 @@
   list-style-type: none $global-important;
   padding-left: 0 $global-important;
   li {
-    padding-left: 1.5em $global-important;
     position: relative $global-important;
     &::before {
       @include font-awesome-chevron();
