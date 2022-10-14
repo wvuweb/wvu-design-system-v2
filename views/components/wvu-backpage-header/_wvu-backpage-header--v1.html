@@ -67,9 +67,9 @@
             <div class="wvu-z-index-max">
               <h2 id="header-select-menu-label" class="text-uppercase text-white h6">In This Section:</h2>
               <div class="dropdown">
-                <a href="#" class="btn btn-white btn-lg bs-dropdown-toggle w-100 text-start d-flex align-items-center justify-content-between" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Select Page <i class="fa-solid fa-angle-down float-right"></i>
-                </a>
+                <button class="btn btn-white btn-lg bs-dropdown-toggle w-100 text-start d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select Page <span aria-hidden="true" class="fa-solid fa-angle-down float-right"></span>
+                </button>
                 <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
                   {% for page in page.children %}
                     <li><a class="dropdown-item" href="{{ page.url }}">{{ page.alternate_name | default: page.name }}</a></li>

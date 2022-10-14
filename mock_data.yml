@@ -20,7 +20,7 @@ editable_region:
     <p class="lead pb-2">
       This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
     </p>
-    <a class="btn btn-wvu-blue btn-lg" href="#" role="button">Call to Action</a>
+    <a class="btn btn-wvu-blue btn-lg" href="#">Call to Action</a>
     <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--dark-blue">Secondary Call to Action</a></p>
   wvu-action-hero-card-1__header: "Action Hero Card Header"
   wvu-action-hero-card-1__main: |
@@ -163,7 +163,7 @@ editable_region:
   wvu-hero-1__header: "It Starts Now"
   wvu-hero-1__main: |
     <p class="lead py-2"><%= Faker::Hacker.say_something_smart %> <%= Faker::Hacker.say_something_smart %></p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Call to Action</a>
+    <a class="btn btn-primary btn-lg" href="#">Call to Action</a>
   wvu-lede-text-1__main: "<%= Faker::Lorem.paragraph(5) %>"
   wvu-log-in-1__main: |
     <form class="px-3 py-4">
@@ -289,7 +289,7 @@ editable_region:
   wvu-stat-sheet-1__header: "Estimate your scholarships."
   wvu-stat-sheet-1__main: |
     <p class="lead py-2 w-75 mx-auto">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Call to Action</a>
+    <a class="btn btn-primary btn-lg" href="#">Call to Action</a>
   wvu-stat-sheet-1__stats: |
     <h2 class="wvu-h3">Tuition Rates</h2>
     <p class="mb-2">Looking for a quick ballpark figure? We have you covered.</p>
