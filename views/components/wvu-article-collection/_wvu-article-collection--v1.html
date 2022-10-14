@@ -4,10 +4,16 @@
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
-  assign startPage = site | get_page: component.featurettesID
-  assign blog = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: componentLabels, tags_match: component.loopLabelsMatch, year: params.year, month: params.month, day: params.day
+
+  if component.featurettesID == blank
+    assign root = site.root_page
+    assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  else
+    assign blog = site | get_page: component.featurettesID
+    assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: componentLabels, tags_match: component.loopLabelsMatch, year: params.year, month: params.month, day: params.day
+  endif
+
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
 
