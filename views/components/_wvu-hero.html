@@ -4,6 +4,8 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.hero | default: themeVersion
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "bg-dark text-white wvu-bg-position-center wvu-bg-size-cover"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "display-2 wvu-shout wvu-bar"
 
   if scope == 'site'
     assign basename = "site-hero"
@@ -15,8 +17,8 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "bg-dark text-white wvu-bg-position-center wvu-bg-size-cover",
-    "defaultHeaderClasses": "display-2 wvu-shout wvu-bar",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}
