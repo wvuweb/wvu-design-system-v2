@@ -3,6 +3,8 @@
 {% liquid
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.featurettes | default: themeVersion
+  assign defaultComponentClasses = defaultComponentClasses | default: null
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
   assign scope = scope | default: slot.scope
 
   if scope == 'site'
@@ -15,8 +17,8 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": null,
-    "defaultRowClasses": "justify-content-start",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultRowClasses": "{{ defaultRowClasses }}",
     "defaultItemClasses": null,
     "mainTagClasses": "py-5"
   }
