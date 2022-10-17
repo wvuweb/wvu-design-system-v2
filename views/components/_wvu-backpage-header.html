@@ -4,7 +4,7 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.backpage_header | default: themeVersion
   assign basename = "backpage-header"
-  assign defaultComponentClasses = default: site.data['classes_wvu_backpage_header'] | defaultComponentClasses | default: "wvu-z-index-max pb-3 bg-wvu-neutral--dark-gray wvu-bg-vignetting wvu-bg-blend-mode-luminosity--80 wvu-bg-position-center"
+  assign defaultComponentClasses = site.data['classes_wvu_backpage_header'] | default: defaultComponentClasses | default: "wvu-z-index-max pb-3 bg-wvu-neutral--dark-gray wvu-bg-vignetting wvu-bg-blend-mode-luminosity--80 wvu-bg-position-center"
   assign defaultHeaderClasses = site.data['classes_wvu_backpage_header__h1'] | default: defaultHeaderClasses | default: "display-4 helvetica-neue-bold mb-0 text-white"
   assign defaultSubheadClasses = site.data['classes_wvu_backpage_header__subhead'] | default: defaultSubheadClasses | default: "lead mb-2 mt-1 text-white"
 %}
