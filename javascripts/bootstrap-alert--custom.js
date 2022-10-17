@@ -36,8 +36,7 @@ const hideBootstrapAlert = (() => {
     hideAlert = 'true';
     sessionStorage.setItem('hideAlertKey', hideAlert); // Store alert state
     focusedElement.setAttribute('tabindex', '-1'); // Required for non-interactive elements
-    focusedElement.focus(); // NOTE: This must come before `alert.close();`
-    alert.close();
+    focusedElement.focus();
   }, {
     once: true
   });
