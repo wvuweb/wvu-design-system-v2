@@ -47,3 +47,6 @@ custom_data_attributes:
 {% if page.data.removeQuicklinks != '1' %}
   {% render "components/wvu-quicklinks" number: 1 %}
 {% endif %}
+
+{% render "components/wvu-people-collection" number: 2, defaultComponentClasses: "bg-wvu-blue", defaultHeaderClasses: "iowan-old-style", defaultItemButtonText: "Custom Button", defaultItemBodyClasses: "iowan", defaultItemButtonClasses: "btn btn-lg btn-wvu-accent--light-blue" %}
+{% render "components/wvu-social-media" number: 2, defaultComponentClasses: "bg-wvu-blue", defaultHeaderClasses: "iowan-old-style" %}
