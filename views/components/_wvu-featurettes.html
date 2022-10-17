@@ -6,6 +6,8 @@
   assign defaultComponentClasses = defaultComponentClasses | default: null
   assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: null
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
 
   if scope == 'site'
     assign basename = "site-featurettes"

@@ -4,14 +4,17 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.backpage_header | default: themeVersion
   assign basename = "backpage-header"
+  assign defaultComponentClasses = defaultComponentClasses | default: site.data['classes_wvu_backpage_header'] | default: "wvu-z-index-max pb-3 bg-wvu-neutral--dark-gray wvu-bg-vignetting wvu-bg-blend-mode-luminosity--80 wvu-bg-position-center"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: site.data['classes_wvu_backpage_header__h1'] | default: "display-4 helvetica-neue-bold mb-0 text-white"
+  assign defaultSubheadClasses = defaultSubheadClasses | default: site.data['classes_wvu_backpage_header__subhead'] | default: "lead mb-2 mt-1 text-white"
 %}
 
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "{{ site.data['classes_wvu_backpage_header'] | default: 'wvu-z-index-max pb-3 bg-wvu-neutral--dark-gray wvu-bg-vignetting wvu-bg-blend-mode-luminosity--80 wvu-bg-position-center' }}",
-    "defaultHeaderClasses": "{{ site.data['classes_wvu_backpage_header__h1'] | default: 'display-4 helvetica-neue-bold mb-0 text-white' }}",
-    "defaultSubheadClasses": "{{ site.data['classes_wvu_backpage_header__subhead'] | default: 'lead mb-2 mt-1 text-white' }}",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
+    "defaultSubheadClasses": "{{ defaultSubheadClasses }}",
     "mainTagClasses": null
   }
 {%- enddefine_component %}

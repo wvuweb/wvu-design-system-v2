@@ -4,6 +4,12 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.page_collection | default: themeVersion
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: null
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
+  assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue"
+  assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
+  assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-primary btn-sm"
+  assign defaultItemButtonText = defaultItemButtonText | default: "Read More"
 
   if scope == 'site'
     assign basename = "site-page-collection"
@@ -15,14 +21,14 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": null,
-    "defaultRowClasses": "justify-content-left",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultRowClasses": "{{ defaultRowClasses }}",
     "defaultItemClasses": null,
     "defaultHeaderClasses": "mb-4",
-    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue",
-    "defaultItemBodyClasses": null,
-    "defaultItemButtonClasses": "btn btn-primary btn-sm",
-    "defaultItemButtonText": "Read More",
+    "defaultItemHeaderClasses": "{{ defaultItemHeaderClasses }}",
+    "defaultItemBodyClasses": "{{ defaultItemBodyClasses }}",
+    "defaultItemButtonClasses": "{{ defaultItemButtonClasses }}",
+    "defaultItemButtonText": "{{ defaultItemButtonText }}",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}
