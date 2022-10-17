@@ -4,6 +4,8 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.action_hero_split | default: themeVersion
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "wvu-bg-position-center-left--70 wvu-bg-position-xl-center-right--80"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-header-max-width mb-0 p-2 p-md-4 bg-light wvu-shout display-3 text-wvu-accent--burnt-orange"
 
   if scope == 'site'
     assign basename = "site-action-hero-split"
@@ -15,8 +17,8 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "wvu-bg-position-center-left--70 wvu-bg-position-xl-center-right--80",
-    "defaultHeaderClasses": "wvu-header-max-width mb-0 p-2 p-md-4 bg-light wvu-shout display-3 text-wvu-accent--burnt-orange",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": null
   }
 {%- enddefine_component %}
