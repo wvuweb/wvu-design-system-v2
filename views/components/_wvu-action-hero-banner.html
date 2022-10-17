@@ -4,6 +4,8 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.action_hero_banner | default: themeVersion
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "wvu-border text-center bg-white wvu-bg-size-cover wvu-bg-position-center"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "h1 text-wvu-gold wvu-bar wvu-bar--white wvu-bar--center iowan-old-style-black-italic"
 
   if scope == 'site'
     assign basename = "site-action-hero-banner"
@@ -15,8 +17,8 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "wvu-border text-center bg-white wvu-bg-size-cover wvu-bg-position-center",
-    "defaultHeaderClasses": "h1 text-wvu-gold wvu-bar wvu-bar--white wvu-bar--center iowan-old-style-black-italic",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": null
   }
 {%- enddefine_component %}

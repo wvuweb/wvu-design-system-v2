@@ -4,6 +4,12 @@
   assign themeVersion = site.data.theme_version | default: '1'
   assign componentVersion = site.component_versions.people_collection | default: themeVersion
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "text-center"
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start mb-4"
+  assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h2 d-block wvu-shout mb-2 text-decoration-none"
+  assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
+  assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-primary btn-sm"
+  assign defaultItemButtonText = defaultItemButtonText | default: "Read More"
 
   if scope == 'site'
     assign basename = "site-people-collection"
@@ -15,14 +21,14 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "text-center",
-    "defaultRowClasses": "justify-content-left mb-4",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultRowClasses": "{{ defaultRowClasses }}",
     "defaultItemClasses": "mb-4 mb-md-0 col-sm-6 col-md-4",
     "defaultHeaderClasses": "mb-4",
-    "defaultItemHeaderClasses": "h2 d-block wvu-shout mb-2 text-decoration-none",
+    "defaultItemHeaderClasses": "{{ defaultItemHeaderClasses }}",
     "defaultItemBodyClasses": null,
-    "defaultItemButtonClasses": "btn btn-primary btn-sm",
-    "defaultItemButtonText": "Read More",
+    "defaultItemButtonClasses": "{{ defaultItemButtonClasses }}",
+    "defaultItemButtonText": "{{ defaultItemButtonText }}",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}
