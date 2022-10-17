@@ -68,7 +68,7 @@
             {% render "components/wvu-breadcrumbs" %}
           {% endif %}
           {% if page.data.backpage_header != '1' %}
-            {% render "components/wvu-backpage-header" %}
+            {% render "components/wvu-backpage-header", defaultComponentClasses: "bg-wvu-blue" %}
           {% endif %}
       {% endcase %}
     </header>
