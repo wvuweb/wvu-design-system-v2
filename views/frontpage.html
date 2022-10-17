@@ -47,3 +47,11 @@ custom_data_attributes:
 {% if page.data.removeQuicklinks != '1' %}
   {% render "components/wvu-quicklinks" number: 1 %}
 {% endif %}
+
+{% render "components/wvu-hero" number: 2, defaultComponentClasses: "bg-wvu-accent--burnt-orange", defaultHeaderClasses: "iowan-old-style-black-italic" %}
+
+{% render "components/wvu-action-hero" number: 2, defaultComponentClasses: "bg-wvu-accent--burnt-orange", defaultHeaderClasses: "iowan-old-style-black-italic" %}
+
+{% render "components/wvu-action-hero-split" number: 2, defaultComponentClasses: "bg-wvu-accent--burnt-orange", defaultHeaderClasses: "iowan-old-style-black-italic" %}
+
+{% render "components/wvu-page-collection" number: 2, defaultComponentClasses: "bg-wvu-accent--burnt-orange", defaultItemHeaderClasses: "iowan-old-style", defaultItemButtonText: "Custom Button Text", defaultItemBodyClasses: "wvu-shout", defaultItemButtonClasses: "btn btn-lg btn-wvu-accent--burnt-orange" %}
