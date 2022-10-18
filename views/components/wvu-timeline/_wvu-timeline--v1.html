@@ -41,7 +41,11 @@
             <li>
               <div class="{{ itemClasses }}">
                 {% editable_region_block name: componentPanelDate, scope: component.scope %}
-                  <p class="iowan-old-style-black small text-uppercase wvu-text-letter-spacing text-wvu-accent--burnt-orange">March 29, 1987</p>
+                  <p class="iowan-old-style-black small wvu-text-letter-spacing text-wvu-accent--burnt-orange">
+                    <span class="text-uppercase">
+                      March 29, 1987
+                    </span>
+                  </p>
                 {% endeditable_region_block %}
                 <div class="mt-2">
                   {% editable_region_block name: componentPanelMain, scope: component.scope %}

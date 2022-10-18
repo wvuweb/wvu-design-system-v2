@@ -194,8 +194,8 @@ editable_region:
   wvu-profile-teaser-1__image: |
     <img class="rounded-circle shadow" src="https://via.placeholder.com/960x960" alt="Placeholder" />
   wvu-profile-teaser-1__main: |
-    <p class="text-uppercase">
-      Label goes here
+    <p>
+      <span class="text-uppercase">Label goes here</span>
     </p>
     <h2 class="wvu-shout h1">Firstname Lastname</h2>
     <p class="h3 iowan-old-style-italic mb-2">

@@ -32,12 +32,14 @@
     <div class="row align-items-stretch">
       <div class="col-8 mt-5">
         {% if page.data.header_label == '1' %}
-          <p class="text-uppercase helvetica-neue-light mb-1">
-            {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Label</span>{% endif %}
-            {% editable_region_block name: componentHeaderLabel %}
-              <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
-            {% endeditable_region_block %}
+          <p class="helvetica-neue-light mb-1">
+            <span class="text-uppercase">
+              {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Label</span>{% endif %}
+              {% editable_region_block name: componentHeaderLabel %}
+                <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
+              {% endeditable_region_block %}
+            </span>
           </p>
         {% endif %}
         {% comment %}<!-- This is where you can add utility classes that will apply to the heading. -->{% endcomment %}
