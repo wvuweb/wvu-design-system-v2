@@ -11,7 +11,6 @@ const hideBootstrapAlert = (() => {
   /* global sessionStorage bootstrap */
 
   // Variables:
-  let hideAlert = 'false'; // NOTE: Can't store booleans in sessionStorage
   const alertNode = document.querySelector('#js-bootstrap-alert');
   const focusedElement = document.querySelector('#js-masthead');
 
@@ -23,18 +22,17 @@ const hideBootstrapAlert = (() => {
   const alert = bootstrap.Alert.getOrCreateInstance(alertNode);
 
   // If someone has already clicked to hide the alert, hide it:
-  const alertState = sessionStorage.getItem('hideAlertKey');
-  if (alertState === 'true') {
+  const hideAlert = sessionStorage.getItem('hideAlertKey');
+  if (hideAlert === 'true') { // NOTE: Can't store booleans in sessionStorage
     return alert.close();
   }
 
   // Add `fade show` classes to animate the component on close when the alert is showing:
   alertNode.classList.add('fade', 'show');
 
-  // Now that we know it's showing, set session storage state and close it on click:
+  // Now that we know it's showing, set session storage state upon click/close & move focus:
   alertNode.addEventListener('closed.bs.alert', () => {
-    hideAlert = 'true';
-    sessionStorage.setItem('hideAlertKey', hideAlert); // Store alert state
+    sessionStorage.setItem('hideAlertKey', 'true'); // Set alert state
     focusedElement.setAttribute('tabindex', '-1'); // Required for non-interactive elements
     focusedElement.focus();
   }, {
