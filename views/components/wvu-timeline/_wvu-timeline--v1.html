@@ -34,7 +34,7 @@
           </small>
         {% endif %}
 
-        <ul class="wvu-ul-timeline wvu-ul-timeline-{{ timelineColor }} mb-0">
+        <ol class="wvu-ol-timeline wvu-ol-timeline-{{ timelineColor }} mb-0">
           {% for i in (1..component.limit) %}
             {%- capture componentPanelDate %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__date{% endcapture %}
             {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
@@ -58,7 +58,7 @@
               </div>
             </li>
           {% endfor %}
-        </ul>
+        </ol>
       </div>
     </div>
   </div>
