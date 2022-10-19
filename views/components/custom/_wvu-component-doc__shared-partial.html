@@ -3,12 +3,14 @@
     <div class="row">
       <div class="col-md-8 me-md-auto">
         <h2 class="h1 wvu-bar wvu-bar--bottom">Shared CleanSlate Partial</h2>
-        <p class="text-uppercase">
-          {% if page.data.isDynamic == '1' %}
-            <strong>Type:</strong> <span class="helvetica-neue-light">Dynamic (pulls data from other pages in site)</span>
-          {% else %}
-            <strong>Type:</strong> <span class="helvetica-neue-light">Static (uses editable regions)</span)
-          {% endif %}
+        <p>
+          <span class="text-uppercase">
+            {% if page.data.isDynamic == '1' %}
+              <strong>Type:</strong> <span class="helvetica-neue-light">Dynamic (pulls data from other pages in site)</span>
+            {% else %}
+              <strong>Type:</strong> <span class="helvetica-neue-light">Static (uses editable regions)</span>
+            {% endif %}
+          </span>
         </p>
 
         <p>This component corresponds to the latest version of the shared <code>{{ page.slug }}</code> partial in CleanSlate.
