@@ -19,7 +19,7 @@
 
 .wvu-z-index-max, %wvu-z-index-max {
   position: relative;
-  z-index: 99999;
+  z-index: $wvu-z-index-max;
 }
 
 // Example usage:
