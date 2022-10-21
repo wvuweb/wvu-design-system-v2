@@ -126,6 +126,7 @@ custom_site_attributes:
 component_versions:
   backpage: 1
   page_collection_vertical: 1
+  photo_gallery: 2
   timeline: 2
 
 ## Template Config

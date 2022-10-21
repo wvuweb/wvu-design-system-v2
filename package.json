@@ -19,7 +19,7 @@
   "dependencies": {
     "bootstrap": "~5.1",
     "fontfaceobserver": "2.3.0",
-    "magnific-popup": "1.1.0",
+    "parvus": "^2.1.1",
     "responsive-nav": "github:wvuweb/responsive-nav.js",
     "twitter-fetcher": "^18.0.4"
   },
