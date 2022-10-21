@@ -126,7 +126,7 @@ custom_site_attributes:
 component_versions:
   backpage: 1
   page_collection_vertical: 1
-  timeline: 2
+  timeline: "2"
 
 ## Template Config
 # Specify which templates show up by default when creating a page
