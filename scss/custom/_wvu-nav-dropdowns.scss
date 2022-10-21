@@ -5,7 +5,7 @@
   padding: 0;
   display: block;
   list-style: none;
-  @media (max-width: $wvu-bp-lg) {
+  @media (max-width: $wvu-bp-nav-max-width) {
     width: 100%;
   }
 }
@@ -201,7 +201,7 @@
   }
 }
 
-@media (max-width: $wvu-bp-lg) {
+@media (max-width: $wvu-bp-nav-max-width) {
   .js .wvu-nav.nav-collapse {
     visibility: hidden;
     &.opened {
