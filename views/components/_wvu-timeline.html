@@ -24,5 +24,6 @@
 
 {% case componentVersion %}
   {% when '1' %}{% render "components/wvu-timeline/wvu-timeline--v1" component: component %}
+  {% when '2' %}{% render "components/wvu-timeline/wvu-timeline--v2" component: component %}
   {% else %}{% render "components/wvu-timeline/wvu-timeline--v1" component: component %}
 {% endcase %}
