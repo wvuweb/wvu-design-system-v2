@@ -1,421 +1,405 @@
-.wvu-gallery {
-  ul {
-    &.photos {
-      list-style-type: none;
-      padding-left: 0;
-      display: table;
-      width: 100%;
-      li {
-        margin-bottom: 2em;
+// Photo Gallery using Parvus
+//==================================================
+// Parvus gallery vendor styles + custom styles for this project
+// https://github.com/deoostfrees/Parvus
+
+
+// 1) Parvus v2.1.1 vendor styles:
+//--------------------------------------------------
+:root {
+  --parvus-transition-duration: 300ms;
+  --parvus-transition-timing-function: cubic-bezier(0.4, 0, 0.22, 1);
+
+  --parvus-overlay-color: hsl(23, 40%, 96%);
+  --parvus-overlay-text: hsl(228, 24%, 23%);
+
+  --parvus-button-color: hsl(228, 24%, 23%);
+  --parvus-button-text: hsl(0, 0%, 100%);
+
+  --parvus-button-hover-color: hsl(229, 24%, 33%);
+  --parvus-button-hover-text: hsl(0, 0%, 100%);
+
+  --parvus-loader-background-color: hsl(23, 40%, 96%);
+  --parvus-loader-color: hsl(228, 24%, 23%);
+}
+
+/**
+ * Parvus trigger
+ *
+ */
+
+.parvus-zoom {
+  display: block;
+  position: relative;
+
+
+  &__indicator {
+    align-items: center;
+    background-color: var(--parvus-button-color);
+    color: var(--parvus-button-text);
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+    padding: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+
+    & svg {
+      fill: none;
+      height: 1.5rem;
+      pointer-events: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.5;
+      stroke: currentColor;
+      width: 1.5rem;
+    }
+  }
+
+  & img {
+    display: block;
+  }
+}
+
+/**
+ * Parvus
+ *
+ */
+
+.parvus {
+  align-items: center;
+  bottom: 0;
+  box-sizing: border-box;
+  contain: strict;
+  display: flex;
+  font: normal normal 400 1.125rem/1.7 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  justify-content: center;
+  left: 0;
+  line-height: 1.667;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1337;
+
+
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: border-box;
+  }
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  &__overlay {
+    background-color: var(--parvus-overlay-color);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__slider {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+
+      &--animate:not(&--is-dragging) {
+        transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+      }
+    }
+
+    &--is-draggable {
+      cursor: grab;
+    }
+
+    &--is-dragging {
+      cursor: grabbing;
+    }
+  }
+
+  &__slide {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3.75rem;
+    width: 100%;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: visibility var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+    }
+
+    &:not(&--is-active) {
+      visibility: hidden;
+    }
+
+    & .parvus__caption {
+      color: var(--parvus-overlay-text);
+      padding-top: 0.5rem;
+      text-align: left;
+      will-change: transform, opacity;
+
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+      }
+    }
+
+    & img {
+      display: block;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      transform-origin: left top;
+      width: auto;
+    }
+  }
+
+  &__loader {
+    display: inline-block;
+    height: 6.25rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6.25rem;
+
+
+    &::before {
+      animation: spin 1s infinite;
+      border-radius: 100%;
+      border: 0.25rem solid var(--parvus-loader-background-color);
+      border-top-color: var(--parvus-loader-color);
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+  }
+
+  &__toolbar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  &__btn {
+    appearance: none;
+    background-color: var(--parvus-button-color);
+    background-image: none;
+    border-radius: 0;
+    border: 0.0625rem solid transparent;
+    color: var(--parvus-button-text);
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    padding: 0.3125rem;
+    position: relative;
+    touch-action: manipulation;
+    will-change: transform, opacity;
+    z-index: 7;
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+    }
+
+    &:hover {
+      background-color: var(--parvus-button-hover-color);
+      color: var(--parvus-button-hover-text);
+    }
+
+
+    &--close {
+
+    }
+
+    &--previous {
+      left: 1rem;
+      position: absolute;
+      top: calc(50% + 1.375rem);// 50% + (paddingTop / 2 - paddingBottom / 2) from .parvus__slide
+      transform: translateY(-50%);
+    }
+
+    &--next {
+      position: absolute;
+      right: 1rem;
+      top: calc(50% + 1.375rem);// 50% + (paddingTop / 2 - paddingBottom / 2) from .parvus__slide
+      transform: translateY(-50%);
+    }
+
+    & svg {
+      fill: none;
+      height: 2rem;
+      pointer-events: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1;
+      stroke: currentColor;
+      width: 2rem;
+    }
+
+    &[disabled] {
+      display: none;
+    }
+  }
+
+  &__counter {
+    position: relative;
+    z-index: 7;
+
+
+    @media screen and (prefers-reduced-motion: no-preference) {
+      transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+    }
+
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+
+    &--is-opening,
+    &--is-closing {
+
+
+
+      & .parvus__counter,
+      & .parvus__btn--close,
+      & .parvus__btn--previous,
+      & .parvus__btn--next,
+      & .parvus__caption {
+        opacity: 0;
+      }
+    }
+
+    &--is-vertical-closing {
+
+
+
+      & .parvus__counter,
+      & .parvus__btn--close {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      & .parvus__btn--previous {
+        transform: translate(-100%, -50%);
+        opacity: 0;
+      }
+
+      & .parvus__btn--next {
+        transform: translate(100%, -50%);
+        opacity: 0;
+      }
+
+      & .parvus__caption {
+        transform: translateY(100%);
+        opacity: 0;
       }
     }
   }
 }
 
-/* Magnific Popup CSS */
-.mfp-bg {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1042;
-  overflow: hidden;
-  position: fixed;
-  background: #0b0b0b;
-  opacity: 0.8;
-  filter: alpha(opacity=80); }
+@keyframes spin {
 
-.mfp-wrap {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1043;
-  position: fixed;
-  outline: none !important;
-  -webkit-backface-visibility: hidden; }
-
-.mfp-container {
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  padding: 0 8px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.mfp-container:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle; }
-
-.mfp-align-top .mfp-container:before {
-  display: none; }
-
-.mfp-content {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 auto;
-  text-align: left;
-  z-index: 1045; }
-
-.mfp-inline-holder .mfp-content,
-.mfp-ajax-holder .mfp-content {
-  width: 100%;
-  cursor: auto; }
-
-.mfp-ajax-cur {
-  cursor: progress; }
-
-.mfp-zoom-out-cur,
-.mfp-zoom-out-cur .mfp-image-holder .mfp-close {
-  cursor: -moz-zoom-out;
-  cursor: -webkit-zoom-out;
-  cursor: zoom-out; }
-
-.mfp-zoom {
-  cursor: pointer;
-  cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
-  cursor: zoom-in; }
-
-.mfp-auto-cursor .mfp-content {
-  cursor: auto; }
-
-.mfp-close,
-.mfp-arrow,
-.mfp-preloader,
-.mfp-counter {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none; }
-
-.mfp-loading.mfp-figure {
-  display: none; }
-
-.mfp-hide {
-  display: none !important; }
-
-.mfp-preloader {
-  color: #cccccc;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  text-align: center;
-  margin-top: -0.8em;
-  left: 8px;
-  right: 8px;
-  z-index: 1044; }
-
-.mfp-preloader a {
-  color: #cccccc; }
-
-.mfp-preloader a:hover {
-  color: white; }
-
-.mfp-s-ready .mfp-preloader {
-  display: none; }
-
-.mfp-s-error .mfp-content {
-  display: none; }
-
-button.mfp-close,
-button.mfp-arrow {
-  overflow: visible;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  -webkit-appearance: none;
-  display: block;
-  padding: 0;
-  z-index: 1046;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0; }
-
-.mfp-close {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  text-decoration: none;
-  text-align: center;
-  opacity: 0.65;
-  padding: 0 0 18px 10px;
-  color: white;
-  font-style: normal;
-  font-size: 28px;
-  font-family: Arial, Baskerville, monospace; }
-  .mfp-close:hover, .mfp-close:focus {
-    opacity: 1; }
-  .mfp-close:active {
-    top: 1px; }
-
-.mfp-close-btn-in .mfp-close {
-  color: #333333; }
-
-.mfp-image-holder .mfp-close,
-.mfp-iframe-holder .mfp-close {
-  color: white;
-  right: -6px;
-  text-align: right;
-  padding-right: 6px;
-  width: 100%; }
-
-.mfp-counter {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #cccccc;
-  font-size: 12px;
-  line-height: 18px;
-  width: 100px; }
-
-.mfp-arrow {
-  position: absolute;
-  opacity: 0.65;
-  margin: 0;
-  top: 50%;
-  margin-top: -55px;
-  padding: 0;
-  width: 90px;
-  height: 110px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-.mfp-arrow:active {
-  margin-top: -54px; }
-
-.mfp-arrow:hover,
-.mfp-arrow:focus {
-  opacity: 1; }
-
-.mfp-arrow:before, .mfp-arrow:after,
-.mfp-arrow .mfp-b,
-.mfp-arrow .mfp-a {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin-top: 35px;
-  margin-left: 35px;
-  border: medium inset transparent; }
-.mfp-arrow:after,
-.mfp-arrow .mfp-a {
-  border-top-width: 13px;
-  border-bottom-width: 13px;
-  top: 8px; }
-.mfp-arrow:before,
-.mfp-arrow .mfp-b {
-  border-top-width: 21px;
-  border-bottom-width: 21px; }
-
-.mfp-arrow-left {
-  left: 0; }
-  .mfp-arrow-left:after,
-  .mfp-arrow-left .mfp-a {
-    border-right: 17px solid white;
-    margin-left: 31px; }
-  .mfp-arrow-left:before,
-  .mfp-arrow-left .mfp-b {
-    margin-left: 25px;
-    border-right: 27px solid #3f3f3f; }
-
-.mfp-arrow-right {
-  right: 0; }
-  .mfp-arrow-right:after,
-  .mfp-arrow-right .mfp-a {
-    border-left: 17px solid white;
-    margin-left: 39px; }
-  .mfp-arrow-right:before,
-  .mfp-arrow-right .mfp-b {
-    border-left: 27px solid #3f3f3f; }
-
-.mfp-iframe-holder {
-  padding-top: 40px;
-  padding-bottom: 40px; }
-
-.mfp-iframe-holder .mfp-content {
-  line-height: 0;
-  width: 100%;
-  max-width: 900px; }
-
-.mfp-iframe-scaler {
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  padding-top: 56.25%; }
-
-.mfp-iframe-scaler iframe {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  background: black; }
-
-.mfp-iframe-holder .mfp-close {
-  top: -40px; }
-
-/* Main image in popup */
-img.mfp-img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  line-height: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 40px 0 40px;
-  margin: 0 auto; }
-
-/* The shadow behind the image */
-.mfp-figure:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 40px;
-  bottom: 40px;
-  display: block;
-  right: 0;
-  width: auto;
-  height: auto;
-  z-index: -1;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  background: #444444; }
-
-.mfp-figure {
-  line-height: 0; }
-
-.mfp-bottom-bar {
-  margin-top: -36px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  cursor: auto; }
-
-.mfp-title {
-  text-align: left;
-  line-height: 18px;
-  color: #f3f3f3;
-  word-wrap: break-word;
-  padding-right: 36px; }
-
-.mfp-figure small {
-  color: #bdbdbd;
-  display: block;
-  font-size: 12px;
-  line-height: 14px; }
-
-.mfp-image-holder .mfp-content {
-  max-width: 100%; }
-
-.mfp-gallery .mfp-image-holder .mfp-figure {
-  cursor: pointer; }
-
-@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
-  /**
-   * Remove all paddings around the image on small screen
-   */
-  .mfp-img-mobile .mfp-image-holder {
-    padding-left: 0;
-    padding-right: 0; }
-
-  .mfp-img-mobile img.mfp-img {
-    padding: 0; }
-
-  /* The shadow behind the image */
-  .mfp-img-mobile .mfp-figure:after {
-    top: 0;
-    bottom: 0; }
-
-  .mfp-img-mobile .mfp-bottom-bar {
-    background: rgba(0, 0, 0, 0.6);
-    bottom: 0;
-    margin: 0;
-    top: auto;
-    padding: 3px 5px;
-    position: fixed;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-
-  .mfp-img-mobile .mfp-bottom-bar:empty {
-    padding: 0; }
-
-  .mfp-img-mobile .mfp-counter {
-    right: 5px;
-    top: 3px; }
-
-  .mfp-img-mobile .mfp-close {
-    top: 0;
-    right: 0;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    background: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    text-align: center;
-    padding: 0; }
-
-  .mfp-img-mobile .mfp-figure small {
-    display: inline;
-    margin-left: 5px; } }
-@media all and (max-width: 900px) {
-  .mfp-arrow {
-    -webkit-transform: scale(0.75);
-    transform: scale(0.75); }
-
-  .mfp-arrow-left {
-    -webkit-transform-origin: 0;
-    transform-origin: 0; }
-
-  .mfp-arrow-right {
-    -webkit-transform-origin: 100%;
-    transform-origin: 100%; }
-
-  .mfp-container {
-    padding-left: 6px;
-    padding-right: 6px; } }
-.mfp-ie7 .mfp-img {
-  padding: 0; }
-.mfp-ie7 .mfp-bottom-bar {
-  width: 600px;
-  left: 50%;
-  margin-left: -300px;
-  margin-top: 5px;
-  padding-bottom: 5px; }
-.mfp-ie7 .mfp-container {
-  padding: 0; }
-.mfp-ie7 .mfp-content {
-  padding-top: 44px; }
-.mfp-ie7 .mfp-close {
-  top: 0;
-  right: 0;
-  padding-top: 0; }
-
-
-// Layout
-// =================================
-
-.wvu-sidebar, .main {
-  .wvu-gallery__container {
-    width: 100%;
+  to {
+    transform: rotate(360deg);
   }
 }
+
+
+// 2) Custom CSS for the Parvus Lightbox / Gallery:
+//--------------------------------------------------
+
+// NOTE: Adding some focus styles to Parvus:
+// ------------------------------------------
+// Credit to: https://css-tricks.com/the-focus-visible-trick/
+
+.parvus-trigger { // TODO: Transition!
+  &:hover {
+    .parvus-zoom__indicator svg {
+      transform: rotate(10deg) scale(1.1);
+    }
+  }
+}
+
+// Focusing .parvus__btn and .parvus-trigger with a keyboard will show a dashed red line.
+.parvus-trigger:focus-visible {
+  outline: 0;
+  .parvus-zoom__indicator {
+    outline: 2px dashed crimson;
+  }
+}
+
+.parvus__btn:focus-visible {
+  outline: 2px dashed crimson;
+  outline-offset: 2px;
+}
+
+// Focusing .parvus__btn and .parvus-trigger with a mouse, touch, or stylus
+.parvus__btn,
+.parvus-trigger {
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
+
+
+
+// NOTE: Some custom styles for this layout
+// ------------------------------------------
+
+$parvus-photo-gallery-height: 200px;
+
+.parvus {
+  --parvus-overlay-color: #{$wvu-neutral--light-brown};
+}
+
+.parvus-gallery__item {
+  max-height: $parvus-photo-gallery-height;
+  overflow: hidden;
+
+  @media print {
+    max-height: none;
+  } //mq
+
+} //.parvus-gallery__item
+
+.parvus-gallery__thumbnail {
+  height: $parvus-photo-gallery-height;
+  object-fit: cover;
+  width: 100%;
+
+  @supports (aspect-ratio: 4 / 3) {
+    aspect-ratio: 4 / 3;
+    width: auto;
+    height: auto;
+  } // @supports
+} //.parvus-gallery__thumbnail

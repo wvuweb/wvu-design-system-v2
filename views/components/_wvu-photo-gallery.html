@@ -21,7 +21,10 @@
   }
 {%- enddefine_component %}
 
+<!-- Component Version: {{ componentVersion }}; Site Data: {{ theme.data.component_versions.photo_gallery }} -->
+
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v2" component: component %}
   {% else %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
 {% endcase %}
