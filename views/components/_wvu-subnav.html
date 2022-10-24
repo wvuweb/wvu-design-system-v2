@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.subnav | default: themeVersion
+  assign componentVersion = theme.data.component_versions.subnav | default: '1'
   assign basename = "subnav"
 %}
 
@@ -13,6 +12,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-subnav/wvu-subnav--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-subnav/wvu-subnav--v1" component: component %}
   {% else %}{% render "components/wvu-subnav/wvu-subnav--v1" component: component %}
 {% endcase %}

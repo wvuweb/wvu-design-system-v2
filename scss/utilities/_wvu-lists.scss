@@ -1,10 +1,12 @@
 .wvu-ul-arrows {
   list-style-type: none $global-important;
-  padding-left: 0 $global-important;
+  padding-left: 1.5em $global-important;
   li {
     position: relative $global-important;
     &::before {
       @include font-awesome-arrow();
+      left: -1.5em;
+      position: absolute $global-important;
     }
   }
 }
@@ -29,11 +31,13 @@
 
 .wvu-ul-chevrons {
   list-style-type: none $global-important;
-  padding-left: 0 $global-important;
+  padding-left: 1.5em $global-important;
   li {
     position: relative $global-important;
     &::before {
       @include font-awesome-chevron();
+      left: -1.5em;
+      position: absolute $global-important;
     }
   }
 }
@@ -303,7 +307,7 @@ ol.wvu-ol-progress-horizontal {
   }
 }
 
-ul.wvu-ul-timeline {
+ol.wvu-ol-timeline {
   list-style-type: none $global-important;
   margin-left: 3.25rem $global-important;
   padding-left: 0 $global-important;
@@ -347,7 +351,7 @@ ul.wvu-ul-timeline {
     }
   }
   @each $color-name, $color-value in $theme-colors {
-    &.wvu-ul-timeline-#{$color-name} {
+    &.wvu-ol-timeline-#{$color-name} {
       li {
         border-left: 4px solid $color-value $global-important;
         border-top: 1px solid $color-value $global-important;

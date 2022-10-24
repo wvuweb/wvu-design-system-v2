@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.photo_gallery | default: themeVersion
+  assign componentVersion = theme.data.component_versions.photo_gallery | default: '1'
   assign scope = scope | default: slot.scope
 
   if scope == 'site'
@@ -23,6 +22,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
   {% else %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
 {% endcase %}

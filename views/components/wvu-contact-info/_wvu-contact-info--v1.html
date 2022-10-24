@@ -22,7 +22,7 @@
         {% endeditable_region_block %}
         {% if edit_mode or page.content[addressEditableRegionName] != blank %}
           <div class="d-flex mb-2 mt-4">
-            <div class="h3"><i class="fa-solid fa-location-pin"></i></div>
+            <div class="h3"><span class="fa-solid fa-location-pin" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
               {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Address</span>{% endif %}
@@ -41,7 +41,7 @@
         {% endif %}
         {% if edit_mode or page.content[phoneEditableRegionName] != blank %}
           <div class="d-flex mb-2">
-            <div class="h3"><i class="fa-solid fa-phone"></i></div>
+            <div class="h3"><span class="fa-solid fa-phone" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
               {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
@@ -59,7 +59,7 @@
         {% endif %}
         {% if edit_mode or page.content[emailEditableRegionName] != blank %}
           <div class="d-flex mb-2">
-            <div class="h3"><i class="fa-solid fa-envelope"></i></div>
+            <div class="h3"><span class="fa-solid fa-envelope" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
               {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
@@ -77,7 +77,7 @@
         {% endif %}
         {% if edit_mode or page.content[individualEditableRegionName] != blank %}
           <div class="d-flex mb-2">
-            <div class="h3"><i class="fa-solid fa-user-group"></i></div>
+            <div class="h3"><span class="fa-solid fa-user-group" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
               {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
@@ -88,7 +88,7 @@
                 <p>
                   Looking for someone specific?
                 </p>
-                <p><a class="btn btn-outline-dark" href="#"><i class="fa-solid fa-circle-arrow-right"></i> Meet the Team</a></p>
+                <p><a class="btn btn-outline-dark" href="#"><span class="fa-solid fa-circle-arrow-right" aria-hidden="true"></span> Meet the Team</a></p>
               {% endeditable_region_block %}
             </div>
           </div>

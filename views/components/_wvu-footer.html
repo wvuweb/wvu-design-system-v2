@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.footer | default: themeVersion
+  assign componentVersion = theme.data.component_versions.footer | default: '1'
 %}
 
 {%- define_component component %}
@@ -14,6 +13,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-footer/wvu-footer--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-footer/wvu-footer--v1" component: component %}
   {% else %}{% render "components/wvu-footer/wvu-footer--v1" component: component %}
 {% endcase %}

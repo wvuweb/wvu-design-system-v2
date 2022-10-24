@@ -1,0 +1,68 @@
+{%- liquid
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
+  assign timelineColorRegionName = component.name | append: '__timeline-color'
+  assign timelineColor = page.content[component.region_names.timelineColorRegionName] | default: component.defaultTimelineColor
+-%}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 me-lg-auto text-md-right py-3">
+
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+          <span class="d-inline-block badge bg-primary mb-1">Header</span>
+        {% endif %}
+
+        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region_block name: component.region_names.header, scope: component.scope, type: "simple" %}It Starts Now{% endeditable_region_block %}</h2>
+
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        {% endeditable_region_block %}
+
+      </div>
+      <div class="col-lg-6 pt-3">
+
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Timeline Color (e.g.):
+            <div class="mb-1 px-1 text-white">{% editable_region name: timelineColorRegionName, type: "simple", scope: component.scope %}</div>
+          </small>
+        {% endif %}
+
+        <ol class="wvu-ol-timeline wvu-ol-timeline-{{ timelineColor }} mb-0">
+          {% for i in (1..component.limit) %}
+            {%- capture componentPanelDate %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__date{% endcapture %}
+            {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
+            <li>
+              <div class="{{ itemClasses }}">
+                {% editable_region_block name: componentPanelDate, scope: component.scope %}
+                  <p class="iowan-old-style-black small wvu-text-letter-spacing text-wvu-accent--burnt-orange">
+                    <span class="text-uppercase">
+                      March 29, 1987
+                    </span>
+                  </p>
+                {% endeditable_region_block %}
+                <div class="mt-2">
+                  {% editable_region_block name: componentPanelMain, scope: component.scope %}
+                    <h3 class="mb-1 h4">Headline Goes Here</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  {% endeditable_region_block %}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

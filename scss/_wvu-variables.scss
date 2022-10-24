@@ -179,7 +179,8 @@ $wvu-bp-md: 768px !default;
 $wvu-bp-lg: 992px !default;
 $wvu-bp-xl: 1400px !default;
 
-$wvu-bp-nav: $wvu-bp-lg;
+$wvu-bp-nav: $wvu-bp-lg !default;
+$wvu-bp-nav-max-width: ($wvu-bp-nav - 1) !default;
 
 $wvu-breakpoints: (
   $wvu-bp-xs,

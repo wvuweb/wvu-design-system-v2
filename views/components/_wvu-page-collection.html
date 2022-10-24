@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.page_collection | default: themeVersion
+  assign componentVersion = theme.data.component_versions.page_collection | default: '1'
   assign scope = scope | default: slot.scope
   assign defaultComponentClasses = defaultComponentClasses | default: null
   assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
@@ -34,6 +33,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-page-collection/wvu-page-collection--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-page-collection/wvu-page-collection--v1" component: component %}
   {% else %}{% render "components/wvu-page-collection/wvu-page-collection--v1" component: component %}
 {% endcase %}

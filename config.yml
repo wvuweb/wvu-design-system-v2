@@ -5,7 +5,7 @@ description: WVU Design System Theme
 engine: liquid
 
 import_themes:
-  - git@github.com:wvuweb/wvu-design-system-v2.git
+  # - git@github.com:wvuweb/wvu-design-system-v2.git
   - git@bitbucket.org:wvudigital/code-liquid.git
 
 ## Attributes, Data and Variables
@@ -123,9 +123,9 @@ custom_site_attributes:
 
 ## Component Versions
 # Set the version of each component here when we have new versions
-component_versions:
-  backpage: 1
-  page_collection_vertical: 1
+data:
+  component_versions:
+    timeline: 2
 
 ## Template Config
 # Specify which templates show up by default when creating a page
