@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.timeline | default: themeVersion
+  assign componentVersion = site.data.component_versions.timeline | default: 1
   assign scope = scope | default: slot.scope
 
   if scope == 'site'
