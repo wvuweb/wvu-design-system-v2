@@ -1,10 +1,12 @@
 .wvu-ul-arrows {
   list-style-type: none $global-important;
-  padding-left: 0 $global-important;
+  padding-left: 1.5em $global-important;
   li {
     position: relative $global-important;
     &::before {
       @include font-awesome-arrow();
+      left: -1.5em;
+      position: absolute $global-important;
     }
   }
 }
@@ -29,11 +31,13 @@
 
 .wvu-ul-chevrons {
   list-style-type: none $global-important;
-  padding-left: 0 $global-important;
+  padding-left: 1.5em $global-important;
   li {
     position: relative $global-important;
     &::before {
       @include font-awesome-chevron();
+      left: -1.5em;
+      position: absolute $global-important;
     }
   }
 }
