@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.backpage_header | default: themeVersion
+  assign componentVersion = theme.data.component_versions.backpage_header | default: '1'
   assign basename = "backpage-header"
   assign defaultComponentClasses = site.data['classes_wvu_backpage_header'] | default: defaultComponentClasses | default: "wvu-z-index-max pb-3 bg-wvu-neutral--dark-gray wvu-bg-vignetting wvu-bg-blend-mode-luminosity--80 wvu-bg-position-center"
   assign defaultHeaderClasses = site.data['classes_wvu_backpage_header__h1'] | default: defaultHeaderClasses | default: "display-4 helvetica-neue-bold mb-0 text-white"
@@ -20,6 +19,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-backpage-header/wvu-backpage-header--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-backpage-header/wvu-backpage-header--v1" component: component %}
   {% else %}{% render "components/wvu-backpage-header/wvu-backpage-header--v1" component: component %}
 {% endcase %}

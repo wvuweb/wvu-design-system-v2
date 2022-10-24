@@ -1,8 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign themeVersion = site.data.theme_version | default: '1'
-  assign componentVersion = site.component_versions.action_hero_split | default: themeVersion
+  assign componentVersion = theme.data.component_versions.action_hero_split | default: '1'
   assign scope = scope | default: slot.scope
   assign defaultComponentClasses = defaultComponentClasses | default: "wvu-bg-position-center-left--70 wvu-bg-position-xl-center-right--80"
   assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-header-max-width mb-0 p-2 p-md-4 bg-light wvu-shout display-3 text-wvu-accent--burnt-orange"
@@ -24,6 +23,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when '1' %}{% render "components/wvu-action-hero-split/wvu-action-hero-split--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-action-hero-split/wvu-action-hero-split--v1" component: component %}
   {% else %}{% render "components/wvu-action-hero-split/wvu-action-hero-split--v1" component: component %}
 {% endcase %}
