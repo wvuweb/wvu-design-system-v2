@@ -1,0 +1,48 @@
+{% case page.slug %}
+  {% when 'alert-banner' or 'article-hero' or 'backpage-header' or 'breadcrumbs' or 'editable-region' or 'emergency-alert-banner' or 'footer' or 'horizontal-subnav' or 'masthead' or 'nav' %}
+  {% else %}
+    <h3 class="mb-0">General Component Parameters</h3>
+    <p>The following parameters can be used when including any shared partial.</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Options</th>
+          <th scope="col" class="w-50">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>editModeOnly</code>
+          </td>
+          <td>
+            <code>true</code>
+          </td>
+          <td>If set to
+            <strong>true</strong>, the component will only appear in Edit Mode. This is useful
+            for testing your component before you want to make it live.</td>
+        </tr>
+        <tr>
+          <td>
+            <code>main</code>
+          </td>
+          <td>
+            <code>true</code>
+          </td>
+          <td>If set to
+            <strong>true</strong>, a <code>&lt;main&gt;&lt;/main&gt;</code> element will apply
+            to the component.</td>
+        </tr>
+        <tr>
+          <td>
+            <code>scope</code>
+          </td>
+          <td>
+            <code>page<br>site</code>
+          </td>
+          <td>If set to <strong>site</strong>, content in the editable regions of the component will apply sitewide to any component with the same name and instance number that is also set to <code>scope: "site"</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+{% endcase %}

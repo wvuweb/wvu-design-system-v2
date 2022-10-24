@@ -1,0 +1,43 @@
+{% case page.slug %}
+  {% when 'alternating-grid' or 'article-collection' or 'cards' or 'cards-w-overlay' or 'colored-boxes' or 'contact-collection-vertical' or 'contact-collection' or 'page-collection-colored-boxes' or 'page-collection-icons' or 'page-collection-vertical-icons' or 'page-collection-vertical' or 'page-collection' or 'people-collection-vertical' or 'people-collection' or 'photo-grid' or 'profile-teaser' or 'testimonials-fancy' or 'testimonials' %}
+    <h3 class="mb-0">Collection Parameters</h3>
+    <p>These options can be used to configure collection components.</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Options</th>
+          <th scope="col" class="w-50">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>limit</code>
+          </td>
+          <td>
+            Any Number
+          </td>
+          <td>Sets the number of items that will appear in the component.</td>
+        </tr>
+        <tr>
+          <td>
+            <code>showHidden</code>
+          </td>
+          <td>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <code>true</code>
+              </li>
+              <li>
+                <code>false</code>
+              </li>
+            </ul>
+          </td>
+          <td>If set to <code>true</code>, shows items even if they’re hidden from your site’s
+            navigation.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+{% endcase %}
