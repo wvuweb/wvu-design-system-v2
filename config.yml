@@ -125,6 +125,7 @@ custom_site_attributes:
 # Set the version of each component here when we have new versions
 data:
   component_versions:
+    photo_gallery: 2
     timeline: 2
 
 ## Template Config
