@@ -5,7 +5,7 @@ description: WVU Design System Theme
 engine: liquid
 
 import_themes:
-  - git@github.com:wvuweb/wvu-design-system-v2.git
+  # - git@github.com:wvuweb/wvu-design-system-v2.git
   - git@bitbucket.org:wvudigital/code-liquid.git
 
 ## Attributes, Data and Variables
