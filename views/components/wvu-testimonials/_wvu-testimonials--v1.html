@@ -62,9 +62,11 @@
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             <div class="mt-3">
-              <p class="wvu-quote iowan-old-style h4 mb-3">
-                {{ item.content.wvu-profile-1__quote }}
-              </p>
+              <blockquote class="wvu-quote iowan-old-style h4 mb-3 mx-0">
+                <p>
+                  {{ item.content.wvu-profile-1__quote }}
+                </p>
+              </blockquote>
 
               <div class="row">
                 <div class="{% if itemCount == 1 %}col-5 mx-auto{% else %}col-3{% endif %}">
