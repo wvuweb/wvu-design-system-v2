@@ -1,5 +1,5 @@
 {%- liquid
-  if component.primaryHeading == 'true'
+  if component.primaryHeading == true
     assign htag = 'h1'
   else
     if component.main == true and page.data.backpage_header == '1'
@@ -17,6 +17,7 @@
 -%}
 
 Component Primary Heading: {{ component.primaryHeading }}
+Component Main: {{ component.main }}
 
 {% capture component_content %}
   <div class="container position-relative wvu-z-index-content">
