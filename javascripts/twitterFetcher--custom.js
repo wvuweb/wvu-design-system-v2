@@ -52,7 +52,7 @@ const showTweets = (() => {
       listItems += `
         <li class="wvu-tweets__individual-tweet col-sm-6 col-lg-3 mb-3 mb-lg-0">
           <p class="wvu-tweets__tweet-content">${tweets[n].tweet}</p>
-          <p class="wvu-tweets__time-posted">
+          <p class="wvu-tweets__time-posted small">
             <a class="wvu-tweets__permalink" href="${tweets[n].permalinkURL}" title="${tweets[n].timestamp}" aria-label="Permalink to tweet #${n + 1} posted ${relativeTime}">
               Posted <time datetime="${tweets[n].timestamp}">${relativeTime}</time>
             </a>
