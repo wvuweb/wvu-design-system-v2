@@ -1,11 +1,11 @@
 {%- liquid
-  {% if component.primaryHeading == true %}
+  if component.primaryHeading == true
     assign htag = 'h1'
-  {% eslif component.main == true and page.data.backpage_header == '1' %}
+  eslif component.main == true and page.data.backpage_header == '1'
     assign htag = 'h1'
-  {% else %}
+  else
     assign htag = 'h2'
-  {% endif %}
+  endif
 
   if component.bgStyler != blank
     unless component.classes contains "luminosity"
