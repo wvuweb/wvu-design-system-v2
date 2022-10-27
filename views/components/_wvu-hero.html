@@ -23,6 +23,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when 1 %}{% render "components/wvu-hero/wvu-hero--v1" component: component %}
-  {% else %}{% render "components/wvu-hero/wvu-hero--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-hero/wvu-hero--v1" component: component, primaryHeading: component.primaryHeading %}
+  {% else %}{% render "components/wvu-hero/wvu-hero--v1" component: component, primaryHeading: component.primaryHeading %}
 {% endcase %}

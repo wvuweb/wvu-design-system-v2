@@ -34,7 +34,7 @@ custom_data_attributes:
   assign customPageLabels = page.data.custom_page_labels | default: ""
 -%}
 
-{% render "components/wvu-hero" number: 1, main: true, align: alignHero, primaryHeading: 'true' %}
+{% render "components/wvu-hero" number: 1, main: true, align: alignHero, primaryHeading: true %}
 
 {% if page.data.removeFeaturedPages != '1' %}
   {% render "components/wvu-page-collection" number: 1, limit: featuredPagesLimit, showHidden: componentShowFeaturedPagesIfHidden, customLabel: customPageLabels %}
