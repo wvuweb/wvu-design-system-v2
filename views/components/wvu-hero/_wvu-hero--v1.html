@@ -1,10 +1,11 @@
 {%- liquid
   if component.primaryHeading == true
     assign htag = 'h1'
-  elsif component.main == true and page.data.backpage_header == '1'
-    assign htag = 'h1'
   else
-    assign htag = 'h2'
+    if component.main == true and page.data.backpage_header == '1'
+      assign htag = 'h1'
+    else
+      assign htag = 'h2'
   endif
 
   if component.bgStyler != blank
