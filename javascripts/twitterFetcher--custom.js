@@ -50,7 +50,7 @@ const showTweets = (() => {
       const tweetDate = new Date(`${tweets[n].timestamp}`);
       const relativeTime = getRelativeTimeString(tweetDate);
       listItems += `
-        <li class="wvu-tweets__individual-tweet col-sm-6 col-lg-3 mb-3 pb-2">
+        <li class="wvu-tweets__individual-tweet col-sm-6 col-lg-3 mb-3 mb-lg-0">
           <p class="wvu-tweets__tweet-content">${tweets[n].tweet}</p>
           <p class="wvu-tweets__time-posted">
             <a class="wvu-tweets__permalink" href="${tweets[n].permalinkURL}" title="${tweets[n].timestamp}" aria-label="Permalink to tweet #${n + 1} posted ${relativeTime}">
@@ -64,7 +64,7 @@ const showTweets = (() => {
 
     // NOTE: Create `<ul>` to house list items:
     const unorderedList = document.createElement('ul');
-    unorderedList.classList.add('wvu-tweets__list', 'row', 'list-unstyled');
+    unorderedList.classList.add('wvu-tweets__list', 'row', 'list-unstyled', 'mb-0');
     unorderedList.innerHTML = listItems;
 
     // NOTE: Add `.text-break` to links in tweet text:
