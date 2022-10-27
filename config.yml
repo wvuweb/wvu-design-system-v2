@@ -127,6 +127,7 @@ data:
   component_versions:
     photo_gallery: 2
     timeline: 2
+    twitter_widget: 2
 
 ## Template Config
 # Specify which templates show up by default when creating a page
