@@ -1,3 +1,9 @@
+{% if component.customLabel == blank %}
+  {% assign itemLabels = component.itemLabels %}
+{% else %}
+  {% assign itemLabels = component.customLabel %}
+{% endif %}
+
 {% if edit_mode %}
   <div class="alert alert-warning p-2 my-4 mb-3 text-start">
     <p class="mb-0">
