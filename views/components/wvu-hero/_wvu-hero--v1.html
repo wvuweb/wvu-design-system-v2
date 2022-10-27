@@ -1,7 +1,7 @@
 {%- liquid
   if component.primaryHeading == true
     assign htag = 'h1'
-  eslif component.main == true and page.data.backpage_header == '1'
+  elsif component.main == true and page.data.backpage_header == '1'
     assign htag = 'h1'
   else
     assign htag = 'h2'
