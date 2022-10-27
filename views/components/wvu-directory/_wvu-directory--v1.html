@@ -4,6 +4,14 @@
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign componentLabels = component.customLabel | default: component.itemLabels
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: componentLimit
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
 -%}
 
 {% capture component_content %}
@@ -16,6 +24,10 @@
         <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom visually-hidden">Directory Headline</h2>
       {% endeditable_region_block %}
     {%- endif %}
+
+    {% if edit_mode and itemCount == 0 %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+    {% endif %}
 
     <div class="table-responsive-md">
       <table class="table">
