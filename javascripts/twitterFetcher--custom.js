@@ -50,10 +50,10 @@ const showTweets = (() => {
       const tweetDate = new Date(`${tweets[n].timestamp}`);
       const relativeTime = getRelativeTimeString(tweetDate);
       listItems += `
-        <li class="col-sm-6 col-lg-3 border-bottom mb-3 pb-2 border-left-md border-bottom-md-none tweet-border">
-          <p class="tweet">${tweets[n].tweet}</p>
-          <p class="timePosted">
-            <a href="${tweets[n].permalinkURL}" title="${tweets[n].timestamp}" aria-label="Permalink to tweet #${n + 1} posted ${relativeTime}">
+        <li class="wvu-tweets__individual-tweet col-sm-6 col-lg-3 mb-3 pb-2">
+          <p class="wvu-tweets__tweet-content">${tweets[n].tweet}</p>
+          <p class="wvu-tweets__time-posted">
+            <a class="wvu-tweets__permalink" href="${tweets[n].permalinkURL}" title="${tweets[n].timestamp}" aria-label="Permalink to tweet #${n + 1} posted ${relativeTime}">
               Posted <time datetime="${tweets[n].timestamp}">${relativeTime}</time>
             </a>
           </p>
@@ -64,11 +64,11 @@ const showTweets = (() => {
 
     // NOTE: Create `<ul>` to house list items:
     const unorderedList = document.createElement('ul');
-    unorderedList.classList.add('row', 'list-unstyled');
+    unorderedList.classList.add('wvu-tweets__list', 'row', 'list-unstyled');
     unorderedList.innerHTML = listItems;
 
     // NOTE: Add `.text-break` to links in tweet text:
-    const getAnchors = unorderedList.querySelectorAll('.tweet a');
+    const getAnchors = unorderedList.querySelectorAll('.wvu-tweets__tweet-content a');
     for (const anchor of getAnchors) {
       anchor.classList.add('text-break');
     }
