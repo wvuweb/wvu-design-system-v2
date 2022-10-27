@@ -45,6 +45,14 @@
       </p>
     {% endif %}
     {% case component.baseName %}
+      {% when 'action-hero-card' %}
+        <p class="mb-1 small">
+          {% if edit_mode %}Utility classes for card:{% endif %}
+          {% editable_region name: component.region_names.itemClasses, type: "simple", scope: component.scope %}
+        </p>
+        <p class="text-muted mb-0 mt-1 small">
+          <strong>Default classes:</strong> {{ component.defaultItemClasses }}
+        </p>
       {% when 'featurettes' or 'featurettes-cards' %}
         <div class="row mt-3">
           <div class="col-lg text-white">
