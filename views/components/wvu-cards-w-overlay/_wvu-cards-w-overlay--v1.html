@@ -65,7 +65,7 @@
           {%- endcapture %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            <a class="d-block h-100 text-white text-decoration-none" aria-labelledby="{{ htag_id }}" href="{{ link_href }}">
+            <a class="d-block h-100 text-white text-decoration-none" aria-labelledby="{{ htag_id }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
               <div class="p-3 h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc | strip }}/960x640)">
 
                 <div class="wvu-z-index-content">

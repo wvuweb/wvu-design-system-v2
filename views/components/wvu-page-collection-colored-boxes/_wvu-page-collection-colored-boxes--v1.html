@@ -78,7 +78,7 @@
           <div class="d-flex flex-column {{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             <div class="position-relative h-100 p-3 p-xl-4 text-white {{ bgColorListItem | default: 'bg-wvu-neutral--dark-gray' }}">
               <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
-                <a class="{% unless edit_mode %}stretched-link{% endunless %} link-white text-decoration-none" href="{{ link_href }}">
+                <a class="{% unless edit_mode %}stretched-link{% endunless %} link-white text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                   {{ item.alternate_name | default: item.name }}
                 </a>
               </{{ htag }}>

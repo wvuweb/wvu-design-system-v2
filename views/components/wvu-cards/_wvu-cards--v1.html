@@ -77,7 +77,7 @@
                 <div class="card-body bg-white">
 
                   <{{ htag }} class="card-title" id="{{ htag_id }}">
-                    <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" href="{{ link_href }}">
+                    <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                       {{ item.alternate_name | default: item.name }}
                     </a>
                   </{{ htag }}>
@@ -96,7 +96,7 @@
                     {% else %}
                       {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                     {% endif %}
-                    <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+                    <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}" {% endif %} href="{{ link_href }}">{{ link_text }}</a>
                   {% endif %}
 
                 </div>
