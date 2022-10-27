@@ -1,0 +1,61 @@
+{%- liquid
+  assign twitterLinkClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__twitter-classes"
+  assign twitterLinkClasses = page.content[twitterLinkClassesEditableRegionName] | default: component.defaultTwitterLinkClasses
+-%}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="mb-4">
+      {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
+      {% if edit_mode %}
+        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+          <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+          <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+        </small>
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        <span class="d-inline-block badge bg-primary mb-1">Header:</span>
+      {% endif %}
+      {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+      <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Twitter Widget Header' %}</h2>
+      {% if edit_mode %}
+        <span class="d-inline-block badge bg-primary mb-1">Main:</span>
+      {% endif %}
+      {% editable_region_block name: component.region_names.main, scope: component.scope %}
+        <p class="h3 helvetica-neue-light">Subhead goes here.</p>
+      {% endeditable_region_block %}
+    </div>
+    {% comment %}<!-- Use this div to pull in tweets. -->{% endcomment %}
+    {% if site.data.twitter_handle != blank %}
+      <div id="js-twitter-container">
+        <div aria-busy="true" class="twitter__loading-container d-flex align-items-center">
+          <svg aria-hidden="true" stroke="#fff" class="d-inline" style="width: 40px; height: 40px;" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><title>Loading...</title><g fill="none" fill-rule="evenodd" stroke-width="2"><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20"/><animate attributeName="stroke-opacity" begin="0s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0"/></circle><circle cx="22" cy="22" r="1"><animate attributeName="r" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.165, 0.84, 0.44, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 20"/><animate attributeName="stroke-opacity" begin="-0.9s" calcMode="spline" dur="1.8s" keySplines="0.3, 0.61, 0.355, 1" keyTimes="0; 1" repeatCount="indefinite" values="1; 0"/></circle></g></svg>
+          <p class="mb-0 ml-1">Loading tweets...</p>
+        </div> <!-- /.d-flex -->
+      </div> <!-- /#js-twitter-container -->
+    {% else %}
+      <div class="py-4 alert alert-warning p-3 rounded">
+        <h2>Whoops!</h2>
+        <p class="mb-0">It looks like you haven’t set a <strong>Twitter handle</strong> yet. To add your tweets, go to your site settings, find the <strong>twitter_handle</strong> field, and enter your handle e.g. “westvirginiau.”</p>
+      </div>
+    {% endif %}
+    <div class="mt-4">
+      {% if edit_mode %}
+        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Twitter link classes:
+          <pre class="mb-0 text-white">{% editable_region name: twitterLinkClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
+          <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ twitterLinkClasses }}</pre>
+        </small>
+      {% endif %}
+      <div class="d-inline-block h3"><span aria-hidden="true" class="fab fa-twitter"></span></div>
+      <a href="https://twitter.com/{{ site.data.twitter_handle }}" class="h3 {{ twitterLinkClasses }}" data-js-twitter-handle="{{ site.data.twitter_handle }}">
+        {{ site.data.twitter_handle }}
+      </a>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+  {% link_javascript name: "vendor/twitter-fetcher/twitterFetcher_min, twitterFetcher--custom" %}
+{% endcontent_for %}
