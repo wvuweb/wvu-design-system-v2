@@ -6,15 +6,8 @@
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
-  assign componentLoopLabelsMatch = component.loopLabelsMatch | default: 'any'
 
-  if component.customLabel == blank
-    assign componentLabels = component.itemLabels
-  else
-    assign componentLabels = component.customLabel | append: "," | append: component.itemLabels
-  endif
-
-  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: componentLoopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: component.itemLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   assign itemCount = 0
 
   if page.content[component.region_names.header] != blank
@@ -31,8 +24,6 @@
     assign itemCount = component.limit | times: 1
   endif
 -%}
-
-<!-- Custom Labels: {{ componentLabels }} -->
 
 {% capture component_content %}
   <div class="wvu-z-index-content">
