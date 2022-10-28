@@ -10,7 +10,7 @@
           {% if site.data.has_co_brand == blank %}
             <a class="d-block position-relative my-3 text-decoration-none" href="/">
               <span class="visually-hidden">West Virginia University </span>
-              {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90' %}
+              {% assign logoSrc = site.data.has_alternate_logo | build_image_url: size: '284x90' %}
               <img class="my-n2" src="{{ logoSrc }}" alt="{{ site.name }}" />
             </a>
           {% else %}
@@ -22,7 +22,7 @@
               {% if site.data.has_co_brand == '1' %}
                 <span class="wvu-co-branding d-inline-block align-self-center mx-2 my-n2 p-2 border-start">
                   {% if site.data.has_alternate_logo != blank %}
-                    {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90' %}
+                    {% assign logoSrc = site.data.has_alternate_logo | build_image_url: size: '284x90' %}
                     <img src="{{ logoSrc }}" alt="{{ site.name }}" />
                   {% endif %}
                   {% if site.data.co_brand_subtitle != blank %}
@@ -41,7 +41,7 @@
             {% if site.data.has_co_brand != blank %}
               <span class="wvu-co-branding d-inline-block align-self-center mx-2 {% if site.data.co_brand_subtitle != blank %}my-n2 {% endif %}p-2 border-start">
                 {% if site.data.has_alternate_logo != blank %}
-                  {% assign logoSrc = site.data.has_alternate_logo | build_image_url: format: '284x90' %}
+                  {% assign logoSrc = site.data.has_alternate_logo | build_image_url:  size: '284x90' %}
                   <img src="{{ logoSrc }}" alt="Logo: {{ site.name }}" />
                 {% else %}
                   {{ site.data.has_co_brand }}
