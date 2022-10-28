@@ -7,7 +7,7 @@
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
 
-  if comonent.customLabel == blank
+  if component.customLabel == blank
     assign componentLabels = component.itemLabels
   else
     assign componentLabels = component.customLabel | append: "," | append: component.itemLabels
