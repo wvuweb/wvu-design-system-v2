@@ -18,6 +18,14 @@
     assign htag = 'h2'
   endif
 
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
+
   if page.content[customItemColorsRegion] != blank
     assign itemColors = page.content[customItemColorsRegion] | split: ','
   else
@@ -28,10 +36,12 @@
 {% capture component_content %}
   <div class="wvu-z-index-content">
 
-    {% if edit_mode and itemCount == 0 %}
-      <div class="container mb-4">
-        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
-      </div>
+    {% if itemCount == 0 %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+    {% else %}
+      {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+      {% assign itemClasses = itemClasses | strip %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
     {% endif %}
 
     {% capture loopContent %}
