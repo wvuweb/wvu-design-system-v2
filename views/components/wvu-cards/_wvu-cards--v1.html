@@ -65,9 +65,9 @@
               <div class="card shadow h-100">
                 {% if item.data.thumbnail_url != blank %}
                   <div class="position-relative">
-                    {% assign thumbnail_url = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
                     <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
-                      <img class="card-img-top shadow" src="{{ thumbnail_url }}" alt="{{ item.data.thumbnail_alt }}">
+                      <img class="card-img-top shadow" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
                     </a>
                   </div>
                 {% endif %}

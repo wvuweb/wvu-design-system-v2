@@ -40,8 +40,9 @@
                   {% endif %}
 
                   {% if article.data.thumbnail_url != blank %}
+                    {% assign itemThumbnailSrc = article.data.thumbnail_url | build_image_url: size: '960x640' %}
                     <div class="col-md-3">
-                      <a href="{{ article.url }}"><img src="{{ article.data.thumbnail_url }}" alt="{{ article.data.thumbnail_alt }}" /></a>
+                      <a href="{{ article.url }}"><img src="{{ itemThumbnailSrc }}" alt="{{ article.data.thumbnail_alt }}" /></a>
                     </div>
                   {% elsif itemThumb != blank %}
                     <div class="col-md-3">
