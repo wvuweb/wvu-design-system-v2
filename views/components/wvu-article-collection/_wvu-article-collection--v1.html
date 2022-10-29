@@ -67,7 +67,7 @@
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            {% assign thumbnail_url = item.data.thumbnail_url | build_image_url: size: '1600x1200' %}
+            {% assign thumbnail_url = item.data.thumbnail_url | build_image_url: size: '960x640' %}
             {% if thumbnail_url != blank %}
               <div class="mb-2">
                 <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}"><img class="card-img-top" src="{{ thumbnail_url }}" alt="{{ item.data.thumbnail_alt  }}"></a>
