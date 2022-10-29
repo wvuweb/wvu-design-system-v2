@@ -65,11 +65,9 @@
               <div class="card shadow h-100">
                 {% if item.data.thumbnail_url != blank %}
                   <div class="position-relative">
-                    {%- capture itemThumbnailSrc %}
-                      {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-                    {%- endcapture %}
+                    {% assign thumbnail_url = item.data.thumbnail_url | build_image_url: size: '960x640' %}
                     <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
-                      <img class="card-img-top shadow" src="{{ itemThumbnailSrc | strip }}/381x255.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x640.jpg, {{ itemThumbnailSrc | strip }}/586x286.jpg, {{ itemThumbnailSrc | strip }}/381x255.jpg, {{ itemThumbnailSrc | strip }}/286x191.jpg, {{ itemThumbnailSrc | strip }}/279x186.jpg, {{ itemThumbnailSrc | strip }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+                      <img class="card-img-top shadow" src="{{ thumbnail_url }}" alt="{{ item.data.thumbnail_alt }}">
                     </a>
                   </div>
                 {% endif %}

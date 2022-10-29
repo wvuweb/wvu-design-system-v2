@@ -73,9 +73,7 @@
           <div class="{{ itemClasses }} d-flex align-items-stretch text-start">
             <div class="p-2 w-100">
 
-              {%- capture itemThumbnailSrc %}
-                {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-              {%- endcapture %}
+              {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '96x640' %}
 
               <div class="ps-3 pe-3 pb-3 pt-4 h-100 wvu-bg-position-top-left--30 wvu-bg-position-xl-top-left wvu-bg-size-cover" style="background-image: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%), url({{ itemThumbnailSrc | strip }}/960x640.jpg);">
                 <div class="row align-items-end h-100">

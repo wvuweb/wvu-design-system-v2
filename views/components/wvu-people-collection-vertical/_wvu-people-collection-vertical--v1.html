@@ -57,12 +57,6 @@
             endif
           %}
 
-          {% if item.data.thumbnail_url != blank %}
-            {% capture itemThumbnailSrc %}
-              {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-            {% endcapture %}
-          {% endif %}
-
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
           <div class="{{ itemClasses }}">
@@ -73,10 +67,8 @@
                 <div class="col-md-4">
                   <div class="row mb-1">
                     <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
-                      {%- capture itemThumbnailSrc %}
-                        {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
-                      {%- endcapture %}
-                      <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '640x640' %}
+                      <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   </div>
                 </div>
@@ -84,10 +76,8 @@
                 <div class="col-md-4">
                   <div class="row mb-1">
                     <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
-                      {%- capture itemThumbnailSrc %}
-                        {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-                      {%- endcapture %}
-                      <img class="shadow mb-2" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+                      <img class="shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   </div>
                 </div>

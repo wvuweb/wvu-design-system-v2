@@ -45,7 +45,7 @@
           endif
         %}
 
-        {% assign itemThumbnailSrc = page.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
+        {% assign itemThumbnailSrc = page.data.thumbnail_url | build_image_url: size: '1600x1200', format: 'webp' %}
 
         <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} bg-{{ itemColors[i] }}">
           <div class="px-0 col-lg-6">

@@ -60,13 +60,11 @@
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
-          {%- capture itemThumbnailSrc %}
-            {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url %}
-          {%- endcapture %}
+          {% assign thumbnail_url = item.data.thumbnail_url | build_image_url: size: '960x640' %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             <a class="d-block h-100 text-white text-decoration-none" aria-labelledby="{{ htag_id }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
-              <div class="p-3 h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc | strip }}/960x640)">
+              <div class="p-3 h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ thumbnail_url }})">
 
                 <div class="wvu-z-index-content">
                   <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>

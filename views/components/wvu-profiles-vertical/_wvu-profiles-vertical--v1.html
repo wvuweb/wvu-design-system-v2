@@ -20,7 +20,8 @@
           <div class="row mb-5">
             <div class="col-md-3 mr-ml-auto mb-1 text-center">
               {% if profile.data.thumbnail_url_sq != blank %}
-                <img class="rounded-circle shadow text-center" src="{{ profile.data.thumbnail_url_sq }}/381x255.jpg" srcset="{{ profile.data.thumbnail_url_sq }}/960x640.jpg 960w, {{ profile.data.thumbnail_url_sq }}/586x286.jpg 586w, {{ profile.data.thumbnail_url_sq }}/381x255.jpg 381w, {{ profile.data.thumbnail_url_sq }}/286x191.jpg 281w, {{ profile.data.thumbnail_url_sq }}/279x186.jpg, {{ profile.data.thumbnail_url_sq }}/217x145.jpg" sizes="(min-width: 1200px) 279px, (min-width: 768px) 586px, 960px" alt="{{ profile.data.thumbnail_alt }}">
+                {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '640x640' %}
+                <img class="rounded-circle shadow text-center" src="{{ itemThumbnailSrc }}" alt="{{ profile.data.thumbnail_alt }}">
               {% endif %}
             </div>
             <div class="col-md-8">

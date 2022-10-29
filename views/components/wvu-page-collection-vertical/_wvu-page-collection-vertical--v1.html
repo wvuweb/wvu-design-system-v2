@@ -76,7 +76,8 @@
                     </div>
                   {% endif %}
                   <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
-                    <img class="card-img-top shadow" src="{{ itemThumbnailSrc | strip }}/381x255.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x640.jpg, {{ itemThumbnailSrc | strip }}/586x286.jpg, {{ itemThumbnailSrc | strip }}/381x255.jpg, {{ itemThumbnailSrc | strip }}/286x191.jpg, {{ itemThumbnailSrc | strip }}/279x186.jpg, {{ itemThumbnailSrc | strip }}/217x145.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt }}">
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+                    <img class="card-img-top shadow" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
                   </a>
                 </div>
               </div>

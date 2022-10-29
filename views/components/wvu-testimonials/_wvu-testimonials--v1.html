@@ -72,12 +72,8 @@
                 <div class="{% if itemCount == 1 %}col-5 mx-auto{% else %}col-3{% endif %}">
                   {% if item.data.thumbnail_url_sq != blank %}
                     <div class="mb-2">
-                      {% if item.data.thumbnail_url_sq != blank %}
-                        {%- capture itemThumbnailSrc %}
-                          {% render "includes/wvu-thumbnail-parser/wvu-thumbnail-parser--v1" thumbnailSrc: item.data.thumbnail_url_sq %}
-                        {%- endcapture %}
-                        <img class="rounded-circle shadow text-center w-100" src="{{ itemThumbnailSrc | strip }}/381x381.jpg" srcset="{{ itemThumbnailSrc | strip }}/960x960.jpg, {{ itemThumbnailSrc | strip }}/586x586.jpg, {{ itemThumbnailSrc | strip }}/381x381.jpg, {{ itemThumbnailSrc | strip }}/286x286.jpg, {{ itemThumbnailSrc | strip }}/279x279.jpg, {{ itemThumbnailSrc | strip }}/217x217.jpg" sizes="960px, (min-width: 768px) 586px" alt="{{ item.data.thumbnail_alt  }}">
-                      {% endif %}
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '640x640' %}
+                      <img class="rounded-circle shadow text-center w-100" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   {% endif %}
                 </div>

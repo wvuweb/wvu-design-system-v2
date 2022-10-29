@@ -39,7 +39,8 @@
                 <div class="row">
                   <div class="col-4">
                     {% if item.data.thumbnail_url_sq != blank %}
-                      <img class="rounded-circle shadow d-inline-block" src="{{ item.data.thumbnail_url_sq }}" alt="{{ item.data.thumbnail_url_sq }}" />
+                      {% assign thumbnail_url = item.data.thumbnail_url_sq | build_image_url: size: '200x200' %}
+                      <img class="rounded-circle shadow d-inline-block" src="{{ thumbnail_url }}" alt="{{ item.data.thumbnail_url_sq }}" />
                     {% endif %}
                   </div>
                   <div class="col-8 align-self-center">
