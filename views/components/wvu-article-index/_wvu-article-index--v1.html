@@ -23,10 +23,9 @@
               <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
+                  {% assign itemThumb = itemThumb | split: '"' %}
 
                   {% if itemThumb != blank %}
-                    {% assign itemThumb = itemThumb | build_image_url: size: '960x640' %}
-                    {% comment %}
                     {% assign i = 0 %}
                     {% for part in itemThumb %}
                       {% if part contains 'src=' %}
@@ -38,7 +37,6 @@
                       {% endif %}
                       {% assign i = i | plus: 1 %}
                     {% endfor %}
-                    {% endcomment %}
                   {% endif %}
 
                   {% if article.data.thumbnail_url != blank %}
