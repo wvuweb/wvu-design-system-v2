@@ -30,7 +30,7 @@
                     {% for part in itemThumb %}
                       {% if part contains 'src=' %}
                         {% assign j = i | plus: 1 %}
-                        {% assign itemThumbSRC = itemThumb[j] %}
+                        {% assign itemThumbSRC = itemThumb[j] | build_image_url: size: '960x640' %}
                       {% elsif part contains 'alt=' %}
                         {% assign k = i | plus: 1 %}
                         {% assign itemAlt = itemThumb[k] %}
@@ -44,7 +44,7 @@
                     <div class="col-md-3">
                       <a href="{{ article.url }}"><img src="{{ itemThumbnailSrc }}" alt="{{ article.data.thumbnail_alt }}" /></a>
                     </div>
-                  {% elsif itemThumb != blank %}
+                  {% elsif itemThumbSRC != blank %}
                     <div class="col-md-3">
                       <a href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
                     </div>
