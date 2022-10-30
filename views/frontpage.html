@@ -32,6 +32,7 @@ custom_data_attributes:
   assign featuredPagesLimit = page.data.limit | default: 4
   assign alignHero = page.data.alignHero | default: false
   assign customPageLabels = page.data.custom_page_labels | default: ""
+  assign showFeaturedPagesIfHidden = page.data.showFeaturedPagesIfHidden | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
