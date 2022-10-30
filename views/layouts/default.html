@@ -25,7 +25,7 @@
 
     {{ content_for.header_extras }}
 
-    {% if edit_mode or page.data.useFACSS == '1' %}
+    {% if edit_mode or page.data.useFACSS == '1' or page.template_name == 'component_doc' %}
       <script src="https://kit.fontawesome.com/ba40ea27ab.js" crossorigin="anonymous"></script>
     {% else %}
       <script data-search-pseudo-elements defer src="https://kit.fontawesome.com/a140e17a00.js" crossorigin="anonymous"></script>
