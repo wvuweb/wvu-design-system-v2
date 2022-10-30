@@ -42,6 +42,8 @@ custom_data_attributes:
   assign disableAuthor = page.data.disable_articles_author | default: false
   assign coloredBoxLabels = page.data.custom_colored_box_labels | default: ""
   assign articleLabels = page.data.custom_article_labels | default: ""
+  assign showPagesIfHidden = page.data.showPagesIfHidden | default: ""
+  assign showColoredBoxesIfHidden = page.data.showshowArticlesIfHidden | default: ""
 -%}
 
 {% render "components/wvu-hero" number: 1, main: true, align: alignHero %}
