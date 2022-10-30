@@ -26,6 +26,8 @@
                   {% assign itemThumb = itemThumb | split: '"' %}
 
                   {% if itemThumb != blank %}
+                    {% assign itemThumb = itemThumb | build_image_url: size: '960x640' %}
+                    {% comment %}
                     {% assign i = 0 %}
                     {% for part in itemThumb %}
                       {% if part contains 'src=' %}
@@ -37,6 +39,7 @@
                       {% endif %}
                       {% assign i = i | plus: 1 %}
                     {% endfor %}
+                    {% endcomment %}
                   {% endif %}
 
                   {% if article.data.thumbnail_url != blank %}
