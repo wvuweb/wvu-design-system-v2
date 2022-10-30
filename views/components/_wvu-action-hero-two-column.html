@@ -3,6 +3,8 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.action_hero_two_column | default: '1'
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "position-relative wvu-bg-size-cover bg-wvu-neutral--black text-white wvu-bg-vignetting"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "display-2 wvu-shout text-wvu-gold"
 
   if scope == 'site'
     assign basename = "site-action-hero-two-column"
@@ -14,8 +16,8 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "position-relative wvu-bg-size-cover bg-wvu-neutral--black text-white wvu-bg-vignetting",
-    "defaultHeaderClasses": "display-2 wvu-shout text-wvu-gold",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}

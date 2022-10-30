@@ -3,6 +3,9 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.action_hero_card | default: '1'
   assign scope = scope | default: slot.scope
+  assign defaultComponentClasses = defaultComponentClasses | default: "position-relative wvu-bg-size-cover wvu-bg-blend-mode-lighten wvu-bg-pattern-grid bg-wvu-blue"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "display-3 wvu-shout text-wvu-blue mb-2"
+  assign defaultItemClasses = defaultItemClasses | default: "col-md-9"
 
   if scope == 'site'
     assign basename = "site-action-hero-card"
@@ -14,9 +17,9 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "position-relative wvu-bg-size-cover wvu-bg-blend-mode-lighten wvu-bg-pattern-grid bg-wvu-blue",
-    "defaultHeaderClasses": "display-3 wvu-shout text-wvu-blue mb-2",
-    "defaultItemClasses": "col-md-9",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
+    "defaultItemClasses": "{{ defaultItemClasses }}",
     "mainTagClasses": "p-3"
   }
 {%- enddefine_component %}
