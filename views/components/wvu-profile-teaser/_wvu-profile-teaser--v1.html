@@ -1,5 +1,4 @@
 {%- liquid
-
   assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
   assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
@@ -16,19 +15,17 @@
   else
     assign htag = 'h2'
   endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit
+  endif
 -%}
 
 {% capture component_content %}
-
-  {% for item in items.all %}
-    {% assign itemCount = itemCount | plus: 1 %}
-  {% endfor %}
-
-  {% if itemCount == 0 %}
-    <div class="container mb-4">
-      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
-    </div>
-  {% endif %}
 
   {% for item in items.all limit: 1 %}
 
@@ -43,6 +40,12 @@
     {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
     <div class="container wvu-z-index-content">
+
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+      {% endif %}
 
       <div class="row justify-content-center">
         <div class="col-md-3 mb-2 mb-lg-1 text-center">

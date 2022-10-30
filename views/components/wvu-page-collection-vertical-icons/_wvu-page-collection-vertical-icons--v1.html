@@ -42,6 +42,8 @@
 
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
       {% endif %}
 
       {% capture loopContent %}

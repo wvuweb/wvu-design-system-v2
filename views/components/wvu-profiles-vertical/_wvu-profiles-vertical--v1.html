@@ -1,19 +1,41 @@
 {%- liquid
   assign componentLabels = component.customLabel | default: component.itemLabels
   assign profiles = site.pages | filter_pages: order: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopTagsMatch, hidden: component.showHidden
+  assign itemCount = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in profiles.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
 -%}
 
 {% capture component_content %}
   <div class="container wvu-z-index-content">
     {% if edit_mode or page.content[component.region_names.header] !=  blank %}
-      <div class="mb-4">
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
-        {% editable_region_block name: component.region_names.header, scope: component.scope %}
-          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Profiles Headline</h2>
-          <p class="h3 helvetica-neue-light text-wvu-blue">Subhead goes here.</p>
-        {% endeditable_region_block %}
-      </div>
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+      {% editable_region_block name: component.region_names.header, scope: component.scope %}
+        <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Profiles Headline</h2>
+        <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+      {% endeditable_region_block %}
     {% endif %}
+
+    {% if itemCount == 0 %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+    {% else %}
+      {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+      {% assign itemClasses = itemClasses | strip %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+    {% endif %}
+
     <div class="row">
       <div class="col-md-8{% if component.componentDisplayContext == 'as_full_width_block' %} mx-auto{% endif %}">
         {% for profile in profiles.all %}

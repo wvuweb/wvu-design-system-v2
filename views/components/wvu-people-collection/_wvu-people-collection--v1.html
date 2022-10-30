@@ -30,13 +30,11 @@
     <div class="container wvu-z-index-content">
 
       {% if edit_mode or page.content[component.region_names.header] != blank %}
-        <div class="mb-4">
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
-          {% editable_region_block name: component.region_names.header scope: component.scope %}
-            <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">People Collection Headline</h2>
-            <p class="h3 helvetica-neue-light text-wvu-blue">Subhead goes here.</p>
-          {% endeditable_region_block %}
-        </div>
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">People Collection Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+        {% endeditable_region_block %}
       {% endif %}
 
       {% if itemCount == 0 %}
@@ -44,6 +42,7 @@
       {% else %}
         {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
         {% assign itemClasses = itemClasses | strip %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
       {% endif %}
 
       {% capture loopContent %}

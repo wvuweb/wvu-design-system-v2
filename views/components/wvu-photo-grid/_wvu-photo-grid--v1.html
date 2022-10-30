@@ -35,6 +35,9 @@
     {% else %}
       {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
       {% assign itemClasses = itemClasses | strip %}
+      <div class="container">
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+      </div>
     {% endif %}
 
     {% capture loopContent %}
