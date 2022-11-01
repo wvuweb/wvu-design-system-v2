@@ -19,13 +19,18 @@
     endif
   endfor
 
-  assign pageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+
+  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+  assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
 
   if pageHeader != blank
     assign styleVal = styleVal | append: pageHeader
+  elsif altPageHeader != blank
+    assign styleVal = styleVal | append: altPageHeader
   elsif sectionHeader != blank
     assign styleVal = styleVal | append: sectionHeader
   elsif siteHeader != blank
