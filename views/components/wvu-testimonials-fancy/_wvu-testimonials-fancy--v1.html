@@ -79,7 +79,7 @@
 
               {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '96x640' %}
 
-              <div class="ps-3 pe-3 pb-3 pt-4 h-100 wvu-bg-position-top-left--30 wvu-bg-position-xl-top-left wvu-bg-size-cover" style="background-image: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%), url({{ itemThumbnailSrc | strip }}/960x640.jpg);">
+              <div class="ps-3 pe-3 pb-3 pt-4 h-100 wvu-bg-position-top-left--30 wvu-bg-position-xl-top-left wvu-bg-size-cover bg-wvu-neutral--black" style="background-image: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%), url({{ itemThumbnailSrc | strip }}/960x640.jpg);">
                 <div class="row align-items-end h-100">
                   <div class="col-xl-6 pt-lg-6 mt-6 mt-xl-0 pt-xl-0 me-md-auto mb-xl-n3">
                     <{{ htag }} class="{{ itemHeaderClasses }} {{ htagClass }}" style="text-shadow: 7px 5px 16px rgba(0,0,0,0.64);">
