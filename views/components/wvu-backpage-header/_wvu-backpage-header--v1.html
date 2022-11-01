@@ -4,11 +4,18 @@
   assign subheadClasses = 'wvu-CNAME-subhead-classes' | replace: 'CNAME', component.name
   assign defaultSubheadClasses = component.defaultSubheadClasses
   assign headerSubnavRegionName = component.name | append: '__sub-nav'
+
+  assign pageAncestors = page.ancestors
+  for ancestor in pageAncestors
+    assign bgTag2 = 'SLUG-CNAME-section-background' | replace: 'SLUG', ancestor.slug | replace: 'CNAME', component.baseName
+    assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
+  endfor
+
   assign bgTag1 = 'backpage-header-background'
-  assign bgTag2 = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+  assign bgTag3 = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
 
   assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
-  assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x1780' | css_background_image
+  assign bg3 = site | first_random_image_tagged_with: label: bgTag3 | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
 
@@ -17,7 +24,11 @@
   endif
 
   if bg2
-    assign styleVal = styleVal | append: bg2
+    assign styleVal = styleVal | append: bg2 | append: '; '
+  endif
+
+  if bg3
+    assign styleVal = styleVal | append: bg3
   endif
 
   if styleVal != blank
