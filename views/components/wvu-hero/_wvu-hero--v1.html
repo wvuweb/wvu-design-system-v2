@@ -1,8 +1,21 @@
-{% if component.bgStyler != blank %}
-  {% unless component.classes contains "luminosity" %}
-    {% assign heroBodyClasses = 'wvu-bg-tint p-3 p-lg-4 my-n4' %}
-  {% endunless %}
-{% endif %}
+{%- liquid
+  if component.bgStyler != blank
+    unless component.classes contains "luminosity"
+      assign heroBodyClasses = 'wvu-bg-tint p-3 p-lg-4 my-n4'
+    endunless
+  endif
+
+  case component.primaryHeading
+    when 'default'
+      assign htag = 'h1'
+    when 'h1'
+      assign htag = 'h1'
+    when 'h2'
+      assign htag = 'h2'
+    else
+      assign htag = 'h1'
+  endcase
+-%}
 
 {% capture component_content %}
   <div class="container position-relative wvu-z-index-content">
@@ -21,10 +34,10 @@
             {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
             {% comment %}<!-- For the h1, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-            <h1 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+            <{{ htag }} id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
               {% comment %}<!-- Use the editable region name for th header section of the hero, which you defined above. -->{% endcomment %}
               {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="It Starts Now" %}
-            </h1>
+            </{{ htag }}>
             {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
             {% comment %}<!-- Editable region for main content. -->{% endcomment %}
