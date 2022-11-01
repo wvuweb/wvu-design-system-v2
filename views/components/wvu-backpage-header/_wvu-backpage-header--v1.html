@@ -4,21 +4,21 @@
   assign subheadClasses = 'wvu-CNAME-subhead-classes' | replace: 'CNAME', component.name
   assign defaultSubheadClasses = component.defaultSubheadClasses
   assign headerSubnavRegionName = component.name | append: '__sub-nav'
-
   assign pageAncestors = page.ancestors
 
+  assign bgTag1 = 'backpage-header-background'
+  assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
+
   for ancestor in pageAncestors.all
-    assign bgTag2 = 'SLUG-section-CNAME-background' | replace: 'SLUG', ancestor.slug | replace: 'CNAME', component.baseName
+    assign bgTag2 = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
     assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
     if bg2 != blank
+      assign isBroken = 'yes'
       break
     endif
   endfor
 
-  assign bgTag1 = 'backpage-header-background'
   assign bgTag3 = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
-
-  assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
   assign bg3 = site | first_random_image_tagged_with: label: bgTag3 | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
@@ -42,7 +42,7 @@
   assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
 %}
 
-<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} -->
+<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} Did for loop break? {{ isBroken }}-->
 
 <div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
   <div class="container position-relative wvu-z-index-content">
