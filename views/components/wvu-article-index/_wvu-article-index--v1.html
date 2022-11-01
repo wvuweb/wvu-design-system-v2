@@ -42,11 +42,15 @@
                   {% if article.data.thumbnail_url != blank %}
                     {% assign itemThumbnailSrc = article.data.thumbnail_url | build_image_url: size: '960x640' %}
                     <div class="col-md-3">
-                      <a href="{{ article.url }}"><img src="{{ itemThumbnailSrc }}" alt="{{ article.data.thumbnail_alt }}" /></a>
+                      <a href="{{ article.url }}" aria-hidden="true" tabindex="-1">
+                        <img src="{{ itemThumbnailSrc }}" alt="{{ article.data.thumbnail_alt }}" />
+                      </a>
                     </div>
                   {% elsif itemThumbSRC != blank %}
                     <div class="col-md-3">
-                      <a href="{{ article.url }}"><img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" /></a>
+                      <a href="{{ article.url }}" aria-hidden="true" tabindex="-1">
+                        <img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" />
+                      </a>
                     </div>
                   {% endif %}
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
