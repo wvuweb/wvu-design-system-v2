@@ -10,7 +10,7 @@
   assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
 
   assign bg2 = ''
-  for ancestor in pageAncestors.all
+  for ancestor in pageAncestors.all reversed
     if bg2 != blank
       assign isBroken = 'yes'
       break
