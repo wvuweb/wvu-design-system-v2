@@ -7,7 +7,7 @@
 
   assign pageAncestors = page.ancestors
   for ancestor in pageAncestors
-    assign bgTag2 = 'SLUG-CNAME-section-header-background' | replace: 'SLUG', ancestor.slug | replace: 'CNAME', component.baseName
+    assign bgTag2 = 'SLUG-section-CNAME-background' | replace: 'SLUG', ancestor.slug | replace: 'CNAME', component.baseName
     assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
   endfor
 
