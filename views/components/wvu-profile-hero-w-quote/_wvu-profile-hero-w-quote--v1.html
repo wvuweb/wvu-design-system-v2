@@ -1,6 +1,8 @@
-{% if component.bgStyler != blank %}
-  {% assign heroBodyClasses = 'wvu-bg-tint p-3 p-lg-4 my-n4' %}
-{% endif %}
+{%- liquid
+  if component.bgStyler != blank
+    assign heroBodyClasses = 'wvu-bg-tint p-3 p-lg-4 my-n4'
+  endif
+-%}
 
 {% capture component_content %}
   <div class="container position-relative wvu-z-index-content">

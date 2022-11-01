@@ -2,12 +2,13 @@
   assign videoUrlRegionName = component.name | append: '__video-url'
   assign videoTitleRegionName = component.name | append: '__video-title'
 
-  if component.main == true and page.data.backpage_header == '1'
+  if component.primaryHeading == 'h1'
     assign htag = 'h1'
-  else
+  elsif component.primaryHeading == 'h2'
     assign htag = 'h2'
+  else
+    assign htag = 'h1'
   endif
-
 -%}
 
 {% capture component_content %}

@@ -1,5 +1,13 @@
 {%- liquid
   assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
+
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h2'
+  endif
 -%}
 
 {% capture component_content %}
@@ -16,7 +24,7 @@
           <span class="d-inline-block badge bg-primary mb-1">Header</span>
         {% endif %}
         {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-        <h2 id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region_block name: component.region_names.header, scope: component.scope, type: "simple" %}<span class="clearfix">It Starts</span> <span class="text-wvu-gold">Now</span>{% endeditable_region_block %}</h2>
+        <{{ htag }} id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region_block name: component.region_names.header, scope: component.scope, type: "simple" %}<span class="clearfix">It Starts</span> <span class="text-wvu-gold">Now</span>{% endeditable_region_block %}</{{ htag }}>
       </div>
       <div class="col-md-5 ms-md-1 p-3">
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}

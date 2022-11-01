@@ -2,6 +2,14 @@
   assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
   assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
   assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
+
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h2'
+  endif
 -%}
 
 {% capture component_content %}
@@ -17,7 +25,7 @@
           {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         {% endif %}
         {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-        <h2 id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</h2>
+        <{{ htag }} id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</{{ htag }}>
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
         {% comment %}<!-- Editable region for main content. -->{% endcomment %}

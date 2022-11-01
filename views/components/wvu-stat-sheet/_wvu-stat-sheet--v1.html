@@ -3,6 +3,14 @@
   assign defaultStatCardClasses = 'bg-wvu-gold text-wvu-neutral--black py-5 px-3'
   assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-card"
   assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stats"
+
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h2'
+  endif
 -%}
 
 {% capture component_content %}
@@ -19,7 +27,7 @@
           <span class="d-inline-block badge bg-primary mb-1">Header:</span>
         {% endif %}
         {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-        <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</h2>
+        <{{ htag }} id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</{{ htag }}>
         {% if edit_mode %}
           <span class="d-inline-block badge bg-primary mb-1">Main:</span>
         {% endif %}
