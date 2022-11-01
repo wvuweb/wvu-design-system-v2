@@ -23,7 +23,7 @@
           <span class="d-inline-block badge bg-primary mb-1">Header</span>
         {% endif %}
 
-        <h2 id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</h2>
+        <{{ htag }} id="{{ component.name }}-label" class="{{ headerClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</{{ htag }}>
 
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
         {% editable_region_block name: component.region_names.main, scope: component.scope %}
