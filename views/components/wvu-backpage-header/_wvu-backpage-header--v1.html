@@ -25,16 +25,12 @@
 
   assign styleVal = ''
 
-  if bg1
-    assign styleVal = bg1 | append: '; '
-  endif
-
-  if bg2
-    assign styleVal = styleVal | append: bg2 | append: '; '
-  endif
-
-  if bg3
+  if bg3 != blank
     assign styleVal = styleVal | append: bg3
+  elsif bg2 != blank
+    assign styleVal = styleVal | append: bg2
+  elsif bg1 != blank
+    assign styleVal = styleVal | append: bg1
   endif
 
   if styleVal != blank
@@ -44,7 +40,7 @@
   assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
 %}
 
-<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} Did for loop break? {{ isBroken }}-->
+<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} Did for loop break? {{ isBroken }} -->
 
 <div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
   <div class="container position-relative wvu-z-index-content">
