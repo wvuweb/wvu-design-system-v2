@@ -6,31 +6,30 @@
   assign headerSubnavRegionName = component.name | append: '__sub-nav'
   assign pageAncestors = page.ancestors
 
-  assign bgTag1 = 'backpage-header-background'
-  assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
+  assign siteHeaderTag = 'backpage-header-background'
+  assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
-  assign bg2 = ''
+  assign sectionHeaderTag = ''
   for ancestor in pageAncestors.all reversed
-    if bg2 != blank
-      assign isBroken = 'yes'
+    if sectionHeaderTag != blank
       break
     else
-      assign bgTag2 = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
-      assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
+      assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
+      assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
     endif
   endfor
 
-  assign bgTag3 = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
-  assign bg3 = site | first_random_image_tagged_with: label: bgTag3 | image_url: size: '1780x580' | css_background_image
+  assign pageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+  assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
 
-  if bg3 != blank
-    assign styleVal = styleVal | append: bg3
-  elsif bg2 != blank
-    assign styleVal = styleVal | append: bg2
-  elsif bg1 != blank
-    assign styleVal = styleVal | append: bg1
+  if pageHeader != blank
+    assign styleVal = styleVal | append: pageHeader
+  elsif sectionHeader != blank
+    assign styleVal = styleVal | append: sectionHeader
+  elsif siteHeader != blank
+    assign styleVal = styleVal | append: siteHeaderTag
   endif
 
   if styleVal != blank
