@@ -9,12 +9,14 @@
   assign bgTag1 = 'backpage-header-background'
   assign bg1 = site | first_random_image_tagged_with: label: bgTag1 | image_url: size: '1780x580' | css_background_image
 
+  assign bg2 = ''
   for ancestor in pageAncestors.all
-    assign bgTag2 = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
-    assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
     if bg2 != blank
       assign isBroken = 'yes'
       break
+    else
+      assign bgTag2 = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
+      assign bg2 = site | first_random_image_tagged_with: label: bgTag2 | image_url: size: '1780x580' | css_background_image
     endif
   endfor
 
