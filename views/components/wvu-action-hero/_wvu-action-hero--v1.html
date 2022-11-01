@@ -1,5 +1,13 @@
 {%- liquid
   assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
+
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h2'
+  endif
 -%}
 
 {% capture component_content %}

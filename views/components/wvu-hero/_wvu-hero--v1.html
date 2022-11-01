@@ -5,16 +5,13 @@
     endunless
   endif
 
-  case component.primaryHeading
-    when 'default'
-      assign htag = 'h1'
-    when 'h1'
-      assign htag = 'h1'
-    when 'h2'
-      assign htag = 'h2'
-    else
-      assign htag = 'h1'
-  endcase
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h1'
+  endif
 -%}
 
 {% capture component_content %}
