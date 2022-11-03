@@ -24,8 +24,10 @@
   }
 }
 
-@each $text-color in $theme-colors {
-  a:link, a:visited {
-    color: inherit $global-important;
+@each $text-color, $text-value in $theme-colors {
+  .text-#{$text-color} {
+    a:link, a:visited {
+      color: inherit $global-important;
+    }
   }
 }
