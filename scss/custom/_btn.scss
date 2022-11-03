@@ -7,3 +7,25 @@
     color: $wvu-neutral--black $global-important;
   }
 }
+
+@each $text-color in $light-theme-colors {
+  .btn-outline-#{$text-color} {
+    &:hover {
+      color: #000 $global-important;
+    }
+  }
+}
+
+@each $text-color in $dark-theme-colors {
+  .btn-outline-#{$text-color} {
+    &:hover {
+      color: #FFF $global-important;
+    }
+  }
+}
+
+@each $text-color in $theme-colors {
+  a:link, a:visited {
+    color: inherit $global-important;
+  }
+}
