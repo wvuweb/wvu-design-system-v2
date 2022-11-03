@@ -55,6 +55,10 @@
             else
               assign link_href = item.url
             endif
+
+            if itemReadMoreButtonText != 'none'
+              assign hideImgLink = 'aria-hidden="true" tabindex="-1" '
+            endif
           %}
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
@@ -65,7 +69,7 @@
                 {% if item.data.thumbnail_url != blank %}
                   <div class="position-relative">
                     {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
-                    <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
+                    <a {{ hideImgLink }} title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
                       <img class="card-img-top shadow" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
                     </a>
                   </div>
