@@ -79,15 +79,15 @@ $dark:          $gray-900;
 $wvu-blue: #002855;
 $wvu-gold: #EAAA00;
 
-$wvu-neutral--old-gold: #B3A169;
+$wvu-accent--old-gold: #7F6310;
 $wvu-neutral--off-white: #F7F7F7;
 $wvu-neutral--cream: #F2E6C2;
-$wvu-neutral--tan: #7F6310;
+$wvu-neutral--tan: #B3A169;
 $wvu-neutral--warm-gray-light: #BEB7B3;
 $wvu-neutral--warm-gray-medium: #988E8B;
 $wvu-neutral--warm-gray-dark: #554741;
-$wvu-neutral--dark-blue: #1C2B39;
-$wvu-accent--secondary-blue: #0062A3;
+$wvu-accent--dark-blue: #1C2B39;
+$wvu-accent--blue: #0062A3;
 $wvu-accent--light-blue: #9DDAE6;
 $wvu-accent--yellow: #FFE539;
 $wvu-accent--sunset: #F58672;
@@ -95,18 +95,17 @@ $wvu-accent--sunset: #F58672;
 // Old Colors
 // Neutral
 $wvu-neutral--white: $wvu-neutral--off-white;
-$wvu-neutral--black: $wvu-neutral--dark-blue;
-$wvu-neutral--dark-gray: $wvu-neutral--dark-blue;
+$wvu-neutral--black: $wvu-accent--dark-blue;
+$wvu-neutral--dark-gray: $wvu-accent--dark-blue;
 $wvu-neutral--light-gray: $wvu-neutral--warm-gray-light;
 $wvu-neutral--dark-brown: #6E6259;
 $wvu-neutral--brown: #7C736A;
 $wvu-neutral--light-brown: #BFB8AF;
 
 // Accent
-$wvu-accent--dark-blue: #0033A0;
-$wvu-accent--blue: $wvu-accent--secondary-blue;
+$wvu-accent--blue: $wvu-accent--blue;
 $wvu-accent--brown: #4B3D2A;
-$wvu-accent--mustard: $wvu-neutral--old-gold;
+$wvu-accent--mustard: $wvu-accent--old-gold;
 $wvu-accent--orange: #ED8B00;
 $wvu-accent--dark-green: #0D5257;
 $wvu-accent--green: #657A68;
@@ -236,15 +235,15 @@ $colors: (
   "white": $white,
   "wvu-blue": $wvu-blue,
   "wvu-gold": $wvu-gold,
-  "wvu-neutral--old-gold": $wvu-neutral--old-gold,
+  "wvu-accent--old-gold": $wvu-accent--old-gold,
   "wvu-neutral--off-white": $wvu-neutral--off-white,
   "wvu-neutral--cream": $wvu-neutral--cream,
   "wvu-neutral--tan": $wvu-neutral--tan,
   "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
   "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
   "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
-  "wvu-neutral--dark-blue": $wvu-neutral--dark-blue,
-  "wvu-accent--secondary-blue": $wvu-accent--secondary-blue,
+  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--yellow": $wvu-accent--yellow,
   "wvu-accent--sunset": $wvu-accent--sunset,
@@ -255,8 +254,6 @@ $colors: (
   "wvu-neutral--dark-brown": $wvu-neutral--dark-brown,
   "wvu-neutral--brown": $wvu-neutral--brown,
   "wvu-neutral--light-brown": $wvu-neutral--light-brown,
-  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
-  "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--brown": $wvu-accent--brown,
   "wvu-accent--mustard": $wvu-accent--mustard,
   "wvu-accent--orange": $wvu-accent--orange,
@@ -287,15 +284,15 @@ $theme-colors: (
   "white": $white,
   "wvu-blue": $wvu-blue,
   "wvu-gold": $wvu-gold,
-  "wvu-neutral--old-gold": $wvu-neutral--old-gold,
+  "wvu-accent--old-gold": $wvu-accent--old-gold,
   "wvu-neutral--off-white": $wvu-neutral--off-white,
   "wvu-neutral--cream": $wvu-neutral--cream,
   "wvu-neutral--tan": $wvu-neutral--tan,
   "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
   "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
   "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
-  "wvu-neutral--dark-blue": $wvu-neutral--dark-blue,
-  "wvu-accent--secondary-blue": $wvu-accent--secondary-blue,
+  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--yellow": $wvu-accent--yellow,
   "wvu-accent--sunset": $wvu-accent--sunset,
@@ -306,8 +303,6 @@ $theme-colors: (
   "wvu-neutral--dark-brown": $wvu-neutral--dark-brown,
   "wvu-neutral--brown": $wvu-neutral--brown,
   "wvu-neutral--light-brown": $wvu-neutral--light-brown,
-  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
-  "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--brown": $wvu-accent--brown,
   "wvu-accent--mustard": $wvu-accent--mustard,
   "wvu-accent--orange": $wvu-accent--orange,
@@ -328,10 +323,10 @@ $theme-colors: (
 
 $dark-theme-colors: (
   "wvu-blue",
-  "wvu-neutral--old-gold",
+  "wvu-accent--old-gold",
   "wvu-neutral--warm-gray-dark",
-  "wvu-neutral--dark-blue",
-  "wvu-accent--secondary-blue",
+  "wvu-accent--dark-blue",
+  "wvu-accent--blue",
   "wvu-neutral--black",
   "wvu-neutral--dark-gray",
   "wvu-neutral--dark-brown",
