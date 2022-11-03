@@ -1,3 +1,15 @@
+{% if component.editModeOnly == true %}
+  {% unless edit_mode %}
+    <div class="d-none">
+  {% endunless %}
+{% endif %}
+
 {% editable_region_block name: component.region_names.main, scope: component.scope %}
   Put your content here.
 {% endeditable_region_block %}
+
+{% if component.editModeOnly == true %}
+  {% unless edit_mode %}
+    </div>
+  {% endunless %}
+{% endif %}
