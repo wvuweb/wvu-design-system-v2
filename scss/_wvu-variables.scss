@@ -79,28 +79,40 @@ $dark:          $gray-900;
 $wvu-blue: #002855;
 $wvu-gold: #EAAA00;
 
+$wvu-neutral--old-gold: #B3A169;
+$wvu-neutral--off-white: #F7F7F7;
+$wvu-neutral--cream: #F2E6C2;
+$wvu-neutral--tan: #7F6310;
+$wvu-neutral--warm-gray-light: #BEB7B3;
+$wvu-neutral--warm-gray-medium: #988E8B;
+$wvu-neutral--warm-gray-dark: #554741;
+$wvu-neutral--dark-blue: #1C2B39;
+$wvu-accent--secondary-blue: #0062A3;
+$wvu-accent--light-blue: #9DDAE6;
+$wvu-accent--yellow: #FFE539;
+$wvu-accent--sunset: #F58672;
+
+// Old Colors
 // Neutral
-$wvu-neutral--white: #F9F9F9;
-$wvu-neutral--black: #2C2A29;
-$wvu-neutral--dark-gray: #333F48;
-$wvu-neutral--light-gray: #A2AAAD;
+$wvu-neutral--white: $wvu-neutral--off-white;
+$wvu-neutral--black: $wvu-neutral--dark-blue;
+$wvu-neutral--dark-gray: $wvu-neutral--dark-blue;
+$wvu-neutral--light-gray: $wvu-neutral--warm-gray-light;
 $wvu-neutral--dark-brown: #6E6259;
 $wvu-neutral--brown: #7C736A;
 $wvu-neutral--light-brown: #BFB8AF;
 
 // Accent
 $wvu-accent--dark-blue: #0033A0;
-$wvu-accent--blue: #005EB8;
-$wvu-accent--light-blue: #9BD3DD;
+$wvu-accent--blue: $wvu-accent--secondary-blue;
 $wvu-accent--brown: #4B3D2A;
-$wvu-accent--mustard: #8F701E;
+$wvu-accent--mustard: $wvu-neutral--old-gold;
 $wvu-accent--orange: #ED8B00;
 $wvu-accent--dark-green: #0D5257;
 $wvu-accent--green: #657A68;
 $wvu-accent--light-green: #9ABEAA;
 $wvu-accent--red: #BE3A34;
 $wvu-accent--burnt-orange: #CD4C08;
-$wvu-accent--yellow: #FDDA24;
 
 // Breadcrumbs
 $wvu-breadcrumbs-color: #8F9699;
@@ -224,6 +236,18 @@ $colors: (
   "white": $white,
   "wvu-blue": $wvu-blue,
   "wvu-gold": $wvu-gold,
+  "wvu-neutral--old-gold": $wvu-neutral--old-gold,
+  "wvu-neutral--off-white": $wvu-neutral--off-white,
+  "wvu-neutral--cream": $wvu-neutral--cream,
+  "wvu-neutral--tan": $wvu-neutral--tan,
+  "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
+  "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
+  "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
+  "wvu-neutral--dark-blue": $wvu-neutral--dark-blue,
+  "wvu-accent--secondary-blue": $wvu-accent--secondary-blue,
+  "wvu-accent--light-blue": $wvu-accent--light-blue,
+  "wvu-accent--yellow": $wvu-accent--yellow,
+  "wvu-accent--sunset": $wvu-accent--sunset,
   "wvu-neutral--white": $wvu-neutral--white,
   "wvu-neutral--black": $wvu-neutral--black,
   "wvu-neutral--dark-gray": $wvu-neutral--dark-gray,
@@ -233,7 +257,6 @@ $colors: (
   "wvu-neutral--light-brown": $wvu-neutral--light-brown,
   "wvu-accent--dark-blue": $wvu-accent--dark-blue,
   "wvu-accent--blue": $wvu-accent--blue,
-  "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--brown": $wvu-accent--brown,
   "wvu-accent--mustard": $wvu-accent--mustard,
   "wvu-accent--orange": $wvu-accent--orange,
@@ -242,7 +265,6 @@ $colors: (
   "wvu-accent--light-green": $wvu-accent--light-green,
   "wvu-accent--red": $wvu-accent--red,
   "wvu-accent--burnt-orange": $wvu-accent--burnt-orange,
-  "wvu-accent--yellow": $wvu-accent--yellow,
   "facebook": $facebook,
   "twitter": $twitter,
   "flickr": $flickr,
@@ -265,6 +287,18 @@ $theme-colors: (
   "white": $white,
   "wvu-blue": $wvu-blue,
   "wvu-gold": $wvu-gold,
+  "wvu-neutral--old-gold": $wvu-neutral--old-gold,
+  "wvu-neutral--off-white": $wvu-neutral--off-white,
+  "wvu-neutral--cream": $wvu-neutral--cream,
+  "wvu-neutral--tan": $wvu-neutral--tan,
+  "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
+  "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
+  "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
+  "wvu-neutral--dark-blue": $wvu-neutral--dark-blue,
+  "wvu-accent--secondary-blue": $wvu-accent--secondary-blue,
+  "wvu-accent--light-blue": $wvu-accent--light-blue,
+  "wvu-accent--yellow": $wvu-accent--yellow,
+  "wvu-accent--sunset": $wvu-accent--sunset,
   "wvu-neutral--white": $wvu-neutral--white,
   "wvu-neutral--black": $wvu-neutral--black,
   "wvu-neutral--dark-gray": $wvu-neutral--dark-gray,
@@ -274,7 +308,6 @@ $theme-colors: (
   "wvu-neutral--light-brown": $wvu-neutral--light-brown,
   "wvu-accent--dark-blue": $wvu-accent--dark-blue,
   "wvu-accent--blue": $wvu-accent--blue,
-  "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--brown": $wvu-accent--brown,
   "wvu-accent--mustard": $wvu-accent--mustard,
   "wvu-accent--orange": $wvu-accent--orange,
@@ -283,7 +316,6 @@ $theme-colors: (
   "wvu-accent--light-green": $wvu-accent--light-green,
   "wvu-accent--red": $wvu-accent--red,
   "wvu-accent--burnt-orange": $wvu-accent--burnt-orange,
-  "wvu-accent--yellow": $wvu-accent--yellow,
   "facebook": $facebook,
   "twitter": $twitter,
   "flickr": $flickr,
@@ -296,6 +328,10 @@ $theme-colors: (
 
 $dark-theme-colors: (
   "wvu-blue",
+  "wvu-neutral--old-gold",
+  "wvu-neutral--warm-gray-dark",
+  "wvu-neutral--dark-blue",
+  "wvu-accent--secondary-blue",
   "wvu-neutral--black",
   "wvu-neutral--dark-gray",
   "wvu-neutral--dark-brown",
@@ -312,6 +348,13 @@ $dark-theme-colors: (
 
 $light-theme-colors: (
   "wvu-gold",
+  "wvu-neutral--tan",
+  "wvu-neutral--off-white",
+  "wvu-neutral--warm-gray-light",
+  "wvu-neutral--warm-gray-medium",
+  "wvu-neutral--warm-gray-dark",
+  "wvu-neutral--cream",
+  "wvu-accent--sunset",
   "wvu-neutral--white",
   "wvu-neutral--light-gray",
   "wvu-neutral--light-brown",
