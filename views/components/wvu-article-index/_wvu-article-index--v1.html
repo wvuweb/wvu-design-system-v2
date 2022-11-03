@@ -1,5 +1,12 @@
 {%- liquid
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
+
+  if component.featurettesID == blank
+    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
+  else
+    assign blog = site | get_page: component.featurettesID
+    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
+  endif
 -%}
 
 {% capture component_content %}
@@ -14,8 +21,6 @@
             {% editable_region_block name: component.region_names.main %}<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>{% endeditable_region_block %}
           </div>
         {% endif %}
-
-        {%- assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day %}
 
         {% if articles.size > 0 %}
           {% capture article_list_content %}
