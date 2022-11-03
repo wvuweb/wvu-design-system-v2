@@ -64,7 +64,7 @@
             <div class="row">
               <div class="col-lg-4">
                 {% if item.data.thumbnail_url != blank %}
-                <div class="mb-2 position-relative">
+                  <div class="mb-2 position-relative">
                     {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
                     {% if item.data.badge_label != blank %}
                       <div class="badge text-uppercase helvetica-neue-bold p-1 mt-n1 ms-n1 small bg-danger text-white shadow-sm position-absolute">
@@ -73,7 +73,7 @@
                     {% endif %}
                     <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
                       {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
-                      <img class="card-img-top shadow" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
+                      <img class="card-img-top" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
                     </a>
                   </div>
                 {% endif %}
