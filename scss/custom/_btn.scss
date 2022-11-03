@@ -11,7 +11,7 @@
 @each $text-color, $text-value in $theme-colors {
   .text-#{$text-color} {
     a:link:not(.btn), a:visited:not(.btn) {
-      color: inherit $global-important;
+      color: inherit;
     }
   }
 }
