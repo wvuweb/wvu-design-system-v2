@@ -11,7 +11,7 @@
     assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   else
     assign blog = site | get_page: component.featurettesID
-    assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: componentLabels, tags_match: component.loopLabelsMatch, year: params.year, month: params.month, day: params.day
+    assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, year: params.year, month: params.month, day: params.day
   endif
 
   assign itemCount = 0
