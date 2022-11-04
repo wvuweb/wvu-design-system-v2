@@ -88,8 +88,8 @@
             {% capture bgColorListItem %}bg-{{ itemColors[i] }}{% endcapture %}
           {% endif %}
           {% if textColors[i] != blank %}
-            {% capture textColorListItem %}text-{{ linkColors[i] }}{% endcapture %}
-            {% capture linkColorListItem %}link-{{ linkColors[i] }}{% endcapture %}
+            {% capture textColorListItem %}text-{{ textColors[i] }}{% endcapture %}
+            {% capture linkColorListItem %}link-{{ textColors[i] }}{% endcapture %}
           {% endif %}
 
           <div class="d-flex flex-column {{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
