@@ -1,0 +1,137 @@
+<!-- wvu-nav--v2 -->
+<nav id="nav-primary" class="navbar navbar-expand-lg p-0 navbar-dark bg-wvu-accent--dark-blue d-table w-100">
+  <div class="container">
+    <button id="nav-toggle" class="wvu-nav__button nav-toggle">
+      <img class="wvu-nav__menu-icon" src="https://static.wvu.edu/global/images/icons/wvu/hamburger-menu--1.0.0.svg" alt="" />
+      <span id="js-nav-text">Open Menu</span>
+    </button>
+    <div class="wvu-nav nav-collapse ml-lg-n1" id="wvu-nav">
+      {% if site.data.nav_dropdowns != blank %}
+        {% comment %} NOTE: If nav depth is greater than 1, show the dropdown caret (has_children_class) & `+` on mobile (sub_ul_class). {% endcomment %}
+        {% site_menu max_depth: "2" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" has_children_class: "dropdown" sub_ul_class: "sub-menu small bg-wvu-accent--dark-blue px-1 mx-n1" %}
+      {% else %}
+        {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown caret (has_children_class). {% endcomment %}
+        {% site_menu max_depth: "1" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" %}
+      {% endif %}
+    </div> <!-- /.nav-collapse -->
+    <div class="d-flex align-items-center">
+      {% if site.data.facebook_url != blank or site.data.twitter_url != blank or site.data.flickr_url != blank or site.data.instagram_url != blank or site.data.linkedin_url != blank or site.data.syndication_url != blank or site.data.youtube_url != blank or site.data.github_url != blank %}
+        <ul class="list-inline mb-0 me-2">
+          {% if site.data.facebook_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.facebook_url }}">
+                <span class="fab fa-facebook"></span><span class="visually-hidden">Facebook</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.twitter_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.twitter_url }}">
+                <span class="fab fa-twitter"></span><span class="visually-hidden">Twitter</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.flickr_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.flickr_url }}">
+                <span class="fab fa-flickr"></span><span class="visually-hidden">Flickr</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.instagram_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.instagram_url }}">
+                <span class="fab fa-instagram"></span><span class="visually-hidden">Instagram</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.linkedin_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.linkedin_url }}">
+                <span class="fab fa-linkedin"></span><span class="visually-hidden">LinkedIn</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.syndication_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.syndication_url }}">
+                <span class="fas fa-rss"></span><span class="visually-hidden">RSS</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.youtube_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.youtube_url }}">
+                <span class="fab fa-youtube"></span><span class="visually-hidden">YouTube</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.github_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.github_url }}">
+                <span class="fab fa-github"></span><span class="visually-hidden">Github</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+      <button class="bg-transparent border-0 text-white py-2 px-2 py-lg-0 px-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#wvuNavSearchCollapse" aria-expanded="false" aria-controls="wvuNavSearchCollapse">
+        <span aria-hidden="true" class="fa-solid fa-magnifying-glass"></span>
+        <span class="visually-hidden">Toggle Search</span>
+      </button>
+    </div>
+  </div> <!-- /.container -->
+</nav>
+<section aria-label="nav-quicklinks" class="collapse multi-collapse" id="wvuNavSearchCollapse">
+  <div class="bg-light py-4 w-100 text-white bg-wvu-accent--dark-blue wvu-bg-vignetting--20">
+    <div class="container wvu-z-index-content">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search" aria-label="Site Search">
+                <label id="search-label" for="q">
+                  <span class="visually-hidden">Search</span>
+                </label>
+                <input id="sort" name="sort" type="hidden" value="date:D:L:d1" />
+                <input id="output" name="output" type="hidden" value="xml_no_dtd" />
+                <input id="ie" name="ie" type="hidden" value="UTF-8" />
+                <input id="oe" name="oe" type="hidden" value="UTF-8" />
+                <input id="proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend" />
+                <input id="client" name="client" type="hidden" value="default_frontend" />
+                <div class="input-group shadow-sm w-100">
+                  <input id="q" class="form-control p-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary px-3 px-lg-4" name="btnG" type="submit">
+                    <span class="h5 mb-0"><span class="fa-solid fa-magnifying-glass"></span></span>
+                    <span class="visually-hidden">Search</span>
+                  </button>
+                </div>
+                <div class="row pt-1">
+                  <fieldset class="col-12">
+                    <legend class="visually-hidden">
+                      Would you like to search this site specifically, or all WVU websites?
+                    </legend>
+                    <div class="d-inline-block pe-2">
+                      <input id="form-search__sitesearch" type="radio" name="as_sitesearch" value="{{ site.domain }}" checked="checked" />
+                      <label class="d-inline-block" for="form-search__sitesearch">Search this site</label>
+                    </div>
+                    <div class="d-inline-block">
+                      <input id="form-search__wvusearch" type="radio" name="as_sitesearch" value="wvu.edu" />
+                      <label class="d-inline-block" for="form-search__wvusearch">Search WVU</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% if page.content['search-content'] != blank or edit_mode %}
+            <div class="mt-4">
+              <!-- Region: search-content -->
+              {% editable_region name: "search-content" scope: "site" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

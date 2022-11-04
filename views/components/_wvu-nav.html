@@ -4,5 +4,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-nav/wvu-nav--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-nav/wvu-nav--v2" component: component %}
   {% else %}{% render "components/wvu-nav/wvu-nav--v1" component: component %}
 {% endcase %}
