@@ -128,9 +128,9 @@
           </div>
         </div>
 
-        {% assign bgColorListItem = defaultItemColors %}
-        {% assign textColorListItem = defaultTextColors %}
-        {% assign buttonColorListItem = defaultTextColors %}
+        {% assign bgColorListItem = "bg-" | append: defaultItemColors %}
+        {% assign textColorListItem = "text-" | append: defaultTextColors %}
+        {% assign buttonColorListItem = "btn-" | append: defaultTextColors %}
         {% assign i = i | plus: 1 %}
 
       {% endfor %}
