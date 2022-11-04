@@ -76,7 +76,7 @@
           {% capture buttonColorListItem %}btn-outline-{{ linkColors[i] }}{% endcapture %}
         {% endif %}
 
-        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem }} {{ textColorListItem }}">
+        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem | default: 'bg-wvu-accent--dark-blue' }} {{ textColorListItem | default: 'text-white' }}">
           <div class="px-0 col-lg-6">
             <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
             </div>
@@ -88,14 +88,14 @@
                 <{{ htag }} id="{{ component.name }}-label" class="{{ itemHeaderClasses }}">{{ item.name }}</{{ htag }}>
 
                 {% if item.content['wvu-profile-1__name'] != blank %}
-                  <p class="h2 text-white iowan-old-style-black pt-2 mb-1">
+                  <p class="h2 iowan-old-style-black pt-2 mb-1">
                     {{ item.content['wvu-profile-1__name'] }}
                   </p>
                 {% endif %}
 
                 {% render "includes/wvu-profile-info/wvu-profile-info--v1" profileItem: item %}
 
-                <p class="card-text mt-2 mb-0 fs-5 text-white">
+                <p class="card-text mt-2 mb-0 fs-5">
                   {%- if item.data.description != blank %}
                     {{ item.data.description }}
                   {% else %}
@@ -110,7 +110,7 @@
                     {% else %}
                       {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                     {% endif %}
-                    <a class="btn {{ buttonColorListItem }}" href="{{ link_href }}">{{ link_text }}</a>
+                    <a class="btn {{ buttonColorListItem | default: 'btn-outline-white' }}" href="{{ link_href }}">{{ link_text }}</a>
                   {% endif %}
                 </p>
               </div>
