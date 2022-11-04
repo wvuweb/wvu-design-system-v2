@@ -38,7 +38,7 @@
   if page.content[customTextColorsRegion] != blank
     assign textColors = page.content[customTextColorsRegion] | split: ','
   else
-    assign textColors = defaultItemColors | split: ','
+    assign textColors = defaultTextColors | split: ','
   endif
 -%}
 
