@@ -11,7 +11,7 @@
   {% assign iconClassesRegionName = component.name | append: '__icon-classes' %}
   {% assign ariaLabelRegionName = component.name | append: '-aria-label' %}
   {% assign customItemColorsRegion = component.name | append: '__item-colors' %}
-  {% assign customLinkColorsRegion = component.name | append: '__link-colors' %}
+  {% assign customTextColorsRegion = component.name | append: '__text-colors' %}
 
   <button class="editpanelbutton wvu-z-index-content text-white p-1 rounded-sm d-inline-block btn btn-sm btn-wvu-neutral--black wvu-grow-shadow position-absolute {% if component.baseName == "breadcrumbs" %}mt-1 {% else %}mt-n4 {% endif %}ml-1 ms-1"{% if component.baseName == "breadcrumbs" %} style="z-index: 991 !important;"{% endif %} data-bs-toggle="collapse" data-bs-target="#editpanel-{{ component.name }}" type="button" aria-expanded="false" aria-controls="editpanel-{{ component.name }}"><small class="d-block"><i class="far fa-edit"></i> Edit <span class="text-capitalize">{{ component.baseName | replace: '-', ' ' }}</span> {{ component.number }} Styles</small></button>
   <section class="editpanel px-2 px-md-5 {% if component.baseName == "breadcrumbs" %}pt-3 {% else %}pt-2 {% endif %} pb-3 mb-0 text-light bg-wvu-neutral--black position-relative collapse multi-collapse" id="editpanel-{{ component.name }}">
@@ -45,11 +45,11 @@
         <strong>Default Item Colors:</strong> wvu-accent--blue
       </p>
       <h2 class="mt-1 h6 small mb-1">
-        Item Link Colors (a comma-separated list of link colors):
+        Item Text Colors (a comma-separated list of link colors):
       </h2>
-      {% editable_region name: customLinkColorsRegion, type: 'simple', scope: component.scope %}
+      {% editable_region name: customTextColorsRegion, type: 'simple', scope: component.scope %}
       <p class="mt-1 small text-muted mb-2">
-        <strong>Default Link Colors:</strong> white
+        <strong>Default Text Colors:</strong> white
       </p>
     {% endif %}
     {% case component.baseName %}
