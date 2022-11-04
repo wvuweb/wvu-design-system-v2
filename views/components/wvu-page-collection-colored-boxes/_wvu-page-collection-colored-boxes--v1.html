@@ -35,7 +35,7 @@
     assign itemColors = defaultItemColors | split: ','
   endif
 
-  if page.content[customLinkColorsRegion] != blank
+  if page.content[customTextColorsRegion] != blank
     assign textColors = page.content[customTextColorsRegion] | split: ','
   else
     assign textColors = defaultTextColors | split: ','
