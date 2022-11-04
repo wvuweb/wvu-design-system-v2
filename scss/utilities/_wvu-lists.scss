@@ -40,6 +40,15 @@
       position: absolute $global-important;
     }
   }
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ul-chevrons-#{$color-name} {
+      li {
+        &::before {
+          content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%#{$color-value}"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
+        }
+      }
+    }
+  }
 }
 
 .wvu-ul-chevrons--wvu-blue {
@@ -90,19 +99,23 @@ ol.wvu-ol-big-numbers {
       @include wvu-shout();
     }
   }
-}
-
-ol.wvu-ol-big-numbers-wvu-gold {
-  &::before {
-    background-color: $wvu-gold $global-important;
-    color: $wvu-blue $global-important;
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ol-big-numbers-#{$color-name} {
+      li {
+        &::before {
+          background-color: $color-value $global-important;
+        }
+      }
+    }
   }
-}
-
-ol.wvu-ol-big-numbers-wvu-white {
-  &::before {
-    background-color: white $global-important;
-    color: $wvu-blue $global-important;
+  @each $color-name, $color-value in $light-theme-colors {
+    &.wvu-ol-big-numbers-#{$color-name} {
+      li {
+        &::before {
+          color: #000 $global-important;
+        }
+      }
+    }
   }
 }
 
@@ -136,19 +149,23 @@ ol.wvu-ol-small-numbers {
       @include wvu-shout();
     }
   }
-}
-
-ol.wvu-ol-small-numbers-wvu-gold {
-  &::before {
-    background-color: $wvu-gold $global-important;
-    color: $wvu-blue $global-important;
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ol-small-numbers-#{$color-name} {
+      li {
+        &::before {
+          background-color: $color-value $global-important;
+        }
+      }
+    }
   }
-}
-
-ol.wvu-ol-small-numbers-wvu-white {
-  &::before {
-    background-color: white $global-important;
-    color: $wvu-blue $global-important;
+  @each $color-name, $color-value in $light-theme-colors {
+    &.wvu-ol-small-numbers-#{$color-name} {
+      li {
+        &::before {
+          color: #000 $global-important;
+        }
+      }
+    }
   }
 }
 
@@ -197,6 +214,19 @@ ol.wvu-ol-progress {
       }
     }
   }
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ol-progress-#{$color-name} {
+      li {
+        border-left: 4px solid $color-value $global-important;
+        &::before, &::after {
+          background-color: $color-value $global-important;
+        }
+        &:last-child {
+          border-left-color: transparent $global-important;
+        }
+      }
+    }
+  }
 }
 
 ol.wvu-ol-progress-small {
@@ -240,6 +270,24 @@ ol.wvu-ol-progress-small {
         border-style: solid $global-important;
         margin: -4px $global-important;
         outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ol-progress-small-#{$color-name} {
+      li {
+        &::before {
+          background-color: $color-value $global-important;
+        }
+      }
+    }
+  }
+  @each $color-name, $color-value in $light-theme-colors {
+    &.wvu-ol-progress-small-#{$color-name} {
+      li {
+        &::before {
+          color: #000 $global-important;
+        }
       }
     }
   }
@@ -302,6 +350,18 @@ ol.wvu-ol-progress-horizontal {
         left: calc(50% - 1rem + 2px) $global-important;
         margin: -2px $global-important;
         outline: 4px solid $gray-500 $global-important;
+      }
+    }
+  }
+  @each $color-name, $color-value in $theme-colors {
+    &.wvu-ol-progress-horizontal-#{$color-name} {
+      li {
+        &::before, &::after {
+          background-color: $color-value $global-important;
+        }
+        &:last-child {
+          border-left-color: transparent $global-important;
+        }
       }
     }
   }
