@@ -85,7 +85,7 @@
           <div class="px-0 col-lg-6 d-flex align-items-center">
             <div class="col-xl-10 col-xxl-8">
               <div class="p-3 p-md-4 p-xl-5">
-                <{{ htag }} id="{{ component.name }}-label" class="{{ itemHeaderClasses }}">{{ item.name }}</{{ htag }}>
+                <{{ htag }} id="{{ component.name }}-label" class="{{ textColorListItem | default: defaultTextColors }} {{ itemHeaderClasses }}">{{ item.name }}</{{ htag }}>
 
                 {% if item.content['wvu-profile-1__name'] != blank %}
                   <p class="h2 iowan-old-style-black pt-2 mb-1">
