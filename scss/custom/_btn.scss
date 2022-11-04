@@ -2,12 +2,6 @@
   text-decoration: none $global-important;
 }
 
-@each $text-color in $light-theme-colors {
-  .btn-#{$text-color} {
-    color: $wvu-neutral--black $global-important;
-  }
-}
-
 @each $text-color, $text-value in $theme-colors {
   .text-#{$text-color} {
     a:link:not(.btn), a:visited:not(.btn) {
