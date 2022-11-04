@@ -332,7 +332,7 @@ ol.wvu-ol-progress-small {
     }
   }
   @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-progress--small#{$color-name} {
+    &.wvu-ol-progress-small-#{$color-name} {
       li {
         border-left: 4px solid $color-value $global-important;
         &::before, &::after {
