@@ -13,19 +13,19 @@
       <div class="col-md-6 mx-auto">
         <div class="row mb-2">
           <div class="col-md-12">
-            <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search" aria-label="Big Site Search">
-              <label id="big-search-label" for="q">
+            <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search">
+              <input id="big-search-query" type="hidden" name="q" value="site:{{ site.domain }}">
+              <input id="big-search-sort" name="sort" type="hidden" value="date:D:L:d1" />
+              <input id="big-search-output" name="output" type="hidden" value="xml_no_dtd" />
+              <input id="big-search-ie" name="ie" type="hidden" value="UTF-8" />
+              <input id="big-search-oe" name="oe" type="hidden" value="UTF-8" />
+              <input id="big-search-proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend" />
+              <input id="big-search-client" name="client" type="hidden" value="default_frontend" />
+              <label id="big-search-label" for="big-search-input">
                 <span class="visually-hidden">Search</span>
               </label>
-              <input type="hidden" name="q" value="site:{{ site.domain }}">
-              <input id="sort" name="sort" type="hidden" value="date:D:L:d1" />
-              <input id="output" name="output" type="hidden" value="xml_no_dtd" />
-              <input id="ie" name="ie" type="hidden" value="UTF-8" />
-              <input id="oe" name="oe" type="hidden" value="UTF-8" />
-              <input id="proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend" />
-              <input id="client" name="client" type="hidden" value="default_frontend" />
               <div class="input-group shadow-sm w-100">
-                <input id="q" class="form-control p-2 h1 mb-0" name="q" type="search" placeholder="Type in your search term." aria-label="Big Site Search">
+                <input id="big-search-input" class="form-control p-2 h1 mb-0" name="q" type="search" placeholder="Type in your search term.">
                 <button class="btn btn-primary px-3 px-lg-4" name="btnG" type="submit">
                   <span class="h5 mb-0 d-block">
                     <span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span>
