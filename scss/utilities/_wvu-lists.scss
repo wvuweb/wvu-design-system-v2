@@ -17,15 +17,15 @@
       position: absolute $global-important;
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ul-arrows-#{$color-name} {
-      li {
-        &::before {
-          content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23#{str-replace('' + $color-value, '#', '')}"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0 256zM297 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L120 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l214.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L409 239c9.4 9.4 9.4 24.6 0 33.9L297 385z"/></svg>') $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ul-arrows-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23#{str-replace('' + $color-value, '#', '')}"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0 256zM297 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L120 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l214.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L409 239c9.4 9.4 9.4 24.6 0 33.9L297 385z"/></svg>') $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .wvu-ul-arrows--wvu-blue {
@@ -57,15 +57,15 @@
       position: absolute $global-important;
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ul-chevrons-#{$color-name} {
-      li {
-        &::before {
-          content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%23#{str-replace('' + $color-value, '#', '')}"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ul-chevrons-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%23#{str-replace('' + $color-value, '#', '')}"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .wvu-ul-chevrons--wvu-blue {
@@ -116,33 +116,33 @@ ol.wvu-ol-big-numbers {
       @include wvu-shout();
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-big-numbers-#{$color-name} {
-      li {
-        &::before {
-          background-color: $color-value $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $light-theme-colors {
-    &.wvu-ol-big-numbers-#{$color-name} {
-      li {
-        &::before {
-          color: #000 $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $dark-theme-colors {
-    &.wvu-ol-big-numbers-#{$color-name} {
-      li {
-        &::before {
-          color: #FFF $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-big-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         background-color: $color-value $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $light-theme-colors {
+  //   &.wvu-ol-big-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #000 $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $dark-theme-colors {
+  //   &.wvu-ol-big-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #FFF $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 ol.wvu-ol-small-numbers {
@@ -175,33 +175,33 @@ ol.wvu-ol-small-numbers {
       @include wvu-shout();
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-small-numbers-#{$color-name} {
-      li {
-        &::before {
-          background-color: $color-value $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $light-theme-colors {
-    &.wvu-ol-small-numbers-#{$color-name} {
-      li {
-        &::before {
-          color: #000 $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $dark-theme-colors {
-    &.wvu-ol-small-numbers-#{$color-name} {
-      li {
-        &::before {
-          color: #FFF $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-small-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         background-color: $color-value $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $light-theme-colors {
+  //   &.wvu-ol-small-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #000 $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $dark-theme-colors {
+  //   &.wvu-ol-small-numbers-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #FFF $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 ol.wvu-ol-progress {
@@ -249,42 +249,42 @@ ol.wvu-ol-progress {
       }
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-progress-#{$color-name} {
-      li {
-        border-left: 4px solid $color-value $global-important;
-        &::before, &::after {
-          background-color: $color-value $global-important;
-        }
-        &:last-child {
-          border-left-color: transparent $global-important;
-        }
-        &.active {
-          &::before {
-            outline: 4px solid $color-value $global-important;
-          }
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $light-theme-colors {
-    &.wvu-ol-progress-#{$color-name} {
-      li {
-        &::before {
-          color: #000 $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $dark-theme-colors {
-    &.wvu-ol-progress-#{$color-name} {
-      li {
-        &::before {
-          color: #FFF $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-progress-#{$color-name} {
+  //     li {
+  //       border-left: 4px solid $color-value $global-important;
+  //       &::before, &::after {
+  //         background-color: $color-value $global-important;
+  //       }
+  //       &:last-child {
+  //         border-left-color: transparent $global-important;
+  //       }
+  //       &.active {
+  //         &::before {
+  //           outline: 4px solid $color-value $global-important;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $light-theme-colors {
+  //   &.wvu-ol-progress-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #000 $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $dark-theme-colors {
+  //   &.wvu-ol-progress-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #FFF $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 ol.wvu-ol-progress-small {
@@ -331,42 +331,42 @@ ol.wvu-ol-progress-small {
       }
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-progress-small-#{$color-name} {
-      li {
-        border-left: 4px solid $color-value $global-important;
-        &::before, &::after {
-          background-color: $color-value $global-important;
-        }
-        &:last-child {
-          border-left-color: transparent $global-important;
-        }
-        &.active {
-          &::before {
-            outline: 4px solid $color-value $global-important;
-          }
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $light-theme-colors {
-    &.wvu-ol-progress-small-#{$color-name} {
-      li {
-        &::before {
-          color: #000 $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $dark-theme-colors {
-    &.wvu-ol-progress-small-#{$color-name} {
-      li {
-        &::before {
-          color: #FFF $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-progress-small-#{$color-name} {
+  //     li {
+  //       border-left: 4px solid $color-value $global-important;
+  //       &::before, &::after {
+  //         background-color: $color-value $global-important;
+  //       }
+  //       &:last-child {
+  //         border-left-color: transparent $global-important;
+  //       }
+  //       &.active {
+  //         &::before {
+  //           outline: 4px solid $color-value $global-important;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $light-theme-colors {
+  //   &.wvu-ol-progress-small-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #000 $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $dark-theme-colors {
+  //   &.wvu-ol-progress-small-#{$color-name} {
+  //     li {
+  //       &::before {
+  //         color: #FFF $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 ol.wvu-ol-progress-horizontal {
@@ -429,41 +429,41 @@ ol.wvu-ol-progress-horizontal {
       }
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-progress-horizontal-#{$color-name} {
-      li {
-        &::before, &::after {
-          background-color: $color-value $global-important;
-        }
-        &:last-child {
-          border-left-color: transparent $global-important;
-        }
-        &.active {
-          &::before {
-            outline: 4px solid $color-value $global-important;
-          }
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $light-theme-colors {
-    &.wvu-ol-progress-horizontal-#{$color-name} {
-      li {
-        &::before, &::after {
-          color: #000 $global-important;
-        }
-      }
-    }
-  }
-  @each $color-name, $color-value in $dark-theme-colors {
-    &.wvu-ol-progress-horizontal-#{$color-name} {
-      li {
-        &::before, &::after {
-          color: #FFF $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-progress-horizontal-#{$color-name} {
+  //     li {
+  //       &::before, &::after {
+  //         background-color: $color-value $global-important;
+  //       }
+  //       &:last-child {
+  //         border-left-color: transparent $global-important;
+  //       }
+  //       &.active {
+  //         &::before {
+  //           outline: 4px solid $color-value $global-important;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $light-theme-colors {
+  //   &.wvu-ol-progress-horizontal-#{$color-name} {
+  //     li {
+  //       &::before, &::after {
+  //         color: #000 $global-important;
+  //       }
+  //     }
+  //   }
+  // }
+  // @each $color-name, $color-value in $dark-theme-colors {
+  //   &.wvu-ol-progress-horizontal-#{$color-name} {
+  //     li {
+  //       &::before, &::after {
+  //         color: #FFF $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 ol.wvu-ol-timeline {
@@ -509,18 +509,18 @@ ol.wvu-ol-timeline {
       }
     }
   }
-  @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-timeline-#{$color-name} {
-      li {
-        border-left: 4px solid $color-value $global-important;
-        border-top: 1px solid $color-value $global-important;
-        &::before {
-          background-color: $color-value $global-important;
-        }
-        &:last-child {
-          border-left-color: transparent $global-important;
-        }
-      }
-    }
-  }
+  // @each $color-name, $color-value in $theme-colors {
+  //   &.wvu-ol-timeline-#{$color-name} {
+  //     li {
+  //       border-left: 4px solid $color-value $global-important;
+  //       border-top: 1px solid $color-value $global-important;
+  //       &::before {
+  //         background-color: $color-value $global-important;
+  //       }
+  //       &:last-child {
+  //         border-left-color: transparent $global-important;
+  //       }
+  //     }
+  //   }
+  // }
 }
