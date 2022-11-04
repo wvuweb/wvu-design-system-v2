@@ -2,9 +2,6 @@
 //==================================================
 // Utility classes that allow you to adjust the position of a background image. This is useful for full-bleed images with text overlayed. Position your images to allow the text to be legible.
 
-.wvu-bg-position-center, %wvu-bg-position-center {
-  background-position: 50% 50% $global-important;
-}
 .wvu-bg-position-bottom, %wvu-bg-position-bottom {
   background-position: bottom $global-important;
 }
@@ -16,90 +13,6 @@
 }
 .wvu-bg-position-right, %wvu-bg-position-right {
   background-position: right $global-important;
-}
-
-// Set background image to center, bottom, top, left, or right.
-
-@each $bp-value, $breakpoint in (xs, $wvu-bp-xs),
-                                (sm, $wvu-bp-sm),
-                                (md, $wvu-bp-md),
-                                (lg, $wvu-bp-lg),
-                                (xl, $wvu-bp-xl) {
-  @media (min-width: $breakpoint) {
-    .wvu-bg-position-#{$bp-value}-center {
-      background-position: center $global-important;
-    }
-    .wvu-bg-position-#{$bp-value}-bottom {
-      background-position: bottom $global-important;
-    }
-    .wvu-bg-position-#{$bp-value}-top {
-      background-position: top $global-important;
-    }
-    .wvu-bg-position-#{$bp-value}-left {
-      background-position: left $global-important;
-    }
-    .wvu-bg-position-#{$bp-value}-right {
-      background-position: right $global-important;
-    }
-  }
-}
-
-// Create different utilities for various breakpoints and percentage widths of your image. This allows you to fine-tune.
-
-$i: 100;
-
-@while $i >= 0 {
-  @each $bg-class, $bg-property in (center-left, center left),
-           (center-right, center right),
-           (top-left, top left),
-           (top-right, top right),
-           (bottom-left, bottom left),
-           (bottom-right, bottom right) {
-    @each $bp-value, $breakpoint in (xs, $wvu-bp-xs),
-                                    (sm, $wvu-bp-sm),
-                                    (md, $wvu-bp-md),
-                                    (lg, $wvu-bp-lg),
-                                    (xl, $wvu-bp-xl) {
-      .wvu-bg-position-#{$bp-value}-#{$bg-class}--#{$i} {
-        @media (min-width: $breakpoint) {
-          background-position: $bg-property round(percentage($i * 0.01)) $global-important;
-        }
-      }
-    }
-  }
-  $i: $i - 10;
-}
-
-@each $bg-class, $bg-property in (center-left, center left),
-                                 (center-right, center right),
-                                 (top-left, top left),
-                                 (top-right, top right),
-                                 (bottom-left, bottom left),
-                                 (bottom-right, bottom right),
-                                 (top, top), {
-  .wvu-bg-position-#{$bg-class} {
-    background-position: $bg-property $global-important;
-  }
-}
-
-@each $bg-class, $bg-property in (center-left, center left),
-                                 (center-right, center right),
-                                 (top-left, top left),
-                                 (top-right, top right),
-                                 (bottom-left, bottom left),
-                                 (bottom-right, bottom right),
-                                 (top, top), {
-  @each $bp-value, $breakpoint in (xs, $wvu-bp-xs),
-                                  (sm, $wvu-bp-sm),
-                                  (md, $wvu-bp-md),
-                                  (lg, $wvu-bp-lg),
-                                  (xl, $wvu-bp-xl) {
-    .wvu-bg-position-#{$bp-value}-#{$bg-class} {
-      @media (min-width: $breakpoint) {
-        background-position: $bg-property $global-important;
-      }
-    }
-  }
 }
 
 // Give yourself some extra padding on top or bottom on smaller screen sizes.
@@ -133,6 +46,6 @@ $i: 100;
 }
 
 // Example usage:
-// <div class="py-5 text-center text-white wvu-bg-vignetting bg-wvu-neutral--dark-gray wvu-bg-pattern-grid-transparent wvu-bg-position-center-left--75 wvu-bg-position-xl-center-right wvu-bg-position-spacer-md-top" style="background-image: url(/files/8aa49c0c-ca6f-495b-af9d-72fd45761700/1720x1720);">
+// <div class="py-5 text-center text-white wvu-bg-vignetting bg-wvu-neutral--dark-gray wvu-bg-pattern-grid-transparent wvu-bg-position-center-left wvu-bg-position-spacer-md-top" style="background-image: url(/files/8aa49c0c-ca6f-495b-af9d-72fd45761700/1720x1720);">
 //   ...
 // </div>
