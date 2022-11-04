@@ -89,10 +89,7 @@
                   {% case bgColorListItem %}
                     {% when 'bg-wvu-gold' or 'bg-wvu-accent--light-blue' or 'bg-wvu-accent--yellow' or 'bg-wvu-accent--sunset' or 'bg-wvu-neutral--warm-gray-light' or 'bg-wvu-neutral--warm-gray-medium' or 'bg-wvu-neutral--cream' or 'bg-wvu-neutral--tan' %}
                       {% assign barModifier = 'wvu-bar--blue' %}
-                      {% assign itemHeaderClasses = itemHeaderClasses | replace: 'wvu-bar--', 'xwvu-bar--' %}
-                    {% when 'bg-wvu-neutral--warm-gray-dark' %}
-                      {% assign barModifier = 'wvu-bar--white' %}
-                      {% assign itemHeaderClasses = itemHeaderClasses | replace: 'wvu-bar--', 'xwvu-bar--' %}
+                      {% assign itemHeaderClasses = itemHeaderClasses | replace: 'wvu-bar--blue', '' | replace: 'wvu-bar--white', '' %}
                     {% else %}
                   {% endcase %}
                 {% endif %}
