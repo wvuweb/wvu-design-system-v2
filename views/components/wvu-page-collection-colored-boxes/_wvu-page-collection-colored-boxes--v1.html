@@ -3,7 +3,7 @@
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
   assign defaultItemColors = "wvu-accent--blue"
-  assign defaultLinkColors = "link-white"
+  assign defaultLinkColors = "white"
   assign customItemColorsRegion = component.name | append: '__item-colors'
   assign customItemColors = page.content[customItemColorsRegion] | split: ','
   assign customLinkColorsRegion = component.name | append: '__link-colors'
