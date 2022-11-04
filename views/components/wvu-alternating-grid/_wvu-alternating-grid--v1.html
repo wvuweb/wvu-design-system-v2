@@ -2,7 +2,7 @@
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
-  assign defaultItemColors = "wvu-accent--dark-blue"
+  assign defaultItemColors = "wvu-accent--blue"
   assign defaultTextColors = "white"
   assign customItemColorsRegion = component.name | append: '__item-colors'
   assign customTextColorsRegion = component.name | append: '__text-colors'
