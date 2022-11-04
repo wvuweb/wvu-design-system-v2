@@ -85,7 +85,19 @@
           <div class="px-0 col-lg-6 d-flex align-items-center">
             <div class="col-xl-10 col-xxl-8">
               <div class="p-3 p-md-4 p-xl-5">
-                <{{ htag }} id="{{ component.name }}-label" class="{{ textColorListItem | default: defaultTextColors }} {{ itemHeaderClasses }}">{{ item.name }}</{{ htag }}>
+                {% if itemHeaderClasses contains 'wvu-bar' %}
+                  {% case bgColorListItem %}
+                    {% when 'wvu-gold' or 'wvu-accent--light-blue' or 'wvu-accent--yellow' or 'wvu-accent--sunset' or 'wvu-neutral--warm-gray-light' or 'wvu-neutral--warm-gray-medium' or 'wvu-neutral--cream' or 'wvu-neutral--tan' %}
+                      {% assign barModifier = 'wvu-bar--blue' %}
+                      {% assign itemHeaderClasses = itemHeaderClasses | replace: 'wvu-bar--', 'xwvu-bar--' %}
+                    {% when 'wvu-neutral--warm-gray-dark' %}
+                      {% assign barModifier = 'wvu-bar--white' %}
+                      {% assign itemHeaderClasses = itemHeaderClasses | replace: 'wvu-bar--', 'xwvu-bar--' %}
+                    {% else %}
+                  {% endcase %}
+                {% endif %}
+
+                <{{ htag }} id="{{ component.name }}-label" class="{{ textColorListItem | default: defaultTextColors }} {{ itemHeaderClasses }} {{ barModifier }}">{{ item.name }}</{{ htag }}>
 
                 {% if item.content['wvu-profile-1__name'] != blank %}
                   <p class="h2 iowan-old-style-black pt-2 mb-1">
