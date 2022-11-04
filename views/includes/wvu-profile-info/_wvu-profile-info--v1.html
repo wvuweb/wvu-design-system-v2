@@ -1,6 +1,6 @@
 {% if profileItem.template_name == 'student' %}
   {% if profileItem.content['wvu-profile-1__major'] != blank %}
-    <p class="small helvetica-neue-light mb-0 text-white">
+    <p class="small helvetica-neue-light mb-0">
       <span class="text-uppercase">
         {% if profileItem.content['wvu-profile-1__major'] != blank %}
           {{ profileItem.content['wvu-profile-1__major'] }}
@@ -9,7 +9,7 @@
     </p>
   {% endif %}
   {% if profileItem.content['wvu-profile-1__graduation-year'] != blank %}
-    <p class="small helvetica-neue-light mb-0 text-white">
+    <p class="small helvetica-neue-light mb-0">
       <span class="text-uppercase">
         {% if profileItem.content['wvu-profile-1__graduation-year'] != blank %}
           {{ profileItem.content['wvu-profile-1__graduation-year'] }}
@@ -19,7 +19,7 @@
   {% endif %}
 {% else %}
   {% if profileItem.content['wvu-profile-1__title'] != blank %}
-    <p class="small helvetica-neue-light mb-0 text-white">
+    <p class="small helvetica-neue-light mb-0">
       <span class="text-uppercase">
         {% if profileItem.content['wvu-profile-1__title'] != blank %}
           {{ profileItem.content['wvu-profile-1__title'] }}
@@ -28,7 +28,7 @@
     </p>
   {% endif %}
   {% if profileItem.content['wvu-profile-1__organization'] != blank %}
-    <p class="small helvetica-neue-light mb-0 text-white">
+    <p class="small helvetica-neue-light mb-0">
       <span class="text-uppercase">
         {% if profileItem.content['wvu-profile-1__organization'] != blank %}
           {{ profileItem.content['wvu-profile-1__organization'] }}
