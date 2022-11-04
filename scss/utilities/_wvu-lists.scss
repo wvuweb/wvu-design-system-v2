@@ -448,7 +448,7 @@ ol.wvu-ol-progress-horizontal {
   }
   @each $color-name, $color-value in $light-theme-colors {
     &.wvu-ol-progress-horizontal-#{$color-name} {
-      li.active {
+      li {
         &::before, &::after {
           color: #000 $global-important;
         }
@@ -457,7 +457,7 @@ ol.wvu-ol-progress-horizontal {
   }
   @each $color-name, $color-value in $dark-theme-colors {
     &.wvu-ol-progress-horizontal-#{$color-name} {
-      li.active {
+      li {
         &::before, &::after {
           color: #FFF $global-important;
         }
