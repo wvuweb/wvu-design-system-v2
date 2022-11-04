@@ -150,7 +150,7 @@
   .nav-collapse {
     a {
       border-bottom: 0;
-      border-right: 1px solid tint($wvu-accent--dark-blue, 10%);
+      border-right: 1px solid tint($wvu-accent--dark-blue, 7%);
       padding: 1em 1.5em;
       margin: 0;
       float: left;
@@ -165,7 +165,7 @@
 
 .nav-toggle {
   border: none;
-  border-bottom: 1px solid tint($wvu-accent--dark-blue, 10%);
+  border-bottom: 1px solid tint($wvu-accent--dark-blue, 7%);
   box-sizing: border-box;
   color: #fff;
   float: left;
@@ -237,7 +237,7 @@
       position: relative;
     }
     .dropdown-toggle {
-      border: 1px solid tint($wvu-accent--dark-blue, 10%);
+      border: 1px solid tint($wvu-accent--dark-blue, 7%);
       color: white;
       content: "";
       height: 40px;
@@ -339,7 +339,7 @@
       position: relative;
       &:first-child {
         a {
-          border-left: 1px solid tint($wvu-accent--dark-blue, 10%);
+          border-left: 1px solid tint($wvu-accent--dark-blue, 7%);
         }
       }
     }
