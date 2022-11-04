@@ -91,20 +91,20 @@
 
                   {% if item.content.wvu-profile-1__phone != blank %}
                     <p class="mb-0">
-                      <span class="fa-solid fa-phone"></span> <a href="tel:{{ item.content.wvu-profile-1__phone }}">{{ item.content.wvu-profile-1__phone }}</a>
+                      <span aria-hidden="true" class="fa-solid fa-phone"></span> <a href="tel:{{ item.content.wvu-profile-1__phone }}">{{ item.content.wvu-profile-1__phone }}</a>
                     </p>
                   {% endif %}
                   {% if item.content.wvu-profile-1__email != blank %}
                     <p class="mb-0">
-                      <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content.wvu-profile-1__email }}">{{ item.content.wvu-profile-1__email }}</a>
+                      <span aria-hidden="true" class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content.wvu-profile-1__email }}">{{ item.content.wvu-profile-1__email }}</a>
                     </p>
                   {% endif %}
                   {% if item.content.wvu-profile-1__office != blank %}
                     <p class="mb-0">
                       {% if item.content.wvu-profile-1__office-url != blank %}
-                        <span class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
+                        <span aria-hidden="true" class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
                       {% else %}
-                        <span class="fa-solid fa-building"> {{ item.content.wvu-profile-1__office }}</span>
+                        <span aria-hidden="true" class="fa-solid fa-building"></span> {{ item.content.wvu-profile-1__office }}
                       {% endif %}
                     </p>
                   {% endif %}
