@@ -134,6 +134,15 @@ ol.wvu-ol-big-numbers {
       }
     }
   }
+  @each $color-name, $color-value in $dark-theme-colors {
+    &.wvu-ol-big-numbers-#{$color-name} {
+      li {
+        &::before {
+          color: #FFF $global-important;
+        }
+      }
+    }
+  }
 }
 
 ol.wvu-ol-small-numbers {
@@ -180,6 +189,15 @@ ol.wvu-ol-small-numbers {
       li {
         &::before {
           color: #000 $global-important;
+        }
+      }
+    }
+  }
+  @each $color-name, $color-value in $dark-theme-colors {
+    &.wvu-ol-small-numbers-#{$color-name} {
+      li {
+        &::before {
+          color: #FFF $global-important;
         }
       }
     }
@@ -241,6 +259,29 @@ ol.wvu-ol-progress {
         &:last-child {
           border-left-color: transparent $global-important;
         }
+        &.active {
+          &::before {
+            outline: 4px solid $color-value $global-important;
+          }
+        }
+      }
+    }
+  }
+  @each $color-name, $color-value in $light-theme-colors {
+    &.wvu-ol-progress-#{$color-name} {
+      li {
+        &::before {
+          color: #000 $global-important;
+        }
+      }
+    }
+  }
+  @each $color-name, $color-value in $dark-theme-colors {
+    &.wvu-ol-progress-#{$color-name} {
+      li {
+        &::before {
+          color: #FFF $global-important;
+        }
       }
     }
   }
@@ -291,10 +332,19 @@ ol.wvu-ol-progress-small {
     }
   }
   @each $color-name, $color-value in $theme-colors {
-    &.wvu-ol-progress-small-#{$color-name} {
+    &.wvu-ol-progress--small#{$color-name} {
       li {
-        &::before {
+        border-left: 4px solid $color-value $global-important;
+        &::before, &::after {
           background-color: $color-value $global-important;
+        }
+        &:last-child {
+          border-left-color: transparent $global-important;
+        }
+        &.active {
+          &::before {
+            outline: 4px solid $color-value $global-important;
+          }
         }
       }
     }
@@ -304,6 +354,15 @@ ol.wvu-ol-progress-small {
       li {
         &::before {
           color: #000 $global-important;
+        }
+      }
+    }
+  }
+  @each $color-name, $color-value in $dark-theme-colors {
+    &.wvu-ol-progress-small-#{$color-name} {
+      li {
+        &::before {
+          color: #FFF $global-important;
         }
       }
     }
