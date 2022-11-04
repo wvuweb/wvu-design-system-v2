@@ -2,9 +2,12 @@
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
-  assign defaultItemColors = "wvu-accent--burnt-orange,wvu-accent--blue,wvu-accent--brown,wvu-accent--green,wvu-accent--red,wvu-neutral--dark-gray"
+  assign defaultItemColors = "wvu-accent--dark-blue"
+  assign defaultTextColors = "white"
   assign customItemColorsRegion = component.name | append: '__item-colors'
+  assign customTextColorsRegion = component.name | append: '__text-colors'
   assign customItemColors = page.content[customItemColorsRegion] | split: ','
+  assign customTextColors = page.content[customTextColorsRegion] | split: ','
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
@@ -30,6 +33,12 @@
     assign itemColors = page.content[customItemColorsRegion] | split: ','
   else
     assign itemColors = defaultItemColors | split: ','
+  endif
+
+  if page.content[customTextColorsRegion] != blank
+    assign textColors = page.content[customTextColorsRegion] | split: ','
+  else
+    assign textColors = defaultItemColors | split: ','
   endif
 -%}
 
@@ -59,7 +68,15 @@
 
         {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '1600x1200', format: 'webp' %}
 
-        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} bg-{{ itemColors[i] }}">
+        {% if itemColors[i] != blank %}
+          {% capture bgColorListItem %}bg-{{ itemColors[i] }}{% endcapture %}
+        {% endif %}
+        {% if textColors[i] != blank %}
+          {% capture textColorListItem %}text-{{ linkColors[i] }}{% endcapture %}
+          {% capture buttonColorListItem %}btn-outline-{{ linkColors[i] }}{% endcapture %}
+        {% endif %}
+
+        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem }} {{ textColorListItem }}">
           <div class="px-0 col-lg-6">
             <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
             </div>
@@ -93,7 +110,7 @@
                     {% else %}
                       {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                     {% endif %}
-                    <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+                    <a class="btn {{ buttonColorListItem }}" href="{{ link_href }}">{{ link_text }}</a>
                   {% endif %}
                 </p>
               </div>

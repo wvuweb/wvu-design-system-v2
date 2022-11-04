@@ -6,8 +6,8 @@
   assign defaultLinkColors = "white"
   assign customItemColorsRegion = component.name | append: '__item-colors'
   assign customItemColors = page.content[customItemColorsRegion] | split: ','
-  assign customLinkColorsRegion = component.name | append: '__link-colors'
-  assign customLinkColors = page.content[customLinkColorsRegion] | split: ','
+  assign customTextColorsRegion = component.name | append: '__text-colors'
+  assign customTextColors = page.content[customTextColorsRegion] | split: ','
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
@@ -36,9 +36,9 @@
   endif
 
   if page.content[customLinkColorsRegion] != blank
-    assign linkColors = page.content[customLinkColorsRegion] | split: ','
+    assign textColors = page.content[customLinkColorsRegion] | split: ','
   else
-    assign linkColors = defaultLinkColors | split: ','
+    assign textColors = defaultTextColors | split: ','
   endif
 -%}
 
@@ -87,7 +87,7 @@
           {% if itemColors[i] != blank %}
             {% capture bgColorListItem %}bg-{{ itemColors[i] }}{% endcapture %}
           {% endif %}
-          {% if linkColors[i] != blank %}
+          {% if textColors[i] != blank %}
             {% capture textColorListItem %}text-{{ linkColors[i] }}{% endcapture %}
             {% capture linkColorListItem %}link-{{ linkColors[i] }}{% endcapture %}
           {% endif %}
