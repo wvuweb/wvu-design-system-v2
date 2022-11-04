@@ -72,11 +72,11 @@
           {% capture bgColorListItem %}bg-{{ itemColors[i] }}{% endcapture %}
         {% endif %}
         {% if textColors[i] != blank %}
-          {% capture textColorListItem %}text-{{ linkColors[i] }}{% endcapture %}
-          {% capture buttonColorListItem %}btn-outline-{{ linkColors[i] }}{% endcapture %}
+          {% capture textColorListItem %}text-{{ textColors[i] }}{% endcapture %}
+          {% capture buttonColorListItem %}btn-outline-{{ textColors[i] }}{% endcapture %}
         {% endif %}
 
-        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem | default: 'bg-wvu-accent--dark-blue' }} {{ textColorListItem | default: 'text-white' }}">
+        <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem | default: defaultItemColors }} {{ textColorListItem | default: defaultTextColors }}">
           <div class="px-0 col-lg-6">
             <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
             </div>
