@@ -19,7 +19,7 @@
       <div class="col-md-8 text-center py-5 align-self-center">
         {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Header classes:
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
             <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
@@ -39,7 +39,7 @@
       <div class="col-md-4 {{ page.content[statCardClassesEditableRegionName] | default: defaultStatCardClasses }}">
         {% comment %}<!-- This is where you can add utility classes that will apply to the stat card’s classes. -->{% endcomment %}
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Stat card classes:
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Stat card classes:
             <pre class="mb-0 text-white">{% editable_region name: statCardClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ defaultStatCardClasses }}</pre>
           </small>

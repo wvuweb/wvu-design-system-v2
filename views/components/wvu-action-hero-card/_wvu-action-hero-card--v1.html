@@ -18,7 +18,7 @@
       {% capture block_content %}
         {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
         {% if edit_mode %}
-          <div class="small wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Header classes:
+          <div class="small wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
             <div class="mb-1 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
             <p class="mb-0"><strong class="text-muted">Default classes:</strong> {{ component.defaultHeaderClasses }}</p>
           </div>
