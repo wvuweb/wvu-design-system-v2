@@ -1,5 +1,5 @@
 <!-- wvu-nav--v2 -->
-<nav aria-label="Main navigation" id="nav-primary" class="navbar navbar-expand-lg p-0 navbar-dark bg-wvu-neutral--blue-dark d-table w-100">
+<nav aria-label="Main navigation" id="nav-primary" class="navbar navbar-expand-lg p-0 navbar-dark bg-wvu-accent--blue-dark d-table w-100">
   <div class="container">
     <button id="nav-toggle" class="wvu-nav__button nav-toggle">
       <img class="wvu-nav__menu-icon" src="https://static.wvu.edu/global/images/icons/wvu/hamburger-menu--1.0.0.svg" alt="" />
@@ -8,7 +8,7 @@
     <div class="wvu-nav nav-collapse ml-lg-n1" id="wvu-nav">
       {% if site.data.nav_dropdowns != blank %}
         {% comment %} NOTE: If nav depth is greater than 1, show the dropdown caret (has_children_class) & `+` on mobile (sub_ul_class). {% endcomment %}
-        {% site_menu max_depth: "2" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" has_children_class: "dropdown" sub_ul_class: "sub-menu small bg-wvu-neutral--blue-dark px-1 mx-n1" %}
+        {% site_menu max_depth: "2" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" has_children_class: "dropdown" sub_ul_class: "sub-menu small bg-wvu-accent--blue-dark px-1 mx-n1" %}
       {% else %}
         {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown caret (has_children_class). {% endcomment %}
         {% site_menu max_depth: "1" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" %}
@@ -83,7 +83,7 @@
   </div> <!-- /.container -->
 </nav>
 <section aria-label="nav-quicklinks" class="collapse multi-collapse" id="wvuNavSearchCollapse">
-  <div class="bg-light py-4 w-100 text-white bg-wvu-neutral--blue-dark wvu-bg-vignetting--20">
+  <div class="bg-light py-4 w-100 text-white bg-wvu-accent--blue-dark wvu-bg-vignetting--20">
     <div class="container wvu-z-index-content">
       <div class="row d-flex justify-content-center">
         <div class="col-md-6">
