@@ -86,7 +86,7 @@ $wvu-neutral--tan: #B3A169;
 $wvu-neutral--warm-gray-light: #BEB7B3;
 $wvu-neutral--warm-gray-medium: #988E8B;
 $wvu-neutral--warm-gray-dark: #554741;
-$wvu-accent--dark-blue: #1C2B39;
+$wvu-accent--blue-dark: #1C2B39;
 $wvu-accent--blue: #0062A3;
 $wvu-accent--light-blue: #9DDAE6;
 $wvu-accent--yellow: #FFE539;
@@ -96,7 +96,7 @@ $wvu-accent--sunset: #F58672;
 // Neutral
 $wvu-neutral--white: $wvu-neutral--off-white;
 $wvu-neutral--black: #2C2A29;
-$wvu-neutral--dark-gray: $wvu-accent--dark-blue;
+$wvu-neutral--dark-gray: $wvu-accent--blue-dark;
 $wvu-neutral--light-gray: $wvu-neutral--warm-gray-light;
 $wvu-neutral--dark-brown: #6E6259;
 $wvu-neutral--brown: #7C736A;
@@ -256,7 +256,7 @@ $colors: (
   "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
   "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
   "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
-  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue-dark": $wvu-accent--blue-dark,
   "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--yellow": $wvu-accent--yellow,
@@ -305,7 +305,7 @@ $theme-colors: (
   "wvu-neutral--warm-gray-light": $wvu-neutral--warm-gray-light,
   "wvu-neutral--warm-gray-medium": $wvu-neutral--warm-gray-medium,
   "wvu-neutral--warm-gray-dark": $wvu-neutral--warm-gray-dark,
-  "wvu-accent--dark-blue": $wvu-accent--dark-blue,
+  "wvu-accent--blue-dark": $wvu-accent--blue-dark,
   "wvu-accent--blue": $wvu-accent--blue,
   "wvu-accent--light-blue": $wvu-accent--light-blue,
   "wvu-accent--yellow": $wvu-accent--yellow,
@@ -324,13 +324,13 @@ $dark-theme-colors: (
   "wvu-blue",
   "wvu-accent--old-gold",
   "wvu-neutral--warm-gray-dark",
-  "wvu-accent--dark-blue",
+  "wvu-accent--blue-dark",
   "wvu-accent--blue",
   "wvu-neutral--black",
   "wvu-neutral--dark-gray",
   "wvu-neutral--dark-brown",
   "wvu-neutral--brown",
-  "wvu-accent--dark-blue",
+  "wvu-accent--blue-dark",
   "wvu-accent--blue",
   "wvu-accent--brown",
   "wvu-accent--mustard",

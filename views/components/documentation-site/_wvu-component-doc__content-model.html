@@ -8,11 +8,11 @@
       <div class="col-lg-7 ms-lg-auto">
         {% if edit_mode or page.content['general-guidelines'] != blank %}
           <div class="mb-3">
-            <h3 class="h5 text-uppercase text-wvu-accent--burnt-orange">General Guidelines</h3>
+            <h3 class="h5 text-uppercase">General Guidelines</h3>
             {% editable_region name: "general-guidelines" %}
           </div>
         {% endif %}
-        <h3 class="h5 text-uppercase text-wvu-accent--burnt-orange">Content-Specific Guidelines</h3>
+        <h3 class="h5 text-uppercase">Content-Specific Guidelines</h3>
         {% case page.slug %}
           {% when 'hero' or 'action-hero' or 'action-hero-banner' or 'action-hero-card' or 'action-hero-split' %}
             <table class="table">

@@ -21,7 +21,7 @@ editable_region:
       This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
     </p>
     <a class="btn btn-wvu-blue btn-lg" href="#">Call to Action</a>
-    <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--dark-blue">Secondary Call to Action</a></p>
+    <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--blue">Secondary Call to Action</a></p>
   wvu-action-hero-card-1__header: "Action Hero Card Header"
   wvu-action-hero-card-1__main: |
     <p class="lead mb-2">
@@ -608,7 +608,7 @@ page:
         125 hours or more of community engagement work prior to graduation.</p>
       <a href="#" class="btn btn-primary">Action Item</a>
     wvu-action-hero-split-1-classes: "wvu-bg-position-spacer-md-top wvu-bg-position-center-left--70 wvu-bg-position-xl-center-right--80"
-    wvu-action-hero-split-1-header-classes: "wvu-shout display-3 text-wvu-accent--burnt-orange "
+    wvu-action-hero-split-1-header-classes: "wvu-shout display-3 "
     wvu-action-hero-two-column-1__header: "Action Hero Header"
     wvu-action-hero-two-column-1__main: |
       <p class="h3 mb-3 helvetica-neue-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
