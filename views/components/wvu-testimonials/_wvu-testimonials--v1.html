@@ -115,7 +115,7 @@
       <div class="row {{ rowClasses }}">{{ loopContent }}</div>
 
       {% if edit_mode or page.content[component.region_names.postscript] != blank %}
-        <div class="mt-4">
+        <div class="mt-2">
           {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
           {% editable_region_block name: component.region_names.postscript scope: component.scope %}
             <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
