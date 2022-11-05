@@ -105,6 +105,11 @@
 
       <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0">
         <div class="sticky-top pt-3 mt-n3">
+          {% if edit_mode %}
+            <div class="alert alert-info mb-3">
+              <p class="mb-0">New to creating articles, or just need a refresher? Check out our <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/blogs">blog tutorials</a>.
+            </div>
+          {% endif %}
           {% render "components/wvu-article-archive" component: component %}
         </div>
       </aside>
