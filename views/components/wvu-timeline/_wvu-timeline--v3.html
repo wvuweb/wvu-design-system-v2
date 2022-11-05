@@ -10,7 +10,7 @@
       <div class="col-lg-5 me-lg-auto text-md-right py-3">
 
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+          <small class="wvu-z-index-content d-block mb-2 text-muted p-1 bg-wvu-accent--blue-dark">Header classes:
             <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
@@ -29,12 +29,12 @@
       <div class="col-lg-6 pt-3">
 
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Timeline Color (e.g.):
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--blue-dark">Timeline Color (e.g.):
             <div class="mb-1 px-1 text-white">{% editable_region name: timelineColorRegionName, type: "simple", scope: component.scope %}</div>
           </small>
         {% endif %}
 
-        <ul class="wvu-ul-timeline wvu-ul-timeline-{{ timelineColor }} mb-0">
+        <ol class="wvu-ol-timeline wvu-ol-timeline-{{ timelineColor }} mb-0">
           {% for i in (1..component.limit) %}
             {%- capture componentPanelDate %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__date{% endcapture %}
             {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
@@ -58,11 +58,11 @@
               </div>
             </li>
           {% endfor %}
-        </ul>
+        </ol>
       </div>
     </div>
   </div>
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}

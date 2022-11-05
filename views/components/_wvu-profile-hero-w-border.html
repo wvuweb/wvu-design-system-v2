@@ -22,5 +22,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-profile-hero-w-border/wvu-profile-hero-w-border--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-profile-hero-w-border/wvu-profile-hero-w-border--v2" component: component %}
   {% else %}{% render "components/wvu-profile-hero-w-border/wvu-profile-hero-w-border--v1" component: component %}
 {% endcase %}

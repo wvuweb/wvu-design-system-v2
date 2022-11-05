@@ -21,7 +21,7 @@ editable_region:
       This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
     </p>
     <a class="btn btn-wvu-blue btn-lg" href="#">Call to Action</a>
-    <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--blue">Secondary Call to Action</a></p>
+    <p class="mt-2">Here is a <a href="#" class="text-wvu-accent--darl-blue">Secondary Call to Action</a></p>
   wvu-action-hero-card-1__header: "Action Hero Card Header"
   wvu-action-hero-card-1__main: |
     <p class="lead mb-2">
@@ -300,16 +300,16 @@ editable_region:
           <th class="helvetica-neue-bold border-0">Cost Per Year</th>
         </tr>
         <tr>
-          <td class="border-wvu-neutral--black">In-state tuition and fees</td>
-          <td class="border-wvu-neutral--black">$8,976</td>
+          <td class="border-wvu-accent--dark-blue">In-state tuition and fees</td>
+          <td class="border-wvu-accent--dark-blue">$8,976</td>
         </tr>
         <tr>
-          <td class="border-wvu-neutral--black">Out-of-state tuition and fees</td>
-          <td class="border-wvu-neutral--black">$25,320</td>
+          <td class="border-wvu-accent--dark-blue">Out-of-state tuition and fees</td>
+          <td class="border-wvu-accent--dark-blue">$25,320</td>
         </tr>
         <tr>
-          <td class="border-wvu-neutral--black">Room and board expenses</td>
-          <td class="border-wvu-neutral--black">$10,284</td>
+          <td class="border-wvu-accent--dark-blue">Room and board expenses</td>
+          <td class="border-wvu-accent--dark-blue">$10,284</td>
         </tr>
       </tbody>
     </table>
@@ -615,7 +615,7 @@ page:
         incididunt ut labore et dolore magna aliqua.
       </p>
       <a href="#" class="btn btn-primary mb-1">Call to Action</a>
-    wvu-action-hero-two-column-1-classes: "bg-wvu-neutral--black text-white wvu-bg-vignetting"
+    wvu-action-hero-two-column-1-classes: "bg-wvu-accent--dark-blue text-white wvu-bg-vignetting"
     wvu-action-hero-two-column-1-header-classes: "display-2 wvu-shout wvu-text-first-line-gold "
     wvu-agenda-item__main: "Event description."
     wvu-agenda-item__time: "8:00 a.m. - 10:00 a.m."
@@ -662,7 +662,7 @@ page:
     wvu-hero-1-header-classes: " "
     wvu-lede-text-1-classes: "bg-light helvetica-neue-light text-center h3 mb-0"
     wvu-lede-text-1-header-classes: ""
-    wvu-log-in-1-classes: "bg-wvu-neutral--dark-gray py-5 wvu-bg-position-bottom wvu-bg-pattern-grid-zoomed-transparent wvu-bg-blend-mode-luminosity--80 wvu-overflow-hidden"
+    wvu-log-in-1-classes: "bg-wvu-accent--blue-dark py-5 wvu-bg-position-bottom wvu-bg-pattern-grid-zoomed-transparent wvu-bg-blend-mode-luminosity--80 wvu-overflow-hidden"
     wvu-major-1-classes: ""
     wvu-photo-gallery-1__header: ""
     wvu-profile-1__download: |
@@ -679,18 +679,18 @@ page:
     wvu-quicklinks-1__postscript: ""
     wvu-quicklinks-1-classes: "py-5 text-wvu-blue wvu-bg-pattern-gold"
     wvu-quicklinks-1-header-classes: "wvu-shout"
-    wvu-social-media-1-classes: "py-4 bg-wvu-neutral--black text-white"
+    wvu-social-media-1-classes: "py-4 bg-wvu-accent--dark-blue text-white"
     wvu-social-media-1-header-classes: "wvu-shout display-3"
     wvu-social-media-1-link-classes: ""
-    wvu-stat-sheet-1-classes: "mb-0 wvu-overflow-hidden text-white bg-wvu-neutral--black wvu-bg-blend-mode-luminosity--80"
+    wvu-stat-sheet-1-classes: "mb-0 wvu-overflow-hidden text-white bg-wvu-accent--dark-blue wvu-bg-blend-mode-luminosity--80"
     wvu-stat-sheet-1-header-classes: "display-3 wvu-shout"
-    wvu-stat-sheet-1-stat-classes: "bg-wvu-gold text-wvu-neutral--black py-5 px-3"
+    wvu-stat-sheet-1-stat-classes: "bg-wvu-gold text-wvu-accent--dark-blue py-5 px-3"
     wvu-twitter-widget-1__header: ""
     wvu-twitter-widget-1__twitter-classes: "helvetica-neue-light "
-    wvu-twitter-widget-1-classes: "py-5 bg-wvu-neutral--dark-gray text-white wvu-bg-position-center wvu-bg-blend-mode-luminosity--90"
+    wvu-twitter-widget-1-classes: "py-5 bg-wvu-accent--blue-dark text-white wvu-bg-position-center wvu-bg-blend-mode-luminosity--90"
     wvu-video-feature-1__header: ""
     wvu-video-feature-1__postscript: ""
-    wvu-video-feature-1-classes: "py-5 bg-wvu-neutral--black wvu-bg-vignetting text-white text-center"
+    wvu-video-feature-1-classes: "py-5 bg-wvu-accent--dark-blue wvu-bg-vignetting text-white text-center"
 
 pages:
   - id: 2
@@ -812,7 +812,7 @@ site_menu: |
     </li>
     <li class="dropdown">
       <a class="nav-link px-2 px-lg-1" href="#">How to Apply</a>
-      <ul class="sub-menu small bg-wvu-neutral--black px-1 mx-n1">
+      <ul class="sub-menu small bg-wvu-accent--dark-blue px-1 mx-n1">
         <li><a class="nav-link px-2 px-lg-1" href="#">Check Your Status</a></li>
         <li><a class="nav-link px-2 px-lg-1" href="#">First-Time Freshmen</a></li>
         <li><a class="nav-link px-2 px-lg-1" href="#">Transfer Students</a></li>

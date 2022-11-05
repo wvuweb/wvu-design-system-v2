@@ -22,5 +22,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-contact-info/wvu-contact-info--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-contact-info/wvu-contact-info--v2" component: component %}
   {% else %}{% render "components/wvu-contact-info/wvu-contact-info--v1" component: component %}
 {% endcase %}

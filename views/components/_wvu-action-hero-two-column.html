@@ -3,7 +3,7 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.action_hero_two_column | default: '1'
   assign scope = scope | default: slot.scope
-  assign defaultComponentClasses = defaultComponentClasses | default: "position-relative wvu-bg-size-cover bg-wvu-neutral--black text-white wvu-bg-vignetting"
+  assign defaultComponentClasses = defaultComponentClasses | default: "position-relative wvu-bg-size-cover bg-wvu-neutral--black bg-wvu-accent--blue-dark text-white wvu-bg-vignetting"
   assign defaultHeaderClasses = defaultHeaderClasses | default: "display-2 wvu-shout text-wvu-gold"
 
   if scope == 'site'
@@ -24,5 +24,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-action-hero-two-column/wvu-action-hero-two-column--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-action-hero-two-column/wvu-action-hero-two-column--v2" component: component %}
   {% else %}{% render "components/wvu-action-hero-two-column/wvu-action-hero-two-column--v1" component: component %}
 {% endcase %}

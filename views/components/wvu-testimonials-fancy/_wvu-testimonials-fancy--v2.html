@@ -1,0 +1,137 @@
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="wvu-z-index-content">
+    <div class="position-relative wvu-z-index-content">
+
+      <div class="container">
+        {% if edit_mode or page.content[component.region_names.header] != blank %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+          {% editable_region_block name: component.region_names.header scope: component.scope %}
+            <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Testimonials Headline</h2>
+            <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+          {% endeditable_region_block %}
+        {% endif %}
+      </div>
+
+      {% if itemCount == 0 %}
+        <div class="container">
+          {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+        </div>
+      {% else %}
+        <div class="container">
+          {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+        </div>
+      {% endif %}
+
+      {% capture loopContent %}
+
+        {% for item in items.all %}
+
+          {% liquid
+            if item.data.alternate_url != blank
+              assign link_href = item.data.alternate_url
+            else
+              assign link_href = item.url
+            endif
+          %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          {% assign nameTooLong = false %}
+          {% assign nameSize = item.content['wvu-profile-1__name'] | split: ' ' %}
+          {% for name in nameSize %}
+            {% if name.size >= 11 %}
+              {% assign htagClass = 'h3' %}
+            {% elsif name.size <= 9 %}
+              {% assign htagClass = 'h1' %}
+            {% endif %}
+          {% endfor %}
+
+          <div class="{{ itemClasses }} d-flex align-items-stretch text-start">
+            <div class="p-2 w-100">
+
+              {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+
+              <div class="ps-3 pe-3 pb-3 pt-4 h-100 wvu-bg-position-top-left--30 wvu-bg-position-xl-top-left wvu-bg-size-cover bg-wvu-accent--blue-dark" style="background-image: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%), url({{ itemThumbnailSrc | strip }}/960x640.jpg);">
+                <div class="row align-items-end h-100">
+                  <div class="col-xl-6 pt-lg-6 mt-6 mt-xl-0 pt-xl-0 me-md-auto mb-xl-n3">
+                    <{{ htag }} class="{{ itemHeaderClasses }} {{ htagClass }}" style="text-shadow: 7px 5px 16px rgba(0,0,0,0.64);">
+                      {% if item.content['wvu-profile-1__name'] != blank %}
+                        {{ item.content['wvu-profile-1__name'] }}
+                      {% else %}
+                        {{ item.alternate_name | default: item.name }}
+                      {% endif %}
+                    </{{ htag }}>
+                    <p class="wvu-shout text-white h5 wvu-bar wvu-bar--white wvu-bar--bottom wvu-bar--skinny">
+                      {% if item.template == 'student' %}
+                        {% if item.content['wvu-profile-1__major'] != blank %}
+                          {{ item.content['wvu-profile-1__major'] }}
+                        {% endif %}
+                      {% else %}
+                        {% if item.content['wvu-profile-1__title'] != blank %}
+                          {{ item.content['wvu-profile-1__title'] }}
+                        {% endif %}
+                      {% endif %}
+                    </p>
+                  </div>
+                  <div class="col-xl-6 me-md-auto">
+                    <div class="bg-white p-3 p-xl-2 mt-xl-5 text-center wvu-z-index-content">
+                      <blockquote class="iowan-old-style-black-italic h6 mb-0 mx-0">
+                        <p class="mb-0">“{{ item.content.wvu-profile-1__quote }}”</p>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="container-fluid">
+        <div class="row {{ rowClasses }} px-md-2">{{ loopContent }}</div>
+      </div>
+
+      <div class="container">
+        {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+          <div class="mt-3">
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+            {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+              <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+            {% endeditable_region_block %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}

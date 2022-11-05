@@ -1,0 +1,108 @@
+{%- liquid
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: defaultItemClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses] | default: component.defaultItemBodyClasses
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+
+  assign root = site.root_page
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="wvu-z-index-content">
+
+    {% if itemCount == 0 %}
+      <div class="container mb-4">
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      </div>
+    {% else %}
+      {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+      {% assign itemClasses = itemClasses | strip %}
+      <div class="container">
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+      </div>
+    {% endif %}
+
+    {% capture loopContent %}
+      {% for item in items.all %}
+
+        {% liquid
+          if item.data.alternate_url != blank
+            assign link_href = item.data.alternate_url
+          else
+            assign link_href = item.url
+          endif
+        %}
+
+        {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
+
+        <div class="{{ itemClasses }} px-0">
+          <div class="h-100 mb-0 wvu-overflow-hidden wvu-background-size-cover p-3 bg-wvu-accent--blue-dark text-white text-left wvu-bg-size-cover wvu-bg-vignetting--80 wvu-bg-position-center shadow" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
+            <div class="container position-relative wvu-z-index-content px-0 h-100">
+              <div class="row h-100">
+                <div class="col-xl-8 d-flex flex-column justify-content-between">
+                  <div>
+                    {% if item.content['wvu-profile-1__name'] != blank %}
+                      <{{ htag }} class="{{ itemHeaderClasses }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>
+                      <p class="{{ itemBodyClasses }}">
+                        {{ item.content['wvu-profile-1__name'] }}
+                      </p>
+                    {% else %}
+                      <{{ htag }} class="{{ itemHeaderClasses }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>
+                    {% endif %}
+                    {% render "includes/wvu-profile-info/wvu-profile-info--v1" profileItem: item %}
+                  </div>
+                  <div>
+                    <p class="card-text mt-5 pt-5">
+                      {%- if item.data.description != blank %}
+                        {{ item.data.description }}
+                      {% else %}
+                        {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+                      {%- endif %}
+                    </p>
+                    <p>
+                      {% if itemReadMoreButtonText != 'none' %}
+                        {% if item.data.link_text != blank %}
+                          {% assign link_text = item.data.link_text %}
+                        {% else %}
+                          {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                        {% endif %}
+                        <a class="{{ itemButtonClasses }}" href="{{ link_href }}">{{ link_text }}</a>
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %}<!-- Reset the thumbnail SRC so that it doesn’t carry over to the next item -->{% endcomment %}
+        {% assign newPageThumbnailSrc = '' %}
+
+      {% endfor %}
+    {% endcapture %}
+
+    <div class="row mx-0">{{ loopContent }}</div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}

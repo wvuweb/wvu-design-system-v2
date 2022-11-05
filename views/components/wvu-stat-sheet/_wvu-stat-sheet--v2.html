@@ -1,6 +1,6 @@
 {%- liquid
   assign statClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-classes"
-  assign defaultStatCardClasses = 'bg-wvu-gold text-wvu-neutral--black py-5 px-3'
+  assign defaultStatCardClasses = 'bg-wvu-gold text-wvu-accent--blue-dark py-5 px-3'
   assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-card"
   assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stats"
 
@@ -59,16 +59,16 @@
             </thead>
             <tbody class="border-top-0">
               <tr>
-                <th scope="row" class="border-wvu-neutral--black">In-state tuition and fees</th>
-                <td class="border-wvu-neutral--black">$8,976</td>
+                <th scope="row" class="border-wvu-accent--blue-dark">In-state tuition and fees</th>
+                <td class="border-wvu-accent--blue-dark">$8,976</td>
               </tr>
               <tr>
-                <th scope="row" class="border-wvu-neutral--black">Out-of-state tuition and fees</th>
-                <td class="border-wvu-neutral--black">$25,320</td>
+                <th scope="row" class="border-wvu-accent--blue-dark">Out-of-state tuition and fees</th>
+                <td class="border-wvu-accent--blue-dark">$25,320</td>
               </tr>
               <tr>
-                <th scope="row" class="border-wvu-neutral--black">Room and board expenses</th>
-                <td class="border-wvu-neutral--black">$10,284</td>
+                <th scope="row" class="border-wvu-accent--blue-dark">Room and board expenses</th>
+                <td class="border-wvu-accent--blue-dark">$10,284</td>
               </tr>
             </tbody>
           </table>
@@ -86,4 +86,4 @@
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}

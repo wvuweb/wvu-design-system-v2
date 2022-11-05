@@ -12,5 +12,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-horizontal-subnav/wvu-horizontal-subnav--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-horizontal-subnav/wvu-horizontal-subnav--v2" component: component %}
   {% else %}{% render "components/wvu-horizontal-subnav/wvu-horizontal-subnav--v1" component: component %}
 {% endcase %}

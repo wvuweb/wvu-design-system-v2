@@ -8,7 +8,7 @@
     <div class="mb-4">
       {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
       {% if edit_mode %}
-        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Header classes:
           <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
           <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
         </small>
@@ -40,7 +40,7 @@
     {% endif %}
     <div class="mt-4">
       {% if edit_mode %}
-        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Twitter link classes:
+        <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Twitter link classes:
           <pre class="mb-0 text-white">{% editable_region name: twitterLinkClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
           <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ twitterLinkClasses }}</pre>
         </small>
@@ -54,7 +54,7 @@
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}
 
 {% content_for "page_js" %}
   {% link_javascript name: "vendor/twitter-fetcher/twitterFetcher_min, twitterFetcher--custom" %}

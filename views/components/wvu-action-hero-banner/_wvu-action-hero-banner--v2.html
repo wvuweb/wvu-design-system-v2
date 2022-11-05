@@ -14,7 +14,7 @@
   <div class="wvu-bg-topo-dark m-n4">
     <div class="container wvu-z-index-content">
       {% capture block_content %}
-        <div class="col col-md-7 col-lg-5 py-6 px-4 px-xl-5 bg-wvu-neutral--black">
+        <div class="col col-md-7 col-lg-5 py-6 px-4 px-xl-5 bg-wvu-accent--blue-dark">
           {% if edit_mode %}
             <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-accent--dark-blue">Header classes (default: {{ component.defaultHeaderClasses }}):
               <div class="mb-1 px-1 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
@@ -42,4 +42,4 @@
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v2" component: component %}

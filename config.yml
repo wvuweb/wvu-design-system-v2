@@ -125,8 +125,23 @@ custom_site_attributes:
 # Set the version of each component here when we have new versions
 data:
   component_versions:
-    photo_gallery: 2
-    timeline: 2
+    action_hero_banner: 2
+    action_hero_two_column: 2
+    article: 2
+    article_archive: 2
+    backpage_header: 2
+    blob_a: 2
+    contact_info: 2
+    full_bleed_photo: 2
+    horizontal_subnav: 2
+    masthead: 2
+    nav: 2
+    photo_gallery: 3
+    photo_grid: 2
+    profile_hero_w_border: 2
+    stat_sheet: 2
+    testimonials_fancy: 2
+    timeline: 3
     twitter_widget: 2
 
 ## Template Config

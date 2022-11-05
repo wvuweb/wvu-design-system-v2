@@ -23,5 +23,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-full-bleed-photo/wvu-full-bleed-photo--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-full-bleed-photo/wvu-full-bleed-photo--v2" component: component %}
   {% else %}{% render "components/wvu-full-bleed-photo/wvu-full-bleed-photo--v1" component: component %}
 {% endcase %}

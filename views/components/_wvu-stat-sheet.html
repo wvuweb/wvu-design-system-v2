@@ -14,7 +14,7 @@
 {%- define_component component %}
   {
     "baseName": "{{ basename }}",
-    "defaultComponentClasses": "mb-0 wvu-overflow-hidden text-white bg-wvu-neutral--black wvu-bg-blend-mode-luminosity--80",
+    "defaultComponentClasses": "mb-0 wvu-overflow-hidden text-white bg-wvu-neutral--black bg-wvu-accent--blue-dark wvu-bg-blend-mode-luminosity--80",
     "defaultHeaderClasses": "display-3 wvu-shout",
     "mainTagClasses": null
   }
@@ -22,5 +22,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-stat-sheet/wvu-stat-sheet--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-stat-sheet/wvu-stat-sheet--v2" component: component %}
   {% else %}{% render "components/wvu-stat-sheet/wvu-stat-sheet--v1" component: component %}
 {% endcase %}
