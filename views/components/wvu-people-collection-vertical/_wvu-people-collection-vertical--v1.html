@@ -76,7 +76,7 @@
                 <div class="col-md-4">
                   <div class="row mb-1">
                     <div class="col-6 mx-auto col-sm-4 col-md-12 col-lg-8 col-xl-8 mx-lg-0 ms-lg-auto">
-                      {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
                       <img class="shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   </div>

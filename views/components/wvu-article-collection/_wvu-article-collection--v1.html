@@ -70,7 +70,7 @@
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+            {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
             {% if itemThumbnailSrc != blank %}
               <div class="mb-2">
                 <a href="{{ link_href }}" title="{{ itemReadMoreButtonText }}: {{ item.name }}" {{ hideImgLink }}>

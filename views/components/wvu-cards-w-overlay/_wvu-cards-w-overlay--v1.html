@@ -59,7 +59,7 @@
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
-          {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+          {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             <a class="d-block h-100 text-white text-decoration-none" aria-labelledby="{{ htag_id }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
