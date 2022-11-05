@@ -67,7 +67,7 @@
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             {% if item.data.thumbnail_url != blank %}
 
-              {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640' %}
+              {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
 
               <div class="mb-2 position-relative">
                 {% if item.data.badge_label != blank %}
