@@ -1,7 +1,7 @@
 <footer class="{{ component.classes }}" {{ component.bgStyler }}>
   <div class="container">
     <div class="row small">
-      <div class="col-6">
+      <div class="col-12">
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Address</span>{% endif %}
         {% editable_region_block name: component.region_names.main, scope: "site" %}
           <address class="mb-4">
@@ -16,12 +16,6 @@
             </p>
           </address>
         {% endeditable_region_block %}
-      </div>
-      <div class="col-3">
-
-      </div>
-      <div class="col-3">
-
       </div>
     </div>
     <div class="row small">
