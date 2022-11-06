@@ -382,16 +382,20 @@ ol.wvu-ol-progress-horizontal {
 
 ol.wvu-ol-progress-horizontal-wvu-gold {
   li {
-    &::before, &::after {
+    &::after {
       background-color: $wvu-gold $global-important;
+    }
+    &::before {
+      background-color: $wvu-gold $global-important;
+      color: $wvu-blue $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
     }
     &.active {
       &::before {
-        background-color: $white $global-important;
-        color: $wvu-blue $global-important;
+        background-color: $wvu-blue $global-important;
+        color: $white $global-important;
         outline: 4px solid $wvu-gold $global-important;
       }
     }
@@ -400,16 +404,20 @@ ol.wvu-ol-progress-horizontal-wvu-gold {
 
 ol.wvu-ol-progress-horizontal-wvu-blue {
   li {
-    &::before, &::after {
+    &::after {
       background-color: $wvu-blue $global-important;
+    }
+    &::before {
+      background-color: $wvu-blue $global-important;
+      color: $wvu-gold $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
     }
     &.active {
       &::before {
-        background-color: $wvu-blue $global-important;
-        color: $wvu-gold $global-important;
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
         outline: 4px solid $wvu-blue $global-important;
       }
     }
@@ -418,16 +426,20 @@ ol.wvu-ol-progress-horizontal-wvu-blue {
 
 ol.wvu-ol-progress-horizontal-white {
   li {
-    &::before, &::after {
+    &::after {
       background-color: $white $global-important;
+    }
+    &::before {
+      background-color: $white $global-important;
+      color: $wvu-blue $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
     }
     &.active {
       &::before {
-        background-color: $wvu-accent--blue-dark $global-important;
-        color: $wvu-gold $global-important;
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
         outline: 4px solid $white $global-important;
       }
     }
