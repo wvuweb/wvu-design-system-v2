@@ -1,5 +1,5 @@
 {% case slot.custom %}
   {% when 'custom-example' %}{% render "components/custom/custom-example" slot: slot %}
-  {% when 'how-to-guides' %}{% render "components/custom/wvu-how-to-guides" slot: slot %}
+  {% when 'how-to-guides' %}{% render "components/documentation-site/wvu-how-to-guides" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}
