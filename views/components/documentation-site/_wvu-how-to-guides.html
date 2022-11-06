@@ -1,0 +1,15 @@
+<section aria-labelledby="how-to-label" class="py-5 wvu-backpage-main bg-wvu-blue text-white">
+
+  <div class="container">
+    <h2 id="how-to-label" class="display-3 wvu-shout wvu-bar wvu-bar--bottom">How-To-Guides</h2>
+    {% for item in page.children.all %}
+      <h3>{{ item.name }}</h3>
+      <ul class="wvu-ul-chevrons wvu-ul-chevrons--gold">
+        {% for childPage in item.children.all %}
+          <li><a href="{{ childPage.url }}" class="text-wvu-gold">{{ childPage.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+
+</section>
