@@ -100,7 +100,7 @@ ol.wvu-ol-big-numbers {
     position: relative $global-important;
     &::before {
       align-items: center $global-important;
-      background-color: $wvu-blue;
+      background-color: $gray-500;
       border-radius: 50% $global-important;
       color: white $global-important;
       content: counter(listCounter);
@@ -132,7 +132,7 @@ ol.wvu-ol-small-numbers {
     position: relative $global-important;
     &::before {
       align-items: center $global-important;
-      background-color: $wvu-blue;
+      background-color: $gray-500;
       border-radius: 50% $global-important;
       color: white $global-important;
       content: counter(listCounter);
@@ -153,7 +153,8 @@ ol.wvu-ol-small-numbers {
 ol.wvu-ol-big-numbers-wvu-gold, ol.wvu-ol-small-numbers-wvu-gold {
   li {
     &::before {
-      color: $wvu-gold $global-important;
+      background-color: $wvu-gold $global-important;
+      color: $wvu-blue $global-important;
     }
   }
 }
@@ -161,7 +162,8 @@ ol.wvu-ol-big-numbers-wvu-gold, ol.wvu-ol-small-numbers-wvu-gold {
 ol.wvu-ol-big-numbers-wvu-blue, ol.wvu-ol-small-numbers-wvu-blue {
   li {
     &::before {
-      color: $wvu-gold $global-important;
+      background-color: $wvu-blue $global-important;
+      color: $white $global-important;
     }
   }
 }
@@ -169,7 +171,8 @@ ol.wvu-ol-big-numbers-wvu-blue, ol.wvu-ol-small-numbers-wvu-blue {
 ol.wvu-ol-big-numbers-white, ol.wvu-ol-small-numbers-white {
   li {
     &::before {
-      color: $white $global-important;
+      background-color: $white $global-important;
+      color: $wvu-blue $global-important;
     }
   }
 }
