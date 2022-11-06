@@ -348,6 +348,7 @@ ol.wvu-ol-progress-horizontal {
       padding: 1rem $global-important;
       position: absolute;
       width: 0 $global-important;
+      z-index: 1 $global-important;
       @include wvu-shout();
     }
     &:after {
@@ -358,7 +359,6 @@ ol.wvu-ol-progress-horizontal {
       left: 50% $global-important;
       position: absolute $global-important;
       width: 100% $global-important;
-      z-index: -1 $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
