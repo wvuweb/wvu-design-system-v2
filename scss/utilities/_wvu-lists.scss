@@ -270,13 +270,14 @@ ol.wvu-ol-progress-small {
 ol.wvu-ol-progress-wvu-gold, ol.wvu-ol-progress-small-wvu-gold {
   li {
     border-left: 4px solid $wvu-gold $global-important;
-    &::before, &::after {
+    &::before {
       background-color: $wvu-gold $global-important;
+      color: $wvu-blue $global-important;
     }
     &.active {
       &::before {
-        background-color: $white $global-important;
-        color: $wvu-blue $global-important;
+        background-color: $wvu-blue $global-important;
+        color: $white $global-important;
         outline: 4px solid $wvu-gold $global-important;
       }
     }
@@ -286,13 +287,14 @@ ol.wvu-ol-progress-wvu-gold, ol.wvu-ol-progress-small-wvu-gold {
 ol.wvu-ol-progress-wvu-blue, ol.wvu-ol-progress-small-wvu-blue {
   li {
     border-left: 4px solid $wvu-blue $global-important;
-    &::before, &::after {
+    &::before {
       background-color: $wvu-blue $global-important;
+      color: $white $global-important;
     }
     &.active {
       &::before {
-        background-color: $wvu-blue $global-important;
-        color: $wvu-gold $global-important;
+        background-color: $wvu-gold $global-important;
+        color: $wvu-blue $global-important;
         outline: 4px solid $wvu-blue $global-important;
       }
     }
@@ -302,16 +304,18 @@ ol.wvu-ol-progress-wvu-blue, ol.wvu-ol-progress-small-wvu-blue {
 ol.wvu-ol-progress-white, ol.wvu-ol-progress-small-white {
   li {
     border-left: 4px solid $white $global-important;
-    &::before, &::after {
+    &::before {
       background-color: $white $global-important;
+      color: $wvu-blue $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
     }
     &.active {
       &::before {
-        background-color: $wvu-accent--blue-dark $global-important;
-        color: $wvu-gold $global-important;
+        background-color: $wvu-gold $global-important;
+        border-color: $wvu-blue $global-important;
+        color: $wvu-blue $global-important;
         outline: 4px solid $white $global-important;
       }
     }
