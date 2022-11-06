@@ -439,6 +439,7 @@ ol.wvu-ol-progress-horizontal-white {
     &.active {
       &::before {
         background-color: $wvu-gold $global-important;
+        border-color: $wvu-blue $global-important;
         color: $wvu-blue $global-important;
         outline: 4px solid $white $global-important;
       }
