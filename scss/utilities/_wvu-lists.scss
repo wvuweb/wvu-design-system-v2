@@ -219,42 +219,6 @@ ol.wvu-ol-progress {
       }
     }
   }
-  // @each $color-name, $color-value in $theme-colors {
-  //   &.wvu-ol-progress-#{$color-name} {
-  //     li {
-  //       border-left: 4px solid $color-value $global-important;
-  //       &::before, &::after {
-  //         background-color: $color-value $global-important;
-  //       }
-  //       &:last-child {
-  //         border-left-color: transparent $global-important;
-  //       }
-  //       &.active {
-  //         &::before {
-  //           outline: 4px solid $color-value $global-important;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // @each $color-name, $color-value in $light-theme-colors {
-  //   &.wvu-ol-progress-#{$color-name} {
-  //     li {
-  //       &::before {
-  //         color: #000 $global-important;
-  //       }
-  //     }
-  //   }
-  // }
-  // @each $color-name, $color-value in $dark-theme-colors {
-  //   &.wvu-ol-progress-#{$color-name} {
-  //     li {
-  //       &::before {
-  //         color: #FFF $global-important;
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 ol.wvu-ol-progress-small {
@@ -513,20 +477,6 @@ ol.wvu-ol-timeline {
       }
     }
   }
-  // @each $color-name, $color-value in $theme-colors {
-  //   &.wvu-ol-timeline-#{$color-name} {
-  //     li {
-  //       border-left: 4px solid $color-value $global-important;
-  //       border-top: 1px solid $color-value $global-important;
-  //       &::before {
-  //         background-color: $color-value $global-important;
-  //       }
-  //       &:last-child {
-  //         border-left-color: transparent $global-important;
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 ol.wvu-ol-timeline-wvu-gold {
@@ -535,6 +485,7 @@ ol.wvu-ol-timeline-wvu-gold {
     border-top: 1px solid $wvu-gold $global-important;
     &::before {
       background-color: $wvu-gold $global-important;
+      color: $wvu-blue $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
@@ -548,6 +499,7 @@ ol.wvu-ol-timeline-wvu-blue {
     border-top: 1px solid $wvu-blue $global-important;
     &::before {
       background-color: $wvu-blue $global-important;
+      color: $white $global-important;
     }
     &:last-child {
       border-left-color: transparent $global-important;
@@ -556,5 +508,15 @@ ol.wvu-ol-timeline-wvu-blue {
 }
 
 ol.wvu-ol-timeline-white {
-
+  li {
+    border-left: 4px solid $white $global-important;
+    border-top: 1px solid $white $global-important;
+    &::before {
+      background-color: $white $global-important;
+      color: $wvu-blue $global-important;
+    }
+    &:last-child {
+      border-left-color: transparent $global-important;
+    }
+  }
 }
