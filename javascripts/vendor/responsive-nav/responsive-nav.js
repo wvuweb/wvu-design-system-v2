@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.2.0
+/*! responsive-nav.js 1.3.0
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -319,7 +319,7 @@
         } else {
           navToggle.removeAttribute("aria-hidden");
         }
-    
+
     if(opts.enableDropdown) {
       var self = this;
           forEach(dropdownButton, function (i, el) {
@@ -330,7 +330,7 @@
             removeEvent(el, "click", self, false);
           });
       }
-    
+
       },
 
       /**
@@ -383,27 +383,27 @@
             setTimeout(function () {
               nav.style.position = "absolute";
               hasAnimFinished = true;
-        
+
               if(opts.enableDropdown) {
-                removeClass(nav, "dropdown-active");
+                removeClass(nav, "wvu-wvu-dropdown-active");
                 forEach(dropdownButton, function (i, el) {
                   removeClass(el, "toggled");
                   removeClass(el.nextSibling, "toggled"); // Remove class from sub-menu ul element.
-                });                 
+                });
               }
-        
+
             }, opts.transition + 10);
 
           // Animations aren't enabled, we can do these immediately
           } else {
             nav.style.position = "absolute";
-      
+
             if(opts.enableDropdown) {
-              removeClass(nav, "dropdown-active");
+              removeClass(nav, "wvu-wvu-dropdown-active");
               forEach(dropdownButton, function (i, el) {
                 removeClass(el, "toggled");
                 removeClass(el.nextSibling, "toggled"); // Remove class from sub-menu ul element.
-              });                 
+              });
             }
           }
 
@@ -505,7 +505,7 @@
         this._createToggle();
         this._transitions();
         this.resize();
-    
+
     // Enable more accessible dropdown menu
         this._createFocus();
         this._createDropdown();
@@ -670,21 +670,21 @@
         if (!isMobile) {
           return;
         }
-    
+
         // Get event.target, the old IE way
         var thisEvent = e || window.event,
           targetEl = thisEvent.target || thisEvent.srcElement,
           isDropdownTapped = false;
-      
+
         // Was it sub-navigation toggle or the main toggle?
-        if (hasClass(targetEl, "dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
+        if (hasClass(targetEl, "wvu-dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
 
         // If the user isn't scrolling
         if (!this.touchHasMoved) {
 
           // If the event type is touch
           if (e.type === "touchend") {
-            
+
       // If sub-navigation toggle was tapped
             if (isDropdownTapped) {
               this._toggleDropdown(targetEl);
@@ -721,8 +721,8 @@
         var evt = e || window.event,
           targetEl = e.target,
           isDropdownTapped = false;
-      
-        if (hasClass(targetEl, "dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
+
+        if (hasClass(targetEl, "wvu-dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
         if (evt.keyCode === 13) {
          if (isDropdownTapped) {
             this._toggleDropdown(targetEl);
@@ -757,7 +757,7 @@
           savedHeight += nav.inner[i].offsetHeight;
         }
 
-        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.wvu-dropdown-active {max-height:9999px !important}";
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
@@ -767,60 +767,60 @@
 
         innerStyles = "";
       },
-    
+
       /**
        * Creates 'focus' class on nav elements
        */
       _createFocus: function () {
-    
+
     // Bail if focus is not enabled.
       if(!opts.enableFocus) {
       return;
     }
-      
+
         // Get all the link elements within the menu.
         var menu = nav.getElementsByTagName( 'ul' )[0],
         links = menu.getElementsByTagName( 'a' ),
     len,
     i;
-      
+
         // Each time a menu link is focused or blurred, toggle focus.
         for ( i = 0, len = links.length; i < len; i++ ) {
           links[i].addEventListener( 'focus', toggleFocus, true );
           links[i].addEventListener( 'blur', toggleFocus, true );
         }
-     
+
     },
-    
+
       /**
        * Enable multi-level dropdown
        */
       _createDropdown: function () {
-      
+
         // Bail if multiple level dropdown is not enabled.
         if(!opts.enableDropdown) {
           return; 
         }
-    
+
         var self = this;
-      
+
         // Get submenus
         var menu = nav.getElementsByTagName( 'ul' )[0],
         subMenus = nav.getElementsByClassName( opts.subMenu ),
         i,
         len;
-    
+
        // Add .multiple-level-nav class to nav
        addClass(nav, 'multiple-level-nav');
-    
+
        // Add toggle button before sub menu.
        for (i = 0, len = subMenus.length; i < len; i++) {
-         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="dropdown-toggle" aria-expanded="false">' + opts.openDropdown + '</button>' );
+         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="wvu-dropdown-toggle" aria-expanded="false">' + opts.openDropdown + '</button>' );
        }
-    
+
        // Select all dropdown buttons
-       dropdownButton = nav.querySelectorAll( '.dropdown-toggle' );
-    
+       dropdownButton = nav.querySelectorAll( '.wvu-dropdown-toggle' );
+
        // For each dropdown Button element add click event
        forEach( dropdownButton, function( i, el ) {
           addEvent(el, "touchstart", self, false);
@@ -829,9 +829,9 @@
           addEvent(el, "keyup", self, false);
           addEvent(el, "click", self, false);
        });
-  
+
       },
-    
+
       /**
        * Toggles sub-navigations open/closed
        *
@@ -841,8 +841,8 @@
 
         // Enable active class to let the navigation expand over
         // the calculated max height
-        //addClass(nav, "dropdown-active");
-    
+        //addClass(nav, "wvu-dropdown-active");
+
         // Change dropdown button text on every click
         if( targetEl.innerHTML === opts.openDropdown ) {
           targetEl.innerHTML = opts.closeDropdown;
@@ -856,41 +856,41 @@
 
         // Toggle dropdown button
         if( !hasClass( targetEl, 'toggled' ) ) {
-          
+
           // Add .toggled class
           addClass( targetEl, 'toggled' );
-          
+
           // Set aria-expanded to true
           targetEl.setAttribute( 'aria-expanded', 'true' );
-          
+
           // Get next element meaning UL with .sub-menu class
           var nextElement = targetEl.nextElementSibling;
-          
+
           // Add 'toggled' class to sub-menu element
           addClass( nextElement, 'toggled' );
-          
-          // Add 'dropdown-active' class to nav when dropdown is toggled
-          addClass( nav, 'dropdown-active' );
-            
+
+          // Add 'wvu-dropdown-active' class to nav when dropdown is toggled
+          addClass( nav, 'wvu-dropdown-active' );
+
         } else {
-          
+
           // Remove .toggled class
           removeClass( targetEl, 'toggled' );
-          
+
           // Set aria-expanded to false
           targetEl.setAttribute( 'aria-expanded', 'false' );
-          
+
           // Get next element meaning UL with .sub-menu
           var nextElement = targetEl.nextElementSibling;
-          
+
           // Remove 'toggled' class from sub-menu element
           removeClass( nextElement, 'toggled' );
-          
-          // Remove 'dropdown-active' class to nav when dropdown is toggled
-          removeClass( nav, 'dropdown-active' );
-          
+
+          // Remove 'wvu-dropdown-active' class to nav when dropdown is toggled
+          removeClass( nav, 'wvu-dropdown-active' );
+
         }
-    
+
       },
 
     };
