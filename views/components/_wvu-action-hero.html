@@ -4,20 +4,11 @@
   assign componentVersion = theme.data.component_versions.action_hero | default: '1'
   assign defaultComponentClasses = defaultComponentClasses | default: "text-center bg-wvu-gold wvu-bg-topo-dark text-wvu-blue wvu-overflow-hidden wvu-background-size-cover"
   assign defaultHeaderClasses = defaultHeaderClasses | default: "display-2 wvu-shout"
-  assign scope = scope | default: slot.scope
-  assign defaultComponentClasses = defaultComponentClasses | default: "text-center bg-wvu-gold wvu-bg-topo-dark text-wvu-blue wvu-overflow-hidden wvu-background-size-cover"
-  assign defaultHeaderClasses = defaultHeaderClasses | default: "display-2 wvu-shout"
-
-  if scope == 'site'
-    assign basename = "site-action-hero"
-  else
-    assign basename = "action-hero"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "action-hero",
     "defaultComponentClasses": "{{ defaultComponentClasses }}",
     "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": "py-5"

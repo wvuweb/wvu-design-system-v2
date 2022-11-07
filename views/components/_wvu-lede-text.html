@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.lede_text | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-lede-text"
-  else
-    assign basename = "lede-text"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "lede-text",
     "defaultComponentClasses": "bg-light",
     "defaultHeaderClasses": "helvetica-neue-light text-center h3 mb-0",
     "mainTagClasses": null

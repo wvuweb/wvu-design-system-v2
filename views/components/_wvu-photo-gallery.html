@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.photo_gallery | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-photo-gallery"
-  else
-    assign basename = "photo-gallery"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "photo-gallery",
     "needsARIALabel": true,
     "defaultComponentClasses": "py-5",
     "defaultHeaderClasses": "mb-4",

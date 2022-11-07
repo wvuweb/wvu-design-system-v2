@@ -2,20 +2,13 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.social_media | default: '1'
-  assign scope = scope | default: slot.scope
   assign defaultComponentClasses = defaultComponentClasses | default: "py-4 bg-wvu-neutral--black bg-wvu-accent--blue-dark text-white"
   assign defaultHeaderClasses = defaultHeaderClasses | default: "helvetica-neue-light h1 mb-0"
-
-  if scope == 'site'
-    assign basename = "site-social-media"
-  else
-    assign basename = "social-media"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "social-media",
     "defaultComponentClasses": "{{ defaultComponentClasses }}",
     "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "mainTagClasses": null

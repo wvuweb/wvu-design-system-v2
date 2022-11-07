@@ -2,24 +2,17 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.page_collection | default: '1'
-  assign scope = scope | default: slot.scope
   assign defaultComponentClasses = defaultComponentClasses | default: null
   assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
   assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue"
   assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
   assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-primary btn-sm"
   assign defaultItemButtonText = defaultItemButtonText | default: "Read More"
-
-  if scope == 'site'
-    assign basename = "site-page-collection"
-  else
-    assign basename = "page-collection"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "page-collection",
     "defaultComponentClasses": "{{ defaultComponentClasses }}",
     "defaultRowClasses": "{{ defaultRowClasses }}",
     "defaultItemClasses": null,

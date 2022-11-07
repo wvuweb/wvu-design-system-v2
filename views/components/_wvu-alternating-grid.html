@@ -2,24 +2,17 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.alternating-grid | default: '1'
-  assign scope = scope | default: slot.scope
   assign defaultComponentClasses = defaultComponentClasses | default: null
   assign defaultHeaderClasses = defaultHeaderClasses | default: "mb-4"
   assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h1 helvetica-neue-bold wvu-bar wvu-bar--bottom wvu-header-max-width mb-1 mt-0 text-white"
   assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
   assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-outline-white"
   assign defaultItemButtonText = defaultItemButtonText | default: "View Profile"
-
-  if scope == 'site'
-    assign basename = "site-alternating-grid"
-  else
-    assign basename = "alternating-grid"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "alternating-grid",
     "defaultComponentClasses": "{{ defaultComponentClasses }}",
     "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
     "defaultItemHeaderClasses": "{{ defaultItemHeaderClasses }}",
