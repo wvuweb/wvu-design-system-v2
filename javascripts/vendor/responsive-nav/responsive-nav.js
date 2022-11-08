@@ -1,4 +1,4 @@
-/*! responsive-nav.js 1.3.0
+/*! responsive-nav.js 1.2.0
  * https://github.com/viljamis/responsive-nav.js
  * http://responsive-nav.com
  *
@@ -15,7 +15,7 @@
   var responsiveNav = function (el, options) {
 
     var computed = !!window.getComputedStyle;
-    
+
     /**
      * getComputedStyle polyfill for old browsers
      */
@@ -38,7 +38,7 @@
       };
     }
     /* exported addEvent, removeEvent, getChildren, setAttributes, addClass, removeClass, forEach */
-    
+
     /**
      * Add Event
      * fn arg can be an object or a function, thanks to handleEvent
@@ -76,7 +76,7 @@
           }
         }
       },
-    
+
       /**
        * Remove Event
        *
@@ -108,7 +108,7 @@
           }
         }
       },
-    
+
       /**
        * Get the children of any element
        *
@@ -129,7 +129,7 @@
         }
         return children;
       },
-    
+
       /**
        * Sets multiple attributes at once
        *
@@ -141,7 +141,7 @@
           el.setAttribute(key, attrs[key]);
         }
       },
-    
+
       /**
        * Adds a class to any element
        *
@@ -154,7 +154,7 @@
           el.className = el.className.replace(/(^\s*)|(\s*$)/g,"");
         }
       },
-    
+
       /**
        * Remove a class from any element
        *
@@ -165,7 +165,7 @@
         var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
         el.className = el.className.replace(reg, " ").replace(/(^\s*)|(\s*$)/g,"");
       },
-    
+
       /**
        * forEach method that passes back the stuff we need
        *
@@ -178,7 +178,7 @@
           callback.call(scope, i, array[i]);
         }
       },
-    
+
       /**
        * Checks if an element has certain class
        *
@@ -189,17 +189,17 @@
       hasClass = function (el, cls) {
         return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
       },
-    
+
       /**
        * Sets or removes .focus class on an element.
        */
       toggleFocus = function () {
         var self = this,
           menuItems = opts.menuItems;
-    
+
         // Move up through the ancestors of the current link until we hit 'menu-items' class. That's top level ul-element class name.
         while ( -1 === self.className.indexOf( menuItems ) ) {
-    
+
           // On li elements toggle the class .focus.
           if ( 'li' === self.tagName.toLowerCase() ) {
             if ( -1 !== self.className.indexOf( 'focus' ) ) {
@@ -208,10 +208,10 @@
               self.className += ' focus';
             }
           }
-    
+
           self = self.parentElement;
         }
-    
+
       };
 
     var nav,
@@ -251,7 +251,7 @@
           init: function(){},               // Function: Init callback
           open: function(){},               // Function: Open callback
           close: function(){},              // Function: Close callback
-          resizeMobile: function(){},       // Function: Resize callback for "mobile"     
+          resizeMobile: function(){},       // Function: Resize callback for "mobile"
           resizeDesktop: function(){}       // Function: Resize callback for "desktop"
         };
 
@@ -385,7 +385,7 @@
               hasAnimFinished = true;
 
               if(opts.enableDropdown) {
-                removeClass(nav, "wvu-wvu-dropdown-active");
+                removeClass(nav, "dropdown-active");
                 forEach(dropdownButton, function (i, el) {
                   removeClass(el, "toggled");
                   removeClass(el.nextSibling, "toggled"); // Remove class from sub-menu ul element.
@@ -399,7 +399,7 @@
             nav.style.position = "absolute";
 
             if(opts.enableDropdown) {
-              removeClass(nav, "wvu-wvu-dropdown-active");
+              removeClass(nav, "dropdown-active");
               forEach(dropdownButton, function (i, el) {
                 removeClass(el, "toggled");
                 removeClass(el.nextSibling, "toggled"); // Remove class from sub-menu ul element.
@@ -677,7 +677,7 @@
           isDropdownTapped = false;
 
         // Was it sub-navigation toggle or the main toggle?
-        if (hasClass(targetEl, "wvu-dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
+        if (hasClass(targetEl, "dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
 
         // If the user isn't scrolling
         if (!this.touchHasMoved) {
@@ -722,7 +722,7 @@
           targetEl = e.target,
           isDropdownTapped = false;
 
-        if (hasClass(targetEl, "wvu-dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
+        if (hasClass(targetEl, "dropdown-toggle") && opts.enableDropdown) isDropdownTapped = true;
         if (evt.keyCode === 13) {
          if (isDropdownTapped) {
             this._toggleDropdown(targetEl);
@@ -757,7 +757,7 @@
           savedHeight += nav.inner[i].offsetHeight;
         }
 
-        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.wvu-dropdown-active {max-height:9999px !important}";
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;
@@ -799,7 +799,7 @@
 
         // Bail if multiple level dropdown is not enabled.
         if(!opts.enableDropdown) {
-          return; 
+          return;
         }
 
         var self = this;
@@ -815,11 +815,11 @@
 
        // Add toggle button before sub menu.
        for (i = 0, len = subMenus.length; i < len; i++) {
-         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="wvu-dropdown-toggle" aria-expanded="false">' + opts.openDropdown + '</button>' );
+         subMenus[i].insertAdjacentHTML( 'beforebegin', '<button class="dropdown-toggle" aria-expanded="false">' + opts.openDropdown + '</button>' );
        }
 
        // Select all dropdown buttons
-       dropdownButton = nav.querySelectorAll( '.wvu-dropdown-toggle' );
+       dropdownButton = nav.querySelectorAll( '.dropdown-toggle' );
 
        // For each dropdown Button element add click event
        forEach( dropdownButton, function( i, el ) {
@@ -841,7 +841,7 @@
 
         // Enable active class to let the navigation expand over
         // the calculated max height
-        //addClass(nav, "wvu-dropdown-active");
+        //addClass(nav, "dropdown-active");
 
         // Change dropdown button text on every click
         if( targetEl.innerHTML === opts.openDropdown ) {
@@ -869,8 +869,8 @@
           // Add 'toggled' class to sub-menu element
           addClass( nextElement, 'toggled' );
 
-          // Add 'wvu-dropdown-active' class to nav when dropdown is toggled
-          addClass( nav, 'wvu-dropdown-active' );
+          // Add 'dropdown-active' class to nav when dropdown is toggled
+          addClass( nav, 'dropdown-active' );
 
         } else {
 
@@ -886,8 +886,8 @@
           // Remove 'toggled' class from sub-menu element
           removeClass( nextElement, 'toggled' );
 
-          // Remove 'wvu-dropdown-active' class to nav when dropdown is toggled
-          removeClass( nav, 'wvu-dropdown-active' );
+          // Remove 'dropdown-active' class to nav when dropdown is toggled
+          removeClass( nav, 'dropdown-active' );
 
         }
 
