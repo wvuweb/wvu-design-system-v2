@@ -9,6 +9,7 @@
   assign siteHeaderTag = 'backpage-header-background'
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
+  assign sectionHeader = ''
   for ancestor in pageAncestors.all reversed
     if sectionHeader != blank
       break
