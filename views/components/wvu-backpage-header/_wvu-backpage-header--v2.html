@@ -15,6 +15,7 @@
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
       assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
+      assign pageHeader = sectionHeader
     endif
   endfor
 
