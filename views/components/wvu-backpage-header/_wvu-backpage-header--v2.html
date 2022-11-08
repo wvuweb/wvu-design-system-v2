@@ -27,20 +27,15 @@
 
   assign styleVal = ''
 
-  if siteHeader
-    assign styleVal = siteHeader
-  endif
-
-  if sectionHeader
-    assign styleVal = sectionHeader
-  endif
-
-  if altPageHeader
-    assign styleVal = altPageHeader
-  endif
-
   if pageHeader
     assign styleVal = pageHeader
+  elsif altPageHeader
+    assign styleVal = altPageHeader
+  endif
+  elsif sectionHeader
+    assign styleVal = sectionHeader
+  elsif siteHeader
+    assign styleVal = siteHeader
   endif
 
   if styleVal != blank
