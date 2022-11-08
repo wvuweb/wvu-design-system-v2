@@ -11,6 +11,7 @@
 
   for ancestor in pageAncestors.all reversed
     if sectionHeader != blank
+      assign pageHeader = sectionHeader
       break
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
