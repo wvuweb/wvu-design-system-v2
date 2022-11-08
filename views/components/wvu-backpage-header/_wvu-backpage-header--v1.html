@@ -11,7 +11,7 @@
 
   for ancestor in pageAncestors.all reversed
     if sectionHeader != blank
-      assign pageHeader = sectionHeader
+      assign pageHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
       break
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
@@ -43,8 +43,6 @@
 
   assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
 %}
-
-<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} Did for loop break? {{ isBroken }} -->
 
 <div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
   <div class="container position-relative wvu-z-index-content">
