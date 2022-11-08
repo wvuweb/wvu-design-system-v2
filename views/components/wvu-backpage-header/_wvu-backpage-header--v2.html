@@ -27,13 +27,13 @@
 
   assign styleVal = ''
 
-  if pageHeaderTag
+  if pageHeader
     assign styleVal = styleVal | append: pageHeader
-  elsif altPageHeaderTag
+  elsif altPageHeader
     assign styleVal = styleVal | append: altPageHeader
-  elsif sectionHeaderTag
+  elsif sectionHeader
     assign styleVal = styleVal | append: sectionHeader
-  elsif siteHeaderTag
+  elsif siteHeader
     assign styleVal = styleVal | append: siteHeader
   endif
 
