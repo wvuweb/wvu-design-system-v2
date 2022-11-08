@@ -15,12 +15,15 @@
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
       assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
-      assign pageHeader = sectionHeader
     endif
   endfor
 
-  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
-  assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+  assign pageHeader = sectionHeader
+
+  if pageHeader == blank
+    assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
+    assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+  endif
 
   assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
