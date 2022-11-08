@@ -11,6 +11,8 @@
 
   for ancestor in pageAncestors.all reversed
     if sectionHeader != blank
+      assign pageHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+      assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
       break
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
@@ -20,10 +22,6 @@
 
   assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
-
-  if pageHeader == blank and sectionHeader != blank
-    assign pageHeader = sectionHeader
-  endif
 
   assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
