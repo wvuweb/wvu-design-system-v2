@@ -28,19 +28,19 @@
   assign styleVal = ''
 
   if siteHeader
-    assign styleVal = styleVal | append: siteHeader
+    assign styleVal = siteHeader
   endif
 
   if sectionHeader
-    assign styleVal = styleVal | append: sectionHeader
+    assign styleVal = sectionHeader
   endif
 
   if altPageHeader
-    assign styleVal = styleVal | append: altPageHeader
+    assign styleVal = altPageHeader
   endif
-  
+
   if pageHeader
-    assign styleVal = styleVal | append: pageHeader
+    assign styleVal = pageHeader
   endif
 
   if styleVal != blank
