@@ -29,11 +29,17 @@
 
   if pageHeader
     assign styleVal = styleVal | append: pageHeader
-  elsif altPageHeader
+  endif
+
+  if altPageHeader
     assign styleVal = styleVal | append: altPageHeader
-  elsif sectionHeader
+  endif
+
+  if sectionHeader
     assign styleVal = styleVal | append: sectionHeader
-  elsif siteHeader
+  endif
+
+  if siteHeader
     assign styleVal = styleVal | append: siteHeader
   endif
 
