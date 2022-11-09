@@ -73,7 +73,7 @@
                 <div class="{% if itemCount == 1 %}col-5 mx-auto{% else %}col-3{% endif %}">
                   {% if item.data.thumbnail_url_sq != blank %}
                     <div class="mb-2">
-                      {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '640x640' %}
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '640x640', format: 'webp' %}
                       <img class="rounded-circle shadow text-center w-100" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                     </div>
                   {% endif %}
