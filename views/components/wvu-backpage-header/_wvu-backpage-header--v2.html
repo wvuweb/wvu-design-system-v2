@@ -33,11 +33,17 @@
 
   if pageHeader
     assign styleVal = pageHeader
-  elsif altPageHeader
+  endif
+
+  if altPageHeader
     assign styleVal = altPageHeader
-  elsif sectionHeader
+  endif
+
+  if sectionHeader
     assign styleVal = sectionHeader
-  elsif siteHeader
+  endif
+
+  if siteHeader
     assign styleVal = siteHeader
   endif
 
