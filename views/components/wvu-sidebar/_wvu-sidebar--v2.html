@@ -1,7 +1,7 @@
 {%- liquid
   assign inumber = component.number | default: 1
   assign componentSidebar = component.name | append: "-sidebar"
-  assign componentSidebarPostscript = component.name | append: "-sidebar-" | append: "__postscript"
+  assign componentSidebarPostscript = component.name | append: "-sidebar__postscript"
 -%}
 
 <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start ms-md-auto" aria-label="{{ componentSidebar }}">
