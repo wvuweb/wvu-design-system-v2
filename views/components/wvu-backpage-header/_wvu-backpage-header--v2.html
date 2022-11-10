@@ -12,10 +12,8 @@
 
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
-  assign sectionHeader = ''
   for ancestor in pageAncestors.all reversed
-    if sectionHeader != blank
-      assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+    if sectionHeader
       break
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
