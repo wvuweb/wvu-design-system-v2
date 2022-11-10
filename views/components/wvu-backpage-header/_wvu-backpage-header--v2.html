@@ -55,9 +55,6 @@
   assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
 %}
 
-<!-- Header Tags: pageHeaderTag: {{ pageHeaderTag }} pageHeaderFallbackTag: {{ pageHeaderFallbackTag }} altPageHeaderTag: {{ altPageHeaderTag }} sectionHeaderTag: {{ sectionHeaderTag }} siteHeaderTag: {{ siteHeaderTag }} -->
-<!-- pageHeader: {{ pageHeader }} altPageHeader: {{ altPageHeader }} sectionHeader: {{ sectionHeader }} siteHeader: {{ siteHeader }} styleAttr: {{ styleAttr }} -->
-
 <div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
   <div class="container position-relative wvu-z-index-content">
     <div class="row align-items-stretch">
