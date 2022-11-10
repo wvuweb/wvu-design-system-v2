@@ -8,6 +8,7 @@
 
   assign siteHeaderTag = 'backpage-header-background'
   assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
+  assign pageHeaderFallbackTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
   assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
 
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
@@ -24,7 +25,7 @@
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   if pageHeader == blank
-    assign pageHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
+    assign pageHeader = site | first_random_image_tagged_with: label: sectionHeaderFallbackTag | image_url: size: '1780x580' | css_background_image
   endif
 
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
