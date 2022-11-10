@@ -14,17 +14,17 @@
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
   for ancestor in pageAncestors.all reversed
+    assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
     if sectionHeader != blank
       break
-    else
-      assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
     endif
   endfor
 
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
-  if pageHeader == blank and sectionHeader != blank
-    assign pageHeader = sectionHeader
+  if pageHeader == blank
+    assign sectionHeaderFallbackTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+    assign pageHeader = site | first_random_image_tagged_with: label: sectionHeaderFallbackTag | image_url: size: '1780x580' | css_background_image
   endif
 
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
