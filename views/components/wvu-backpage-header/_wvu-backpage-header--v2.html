@@ -7,25 +7,26 @@
   assign pageAncestors = page.ancestors
 
   assign siteHeaderTag = 'backpage-header-background'
+  assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
+  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
+  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
   for ancestor in pageAncestors.all reversed
     if sectionHeader != blank
       break
     else
-      assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
       assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
     endif
   endfor
 
-  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   if pageHeader == blank and sectionHeader != blank
     assign pageHeader = sectionHeader
   endif
 
-  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
