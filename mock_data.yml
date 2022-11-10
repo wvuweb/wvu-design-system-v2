@@ -810,7 +810,7 @@ site_menu: |
     <li class="active">
       <a class="nav-link px-2 px-lg-1" href="/">Home</a>
     </li>
-    <li class="dropdown">
+    <li class="wvu-dropdown">
       <a class="nav-link px-2 px-lg-1" href="#">How to Apply</a>
       <ul class="sub-menu small bg-wvu-accent--dark-blue px-1 mx-n1">
         <li><a class="nav-link px-2 px-lg-1" href="#">Check Your Status</a></li>

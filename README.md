@@ -17,7 +17,7 @@ WVU Design System v2
 
   * [NodeJS](https://nodejs.org)
 
-You will need to install Node ^16.17.0.
+You will need to install Node ^18.12.1.
 
   1. Download and install NodeJS from https://nodejs.org/en if you haven't already.
   1. Install Gulp globally by entering `npm install -g gulp-cli` in your terminal.

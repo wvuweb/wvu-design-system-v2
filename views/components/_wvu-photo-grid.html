@@ -20,5 +20,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-photo-grid/wvu-photo-grid--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-photo-grid/wvu-photo-grid--v2" component: component %}
   {% else %}{% render "components/wvu-photo-grid/wvu-photo-grid--v1" component: component %}
 {% endcase %}

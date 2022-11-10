@@ -68,9 +68,9 @@
 } //wvu-nav__items
 
 .wvu-nav__button,
-.dropdown-toggle {
+.wvu-dropdown-toggle {
   background-color: transparent;
-} //.wvu-nav__button, .dropdown-toggle
+} //.wvu-nav__button, .wvu-dropdown-toggle
 
 .wvu-nav__items,
 .wvu-nav__items li {
@@ -88,9 +88,9 @@
 // We don't want to show the triangle/caret for nav items at the 3rd level.
 // This class removes the caret.
 .wvu-nav {
-  .dropdown .dropdown a:after {
+  .wvu-dropdown .wvu-dropdown a:after {
     content: unset;
-  } //.dropdown .dropdown a:after
+  } //.wvu-dropdown .wvu-dropdown a:after
 }
 
 // Vendor Styles
@@ -208,7 +208,7 @@
       visibility: visible;
     }
     &.multiple-level-nav {
-      &.opened.dropdown-active {
+      &.opened.wvu-dropdown-active {
         max-height: 9999px !important;
       }
       .sub-menu {
@@ -236,7 +236,7 @@
     li {
       position: relative;
     }
-    .dropdown-toggle {
+    .wvu-dropdown-toggle {
       border: 1px solid tint($wvu-accent--blue-dark, 7%);
       color: white;
       content: "";
@@ -264,7 +264,7 @@
   /* Enable active class to let the navigation expand over the calculated max height. */
 }
 
-.dropdown {
+.wvu-dropdown {
   ul {
     a {
       padding-left: 1.5em;
@@ -277,13 +277,13 @@
       padding: 0;
     }
   }
-  .dropdown.opened > a {
+  .wvu-dropdown.opened > a {
     background: #9c2c12;
   }
 }
 
 @media (min-width: $wvu-bp-lg) {
-  .dropdown-toggle {
+  .wvu-dropdown-toggle {
     display: none;
   }
 }
@@ -295,12 +295,12 @@
   .js .nav-collapse {
     max-height: none;
     overflow: visible;
-    .dropdown ul {
+    .wvu-dropdown ul {
       max-height: none;
       overflow: visible;
     }
   }
-  .wvu-nav .dropdown > a:after {
+  .wvu-nav .wvu-dropdown > a:after {
     line-height: 0.8;
     float: right;
     content: "";
@@ -311,7 +311,7 @@
     border-right: 5px solid transparent;
     border-top: 5px solid $navbar-dark-color;
   }
-  .wvu-nav .dropdown ul > a:after {
+  .wvu-nav .wvu-dropdown ul > a:after {
     content: "";
     width: 0;
     height: 0;
@@ -321,7 +321,7 @@
     border-left: 5px solid $navbar-dark-color;
   }
   .nav-collapse {
-    .dropdown {
+    .wvu-dropdown {
       position: relative;
       li {
         width: 100%;
@@ -411,7 +411,7 @@
 } //.sub-menu
 
 .wvu-nav {
-  .dropdown-toggle {
+  .wvu-dropdown-toggle {
     &:after {
       margin-left: 0 !important;
       border-top: 0 !important;
