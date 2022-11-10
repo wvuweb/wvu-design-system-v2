@@ -23,7 +23,8 @@
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   if pageHeader == blank and sectionHeader != blank
-    assign pageHeader = sectionHeader
+    assign pageHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+    assign sectionHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
   endif
 
   assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
