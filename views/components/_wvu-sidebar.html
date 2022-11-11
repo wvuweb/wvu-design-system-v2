@@ -13,5 +13,6 @@
 
 {% case componentVersion %}
   {% when 1 %}{% render "components/wvu-sidebar/wvu-sidebar--v1" component: component %}
+  {% when 2 %}{% render "components/wvu-sidebar/wvu-sidebar--v2" component: component %}
   {% else %}{% render "components/wvu-sidebar/wvu-sidebar--v1" component: component %}
 {% endcase %}

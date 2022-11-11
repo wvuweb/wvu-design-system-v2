@@ -139,6 +139,7 @@ data:
     photo_gallery: 3
     photo_grid: 2
     profile_hero_w_border: 2
+    sidebar: 2
     stat_sheet: 2
     testimonials_fancy: 2
     timeline: 3

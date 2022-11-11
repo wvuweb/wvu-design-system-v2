@@ -7,12 +7,14 @@
   assign pageAncestors = page.ancestors
 
   assign siteHeaderTag = 'backpage-header-background'
+  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
+  assign pageHeaderFallbackTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+
   assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
 
   for ancestor in pageAncestors.all reversed
-    if sectionHeader != blank
-      assign pageHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
-      assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+    if sectionHeader
       break
     else
       assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
@@ -20,22 +22,30 @@
     endif
   endfor
 
-  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
   assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
 
-  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
-  assign altPageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+  if pageHeader == blank
+    assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderFallbackTag | image_url: size: '1780x580' | css_background_image
+  endif
+
+  assign altPageHeader = site | first_random_image_tagged_with: label: altPageHeaderTag | image_url: size: '1780x580' | css_background_image
 
   assign styleVal = ''
 
+  if siteHeader
+    assign styleVal = siteHeader
+  endif
+
+  if sectionHeader
+    assign styleVal = sectionHeader
+  endif
+
+  if altPageHeader
+    assign styleVal = altPageHeader
+  endif
+
   if pageHeader
     assign styleVal = pageHeader
-  elsif altPageHeader
-    assign styleVal = altPageHeader
-  elsif sectionHeader
-    assign styleVal = sectionHeader
-  elsif siteHeader
-    assign styleVal = siteHeader
   endif
 
   if styleVal != blank
@@ -44,9 +54,6 @@
 
   assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
 %}
-
-<!-- Ancestor Root Page: {{ bgTag2 }} Filename: {{ bg2 }} Did for loop break? {{ isBroken }} -->
-<!-- pageHeader: {{ pageHeader }} altPageHeader: {{ altPageHeader }} sectionHeader: {{ sectionHeader }} siteHeader: {{ siteHeader }} styleAttr: {{ styleAttr }} -->
 
 <div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
   <div class="container position-relative wvu-z-index-content">
