@@ -10,13 +10,13 @@
   endif
 -%}
 
+{% capture bgdiv %}
+  <div class="col-md-6 wvu-bg-size-cover {{ component.classes }}" {{ component.bgTag | background_styler: format: 'webp' }}></div>
+{% endcapture %}
+
 {% capture component_content %}
   <div class="row ms-0 me-0">
-    {% if component.align != 'right' %}
-      <div class="col-md-6 wvu-bg-size-cover {{ component.classes }}" {{ component.bgStyler }}>
-
-      </div>
-    {% endif %}
+    {% if component.align != 'right' %}{{ bgdiv }}{% endif %}
     <div class="col-md-6 me-auto bg-light py-5 wvu-z-index-content{% if component.align == 'right' %} text-end{% endif %}">
 
       {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
@@ -43,11 +43,7 @@
         </div>
       </div>
     </div>
-    {% if component.align == 'right' %}
-      <div class="col-md-6 wvu-bg-size-cover {{ component.classes }}" {{ component.bgStyler }}>
-
-      </div>
-    {% endif %}
+    {% if component.align == 'right' %}{{ bgdiv }}{% endif %}
   </div>
 {% endcapture %}
 
