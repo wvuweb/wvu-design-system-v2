@@ -41,7 +41,7 @@
             {% if site.data.has_co_brand != blank %}
               <span class="wvu-co-branding d-inline-block align-self-center mx-2 {% if site.data.co_brand_subtitle != blank %}my-n2 {% endif %}p-2 border-start">
                 {% if site.data.has_alternate_logo != blank %}
-                  {% assign logoSrc = site.data.has_alternate_logo | build_image_url:  size: '284x90' %}
+                  {% assign logoSrc = site.data.has_alternate_logo | build_image_url: size: '284x90' %}
                   <img src="{{ logoSrc }}" alt="Logo: {{ site.name }}" />
                 {% else %}
                   {{ site.data.has_co_brand }}

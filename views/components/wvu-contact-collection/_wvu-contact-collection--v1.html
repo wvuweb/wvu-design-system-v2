@@ -64,7 +64,7 @@
               <div class="row mb-1">
                 <div class="col-6 mx-auto col-sm-4 col-md-6">
                   {% if item.data.thumbnail_url_sq != blank %}
-                    {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '960x640' %}
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '960x640', format: 'webp' %}
                     <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                   {% endif %}
                 </div>
