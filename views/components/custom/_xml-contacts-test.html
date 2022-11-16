@@ -24,7 +24,8 @@
       <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
       <div class="row justify-content-left mb-4">
         {% for item in items %}
-
+          {% assign itemKeys = item.keywords | split: ',' %}
+          {% if itemKeys contains xmlKey %}
             <div class="col-sm-6 col-md-4 mb-4">
               <div class="row mb-1">
                 <div class="col-6 mx-auto col-sm-4 col-md-6">
