@@ -6,7 +6,7 @@
 {%- enddefine_component %}
 
 {% assign xmlFeed = page.content['xml-feed'] | web_request | parse_xml %}
-{% assign items = xmlFeed %}
+{% assign items = xmlFeed | select_xml: "" %}
 {% assign xmlKey = page.content['xml-key'] %}
 
 <main id="wvu-main-content" class=" py-5 text-center">
