@@ -6,7 +6,7 @@
 {%- enddefine_component %}
 
 {% assign xmlFeed = page.content['xml-feed'] | web_request | parse_xml %}
-{% assign items = xmlFeed | select_xml: "" %}
+{% assign items = xmlFeed | select_xml: "/profiles" %}
 {% assign xmlKey = page.content['xml-key'] %}
 
 {{ xmlFeed }}
