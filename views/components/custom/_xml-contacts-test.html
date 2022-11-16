@@ -52,17 +52,23 @@
                   <span class="d-block helvetica-neue-bold text-uppercase">{{ item.title }}</span>
                   <span class="d-block helvetica-neue-light">{{ item.organization }}</span>
                 </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-phone"></span>
-                  <a href="tel:{{ item.phone }}">{{ item.phone }}</a>
-                </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-envelope"></span>
-                  <a href="mailto:{{ item.email }}">{{ item.email }}</a>
-                </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-building"></span>{{ item.office }}
-                </p>
+                {% if item.phone != blank %}
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-phone"></span>
+                    <a href="tel:{{ item.phone }}">{{ item.phone }}</a>
+                  </p>
+                {% endif %}
+                {% if item.email != blank %}
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-envelope"></span>
+                    <a href="mailto:{{ item.email }}">{{ item.email }}</a>
+                  </p>
+                {% endif %}
+                {% if item.office != blank %}
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-building"></span>{{ item.office }}
+                  </p>
+                {% endif %}
               </div>
               <a class="btn btn-primary btn-sm" href="{{ item.url }}">View Bio
                 <span class="visually-hidden">: {{ item.name }}</span>
