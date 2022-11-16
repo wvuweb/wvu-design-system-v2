@@ -12,7 +12,7 @@
       <email>{{ profile.content['wvu-profile-1__email'] }}</email>
       <short_description>{{ profile.data.description }}</short_description>
       <quote>{{ profile.content['wvu-profile-1__quote'] }}</quote>
-      <keywords>,{{ profile.tags }},</keywords>
+      <labels>,{{ profile.tags }},</labels>
     </profile>
   {% endfor %}
 </profiles>
