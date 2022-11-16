@@ -3,7 +3,7 @@
 <profiles>
   {% for profile in page.children %}
     <profile>
-      <name>{{ profile.alternate_name | default: profile.name }}</name>
+      <name><![CDATA[{{ profile.alternate_name | default: profile.name }}]]></name>
       <image_url>{{ profile.data.thumbnail_url }}</image_url>
       <url>{{ profile.url }}</url>
       <job_title>{{ profile.content['wvu-backpage-header-1__subhead'] }}</job_title>
