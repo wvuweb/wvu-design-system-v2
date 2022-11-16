@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.cards | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-cards"
-  else
-    assign basename = "cards"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "cards",
     "defaultComponentClasses": null,
     "defaultRowClasses": "justify-content-left mb-4",
     "defaultItemClasses": null,

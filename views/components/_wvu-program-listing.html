@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.program_listing | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-program-listing"
-  else
-    assign basename = "program-listing"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "program-listing",
     "defaultComponentClasses": "py-5 bg-light",
     "mainTagClasses": null
   }

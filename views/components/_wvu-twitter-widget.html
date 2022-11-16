@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.twitter_widget | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-twitter-widget"
-  else
-    assign basename = "twitter-widget"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "twitter-widget",
     "defaultComponentClasses": "mb-0 wvu-overflow-hidden text-white bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark wvu-bg-blend-mode-luminosity--80",
     "defaultHeaderClasses": "display-3 wvu-shout wvu-bar wvu-bar--white wvu-bar--bottom text-white",
     "defaultTwitterLinkClasses": "helvetica-neue-light text-decoration-none text-white text-decoration-none",

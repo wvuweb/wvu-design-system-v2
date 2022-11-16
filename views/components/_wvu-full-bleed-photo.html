@@ -2,18 +2,11 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.full_bleed_photo | default: '1'
-  assign scope = scope | default: slot.scope
-
-  if scope == 'site'
-    assign basename = "site-full-bleed-photo"
-  else
-    assign basename = "full-bleed-photo"
-  endif
 %}
 
 {%- define_component component %}
   {
-    "baseName": "{{ basename }}",
+    "baseName": "full-bleed-photo",
     "needsARIALabel": true,
     "defaultComponentClasses": null,
     "defaultCaptionClasses": "text-white",
