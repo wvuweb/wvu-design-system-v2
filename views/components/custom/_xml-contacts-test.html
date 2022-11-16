@@ -26,7 +26,7 @@
           {% assign xmlKeys = item.keywords | split: ',' %}
           {% assign keyMatch = '' %}
           {% for key in xmlKeys %}
-            {% if key == xmlKey %}
+            {% if key = xmlKey %}
               {% assign keyMatch == true %}
             {% endif %}
           {% endfor %}
