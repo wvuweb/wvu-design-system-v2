@@ -7,7 +7,7 @@
       <image_url>{{ profile.data.thumbnail_url }}</image_url>
       <url>{{ profile.url }}</url>
       <job_title><![CDATA[{{ profile.content['wvu-backpage-header-1__subhead'] }}]]></job_title>
-      <phone>{{ profile.content['wvu-profile-1__phone'] }}</phone>
+      <phone><![CDATA[{{ {{ profile.content['wvu-profile-1__phone'] }}]]></phone>
       <email><![CDATA[{{ profile.content['wvu-profile-1__email'] }}]]></email>
       <short_description><![CDATA[{{ profile.data.description }}" />]]></short_description>
       <quote><![CDATA[{{ profile.content['wvu-profile-1__quote'] }}]]></quote>
