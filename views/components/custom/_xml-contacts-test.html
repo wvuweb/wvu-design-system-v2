@@ -7,7 +7,7 @@
 
 {% assign xmlFeed = page.content['xml-feed'] | web_request | parse_xml %}
 {% assign items = xmlFeed | select_xml: "/profiles/profile" %}
-{% assign xmlKey = page.content['xml-key'] | prepend: ',' | append: ',' %}
+{% assign xmlKey = page.content['xml-key'] %}
 
 <main id="wvu-main-content" class=" py-5 text-center">
   <div class="wvu-z-index-content">
@@ -24,37 +24,39 @@
       <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
       <div class="row justify-content-left mb-4">
         {% for item in items %}
-          Labels {{ item.labels }}
-          {% if item.labels contains xmlKey %}
-            <div class="col-sm-6 col-md-4 mb-4">
-              <div class="row mb-1">
-                <div class="col-6 mx-auto col-sm-4 col-md-6">
-                  <img class="rounded-circle shadow mb-2" src="{{ item.image_url }}" alt="{{ item.alt }}">
+          {% assign itemLabels = item.labels | split: ',' %}
+          {% for label in itemLabels %}
+            {% if label == xmlKey %}
+              <div class="col-sm-6 col-md-4 mb-4">
+                <div class="row mb-1">
+                  <div class="col-6 mx-auto col-sm-4 col-md-6">
+                    <img class="rounded-circle shadow mb-2" src="{{ item.image_url }}" alt="{{ item.alt }}">
+                  </div>
                 </div>
+                <h3 class="card-title h2 d-block wvu-shout mb-2 text-decoration-none" id="">{{ item.name }}</h3>
+                <div class="mb-2">
+                  <p>
+                    <span class="d-block helvetica-neue-bold text-uppercase">Title</span>
+                    <span class="d-block helvetica-neue-light">Name of Organization</span>
+                  </p>
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-phone"></span>
+                    <a href="tel:(304)%20281-2134">(304) 281-2134</a>
+                  </p>
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-envelope"></span>
+                    <a href="mailto:firstname.lastname@mail.wvu.edu">firstname.lastname@mail.wvu.edu</a>
+                  </p>
+                  <p class="mb-0">
+                    <span aria-hidden="true" class="fa-solid fa-building"></span>
+                    <a href="mailto:#">412 Stewart Hall</a>
+                  </p>
+                </div>
+                <a class="btn btn-primary btn-sm" href="https://dsws.sandbox.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">View Bio
+                  <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
+                </a>
               </div>
-              <h3 class="card-title h2 d-block wvu-shout mb-2 text-decoration-none" id="">{{ item.name }}</h3>
-              <div class="mb-2">
-                <p>
-                  <span class="d-block helvetica-neue-bold text-uppercase">Title</span>
-                  <span class="d-block helvetica-neue-light">Name of Organization</span>
-                </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-phone"></span>
-                  <a href="tel:(304)%20281-2134">(304) 281-2134</a>
-                </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-envelope"></span>
-                  <a href="mailto:firstname.lastname@mail.wvu.edu">firstname.lastname@mail.wvu.edu</a>
-                </p>
-                <p class="mb-0">
-                  <span aria-hidden="true" class="fa-solid fa-building"></span>
-                  <a href="mailto:#">412 Stewart Hall</a>
-                </p>
-              </div>
-              <a class="btn btn-primary btn-sm" href="https://dsws.sandbox.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">View Bio
-                <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
-              </a>
-            </div>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </div>
