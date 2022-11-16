@@ -23,14 +23,7 @@
       <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
       <div class="row justify-content-left mb-4">
         {% for item in xmlFeed %}
-          {% assign xmlKeys = item.keywords | split: ',' %}
-          {% assign keyMatch = '' %}
-          {% for key in xmlKeys %}
-            {% if key == xmlKey %}
-              {% assign keyMatch = true %}
-            {% endif %}
-          {% endfor %}
-          {% if keyMatch == true %}
+
             <div class="col-sm-6 col-md-4 mb-4">
               <div class="row mb-1">
                 <div class="col-6 mx-auto col-sm-4 col-md-6">
@@ -60,7 +53,7 @@
                 <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
               </a>
             </div>
-          {% endif %}
+
         {% endfor %}
       </div>
       <div class="mt-2">
