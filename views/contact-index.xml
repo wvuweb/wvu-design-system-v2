@@ -10,7 +10,8 @@
       <phone>{{ profile.content['wvu-profile-1__phone'] }}</phone>
       <email>{{ profile.content['wvu-profile-1__email'] }}</email>
       <short_description>{{ profile.data.description }}</short_description>
-      <quote>{{ profile.content['wvu-profile-1__quote'] }}></quote>
+      <quote>{{ profile.content['wvu-profile-1__quote'] }}</quote>
+      <keywords>{{ profile.content['wvu-profile-1__keywords'] }}</keywords>
     </profile>
   {% endfor %}
 </profiles>
