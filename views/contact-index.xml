@@ -4,8 +4,8 @@
   {% for profile in page.children %}
     <profile>
       <name><![CDATA[{{ page.alternate_name | default: page.name }}]]></name>
-      <image_url>{{ site.domain }}{{ profile.data.thumbnail_url }}</image_url>
-      <url>{{ page.url }}</url>
+      <image_url>{{ profile.data.thumbnail_url }}</image_url>
+      <url>{{ profile.url }}</url>
       <job_title><![CDATA[{{ profile.content['wvu-backpage-header-1__subhead'] }}]]></job_title>
       <phone>{{ profile.content['wvu-profile-1__phone'] }}</phone>
       <email><![CDATA[{{ profile.content['wvu-profile-1__email'] }}]]></email>
