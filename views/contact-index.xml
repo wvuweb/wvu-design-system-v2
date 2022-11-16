@@ -3,14 +3,14 @@
 <profiles>
   {% for profile in page.children %}
     <profile>
-      <name><![CDATA[{{ profile.alternate_name | default: profile.name }}]]></name>
+      <name>{{ profile.alternate_name | default: profile.name }}</name>
       <image_url>{{ profile.data.thumbnail_url }}</image_url>
       <url>{{ profile.url }}</url>
-      <job_title><![CDATA[{{ profile.content['wvu-backpage-header-1__subhead'] }}]]></job_title>
-      <phone><![CDATA[{{ {{ profile.content['wvu-profile-1__phone'] }}]]></phone>
-      <email><![CDATA[{{ profile.content['wvu-profile-1__email'] }}]]></email>
-      <short_description><![CDATA[{{ profile.data.description }}" />]]></short_description>
-      <quote><![CDATA[{{ profile.content['wvu-profile-1__quote'] }}]]></quote>
+      <job_title>{{ profile.content['wvu-backpage-header-1__subhead'] }}</job_title>
+      <phone>{{ profile.content['wvu-profile-1__phone'] }}</phone>
+      <email>{{ profile.content['wvu-profile-1__email'] }}</email>
+      <short_description>{{ profile.data.description }}</short_description>
+      <quote>{{ profile.content['wvu-profile-1__quote'] }}></quote>
     </profile>
   {% endfor %}
 </profiles>
