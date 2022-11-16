@@ -24,40 +24,51 @@
       <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
       <div class="row justify-content-left mb-4">
         {% for item in items %}
+
+          <!-- Create an array of labels from the XML labels element -->
           {% assign itemLabels = item.labels | split: ',' %}
+
+          <!-- Reset label match. We’ll use this to evaluate whether or not to display an XML element -->
+          {% assign labelMatch = '' %}
+
+          <!-- Loop through the item labels to see if it matches our XML key (defined in the editable region above) -->
           {% for label in itemLabels %}
-            {% if label == xmlKey or xmlKey == blank %}
-              <div class="col-sm-6 col-md-4 mb-4">
-                <div class="row mb-1">
-                  <div class="col-6 mx-auto col-sm-4 col-md-6">
-                    <img class="rounded-circle shadow mb-2" src="{{ item.image_url }}" alt="{{ item.alt }}">
-                  </div>
-                </div>
-                <h3 class="card-title h2 d-block wvu-shout mb-2 text-decoration-none" id="">{{ item.name }}</h3>
-                <div class="mb-2">
-                  <p>
-                    <span class="d-block helvetica-neue-bold text-uppercase">Title</span>
-                    <span class="d-block helvetica-neue-light">Name of Organization</span>
-                  </p>
-                  <p class="mb-0">
-                    <span aria-hidden="true" class="fa-solid fa-phone"></span>
-                    <a href="tel:(304)%20281-2134">(304) 281-2134</a>
-                  </p>
-                  <p class="mb-0">
-                    <span aria-hidden="true" class="fa-solid fa-envelope"></span>
-                    <a href="mailto:firstname.lastname@mail.wvu.edu">firstname.lastname@mail.wvu.edu</a>
-                  </p>
-                  <p class="mb-0">
-                    <span aria-hidden="true" class="fa-solid fa-building"></span>
-                    <a href="mailto:#">412 Stewart Hall</a>
-                  </p>
-                </div>
-                <a class="btn btn-primary btn-sm" href="https://dsws.sandbox.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">View Bio
-                  <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
-                </a>
-              </div>
+            {% if label == xmlKey %}
+              {% assign labelMatch = true %}
             {% endif %}
           {% endfor %}
+
+          <!-- If there is a match, or no key is supplied, write the profile -->
+          {% if labelMatch == true or xmlKey == blank %}
+            <div class="col-sm-6 col-md-4 mb-4">
+              <div class="row mb-1">
+                <div class="col-6 mx-auto col-sm-4 col-md-6">
+                  <img class="rounded-circle shadow mb-2" src="{{ item.image_url }}" alt="{{ item.alt }}">
+                </div>
+              </div>
+              <h3 class="card-title h2 d-block wvu-shout mb-2 text-decoration-none" id="">{{ item.name }}</h3>
+              <div class="mb-2">
+                <p>
+                  <span class="d-block helvetica-neue-bold text-uppercase">{{ item.title }}</span>
+                  <span class="d-block helvetica-neue-light">{{ item.organization }}</span>
+                </p>
+                <p class="mb-0">
+                  <span aria-hidden="true" class="fa-solid fa-phone"></span>
+                  <a href="tel:{{ item.phone }}">{{ item.phone }}</a>
+                </p>
+                <p class="mb-0">
+                  <span aria-hidden="true" class="fa-solid fa-envelope"></span>
+                  <a href="mailto:{{ item.email }}">{{ item.email }}</a>
+                </p>
+                <p class="mb-0">
+                  <span aria-hidden="true" class="fa-solid fa-building"></span>{{ item.office }}
+                </p>
+              </div>
+              <a class="btn btn-primary btn-sm" href="{{ item.url }}">View Bio
+                <span class="visually-hidden">: {{ item.name }}</span>
+              </a>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
       <div class="mt-2">
