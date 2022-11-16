@@ -26,11 +26,11 @@
           {% assign xmlKeys = item.keywords | split: ',' %}
           {% assign keyMatch = '' %}
           {% for key in xmlKeys %}
-            {% if key = xmlKey %}
-              {% assign keyMatch == true %}
+            {% if key == xmlKey %}
+              {% assign keyMatch = true %}
             {% endif %}
           {% endfor %}
-          {% if keyMatch = true %}
+          {% if keyMatch == true %}
             <div class="col-sm-6 col-md-4 mb-4">
               <div class="row mb-1">
                 <div class="col-6 mx-auto col-sm-4 col-md-6">
