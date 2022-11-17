@@ -76,6 +76,8 @@
           {% capture buttonColorListItem %}btn-outline-{{ textColors[i] }}{% endcapture %}
         {% endif %}
 
+        {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
         <div class="row mx-0 {% cycle 'flex-row-reverse', 'flex-row' %} {{ bgColorListItem | default: defaultItemColors }} {{ textColorListItem | default: defaultTextColors }}">
           <div class="px-0 col-lg-6">
             <div class="h-100 mb-0 wvu-bg-size-cover" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
@@ -95,7 +97,7 @@
                   {% endcase %}
                 {% endif %}
 
-                <{{ htag }} id="{{ component.name }}-label" class="{{ textColorListItem | default: defaultTextColors }} {{ itemHeaderClasses }} {{ barModifier }}">{{ item.name }}</{{ htag }}>
+                <{{ htag }} id="{{ htag_id }}" class="{{ textColorListItem | default: defaultTextColors }} {{ itemHeaderClasses }} {{ barModifier }}">{{ item.name }}</{{ htag }}>
 
                 {% if item.content['wvu-profile-1__name'] != blank %}
                   <p class="h2 iowan-old-style-black pt-2 mb-1">
