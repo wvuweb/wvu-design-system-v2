@@ -66,9 +66,7 @@
               <div class="h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc }})">
                 <div class="wvu-z-index-content p-3 h-100">
                   <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
-                    <a class="stretched-link text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
-                      {{ item.alternate_name | default: item.name }}
-                    </a>
+                    {{ item.alternate_name | default: item.name }}
                   </{{ htag }}>
                   {%- if item.data.description != blank %}
                     <p class="{{ itemBodyClasses }}">
@@ -77,6 +75,9 @@
                   {% else %}
                     {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
                   {%- endif %}
+                  <a class="stretched-link text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                    <span class="visually-hidden">Read More: {{ item.alternate_name | default: item.name }}</span>
+                  </a>
                 </div>
               </div>
             </div>
