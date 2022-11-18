@@ -28,7 +28,13 @@
       Please see the <a href="https://dsws.sandbox.wvu.edu/utilities/cheat-sheet" class="text-wvu-gold">Utilities Cheat Sheet</a> to know what utilties to apply.
     </p>
     <p class="mt-1 small">
-      <strong class="text-muted">Label for background image:</strong> <span class="badge bg-secondary">{{ page.slug }}-{{ component.name }}-background</span>
+      <strong class="text-muted">Label for background image:</strong> <span class="badge bg-secondary">
+        {% if component.scope == 'site' %}
+          site-{{ component.name }}-background
+        {% else %}
+          {{ page.slug }}-{{ component.name }}-background
+        {% endif %}
+      </span>
     </p>
     <h2 class="mt-1 h6 small mb-1">
       Aria Label (if this component has no header):
