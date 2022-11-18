@@ -1,7 +1,7 @@
 <!-- wvu-nav--v4 -->
 <nav aria-label="Main navigation" id="nav-primary" class="wvu-site-nav bg-wvu-accent--blue-dark navbar navbar-expand-lg p-0 navbar-dark w-100">
   <div class="container">
-    <button aria-controls="wvu-site-nav__items" aria-expanded="false" type="button" class="wvu-site-nav__toggle js-wvu-site-nav-toggle border-0 bg-wvu-accent--blue-dark text-white position-relative pe-4 d-flex d-md-none align-items-center">
+    <button aria-controls="wvu-site-nav__items" aria-expanded="false" type="button" class="wvu-site-nav__toggle js-wvu-site-nav-toggle border-0 bg-wvu-accent--blue-dark text-white position-relative pe-4 d-flex d-lg-none align-items-center">
       <span aria-hidden="true" class="wvu-hamburger js-wvu-hamburger">
         <span class="wvu-hamburger__line wvu-hamburger__line--top js-wvu-hamburger__line--top"></span>
         <span class="wvu-hamburger__line wvu-hamburger__line--middle"></span>
@@ -11,11 +11,11 @@
     </button>
 
     {% if site.data.nav_dropdowns != blank %}
-      {% comment %} NOTE: If nav depth is greater than 1, show the dropdown caret (has_children_class) & `+` on mobile (sub_ul_class). {% endcomment %}
-      {% site_menu max_depth: "2" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap" link_class: "nav-link p-3 px-lg-2 fw-normal flex-grow-1" has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex" sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0" %}
+      {% comment %} NOTE: If nav depth is greater than 1, show the dropdown chevron (has_children_class). {% endcomment %}
+      {% site_menu max_depth: "2" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0 w-100" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1" has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex" sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
     {% else %}
-      {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown caret (has_children_class). {% endcomment %}
-      {% site_menu max_depth: "1" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap" link_class: "nav-link p-3 px-lg-2 fw-normal flex-grow-1" %}
+      {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown chevron (has_children_class). {% endcomment %}
+      {% site_menu max_depth: "1" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0 w-100" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1", active_class: "wvu-site-nav__link--active" %}
     {% endif %}
 
     <div class="d-flex align-items-center">
