@@ -62,11 +62,14 @@
           {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            <a class="d-block h-100 text-white text-decoration-none" aria-labelledby="{{ htag_id }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
-              <div class="p-3 h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc }})">
-
-                <div class="wvu-z-index-content">
-                  <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>
+            <div class="d-block h-100 text-white text-decoration-none position-relative">
+              <div class="h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc }})">
+                <div class="wvu-z-index-content p-3 h-100">
+                  <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
+                    <a class="stretched-link" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                      {{ item.alternate_name | default: item.name }}
+                    </a>
+                  </{{ htag }}>
                   {%- if item.data.description != blank %}
                     <p class="{{ itemBodyClasses }}">
                       {{ item.data.description }}
@@ -76,7 +79,7 @@
                   {%- endif %}
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         {% endfor %}
       {% endcapture %}
