@@ -1,19 +1,23 @@
-<!-- wvu-nav--v3 -->
-<nav aria-label="Main navigation" id="nav-primary" class="navbar navbar-expand-lg p-0 navbar-dark bg-wvu-accent--blue-dark d-table w-100">
+<!-- wvu-nav--v4 -->
+<nav aria-label="Main navigation" id="nav-primary" class="wvu-site-nav bg-wvu-accent--blue-dark navbar navbar-expand-lg p-0 navbar-dark w-100">
   <div class="container">
-    <button id="nav-toggle" class="wvu-nav__button nav-toggle">
-      <img class="wvu-nav__menu-icon" src="https://static.wvu.edu/global/images/icons/wvu/hamburger-menu--1.0.0.svg" alt="" />
-      <span id="js-nav-text">Open Menu</span>
+    <button aria-controls="wvu-site-nav__items" aria-expanded="false" type="button" class="wvu-site-nav__toggle js-wvu-site-nav-toggle border-0 bg-wvu-accent--blue-dark text-white position-relative pe-4 d-flex d-md-none align-items-center">
+      <span aria-hidden="true" class="wvu-hamburger js-wvu-hamburger">
+        <span class="wvu-hamburger__line wvu-hamburger__line--top js-wvu-hamburger__line--top"></span>
+        <span class="wvu-hamburger__line wvu-hamburger__line--middle"></span>
+        <span class="wvu-hamburger__line wvu-hamburger__line--bottom js-wvu-hamburger__line--bottom"></span>
+      </span>
+      <span class="js-wvu-site-nav-toggle-text">Open Menu</span>
     </button>
-    <div class="wvu-nav nav-collapse ml-lg-n1" id="wvu-nav">
-      {% if site.data.nav_dropdowns != blank %}
-        {% comment %} NOTE: If nav depth is greater than 1, show the dropdown caret (has_children_class) & `+` on mobile (sub_ul_class). {% endcomment %}
-        {% site_menu max_depth: "2" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" has_children_class: "wvu-dropdown" sub_ul_class: "sub-menu small bg-wvu-accent--blue-dark px-1 mx-n1" %}
-      {% else %}
-        {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown caret (has_children_class). {% endcomment %}
-        {% site_menu max_depth: "1" ul_class: "wvu-nav__items menu-items navbar-nav mr-auto" link_class: "nav-link px-2 px-lg-1" %}
-      {% endif %}
-    </div> <!-- /.nav-collapse -->
+
+    {% if site.data.nav_dropdowns != blank %}
+      {% comment %} NOTE: If nav depth is greater than 1, show the dropdown caret (has_children_class) & `+` on mobile (sub_ul_class). {% endcomment %}
+      {% site_menu max_depth: "2" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap" link_class: "nav-link p-3 px-lg-2 fw-normal flex-grow-1" has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex" sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0" %}
+    {% else %}
+      {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown caret (has_children_class). {% endcomment %}
+      {% site_menu max_depth: "1" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap" link_class: "nav-link p-3 px-lg-2 fw-normal flex-grow-1" %}
+    {% endif %}
+
     <div class="d-flex align-items-center">
       {% if site.data.facebook_url != blank or site.data.twitter_url != blank or site.data.flickr_url != blank or site.data.instagram_url != blank or site.data.linkedin_url != blank or site.data.syndication_url != blank or site.data.youtube_url != blank or site.data.github_url != blank %}
         <ul class="list-inline mb-0 me-2">

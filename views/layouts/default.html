@@ -23,6 +23,8 @@
 
     {% link_stylesheet name: "styles" %}
 
+    {% link_javascript name: "meom-wvu-site-navigation--custom", type: "module" %}
+
     {{ content_for.header_extras }}
 
     {% if edit_mode or page.data.useFACSS == '1' or page.template_name == 'component_doc' %}
@@ -77,7 +79,7 @@
 
     {% render "components/wvu-footer" scope: 'site' %}
 
-    {% link_javascript name: "vendor/bootstrap/bootstrap.bundle.min, vendor/responsive-nav/responsive-nav, responsive-nav-dropdown--custom" %}
+    {% link_javascript name: "vendor/bootstrap/bootstrap.bundle.min" %}
 
     {{ content_for.page_js }}
 
