@@ -30,7 +30,7 @@
     <p class="mt-1 small">
       <strong class="text-muted">Label for background image:</strong> <span class="badge bg-secondary">
         {% if component.scope == 'site' %}
-          site-{{ component.name }}-background
+          {{ component.name }}-background
         {% else %}
           {{ page.slug }}-{{ component.name }}-background
         {% endif %}
