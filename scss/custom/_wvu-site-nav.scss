@@ -202,7 +202,7 @@
 
 .wvu-site-nav__toggle:hover,
 .wvu-site-nav__toggle:focus {
-  background-color: #283d53;
+  background-color: #283d53 !important;
 }
 
 .wvu-site-nav__items > li:not(:last-child) {
@@ -249,7 +249,7 @@
   border: 1px solid #2c3a47;
   position: absolute;
   right: 1rem;
-  top: .7rem;
+  top: .4rem;
 }
 
 @media (min-width: $wvu-bp-nav) {
@@ -301,5 +301,14 @@
     height: auto;
     position: absolute;
     width: 100%;
+  }
+
+  // NOTE: Apply active border on LG+ viewports to the dropdown chevron:
+  .wvu-site-nav__items > li > [aria-current="page"] + .wvu-site-nav__sub-toggle:before {
+    border-top: 3px solid $wvu-gold;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 25px;
   }
 }

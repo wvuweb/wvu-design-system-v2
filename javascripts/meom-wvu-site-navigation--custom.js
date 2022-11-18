@@ -23,8 +23,8 @@ const meomNavigation = (() => {
     subNavClass: '.wvu-site-nav__sub-menu',
     subNavAnchors: '.js-wvu-site-nav-items > .wvu-site-nav__menu-item-has-children > a',
     subSubNavAnchors: '.js-wvu-site-nav-items .wvu-site-nav__sub-menu > .wvu-site-nav__menu-item-has-children > a',
-    subToggleButtonClasses: 'wvu-site-nav__sub-toggle ms-auto p-1 p-md-0 text-muted',
-    subSubToggleButtonClasses: 'wvu-site-nav__sub-sub-toggle p-1 p-md-0 ms-md-auto me-md-2 text-muted',
+    subToggleButtonClasses: 'wvu-site-nav__sub-toggle ms-auto p-1 p-lg-0 text-muted',
+    subSubToggleButtonClasses: 'wvu-site-nav__sub-sub-toggle p-1 p-lg-0 ms-lg-auto me-lg-2 text-muted',
     visuallyHiddenClass: 'visually-hidden',
     onOpenNav: () => {
       navToggleText.innerText = 'Close Menu';
