@@ -4,7 +4,7 @@
 // Dependencies: @meom/navigation index.esm.min.js v1.0.5 by @samikeijonen
 // https://github.com/MEOM/navigation
 
-import { Navigation } from '../javascripts/vendor/@meom/index.esm.min.js';
+import { Navigation } from '../vendor/@meom/index.esm.min.js';
 
 const meomNavigation = (() => {
   const navElement = document.querySelector('.js-wvu-site-nav-items');
