@@ -205,6 +205,16 @@
   background-color: #283d53 !important;
 }
 
+.wvu-site-nav__items {
+  width: 100%;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items {
+    width: auto; // Prevent social media icons from wrapping on LG+ viewports
+  }
+}
+
 .wvu-site-nav__items > li:not(:last-child) {
   border-bottom: 1px solid #2c3a47;
 }

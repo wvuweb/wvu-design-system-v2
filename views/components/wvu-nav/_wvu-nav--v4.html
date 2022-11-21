@@ -12,10 +12,10 @@
 
     {% if site.data.nav_dropdowns != blank %}
       {% comment %} NOTE: If nav depth is greater than 1, show the dropdown chevron (has_children_class). {% endcomment %}
-      {% site_menu max_depth: "2" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0 w-100" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1" has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex" sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
+      {% site_menu max_depth: "2" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1" has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex" sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
     {% else %}
       {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown chevron (has_children_class). {% endcomment %}
-      {% site_menu max_depth: "1" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0 w-100" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1", active_class: "wvu-site-nav__link--active" %}
+      {% site_menu max_depth: "1" ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0" link_class: "nav-link px-1 py-2 fw-normal flex-grow-1", active_class: "wvu-site-nav__link--active" %}
     {% endif %}
 
     <div class="d-flex align-items-center">
