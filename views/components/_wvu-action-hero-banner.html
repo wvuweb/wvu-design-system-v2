@@ -2,7 +2,7 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.action_hero_banner | default: '1'
-  assign defaultComponentClasses = defaultComponentClasses | default: "m-4 text-center wvu-bg-size-cover wvu-bg-position-center"
+  assign defaultComponentClasses = defaultComponentClasses | default: "text-center wvu-bg-size-cover wvu-bg-position-center"
   assign defaultHeaderClasses = defaultHeaderClasses | default: "h1 text-wvu-gold wvu-bar wvu-bar--white wvu-bar--center iowan-old-style-black-italic"
 %}
 
@@ -11,7 +11,7 @@
     "baseName": "action-hero-banner",
     "defaultComponentClasses": "{{ defaultComponentClasses }}",
     "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
-    "mainTagClasses": "position-relative"
+    "mainTagClasses": "m-4 position-relative"
   }
 {%- enddefine_component %}
 

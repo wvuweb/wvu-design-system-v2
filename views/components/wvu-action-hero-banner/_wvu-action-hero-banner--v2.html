@@ -11,7 +11,7 @@
 -%}
 
 {% capture component_content %}
-  <div class="position-relative h-100 w-100 wvu-bg-size-cover" {{ component.bgTag | background_styler: format: 'webp' }}>
+  <div class="position-absolute h-100 w-100 wvu-bg-size-cover {{ component.classes | strip }}" {{ component.bgTag | background_styler: format: 'webp' }}>
   </div>
   <div class="container wvu-z-index-content">
     {% capture block_content %}
