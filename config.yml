@@ -125,7 +125,7 @@ custom_site_attributes:
 # Set the version of each component here when we have new versions
 data:
   component_versions:
-    action_hero_banner: 1
+    action_hero_banner: 2
     action_hero_two_column: 2
     article: 2
     article_archive: 2
