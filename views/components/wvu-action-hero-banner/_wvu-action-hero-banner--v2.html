@@ -12,7 +12,7 @@
 
 {% capture component_content %}
   <div class="position-relative p-4 m-n4 wvu-bg-topo-dark">
-    <div class="wvu-bg-size-cover {{ component.classes | strip }}" {{ component.bgTag | background_styler: format: 'webp' }}>
+    <div class="wvu-bg-size-cover position-relative {{ component.classes | strip }}" {{ component.bgTag | background_styler: format: 'webp' }}>
       <div class="container wvu-z-index-content">
         {% capture block_content %}
           <div class="col col-md-7 col-lg-5 py-6 px-4 px-xl-5 my-n4 bg-wvu-accent--blue-dark">
