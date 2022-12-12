@@ -1,0 +1,324 @@
+// WVU Dropdown Navigation
+// ==================================================
+// An accessible, keyboard friendly dropdown navigation.
+// Dependencies: @meom/navigation index.esm.min.js v1.0.5 by @samikeijonen
+// https://github.com/MEOM/navigation
+
+// Heavily edited vendor styles:
+.wvu-site-nav__toggle {
+  z-index: 400;
+}
+
+.wvu-site-nav__toggle:focus {
+  outline-color: var(--bs-white);
+  outline-offset: -4px;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__toggle {
+    display: none;
+  }
+}
+
+@media (max-width: $wvu-bp-nav-max-width) {
+  .wvu-site-nav__items {
+    display: none;
+  }
+
+  .wvu-site-nav__items.is-opened {
+    display: block;
+  }
+}
+
+.wvu-site-nav__items a:hover,
+.wvu-site-nav__items a:active,
+.wvu-site-nav__items a:focus,
+.wvu-site-nav__sub-toggle:hover,
+.wvu-site-nav__sub-sub-toggle:hover,
+.wvu-site-nav__sub-toggle:active,
+.wvu-site-nav__sub-sub-toggle:active,
+.wvu-site-nav__sub-toggle:focus,
+.wvu-site-nav__sub-sub-toggle:focus {
+  background-color: #283d53;
+  color: var(--bs-white);
+}
+
+.wvu-site-nav__sub-toggle,
+.wvu-site-nav__sub-sub-toggle {
+  background-color: transparent;
+}
+
+.wvu-site-nav__sub-toggle svg,
+.wvu-site-nav__sub-sub-toggle svg {
+  color: var(--bs-white);
+  pointer-events: none;
+}
+
+.wvu-site-nav__sub-menu {
+  left: -9999rem;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  transform: translateY(-10%);
+  visibility: hidden;
+  z-index: 300;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wvu-site-nav__sub-toggle svg,
+  .wvu-site-nav__sub-sub-toggle svg {
+    transition: rotate .3s;
+  }
+
+  .wvu-site-nav__sub-menu {
+    transition: transform .2s, opacity .2s;
+  }
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__sub-menu {
+    width: 12rem;
+  }
+}
+
+[aria-expanded="true"] + .wvu-site-nav__sub-menu {
+  left: 0;
+  opacity: 1;
+  position: relative;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  [aria-expanded="true"] + .wvu-site-nav__sub-menu {
+    padding: 0;
+    position: absolute;
+  }
+
+  .wvu-site-nav__sub-menu [aria-expanded="true"] + .wvu-site-nav__sub-menu {
+    left: auto;
+    right: -100%;
+    top: 0;
+  }
+}
+
+.wvu-site-nav__sub-toggle[aria-expanded="true"] svg,
+.wvu-site-nav__sub-sub-toggle[aria-expanded="true"] svg {
+  rotate: -180deg;
+}
+
+// site-nav-hover.css:
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items li:hover > .wvu-site-nav__sub-menu {
+    left: 0;
+    opacity: 1;
+    padding: 0;
+    position: absolute;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .wvu-site-nav__items ul li:hover > .wvu-site-nav__sub-menu {
+    left: auto;
+    right: -100%;
+    top: 0;
+  }
+}
+
+// =========== WVU CUSTOM: ===========
+
+// ----------- Hamburger icon styles: -----------
+:root {
+  --hamburger-speed: .25s;
+}
+
+.wvu-hamburger {
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  height: 3rem;
+  position: relative;
+  width: 3rem;
+}
+
+.wvu-hamburger__line {
+  background-color: var(--bs-white);
+  height: .25rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.wvu-hamburger__line--top {
+  --hamburger-top: 32.5%;
+}
+
+.wvu-hamburger__line--bottom {
+  --hamburger-top: 67%;
+}
+
+.wvu-hamburger__line--top,
+.wvu-hamburger__line--bottom {
+  top: var(--hamburger-top);
+}
+
+.js-wvu-hamburger--is-open .wvu-hamburger__line--top,
+.js-wvu-hamburger--is-open .wvu-hamburger__line--bottom {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+
+.js-wvu-hamburger--is-open .wvu-hamburger__line--middle {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wvu-hamburger {
+    transition: all .25s;
+  }
+
+  // NOTE: Applying this on the open event so that the top and bottom lines don't move on page load/refresh
+  .js-wvu-hamburger__transition {
+    transition: transform var(--hamburger-speed), top var(--hamburger-speed);
+  }
+
+  .js-wvu-hamburger--is-open .wvu-hamburger__line--top,
+  .js-wvu-hamburger--is-open .wvu-hamburger__line--bottom {
+    transition: top var(--hamburger-speed), transform var(--hamburger-speed);
+  }
+
+  .js-wvu-hamburger__line--middle {
+    transition: transform var(--hamburger-speed);
+  }
+}
+
+// ----------- Custom Styles for WVU -----------
+
+.wvu-site-nav__toggle {
+  min-height: 56px;
+}
+
+.wvu-site-nav__toggle:hover,
+.wvu-site-nav__toggle:focus {
+  background-color: #283d53 !important;
+}
+
+.wvu-site-nav__items {
+  width: 100%;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items {
+    width: auto; // Prevent social media icons from wrapping on LG+ viewports
+  }
+}
+
+.wvu-site-nav__items > li:not(:last-child) {
+  border-bottom: 1px solid #2c3a47;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items.wvu-site-nav__items > li {
+    border-bottom: 0;
+  }
+
+  .wvu-site-nav__items > li {
+    border-right: 1px solid #2c3a47;
+  }
+}
+
+.wvu-site-nav__items .nav-link {
+  color: rgb(255 255 255 / 50%);
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items svg {
+    color: rgb(255 255 255 / 50%);
+  }
+}
+
+.wvu-site-nav__sub-toggle {
+  transition: ease-in-out, border-color .15s; // NOTE: Match Bootstrap transition on `.nav-link` on mobile
+}
+
+.wvu-site-nav__items a:hover + .wvu-site-nav__sub-toggle,
+.wvu-site-nav__items a:active + .wvu-site-nav__sub-toggle,
+.wvu-site-nav__items a:focus + .wvu-site-nav__sub-toggle {
+  border-color: #415569;
+}
+
+.wvu-site-nav__sub-sub-toggle,
+.wvu-site-nav__sub-sub-toggle + .wvu-site-nav__sub-menu {
+  display: none; // NOTE: Hide 3rd level deep button. If you dare go deeper than 2 levels, delete this rule.
+}
+
+.wvu-site-nav__sub-toggle,
+.wvu-site-nav__sub-sub-toggle {
+  border: 1px solid #2c3a47;
+  position: absolute;
+  right: 1rem;
+  top: .4rem;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__sub-toggle,
+  .wvu-site-nav__sub-sub-toggle {
+    border: 0;
+    position: static;
+  }
+
+  // NOTE: Decrease right padding for <a> tags that have dropdowns. `:has` = "previous sibling" in this rule.
+  .wvu-site-nav__menu-item-has-children > .nav-link:has(+ .wvu-site-nav__sub-toggle) {
+    padding-inline-end: 0 !important;
+  }
+
+  // NOTE: Make the dropdown arrow have the same background color as the link on hover
+  .wvu-site-nav__menu-item-has-children > .nav-link:hover + .wvu-site-nav__sub-toggle,
+  .wvu-site-nav__menu-item-has-children > .nav-link:hover + .wvu-site-nav__sub-sub-toggle {
+    background-color: #283d53;
+  }
+
+  .wvu-site-nav__items .nav-link {
+    transition: none; // NOTE: Resets Bootstrap's default nav transitions on LG+ viewports
+  }
+}
+
+.wvu-site-nav__sub-toggle svg,
+.wvu-site-nav__sub-sub-toggle svg {
+  fill: currentColor;
+}
+
+.wvu-site-nav__items > li > [aria-current="page"] {
+  color: var(--bs-white);
+  position: relative;
+}
+
+.wvu-site-nav__items > li > [aria-current="page"]:before {
+  border-left: 3px solid $wvu-gold;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+@media (min-width: $wvu-bp-nav) {
+  .wvu-site-nav__items > li > [aria-current="page"]:before {
+    border-left: 0;
+    border-top: 3px solid $wvu-gold;
+    height: auto;
+    position: absolute;
+    width: 100%;
+  }
+
+  // NOTE: Apply active border on LG+ viewports to the dropdown chevron:
+  .wvu-site-nav__items > li > [aria-current="page"] + .wvu-site-nav__sub-toggle:before {
+    border-top: 3px solid $wvu-gold;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 25px;
+  }
+}
