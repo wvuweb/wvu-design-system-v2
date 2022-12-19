@@ -75,7 +75,7 @@
                   {% else %}
                     {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
                   {%- endif %}
-                  <a class="stretched-link text-wvu-gold small" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                  <a class="stretched-link text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                     Continue Reading<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span> <span class="fa-solid fa-circle-arrow-right"></span>
                   </a>
                 </div>
