@@ -26,17 +26,17 @@
         {% endif %}
         {% assign numberOfTabs = page.content[numberOfTabsRegionName] %}
         {% assign i = 1 %}
-        <div class="accordion my-4" id="accordionExample">
+        <div class="accordion my-4" id="{{ component.name }}-accordion">
           {% for item in (1..numberOfTabs) %}
             {% assign accordionLabelRegionName = component.name | append: '__accordion-label-' | append: i %}
             {% assign accordionPanelRegionName = component.name | append: '__accordion-panel-' | append: i %}
             <div class="accordion-item">
-              <h3 class="accordion-header" id="heading-{{ i }}">
-                <button class="accordion-button collapsed wvu-shout text-wvu-blue fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ i }}" aria-expanded="false" aria-controls="collapse-{{ i }}">
+              <h3 class="accordion-header" id="{{ component.name }}-panel-header-{{ i }}">
+                <button class="accordion-button collapsed wvu-shout text-wvu-blue fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#{{ component.name }}-collapse-{{ i }}" aria-expanded="false" aria-controls="{{ component.name }}-collapse-{{ i }}">
                   {% editable_region_block name: accordionLabelRegionName type: "Simple" %}Label {{ i }}{% endeditable_region_block %}
                 </button>
               </h3>
-              <div id="collapse-{{ i }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ i }}" data-bs-parent="#accordionExample">
+              <div id="collapse-{{ i }}" class="accordion-collapse collapse" aria-labelledby="{{ component.name }}-panel-header-{{ i }}" data-bs-parent="#{{ component.name }}-accordion">
                 <div class="accordion-body">
                   {% editable_region_block name: accordionPanelRegionName %}
                     <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
