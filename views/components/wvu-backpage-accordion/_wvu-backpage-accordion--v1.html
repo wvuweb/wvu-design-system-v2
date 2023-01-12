@@ -30,7 +30,7 @@
           {% for item in (1..numberOfTabs) %}
             {% assign accordionLabelRegionName = component.name | append: '__accordion-label-' | append: i %}
             {% assign accordionPanelRegionName = component.name | append: '__accordion-panel-' | append: i %}
-            <div class="accordion-item">
+            <div class="accordion-item bg-transparent">
               <h3 class="accordion-header" id="{{ component.name }}-panel-header-{{ i }}">
                 <button class="accordion-button collapsed wvu-shout text-wvu-blue fs-3" type="button" data-bs-toggle="collapse" data-bs-target="#{{ component.name }}-collapse-{{ i }}" aria-expanded="false" aria-controls="{{ component.name }}-collapse-{{ i }}">
                   {% editable_region_block name: accordionLabelRegionName type: "Simple" %}Label {{ i }}{% endeditable_region_block %}
