@@ -1,7 +1,7 @@
 {% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
 
 {% liquid
-  assign componentVersion = theme.data.component_versions.backpage | default: '1'
+  assign componentVersion = theme.data.component_versions.backpage_accordion | default: '1'
 %}
 
 {%- define_component component %}
@@ -19,6 +19,6 @@
 {%- enddefine_component %}
 
 {% case componentVersion %}
-  {% when 1 %}{% render "components/wvu-backpage-accordion/wvu-backpage--v1" component: component %}
-  {% else %}{% render "components/wvu-backpage-accordion/wvu-backpage--v1" component: component %}
+  {% when 1 %}{% render "components/wvu-backpage-accordion/wvu-backpage-accordion--v1" component: component %}
+  {% else %}{% render "components/wvu-backpage-accordion/wvu-backpage-accordion--v1" component: component %}
 {% endcase %}
