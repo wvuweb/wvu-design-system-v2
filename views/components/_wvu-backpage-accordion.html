@@ -1,0 +1,24 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.backpage | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "backpage-accordion",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "wvu-backpage-main",
+    "defaultItemClasses": "mb-3 mb-md-0",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "px-2 py-1 wvu-shout h6 text-white mb-0",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "iowan-old-style",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-backpage/wvu-backpage--v1" component: component %}
+  {% else %}{% render "components/wvu-backpage/wvu-backpage--v1" component: component %}
+{% endcase %}
