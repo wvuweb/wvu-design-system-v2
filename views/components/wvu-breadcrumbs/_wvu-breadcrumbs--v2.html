@@ -9,7 +9,7 @@
 {% assign componentClassesBreadcrumbs = "wvu-z-index-content wvu-slash-list ps-0 mb-0 d-inline-block " %}
 
 {% if breadcrumbLinkClasses contains 'wvu-bg-tint' %}
-  {% assign breadcrumbLinkClasses | append: ' m-n1 p-1' %}
+  {% assign breadcrumbLinkClasses = breadcrumbLinkClasses | append: ' m-n1 p-1' %}
   {% assign breadcrumbMargin = 'ms-1' %}
 {% endif %}
 
