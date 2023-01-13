@@ -8,12 +8,12 @@
 
 {% assign componentClassesBreadcrumbs = "wvu-z-index-content wvu-slash-list ps-0 mb-0 d-inline-block " %}
 
-{% if breadcrumbLinkClasses contains 'wvu-bg-tint' %}
+{% if breadcrumbLinkClasses contains 'wvu-bg-tint' or breadcrumbLinkClasses contains 'bg-wvu-' %}
   {% assign breadcrumbLinkClasses = breadcrumbLinkClasses | append: ' m-n1 p-1' %}
   {% assign breadcrumbMargin = 'ms-1' %}
 {% endif %}
 
-<section class="wvu-breadcrumbs py-2 w-100 {{ breadcrumbPosition }} wvu-z-index-breadcrumbs" aria-label="Breadcrumb Links">
+<section class="py-2 w-100 {{ breadcrumbPosition }} wvu-z-index-breadcrumbs" aria-label="Breadcrumb Links">
   <div class="container position-relative small">
     <div class="{{ breadcrumbMargin }}">
       <div class="{{ breadcrumbLinkClasses }} d-inline-block">
