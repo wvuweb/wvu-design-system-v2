@@ -131,6 +131,7 @@ data:
     article_archive: 2
     backpage_header: 2
     blob_a: 2
+    breadcrumbs: 2
     contact_info: 2
     full_bleed_photo: 2
     horizontal_subnav: 2
