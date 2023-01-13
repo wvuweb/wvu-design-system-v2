@@ -6,9 +6,9 @@
     {% assign breadcrumbPosition = 'position-absolute' %}
 {% endcase %}
 
-{% assign componentClassesBreadcrumbs = "wvu-z-index-content wvu-slash-list ps-0 mb-0 d-inline-block " | append: " " | append: breadcrumbLinkClasses %}
+{% assign componentClassesBreadcrumbs = "wvu-z-index-content wvu-slash-list ps-0 mb-0 d-inline-block " %}
 
-{% if breadCrumbLinkClasses contains 'wvu-bg-tint' or breadCrumbLinkClasses contains 'bg-wvu-' %}
+{% if breadCrumbLinkClasses contains 'wvu-bg-tint' %}
   {% assign breadcrumbMargin = ' m-n1 p-1 ' %}
 {% endif %}
 
