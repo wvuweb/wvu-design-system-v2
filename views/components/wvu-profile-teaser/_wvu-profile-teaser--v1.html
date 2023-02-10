@@ -71,7 +71,7 @@
             </p>
           {% endif %}
 
-          <h2 class="{{ itemHeaderClasses }}" id="{{ component.name }}-label">{{ page.alternate_name | default: page.name }}</h2>
+          <h2 class="{{ itemHeaderClasses }}" id="{{ component.name }}-label">{{ item.alternate_name | default: item.name }}</h2>
 
           {% if item.content['wvu-profile-1__name'] != blank %}
             <p class="h3 iowan-old-style-italic mb-2">
