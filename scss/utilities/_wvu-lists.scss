@@ -9,7 +9,7 @@
 .wvu-ul-arrows {
   list-style-type: none $global-important;
   padding-left: 1.5em $global-important;
-  li {
+  > li {
     position: relative $global-important;
     &::before {
       @include font-awesome-arrow();
@@ -29,19 +29,19 @@
 }
 
 .wvu-ul-arrows-wvu-blue {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23002855"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0 256zM297 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L120 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l214.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L409 239c9.4 9.4 9.4 24.6 0 33.9L297 385z"/></svg>') $global-important;
   }
 }
 
 .wvu-ul-arrows-wvu-gold {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23eaaa00"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0 256zM297 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L120 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l214.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L409 239c9.4 9.4 9.4 24.6 0 33.9L297 385z"/></svg>') $global-important;
   }
 }
 
 .wvu-ul-arrows-white {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23ffffff"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 256C0 397.4 114.6 512 256 512s256-114.6 256-256S397.4 0 256 0S0 114.6 0 256zM297 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L120 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l214.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L409 239c9.4 9.4 9.4 24.6 0 33.9L297 385z"/></svg>') $global-important;
   }
 }
@@ -49,7 +49,7 @@
 .wvu-ul-chevrons {
   list-style-type: none $global-important;
   padding-left: 1.5em $global-important;
-  li {
+  > li {
     position: relative $global-important;
     &::before {
       @include font-awesome-chevron();
@@ -69,19 +69,19 @@
 }
 
 .wvu-ul-chevrons-wvu-blue {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%23002855"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
   }
 }
 
 .wvu-ul-chevrons-wvu-gold {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%23eaaa00"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
   }
 }
 
 .wvu-ul-chevrons-white {
-  li::before {
+  > li::before {
     content: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="%23ffffff"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>') $global-important;
   }
 }
@@ -90,7 +90,7 @@ ol.wvu-ol-big-numbers {
   counter-reset: listCounter;
   list-style-type: none $global-important;
   padding-left: 0 $global-important;
-  li {
+  > li {
     counter-increment: listCounter;
     margin-bottom: 0 $global-important;
     min-height: 6rem $global-important;
@@ -122,7 +122,7 @@ ol.wvu-ol-small-numbers {
   counter-reset: listCounter;
   list-style-type: none $global-important;
   padding-left: 0 $global-important;
-  li {
+  > li {
     counter-increment: listCounter;
     margin-bottom: 0 $global-important;
     padding-left: 4.5rem $global-important;
@@ -151,7 +151,7 @@ ol.wvu-ol-small-numbers {
 }
 
 ol.wvu-ol-big-numbers-wvu-gold, ol.wvu-ol-small-numbers-wvu-gold {
-  li {
+  > li {
     &::before {
       background-color: $wvu-gold $global-important;
       color: $wvu-blue $global-important;
@@ -160,7 +160,7 @@ ol.wvu-ol-big-numbers-wvu-gold, ol.wvu-ol-small-numbers-wvu-gold {
 }
 
 ol.wvu-ol-big-numbers-wvu-blue, ol.wvu-ol-small-numbers-wvu-blue {
-  li {
+  > li {
     &::before {
       background-color: $wvu-blue $global-important;
       color: $white $global-important;
@@ -169,7 +169,7 @@ ol.wvu-ol-big-numbers-wvu-blue, ol.wvu-ol-small-numbers-wvu-blue {
 }
 
 ol.wvu-ol-big-numbers-white, ol.wvu-ol-small-numbers-white {
-  li {
+  > li {
     &::before {
       background-color: $white $global-important;
       color: $wvu-blue $global-important;
@@ -182,7 +182,7 @@ ol.wvu-ol-progress {
   list-style-type: none $global-important;
   margin-left: 3.25rem $global-important;
   padding-left: 0 $global-important;
-  li {
+  > li {
     border-left: 4px solid $gray-500 $global-important;
     counter-increment: listCounter;
     min-height: 6rem $global-important;
@@ -228,7 +228,7 @@ ol.wvu-ol-progress-small {
   counter-reset: listCounter;
   list-style-type: none $global-important;
   padding-left: 1.5rem $global-important;
-  li {
+  > li {
     border-left: 4px solid $gray-500 $global-important;
     counter-increment: listCounter;
     min-height: 6rem $global-important;
@@ -271,7 +271,7 @@ ol.wvu-ol-progress-small {
 }
 
 ol.wvu-ol-progress-wvu-gold, ol.wvu-ol-progress-small-wvu-gold {
-  li {
+  > li {
     border-left: 4px solid $wvu-gold $global-important;
     &::before {
       background-color: $wvu-gold $global-important;
@@ -288,7 +288,7 @@ ol.wvu-ol-progress-wvu-gold, ol.wvu-ol-progress-small-wvu-gold {
 }
 
 ol.wvu-ol-progress-wvu-blue, ol.wvu-ol-progress-small-wvu-blue {
-  li {
+  > li {
     border-left: 4px solid $wvu-blue $global-important;
     &::before {
       background-color: $wvu-blue $global-important;
@@ -305,7 +305,7 @@ ol.wvu-ol-progress-wvu-blue, ol.wvu-ol-progress-small-wvu-blue {
 }
 
 ol.wvu-ol-progress-white, ol.wvu-ol-progress-small-white {
-  li {
+  > li {
     border-left: 4px solid $white $global-important;
     &::before {
       background-color: $white $global-important;
@@ -332,7 +332,7 @@ ol.wvu-ol-progress-horizontal {
   grid-auto-flow: column $global-important;
   list-style-type: none $global-important;
   padding-left: 0 $global-important;
-  li {
+  > li {
     counter-increment: listCounter;
     flex: 1 1 auto $global-important;
     padding-bottom: 1rem $global-important;
@@ -388,7 +388,7 @@ ol.wvu-ol-progress-horizontal {
 }
 
 ol.wvu-ol-progress-horizontal-wvu-gold {
-  li {
+  > li {
     &::after {
       background-color: $wvu-gold $global-important;
     }
@@ -410,7 +410,7 @@ ol.wvu-ol-progress-horizontal-wvu-gold {
 }
 
 ol.wvu-ol-progress-horizontal-wvu-blue {
-  li {
+  > li {
     &::after {
       background-color: $wvu-blue $global-important;
     }
@@ -432,7 +432,7 @@ ol.wvu-ol-progress-horizontal-wvu-blue {
 }
 
 ol.wvu-ol-progress-horizontal-white {
-  li {
+  > li {
     &::after {
       background-color: $white $global-important;
     }
@@ -458,7 +458,7 @@ ol.wvu-ol-timeline {
   list-style-type: none $global-important;
   margin-left: 3.25rem $global-important;
   padding-left: 0 $global-important;
-  li {
+  > li {
     border-left: 4px solid $gray-500 $global-important;
     border-top: 1px solid $gray-500 $global-important;
     min-height: 6rem $global-important;
@@ -500,7 +500,7 @@ ol.wvu-ol-timeline {
 }
 
 ol.wvu-ol-timeline-wvu-gold {
-  li {
+  > li {
     border-left: 4px solid $wvu-gold $global-important;
     border-top: 1px solid $wvu-gold $global-important;
     &::before {
@@ -514,7 +514,7 @@ ol.wvu-ol-timeline-wvu-gold {
 }
 
 ol.wvu-ol-timeline-wvu-blue {
-  li {
+  > li {
     border-left: 4px solid $wvu-blue $global-important;
     border-top: 1px solid $wvu-blue $global-important;
     &::before {
@@ -528,7 +528,7 @@ ol.wvu-ol-timeline-wvu-blue {
 }
 
 ol.wvu-ol-timeline-white {
-  li {
+  > li {
     border-left: 4px solid $white $global-important;
     border-top: 1px solid $white $global-important;
     &::before {
