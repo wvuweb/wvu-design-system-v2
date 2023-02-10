@@ -79,6 +79,19 @@
             </p>
           {% endif %}
 
+          {% if item.content['wvu-profile-1__major'] != blank or item.content['wvu-profile-1__graduation-year'] != blank %}
+            <p>
+              <span class="text-uppercase">
+                {% if item.content['wvu-profile-1__major'] != blank %}
+                  {{ item.content['wvu-profile-1__major'] }}
+                {% endif %}
+                {% if item.content['wvu-profile-1__graduation-year'] != blank %}
+                  , {{ item.content['wvu-profile-1__graduation-year'] }}
+                {% endif %}
+              </span>
+            </p>
+          {% endif %}
+
           <p class="{{ itemBodyClasses }}">
             {%- if item.data.description != blank %}
               {{ item.data.description }}
