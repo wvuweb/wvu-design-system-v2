@@ -17,6 +17,16 @@
     {% endif %}
   </span>
 {% endif %}
+{% if edit_mode or page.content[regionNames.fax] != blank %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Fax</span>{% endif %}
+  <span class="d-block position-relative ps-2">
+    <span aria-hidden="true" class="fa-solid fa-fax ms-n2 position-absolute" style="top: 4px;"></span>
+    <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="tel:{{ page.content[regionNames.fax] }}">{{ page.content[regionNames.fax] }}</a>
+    {% if edit_mode %}
+      {% editable_region name: regionNames.fax, scope: component.scope, type: "simple" %}
+    {% endif %}
+  </span>
+{% endif %}
 {% if edit_mode or page.content[regionNames.email] != blank %}
   {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Email</span>{% endif %}
   <span class="d-block position-relative ps-2">
