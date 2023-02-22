@@ -24,70 +24,67 @@
 
 {% capture component_content %}
 
-  <div class="{% if component.full_width_or_backpage? %}container {% endif %}wvu-z-index-content">
+  <div class="container wvu-z-index-content">
 
-    <div class="container wvu-z-index-content">
+    {%- if edit_mode or page.content[component.region_names.header] != blank %}
+      <div class="mb-4">
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge badge-primary mb-1">Header</span>{% endif %}
+        {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Featurettes Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      </div>
+    {%- endif %}
 
-      {%- if edit_mode or page.content[component.region_names.header] != blank %}
-        <div class="mb-4">
-          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-          {% if edit_mode %}<span class="d-inline-block badge badge-primary mb-1">Header</span>{% endif %}
-          {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-          {% editable_region_block name: component.region_names.header scope: component.scope %}
-            <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Featurettes Headline</h2>
-            <p class="h3 helvetica-neue-light text-wvu-blue">Subhead goes here.</p>
-          {% endeditable_region_block %}
-        </div>
-      {%- endif %}
+    <div class="row {{ rowClasses }}">
+      {% for i in range %}
+        {%- capture componentPanelBackgroundImageURL %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__background-image-url{% endcapture %}
+        {%- capture componentPanelPhoto %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__photo{% endcapture %}
+        {%- capture componentPanelHeader %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__header{% endcapture %}
+        {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
 
-      <div class="row {{ rowClasses }}">
-        {% for i in range %}
-          {%- capture componentPanelBackgroundImageURL %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__background-image-url{% endcapture %}
-          {%- capture componentPanelPhoto %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__photo{% endcapture %}
-          {%- capture componentPanelHeader %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__header{% endcapture %}
-          {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
+        {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: component.limit component: component %}{% endcapture -%}
+        {% assign itemClasses = itemClasses | strip %}
 
-          {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: component.limit component: component %}{% endcapture -%}
-          {% assign itemClasses = itemClasses | strip %}
-
-          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            <div class="card h-100 shadow">
-              {%- if edit_mode or page.content[componentPanelPhoto] != blank %}
-                <div>
-                  {% editable_region_block name: componentPanelPhoto, scope: component.scope %}
-                    <img class="card-img-top" src="https://via.placeholder.com/960x640" alt="Placeholder">
-                  {% endeditable_region_block %}
-                </div>
-              {%- endif %}
-              <div class="card-body bg-white">
-                {%- if edit_mode or page.content[componentPanelHeader] != blank %}
-                  {% editable_region_block name: componentPanelHeader, scope: component.scope %}
-                    <h3 class="wvu-shout h2 text-wvu-blue wvu-bar mb-2">Panel Header</h3>
-                  {% endeditable_region_block %}
-                {%- endif %}
-                {%- if edit_mode or page.content[componentPanelMain] != blank %}
-                  {% editable_region_block name: componentPanelMain scope: component.scope %}
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Read More</a>
-                  {% endeditable_region_block %}
-                {%- endif %}
+        <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+          <div class="card h-100 shadow">
+            {%- if edit_mode or page.content[componentPanelPhoto] != blank %}
+              <div>
+                {% editable_region_block name: componentPanelPhoto, scope: component.scope %}
+                  <img class="card-img-top" src="https://via.placeholder.com/960x640" alt="Placeholder">
+                {% endeditable_region_block %}
               </div>
+            {%- endif %}
+            <div class="card-body bg-white">
+              {%- if edit_mode or page.content[componentPanelHeader] != blank %}
+                {% editable_region_block name: componentPanelHeader, scope: component.scope %}
+                  <h3 class="wvu-shout h2 text-wvu-blue wvu-bar mb-2">Panel Header</h3>
+                {% endeditable_region_block %}
+              {%- endif %}
+              {%- if edit_mode or page.content[componentPanelMain] != blank %}
+                {% editable_region_block name: componentPanelMain scope: component.scope %}
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <a href="#" class="btn btn-sm btn-primary">Read More</a>
+                {% endeditable_region_block %}
+              {%- endif %}
             </div>
           </div>
-        {% endfor %}
-      </div>
-
-      {%- if edit_mode or page.content[component.region_names.postscript] != blank %}
-        <div class="mt-3">
-          {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-          {% if edit_mode %}<span class="d-inline-block badge badge-primary mb-1">Postscript</span>{% endif %}
-          {% editable_region_block name: component.region_names.postscript scope: component.scope %}
-            <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
-          {% endeditable_region_block %}
         </div>
-      {%- endif %}
-
+      {% endfor %}
     </div>
+
+    {%- if edit_mode or page.content[component.region_names.postscript] != blank %}
+      <div class="mt-3">
+        {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+        {% if edit_mode %}<span class="d-inline-block badge badge-primary mb-1">Postscript</span>{% endif %}
+        {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+          <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+        {% endeditable_region_block %}
+      </div>
+    {%- endif %}
+
   </div>
 {% endcapture %}
 
