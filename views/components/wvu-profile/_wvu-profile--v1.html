@@ -84,7 +84,7 @@
             </div>
           {% endif %}
 
-          {% assign hasContactInfo = page.content[regionNames.phone] | append: page.content[regionNames.fax] | append: page.content[regionNames.email] | append: page.content[regionNames.office] | append: page.content[regionNames.website] %}
+          {% assign hasContactInfo = page.content[rNames.phone] | append: page.content[rNames.fax] | append: page.content[rNames.email] | append: page.content[rNames.office] | append: page.content[rNames.website] %}
 
           <!--
             Contact Info: {{ hasContactInfo }}
