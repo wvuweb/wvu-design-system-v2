@@ -46,31 +46,31 @@
 
                   {% if article.data.thumbnail_url != blank %}
                     {% assign itemThumbnailSrc = article.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
-                    <div class="col-md-3">
+                    <div class="wvu-article__thumb col-md-3">
                       <a href="{{ article.url }}" aria-hidden="true" tabindex="-1">
                         <img src="{{ itemThumbnailSrc }}" alt="{{ article.data.thumbnail_alt }}" />
                       </a>
                     </div>
                   {% elsif itemThumbSRC != blank %}
-                    <div class="col-md-3">
+                    <div class="wvu-article__thumb col-md-3">
                       <a href="{{ article.url }}" aria-hidden="true" tabindex="-1">
                         <img src="{{ itemThumbSRC }}" alt="{{ itemAlt }}" />
                       </a>
                     </div>
                   {% endif %}
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
-                    <strong><h2 itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2></strong>
+                    <h2 class="wvu-article__headline" itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2>
 
-                    <p class="small d-block">
+                    <p class="wvu-article__author small d-block">
                       {% if disableAuthor != '1' %}
                         {% if article.data.article_hide_author != '1' %}
                           {{ article.content['wvu-article-1__author'] | default: article.author.full_name }} |
                         {% endif %}
                       {% endif %}
-                      <time itemprop="datePublished" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+                      <time class="wvu-article__date-published" itemprop="datePublished" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
                     </p> <!-- /.wvu-article__meta -->
 
-                    <div class="mb-2" itemprop="articleBody">
+                    <div class="wvu-article__body" class="mb-2" itemprop="articleBody">
                       {% for i in (1..5) %}
                         {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
                         {% assign articleTeaser = articleTeaser | strip_html | strip %}
@@ -78,9 +78,9 @@
                           {% break %}
                         {% endif %}
                       {% endfor %}
-                      <p>{{ articleTeaser }}</p>
+                      <p class="wvu-article__teaser">{{ articleTeaser }}</p>
                     </div> <!-- /.wvu-article__body -->
-                    <p><a class="btn btn-primary" href="{{ article.url }}">Read More<span class="visually-hidden">: {{ article.name }}</span></a></p>
+                    <p><a class="wvu-article__read-more btn btn-primary" href="{{ article.url }}">Read More<span class="visually-hidden">: {{ article.name }}</span></a></p>
                   </div>
                 </div>
               </div> <!-- /.wvu-article -->
@@ -93,9 +93,15 @@
 
           {% assign pagination = articles | blog_pagination %}
           {% if pagination.total_pages > 1 %}
-            <nav class="btn-group" aria-label="Pagination">
-              <a href="{{ pagination.next_page_url }}" class="btn btn-secondary page-link{% if pagination.is_last_page %} disabled{% endif %}">Older Articles</a>
-              <a href="{{ pagination.prev_page_url }}" class="btn btn-secondary page-link{% if pagination.is_first_page %} disabled{% endif %}">Newer Articles</a>
+            <nav aria-label="Blog Pagination">
+              <ul class="pagination">
+                <li class="page-item{% if pagination.is_last_page %} disabled{% endif %}">
+                  <a href="{{ pagination.next_page_url }}" class="page-link">Older Articles</a>
+                </li>
+                <li class="page-item{% if pagination.is_first_page %} disabled{% endif %}">
+                  <a href="{{ pagination.prev_page_url }}" class="page-link">Newer Articles</a>
+                </li>
+              </ul>
             </nav>
           {% endif %}
         {% else %}
