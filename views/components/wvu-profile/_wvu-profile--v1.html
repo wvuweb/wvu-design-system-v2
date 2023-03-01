@@ -83,9 +83,14 @@
               {% editable_region name: rNames.organization, scope: component.scope, type: "simple" %}
             </div>
           {% endif %}
-          <div class="mt-3 mb-3 p-3 border rounded">
-            {% render "includes/wvu-contact-info/wvu-contact-info--v1" component: component, regionNames: rNames %}
-          </div>
+
+          {% assign hasContactInfo = page.content[regionNames.phone] | append: page.content[regionNames.fax] | append: page.content[regionNames.email] | append: page.content[regionNames.office] | append: page.content[regionNames.website] %}
+
+          {% if edit_mode or hasContactInfo != blank %}
+            <div class="mt-3 mb-3 p-3 border rounded">
+              {% render "includes/wvu-contact-info/wvu-contact-info--v1" component: component, regionNames: rNames %}
+            </div>
+          {% endif %}
         {% endif %}
 
         {% if edit_mode or page.content[rNames.quote] != blank %}
