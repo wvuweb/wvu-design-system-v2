@@ -1,7 +1,7 @@
 {%- liquid
   assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
   assign timelineColorRegionName = component.name | append: '__timeline-color'
-  assign timelineColor = page.content[component.region_names.timelineColorRegionName] | default: component.defaultTimelineColor
+  assign timelineColor = page.content[timelineColorRegionName] | default: component.defaultTimelineColor
 -%}
 
 {% capture component_content %}
