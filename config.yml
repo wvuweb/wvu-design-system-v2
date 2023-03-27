@@ -144,7 +144,7 @@ data:
     stat_sheet: 2
     testimonials_fancy: 2
     timeline: 4
-    twitter_widget: 2
+    twitter_widget: 3
 
 ## Template Config
 # Specify which templates show up by default when creating a page
