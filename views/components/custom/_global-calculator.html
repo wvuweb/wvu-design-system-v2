@@ -15,8 +15,8 @@
 			  <option selected>Choose an organization first.</option>
 			</select>
 		  </form>
-		  <div class="pt-1 bg-wvu-gold">
-			<div class="bg-white shadow p-4">
+		  <div id="cost-card" class="pt-1 bg-wvu-gold shadow d-none">
+			<div class="bg-white p-4">
 			  <p class="wvu-shout text-wvu-blue h6 mb-0" id="calculator-data--org"></p>
 			  <h2 class="text-wvu-blue iowan-old-style-black mt-0" id="calculator-data--program"></h2>
 			  <p class="my-2">
@@ -182,7 +182,7 @@
 		}
 
 		dropdownProgram.onchange = function(event) {
-
+			document.getElementById('cost-card').classList.remove('d-none')
 			var output = {};
 			var selectedProgram = event.target.value;
 			for (var i = 0; i < data.length; i++) {
