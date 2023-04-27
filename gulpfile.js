@@ -16,8 +16,7 @@ const files = {
   jsDevDependenciesSrc: [
     './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     './node_modules/parvus/dist/js/parvus.min.js',
-    './node_modules/@meom/navigation/dist/index.esm.min.js',
-    './node_modules/twitter-fetcher/js/twitterFetcher_min.js'
+    './node_modules/@meom/navigation/dist/index.esm.min.js'
   ],
   jsDevDependenciesDest: './javascripts/vendor'
 };
