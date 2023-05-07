@@ -1,5 +1,5 @@
-{% assign jsonFile = site.files | filter_files: tags: costs %}
-{% assign cards = jsonFile | web_request | parse_json %}
+{% assign jsonData = site.files | filter_files: tags: costs, types: "file", limit: 1 %}
+{% assign cards = jsonData | web_request | parse_json %}
 
 <main id="wvu-main-content" class=" py-5 wvu-backpage-main">
 	<div id="jsonData" class="d-none">{{ cards }}</div>
