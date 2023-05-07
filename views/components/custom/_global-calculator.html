@@ -2,6 +2,7 @@
 {% assign cards = jsonFile | web_request | parse_json %}
 
 <main id="wvu-main-content" class=" py-5 wvu-backpage-main">
+	<div id="jsonData" class="d-none">{{ cards }}</div>
 	<div class="container wvu-z-index-content">
 	  <div class="row">
 		<div class="col-md-8">
@@ -129,7 +130,7 @@
 {% content_for "page_js" %}
 	<script>
 		
-		var data = {{ cards }}
+		var data = document.getElementByID.text
 
 		function addData(value, key) {
 			var output = (value === '') ? '---' : value;
