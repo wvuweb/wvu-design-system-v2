@@ -19,6 +19,7 @@
       {% endif %}
       <item>
         <title>{{ article.name | escape_xml | cdata_wrap }}</title>
+        <thumbnail>{{ thumbnail | escape_xml | cdata_wrap }}</thumbnail>
         <author>{{ article.author.full_name }}</author>
         <link>{{ article.url }}</link>
         <pubDate>{{ article.published_at | date_iso8601 }}</pubDate>
