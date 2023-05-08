@@ -12,9 +12,14 @@
 
     {%- assign articles = blog.articles | filter_articles: limit: 10, year: params.year, month: params.month, day: params.day, tags: params.tags, tags_match: params.tags_match -%}
     {% for article in articles.all %}
+      {% if article.data.thumbnail_url != blank %}
+        {% capture thmbnail %}<img src="{{ article.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' }}" alt="{{ article.data.thumbnail_alt" />{% endcapture %}
+      {% else %}
+        {% assign thumbnail = article.content[rname] | select_html: css_selector: "img", limit: 1 %}
+      {% endif %}
       <item>
         <title>{{ article.name | escape_xml | cdata_wrap }}</title>
-        <thumbnail>{% if article.data.thumbnail_url != blank %}<![CDATA[<img src="" alt="{{ article.data.thumbnail_alt }}" />]]>{% else %}{{ article.content[rname] | select_html: css_selector: "img", limit: 1 | escape_xml | cdata_wrap }}{% endif %}</thumbnail>
+        <thumbnail><![CDATA[{{ thumbnail }}]]></thumbnail>
         <link>{{ article.url }}</link>
         <description>{% if article.data.description != blank %}<![CDATA[<p>{{ article.data.description }}</p>]]>{% else %}{% if article.content[rname] != blank %}{{ article.content[rname] | select_html: css_selector: "p", limit: 1 | escape_xml | cdata_wrap }}{% endif %}</description>
         <pubDate>{{ article.published_at | date_rfc2822 }}</pubDate>
