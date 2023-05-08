@@ -20,9 +20,10 @@
       <item>
         <title>{{ article.name | escape_xml | cdata_wrap }}</title>
         <thumbnail><![CDATA[{{ thumbnail }}]]></thumbnail>
+        <author>{{ article.author.full_name }}</author>
         <link>{{ article.url }}</link>
         <description>{% if article.data.description != blank %}<![CDATA[<p>{{ article.data.description }}</p>]]>{% else %}{% if article.content[rname] != blank %}{{ article.content[rname] | select_html: css_selector: "p", limit: 1 | escape_xml | cdata_wrap }}{% endif %}</description>
-        <pubDate>{{ article.published_at | date_rfc2822 }}</pubDate>
+        <pubDate>{{ article.published_at | date_iso8601 }}</pubDate>
         <guid>{{ article.url }}</guid>
       </item>
     {% endfor %}
