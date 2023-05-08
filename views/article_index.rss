@@ -1,6 +1,25 @@
-{% render "blog_index--v1" %}
+{%- assign rname = rname | default: 'wvu-article-1__main' -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ page.name }} | {{ site.name }} | West Virginia University</title>
+    <atom:link href="{{ page.url | append: '.rss' }}" rel="self" type="application/rss+xml" />
+    <link>{{ page.url }}</link>
+    <description>RSS feed for the {{ site.name }} blog.</description>
+    <language>en-us</language>
+    <pubDate>{{ 'now' | date_rfc2822 }}</pubDate>
+    <lastBuildDate>{{ 'now' | date_rfc2822 }}</lastBuildDate>
 
-{% comment %}
-  <!-- Looking to customize this RSS file? -->
-  <!-- Grab the contents from the code repo in Bitbucket, paste that here & customize away! -->
-{% endcomment %}
+    {%- assign articles = blog.articles | filter_articles: limit: 10, year: params.year, month: params.month, day: params.day, tags: params.tags, tags_match: params.tags_match -%}
+    {% for article in articles.all %}
+      <item>
+        <title>{{ article.name | escape_xml | cdata_wrap }}</title>
+        <thumbnail>{% if article.data.thumbnail_url != blank %}<![CDATA[<img src="" alt="{{ article.data.thumbnail_alt }}" />]]>{% else %}{{ article.content[rname] | select_html: css_selector: "img", limit: 1 | escape_xml | cdata_wrap }}{% endif %}</thumbnail>
+        <link>{{ article.url }}</link>
+        <description>{% if article.data.description != blank %}<![CDATA[<p>{{ article.data.description }}</p>]]>{% else %}{% if article.content[rname] != blank %}{{ article.content[rname] | select_html: css_selector: "p", limit: 1 | escape_xml | cdata_wrap }}{% endif %}</description>
+        <pubDate>{{ article.published_at | date_rfc2822 }}</pubDate>
+        <guid>{{ article.url }}</guid>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>
