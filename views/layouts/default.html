@@ -77,8 +77,8 @@
 
     {{ __TEMPLATE_CONTENT__ }}
 
-    {{ site.data.sitewide_footer_component_1 }}
-    {{ site.data.sitewide_footer_component_2 }}
+    {% assign siteWideComponentA = site.data.sidewide_footer_component_1 %}
+    {{ render siteWideComponentA }}
 
     {% render "components/wvu-footer" scope: 'site' %}
 
