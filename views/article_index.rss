@@ -19,6 +19,7 @@
       {% endif %}
       <item>
         <title>{{ article.name | escape_xml | cdata_wrap }}</title>
+        <thumbnail>{{ thumbnail | escape_xml | cdata_wrap }}</thumbnail>
         <author>{{ article.author.full_name }}</author>
         <link>{{ article.url }}</link>
         <description>{% if article.data.description != blank %}<![CDATA[{{ article.data.description }}]]>{% else %}{% if article.content[rname] != blank %}{{ article.content[rname] | select_html: css_selector: "p", limit: 1 | strip_html | escape_xml | cdata_wrap }}{% endif %}{% endif %}</description>

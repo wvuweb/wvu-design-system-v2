@@ -120,6 +120,8 @@ custom_site_attributes:
   - twitter_url
   - twitter_widget_id
   - youtube_url
+  - sitewide_footer_component_1
+  - sitewide_footer_component_2
 
 ## Component Versions
 # Set the version of each component here when we have new versions
