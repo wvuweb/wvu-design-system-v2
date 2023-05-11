@@ -51,17 +51,19 @@
               {% endeditable_region_block %}
             </div>
           {%- endif %}
-          {%- if edit_mode or page.content[componentPanelHeader] != blank %}
-            {% editable_region_block name: componentPanelHeader, scope: component.scope %}
-              <h3 class="wvu-shout h2 text-wvu-blue wvu-bar mb-2">Panel Header</h3>
-            {% endeditable_region_block %}
-          {%- endif %}
-          {%- if edit_mode or page.content[componentPanelMain] != blank %}
-            {% editable_region_block name: componentPanelMain scope: component.scope %}
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <a href="#" class="btn btn-sm btn-primary">Read More</a>
-            {% endeditable_region_block %}
-          {%- endif %}
+          <div>
+            {%- if edit_mode or page.content[componentPanelHeader] != blank %}
+              {% editable_region_block name: componentPanelHeader, scope: component.scope %}
+                <h3 class="wvu-shout h2 text-wvu-blue wvu-bar mb-2">Panel Header</h3>
+              {% endeditable_region_block %}
+            {%- endif %}
+            {%- if edit_mode or page.content[componentPanelMain] != blank %}
+              {% editable_region_block name: componentPanelMain scope: component.scope %}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="btn btn-sm btn-primary">Read More</a>
+              {% endeditable_region_block %}
+            {%- endif %}
+          </div>
         </div>
       {% endfor %}
     </div>
