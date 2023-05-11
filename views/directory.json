@@ -1,11 +1,4 @@
 {%- assign people = page.children -%}
 {%- assign size = people.size -%}
 {%- assign i = 0 -%}
-[
-    {% for person in people %}
-    {%- assign i = i | plus: 1 -%}
-    {
-        "name": "{{ person.name }}"
-    }{% if i < size %},{% endif %}
-    {% endfor %}
-]
+[ {% for person in people %}{%- assign i = i | plus: 1 -%}{"name": "{{ person.name }}"}{% if i < size %},{% endif %}{% endfor %} ]
