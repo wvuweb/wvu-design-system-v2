@@ -8,5 +8,5 @@ Size: {{ size }}
     "person" : {
         "name": "{{ person.name }}"
     }{% if i < size %},{% endif %}
-    {% endfor %}
+    {%- endfor -%}
 }
