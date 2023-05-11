@@ -2,9 +2,9 @@
 {%- assign i = 0 -%}
 {
     {% for person in people %}
+    {%- assign i = i | plus: 1 -%}
     "person" : {
         "name": "{{ person.name }}"
     }{% if i < people.size %},{% endif %}
-    {%- assign i = i | plus: 1 -%}
     {% endfor %}
 }
