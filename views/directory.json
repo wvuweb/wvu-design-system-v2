@@ -4,7 +4,7 @@
 {
     {% for person in people %}
     {%- assign i = i | plus: 1 -%}
-    "{{ person.name | downcase | replace: " ", "-" }}": {
+    {{ person.name | downcase | replace: " ", "-" | append: '"' | prepend: '"' }}: {
         "name": "{{ person.name }}"
     }{% if i < size %},{% endif %}
     {% endfor %}
