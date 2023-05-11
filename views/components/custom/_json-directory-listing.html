@@ -7,8 +7,8 @@
   }
 {%- enddefine_component %}
 
-{% assign jsonURL = page.content['json-url'] %}
-{% assign entries = jsonURL | web_request | parse_json %}
+{% assign entries = page.content['json-url'] | web_request | parse_json %}
+{% assign people = entries %}
 
 <div class="alert alert-info">
     <h2 class="h3">JSON URL</h2>
@@ -17,8 +17,8 @@
 
 <h2>JSON Directory Example</h2>
 
-Entries: {{ entries }}
+People: {{ people }}
 
-{% for person in entries %}
+{% for person in people %}
     <h2>{{ person.name }}</h2>
 {% endfor %}
