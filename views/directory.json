@@ -1,6 +1,7 @@
 {%- assign people = page.children -%}
 {%- assign size = people.size -%}
 {%- assign i = 0 -%}
+Size: {{ size }}
 {
     {%- for person in people -%}
     {%- assign i = i | plus: 1 -%}
