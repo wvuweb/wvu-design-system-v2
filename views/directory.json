@@ -4,6 +4,6 @@
     {% for person in people %}
     "person" : {
         "name": "{{ person.name }}"
-    }
+    },
     {% endfor %}
 }
