@@ -1,0 +1,22 @@
+<!-- Custom Component: custom-example -->
+{%- define_component component %}
+  {
+    "baseName": "json-directory-listing",
+    "defaultComponentClasses": ""
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% assign jsonURL = page.content[json-url] %}
+{% assign entries = jsonURL | web_request | parse_json %}
+
+<div class="alert alert-info">
+    <h2 class="h3">JSON URL</h2>
+    {% editable_region name: "json-url" type: "simple" %}
+</div>
+
+<h2>JSON Directory Example</h2>
+
+{% for person in entries %}
+    <h2>{{ person.name }}</h2>
+{% endfor %}

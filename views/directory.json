@@ -1,0 +1,9 @@
+{% assign people = page.children %}
+
+{
+    {% for person in people %}
+    "person" : {
+        "name": "{{ person.name }}"
+    }
+    {% endfor %}
+}
