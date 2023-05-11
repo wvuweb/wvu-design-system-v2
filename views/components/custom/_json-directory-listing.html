@@ -7,7 +7,7 @@
   }
 {%- enddefine_component %}
 
-{% assign jsonURL = page.content[json-url] %}
+{% assign jsonURL = page.content['json-url'] %}
 {% assign entries = jsonURL | web_request | parse_json %}
 
 <div class="alert alert-info">
