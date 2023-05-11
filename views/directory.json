@@ -3,10 +3,10 @@
 {%- assign i = 0 -%}
 Size: {{ size }}
 {
-    {%- for person in people -%}
+    {% for person in people %}
     {%- assign i = i | plus: 1 -%}
     "person" : {
         "name": "{{ person.name }}"
-    }{%- if i < size -%},{%- endif -%}
-    {%- endfor -%}
+    }{% if i < size %},{% endif %}
+    {% endfor %}
 }
