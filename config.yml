@@ -74,6 +74,7 @@ custom_data_attributes:
 
 custom_site_attributes:
   - activate_alert_banner
+  - activate_alert_banner_sitewide
   - alert_banner_classes
   - apply_link_1
   - apply_link_1_url
