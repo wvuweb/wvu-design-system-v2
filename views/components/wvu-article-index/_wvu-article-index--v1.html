@@ -61,7 +61,7 @@
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
                     <h2 class="wvu-article__headline" itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2>
 
-                    <p class="wvu-article__author small d-block">
+                    <p class="small d-block">
                       {% if disableAuthor != '1' %}
                         {% if article.data.article_hide_author != '1' %}
                           <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
