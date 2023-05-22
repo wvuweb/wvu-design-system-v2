@@ -84,10 +84,10 @@
             <p class="small d-block">
               {% if item.parent.data.disable_articles_author != '1' and disableAuthor != '1' %}
                 {% if item.data.article_hide_author != '1' %}
-                  {{ item.content['wvu-article-1__author'] | default: item.author.full_name }} |
+                  <span class="wvu-article__author">{{ item.content['wvu-article-1__author'] | default: item.author.full_name }}</span><span class="wvu-article__separator"> | </span>
                 {% endif %}
               {% endif %}
-              <time itemprop="datePublished" datetime="{{ item.published_at | date_iso8601 }}">{{ item.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+              <time class="wvu-article__date-published" itemprop="datePublished" datetime="{{ item.published_at | date_iso8601 }}">{{ item.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
             </p> <!-- /.wvu-article__meta -->
 
             <p class="{{ itemBodyClasses }}">

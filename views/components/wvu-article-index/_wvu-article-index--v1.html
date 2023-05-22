@@ -64,7 +64,7 @@
                     <p class="wvu-article__author small d-block">
                       {% if disableAuthor != '1' %}
                         {% if article.data.article_hide_author != '1' %}
-                          {{ article.content['wvu-article-1__author'] | default: article.author.full_name }} |
+                          <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
                         {% endif %}
                       {% endif %}
                       <time class="wvu-article__date-published" itemprop="datePublished" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
