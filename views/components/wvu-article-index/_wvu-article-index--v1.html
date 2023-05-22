@@ -25,6 +25,15 @@
         {% if articles.size > 0 %}
           {% capture article_list_content %}
             {% for article in articles.all %}
+
+              {% liquid
+                if article.data.alternate_url != blank
+                  assign link_href = article.data.alternate_url
+                else
+                  assign link_href = article.url
+                endif
+              %}
+
               <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="row">
                   {% assign itemThumb = article.content['wvu-article-1__main'] | select_html: css_selector: 'img', limit: 1 %}
@@ -59,7 +68,7 @@
                     </div>
                   {% endif %}
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
-                    <h2 class="wvu-article__headline" itemprop="headline"><a class="newsletter-link" href="{{ article.url }}">{{ article.name }}</a></h2>
+                    <h2 class="wvu-article__headline" itemprop="headline"><a class="newsletter-link" href="{{ link_href }}">{{ article.name }}</a></h2>
 
                     <p class="small d-block">
                       {% if disableAuthor != '1' %}
@@ -80,7 +89,7 @@
                       {% endfor %}
                       <p class="wvu-article__teaser">{{ articleTeaser }}</p>
                     </div> <!-- /.wvu-article__body -->
-                    <p><a class="wvu-article__read-more btn btn-primary" href="{{ article.url }}">Read More<span class="visually-hidden">: {{ article.name }}</span></a></p>
+                    <p><a class="wvu-article__read-more btn btn-primary" href="{{ link_href }}">Read More<span class="visually-hidden">: {{ article.name }}</span></a></p>
                   </div>
                 </div>
               </div> <!-- /.wvu-article -->

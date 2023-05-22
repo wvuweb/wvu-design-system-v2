@@ -79,7 +79,11 @@
               </div>
             {% endif %}
 
-            <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">{{ item.alternate_name | default: item.name }}</{{ htag }}>
+            <{{ htag }} class="card-title" id="{{ htag_id }}">
+              <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                {{ item.alternate_name | default: item.name }}
+              </a>
+            </{{ htag }}>
 
             <p class="small d-block">
               {% if item.parent.data.disable_articles_author != '1' and disableAuthor != '1' %}
