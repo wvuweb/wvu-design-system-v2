@@ -81,7 +81,11 @@
 
                     <div class="wvu-article__body" class="mb-2" itemprop="articleBody">
                       {% for i in (1..5) %}
-                        {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
+                        {%- if aricle.data.description != blank %}
+                          {% assign articleTeaser = article.data.description %}
+                        {% else %}
+                          {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
+                        {% endif %}
                         {% assign articleTeaser = articleTeaser | strip_html | strip %}
                         {% if articleTeaser != blank %}
                           {% break %}
