@@ -80,17 +80,17 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="wvu-article__body" class="mb-2" itemprop="articleBody">
-                      {% for i in (1..5) %}
-                        {%- if aricle.data.description != blank %}
-                          {% assign articleTeaser = article.data.description %}
-                        {% else %}
+                      {% if aricle.data.description != blank %}
+                        {% assign articleTeaser = article.data.description %}
+                      {% else %}
+                        {% for i in (1..5) %}
                           {%- capture articleTeaser %}{{ article.content['wvu-article-1__main'] | select_html: css_selector: 'p', limit: i }}{% endcapture -%}
-                        {% endif %}
-                        {% assign articleTeaser = articleTeaser | strip_html | strip %}
-                        {% if articleTeaser != blank %}
-                          {% break %}
-                        {% endif %}
-                      {% endfor %}
+                          {% assign articleTeaser = articleTeaser | strip_html | strip %}
+                          {% if articleTeaser != blank %}
+                            {% break %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
                       <p class="wvu-article__teaser">{{ articleTeaser }}</p>
                     </div> <!-- /.wvu-article__body -->
                     <p><a class="wvu-article__read-more btn btn-primary" href="{{ link_href }}">Read More<span class="visually-hidden">: {{ article.name }}</span></a></p>
