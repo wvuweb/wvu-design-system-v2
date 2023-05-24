@@ -80,7 +80,7 @@
                     </p> <!-- /.wvu-article__meta -->
 
                     <div class="wvu-article__body" class="mb-2" itemprop="articleBody">
-                      {% if aricle.data.description != blank %}
+                      {% if article.data.description != blank %}
                         {% assign articleTeaser = article.data.description %}
                       {% else %}
                         {% for i in (1..5) %}
