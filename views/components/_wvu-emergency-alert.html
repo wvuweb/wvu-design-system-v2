@@ -1,0 +1,144 @@
+{% comment %}
+  WVU Emergency Alerts
+  ==============================
+  This partial displays alerts from emergency.wvu.edu on your site
+  when there is an active alert. To enable this functionality, add *one*
+  of the following URLs to Manage > Settings > Data > emergency_alert_json_url:
+
+  https://emergency.wvu.edu/emergency.json
+  https://emergency.wvutech.edu/emergency.json
+  https://emergency.potomacstatecollege.edu/emergency.json
+
+  If you do not enter one of the URLs above, it will default to emergency.wvu.edu.
+
+  Test this partial with the following URL via Manage > Settings > Data:
+
+  https://gist.githubusercontent.com/wvuwebgist/3912fe763055eee51a20cf1f72f332d3/raw/bcae6d40d460fcb9ad1505e3f9ac9ee89439bf45/emergency-alert-test.json
+
+  NOTE: We're moving the JS required for this script to run to the bottom of
+  the document via `content_for`. Be sure you have a corresponding `content_for`
+  tag or rename the `content_for.page_js` drop appropriately:
+
+  https://cleanslatecms.wvu.edu/how-to/theme-development/yield-content-to-other-places
+
+  NOTE: If you're using this at Tech or PSC, be sure to change the URL to your
+  appropriate JSON endpoint in Manage > Settings > Data > `emergency_alert_json_url`.
+  You can find your respective API URLs above.
+{% endcomment %}
+
+<section aria-labelledby="aria__emergency-alert-1-label" id="js-emergency-alert" class="d-none alert alert-danger mb-0 py-2 px-0 rounded-0 border-0" role="alert" aria-atomic="true" data-disable-emergency-alert="{{ site.data.emergency_alert_disabled }}" data-emergency-alert-json-feed="{{ site.data.emergency_alert_json_url }}">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6 col-xl-5 mx-auto">
+        <h2 class="wvu-shout text-center" id="aria__emergency-alert-1-label">
+          <span aria-hidden="true" class="fa-solid fa-triangle-exclamation"></span>
+          Active Campus Alert
+        </h2>
+        <div id="js-emergency-alert__events"></div>
+        <p class="mb-0 small">For more information visit: <a id="js-emergency-alert-domain" class="alert-link" href="https://emergency.wvu.edu/">emergency.wvu.edu</a></p>
+      </div>
+      <div class="col-auto">
+        <button type="button" data-bs-dismiss="alert" aria-label="Close Emergency Alerts box" class="border-0 rounded-circle" style="width: 26px; height: 26px; background-color: #f5c5c1;">
+          <span class="fa-sharp fa-solid fa-xmark position-relative" aria-hidden="true" style="color: #83202a;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% content_for "page_js" %}
+  <script>
+    /* global fetch */
+    const wvuEmergencyAlert = (() => {
+      'use strict';
+
+      // Variables:
+      const getEmergencyEl = document.querySelector('#js-emergency-alert');
+      const getEmergencyEvents = getEmergencyEl.querySelector('#js-emergency-alert__events');
+      const getEmergencyDomain = getEmergencyEl.querySelector('#js-emergency-alert-domain');
+      const disableAlert = getEmergencyEl.dataset.disableEmergencyAlert || 'false';
+      const emergencyAlertUrl = getEmergencyEl.dataset.emergencyAlertJsonFeed || 'https://emergency.wvu.edu/emergency.json';
+      if (!emergencyAlertUrl) return;
+
+      // Attempt to get boolean values from Custom Site Data:
+      const isTrue = (value) => {
+        if (typeof (value) === 'string') {
+          value = value.trim().toLowerCase();
+        }
+        switch (value) {
+          case true:
+          case 'true':
+          case 1:
+          case '1':
+          case 'on':
+          case 'On':
+          case 'yes':
+          case 'Yes':
+            return true;
+          default:
+            return false;
+        }
+      };
+
+      // Fetch the data:
+      const fetchData = async (apiUrl) => {
+        try {
+          const response = await fetch(apiUrl);
+          if (!response.ok) {
+            throw new Error(`❌ WVU Emergency Alert Network response was not OK: ${response.status}`);
+          }
+          return await response.json();
+        } catch (error) {
+          console.error(`There was an error fetching the WVU Emergency Alert: ${error.message}`);
+        }
+      };
+
+      // Get root domain from API endpoint URL:
+      // Returns an array with two items:
+      // [URL for display, URL for href]
+      const getDomain = (url) => {
+        const makeUrl = new URL(url);
+        const parts = [];
+        parts.push(makeUrl.host, makeUrl.origin); // 0: no https, 1: full root domain
+        return parts;
+      };
+
+      // Changes URL of "For more information" link to match API endpoint root URL:
+      const renderMoreInfoLink = (url = emergencyAlertUrl) => {
+        const rootUrl = getDomain(url);
+        getEmergencyDomain.innerText = rootUrl[0];
+        getEmergencyDomain.href = rootUrl[1];
+      };
+
+      // Render the HTML:
+      const renderAlert = (events) => {
+        getEmergencyEvents.innerHTML = events.map((item) => {
+          const { event } = item;
+          const html = `
+            <div class="event mt-3">
+              <h3 class="h5 mb-1">
+                ${event.title}
+              </h3>
+              <p class="small">
+                <time datetime="${event.updated_at}">${event.updated_at_formatted}</time>
+              </p>
+              ${event.body}
+            </div>
+          `;
+          return html;
+        }).join('');
+        renderMoreInfoLink();
+        getEmergencyEl.classList.remove('d-none');
+      };
+
+      const init = async () => {
+        if (isTrue(disableAlert)) return; // Don't show alert if it's disabled via Site Data.
+        const apiResponse = await fetchData(emergencyAlertUrl);
+        if (!apiResponse.emergency.status) return; // Stop here if there's not an emergency.
+        renderAlert(apiResponse.emergency.events);
+      };
+
+      init();
+    })();
+  </script>
+{% endcontent_for %}

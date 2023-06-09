@@ -90,6 +90,7 @@ custom_site_attributes:
   - co_brand_subtitle
   - disable_component_styler
   - disable_primary_nav
+  - emergency_alert_disabled
   - emergency_alert_json_url
   - enable_keywords
   - facebook_url

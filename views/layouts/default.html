@@ -47,6 +47,8 @@
     <header aria-label="masthead">
       <a class="visually-hidden-focusable" href="#wvu-main-content">Skip to main content</a>
 
+      {% render "components/wvu-emergency-alert" %}
+
       {% if page.name == "Home" and site.data.activate_alert_banner == '1' and site.data.activate_alert_banner_sitewide != '1' %}
         {% render "components/wvu-alert-banner" %}
       {% endif %}
