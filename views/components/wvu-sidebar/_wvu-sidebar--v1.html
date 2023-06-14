@@ -4,7 +4,7 @@
   assign componentSidebarPostscript = component.name | append: "-sidebar-" | append: "__postscript"
 -%}
 
-<aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start ms-md-auto" aria-label="{{ componentSidebar }}">
+<aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start ms-md-auto {% if component.align == 'right'%}me-md-auto{% else %}ms-md-auto{% endif %}" aria-label="{{ componentSidebar }}">
   <div class="sticky-top pt-3 mt-n3">
     {% if edit_mode or page.content[componentSidebar] != blank %}
       <div class="mb-3">
