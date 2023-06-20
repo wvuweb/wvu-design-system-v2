@@ -1,0 +1,1299 @@
+---
+layout: default
+custom_data_attributes:
+  - alternate_url:
+    title: Alternate URL
+  - backpage_header:
+    type: checkbox
+    title: Remove header
+  - article_has_hero:
+    type: checkbox
+    title: If blog article, show hero
+  - article_index_hide_author:
+    type: checkbox
+    title: Hide blog index author?
+  - breadcrumbs:
+    type: checkbox
+    title: Remove breadcrumbs
+  - description:
+    type: text
+    rows: 6
+    tile: Description
+    required: false
+    maxlength: 255
+  - header_label:
+    type: checkbox
+    title: Show header label
+  - header_subhead:
+    type: checkbox
+    title: Show header subhead
+  - link_text:
+    title: Link text
+  - search_action:
+    title: Search action
+  - content_keys:
+    title: Content Keys for Big Search
+  - enable_keywords:
+    type: checkbox
+    title: Enable keywords?
+  - thumbnail_alt:
+    title: Thumbnail Alt Text
+  - thumbnail_url:
+    title: Thumnbail URL
+  - thumbnail_url_sq:
+    title: Thumnbail URL Square
+  - slot_1:
+    type: select
+    title: Slot 1
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: false
+    default: backpage
+  - slot_1_order:
+    title: Slot Order
+    type: number
+    default: 10
+  - slot_1_custom:
+    title: If custom, name of partial
+  - slot_1_custom_label:
+    title: Custom Label
+  - slot_1_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_1_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_1_is_main:
+    type: checkbox
+    title: Is Main
+    default: 1
+  - slot_1_align:
+    type: select
+    title: Slot 1 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_1_featurettes_id:
+    title: Root Page ID
+  - slot_1_limit:
+    title: Slot 1 Limit
+  - slot_1_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_1_number:
+    type: select
+    title: Slot 1 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_1_loop_by:
+    type: select
+    title: Slot 1 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_1_loop_labels_match:
+    type: select
+    title: Slot 1 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_1_loop_order:
+    type: select
+    title: Slot 1 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_1_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_1_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_1_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_1_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_1_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_1_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_1_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_2:
+    type: select
+    title: Slot 2
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_2_order:
+    title: Slot Order
+    type: number
+    default: 20
+  - slot_2_custom:
+    title: If custom, name of partial
+  - slot_2_custom_label:
+    title: Custom Label
+  - slot_2_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_2_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_2_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_2_align:
+    type: select
+    title: Slot 2 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_2_featurettes_id:
+    title: Root Page ID
+  - slot_2_limit:
+    title: Slot 2 Limit
+  - slot_2_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_2_number:
+    type: select
+    title: Slot 2 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_2_loop_by:
+    type: select
+    title: Slot 2 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_2_loop_labels_match:
+    type: select
+    title: Slot 2 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_2_loop_order:
+    type: select
+    title: Slot 2 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_2_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_2_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_2_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_2_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_2_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_2_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_2_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_3:
+    type: select
+    title: Slot 3
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_3_order:
+    title: Slot Order
+    type: number
+    default: 30
+  - slot_3_custom:
+    title: If custom, name of partial
+  - slot_3_custom_label:
+    title: Custom Label
+  - slot_3_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_3_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_3_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_3_align:
+    type: select
+    title: Slot 3 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_3_featurettes_id:
+    title: Root Page ID
+  - slot_3_limit:
+    title: Slot 3 Limit
+  - slot_3_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_3_number:
+    type: select
+    title: Slot 3 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_3_loop_by:
+    type: select
+    title: Slot 3 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_3_loop_labels_match:
+    type: select
+    title: Slot 3 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_3_loop_order:
+    type: select
+    title: Slot 3 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_3_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_3_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_3_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_3_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_3_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_3_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_3_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_4:
+    type: select
+    title: Slot 4
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_4_order:
+    title: Slot Order
+    type: number
+    default: 40
+  - slot_4_custom:
+    title: If custom, name of partial
+  - slot_4_custom_label:
+    title: Custom Label
+  - slot_4_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_4_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_4_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_4_align:
+    type: select
+    title: Slot 4 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_4_featurettes_id:
+    title: Root Page ID
+  - slot_4_limit:
+    title: Slot 4 Limit
+  - slot_4_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_4_number:
+    type: select
+    title: Slot 4 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_4_loop_by:
+    type: select
+    title: Slot 4 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_4_loop_labels_match:
+    type: select
+    title: Slot 4 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_4_loop_order:
+    type: select
+    title: Slot 4 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_4_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_4_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_4_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_4_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_4_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_4_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_4_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_5:
+    type: select
+    title: Slot 5
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_5_order:
+    title: Slot Order
+    type: number
+    default: 50
+  - slot_5_custom:
+    title: If custom, name of partial
+  - slot_5_custom_label:
+    title: Custom Label
+  - slot_5_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_5_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_5_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_5_align:
+    type: select
+    title: Slot 5 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_5_featurettes_id:
+    title: Root Page ID
+  - slot_5_limit:
+    title: Slot 5 Limit
+  - slot_5_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_5_number:
+    type: select
+    title: Slot 5 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_5_loop_by:
+    type: select
+    title: Slot 5 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_5_loop_labels_match:
+    type: select
+    title: Slot 5 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_5_loop_order:
+    type: select
+    title: Slot 5 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_5_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_5_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_5_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_5_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_5_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_5_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_5_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_6:
+    type: select
+    title: Slot 6
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_6_order:
+    title: Slot Order
+    type: number
+    default: 60
+  - slot_6_custom:
+    title: If custom, name of partial
+  - slot_6_custom_label:
+    title: Custom Label
+  - slot_6_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_6_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_6_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_6_align:
+    type: select
+    title: Slot 6 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_6_featurettes_id:
+    title: Root Page ID
+  - slot_6_limit:
+    title: Slot 6 Limit
+  - slot_6_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_6_number:
+    type: select
+    title: Slot 6 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_6_loop_by:
+    type: select
+    title: Slot 6 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_6_loop_labels_match:
+    type: select
+    title: Slot 6 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_6_loop_order:
+    type: select
+    title: Slot 6 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_6_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_6_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_6_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_6_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_6_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_6_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_6_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_7:
+    type: select
+    title: Slot 7
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_7_order:
+    title: Slot Order
+    type: number
+    default: 70
+  - slot_7_custom:
+    title: If custom, name of partial
+  - slot_7_custom_label:
+    title: Custom Label
+  - slot_7_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_7_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_7_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_7_align:
+    type: select
+    title: Slot 7 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_7_featurettes_id:
+    title: Root Page ID
+  - slot_7_limit:
+    title: Slot 7 Limit
+  - slot_7_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_7_number:
+    type: select
+    title: Slot 7 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_7_loop_by:
+    type: select
+    title: Slot 7 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_7_loop_labels_match:
+    type: select
+    title: Slot 7 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_7_loop_order:
+    type: select
+    title: Slot 7 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_7_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_7_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_7_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_7_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_7_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_7_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_7_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_8:
+    type: select
+    title: Slot 8
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_8_order:
+    title: Slot Order
+    type: number
+    default: 80
+  - slot_8_custom:
+    title: If custom, name of partial
+  - slot_8_custom_label:
+    title: Custom Label
+  - slot_8_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_8_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_8_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_8_align:
+    type: select
+    title: Slot 8 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_8_featurettes_id:
+    title: Root Page ID
+  - slot_8_limit:
+    title: Slot 8 Limit
+  - slot_8_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_8_number:
+    type: select
+    title: Slot 8 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_8_loop_by:
+    type: select
+    title: Slot 8 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_8_loop_labels_match:
+    type: select
+    title: Slot 8 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_8_loop_order:
+    type: select
+    title: Slot 8 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_8_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_8_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_8_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_8_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_8_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_8_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_8_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_9:
+    type: select
+    title: Slot 9
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_9_order:
+    title: Slot Order
+    type: number
+    default: 90
+  - slot_9_custom:
+    title: If custom, name of partial
+  - slot_9_custom_label:
+    title: Custom Label
+  - slot_9_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_9_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_9_is_main:
+    type: checkbox
+    title: Is Main
+  - slot_9_align:
+    type: select
+    title: Slot 9 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_9_featurettes_id:
+    title: Root Page ID
+  - slot_9_limit:
+    title: Slot 9 Limit
+  - slot_9_is_random:
+    type: checkbox
+    title: Randomize?
+  - slot_9_number:
+    type: select
+    title: Slot 9 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_9_loop_by:
+    type: select
+    title: Slot 9 Loop By
+    options:
+      - [Sort Order, sort_order]
+      - [Alternate Name, alternate_name]
+      - [Content Updated At, content_updated_at]
+      - [Created At, none]
+      - [Slug, slug]
+      - [Meta Description, meta_description]
+      - [Name, name]
+      - [Published At, published_at]
+      - [Template Name, template_name]
+      - [Updated At, updated_at]
+    include_blank: false
+    default: sort_order
+  - slot_9_loop_labels_match:
+    type: select
+    title: Slot 9 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_9_loop_order:
+    type: select
+    title: Slot 9 Loop Order
+    options:
+      - [ASC, asc]
+      - [DESC, desc]
+    include_blank: false
+    default: asc
+  - slot_9_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+    include_blank: false
+    default: default
+  - slot_9_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_9_scope:
+    type: checkbox
+    title: Sitewide
+  - slot_9_show_hidden:
+    type: checkbox
+    title: Show if Hidden
+  - slot_9_removeSidebar:
+    type: checkbox
+    title: Remove Backpage Sidebar
+  - slot_9_removeSubnav:
+    type: checkbox
+    title: Remove Backpage Subnav
+  - slot_9_reverseItems:
+    type: checkbox
+    title: Reverse Items
+  - slot_10:
+    type: select
+    title: Slot 10
+    options:
+      - [Audio, audio]
+      - [Embed, embed]
+      - [Full-Width Photo, full-width-photo]
+      - [Photo Set, photo-set]
+      - [Single Photo, single-photo]
+      - [Quote, quote]
+      - [Video, video]
+    include_blank: true
+  - slot_10_order:
+    title: Slot Order
+    type: number
+    default: 100
+  - slot_10_custom:
+    title: If custom, name of partial
+  - slot_10_custom_label:
+    title: Custom Label
+  - slot_10_is_edit_mode_only:
+    type: checkbox
+    title: Edit Mode Only
+  - slot_10_where_to_display:
+    title: Where to display
+    type: select
+    options:
+      - [As Full-Width Block, as_full_width_block]
+    include_blank: false
+    default: as_full_width_block
+  - slot_10_align:
+    type: select
+    title: Slot 10 Alignment
+    options:
+      - [Left, left]
+      - [Middle, middle]
+      - [Right, right]
+    include_blank: false
+    default: left
+  - slot_10_number:
+    type: select
+    title: Slot 10 Instance
+    options:
+      - [1, 1]
+      - [2, 2]
+      - [3, 3]
+      - [4, 4]
+      - [5, 5]
+      - [6, 6]
+      - [7, 7]
+      - [8, 8]
+      - [9, 9]
+      - [10, 10]
+    include_blank: false
+    default: 1
+  - slot_10_loop_labels_match:
+    type: select
+    title: Slot 10 Loop Labels Match
+    options:
+      - [All, all]
+      - [Any, any]
+      - [None, none]
+    include_blank: false
+    default: all
+  - slot_10_primary_heading:
+    type: select
+    title: Primary Heading
+    options:
+      - [Default, default]
+      - [H1, h1]
+      - [H2, h2]
+      - [H3, h3]
+    include_blank: false
+    default: default
+  - slot_10_gallery_loop_by:
+    type: select
+    title: Gallery Loop By
+    options:
+      - [Title, title]
+      - [Filename, filename]
+    default: title
+  - slot_10_scope:
+    type: checkbox
+    title: Sitewide
+---
+
+{% assign slots = page.slots | where: 'where_to_display', 'as_full_width_block' %}
+
+<main class="wvu-main-content">
+  {% render "utilities/wvu-slots-photo-essay" slots: slots %}
+</main>
+

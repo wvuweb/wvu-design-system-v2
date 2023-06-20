@@ -1,0 +1,20 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.photo_set | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "photo-set",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "py-5",
+    "defaultHeaderClasses": "mb-4",
+    "mainTagClasses": "wvu-gallery"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-photo-gallery/wvu-photo-set--v1" component: component %}
+  {% else %}{% render "components/wvu-photo-gallery/wvu-photo-gallery--v1" component: component %}
+{% endcase %}

@@ -1,0 +1,21 @@
+{% comment %}<!-- Slots for context: {{ forContext | default: 'default' }} -->{% endcomment %}
+{% if slots == blank and forContext != blank %}
+  {% assign slots = page.slots | where: 'where_to_display', forContext %}
+{% endif %}
+
+{% for slot in slots %}
+  {% if slot.value != blank and slot.custom == blank %}
+    {% case slot.value %}
+        {% when 'audio' %}{% render "components/wvu-audio" slot: slot %}
+        {% when 'embed' %}{% render "components/wvu-embed" slot: slot %}
+        {% when 'full-width-photo' %}{% render "components/wvu-full-width-photo" slot: slot %}  
+        {% when 'photo-set' %}{% render "components/wvu-photo-set" slot: slot %}
+        {% when 'single-photo' %}{% render "components/wvu-photo-group" slot: slot %}
+        {% when 'quote' %}{% render "components/wvu-quote" slot: slot %}
+        {% when 'video' %}{% render "components/wvu-video" slot: slot %}
+      {% else %}ERROR: Unsupported component '{{ slot.value }}'
+    {% endcase %}
+  {% elsif slot.custom != blank %}
+    {% render "utilities/custom_components" slot: slot %}
+  {% endif %}
+{% endfor %}
