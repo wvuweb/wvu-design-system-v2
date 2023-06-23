@@ -1,0 +1,47 @@
+{% liquid
+  assign defaultComponentClasses = defaultComponentClasses | default: ""
+  assign defaultHeaderClasses = defaultHeaderClasses | default: ""
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "hero",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
+    "mainTagClasses": "py-4 m-4 border-1 border-dark"
+  }
+{%- enddefine_component %}
+
+{%- liquid
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h1'
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="container position-relative">
+    <div class="row py-5{% if page.data.hero_text_alignment == '1' %} justify-content-end{% endif %}">
+      <div class="col col-md-6 {% if component.align == 'right' %}ms-md-auto{% elsif component.align == 'middle' %}mx-md-auto{% endif %}">
+        <div class="{{ heroBodyClasses }}">
+          <div class="wvu-z-index-content">
+            {% comment %}<!-- For the h1, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+            <{{ htag }} id="{{ component.name }}-label" class="{{ component.defaultHeaderClasses }}">
+              {% comment %}<!-- Use the editable region name for th header section of the hero, which you defined above. -->{% endcomment %}
+              {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="It Starts Now" %}
+            </{{ htag }}>
+            {% editable_region_block name: component.region_names.main scope: component.scope %}
+              <p class="fs-4 py-2">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+              <a class="btn btn-outline-dark btn-lg" href="#">Call to Action</a>
+            {% endeditable_region_block %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
