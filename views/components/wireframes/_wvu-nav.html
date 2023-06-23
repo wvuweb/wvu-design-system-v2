@@ -12,10 +12,10 @@
 
     {% if site.data.nav_dropdowns != blank %}
       {% comment %} NOTE: If nav depth is greater than 1, show the dropdown chevron (has_children_class). {% endcomment %}
-      {% site_menu max_depth: "2", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1", has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex", sub_ul_class: "wvu-site-nav__sub-menu small bg-wvu-accent--blue-dark list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
+      {% site_menu max_depth: "2", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1 text-dark", has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex", sub_ul_class: "wvu-site-nav__sub-menu small list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
     {% else %}
       {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown chevron (has_children_class). {% endcomment %}
-      {% site_menu max_depth: "1", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1", active_class: "wvu-site-nav__link--active" %}
+      {% site_menu max_depth: "1", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1 text-dark", active_class: "wvu-site-nav__link--active" %}
     {% endif %}
 
     <div class="d-flex align-items-center">
@@ -24,56 +24,56 @@
           {% if site.data.facebook_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.facebook_url }}">
-                <span class="fab fa-facebook"></span><span class="visually-hidden">Facebook</span>
+                <span class="fab fa-facebook text-dark"></span><span class="visually-hidden">Facebook</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.twitter_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.twitter_url }}">
-                <span class="fab fa-twitter"></span><span class="visually-hidden">Twitter</span>
+                <span class="fab fa-twitter text-dark"></span><span class="visually-hidden">Twitter</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.flickr_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.flickr_url }}">
-                <span class="fab fa-flickr"></span><span class="visually-hidden">Flickr</span>
+                <span class="fab fa-flickr text-dark"></span><span class="visually-hidden">Flickr</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.instagram_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.instagram_url }}">
-                <span class="fab fa-instagram"></span><span class="visually-hidden">Instagram</span>
+                <span class="fab fa-instagram text-dark"></span><span class="visually-hidden">Instagram</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.linkedin_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.linkedin_url }}">
-                <span class="fab fa-linkedin"></span><span class="visually-hidden">LinkedIn</span>
+                <span class="fab fa-linkedin text-dark"></span><span class="visually-hidden">LinkedIn</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.syndication_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.syndication_url }}">
-                <span class="fas fa-rss"></span><span class="visually-hidden">RSS</span>
+                <span class="fas fa-rss text-dark"></span><span class="visually-hidden">RSS</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.youtube_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.youtube_url }}">
-                <span class="fab fa-youtube"></span><span class="visually-hidden">YouTube</span>
+                <span class="fab fa-youtube text-dark"></span><span class="visually-hidden">YouTube</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.github_url != blank %}
             <li class="list-inline-item">
               <a class="mb-0 text-decoration-none" href="{{ site.data.github_url }}">
-                <span class="fab fa-github"></span><span class="visually-hidden">Github</span>
+                <span class="fab fa-github text-dark"></span><span class="visually-hidden">Github</span>
               </a>
             </li>
           {% endif %}
