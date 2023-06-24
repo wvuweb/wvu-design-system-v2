@@ -1,0 +1,35 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.breadcrumbs | default: '1'
+  assign basename = "breadcrumbs"
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "",
+    "mainTagClasses": null
+  }
+{%- enddefine_component %}
+
+{% case page.template_name %}
+  {% when 'profile' or 'student' or 'faculty-member' %}
+    {% assign breadcrumbLinkClasses = 'text-dark' %}
+  {% else %}
+    {% assign breadcrumbLinkClasses = component.defaultComponentClasses %}
+    {% assign breadcrumbPosition = 'position-absolute' %}
+{% endcase %}
+
+{% assign componentClassesBreadcrumbs = "wvu-z-index-content wvu-slash-list ps-0 mb-0 d-inline-block " %}
+
+<section class="wvu-breadcrumbs py-2 w-100 {{ breadcrumbPosition }} wvu-z-index-breadcrumbs" aria-label="Breadcrumb Links">
+  <div class="container position-relative small">
+    <div class="{{ breadcrumbMargin }}">
+      <div class="{{ breadcrumbLinkClasses }} d-inline-block">
+        {% breadcrumbs ul_class: componentClassesBreadcrumbs %}
+      </div>
+    </div>
+  </div>
+</section>
+
