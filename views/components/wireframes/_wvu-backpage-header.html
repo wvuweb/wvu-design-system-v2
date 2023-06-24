@@ -1,7 +1,7 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.backpage_header | default: '1'
   assign basename = "backpage-header"
-  assign defaultComponentClasses = site.data['classes_wvu_backpage_header'] | default: defaultComponentClasses | default: ""
+  assign defaultComponentClasses = site.data['classes_wvu_backpage_header'] | default: defaultComponentClasses | default: "border-bottom border-1 border-dark"
   assign defaultHeaderClasses = site.data['classes_wvu_backpage_header__h1'] | default: defaultHeaderClasses | default: "display-4"
   assign defaultSubheadClasses = site.data['classes_wvu_backpage_header__subhead'] | default: defaultSubheadClasses | default: "fs-4 mb-2 mt-1"
 %}

@@ -33,7 +33,7 @@
         font-weight: normal;
         font-style: normal;
       }
-      body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {font-family: 'PermanentMarker-Regular' !important;}
+      body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .display-1, .display-2, .display-3, .display-4 {font-family: 'PermanentMarker-Regular' !important;}
     </style>
 
     {% link_javascript name: "meom-wvu-site-navigation--custom", type: "module" %}
@@ -92,7 +92,7 @@
             {% render "components/wvu-breadcrumbs" %}
           {% endif %}
           {% if page.data.backpage_header != '1' %}
-            {% render "components/wvu-backpage-header" %}
+            {% render "components/wireframes/wvu-backpage-header" %}
           {% endif %}
       {% endcase %}
     </header>
