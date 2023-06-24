@@ -1,0 +1,142 @@
+{% liquid
+  assign componentVersion = theme.data.component_versions.backpage_header | default: '1'
+  assign basename = "backpage-header"
+  assign defaultComponentClasses = site.data['classes_wvu_backpage_header'] | default: defaultComponentClasses | default: ""
+  assign defaultHeaderClasses = site.data['classes_wvu_backpage_header__h1'] | default: defaultHeaderClasses | default: "display-4"
+  assign defaultSubheadClasses = site.data['classes_wvu_backpage_header__subhead'] | default: defaultSubheadClasses | default: "fs-4 mb-2 mt-1"
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "{{ basename }}",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
+    "defaultSubheadClasses": "{{ defaultSubheadClasses }}",
+    "mainTagClasses": null
+  }
+{%- enddefine_component %}
+
+{%- liquid
+  assign componentHeaderLabel = 'wvu-CNAME__label' | replace: 'CNAME', component.name
+  assign componentSubhead = 'wvu-CNAME__subhead' | replace: 'CNAME', component.name
+  assign subheadClasses = 'wvu-CNAME-subhead-classes' | replace: 'CNAME', component.name
+  assign defaultSubheadClasses = component.defaultSubheadClasses
+  assign headerSubnavRegionName = component.name | append: '__sub-nav'
+  assign pageAncestors = page.ancestors
+
+  assign siteHeaderTag = 'backpage-header-background'
+  assign pageHeaderTag = 'SLUG-header-background' | replace: 'SLUG', page.slug
+  assign pageHeaderFallbackTag = 'SLUG-section-header-background' | replace: 'SLUG', page.slug
+  assign altPageHeaderTag = 'SLUG-CNAME-background' | replace: 'SLUG', page.slug | replace: 'CNAME', component.name
+
+  assign siteHeader = site | first_random_image_tagged_with: label: siteHeaderTag | image_url: size: '1780x580' | css_background_image
+
+  for ancestor in pageAncestors.all reversed
+    if sectionHeader
+      break
+    else
+      assign sectionHeaderTag = 'SLUG-section-header-background' | replace: 'SLUG', ancestor.slug
+      assign sectionHeader = site | first_random_image_tagged_with: label: sectionHeaderTag | image_url: size: '1780x580' | css_background_image
+    endif
+  endfor
+
+  assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderTag | image_url: size: '1780x580' | css_background_image
+
+  if pageHeader == blank
+    assign pageHeader = site | first_random_image_tagged_with: label: pageHeaderFallbackTag | image_url: size: '1780x580' | css_background_image
+  endif
+
+  assign altPageHeader = site | first_random_image_tagged_with: label: altPageHeaderTag | image_url: size: '1780x580' | css_background_image
+
+  assign styleVal = ''
+
+  if siteHeader
+    assign styleVal = siteHeader
+  endif
+
+  if sectionHeader
+    assign styleVal = sectionHeader
+  endif
+
+  if altPageHeader
+    assign styleVal = altPageHeader
+  endif
+
+  if pageHeader
+    assign styleVal = pageHeader
+  endif
+
+  if styleVal != blank
+    assign styleAttr = styleVal | prepend: 'style="' | append: '"'
+  endif
+
+  assign mainTagClasses = page.content[component.region_names.classes] | default: site.data['classes_wvu_backpage_header'] | default: component.defaultComponentClasses
+%}
+
+<div class="py-3 {{ mainTagClasses }}" {{ styleAttr }} >
+  <div class="container position-relative wvu-z-index-content">
+    <div class="row align-items-stretch">
+      <div class="col-12 col-md-8 mt-5">
+        {% if page.data.header_label == '1' %}
+          <p class="helvetica-neue-light mb-1">
+            <span class="text-uppercase">
+              {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Label</span>{% endif %}
+              {% editable_region_block name: componentHeaderLabel %}
+                <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
+              {% endeditable_region_block %}
+            </span>
+          </p>
+        {% endif %}
+        {% comment %}<!-- This is where you can add utility classes that will apply to the heading. -->{% endcomment %}
+        <h1 id="{{ component.name }}-label" class="{{ component.defaultHeaderClasses }}">{{ page.alternate_name | default: page.name }}</h1>
+        {% comment %}<!-- If user has toggled the “Header has subhead?” option in their page data, display a subhead region. -->{% endcomment %}
+        {% if edit_mode or page.content[componentSubhead] != blank %}
+          {% if edit_mode %}
+            <div class="d-inline-block badge bg-primary mb-1 mt-2">Subhead / Title (optional)</div>
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted py-1 px-2 bg-wvu-accent--blue-dark"><strong>Subhead classes</strong> (Default: {{ defaultSubheadClasses }})
+              <div class="mb-1 text-white">{% editable_region name: subheadClasses, type: "simple" %}</div>
+            </small>
+          {% endif %}
+          <div class="{{ defaultSubheadClasses }}">
+            {% editable_region name: componentSubhead, type: "simple" %}
+          </div>
+        {% endif %}
+      </div>
+      {% if page.data.activate_header_subnav == '1' %}
+        <div class="col-md-4 d-flex align-items-center">
+          <div class="wvu-bg-tint p-3 w-100">
+            <div class="wvu-z-index-max">
+              <h2 id="header-select-menu-label" class="text-uppercase text-white h6">In This Section:</h2>
+              <div class="dropdown">
+                <button class="btn btn-white btn-lg bs-dropdown-toggle w-100 text-start d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select Page <span aria-hidden="true" class="fa-solid fa-angle-down float-right"></span>
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                  {% for page in page.children %}
+                    <li><a class="dropdown-item" href="{{ page.url }}">{{ page.alternate_name | default: page.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        {% if edit_mode or page.content[headerSubnavRegionName] != blank %}
+          <div class="col-12 col-md-4 mt-3 mt-md-0">
+            <div class="d-flex align-items-center h-100">
+              <div class="flex-grow-1">
+                {% if edit_mode %}
+                  <div class="alert alert-info p-2 mb-2 small">
+                    <p class="mb-0"><strong class="text-uppercase">Tip:</strong> You can use this region to <a class="text-wvu-blue" href="/shared-cleanslate-partials/theme-development-site-configuration-and-advanced-style-editing/add-a-dropdown-menu-to-a-page-header">insert a dropdown menu</a> and link to sections on this page. You can also generate a dropdown automatically that links to this page’s children by checking the “Activate Header Subnav” option in your page properties.</p>
+                  </div>
+                {% endif %}
+                {% editable_region name: headerSubnavRegionName %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div><!-- End markup -->
