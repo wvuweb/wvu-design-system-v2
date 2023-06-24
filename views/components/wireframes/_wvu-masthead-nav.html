@@ -1,0 +1,142 @@
+<!-- WVU Nav v4 -->
+<nav aria-label="Main navigation" id="nav-primary" class="wvu-site-nav navbar navbar-expand-lg p-0 w-100 border-bottom border-1 border-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button aria-controls="wvu-site-nav__items" aria-expanded="false" type="button" class="wvu-site-nav__toggle js-wvu-site-nav-toggle border-0 position-relative ps-0 pe-2 d-flex d-lg-none align-items-center">
+      <span aria-hidden="true" class="wvu-hamburger js-wvu-hamburger">
+        <span class="wvu-hamburger__line wvu-hamburger__line--top js-wvu-hamburger__line--top"></span>
+        <span class="wvu-hamburger__line wvu-hamburger__line--middle"></span>
+        <span class="wvu-hamburger__line wvu-hamburger__line--bottom js-wvu-hamburger__line--bottom"></span>
+      </span>
+      <span class="js-wvu-site-nav-toggle-text">Open Menu</span>
+    </button>
+
+    {% if site.data.nav_dropdowns != blank %}
+      {% comment %} NOTE: If nav depth is greater than 1, show the dropdown chevron (has_children_class). {% endcomment %}
+      {% site_menu max_depth: "2", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1 text-dark", has_children_class: "wvu-site-nav__menu-item-has-children position-relative d-lg-flex", sub_ul_class: "wvu-site-nav__sub-menu bg-white border border-1 border-dark small list-unstyled ms-2 ms-lg-0", active_class: "wvu-site-nav__link--active" %}
+    {% else %}
+      {% comment %} NOTE: If nav depth is equal to 1, do NOT show the dropdown chevron (has_children_class). {% endcomment %}
+      {% site_menu max_depth: "1", ul_id: "wvu-site-nav__items", ul_class: "wvu-site-nav__items js-wvu-site-nav-items position-static list-unstyled d-lg-flex align-items-lg-center flex-lg-wrap mb-0", link_class: "nav-link px-1 py-2 fw-normal flex-grow-1 text-dark", active_class: "wvu-site-nav__link--active" %}
+    {% endif %}
+
+    <div class="d-flex align-items-center">
+      {% if site.data.facebook_url != blank or site.data.twitter_url != blank or site.data.flickr_url != blank or site.data.instagram_url != blank or site.data.linkedin_url != blank or site.data.syndication_url != blank or site.data.youtube_url != blank or site.data.github_url != blank %}
+        <ul class="list-inline mb-0 me-2">
+          {% if site.data.facebook_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.facebook_url }}">
+                <span class="fab fa-facebook text-dark"></span><span class="visually-hidden">Facebook</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.twitter_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.twitter_url }}">
+                <span class="fab fa-twitter text-dark"></span><span class="visually-hidden">Twitter</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.flickr_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.flickr_url }}">
+                <span class="fab fa-flickr text-dark"></span><span class="visually-hidden">Flickr</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.instagram_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.instagram_url }}">
+                <span class="fab fa-instagram text-dark"></span><span class="visually-hidden">Instagram</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.linkedin_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.linkedin_url }}">
+                <span class="fab fa-linkedin text-dark"></span><span class="visually-hidden">LinkedIn</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.syndication_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.syndication_url }}">
+                <span class="fas fa-rss text-dark"></span><span class="visually-hidden">RSS</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.youtube_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.youtube_url }}">
+                <span class="fab fa-youtube text-dark"></span><span class="visually-hidden">YouTube</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if site.data.github_url != blank %}
+            <li class="list-inline-item">
+              <a class="mb-0 text-decoration-none" href="{{ site.data.github_url }}">
+                <span class="fab fa-github text-dark"></span><span class="visually-hidden">Github</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+      <button class="bg-transparent border-0 py-2 px-2 py-lg-0 px-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#wvuNavSearchCollapse" aria-expanded="false" aria-controls="wvuNavSearchCollapse">
+        <span aria-hidden="true" class="fa-solid fa-magnifying-glass"></span>
+        <span class="visually-hidden">Toggle Search</span>
+      </button>
+    </div>
+  </div> <!-- /.container -->
+</nav>
+<section aria-label="nav-quicklinks" class="collapse multi-collapse" id="wvuNavSearchCollapse">
+  <div class="bg-light py-4 w-100 wvu-bg-vignetting--20">
+    <div class="container wvu-z-index-content">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search" aria-label="Site Search">
+                <label id="search-label" for="q">
+                  <span class="visually-hidden">Search</span>
+                </label>
+                <input id="sort" name="sort" type="hidden" value="date:D:L:d1" />
+                <input id="output" name="output" type="hidden" value="xml_no_dtd" />
+                <input id="ie" name="ie" type="hidden" value="UTF-8" />
+                <input id="oe" name="oe" type="hidden" value="UTF-8" />
+                <input id="proxystylesheet" name="proxystylesheet" type="hidden" value="default_frontend" />
+                <input id="client" name="client" type="hidden" value="default_frontend" />
+                <div class="input-group shadow-sm w-100">
+                  <input id="q" class="form-control p-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary px-3 px-lg-4" name="btnG" type="submit">
+                    <span class="h5 mb-0"><span class="fa-solid fa-magnifying-glass"></span></span>
+                    <span class="visually-hidden">Search</span>
+                  </button>
+                </div>
+                <div class="row pt-1">
+                  <fieldset class="col-12">
+                    <legend class="visually-hidden">
+                      Would you like to search this site specifically, or all WVU websites?
+                    </legend>
+                    <div class="d-inline-block pe-2">
+                      <input id="form-search__sitesearch" type="radio" name="as_sitesearch" value="{{ site.domain }}" checked="checked" />
+                      <label class="d-inline-block" for="form-search__sitesearch">Search this site</label>
+                    </div>
+                    <div class="d-inline-block">
+                      <input id="form-search__wvusearch" type="radio" name="as_sitesearch" value="wvu.edu" />
+                      <label class="d-inline-block" for="form-search__wvusearch">Search WVU</label>
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% if page.content['search-content'] != blank or edit_mode %}
+            <div class="mt-4">
+              <!-- Region: search-content -->
+              {% editable_region name: "search-content" scope: "site" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

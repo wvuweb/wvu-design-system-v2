@@ -70,9 +70,12 @@
         {% render "components/wvu-alert-banner" %}
       {% endif %}
 
-      {% render "components/wvu-masthead" %}
-
-      {% render "components/wireframes/wvu-nav" %}
+      {% if site.data.wireframe_masthead_nav_slim == '1' %}
+        {% render "components/wireframes/wvu-masthead-nav" %}
+      {% else %}
+        {% render "components/wvu-masthead" %}
+        {% render "components/wireframes/wvu-nav" %}
+      {% endif %}
 
       {% if page.data.add_horizontal_subnav == '1' %}
         {% render "components/wvu-horizontal-subnav" %}
