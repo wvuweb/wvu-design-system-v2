@@ -27,7 +27,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
     <style>
-      body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {font-family: 'Caveat', cursive !important;}
+      @font-face {
+        font-family: 'PermanentMarker-Regular';
+        src: url('/public/fonts/PermanentMarker-Regular.woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {font-family: 'PermanentMarker-Regular' !important;}
     </style>
 
     {% link_javascript name: "meom-wvu-site-navigation--custom", type: "module" %}
