@@ -69,6 +69,8 @@ custom_data_attributes:
   - useFACSS:
     type: checkbox
     title: Use FontAwesome CSS
+  - wireframe_masthead_nav_slim:
+    title: Use slim masthead for wireframes
   - youtube_playlist_id:
     title: YouTube Playlist ID
 
