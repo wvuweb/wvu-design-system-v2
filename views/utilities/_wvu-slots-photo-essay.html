@@ -10,7 +10,7 @@
         {% when 'embed' %}{% render "components/wvu-embed" slot: slot %}
         {% when 'full-width-photo' %}{% render "components/wvu-full-width-photo" slot: slot %}  
         {% when 'photo-set' %}{% render "components/wvu-photo-set" slot: slot %}
-        {% when 'single-photo' %}{% render "components/wvu-photo-group" slot: slot %}
+        {% when 'single-photo' %}{% render "components/wvu-single-photo" slot: slot %}
         {% when 'quote' %}{% render "components/wvu-quote" slot: slot %}
         {% when 'video' %}{% render "components/wvu-video" slot: slot %}
       {% else %}ERROR: Unsupported component '{{ slot.value }}'
