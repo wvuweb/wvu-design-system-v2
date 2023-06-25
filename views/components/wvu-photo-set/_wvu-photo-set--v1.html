@@ -8,21 +8,21 @@
         <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
       {% endeditable_region_block %}
     {% endif %}
-    <ul class="parvus-gallery__row list-unstyled mx-xxl-n5">
+    <ul class="parvus-gallery__row list-unstyled mx-xxl-n6">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
       Length: {{ images.length }}
       {% assign numberOfImages = 0 %}
-      <div class="d-flex me-n1">
+      <div class="d-sm-flex me-n1">
         {% for image in images.all %}
-          <li class="parvus-gallery__item me-1">
+          <li class="parvus-gallery__item me-1 mb-1">
             <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w">
               <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
             </a>
           </li>
           {% if numberOfImages == 3 %}
             </div>
-            <div class="d-flex me-n1 mt-1">
+            <div class="d-sm-flex me-n1">
           {% endif %}
           {% assign numberOfImages = numberOfImages | plus: 1 %}
         {% endfor %}
