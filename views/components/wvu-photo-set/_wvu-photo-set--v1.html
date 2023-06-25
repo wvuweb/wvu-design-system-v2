@@ -8,6 +8,13 @@
         <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
       {% endeditable_region_block %}
     {% endif %}
+    <style>
+      @supports (aspect-ratio: 4/3) {
+        .parvus-gallery__thumbnail {
+          aspect-ratio: auto !important;
+        }
+      }
+    </style>
     <ul class="parvus-gallery__row d-flex list-unstyled">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
