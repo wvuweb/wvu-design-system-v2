@@ -15,16 +15,22 @@
         }
       }
     </style>
-    <ul class="parvus-gallery__row d-flex list-unstyled">
+    <ul class="parvus-gallery__row list-unstyled">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
       {% assign numberOfImages = 0 %}
       {% for image in images.all %}
-        <li class="parvus-gallery__item">
-          <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w">
-            <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
-          </a>
-        </li>
+        <div class="d-flex">
+          <li class="parvus-gallery__item">
+            <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w">
+              <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
+            </a>
+          </li>
+          {% if numberOfImages == 4%}
+            </div>
+            <div class="d-flex">
+          {% endif %}
+        </div>
         {% assign numberOfImages = numberOfImages | plus: 1 %}
       {% endfor %}
       {% if edit_mode and numberOfImages == 0 %}
