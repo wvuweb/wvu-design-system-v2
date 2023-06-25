@@ -8,19 +8,10 @@
         <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
       {% endeditable_region_block %}
     {% endif %}
-    <style>
-      @supports (aspect-ratio: 4/3) {
-        .parvus-gallery__thumbnail {
-          aspect-ratio: auto !important;
-        }
-      }
-      .parvus-gallery__item {
-        max-height: fit-content !important;
-      }
-    </style>
     <ul class="parvus-gallery__row list-unstyled">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
-      {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
+      {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
+      Length: {{ images.length }}
       {% assign numberOfImages = 0 %}
       <div class="d-flex me-n1">
         {% for image in images.all %}
@@ -55,3 +46,16 @@
 {% content_for "page_js" %}
   {% link_javascript name: "vendor/parvus/parvus.min, parvus-gallery--custom" %}
 {% endcontent_for %}
+
+{% content_for "header_extras" %}
+  <style>
+    @supports (aspect-ratio: 4/3) {
+      .parvus-gallery__thumbnail {
+        aspect-ratio: auto !important;
+      }
+    }
+    .parvus-gallery__item {
+      max-height: fit-content !important;
+    }
+  </style>
+{% end content_for %}
