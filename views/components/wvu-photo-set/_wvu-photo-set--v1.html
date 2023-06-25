@@ -8,12 +8,12 @@
         <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
       {% endeditable_region_block %}
     {% endif %}
-    <ul class="parvus-gallery__row row list-unstyled">
+    <ul class="parvus-gallery__row d-flex list-unstyled">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', order: component.galleryLoopBy, sort: component.loopOrder %}
       {% assign numberOfImages = 0 %}
       {% for image in images.all %}
-        <li class="parvus-gallery__item col-sm-6 col-md-4 col-lg-3 mb-3">
+        <li class="parvus-gallery__item">
           <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w">
             <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
           </a>
