@@ -313,6 +313,15 @@ $light-theme-colors: (
   "wvu-accent--yellow"
 );
 
+$grid-breakpoints: (
+  xs: $wvu-bp-xs,
+  sm: $wvu-bp-sm,
+  md: $wvu-bp-md,
+  lg: $wvu-bp-lg,
+  xl: $wvu-bp-xl,
+  xxl: $wvu-bp-xxl
+);
+
 $container-max-widths: (
   xl: 1360px
 );
