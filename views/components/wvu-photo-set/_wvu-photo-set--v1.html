@@ -8,7 +8,7 @@
         <p class="h3 helvetica-neue-light mb-4">Subhead goes here.</p>
       {% endeditable_region_block %}
     {% endif %}
-    <ul class="parvus-gallery__row list-unstyled">
+    <ul class="parvus-gallery__row list-unstyled mx-xxl-n5">
       {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
       {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
       Length: {{ images.length }}

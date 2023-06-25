@@ -189,6 +189,7 @@ $wvu-bp-sm: 576px !default;
 $wvu-bp-md: 768px !default;
 $wvu-bp-lg: 992px !default;
 $wvu-bp-xl: 1400px !default;
+$wvu-bp-xxl: 1700px !default;
 
 $wvu-bp-nav: $wvu-bp-lg !default;
 $wvu-bp-nav-max-width: ($wvu-bp-nav - 1) !default;
@@ -198,7 +199,8 @@ $wvu-breakpoints: (
   $wvu-bp-sm,
   $wvu-bp-md,
   $wvu-bp-lg,
-  $wvu-bp-xl
+  $wvu-bp-xl,
+  $wvu-bp-xxl
 );
 
 // Bootstrap Overrides
@@ -311,16 +313,9 @@ $light-theme-colors: (
   "wvu-accent--yellow"
 );
 
-$grid-breakpoints: (
-  xs: $wvu-bp-xs,
-  sm: $wvu-bp-sm,
-  md: $wvu-bp-md,
-  lg: $wvu-bp-lg,
-  xl: $wvu-bp-xl
-);
-
 $container-max-widths: (
-  xl: 1360px
+  xl: 1360px,
+  xxl: 1700px
 );
 
 $spacer: 2rem;
