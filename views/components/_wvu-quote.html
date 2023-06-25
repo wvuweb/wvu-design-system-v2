@@ -1,0 +1,19 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.quote | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "quote",
+    "defaultComponentClasses": "",
+    "defaultHeaderClasses": "mb-4",
+    "mainTagClasses": "my-4"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-quote/wvu-quote--v1" component: component %}
+  {% else %}{% render "components/wvu-quote/wvu-quote--v1" component: component %}
+{% endcase %}
