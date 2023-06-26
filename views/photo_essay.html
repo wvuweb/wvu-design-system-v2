@@ -6,11 +6,11 @@ custom_data_attributes:
   - article_has_hero:
     type: checkbox
     title: Show hero?
-    default: 1
+    default: checked
   - backpage_header:
     type: checkbox
     title: Remove header
-    default: 1
+    default: checked
   - article_has_hero:
     type: checkbox
     title: If blog article, show hero
@@ -197,7 +197,7 @@ custom_data_attributes:
     default: default
 ---
 
-{% if article.data.article_has_hero == '1' %}
+{% if page.data.article_has_hero == '1' %}
   {% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
 {% endif %}
 
