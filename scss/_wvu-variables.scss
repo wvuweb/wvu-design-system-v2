@@ -346,6 +346,10 @@ $aspect-ratios: (
   "21x9": calc(9 / 21 * 100%)
 );
 
+.ratio-3x2 {
+  --bs-aspect-ratio: 66.66667%; // 2x1
+}
+
 $blue: #006FE6;
 $link-color: $blue;
 $blockquote-margin-y: 0;
