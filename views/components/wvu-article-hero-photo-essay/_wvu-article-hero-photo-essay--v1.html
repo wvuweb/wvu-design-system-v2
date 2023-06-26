@@ -31,7 +31,7 @@
               </span>
             {% endif %}
           {% endif %}
-          <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+          <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
         </p>
       </div>
     </div>
