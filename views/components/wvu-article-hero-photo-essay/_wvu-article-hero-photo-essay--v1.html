@@ -26,14 +26,14 @@
         <p class="iowan-old-style">
           {% if article.parent.data.disable_articles_author != '1' %}
             {% if article.data.article_hide_author != '1' %}
-              <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <span class="d-block" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   By <span class="helvetica-neue-bold text-uppercase">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span>
                 </span>
               </span>
             {% endif %}
           {% endif %}
-          <time class="small" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+          <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
         </p>
       </div>
     </div>
