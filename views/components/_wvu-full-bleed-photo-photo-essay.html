@@ -1,0 +1,20 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.full_bleed_photo_photo_essay | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "full-bleed-photo-photo-essay",
+    "needsARIALabel": true,
+    "defaultComponentClasses": null,
+    "defaultCaptionClasses": "text-white",
+    "mainTagClasses": "position-relative mb-4"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-full-bleed-photo-photo-essay/wvu-full-bleed-photo-photo-essay--v1" component: component %}
+  {% else %}{% render "components/wvu-full-bleed-photo-photo-essay/wvu-full-bleed-photo-photo-essay--v1" component: component %}
+{% endcase %}
