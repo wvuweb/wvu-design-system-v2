@@ -1,20 +1,18 @@
 {% capture component_content %}
   <div class="container-fluid position-absolute h-100 wvu-z-index-content">
     <div class="row text-center h-100">
-      <div class="col col-md-6 col-xl-8 mx-md-auto">
+      <div class="col col-md-6 col-xl-8 mx-md-auto align-self-center">
         {% if edit_mode %}
           <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
             <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</pre>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
         {% endif %}
-        <div class="align-self-middle">
-          <h1 id="{{ component.name }}-label" itemprop="headline" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
-            {{ article.name }}
-          </h1>
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Subhead</span>{% endif %}
-          {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
-        </div>
+        <h1 id="{{ component.name }}-label" itemprop="headline" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+          {{ article.name }}
+        </h1>
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Subhead</span>{% endif %}
+        {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
       </div>
       <div class="align-self-end mb-4">
         {% if edit_mode %}
