@@ -3,20 +3,6 @@ layout: default
 custom_data_attributes:
   - alternate_url:
     title: Alternate URL
-  - article_has_hero:
-    type: checkbox
-    title: Show hero?
-    default: checked
-  - backpage_header:
-    type: checkbox
-    title: Remove header
-    default: checked
-  - article_has_hero:
-    type: checkbox
-    title: If blog article, show hero
-  - article_index_hide_author:
-    type: checkbox
-    title: Hide blog index author?
   - breadcrumbs:
     type: checkbox
     title: Remove breadcrumbs
@@ -26,12 +12,6 @@ custom_data_attributes:
     tile: Description
     required: false
     maxlength: 255
-  - header_label:
-    type: checkbox
-    title: Show header label
-  - header_subhead:
-    type: checkbox
-    title: Show header subhead
   - link_text:
     title: Link text
   - search_action:
@@ -197,9 +177,7 @@ custom_data_attributes:
     default: default
 ---
 
-{% if page.data.article_has_hero == '1' %}
-  {% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
-{% endif %}
+{% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
 
 {% assign slots = page.slots | where: 'where_to_display', 'as_full_width_block' %}
 
