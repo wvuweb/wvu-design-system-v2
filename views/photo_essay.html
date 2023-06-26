@@ -3,9 +3,14 @@ layout: default
 custom_data_attributes:
   - alternate_url:
     title: Alternate URL
+  - article_has_hero:
+    type: checkbox
+    title: Show hero?
+    default: 1
   - backpage_header:
     type: checkbox
     title: Remove header
+    default: 1
   - article_has_hero:
     type: checkbox
     title: If blog article, show hero
@@ -191,6 +196,10 @@ custom_data_attributes:
     include_blank: false
     default: default
 ---
+
+{% if article.data.article_has_hero == '1' %}
+  {% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
+{% endif %}
 
 {% assign slots = page.slots | where: 'where_to_display', 'as_full_width_block' %}
 

@@ -1,0 +1,45 @@
+{% capture component_content %}
+  <div class="container position-relative wvu-z-index-content">
+    <div class="row py-5{% if article.data.hero_text_alignment == '1' %} justify-content-end{% endif %}">
+      <div class="col col-md-6 {% if component.align == 'right' %}ml-md-auto{% elsif component.align == 'middle' %}mx-md-auto{% endif %} d-flex flex-column">
+        {% if edit_mode %}
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
+            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</pre>
+            <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          </small>
+        {% endif %}
+        <div class="align-self-middle">
+          <h1 id="{{ component.name }}-label" itemprop="headline" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+            {{ article.name }}
+          </h1>
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Subhead</span>{% endif %}
+          {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
+        </div>
+
+        <div class="align-self-end justify-content-center">
+          {% if edit_mode %}
+            <div class="alert alert-info p-2 my-2 small">
+              <p>If the name of the author is different from the user who is publishing the article, enter their name:</p>
+              {% editable_region name: "wvu-article-1__author" type: 'simple' %}
+            </div>
+          {% endif %}
+          <p class="iowan-old-style">
+            {% if article.parent.data.disable_articles_author != '1' %}
+              {% if article.data.article_hide_author != '1' %}
+                <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                  <span itemprop="name">
+                    By <span class="helvetica-neue-bold text-uppercase">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span>
+                  </span>
+                </span>
+              {% endif %}
+            {% endif %}
+            <time class="small" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

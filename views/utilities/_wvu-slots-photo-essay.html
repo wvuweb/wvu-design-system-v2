@@ -12,6 +12,7 @@
         {% when 'photo-set' %}{% render "components/wvu-photo-set" slot: slot %}
         {% when 'single-photo' %}{% render "components/wvu-single-photo" slot: slot %}
         {% when 'quote' %}{% render "components/wvu-quote" slot: slot %}
+        {% when 'text' %}{% render "components/wvu-text" slot: slot %}
         {% when 'video' %}{% render "components/wvu-video" slot: slot %}
       {% else %}ERROR: Unsupported component '{{ slot.value }}'
     {% endcase %}

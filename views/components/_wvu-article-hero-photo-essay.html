@@ -1,0 +1,21 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.article_hero_photo_essay | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "article-hero-photo-essay",
+    "align": "{{ component.align }}",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "bg-dark text-white wvu-bg-position-center wvu-overflow-hidden wvu-bg-size-cover wvu-bg-tint",
+    "defaultHeaderClasses": "display-2 iowan-old-style",
+    "mainTagClasses": "py-6"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-article-hero/wvu-article-hero--v1" component: component %}
+  {% else %}{% render "components/wvu-article-hero/wvu-article-hero--v1" component: component %}
+{% endcase %}
