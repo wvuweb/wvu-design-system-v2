@@ -7,8 +7,6 @@
   {% if slot.value != blank and slot.custom == blank %}
     {% case slot.value %}
       {% when 'action-hero' %}{% render "components/wireframes/wvu-action-hero" slot: slot %}
-      {% when 'action-hero-banner' %}{% render "components/wireframes/wvu-action-hero-banner" slot: slot %}
-      {% when 'action-hero-card' %}{% render "components/wireframes/wvu-action-hero-card" slot: slot %}
       {% when 'action-hero-split' %}{% render "components/wireframes/wvu-action-hero-split" slot: slot %}
       {% when 'action-hero-two-column' %}{% render "components/wireframes/wvu-action-hero-two-column" slot: slot %}
       {% when 'alternating-grid' %}{% render "components/wireframes/wvu-alternating-grid" slot: slot %}
