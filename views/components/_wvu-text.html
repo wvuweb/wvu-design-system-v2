@@ -1,0 +1,16 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.text | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "full-text"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-text/wvu-text--v1" component: component %}
+  {% else %}{% render "components/wvu-text/wvu-text--v1" component: component %}
+{% endcase %}

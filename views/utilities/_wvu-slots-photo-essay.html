@@ -6,11 +6,9 @@
 {% for slot in slots %}
   {% if slot.value != blank and slot.custom == blank %}
     {% case slot.value %}
-        {% when 'audio' %}{% render "components/wvu-audio" slot: slot %}
-        {% when 'embed' %}{% render "components/wvu-embed" slot: slot %}
-        {% when 'full-bleed-photo-photo-essay' %}{% render "components/wvu-full-bleed-photo-photo-essay" slot: slot %}  
+        {% when 'full-bleed-photo-photo-fixed' %}{% render "components/wvu-full-bleed-photo-fixed" slot: slot %}
+        {% when 'full-bleed-photo-photo-essay' %}{% render "components/wvu-full-bleed-photo-photo-essay" slot: slot %}
         {% when 'photo-set' %}{% render "components/wvu-photo-set" slot: slot %}
-        {% when 'single-photo' %}{% render "components/wvu-single-photo" slot: slot %}
         {% when 'quote' %}{% render "components/wvu-quote" slot: slot %}
         {% when 'text' %}{% render "components/wvu-text" slot: slot %}
         {% when 'video' %}{% render "components/wvu-video" slot: slot %}

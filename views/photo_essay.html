@@ -3,6 +3,12 @@ layout: default
 custom_data_attributes:
   - alternate_url:
     title: Alternate URL
+  - article_has_hero:
+    type: checkbox
+    title: Show hero?
+  - article_hide_author:
+    type: checkbox
+    title: Hide author?
   - breadcrumbs:
     type: checkbox
     title: Remove breadcrumbs
@@ -31,11 +37,9 @@ custom_data_attributes:
     type: select
     title: Slot 1
     options:
-      - [Audio, audio]
-      - [Embed, embed]
       - [Full-Width Photo, full-bleed-photo-photo-essay]
+      - [Full-Width Photo (Fixed), full-bleed-photo-fixed]
       - [Photo Set, photo-set]
-      - [Single Photo, single-photo]
       - [Quote, quote]
       - [Video, video]
     include_blank: false
@@ -105,11 +109,9 @@ custom_data_attributes:
     type: select
     title: Slot 2
     options:
-      - [Audio, audio]
-      - [Embed, embed]
       - [Full-Width Photo, full-bleed-photo-photo-essay]
+      - [Full-Width Photo (Fixed), full-bleed-photo-fixed]
       - [Photo Set, photo-set]
-      - [Single Photo, single-photo]
       - [Quote, quote]
       - [Video, video]
     include_blank: true

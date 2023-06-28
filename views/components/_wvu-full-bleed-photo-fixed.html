@@ -1,0 +1,16 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.full_bleed_photo_fixed | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "full-bleed-photo-fixed"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-full-bleed-photo-fixed/wvu-full-bleed-photo-fixed--v1" component: component %}
+  {% else %}{% render "components/wvu-full-bleed-photo-fixed/wvu-full-bleed-photo-fixed--v1" component: component %}
+{% endcase %}
