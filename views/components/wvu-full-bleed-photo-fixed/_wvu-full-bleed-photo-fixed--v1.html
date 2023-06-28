@@ -1,4 +1,4 @@
-<div class="ratio ratio-16x9 wvu-bg-fixed text-center" {{ component.bgTag | background_styler: format: 'webp' }}>
+<div class="ratio ratio-16x9 wvu-bg-fixed text-center text-white bg-dark" {{ component.bgTag | background_styler: format: 'webp' }}>
   <div class="w-100 h-100 d-flex justify-content-center align-items-center">
     <div class="container py-5">
       <div class="row">
@@ -9,9 +9,9 @@
                 {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
                 {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
                 <h2 id="{{ component.name }}-label" class="h1 helvetica-neue-bold">{% editable_region name: component.region_names.header, type: "simple", scope: component.scope, placeholder="Photo Set Headline" %}</h2>
-                {% editable_region_block name: component.region_names.main, scope: component.scope %}
-                  <p>Type your story here.</p>
-                {% endeditable_region_block %}
+                <p>
+                  {% editable_region name: component.region_names.main, type="simple", scope: component.scope, placeholder="Type your subhead here." %}
+                </p>
               </div>
             </div>
           {% endif %}
