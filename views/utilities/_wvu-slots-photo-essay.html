@@ -6,7 +6,7 @@
 {% for slot in slots %}
   {% if slot.value != blank and slot.custom == blank %}
     {% case slot.value %}
-        {% when 'full-bleed-photo-photo-fixed' %}{% render "components/wvu-full-bleed-photo-fixed" slot: slot %}
+        {% when 'full-bleed-photo-fixed' %}{% render "components/wvu-full-bleed-photo-fixed" slot: slot %}
         {% when 'full-bleed-photo-photo-essay' %}{% render "components/wvu-full-bleed-photo-photo-essay" slot: slot %}
         {% when 'photo-set' %}{% render "components/wvu-photo-set" slot: slot %}
         {% when 'quote' %}{% render "components/wvu-quote" slot: slot %}
