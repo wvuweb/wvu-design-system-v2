@@ -5,7 +5,7 @@
   assign captionClasses = page.content[captionClassesRegion] | default: component.defaultCaptionClasses
 %}
 
-{% capture photoLabel %}{{ page.slug }}-{{ component.name }}{% endcapture %}
+{% capture photoLabel %}{{ page.slug }}-photo-full-{{ component.number }}{% endcapture %}
 {% assign images = site.files | filter_files: tags: photoLabel, tags_match: 'any', types: 'image', isRandom: true %}
 
 <div class="container">
