@@ -22,8 +22,9 @@
               <h1 id="{{ component.name }}-label" itemprop="headline" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
                 {{ article.name }}
               </h1>
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Subhead</span>{% endif %}
               {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
+              <p class="small helvetica-neue-bold">Label for background photo: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
+
             </div>
           </div>
         </div>
