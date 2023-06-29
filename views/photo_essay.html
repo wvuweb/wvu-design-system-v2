@@ -765,7 +765,9 @@ custom_data_attributes:
     default: default
 ---
 
-{% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
+{% if article.data.article_has_hero == '1' %}
+  {% render "components/wvu-article-hero-photo-essay", component: component, article: article %}
+{% endif %}
 
 {% assign slots = page.slots | where: 'where_to_display', 'as_full_width_block' %}
 
