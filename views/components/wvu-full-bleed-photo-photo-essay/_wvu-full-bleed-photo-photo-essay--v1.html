@@ -18,10 +18,10 @@
         {% editable_region_block name: component.region_names.main, scope: component.scope %}
           <p>Type your story here.</p>
         {% endeditable_region_block %}
+        {% if edit_mode %}<p class="small helvetica-neue-bold">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>{% endif %}
       </div>
     </div>
   {% endif %}
-  {% if edit_mode %}<p class="small helvetica-neue-bold">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>{% endif %}
 </div>
 {% for image in images %}
   <div class="position-relative mb-4">
