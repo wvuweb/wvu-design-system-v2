@@ -26,10 +26,18 @@
             <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
           </a>
         </li>
-        {% if numberOfImages == 3 %}
-          </div>
-          <div class="d-sm-flex me-n1">
-        {% endif %}
+        {% case numberOfImages %}
+          {% when 6 or 7 %}
+            {% if numberOfImages == 3 %}
+              </div>
+              <div class="d-sm-flex me-n1">
+            {% endif %}
+          {% when 8 or 9 %}
+          {% if numberOfImages == 4 %}
+            </div>
+            <div class="d-sm-flex me-n1">
+          {% endif %}
+        {% endcase %}
         {% assign numberOfImages = numberOfImages | plus: 1 %}
       {% endfor %}
     </div>
