@@ -23,24 +23,26 @@
   {% endif %}
 </div>
 {% for image in images %}
-  <figure>
-    <img class="w-100" loading="lazy" decoding="async" src="{{ image | image_url: size: '1920x1280', format: 'webp' }}" alt="{{ image.alt_text }}">
-  </figure>
-  {% if edit_mode or page.content[captionRegion] != blank %}
-    <figcaption class="mb-0 p-2 me-2 mb-2 wvu-bg-tint position-absolute" style="bottom: 0; right: 0;">
-      <div class="wvu-z-index-content {{ captionClasses }}">
-        {% if edit_mode %}
-          <div class="small d-block mb-2 p-2 text-left text-muted p-1 bg-wvu-accent--blue-dark">
-            <p class="mb-1">Caption classes:</p>
-            <div class="mb-1 text-white">{% editable_region name: captionClassesRegion, type: "simple", scope: component.scope %}</div>
-            <strong class="text-muted">Default caption classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultCaptionClasses }}</pre>
-          </div>
-        {% endif %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Caption</span>{% endif %}
-        {% editable_region_block name: captionRegion, scope: component.scope %}
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        {% endeditable_region_block %}
-      </div>
-    </figcaption>
-  {% endif %}
+  <div class="position-relative">
+    <figure>
+      <img class="w-100" loading="lazy" decoding="async" src="{{ image | image_url: size: '1920x1280', format: 'webp' }}" alt="{{ image.alt_text }}">
+    </figure>
+    {% if edit_mode or page.content[captionRegion] != blank %}
+      <figcaption class="mb-0 p-2 me-2 mb-2 wvu-bg-tint position-absolute" style="bottom: 0; right: 0;">
+        <div class="wvu-z-index-content {{ captionClasses }}">
+          {% if edit_mode %}
+            <div class="small d-block mb-2 p-2 text-left text-muted p-1 bg-wvu-accent--blue-dark">
+              <p class="mb-1">Caption classes:</p>
+              <div class="mb-1 text-white">{% editable_region name: captionClassesRegion, type: "simple", scope: component.scope %}</div>
+              <strong class="text-muted">Default caption classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultCaptionClasses }}</pre>
+            </div>
+          {% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Caption</span>{% endif %}
+          {% editable_region_block name: captionRegion, scope: component.scope %}
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          {% endeditable_region_block %}
+        </div>
+      </figcaption>
+    {% endif %}
+  </div>
 {% endfor %}
