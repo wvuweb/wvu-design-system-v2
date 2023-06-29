@@ -20,6 +20,10 @@
   background-size: cover $global-important;
 }
 
+.wvu-bg-fixed {
+  background-attachment: fixed $global-important;
+}
+
 // Example usage:
 // <section class="wvu-bg-size-cover">
 //   ...
