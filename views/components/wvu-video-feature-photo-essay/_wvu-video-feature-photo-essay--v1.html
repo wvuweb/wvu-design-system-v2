@@ -2,7 +2,7 @@
 {% assign videoTitleRegionName = component.name | append: '__video-title' %}
 {% assign videoDescriptionRegionName = component.name | append: '__video-description' %}
 
-<div class="container wvu-z-index-content">
+<div class="container wvu-z-index-content mb-4">
   {% if edit_mode or page.content[component.region_names.header] != blank or page.content[component.region_names.header] != blank %}
     <div class="row mb-4">
       <div class="col-lg-7 col-xl-6 mx-lg-auto">
@@ -16,7 +16,7 @@
     </div>
   {% endif %}
   <div class="row">
-    <div class="col-md-8 mx-auto mb-3 mb-md-0">
+    <div class="col-12 mb-3 mb-md-0">
       {% if edit_mode %}
         <div class="alert alert-warning p-3 p-xl-4 text-start">
           <h2>Video</h2>
