@@ -23,8 +23,9 @@
                 {% endif %}
                 {% if edit_mode or page.content[component.region_names.main] != blank %}  
                   <p>
-                  {% editable_region name: component.region_names.main, type="simple", scope: component.scope, placeholder="Type your subhead here." %}
-                </p>
+                    {% editable_region name: component.region_names.main, type="simple", scope: component.scope, placeholder="Type your subhead here." %}
+                  </p>
+                {% endif %}
               </div>
             </div>
           {% endif %}
