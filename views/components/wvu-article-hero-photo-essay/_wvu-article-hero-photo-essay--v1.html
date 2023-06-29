@@ -31,6 +31,10 @@
             {% editable_region name: "wvu-article-1__author" type: 'simple' %}
           </div>
         {% endif %}
+        <p>Author label: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
+        {% if images.length >= 1 %}
+          <img src="{{ authorImage | image_url: size: '200x200', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
+        {% endif %}
         <p class="iowan-old-style">
           {% if article.parent.data.disable_articles_author != '1' %}
             {% if article.data.article_hide_author != '1' %}
@@ -42,9 +46,6 @@
             {% endif %}
           {% endif %}
           <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
-          {% if authorImage != blank %}
-            <img src="{{ authorImage | image_url: size: '200x200', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
-          {% endif %}
         </p>
       </div>
     </div>
