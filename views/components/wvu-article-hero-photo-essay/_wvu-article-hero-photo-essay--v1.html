@@ -23,8 +23,9 @@
                 {{ article.name }}
               </h1>
               {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
-              <p class="small helvetica-neue-bold">Label for background photo: <span class="d-inline-block badge bg-primary mb-1">{{ page.slug }}-{{ component.name }}-background</span></p>
-
+              {% if edit_mode %}
+                <p class="small helvetica-neue-bold">Label for background photo: <span class="d-inline-block badge bg-primary mb-1">{{ page.slug }}-{{ component.name }}-background</span></p>
+              {% endif %}
             </div>
           </div>
         </div>
