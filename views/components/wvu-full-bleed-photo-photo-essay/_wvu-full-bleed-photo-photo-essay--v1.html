@@ -23,7 +23,7 @@
   {% endif %}
 </div>
 {% for image in images %}
-  <div class="position-relative">
+  <div class="position-relative mb-4">
     <figure>
       <img class="w-100" loading="lazy" decoding="async" src="{{ image | image_url: size: '1920x1280', format: 'webp' }}" alt="{{ image.alt_text }}">
     </figure>
