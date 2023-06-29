@@ -1,4 +1,4 @@
-{% assign photoLabel = article.author.full_name | replace: ' ', '-' | downcase %}
+{% assign photoLabel = article.author.full_name | replace: ' ', '-' | downcase | append: '-author' %}
 {% assign images = site.files | filter_files: tags: photoLabel, tags_match: 'any', types: 'image', limit: 1 %}
 {% assign authorImage = images[0] %}
 
