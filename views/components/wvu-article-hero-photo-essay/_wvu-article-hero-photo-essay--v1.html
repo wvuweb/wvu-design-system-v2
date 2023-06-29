@@ -2,7 +2,7 @@
 {% assign images = site.files | filter_files: tags: photoLabel, tags_match: 'any', types: 'image', limit: 1 %}
 {% for image in images %}
   {%- capture authorImage -%}
-    <img src="{{ image | image_url: size: '32x32', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
+    <img class="rounded-circle" src="{{ image | image_url: size: '48x48', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
   {%- endcapture -%}
 {% endfor %}
 
@@ -34,8 +34,8 @@
             <p>If the name of the author is different from the user who is publishing the article, enter their name:</p>
             {% editable_region name: "wvu-article-1__author" type: 'simple' %}
           </div>
+          <p>Author label: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
         {% endif %}
-        <p>Author label: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
         {% if images.length >= 1 %}
           {{ authorImage }}
         {% endif %}
