@@ -1,6 +1,10 @@
 {% assign photoLabel = article.author.full_name | replace: ' ', '-' | downcase | append: '-author' %}
 {% assign images = site.files | filter_files: tags: photoLabel, tags_match: 'any', types: 'image', limit: 1 %}
-{% assign authorImage = images[0] %}
+{% for image in images %}
+  {%- capture authorImage -%}
+    <img src="{{ authorImage | image_url: size: '32x32', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
+  {%- endcapture -%}
+{% endfor %}
 
 {% capture component_content %}
   <div class="w-100 position-absolute h-100 wvu-z-index-content">
@@ -33,7 +37,7 @@
         {% endif %}
         <p>Author label: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
         {% if images.length >= 1 %}
-          <img src="{{ authorImage | image_url: size: '200x200', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
+          {{ authorImage }}
         {% endif %}
         <p class="iowan-old-style">
           {% if article.parent.data.disable_articles_author != '1' %}
