@@ -1,3 +1,7 @@
+{% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
+{% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
+{% assign totalImages = images.length %}
+
 <div class="parvus-gallery__container container wvu-z-index-content mb-4">
   {% if edit_mode or page.content[component.region_names.header] != blank or page.content[component.region_names.header] != blank %}
     <div class="row mb-4">
@@ -15,10 +19,8 @@
       </div>
     </div>
   {% endif %}
+  {% if edit_mode %}<p class="small">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ gallerypage }}</span></p>{% endif %}
   <ul class="parvus-gallery__row list-unstyled mx-xxl-n6">
-    {% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
-    {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
-    {% assign totalImages = images.length %}
     {% assign numberOfImages = 0 %}
     <div class="d-sm-flex me-n1 justify-content-center">
       {% for image in images.all %}
