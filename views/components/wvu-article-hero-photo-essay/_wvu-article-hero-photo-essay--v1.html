@@ -30,11 +30,13 @@
       </div>
       <div class="mb-4">
         {% if edit_mode %}
-          <div class="alert alert-info p-2 my-2 small">
-            <p>If the name of the author is different from the user who is publishing the article, enter their name:</p>
-            {% editable_region name: "wvu-article-1__author" type: 'simple' %}
+          <div class="container">
+            <div class="alert alert-info p-2 my-2 small">
+              <p>If the name of the author is different from the user who is publishing the article, enter their name:</p>
+              {% editable_region name: "wvu-article-1__author" type: 'simple' %}
+            </div>
+            <p class="small">Author label: <span class="d-inline-block badge bg-wvu-neutral--tan mb-1">{{ photoLabel }}</span></p>
           </div>
-          <p>Author label: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
         {% endif %}
         {% if images.length >= 1 %}
           {{ authorImage }}
@@ -57,7 +59,6 @@
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
-{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
 
 {% content_for "header_extras" %}
   <style>
