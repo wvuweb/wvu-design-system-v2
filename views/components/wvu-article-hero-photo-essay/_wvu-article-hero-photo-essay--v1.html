@@ -2,7 +2,7 @@
 {% assign images = site.files | filter_files: tags: photoLabel, tags_match: 'any', types: 'image', limit: 1 %}
 {% for image in images %}
   {%- capture authorImage -%}
-    <img class="rounded-circle" src="{{ image | image_url: size: '48x48', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
+    <img class="rounded-circle mb-1" src="{{ image | image_url: size: '48x48', format: 'webp' }}" alt="Portrait of {{ article.author.full_name }}">
   {%- endcapture -%}
 {% endfor %}
 
