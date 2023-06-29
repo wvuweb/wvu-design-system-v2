@@ -1,4 +1,4 @@
-{% capture gallerypage %}{{ page.slug }}-gallery-{{ component.number }},{{ page.slug }}-{{ component.name }}{% endcapture %}
+{% capture gallerypage %}{{ page.slug }}-{{ component.name }}{% endcapture %}
 {% assign images = site.files | filter_files: tags: gallerypage, tags_match: 'any', types: 'image', limit: 9, order: component.galleryLoopBy, sort: component.loopOrder %}
 {% assign totalImages = images.length %}
 
@@ -16,10 +16,10 @@
             <p>Type your story here.</p>
           {% endeditable_region_block %}
         {% endif %}
+        {% if edit_mode %}<p class="small helvetica-neue">Label for photo set: <span class="d-inline-block badge bg-primary mb-1">{{ gallerypage }}</span></p>{% endif %}
       </div>
     </div>
   {% endif %}
-  {% if edit_mode %}<p class="small">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ gallerypage }}</span></p>{% endif %}
   <ul class="parvus-gallery__row list-unstyled mx-xxl-n6">
     {% assign numberOfImages = 0 %}
     <div class="d-sm-flex me-n1 justify-content-center">
