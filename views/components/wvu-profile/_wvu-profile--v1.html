@@ -62,9 +62,9 @@
 
           {% if edit_mode or page.content[rNames.major] != blank %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Major</span>{% endif %}
-            <span class="d-block position-relative ps-2">
+            <span class="d-block position-relative">
                 {% if page.content[rNames.majorURL] != blank %}
-                  <a class="text-decoration-none text-dark d-block ms-1{% if edit_mode %} d-none{% endif %}" href="{{ page.content[rNames.majorURL] }}">{{ page.content[rNames.major] }} <span aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></span></a>
+                  <a class="text-decoration-none text-dark d-block{% if edit_mode %} d-none{% endif %}" href="{{ page.content[rNames.majorURL] }}">{{ page.content[rNames.major] }} <span aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></span></a>
                 {% else %}
                   <span class="d-block ms-1{% if edit_mode %} d-none{% endif %}">{{ page.content[rNames.major] }}</span>
                 {% endif %}
