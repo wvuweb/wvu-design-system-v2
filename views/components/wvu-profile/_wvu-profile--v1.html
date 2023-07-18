@@ -4,6 +4,7 @@
     "main": "wvu-{{ component.name }}__main",
     "profileTitle": "wvu-{{ component.name }}__title",
     "major": "wvu-{{ component.name }}__major",
+    "majorURL": "wvu-{{ component.name }}__major-url",
     "graduationYear": "wvu-{{ component.name }}__graduation-year",
     "organization": "wvu-{{ component.name }}__organization",
     "subhead": "wvu-{{ component.name }}__subhead",
@@ -58,12 +59,28 @@
         {% endif %}
 
         {% if page.template_name == 'student' %}
+
           {% if edit_mode or page.content[rNames.major] != blank %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Major</span>{% endif %}
-            <div class="helvetica-neue-light fs-5">
-              {% editable_region name: rNames.major, scope: component.scope, type: "simple" %}
-            </div>
+            <span class="d-block position-relative ps-2">
+                {% if page.content[rNames.majorURL] != blank %}
+                  <a class="text-decoration-none text-dark d-block ms-1{% if edit_mode %} d-none{% endif %}" href="{{ page.content[rNames.majorURL] }}">{{ page.content[rNames.major] }} <span aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></span></a>
+                {% else %}
+                  <span class="d-block ms-1{% if edit_mode %} d-none{% endif %}">{{ page.content[rNames.major] }}</span>
+                {% endif %}
+              {% if edit_mode %}
+                {% editable_region name: rNames.major, scope: component.scope, type: "simple" %}
+              {% endif %}
+            </span>
           {% endif %}
+
+          {% if edit_mode %}
+            <span class="d-block alert alert-info p-2 my-1">
+              <h2 class="h6">Major URL</h2>
+              {% editable_region name: rNames.majorURL, scope: component.scope, type: "simple" %}
+            </span>
+          {% endif %}
+
           {% if edit_mode or page.content[rNames.graduationYear] != blank %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Graduation Year</span>{% endif %}
             <div class="helvetica-neue-light">
