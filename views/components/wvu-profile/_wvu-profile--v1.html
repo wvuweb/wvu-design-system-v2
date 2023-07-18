@@ -66,7 +66,7 @@
                 {% if page.content[rNames.majorURL] != blank %}
                   <a class="text-decoration-none text-dark d-block{% if edit_mode %} d-none{% endif %}" href="{{ page.content[rNames.majorURL] }}">{{ page.content[rNames.major] }} <span aria-hidden="true" class="fa-solid fa-arrow-up-right-from-square"></span></a>
                 {% else %}
-                  <span class="d-block ms-1{% if edit_mode %} d-none{% endif %}">{{ page.content[rNames.major] }}</span>
+                  <span class="d-block{% if edit_mode %} d-none{% endif %}">{{ page.content[rNames.major] }}</span>
                 {% endif %}
               {% if edit_mode %}
                 {% editable_region name: rNames.major, scope: component.scope, type: "simple" %}
