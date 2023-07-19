@@ -8,6 +8,6 @@ custom_data_attributes:
 ---
 
 <div class="container py-5">
-  {% render "components/custom/thing-that-gets-data" apiString: page.data.api_string %}
+  {% render "components/custom/thing-that-gets-data" apiString: page.data.api_string, myKey: page.data.key %}
 </div>
 
