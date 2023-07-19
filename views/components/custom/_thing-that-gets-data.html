@@ -1,6 +1,9 @@
 {% assign itemAPIEndpoint = apiString %}
 {% assign items = itemAPIEndpoint | web_request | parse_json %}
+{% assign myKey = page.data.key %}
 
 {% for item in items %}
   <h3 class="h5">{{ item.title }}</h3>
+  <!--- the thing below is just a test. -->
+  <p>{{ myKey }}: {{ item[myKey] }}</p>
 {% endfor %}
