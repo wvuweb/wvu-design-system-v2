@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+{% assign items = page.children %}
+
+{% for item in items %}
+  <h2>{{ item.title }}</h2>
+  {% render "components/custom/thing-that-gets-data" apiString: item.data.api_string %}
+{% endfor %}

@@ -1,0 +1,6 @@
+{% assign itemAPIEndpoint = apiString %}
+{% assign items = itemAPIEndpoint | web_request | parse_json %}
+
+{% for item in items %}
+  <h2>{{ item.title }}</h2>
+{% endfor %}
