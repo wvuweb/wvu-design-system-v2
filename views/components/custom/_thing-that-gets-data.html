@@ -1,6 +1,6 @@
 {% assign itemAPIEndpoint = apiString %}
 {% assign items = itemAPIEndpoint | web_request | parse_json %}
-{% assign myKey = key %}
+{% assign myKey = myKey %}
 
 {% for item in items %}
   <h3 class="h5">{{ item.title }}</h3>
