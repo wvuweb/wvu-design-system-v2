@@ -6,7 +6,7 @@ layout: default
 
 <div class="container py-5">
   {% for item in items %}
-    <h2 class="wvu-shout text-wvu-blue">{{ item.name }}</h2>
+    <h2 class="wvu-shout text-wvu-blue mt-4">{{ item.name }}</h2>
     {% render "components/custom/thing-that-gets-data" apiString: item.data.api_string %}
   {% endfor %}
 </div>

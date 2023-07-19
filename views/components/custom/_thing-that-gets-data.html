@@ -2,5 +2,5 @@
 {% assign items = itemAPIEndpoint | web_request | parse_json %}
 
 {% for item in items %}
-  <h3>{{ item.title }}</h3>
+  <h3 class="h5">{{ item.title }}</h3>
 {% endfor %}
