@@ -8,6 +8,5 @@
 /* global Parvus */
 
 const prvs = new Parvus({
-  selector: '.js-parvus-lightbox',
-  fileTypes: /.*/i // NOTE: Required for URLs that don't end in an image file type extension.
+  selector: '.js-parvus-lightbox'
 });

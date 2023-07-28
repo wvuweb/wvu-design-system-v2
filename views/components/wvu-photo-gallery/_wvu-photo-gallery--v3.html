@@ -14,7 +14,7 @@
       {% assign numberOfImages = 0 %}
       {% for image in images.all %}
         <li class="parvus-gallery__item col-sm-6 col-md-4 col-lg-3 mb-3">
-          <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w">
+          <a class="js-parvus-lightbox parvus-gallery__link" data-group="gallery" data-caption="{{ image.description }}" href="{{ image | image_url: size: '960x640', format: 'webp' }}" data-srcset="{{ image | image_url: size: '1920x1280', format: 'webp' }} 1920w, {{ image | image_url: size: '1366x911', format: 'webp' }} 1366w, {{ image | image_url: size: '960x640', format: 'webp' }} 960w, {{ image | image_url: size: '450x300', format: 'webp' }} 450w" data-sizes="(max-width: 75em) 100vw, 85em">
             <img class="parvus-gallery__thumbnail" loading="lazy" decoding="async" src="{{ image | image_url: size: '960x640', format: 'webp' }}" alt="{{ image.alt_text }}" />
           </a>
         </li>

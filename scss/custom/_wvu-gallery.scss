@@ -4,11 +4,12 @@
 // https://github.com/deoostfrees/Parvus
 
 
-// 1) Parvus v2.1.1 vendor styles:
+// 1) Parvus v2.4.0 vendor styles:
 //--------------------------------------------------
+
 :root {
   --parvus-transition-duration: 300ms;
-  --parvus-transition-timing-function: cubic-bezier(0.4, 0, 0.22, 1);
+  --parvus-transition-timing-function: cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
   --parvus-overlay-color: hsl(23, 40%, 96%);
   --parvus-overlay-text: hsl(228, 24%, 23%);
@@ -19,8 +20,18 @@
   --parvus-button-hover-color: hsl(229, 24%, 33%);
   --parvus-button-hover-text: hsl(0, 0%, 100%);
 
+  --parvus-caption-background-color: transparent;
+  --parvus-caption-color: hsl(228, 24%, 23%);
+
+  --parvus-error-loading-error-background-color: hsl(0, 0%, 100%);
+  --parvus-image-loading-error-color: hsl(228, 24%, 23%);
+
   --parvus-loader-background-color: hsl(23, 40%, 96%);
   --parvus-loader-color: hsl(228, 24%, 23%);
+}
+
+.parvus-is-open {
+  touch-action: none;
 }
 
 /**
@@ -39,23 +50,10 @@
     color: var(--parvus-button-text);
     display: flex;
     justify-content: center;
-    line-height: 1;
     padding: 0.5rem;
     position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
-
-
-    & svg {
-      fill: none;
-      height: 1.5rem;
-      pointer-events: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 1.5;
-      stroke: currentColor;
-      width: 1.5rem;
-    }
+    inset-inline-end: 0.5rem;
+    inset-block-start: 0.5rem;
   }
 
   & img {
@@ -69,21 +67,13 @@
  */
 
 .parvus {
-  align-items: center;
-  bottom: 0;
   box-sizing: border-box;
   contain: strict;
-  display: flex;
-  font: normal normal 400 1.125rem/1.7 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  justify-content: center;
-  left: 0;
-  line-height: 1.667;
+  inset: 0;
   overflow: hidden;
+  overscroll-behavior: contain;
   position: fixed;
-  right: 0;
-  top: 0;
   z-index: 1337;
-
 
   & *,
   & *::before,
@@ -97,20 +87,13 @@
 
   &__overlay {
     background-color: var(--parvus-overlay-color);
-    bottom: 0;
-    left: 0;
+    inset: 0;
     position: absolute;
-    right: 0;
-    top: 0;
   }
 
   &__slider {
-    bottom: 0;
-    left: 0;
+    inset: 0;
     position: absolute;
-    right: 0;
-    top: 0;
-
 
     &[aria-hidden='true'] {
       display: none;
@@ -120,6 +103,7 @@
 
       &--animate:not(&--is-dragging) {
         transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+        will-change: transform;
       }
     }
 
@@ -133,67 +117,63 @@
   }
 
   &__slide {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    display: grid;
+    block-size: 100%;
     justify-content: center;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 3.75rem;
-    width: 100%;
+    padding-block-end: 1rem;
+    padding-block-start: 3.75rem;
+    padding-inline-end: 1rem;
+    padding-inline-start: 1rem;
+    place-items: center;
+    inline-size: 100%;
 
-    @media screen and (prefers-reduced-motion: no-preference) {
-      transition: visibility var(--parvus-transition-duration) var(--parvus-transition-timing-function);
-    }
-
-    &:not(&--is-active) {
-      visibility: hidden;
-    }
-
-    & .parvus__caption {
-      color: var(--parvus-overlay-text);
-      padding-top: 0.5rem;
-      text-align: left;
-      will-change: transform, opacity;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
-      }
-    }
 
     & img {
       display: block;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
+      block-size: auto;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
       transform-origin: left top;
-      width: auto;
+      inline-size: auto;
     }
+  }
+
+  &__content {
+
+
+
+    &--error {
+      background-color: var(--parvus-error-loading-error-background-color);
+      color: var(--parvus-error-loading-error-color);
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+    }
+  }
+
+  &__caption {
+    background-color: var(--parvus-caption-background-color);
+    color: var(--parvus-caption-color);
+    padding-block-start: 0.5rem;
+    text-align: start;
   }
 
   &__loader {
     display: inline-block;
-    height: 6.25rem;
-    left: 50%;
+    block-size: 6.25rem;
+    inset-inline-start: 50%;
     position: absolute;
-    top: 50%;
+    inset-block-start: 50%;
     transform: translate(-50%, -50%);
-    width: 6.25rem;
-
+    inline-size: 6.25rem;
 
     &::before {
       animation: spin 1s infinite;
       border-radius: 100%;
       border: 0.25rem solid var(--parvus-loader-background-color);
       border-top-color: var(--parvus-loader-color);
-      bottom: 0;
       content: '';
-      left: 0;
+      inset: 0;
       position: absolute;
-      right: 0;
-      top: 0;
       z-index: 1;
     }
   }
@@ -202,10 +182,15 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    left: 1rem;
+    inset-inline-start: 1rem;
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    inset-inline-end: 1rem;
+    inset-block-start: 1rem;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 0.5rem;
   }
 
   &__btn {
@@ -224,46 +209,31 @@
     will-change: transform, opacity;
     z-index: 7;
 
-    @media screen and (prefers-reduced-motion: no-preference) {
-      transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
-    }
-
     &:hover {
       background-color: var(--parvus-button-hover-color);
       color: var(--parvus-button-hover-text);
     }
 
 
-    &--close {
-
-    }
-
     &--previous {
-      left: 1rem;
+      inset-inline-start: 0;
       position: absolute;
-      top: calc(50% + 1.375rem);// 50% + (paddingTop / 2 - paddingBottom / 2) from .parvus__slide
+      inset-block-start: calc(50vh - 1rem); // 50vh - paddingTop from .parvus__slide
       transform: translateY(-50%);
     }
 
     &--next {
       position: absolute;
-      right: 1rem;
-      top: calc(50% + 1.375rem);// 50% + (paddingTop / 2 - paddingBottom / 2) from .parvus__slide
+      inset-inline-end: 0;
+      inset-block-start: calc(50vh - 1rem); // 50vh - paddingTop from .parvus__slide
       transform: translateY(-50%);
     }
 
     & svg {
-      fill: none;
-      height: 2rem;
       pointer-events: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 1;
-      stroke: currentColor;
-      width: 2rem;
     }
 
-    &[disabled] {
+    &[aria-hidden='true'] {
       display: none;
     }
   }
@@ -272,12 +242,6 @@
     position: relative;
     z-index: 7;
 
-
-    @media screen and (prefers-reduced-motion: no-preference) {
-      transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
-    }
-
-
     &[aria-hidden='true'] {
       display: none;
     }
@@ -285,11 +249,21 @@
 
   @media screen and (prefers-reduced-motion: no-preference) {
 
+    &__overlay,
+    &__counter,
+    &__btn--close,
+    &__btn--previous,
+    &__btn--next,
+    &__caption {
+      transition: transform var(--parvus-transition-duration) var(--parvus-transition-timing-function), opacity var(--parvus-transition-duration) var(--parvus-transition-timing-function);
+      will-change: transform, opacity;
+    }
+
     &--is-opening,
     &--is-closing {
 
 
-
+      & .parvus__overlay,
       & .parvus__counter,
       & .parvus__btn--close,
       & .parvus__btn--previous,
