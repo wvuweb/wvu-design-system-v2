@@ -1,6 +1,6 @@
 {
   "name": "wvu-design-system-v2",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "WVU Design System v2",
   "main": "gulpfile.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "@meom/navigation": "1.0.5",
     "bootstrap": "~5.1",
-    "parvus": "^2.1.1"
+    "parvus": "~2.4.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
