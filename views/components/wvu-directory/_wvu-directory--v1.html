@@ -80,6 +80,7 @@
                   <span aria-hidden="true" class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
                 {%- endif %}
               </td>
+              <td>Button Text: {{ itemReadMoreButtonText }}</td>
               {% if itemReadMoreButtonText != 'none' %}
                 {% if item.data.link_text != blank %}
                   {% assign link_text = item.data.link_text %}
