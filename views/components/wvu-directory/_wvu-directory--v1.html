@@ -79,6 +79,11 @@
                 {% else %}
                   {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                 {% endif %}
+                {% if item.data.alternate_url != blank %}
+                  {% assign link_href = item.data.alternate_url %}
+                {% else %}
+                  {% assign link_href = item.url %}
+                {% endif %}
                 <td class="align-middle">
                   <span aria-hidden="true" class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
                 </td>
