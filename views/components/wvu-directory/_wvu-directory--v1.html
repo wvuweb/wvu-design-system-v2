@@ -37,6 +37,15 @@
         <caption class="caption-top visually-hidden">Directory</caption>
         <tbody class="border-top-0">
           {% for item in items.all %}
+
+            {% liquid
+              if item.data.alternate_url != blank
+                assign link_href = item.data.alternate_url
+              else
+                assign link_href = item.url
+              endif
+            %}
+
             <tr class="border-bottom border-light">
               <th scope="row" class="py-2 w-25">
                 <div class="row">
@@ -79,7 +88,7 @@
                 {% else %}
                   {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                 {% endif %}
-                
+
                 <td class="align-middle">
                   <span aria-hidden="true" class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
                 </td>
