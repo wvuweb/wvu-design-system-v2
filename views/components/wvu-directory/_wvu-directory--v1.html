@@ -37,6 +37,13 @@
         <caption class="caption-top visually-hidden">Directory</caption>
         <tbody class="border-top-0">
           {% for item in items.all %}
+            {% liquid
+              if item.data.alternate_url != blank
+                assign link_href = item.data.alternate_url
+              else
+                assign link_href = item.url
+              endif
+            %}
             <tr class="border-bottom border-light">
               <th scope="row" class="py-2 w-25">
                 <div class="row">
