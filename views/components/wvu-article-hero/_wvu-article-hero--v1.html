@@ -4,7 +4,7 @@
       <div class="col col-md-6 {% if component.align == 'right' %}ml-md-auto{% elsif component.align == 'middle' %}mx-md-auto{% endif %}">
         {% if edit_mode %}
           <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
-            <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</pre>
+            <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
         {% endif %}

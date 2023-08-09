@@ -9,7 +9,7 @@
       {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
       {% if edit_mode %}
         <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
-          <pre class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</pre>
+          <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
           <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
         </small>
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
@@ -48,7 +48,7 @@
     <div class="mt-4">
       {% if edit_mode %}
         <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Twitter link classes:
-          <pre class="mb-0 text-white">{% editable_region name: twitterLinkClassesEditableRegionName, type: "simple", scope: component.scope %}</pre>
+          <div class="mb-0 text-white">{% editable_region name: twitterLinkClassesEditableRegionName, type: "simple", scope: component.scope %}</div>
           <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ twitterLinkClasses }}</pre>
         </small>
       {% endif %}
