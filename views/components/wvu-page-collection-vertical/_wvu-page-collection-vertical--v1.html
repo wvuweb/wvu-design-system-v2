@@ -10,7 +10,7 @@
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random
   assign itemCount = 0
 
   assign sortedItems = items | sort: component.loopBy
@@ -49,7 +49,7 @@
 
       {% capture loopContent %}
 
-        {% for item in sortedItems %}
+        {% for item in sortedItems limit: component.limit %}
 
           {% liquid
             if item.data.alternate_url != blank
