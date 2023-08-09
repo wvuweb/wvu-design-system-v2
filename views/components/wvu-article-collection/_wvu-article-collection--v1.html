@@ -16,6 +16,10 @@
 
   assign componentLoopBy = component.loopBy | default: "published_at"
 
+  if componentLoopBy = "sort_order"
+    assign componentLoopBy = "published_at"
+  endif
+
   case componentLoopBy
     when "published_at" or "created_at" or "updated_at"
       assign sortedItems = items | sort: componentLoopBy | reverse
@@ -27,7 +31,9 @@
     assign sortedItems = sortedItems | reverse
   endif
 
-  assign sortedItems = sortedItems | limit: component.limit
+  assign componentLimit = component.limit | default: 4
+
+  assign sortedItems = sortedItems | limit: componentLimit
 
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
