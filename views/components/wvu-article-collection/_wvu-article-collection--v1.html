@@ -31,6 +31,8 @@
     assign sortedItems = sortedItems | reverse
   endif
 
+  assign componentLimit = component.limit | default: 3
+
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
 
@@ -45,7 +47,7 @@
   endfor
 
   if items > component.limit
-    assign itemCount = component.limit | times: 1
+    assign itemCount = componentLimit | times: 1
   endif
 -%}
 
@@ -70,7 +72,7 @@
       {% endif %}
 
       {% capture loopContent %}
-        {% for item in sortedItems limit: component.limit %}
+        {% for item in sortedItems limit: componentLimit %}
 
           {% liquid
             if item.data.alternate_url != blank
