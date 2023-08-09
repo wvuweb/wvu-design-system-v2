@@ -97,6 +97,8 @@
                   </a>
                 </{{ htag }}>
 
+                <p>Published At: {{ item.published_at }}</p>
+
                 {%- if item.data.description != blank %}
                   <p class="{{ itemBodyClasses }}">
                     {{ item.data.description }}
