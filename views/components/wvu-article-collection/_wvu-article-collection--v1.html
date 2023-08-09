@@ -23,7 +23,7 @@
       assign sortedItems = items | sort: componentLoopBy
   endcase
 
-  if component.loopOrder = "desc"
+  if component.loopOrder == "desc"
     assign sortedItems = sortedItems | reverse
   endif
 
