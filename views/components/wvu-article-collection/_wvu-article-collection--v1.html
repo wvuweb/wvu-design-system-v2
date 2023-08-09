@@ -24,7 +24,9 @@
   endcase
 
   if component.loopOrder == "desc"
-    assign sortedItems = sortedItems | reverse
+    assign sortedItems = sortedItems | reverse | limit: component.limit
+  else
+    assign sortedItems = sortedItems | limit: component.limit
   endif
 
   assign itemCount = 0
@@ -66,7 +68,7 @@
       {% endif %}
 
       {% capture loopContent %}
-        {% for item in sortedItems | limit: component.limit %}
+        {% for item in sortedItems %}
 
           {% liquid
             if item.data.alternate_url != blank
