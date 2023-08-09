@@ -10,10 +10,19 @@
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random
+  assign items = root.descendants | filter_pages: by: component.loopBy, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random
   assign itemCount = 0
 
-  assign sortedItems = items | sort: component.loopBy
+  case componentLoopBy
+    when "published_at" or "created_at" or "updated_at"
+      assign sortedItems = items | sort: componentLoopBy | reverse
+    else
+      assign sortedItems = items | sort: componentLoopBy
+  endcase
+
+  if component.loopOrder == "desc"
+    assign sortedItems = sortedItems | reverse
+  endif
 
   if page.content[component.region_names.header] != blank
     assign htag = 'h3'
