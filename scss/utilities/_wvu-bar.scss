@@ -16,7 +16,7 @@
   }
   &.wvu-bar--right {
     display: inline-block $global-important;
-    &:before {
+    &:before, &:after {
       right: 0 $global-important;
     }
   }
