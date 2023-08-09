@@ -55,7 +55,7 @@
 
       {% capture loopContent %}
 
-        {% for item in sortedItems.all %}
+        {% for item in sortedItems %}
 
           {% liquid
             if item.data.alternate_url != blank
