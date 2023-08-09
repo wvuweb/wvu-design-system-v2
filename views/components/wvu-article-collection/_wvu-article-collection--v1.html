@@ -14,9 +14,6 @@
     assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, year: params.year, month: params.month, day: params.day
   endif
 
-  assign componentLoopBy = component.loopBy | default: "published_at"
-  assign sortedItems = items | sort: componentLoopBy
-
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
 
@@ -56,7 +53,7 @@
       {% endif %}
 
       {% capture loopContent %}
-        {% for item in sortedItems %}
+        {% for item in items.all %}
 
           {% liquid
             if item.data.alternate_url != blank
