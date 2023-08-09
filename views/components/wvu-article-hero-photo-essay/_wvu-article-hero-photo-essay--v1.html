@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col col-md-6 col-xl-8 mx-md-auto">
               {% if edit_mode %}
-                <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
+                <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
                   <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</div>
                   <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
                 </small>
@@ -24,7 +24,7 @@
               </h1>
               {% editable_region_block name: component.region_names.subhead %}<p class="helvetica-neue-bold h2">Subhead goes here.</p>{% endeditable_region_block %}
               {% if edit_mode %}
-                <p class="small helvetica-neue-bold">Label for background photo: <span class="d-inline-block badge bg-primary mb-1">{{ page.slug }}-{{ component.name }}-background</span></p>
+                <p class="small helvetica-neue-bold no-preview">Label for background photo: <span class="d-inline-block badge bg-primary mb-1">{{ page.slug }}-{{ component.name }}-background</span></p>
               {% endif %}
             </div>
           </div>
@@ -33,7 +33,7 @@
 
       {% if article.parent.data.disable_articles_author != '1' %}
         {% if edit_mode %}
-          <div class="container">
+          <div class="container no-preview">
             <div class="alert alert-info p-2 my-2 small">
               <p>If the name of the author is different from the user who is publishing the article, enter their name:</p>
               {% editable_region name: "wvu-article-1__author" type: 'simple' %}

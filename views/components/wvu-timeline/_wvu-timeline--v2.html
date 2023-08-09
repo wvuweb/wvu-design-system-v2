@@ -10,7 +10,7 @@
       <div class="col-lg-5 me-lg-auto text-md-right py-3">
 
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-muted p-1 bg-wvu-neutral--dark-gray">Header classes:
+          <small class="wvu-z-index-content d-block mb-2 text-muted p-1 bg-wvu-neutral--dark-gray no-preview">Header classes:
             <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
@@ -29,7 +29,7 @@
       <div class="col-lg-6 pt-3">
 
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray">Timeline Color (e.g.):
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray no-preview">Timeline Color (e.g.):
             <div class="mb-1 px-1 text-white">{% editable_region name: timelineColorRegionName, type: "simple", scope: component.scope %}</div>
           </small>
         {% endif %}

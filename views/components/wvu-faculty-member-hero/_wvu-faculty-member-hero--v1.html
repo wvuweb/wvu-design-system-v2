@@ -33,7 +33,7 @@
                 <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
               {% else %}
                 {% if edit_mode %}
-                  <div class="alert alert-warning rounded p-3">
+                  <div class="alert alert-warning rounded p-3 no-preview">
                     <p class="mb-0">
                       It looks like you haven’t added a photo to this profile yet. You can <a href="https://dsws.sandbox.wvu.edu/shared-cleanslate-partials/content-and-style-editing-how-to-and-tips/add-a-thumbnail-image-or-profile-photo-to-a-page">add a photo in the page properties</a>.
                     </p>
@@ -51,13 +51,13 @@
         </h1>
 
         {% if edit_mode or page.content[rNames.profileTitle] != blank %}
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Title</span>{% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Title</span>{% endif %}
           <div class="helvetica-neue-light">
             {% editable_region name: rNames.profileTitle, scope: component.scope, type: "simple" %}
           </div>
         {% endif %}
         {% if edit_mode or page.content[rNames.organization] != blank %}
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Organization</span>{% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Organization</span>{% endif %}
           <div class="helvetica-neue-light">
             {% editable_region name: rNames.organization, scope: component.scope, type: "simple" %}
           </div>

@@ -2,7 +2,7 @@
   <div class="container wvu-z-index-content">
 
     {% if edit_mode or page.content[component.region_names.header] != blank %}
-      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
       {% editable_region_block name: component.region_names.header scope: component.scope %}
         <h2 id="{{ component.name }}-label" class="display-2 wvu-shout mb-2">Big Search Header</h2>
         <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
@@ -40,7 +40,7 @@
     </div>
 
     {% if edit_mode or page.content[component.region_names.postscript] != blank %}
-      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
       {% editable_region_block name: component.region_names.postscript scope: component.scope %}
         <p class="mb-0">Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
       {% endeditable_region_block %}

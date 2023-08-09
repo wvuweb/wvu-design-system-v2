@@ -13,14 +13,14 @@
       <div class="col-md-6 col-xl-4 pt-6 pt-lg-0 pb-lg-6">
         {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
         {% if edit_mode %}
-          <div class="small wvu-z-index-content d-block p-2 mb-2 text-left text-muted p-1 bg-wvu-accent--blue-dark">
+          <div class="small wvu-z-index-content d-block p-2 mb-2 text-left text-muted p-1 bg-wvu-accent--blue-dark no-preview">
             <p class="mb-1">Header classes:</p>
             <div class="mb-1 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </div>
         {% endif %}
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
         {% comment %}<!-- For the h1, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
         <{{ htag }} id="{{ component.name }}-label" class="wvu-z-index-content mb-5 {{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
           {% comment %}<!-- Use the editable region name for th header section of the hero, which you defined above. -->{% endcomment %}
@@ -28,7 +28,7 @@
         </{{ htag }}>
 
         <div class="bg-white p-3 text-center wvu-z-index-content mb-lg-6">
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Main Content</span>{% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}
           {% editable_region_block name: component.region_names.main scope: component.scope %}
             <div class="text-uppercase iowan-old-style-black text-wvu-blue wvu-text-letter-spacing wvu-bar wvu-bar--bottom wvu-bar--center">
               Label

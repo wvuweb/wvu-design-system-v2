@@ -45,14 +45,14 @@
       {% endfor %}
     </div>
     {% if edit_mode and numberOfImages == 0 %}
-      <li class="col-12">
+      <div class="col-12 no-preview">
         <div class="alert alert-warning p-3 p-xl-4 mb-0 text-start">
           <h2>Whoops!</h2>
           <p class="mb-0">
             It looks like you don’t have any images labeled yet. To get images to appear here, label the pages with <span class="badge rounded-pill bg-secondary">{{ page.slug }}-{{ component.name }}</span>. You can add labels to images from the Files tab in the CleanSlate dashboard by hovering over the image, clicking Edit, then entering your labels in the Labels field. Be sure to include alternate text to avoid accessibility errors. You can also enter a description of the image if you want that visible to the user when they click to expand a gallery image.
           </p>
         </div>
-      </li>
+      </div>
     {% endif %}
   </ul>
 </div>

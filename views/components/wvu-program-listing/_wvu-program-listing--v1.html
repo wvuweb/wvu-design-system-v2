@@ -94,7 +94,7 @@
         <div id="container" class="grid clearfix">
 
           {% if edit_mode and page.data.contentful_api_string == blank %}
-            <div class="alert alert-warning">
+            <div class="alert alert-warning no-preview">
               <h2>Whoops!</h2>
               <p class="mb-0">
                 It looks like you haven’t provided an API string to populate your program data. It should look like this: <strong>https://f09bec8ldd.execute-api.us-east-1.amazonaws.com/stable/programs?college=CAHS&type=major,certificate&sortby=title,typeOrder,hepcLevelOrder&projection=superthin</strong>. You can swap out values in the API string depending on which data to display. For example, swap the acronym of your college for “CAHS” to target your college’s programs. Paste this string into the <code>contentful_api_string</code> field in your page’s properties under the Custom Data tab.

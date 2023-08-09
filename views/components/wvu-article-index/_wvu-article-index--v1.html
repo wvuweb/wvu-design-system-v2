@@ -19,7 +19,7 @@
 
         {% if edit_mode or page.content[component.region_names.main] != blank %}
           <div class="mb-4">
-            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Intro</span>{% endif %}
+            {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Intro</span>{% endif %}
             {% editable_region_block name: component.region_names.main %}<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>{% endeditable_region_block %}
           </div>
         {% endif %}
@@ -132,7 +132,7 @@
       <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0">
         <div class="sticky-top pt-3 mt-n3">
           {% if edit_mode %}
-            <div class="alert alert-info mb-3">
+            <div class="alert alert-info mb-3 no-preview">
               <p class="mb-0">New to creating articles, or just need a refresher? Check out our <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/blogs">blog tutorials</a>.
             </div>
           {% endif %}

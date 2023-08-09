@@ -8,7 +8,7 @@
 {% assign files = site.files | filter_files: tags: cvLabel, tags_match: "all", limit: 1 %}
 
 {% if edit_mode or page.content[regionNames.phone] != blank %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Phone</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-phone ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="tel:{{ page.content[regionNames.phone] }}">{{ page.content[regionNames.phone] }}</a>
@@ -18,7 +18,7 @@
   </span>
 {% endif %}
 {% if edit_mode or page.content[regionNames.fax] != blank %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Fax</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Fax</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-fax ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="tel:{{ page.content[regionNames.fax] }}">{{ page.content[regionNames.fax] }}</a>
@@ -28,7 +28,7 @@
   </span>
 {% endif %}
 {% if edit_mode or page.content[regionNames.email] != blank %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Email</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Email</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-envelope ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1" href="mailto:{{ page.content[regionNames.email] }}">{{ page.content[regionNames.email] }}</a>
@@ -38,7 +38,7 @@
   </span>
 {% endif %}
 {% if edit_mode or page.content[regionNames.office] != blank %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Office</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Office</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-building ms-n2 position-absolute" style="top: 4px;"></span>
       {% if page.content[regionNames.officeURL] != blank %}
@@ -52,7 +52,7 @@
   </span>
 {% endif %}
 {% if edit_mode %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Office URL</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Office URL</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-link ms-n2 position-absolute" style="top: 4px;"></span>
     {% if edit_mode %}
@@ -61,7 +61,7 @@
   </span>
 {% endif %}
 {% if edit_mode or page.content[regionNames.website] != blank %}
-  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Website</span>{% endif %}
+  {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Website</span>{% endif %}
   <span class="d-block position-relative ps-2">
     <span aria-hidden="true" class="fa-solid fa-link ms-n2 position-absolute" style="top: 4px;"></span>
     <a class="d-block ms-1{% if edit_mode %} d-none{% endif %}" href="{{ page.content[regionNames.website] }}">Website<span class="visually-hidden">: {{ page.name }}</span></a>
@@ -72,7 +72,7 @@
 {% endif %}
 
 {% if edit_mode %}
-  <div class="p-2 alert alert-info mt-2 mb-1">
+  <div class="p-2 alert alert-info mt-2 mb-1 no-preview">
     <p class="mb-0 small"><strong>Note:</strong> You can offer a PDF (or any file format) download of your CV by uploading your CV, then <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/managing-files/grouping-files">labeling the file</a> with <span class="badge bg-secondary">{{ cvLabel }}</span>.</p>
   </div>
 {% endif %}

@@ -19,17 +19,17 @@
       <div class="col-md-8 text-center py-5 align-self-center">
         {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
             <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
           {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-          <span class="d-inline-block badge bg-primary mb-1">Header:</span>
+          <span class="d-inline-block badge bg-primary mb-1 no-preview">Header:</span>
         {% endif %}
         {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
         <{{ htag }} id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Action Hero Headline' %}</{{ htag }}>
         {% if edit_mode %}
-          <span class="d-inline-block badge bg-primary mb-1">Main:</span>
+          <span class="d-inline-block badge bg-primary mb-1 no-preview">Main:</span>
         {% endif %}
         {% editable_region_block name: component.region_names.main, scope: component.scope %}
           <p class="lead py-2 w-75 mx-auto">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -39,7 +39,7 @@
       <div class="col-md-4 {{ page.content[statCardClassesEditableRegionName] | default: defaultStatCardClasses }}">
         {% comment %}<!-- This is where you can add utility classes that will apply to the stat card’s classes. -->{% endcomment %}
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Stat card classes:
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Stat card classes:
             <div class="mb-0 text-white">{% editable_region name: statCardClassesEditableRegionName, type: "simple", scope: component.scope %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ defaultStatCardClasses }}</pre>
           </small>

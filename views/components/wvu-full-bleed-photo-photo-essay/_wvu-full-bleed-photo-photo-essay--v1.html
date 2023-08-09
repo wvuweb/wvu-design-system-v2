@@ -13,12 +13,12 @@
     <div class="row mb-4">
       <div class="col-sm-8 col-md-6 mx-auto mx-sm-auto">
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
         <h2 id="{{ component.name }}-label" class="h1 helvetica-neue-bold">{% editable_region name: component.region_names.header, type: "simple", scope: component.scope, placeholder="Full-Width Photo Headline" %}</h2>
         {% editable_region_block name: component.region_names.main, scope: component.scope %}
           <p>Type your story here.</p>
         {% endeditable_region_block %}
-        {% if edit_mode %}<p class="small helvetica-neue-bold">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>{% endif %}
+        {% if edit_mode %}<p class="small helvetica-neue-bold no-preview">Label for photo: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>{% endif %}
       </div>
     </div>
   {% endif %}
@@ -32,13 +32,13 @@
       <figcaption class="mb-0 p-2 me-2 mb-2 wvu-bg-tint position-absolute" style="bottom: 0; right: 0;">
         <div class="wvu-z-index-content {{ captionClasses }}">
           {% if edit_mode %}
-            <div class="small d-block mb-2 p-2 text-left text-muted p-1 bg-wvu-accent--blue-dark">
+            <div class="small d-block mb-2 p-2 text-left text-muted p-1 bg-wvu-accent--blue-dark no-preview">
               <p class="mb-1">Caption classes:</p>
               <div class="mb-1 text-white">{% editable_region name: captionClassesRegion, type: "simple", scope: component.scope %}</div>
               <strong class="text-muted">Default caption classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultCaptionClasses }}</pre>
             </div>
           {% endif %}
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Caption</span>{% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Caption</span>{% endif %}
           {% editable_region_block name: captionRegion, scope: component.scope %}
             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           {% endeditable_region_block %}

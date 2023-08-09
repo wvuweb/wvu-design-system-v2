@@ -3,7 +3,7 @@
     <div class="container wvu-z-index-content">
 
       {% if edit_mode or page.content[component.region_names.header] != blank %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
         {% editable_region_block name: component.region_names.header scope: component.scope %}
           <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Calendar Events Headline</h2>
           <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
@@ -11,14 +11,14 @@
       {% endif %}
 
       {% if edit_mode %}
-        <div class="p-3 alert alert-info my-3">
+        <div class="p-3 alert alert-info my-3 no-preview">
           <p class="mb-0">Use the region below to <a href="https://dsws.sandbox.wvu.edu/shared-cleanslate-partials/content-and-style-editing-how-to-and-tips/add-a-calendar-feed-to-a-page">insert a calendar feed</a>.</p>
         </div>
       {% endif %}
       {% editable_region name: component.region_names.main scope: site.scope %}
 
       {% if edit_mode or page.content[component.region_names.postscript] != blank %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
         {% editable_region_block name: component.region_names.postscript scope: component.scope %}
           <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
         {% endeditable_region_block %}

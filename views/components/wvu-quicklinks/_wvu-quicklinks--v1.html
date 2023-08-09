@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col-lg-4">
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark">Header classes:
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
             <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
             <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
           </small>
-          <span class="d-inline-block badge bg-primary mb-1">Header</span>
+          <span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>
         {% endif %}
         <h2 id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
           {% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Quicklinks' %}
         </h2>
       </div>
       <div class="col-lg-8">
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Quicklinks</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Quicklinks</span>{% endif %}
         {% editable_region_block name: component.region_names.main, scope: component.scope %}
           <ul class="list-unstyled wvu-column-count-3">
             <li>
@@ -78,7 +78,7 @@
     {% if edit_mode or page.content[component.region_names.postscript] != blank %}
       <div class="mt-2 wvu-z-index-content">
         <div class="wvu-z-index-content mb-2">
-          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Postscript</span>{% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
           {% editable_region_block name: component.region_names.postscript, scope: component.scope %}
             <p class="mb-0">View <a class="text-wvu-blue" href="#">All quicklinks</a>.</p>
           {% endeditable_region_block %}

@@ -59,11 +59,11 @@
   <div class="wvu-z-index-content">
 
     {% if itemCount == 0 %}
-      <div class="container mb-4">
+      <div class="container mb-4 no-preview">
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
       </div>
     {% else %}
-      <div class="container mb-4">
+      <div class="container mb-4 no-preview">
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
       </div>
     {% endif %}

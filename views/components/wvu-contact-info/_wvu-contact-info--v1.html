@@ -11,12 +11,12 @@
     <div class="row">
       <div class="col-md-5 me-auto">
         {% if edit_mode %}
-          <div class="alert alert-info p-2 mb-2 small">
+          <div class="alert alert-info p-2 mb-2 small no-preview">
             <p class="mb-0"><strong class="text-uppercase">Note:</strong> Each content region of this component is optional. If you don’t want to supply a form, for example, just delete the contents of the region below and the form section will go away.</p>
           </div>
         {% endif %}
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
         {% editable_region_block name: component.region_names.header scope: component.scope %}
           <p class="helvetica-neue-light fs-4 mb-3 pr-md-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         {% endeditable_region_block %}
@@ -25,7 +25,7 @@
             <div class="h3"><span class="fa-solid fa-location-pin" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Address</span>{% endif %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Address</span>{% endif %}
               {% editable_region_block name: addressEditableRegionName scope: component.scope %}
                 <h2 class="h5 iowan-old-style-black">
                   At the Office
@@ -44,7 +44,7 @@
             <div class="h3"><span class="fa-solid fa-phone" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Phone</span>{% endif %}
               {% editable_region_block name: phoneEditableRegionName scope: component.scope %}
                 <h2 class="h5 iowan-old-style-black">
                   By Phone
@@ -62,7 +62,7 @@
             <div class="h3"><span class="fa-solid fa-envelope" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Phone</span>{% endif %}
               {% editable_region_block name: emailEditableRegionName scope: component.scope %}
                 <h2 class="h5 iowan-old-style-black">
                   By Email
@@ -80,7 +80,7 @@
             <div class="h3"><span class="fa-solid fa-user-group" aria-hidden="true"></span></div>
             <div class="ms-2">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Phone</span>{% endif %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Phone</span>{% endif %}
               {% editable_region_block name: individualEditableRegionName scope: component.scope %}
                 <h2 class="h5 iowan-old-style-black">
                   Contact an Individual
@@ -98,7 +98,7 @@
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         <div class="p-4">
           {% if edit_mode %}
-            <span class="d-inline-block badge bg-primary mb-1">Form</span>
+            <span class="d-inline-block badge bg-primary mb-1 no-preview">Form</span>
           {% endif %}
           {% editable_region_block name: formEditableRegionName scope: component.scope %}
             <form class="px-3 py-4">

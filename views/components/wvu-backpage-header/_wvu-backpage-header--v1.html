@@ -63,7 +63,7 @@
           <p class="helvetica-neue-light mb-1">
             <span class="text-uppercase">
               {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
-              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Label</span>{% endif %}
+              {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Label</span>{% endif %}
               {% editable_region_block name: componentHeaderLabel %}
                 <span class="wvu-shout text-wvu-gold text-uppercase">Label pre</span> <span class="text-uppercase">Label Post</span>
               {% endeditable_region_block %}
@@ -72,7 +72,7 @@
         {% endif %}
         {% comment %}<!-- This is where you can add utility classes that will apply to the heading. -->{% endcomment %}
         {% if edit_mode %}
-          <small class="wvu-z-index-content d-block mb-2 text-left text-muted py-1 px-2 bg-wvu-neutral--dark-gray"><strong>Header classes:</strong> (Default: {{ component.defaultHeaderClasses }})
+          <small class="wvu-z-index-content d-block mb-2 text-left text-muted py-1 px-2 bg-wvu-neutral--dark-gray no-preview"><strong>Header classes:</strong> (Default: {{ component.defaultHeaderClasses }})
             <div class="mb-1 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple" %}</div>
           </small>
         {% endif %}
@@ -81,8 +81,8 @@
         {% comment %}<!-- If user has toggled the “Header has subhead?” option in their page data, display a subhead region. -->{% endcomment %}
         {% if edit_mode or page.content[componentSubhead] != blank %}
           {% if edit_mode %}
-            <div class="d-inline-block badge bg-primary mb-1 mt-2">Subhead / Title (optional)</div>
-            <small class="wvu-z-index-content d-block mb-2 text-left text-muted py-1 px-2 bg-wvu-neutral--dark-gray"><strong>Subhead classes</strong> (Default: {{ defaultSubheadClasses }})
+            <div class="d-inline-block badge bg-primary mb-1 mt-2 no-preview">Subhead / Title (optional)</div>
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted py-1 px-2 bg-wvu-neutral--dark-gray no-preview"><strong>Subhead classes</strong> (Default: {{ defaultSubheadClasses }})
               <div class="mb-1 text-white">{% editable_region name: subheadClasses, type: "simple" %}</div>
             </small>
           {% endif %}
@@ -115,7 +115,7 @@
             <div class="d-flex align-items-center h-100">
               <div class="flex-grow-1">
                 {% if edit_mode %}
-                  <div class="alert alert-info p-2 mb-2 small">
+                  <div class="alert alert-info p-2 mb-2 small no-preview">
                     <p class="mb-0"><strong class="text-uppercase">Tip:</strong> You can use this region to <a class="text-wvu-blue" href="/shared-cleanslate-partials/theme-development-site-configuration-and-advanced-style-editing/add-a-dropdown-menu-to-a-page-header">insert a dropdown menu</a> and link to sections on this page. You can also generate a dropdown automatically that links to this page’s children by checking the “Activate Header Subnav” option in your page properties.</p>
                   </div>
                 {% endif %}

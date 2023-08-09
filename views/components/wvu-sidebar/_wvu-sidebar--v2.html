@@ -8,7 +8,7 @@
   <div class="sticky-top pt-3 mt-n3">
     {% if edit_mode or page.content[componentSidebar] != blank %}
       <div class="mb-3">
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Sidebar Content</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Sidebar Content</span>{% endif %}
         {% editable_region name: componentSidebar, scope: component.scope %}
       </div>
     {% endif %}
@@ -19,7 +19,7 @@
     {% endif %}
     {% if edit_mode or page.content[componentSidebarPostscript] != blank %}
       <div class="mb-3">
-        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Sidebar Postscript</span>{% endif %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Sidebar Postscript</span>{% endif %}
         {% editable_region name: componentSidebarPostscript, scope: component.scope %}
       </div>
     {% endif %}
