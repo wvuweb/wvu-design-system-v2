@@ -83,7 +83,7 @@
                 <div class="row align-items-end h-100">
                   <div class="col-xl-6 pt-lg-6 mt-6 mt-xl-0 pt-xl-0 me-md-auto mb-xl-n3">
                     <{{ htag }} style="text-shadow: 7px 5px 16px rgba(0,0,0,0.64);">
-                      <a class="text-decoration-none {{ itemHeaderClasses }} {{ htagClass }}{% unless edit_mode %} stretched-link{% endunless %} href="{{ item.url }}"">
+                      <a class="text-decoration-none {{ itemHeaderClasses }} {{ htagClass }} stretched-link" href="{{ item.url }}"">
                         {% if item.content['wvu-profile-1__name'] != blank %}
                           {{ item.content['wvu-profile-1__name'] }}
                         {% else %}
