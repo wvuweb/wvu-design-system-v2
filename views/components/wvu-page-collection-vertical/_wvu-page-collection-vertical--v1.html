@@ -30,7 +30,8 @@
 
 {% capture component_content %}
   <div class="wvu-z-index-content">
-    <div class="container wvu-z-index-content">
+    <div class="container wvu-z-index-content">  
+
       {% if edit_mode or page.content[component.region_names.header] != blank %}
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1">Header</span>{% endif %}
         {% editable_region_block name: component.region_names.header scope: component.scope %}
@@ -38,6 +39,11 @@
           <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
         {% endeditable_region_block %}
       {% endif %}
+
+      <p>
+        Component Sort Order: {{ component.loopOrder }}
+        Component Loop By: {{ component.loopBy }}
+      </p>
 
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
