@@ -1,5 +1,7 @@
 {%- liquid
   assign headerClasses = page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses
+  assign bgColorRegionName = component.name | append: "__bg-color"
+  assign bgClasses = page.content[bgColorRegionName] | default: component.defaultBGClasses | default: "bg-light"
 
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
@@ -17,19 +19,22 @@
 {% capture component_content %}
   <div class="row ms-0 me-0">
     {% if component.align != 'right' %}{{ bgdiv }}{% endif %}
-    <div class="col-md-6 me-auto bg-light py-5 wvu-z-index-content{% if component.align == 'right' %} text-end{% endif %}">
+    <div class="col-md-6 me-auto {{ bgClasses }} py-5 wvu-z-index-content{% if component.align == 'right' %} text-end{% endif %}">
 
       {% comment %}<!-- This is where you can add utility classes that will apply to the hero’s heading. -->{% endcomment %}
       {% if edit_mode %}
         <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
           <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
           <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+          <div class="mt-2">Background Color Class</div>
+          <div class="mb-0 text-white">{% editable_region name: bgColorRegionName, type: "simple", scope: component.scope %}</div>
+          <strong class="text-muted">Default class:</strong> <pre class="mb-0 text-muted">{{ defaultBGlasses }}</pre>
         </small>
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         <span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>
       {% endif %}
       {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-      <{{ htag }} id="{{ component.name }}-label" class="{{ headerClasses }}{% if component.align != 'right' %} ms-md-n5{% endif %}{% if component.align == 'right' %} me-md-n5 float-end{% endif %}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Emerging mobile ready drone.' %}</{{ htag }}>
+      <{{ htag }} id="{{ component.name }}-label" class="{{ bgClasses }} {{ headerClasses }}{% if component.align != 'right' %} ms-md-n5{% endif %}{% if component.align == 'right' %} me-md-n5 float-end{% endif %}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Emerging mobile ready drone.' %}</{{ htag }}>
       <div class="{% if component.align != 'right' %}ps-3{% endif %}{% if component.align == 'right' %}pe-3 float-end{% endif %}">
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}

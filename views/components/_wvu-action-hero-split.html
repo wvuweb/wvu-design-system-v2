@@ -3,7 +3,7 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.action_hero_split | default: '1'
   assign defaultComponentClasses = defaultComponentClasses | default: "wvu-bg-position-center"
-  assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-header-max-width mb-0 p-2 p-md-4 bg-light wvu-shout display-3 text-wvu-accent--blue"
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-header-max-width mb-0 p-2 p-md-4 wvu-shout display-3 text-wvu-accent--blue"
 %}
 
 {%- define_component component %}
