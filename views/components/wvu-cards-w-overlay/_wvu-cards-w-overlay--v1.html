@@ -3,7 +3,7 @@
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
-  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: "Continue Reading"
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
@@ -88,8 +88,15 @@
                   {% else %}
                     {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
                   {%- endif %}
+
+                  {% if item.data.link_text != blank %}
+                    {% assign link_text = item.data.link_text %}
+                  {% else %}
+                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                  {% endif %}
+
                   <a class="stretched-link text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
-                    Continue Reading<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span> <span class="fa-solid fa-circle-arrow-right"></span>
+                    {{ link_text }}<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span> <span class="fa-solid fa-circle-arrow-right"></span>
                   </a>
                 </div>
               </div>
