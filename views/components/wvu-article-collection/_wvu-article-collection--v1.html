@@ -14,6 +14,8 @@
     assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, year: params.year, month: params.month, day: params.day
   endif
 
+  assign sortedItems = items | sort: component.loopBy
+
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
 
@@ -44,11 +46,6 @@
         {% endeditable_region_block %}
       {% endif %}
 
-      <p>
-        Component Sort Order: {{ component.loopOrder }}
-        Component Loop By: {{ component.loopBy }}
-      </p>
-
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
       {% else %}
@@ -58,7 +55,7 @@
       {% endif %}
 
       {% capture loopContent %}
-        {% for item in items.all %}
+        {% for item in sortedItems %}
 
           {% liquid
             if item.data.alternate_url != blank

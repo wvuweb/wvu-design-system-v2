@@ -7,6 +7,9 @@
     assign blog = site | get_page: component.featurettesID
     assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
   endif
+
+  assign componentLoopBy = component.loopBy | default: "published_at"
+  assign sortedItems = articles | sort: componentLoopBy
 -%}
 
 {% capture component_content %}
@@ -22,14 +25,9 @@
           </div>
         {% endif %}
 
-        <p>
-          Component Sort Order: {{ component.loopOrder }}
-          Component Loop By: {{ component.loopBy }}
-        </p>
-
         {% if articles.size > 0 %}
           {% capture article_list_content %}
-            {% for article in articles.all %}
+            {% for article in sortedItems %}
 
               {% liquid
                 if article.data.alternate_url != blank

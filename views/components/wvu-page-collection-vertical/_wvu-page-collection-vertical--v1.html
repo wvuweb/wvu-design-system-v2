@@ -42,11 +42,6 @@
         {% endeditable_region_block %}
       {% endif %}
 
-      <p>
-        Component Sort Order: {{ component.loopOrder }}
-        Component Loop By: {{ component.loopBy }}
-      </p>
-
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
       {% else %}
@@ -96,13 +91,6 @@
                     {{ item.alternate_name | default: item.name }}
                   </a>
                 </{{ htag }}>
-
-                <p>
-                  Published At: {{ item.published_at }}
-                  <br>Created At: {{ item.created_at }}
-                  <br>Updated At: {{ item.updated_at }}
-                  <br>Content Updated At: {{ item.content_updated_at }}
-                </p>
 
                 {%- if item.data.description != blank %}
                   <p class="{{ itemBodyClasses }}">
