@@ -24,10 +24,10 @@
   endcase
 
   if component.loopOrder == "desc"
-    assign sortedItems = sortedItems | reverse | limit: component.limit
-  else
-    assign sortedItems = sortedItems | limit: component.limit
+    assign sortedItems = sortedItems | reverse
   endif
+
+  assign sortedItems = sortedItems | limit: component.limit
 
   assign itemCount = 0
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
