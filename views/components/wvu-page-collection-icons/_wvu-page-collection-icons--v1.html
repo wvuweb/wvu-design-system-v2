@@ -12,6 +12,19 @@
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   assign itemCount = 0
 
+  assign componentLoopBy = component.loopBy
+  
+  case componentLoopBy
+    when "published_at" or "created_at" or "updated_at"
+      assign sortedItems = items | sort: componentLoopBy | reverse
+    else
+      assign sortedItems = items | sort: componentLoopBy
+  endcase
+
+  if component.loopOrder == "desc"
+    assign sortedItems = sortedItems | reverse
+  endif
+
   if page.content[component.region_names.header] != blank
     assign htag = 'h3'
   else
@@ -49,7 +62,7 @@
 
       {% capture loopContent %}
 
-        {% for item in items.all %}
+        {% for item in sortedItems limit: component.limit %}
 
           {% liquid
             if item.data.alternate_url != blank
