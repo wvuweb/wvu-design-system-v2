@@ -8,7 +8,7 @@
     assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
   endif
 
-  assign sortedArticles = articles | sort: "published_at"
+  assign sortedArticles = articles | sort: "published_at" | reversed
 -%}
 
 {% capture component_content %}
