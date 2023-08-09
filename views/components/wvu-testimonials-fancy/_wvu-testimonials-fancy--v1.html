@@ -82,24 +82,20 @@
               <div class="ps-3 pe-3 pb-3 pt-4 h-100 wvu-bg-position-top-left--30 wvu-bg-position-xl-top-left wvu-bg-size-cover bg-wvu-neutral--black" style="background-image: linear-gradient(0deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%), url({{ itemThumbnailSrc | strip }}/960x640.jpg);">
                 <div class="row align-items-end h-100">
                   <div class="col-xl-6 pt-lg-6 mt-6 mt-xl-0 pt-xl-0 me-md-auto mb-xl-n3">
-                    <{{ htag }} class="{{ itemHeaderClasses }} {{ htagClass }}" style="text-shadow: 7px 5px 16px rgba(0,0,0,0.64);">
-                      {% if item.content['wvu-profile-1__name'] != blank %}
-                        {{ item.content['wvu-profile-1__name'] }}
-                      {% else %}
-                        {{ item.alternate_name | default: item.name }}
-                      {% endif %}
+                    <{{ htag }} style="text-shadow: 7px 5px 16px rgba(0,0,0,0.64);">
+                      <a class="text-decoration-none {{ itemHeaderClasses }} {{ htagClass }}{% unless edit_mode %} stretched-link{% endunless %}" href="{{ item.url }}">
+                        {% if item.content['wvu-profile-1__name'] != blank %}
+                          {{ item.content['wvu-profile-1__name'] }}
+                        {% else %}
+                          {{ item.alternate_name | default: item.name }}
+                        {% endif %}
+                      </a>
                     </{{ htag }}>
-                    <p class="wvu-shout text-white h5 wvu-bar wvu-bar--white wvu-bar--bottom wvu-bar--skinny">
-                      {% if item.template == 'student' %}
-                        {% if item.content['wvu-profile-1__major'] != blank %}
-                          {{ item.content['wvu-profile-1__major'] }}
-                        {% endif %}
-                      {% else %}
-                        {% if item.content['wvu-profile-1__title'] != blank %}
-                          {{ item.content['wvu-profile-1__title'] }}
-                        {% endif %}
-                      {% endif %}
-                    </p>
+                    {% if item.content['wvu-profile-1__title'] != blank or item.content['wvu-profile-1__organization'] != blank %}
+                      <p class="wvu-shout text-white h5 wvu-bar wvu-bar--white wvu-bar--bottom wvu-bar--skinny">
+                        <span class="d-block">{{ item.content['wvu-profile-1__title'] }}</span><span class="d-block">{{ item.content['wvu-profile-1__organization'] }}</span>
+                      </p>
+                    {% endif %}
                   </div>
                   <div class="col-xl-6 me-md-auto">
                     <div class="bg-white p-3 p-xl-2 mt-xl-5 text-center wvu-z-index-content">

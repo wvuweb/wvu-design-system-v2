@@ -87,14 +87,11 @@
                         {{ item.alternate_name | default: item.name }}
                       {% endif %}
                     </{{ htag }}>
-                    {% if item.content.wvu-profile-1__title != blank %}
-                      <p class="helvetica-neue-light">{{ item.content.wvu-profile-1__title }}</p>
-                    {% endif %}
-                    {%- if item.content.wvu-profile-1__profile-title != blank %}
-                      <p class="small {{ itemBodyClasses }}">
-                        {{ item.content.wvu-profile-1__profile-title }}
+                    {% if item.content['wvu-profile-1__title'] != blank or item.content['wvu-profile-1__organization'] != blank %}
+                      <p>
+                        <span class="d-block helvetica-neue-light">{{ item.content['wvu-profile-1__title'] }}</span><span class="d-block small {{ itemBodyClasses }}">{{ item.content['wvu-profile-1__organization'] }}</span>
                       </p>
-                    {%- endif %}
+                    {% endif %}
                   </div>
 
                   {% if itemReadMoreButtonText != 'none' %}
