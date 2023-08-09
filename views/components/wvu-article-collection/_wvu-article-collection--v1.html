@@ -8,7 +8,7 @@
 
   if component.featurettesID == blank
     assign root = site.root_page
-    assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+    assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random
   else
     assign blog = site | get_page: component.featurettesID
     assign items = blog.articles | filter_articles: page: params.page, limit: component.limit, year: params.year, month: params.month, day: params.day
@@ -66,7 +66,7 @@
       {% endif %}
 
       {% capture loopContent %}
-        {% for item in sortedItems %}
+        {% for item in sortedItems | limit: component.limit %}
 
           {% liquid
             if item.data.alternate_url != blank
