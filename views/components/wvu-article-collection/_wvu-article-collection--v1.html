@@ -21,7 +21,7 @@
       assign sortedItems = items | sort: componentLoopBy | reverse
     else
       assign sortedItems = items | sort: componentLoopBy
-  endif
+  endcase
 
   if component.loopOrder = "desc"
     assign sortedItems = sortedItems | reverse
