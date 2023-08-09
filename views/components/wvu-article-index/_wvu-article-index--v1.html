@@ -69,6 +69,11 @@
                       </a>
                     </div>
                   {% endif %}
+
+                  {% assign itemThumbnailSRC = "" %}
+                  {% assign itemThumbSRC = "" %}
+                  {% assign itemAlt = "" %}
+
                   <div class="col-md-9{% if article.data.thumbnail_url != blank or itemThumb != blank %} mt-3 mt-md-0{% else %} ms-md-auto{% endif %}">
                     <h2 class="wvu-article__headline" itemprop="headline"><a class="newsletter-link" href="{{ link_href }}">{{ article.name }}</a></h2>
 
