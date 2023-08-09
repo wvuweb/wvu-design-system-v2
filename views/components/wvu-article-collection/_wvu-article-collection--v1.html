@@ -16,7 +16,7 @@
 
   assign componentLoopBy = component.loopBy | default: "published_at"
 
-  if componentLoopBy = "sort_order"
+  if componentLoopBy == "sort_order"
     assign componentLoopBy = "published_at"
   endif
 
