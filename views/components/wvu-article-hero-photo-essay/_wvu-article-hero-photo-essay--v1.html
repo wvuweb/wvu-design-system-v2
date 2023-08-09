@@ -43,10 +43,11 @@
         {% endif %}
 
         {% if article.data.article_hide_author != '1' %}
-          {% if images.length >= 1 %}
-            {{ authorImage }}
-          {% endif %}
-
+          <div class="d-flex align-items-center">
+            {% if images.length >= 1 %}
+              {{ authorImage }}
+            {% endif %}
+          </div>
           <p class="iowan-old-style mb-0">
             <span class="d-block" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
               <span itemprop="name">
