@@ -40,21 +40,25 @@
             <p class="small helvetica-neue-bold">Label for headshot: <span class="d-inline-block badge bg-primary mb-1">{{ photoLabel }}</span></p>
           </div>
         {% endif %}
-        {% if images.length >= 1 %}
-          {{ authorImage }}
-        {% endif %}
-        <p class="iowan-old-style">
-          {% if article.parent.data.disable_articles_author != '1' %}
-            {% if article.data.article_hide_author != '1' %}
+
+        {% if article.parent.data.disable_articles_author != '1' %}
+          {% if article.data.article_hide_author != '1' %}
+            {% if images.length >= 1 %}
+              {{ authorImage }}
+            {% endif %}
+
+            <p class="iowan-old-style">
               <span class="d-block" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                 <span itemprop="name">
                   By <span class="helvetica-neue-bold text-uppercase">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span>
                 </span>
               </span>
-            {% endif %}
+            
+              <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
+            </p>
           {% endif %}
-          <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
-        </p>
+        {% endif %}
+
       </div>
     </div>
   </div>
