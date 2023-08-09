@@ -103,9 +103,9 @@
                 {% if page.data.submenu_start_depth != blank %}
                   {% assign submenuStartDepth = page.data.submenu_start_depth %}
                 {% else %}
-                  {% assign submenuStartDepth = page.depth %}
+                  {% assign submenuStartDepth = page.depth | plus: 1 %}
                 {% endif %}
-                {% ancestor_menu start_depth: submenuStartDepth, max_depth: submenuMaxDepth, ul_class: "dropdown-menu w-100", link_class: "dropdown-item" %}
+                {% ancestor_menu start_depth: submenuStartDepth, max_depth: submenuStartDepth, ul_class: "dropdown-menu w-100", link_class: "dropdown-item" %}
               </div>
             </div>
           </div>
