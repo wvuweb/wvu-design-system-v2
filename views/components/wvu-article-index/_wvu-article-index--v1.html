@@ -26,7 +26,7 @@
 
         {% if articles.size > 0 %}
           {% capture article_list_content %}
-            {% for article in articles.all %}
+            {% for article in sortedArticles %}
 
               {% liquid
                 if article.data.alternate_url != blank
