@@ -71,3 +71,7 @@ h5,
 h6 {
   @include helvetica-neue-bold($is-important: null); // Disable !important in this instance.
 }
+
+.cs-preview .no-preview {
+  display: none $global-important;
+}
