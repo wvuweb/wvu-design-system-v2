@@ -44,6 +44,11 @@
         {% endeditable_region_block %}
       {% endif %}
 
+      <p>
+        Component Sort Order: {{ component.loopOrder }}
+        Component Loop By: {{ component.loopBy }}
+      </p>
+
       {% if itemCount == 0 %}
         {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
       {% else %}
