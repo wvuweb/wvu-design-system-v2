@@ -74,7 +74,7 @@
             {% endif %}
           {% endfor %}
 
-          <div class="{{ itemClasses }} d-flex align-items-stretch text-start">
+          <div class="{{ itemClasses }} d-flex align-items-stretch text-start position-relative">
             <div class="p-2 w-100">
 
               {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
