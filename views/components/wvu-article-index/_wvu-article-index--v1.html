@@ -22,6 +22,11 @@
           </div>
         {% endif %}
 
+        <p>
+          Component Sort Order: {{ component.loopOrder }}
+          Component Loop By: {{ component.loopBy }}
+        </p>
+
         {% if articles.size > 0 %}
           {% capture article_list_content %}
             {% for article in articles.all %}
