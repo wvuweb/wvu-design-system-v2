@@ -30,7 +30,8 @@
           </div>
         </div>
       </div>
-      <div class="mb-4">
+
+      {% if article.parent.data.disable_articles_author != '1' %}
         {% if edit_mode %}
           <div class="container">
             <div class="alert alert-info p-2 my-2 small">
@@ -41,25 +42,23 @@
           </div>
         {% endif %}
 
-        {% if article.parent.data.disable_articles_author != '1' %}
-          {% if article.data.article_hide_author != '1' %}
-            {% if images.length >= 1 %}
-              {{ authorImage }}
-            {% endif %}
-
-            <p class="iowan-old-style">
-              <span class="d-block" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                <span itemprop="name">
-                  By <span class="helvetica-neue-bold text-uppercase">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span>
-                </span>
-              </span>
-            
-              <time class="small d-block" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
-            </p>
+        {% if article.data.article_hide_author != '1' %}
+          {% if images.length >= 1 %}
+            {{ authorImage }}
           {% endif %}
-        {% endif %}
 
-      </div>
+          <p class="iowan-old-style mb-0">
+            <span class="d-block" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+              <span itemprop="name">
+                By <span class="helvetica-neue-bold text-uppercase">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span>
+              </span>
+            </span>
+          </p>
+        {% endif %}
+      {% endif %}
+      
+      <time class="small d-block mb-4" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%B %d, %Y' | default: 'Not yet published' }}</time>
+
     </div>
   </div>
 {% endcapture %}
