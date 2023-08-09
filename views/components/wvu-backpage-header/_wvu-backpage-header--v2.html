@@ -100,11 +100,12 @@
                 <button class="btn btn-white btn-lg bs-dropdown-toggle w-100 text-start d-flex align-items-center justify-content-between" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Select Page <span aria-hidden="true" class="fa-solid fa-angle-down float-right"></span>
                 </button>
-                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
-                  {% for page in page.children %}
-                    <li><a class="dropdown-item" href="{{ page.url }}">{{ page.alternate_name | default: page.name }}</a></li>
-                  {% endfor %}
-                </ul>
+                {% if page.data.submenu_start_depth != blank %}
+                  {% assign submenuStartDepth = page.data.submenu_start_depth %}
+                {% else %}
+                  {% assign submenuStartDepth = page.depth %}
+                {% endif %}
+                {% ancestor_menu start_depth: submenuStartDepth, max_depth: submenuMaxDepth, ul_class: "dropdown-menu w-100", link_class: "dropdown-item" %}
               </div>
             </div>
           </div>
