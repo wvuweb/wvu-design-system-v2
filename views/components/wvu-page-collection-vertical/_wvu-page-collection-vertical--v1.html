@@ -13,7 +13,7 @@
   assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
   assign itemCount = 0
 
-  assign items = items | sort: "published_at"
+  assign items = items | sort: items["published_at"]
 
   if page.content[component.region_names.header] != blank
     assign htag = 'h3'
