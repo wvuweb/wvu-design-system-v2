@@ -117,7 +117,7 @@
             </p>
           </div>
           {% case component.baseName %}
-            {% when 'alternating-grid' or 'article-collection' or 'cards' or 'contact-collection' or 'contact-collection-vertical' or 'page-collection' or 'page-collection-colored-boxes' or 'page-collection-icons' or 'page-collection-vertical' or 'page-collection-vertical-icons' or 'people-collection' or 'profile-teaser' or 'testimonials' %}
+            {% when 'alternating-grid' or 'article-collection' or 'cards' or 'cards-w-overlay' or 'contact-collection' or 'contact-collection-vertical' or 'page-collection' or 'page-collection-colored-boxes' or 'page-collection-icons' or 'page-collection-vertical' or 'page-collection-vertical-icons' or 'people-collection' or 'profile-teaser' or 'testimonials' %}
               <div class="col-lg text-white">
                 <p class="mb-1 small">
                   {% if edit_mode %}Utility classes for item headers:{% endif %}
@@ -142,17 +142,19 @@
                   {% endif %}
                 </p>
               </div>
-              <div class="col-lg text-white">
-                <p class="mb-1 small">
-                  {% if edit_mode %}Utility classes for buttons:{% endif %}
-                  {% editable_region name: component.region_names.itemButtonClasses, type: "simple", scope: component.scope %}
-                </p>
-                <p class="text-muted mb-0 mt-1 small">
-                  {% if component.defaultItemButtonClasses != blank %}
-                    <strong>Default classes:</strong> {{ component.defaultItemButtonClasses }}
-                  {% endif %}
-                </p>
-              </div>
+              {% unless component.baseName == 'cards-w-overlay' %}
+                <div class="col-lg text-white">
+                  <p class="mb-1 small">
+                    {% if edit_mode %}Utility classes for buttons:{% endif %}
+                    {% editable_region name: component.region_names.itemButtonClasses, type: "simple", scope: component.scope %}
+                  </p>
+                  <p class="text-muted mb-0 mt-1 small">
+                    {% if component.defaultItemButtonClasses != blank %}
+                      <strong>Default classes:</strong> {{ component.defaultItemButtonClasses }}
+                    {% endif %}
+                  </p>
+                </div>
+              {% endunless %}
               <div class="col-lg text-white">
                 <p class="mb-1 small">
                   {% if edit_mode %}Collection Items Button Text:{% endif %}
