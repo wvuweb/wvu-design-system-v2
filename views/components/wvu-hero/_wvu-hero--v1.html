@@ -51,3 +51,12 @@
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
 {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+  </script>
+{% endcontent_for %}
