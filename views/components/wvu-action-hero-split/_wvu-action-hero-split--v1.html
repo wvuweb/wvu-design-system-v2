@@ -34,7 +34,7 @@
         <span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>
       {% endif %}
       {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
-      <{{ htag }} id="{{ component.name }}-label" class="{{ bgClasses }} {{ headerClasses }}{% if component.align != 'right' %} ms-md-n5{% endif %}{% if component.align == 'right' %} me-md-n5 float-end{% endif %}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Emerging mobile ready drone.' %}</{{ htag }}>
+      <{{ htag }} id="{{ component.name }}-label" class="{{ bgClasses }} {{ headerClasses }}{% if component.align != 'right' %} ms-md-n5{% endif %}{% if component.align == 'right' %} me-md-n5 float-end{% endif %}">{% editable_region name: component.region_names.header, scope: component.scope, type: "simple" placeholder: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' %}</{{ htag }}>
       <div class="{% if component.align != 'right' %}ps-3{% endif %}{% if component.align == 'right' %}pe-3 float-end{% endif %}">
         {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}
@@ -42,7 +42,7 @@
         <div class="wvu-p-max-width">
           {% editable_region_block name: component.region_names.main, scope: component.scope %}
             <p class="iowan-old-style-italic text-wvu-blue h1">Iterative disrupt click bait.</p>
-            <p class="lead mb-3">Tablet optimized for social sharing native content dynamic content. CPM granular hackathon intuitive vertical-specific hashtag. Gen Y cross-device engagement brand awareness.</p>
+            <p class="lead mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             <a href="#" class="btn btn-primary">Action Item</a>
           {% endeditable_region_block %}
         </div>
