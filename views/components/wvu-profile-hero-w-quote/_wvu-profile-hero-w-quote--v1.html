@@ -23,7 +23,7 @@
             {% comment %}<!-- Apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
             <blockquote class="wvu-quote mx-0 {{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
               {% comment %}<!-- Use the editable region name for the header section of the hero, which you defined above. -->{% endcomment %}
-              <p>{% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="We need a paradigm shift draft policy ppml proposal. Closing these latest prospects is like putting socks on an octopus prairie dogging. Goalposts closer to the metal fire up your browser. Killing it product management breakout fastworks for it's about managing expectations for those options are already baked in with this model ultimate measure of success." %}</p>
+              <p>{% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." %}</p>
             </blockquote>
             {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
             {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Quote Author and Subhead</span>{% endif %}
