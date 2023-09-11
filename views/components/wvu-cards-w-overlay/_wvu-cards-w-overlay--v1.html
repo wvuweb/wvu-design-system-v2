@@ -89,14 +89,10 @@
                     {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
                   {%- endif %}
 
-                  {% if item.data.link_text != blank %}
-                    {% assign link_text = item.data.link_text %}
-                  {% else %}
-                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
-                  {% endif %}
+                  {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
 
                   <a class="stretched-link text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
-                    {{ link_text }}<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span> <span class="fa-solid fa-circle-arrow-right"></span>
+                    {{ link_text }} <span class="fa-solid fa-circle-arrow-right"></span>
                   </a>
                 </div>
               </div>
