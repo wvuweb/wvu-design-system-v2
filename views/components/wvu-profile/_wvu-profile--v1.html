@@ -28,10 +28,10 @@
             <div class="mb-1">
               {% if page.data.thumbnail_url_sq != blank %}
                 {% assign thumbnailSrc = page.data.thumbnail_url_sq | build_image_url: size: '960x640', format: 'webp' %}
-                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ page.data.thumbnail_alt }}">
               {% elsif page.data.thumbnail_url != blank %}
                 {% assign thumbnailSrc = page.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
-                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
+                <img class="card-img-top w-100" src="{{ thumbnailSrc }}" alt="{{ page.data.thumbnail_alt }}">
               {% else %}
                 {% if edit_mode %}
                   <div class="alert alert-warning rounded p-3 no-preview">
