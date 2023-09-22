@@ -25,7 +25,7 @@
 </div>
 {% for image in images %}
   <div class="position-relative mb-4">
-    <figure>
+    <figure class="mb-0">
       <img class="w-100" loading="lazy" decoding="async" src="{{ image | image_url: size: '1920x1280', format: 'webp' }}" alt="{{ image.alt_text }}">
     </figure>
     {% if edit_mode or page.content[captionRegion] != blank %}

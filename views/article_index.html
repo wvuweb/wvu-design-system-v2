@@ -10,7 +10,7 @@ custom_data_attributes:
 
 {%- liquid
   assign articleLimit = page.data.limit | default: 10
-  assign diableAuthor = page.data.disable_articles_author
+  assign disableAuthor = page.data.disable_articles_author
 -%}
 
 {% render "components/wvu-article-index" number: 1, main: true, limit: articleLimit, disableAuthor: disableAuthor %}
