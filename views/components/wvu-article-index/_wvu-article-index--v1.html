@@ -2,10 +2,10 @@
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
 
   if component.featurettesID == blank
-    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
+    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day, hidden: false
   else
     assign blog = site | get_page: component.featurettesID
-    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day
+    assign articles = blog.articles | filter_articles: page: params.page, limit: component.limit, tags: params.tags, tags_match: params.tags_match, year: params.year, month: params.month, day: params.day, hidden: false
   endif
 
   assign sortedArticles = articles | sort: "published_at" | reverse
@@ -27,6 +27,8 @@
         {% if articles.size > 0 %}
           {% capture article_list_content %}
             {% for article in sortedArticles %}
+              
+            {% if article.data.}
 
               {% liquid
                 if article.data.alternate_url != blank
