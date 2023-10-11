@@ -68,7 +68,7 @@ function mapInit(){
   map.controls[google.maps.ControlPosition.TOP].push(homeControlDiv);
 	// end Center Map
 
-	$.getJSON("/beckley-map-12.json", {}, function(data){
+	$.getJSON("https://designsystemv2demo.volutus.wvu.edu/map-data.json", {}, function(data){
 			$.each(data.places, function(i, item){
 			$("#markers").append('<li><a href="#" rel="' + i + '">' + item.title + '</a></li>');
 			var marker = new google.maps.Marker({
