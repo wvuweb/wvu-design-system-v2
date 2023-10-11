@@ -3,7 +3,7 @@ var arrMarkers = [];
 var arrInfoWindows = [];
 
 function mapInit(){
-	var centerCoord = new google.maps.LatLng(37.775199, -81.186440); // WVU Tech beckley 37.776361, -81.186429
+	var centerCoord = new google.maps.LatLng(39.6480359, -79.9722896); // WVU Morgantown Campus 39.6480359, -79.9722896
 	// start Center Map
 	function HomeControl(controlDiv, map) {
 
