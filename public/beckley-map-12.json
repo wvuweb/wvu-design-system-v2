@@ -1,0 +1,141 @@
+{
+    "places": [
+      {
+          "title": "Administration and Extension Building (AEX-B)",
+          "description": "<img src=\"https://admissions.wvutech.edu/files/d/5a5eb458-f02e-43b7-9c86-29f007612c73/wvu-tech-campus-building-410-neville-st.jpg\"><br><strong>410 Neville St.</strong><br><br>The Administration & Extension building houses University administrative offices, the Raleigh County WVU Extension Service office, a state-of the-art auditorium for campus community events and high-end educational kitchens where our Hospitality (Culinary) students learn their trade.",
+          "lat": 37.775844,
+          "lng": -81.190913
+      },
+      {
+          "title": "Admissions (AMS)",
+          "description": "<img src=\"https://cleanslate.wvu.edu/files/i/5361685b-5d03-4ada-857a-5c89703da47b/thumb330/gm8a1472.jpg\"><br><strong>400 S. Kanawha St.</strong><br>The first stop for prospective students and their families, the Admissions house is the headquarters of our counselors who can help answer questions about life at Tech.",
+          "lat": 37.776519,
+          "lng": -81.185851
+      },
+      {
+          "title": "Barrett-Kelley Athletic Hall of Fame",
+          "description": "<img src=\"https://admissions.wvutech.edu/files/d/81b239c2-167e-4995-a3a6-7d80ff83bb2e/optimized-hof.jpg\"><br><strong>720 S. Kanawha St.</strong><br>Athletic Hall of Fame, athletic awards, memorabilia and meeting spaces.",
+          "lat": 37.774437,
+          "lng": -81.180576
+      },
+
+
+      {
+          "title": "Benedum Center (BEN)",
+          "description": "<img src=\"https://cleanslate.wvu.edu/files/i/0e9ea77f-3e3d-48de-9d16-f1848dd1b931/thumb330/bennedum.jpg\"><br><strong>609 S. Kanawha St.</strong><br>The Benedum Center is home to the One Stop Shop (Registrar, Financial Aid and Student Accounts), Human Resources, Student Services, Upward Bound and the WVU Tech SGA. It’s also the location of the Benedum Events and Activities Room (The BEAR).",
+          "lat": 37.775776,
+          "lng": -81.182831
+      },
+      {
+          "title": "Carter Hall (CAR)",
+          "description": "<img src=\"https://cleanslate.wvu.edu/files/i/a5528eac-e8a1-4902-8487-6a944047266b/thumb330/carterhall-small-2.jpg\"><br><strong>322 S. Kanawha St.</strong><br>Home to the College of Business, Humanities and Social Sciences, Carter Hall hosts five computer labs and a 250-person auditorium.",
+          "lat": 37.776361,
+          "lng": -81.186429
+      },
+      {
+          "title": "Classroom Building (CLB)",
+          "description": "<img src=\"https://cleanslate.wvu.edu/files/i/ecd104c5-c2f5-4d6e-aecb-986db94c8d37/thumb330/healhsciences.jpg\"><br><strong>380 S. Kanawha St.</strong><br>The classroom building houses WVU Tech’s psychology and sociology programs, engineering laboratories and computer lab space.",
+          "lat": 37.775852,
+          "lng": -81.185984
+      },
+      {
+          "title": "Engineering Labs (ELB)",
+          "description": "<img src=\"https://admissions.wvutech.edu/files/d/462a6a73-7ded-4aa9-8963-1090dd56f582/optimized-elab.jpg\"><br><strong>310 Minnesota Ave.</strong><br>This new construction houses five cutting-edge lab spaces for everything from manufacturing and concrete to working space for our popular SAE Baja Buggy team.",
+          "lat": 37.774590,
+          "lng": -81.183271
+      },
+      {
+          "title": "Golden Bear Athletic Center (ATH)",
+          "description": "<img src=\"https://cleanslate.wvu.edu/files/i/1ec6c2ad-89a3-4b4e-a534-89b981d6eab8/thumb330/gm8a1468.jpg\"><br><strong>390 S. Kanawha St.</strong><br>Offices, locker rooms and conference/meeting rooms.",
+          "lat": 37.776205,
+          "lng": -81.185854
+      },
+        {
+            "title": "Hogan Hall (HOG)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/cc901dbb-06da-4187-bda3-896b78e8be85/thumb330/hoganhall.jpg\"><br><strong>507 S. Kanawha St.</strong><br>Hogan Hall is a residence hall with suite-style rooms, meeting/study spaces and free laundry facilities.<a href=\"https://housing.wvutech.edu/housing-options/hogan-hall\">Visit Hogan Hall's webpage to learn more</a>",
+            "lat": 37.776543,
+            "lng": -81.183916
+        },
+
+        {
+            "title": "Innovation Building (INN)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/289fe933-6ca4-413f-a598-9242f75d72b5/thumb330/innovation.jpg\"><br><strong>282 Minnesota Ava.</strong><br>Innovation houses classrooms, meeting spaces and specialized labs.",
+            "lat": 37.774953,
+            "lng": -81.183764
+        },
+        {
+            "title": "Interdisciplinary Sciences (ISB-B)",
+            "description": "<img src=\"https://admissions.wvutech.edu/files/d/f6050828-154c-4367-bdd2-a14abebb6123/isb.jpg\"><br><strong>400 Neville St.</strong><br>Home of our Forensic Investigation, Aviation Management, RBA and Early Enrollment programs. Recently updated with specialized forensics labs and computer facilities.",
+            "lat": 37.776004,
+            "lng": -81.190667
+        },
+
+
+        {
+            "title": "Life Sciences Building (LIF)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/9c655457-a8ef-4dd8-8674-3f9b32f009a7/thumb330/lifesciences.jpg\"><br><strong>100 Mel Hancock Way</strong><br>Our testing center and student health clinic are based in Life Sciences. Its state-of-the-art labs are also where our biology and nursing students put their skills to work.",
+            "lat": 37.775119,
+            "lng": -81.182641
+        },
+        {
+            "title": "Physical Sciences Building (LAB)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/6ac15eaa-266f-4107-82de-1d7f8054e929/thumb330/gm8a1491-edit.jpg\"><br><strong>600 S. Kanawha St.</strong><br>The Physical Sciences Building features nine state-of-the-art, modern laboratories for chemistry, physics and distillation.",
+            "lat": 37.775778,
+            "lng": -81.183663
+        },
+        {
+            "title": "President's Office (PRH)",
+            "description": "<strong>408 S. Kanawha St.</strong><br>Presidents Office<br>The “President’s House” is home to the Office of the President and is located next to the Office of Admissions, where most students begin their careers.",
+            "lat": 37.776492,
+            "lng": -81.185590
+
+        },
+        {
+            "title": "Provost Office (PRO)",
+            "description": "<strong>706 S. Kanawha St.</strong><br>Office of the Provost<br>The Office of the Provost oversees academic affairs for the entire University.",
+            "lat": 37.774884,
+            "lng": -81.181834
+        },
+
+
+
+        {
+            "title": "Robert C. Byrd Learning Resource Center (RCC)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/a603bdfe-7356-4b81-a8a0-7af419080140/thumb330/lrc-2.jpg\"><br><strong>512 S. Kanawha St.</strong><br>First Floor: Bear's Den Dining Hall<br>Second Floor: Library, Bookstore and Student Success Center<br>Third Floor: Leonard C. Nelson College of Engineering and Sciences ",
+            "lat": 37.775991,
+            "lng": -81.184016
+        },
+        {
+            "title": "Student Life (SLF)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/5bfec23e-6f04-47fe-92b6-72d3bd1a00a0/thumb330/gm8a1496.jpg\"><br><strong>505 S. Kanawha St.</strong><br>The Student Life House is where you’ll find the Dean of Students Office, Career Services and Cooperative Education, Service and Learning, Housing and Counseling Services.",
+            "lat": 37.776596,
+            "lng": -81.184363
+        },
+        {
+            "title": "Tech Adventures (AVT)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/434132d3-88ec-4810-a002-b7f209db6072/thumb330/gm8a6945.jpg\"><br><strong>704 S. Kanawha St.</strong><br>The Tech Adventures House includes offices, outdoor equipment rental and adventure resources. Visit <a href=\"https://techadventures.wvutech.edu\">techadventures.wvutech.edu</a> to learn more ",
+            "lat": 37.774989,
+            "lng": -81.182102
+        },
+        {
+            "title": "University Hall (UNH)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/bed96de9-1fba-4f72-80ca-ca524ceb8a97/thumb330/universityhall.jpg\"><br><strong>540 Minnesota Ave.</strong><br>University Hall boasts suite-style housing with study/meeting spaces and free laundry facilities. <a href=\"https://housing.wvutech.edu/housing-options/university-hall\">Visit University Hall’s webpage to find out more.</a>",
+            "lat": 37.773800,
+            "lng": -81.182086
+        },
+        {
+            "title": "University Police (UPD)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/9fd00129-7c1e-4221-9de5-b9450115341f/thumb330/gm8a1460.jpg\"><br><strong>313 S. Kanawha St.</strong><br>WVU Tech maintains trained campus law enforcement. Visit <a href=\"https://police.wvutech.edu/\">police.wvutech.edu</a> to learn more.",
+            "lat": 37.776755,
+            "lng": -81.186119
+        },
+        {
+            "title": "Van Meter Gym (VNM)",
+            "description": "<img src=\"https://cleanslate.wvu.edu/files/i/31d6f437-09a7-469d-83f4-1ab3558620cd/thumb330/vanmetergyme.jpg\"><br><img src=\"https://cleanslate.wvu.edu/files/i/4820c209-a83c-4c72-8c0a-e45e509ffd10/thumb330/vanmetergym-2.jpg\"><br><strong>350 S. Kanawha St.</strong><br>The Van Meter gymnasium serves as a practice and competition facility for a number of WVU Tech’s athletic teams.",
+            "lat": 37.776050,
+            "lng": -81.186276
+        }
+
+
+      ]
+}
