@@ -1,0 +1,55 @@
+<section>
+
+  <h2>Campus Map</h2>
+  <r:editable_region name="wvut-abouttech__description-2">
+    <a href="https://admissions.wvutech.edu/about-tech/directions">Directions to Beckley Campus</a><br /><br />
+  </r:editable_region>
+
+  <h3 class="wvu-h3">Facilities</h3>
+
+  <ul id="markers"></ul>
+
+  <fieldset class="map-filter__fieldset">
+    <legend class="map-filter__legend">Parking Areas</legend>
+
+    <div class="map-filter__choice">
+      <input name="checkbox" id="label__employee" onClick="boxclick(this,1)" type="checkbox" value="checkbox">
+      <label class="map-filter__label" for="label__employee">
+        Employee Parking
+        <img class="map-filter__image" alt="Employee Parking Icon" src="https://code.wvutech.edu/files/d/839614af-043f-40f5-b8c0-c1feebce29bf/chart-2.png" />
+      </label>
+    </div> <!-- /.map-filter__choice -->
+
+    <div class="map-filter__choice">
+      <input name="checkbox" id="label__permit" onClick="boxclick(this,2)" type="checkbox" value="checkbox">
+      <label class="map-filter__label" for="label__permit">
+        Permit Parking
+        <img class="map-filter__image" alt="Permit Parking Icon" src="https://code.wvutech.edu/files/d/b7b8462e-0bc4-47be-a358-2194e0900dfb/chart.png" />
+      </label>
+    </div> <!-- /.map-filter__choice -->
+
+    <div class="map-filter__choice">
+      <input name="checkbox" id="label__visitor" onClick="boxclick(this,4)" type="checkbox" value="checkbox">
+      <label class="map-filter__label" for="label__visitor">
+        Visitor Parking
+        <img class="map-filter__image" alt="Visitor Parking Icon" src="https://code.wvutech.edu/files/d/6f182f36-81ef-4972-9b33-b13952c18a55/chart-4.png" />
+      </label>
+    </div> <!-- /.map-filter__choice -->
+
+    <div class="map-filter__choice">
+      <input name="checkbox" id="label__hourly" onClick="boxclick(this,5)" type="checkbox" value="checkbox">
+      <label class="map-filter__label" for="label__hourly">
+        Hourly Parking
+        <img class="map-filter__image" alt="Hourly Parking Icon" src="https://code.wvutech.edu/files/d/c5ecfb24-c8b0-432d-ae11-ac8cc59278a2/chart-lightblue.png" />
+      </label>
+    </div> <!-- /.map-filter__choice -->
+  </fieldset>
+
+  <div id="map"></div>
+
+</section> <!-- /#container -->
+
+{% content_for "page_js" %}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc"></script>
+  {% link_javascript name: "google-map" %}
+{% endcontent_for %}
