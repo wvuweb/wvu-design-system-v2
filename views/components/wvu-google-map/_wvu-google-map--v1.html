@@ -78,9 +78,9 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
   <script>
     var map;
-    var jsonSource = document.getElementById("dataSrc").innerHTML;
-    var lat = document.getElementById("lat").innerHTML;
-    var long = document.getElementById("long").innerHTML;
+    var jsonSource = document.getElementById("dataSrc").innerText;
+    var lat = document.getElementById("lat").innerText;
+    var long = document.getElementById("long").innerText;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
@@ -183,7 +183,6 @@
         // this next line closes all open infowindows before opening the selected one
         for(x=0; x < arrInfoWindows.length; x++){ arrInfoWindows[x].close(); }
         arrInfoWindows[i].open(map, arrMarkers[i]);
-        console.log("Data SRC: " + dataSrc)
       });
     });
   </script>
