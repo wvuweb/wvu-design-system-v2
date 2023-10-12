@@ -1,6 +1,5 @@
 {%- liquid
   assign items = page.children
-  assign imgUrl = ""
   assign i = 0
 -%}
 {
