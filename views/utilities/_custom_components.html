@@ -2,6 +2,5 @@
   {% when 'custom-example' %}{% render "components/custom/custom-example" slot: slot %}
   {% when 'how-to-guides' %}{% render "components/documentation-site/wvu-how-to-guides" slot: slot %}
   {% when 'global-calculator' %}{% render "components/custom/global-calculator" slot: slot %}
-  {% when 'google-map' %}{% render "components/custom/wvu-google-map" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}
