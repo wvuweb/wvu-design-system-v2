@@ -4,13 +4,13 @@
 -%}
 {
   "places": [
-    {%- for item in (1..3) -%}{
-        "title": "Title",
-        "img": "Image",
+    {%- for item in items -%}{
+        "title": "asdf",
+        "img": "asdf",
         "address": "<strong>Address</strong>",
-        "description": "Description",
-        "lat": "2",
-        "lng": "3"
+        "description": "adsf",
+        "lat": "asdf",
+        "lng": "asdf"
     }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}{%- endfor -%}
   ]
 }
