@@ -1,22 +1,65 @@
-<section aria-labelledby="">
+{%- liquid
+  assign listClassesRegionName = 'wvu-CNAME__list-classes' | replace: 'CNAME', component.name
+  assign listClasses = page.content[listClassesRegionName] | default: component.defaultListClasses
+
+  if component.primaryHeading == 'h1'
+    assign htag = 'h1'
+  elsif component.primaryHeading == 'h2'
+    assign htag = 'h2'
+  else
+    assign htag = 'h2'
+  endif
+-%}
+
+{% capture component_content %}
   <div class="container-fluid mx-0 px-0">
     <div class="row mx-0 px-0">
       <div class="col-md-4 col-xxl-3">
         <div class="px-3 px-lg-4 py-4 py-lg-5">
-          <h2 class="wvu-shout text-wvu-blue h1 wvu-bar">Campus Map</h2>
-          <p>Lorem ipsum.</p>
-          <ul id="markers" class="wvu-ul-arrows wvu-ul-arrows-wvu-gold mb-0 mt-3"></ul>
-          <div class="small mt-3">
+          {% if edit_mode %}
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
+              <div class="mb-0 text-white">{% editable_region name: component.region_names.headerClasses, type: "simple", scope: component.scope %}</div>
+              {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
+              <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultHeaderClasses }}</pre>
+            </small>
+          {% endif %}
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+          <{{ htag }} id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
+            {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="Places" %}
+          </{{ htag }}>
+          {% editable_region_block name: component.region_names.main scope: component.scope %}
             <p>Lorem ipsum.</p>
+          {% endeditable_region_block %}
+          {% if edit_mode %}
+            <div class="p-3 alert alert-info my-3 no-preview small">
+              <h2 class="h6">Coordinates</h2>
+              <p>Used to center the map.</p>
+            </div>
+          {% endif %}
+          {% if edit_mode %}
+            <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
+              <div class="mb-0 text-white">{% editable_region name: component.region_names.listClassesRegionName, type: "simple", scope: component.scope %}</div>
+              {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
+              <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultListClasses }}</pre>
+            </small>
+          {% endif %}
+          <ul id="markers" class="{{ listClasses }} mb-0 mt-3"></ul>
+          <div class="mt-3">
+            {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+              <p>Lorem ipsum.</p>
+            {% endeditable_region_block %}
           </div>
         </div>
       </div>
-      <div class="col-md-8 col-xxl-9 relative">
+      <div class="col-md-8 col-xxl-9 pe-md-0 relative">
         <div id="map" class="h-100"></div>
       </div>
     </div>
   </div>
-</section> <!-- /#container -->
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
 
 {% content_for "page_js" %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -94,7 +137,7 @@
 
       $.getJSON("https://designsystemv2demo.volutus.wvu.edu/map-data.json", {}, function(data){
           $.each(data.places, function(i, item){
-          $("#markers").append('<li><a href="#" rel="' + i + '">' + item.title + '</a></li>');
+          $("#markers").append('<li><a class="text-decoration-none" href="#map" rel="' + i + '">' + item.title + '</a></li>');
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(item.lat, item.lng),
             map: map,
