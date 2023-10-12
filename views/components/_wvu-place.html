@@ -1,0 +1,19 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.profile | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "place",
+    "defaultComponentClasses": "",
+    "defaultHeaderClasses": "mb-4",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-place/wvu-place--v1" component: component %}
+  {% else %}{% render "components/wvu-place/wvu-place--v1" component: component %}
+{% endcase %}

@@ -1,7 +1,12 @@
 {%- liquid
   assign listClassesRegionName = 'wvu-CNAME__list-classes' | replace: 'CNAME', component.name
   assign listClasses = page.content[listClassesRegionName] | default: component.defaultListClasses
-
+  assign latRegionName = 'wvu-CNAME__lat' | replace: 'CNAME', component.name
+  assign longRegionName = 'wvu-CNAME__long' | replace: 'CNAME', component.name
+  assign jsonUrlRegionName = 'wvu-CNAME__json-url' | replace: 'CNAME', component.name
+  assign lat = page.content[latRegionName] | default: "39.6480359"
+  assign long = page.content[longRegionName] | default: "-79.9722896"
+  assign mapData = page.content[jsonUrlRegionName] | default: "/map-data.json"
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
   elsif component.primaryHeading == 'h2'
@@ -12,6 +17,9 @@
 -%}
 
 {% capture component_content %}
+  <div id="lat" aria-hidden="true" class="u-visually-hidden">{{ lat | strip }}</div>
+  <div id="long" aria-hidden="true" class="u-visually-hidden">{{ long | strip }}</div>
+  <div id="dataSrc" aria-hidden="true" class="u-visually-hidden">{{ mapData | strip }}</div>
   <div class="container-fluid mx-0 px-0">
     <div class="row mx-0 px-0">
       <div class="col-md-4 col-xxl-3">
@@ -27,15 +35,19 @@
           <{{ htag }} id="{{ component.name }}-label" class="{{ page.content[component.region_names.headerClasses] | default: component.defaultHeaderClasses }}">
             {% editable_region name: component.region_names.header, scope: component.scope, type: "simple", placeholder="Places" %}
           </{{ htag }}>
+          {% if edit_mode %}
+            <div class="my-3 p-2 alert alert-info">
+              <h2 class="h5">Properties</h2>
+              <p>Used to center map and define data source.</p>
+              {% editable_region name: latRegionName type: "simple", scope: component.scope, placeholder="39.6480359" %}
+              {% editable_region name: longRegionName type: "simple", scope: component.scope, placeholder="-79.9722896" %}
+              <h3 class="h6">JSON URL</h3>
+              {% editable_region name: jsonUrlRegionName type: "simple", scope: component.scope, placeholder="/map-data.json" %}
+            </div>
+          {% endif %}
           {% editable_region_block name: component.region_names.main scope: component.scope %}
             <p>Lorem ipsum.</p>
           {% endeditable_region_block %}
-          {% if edit_mode %}
-            <div class="p-3 alert alert-info my-3 no-preview small">
-              <h2 class="h6">Coordinates</h2>
-              <p>Used to center the map.</p>
-            </div>
-          {% endif %}
           {% if edit_mode %}
             <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
               <div class="mb-0 text-white">{% editable_region name: component.region_names.listClassesRegionName, type: "simple", scope: component.scope %}</div>
@@ -66,11 +78,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
   <script>
     var map;
+    var jsonSource = document.getElementById("dataSrc").innerHTML;
+    var lat = document.getElementById("lat").innerHTML;
+    var long = document.getElementById("long").innerHTML;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
     function mapInit(){
-      var centerCoord = new google.maps.LatLng(39.6480359, -79.9722896); // WVU Morgantown Campus 39.6480359, -79.9722896
+      var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
       // start Center Map
       function HomeControl(controlDiv, map) {
 
@@ -135,7 +150,7 @@
       map.controls[google.maps.ControlPosition.TOP].push(homeControlDiv);
       // end Center Map
 
-      $.getJSON("https://designsystemv2demo.volutus.wvu.edu/map-data.json", {}, function(data){
+      $.getJSON(dataSrc, {}, function(data){
           $.each(data.places, function(i, item){
           $("#markers").append('<li><a class="text-decoration-none" href="#map" rel="' + i + '">' + item.title + '</a></li>');
           var marker = new google.maps.Marker({

@@ -1,10 +1,18 @@
+{%- liquid
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants
+  assign imgUrl = ""
+  assign i = 0
+-%}
 {
-  "places": [
+  "places": {%- for item in items -%}{%- if item.data.thumbnail_url != blank -%}{%- assign thumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' -%}{%- endif -%}[
     {
-        "title": "Administration and Extension Building (AEX-B)",
-        "description": "<img src=\"https://admissions.wvutech.edu/files/d/5a5eb458-f02e-43b7-9c86-29f007612c73/wvu-tech-campus-building-410-neville-st.jpg\"><br><strong>410 Neville St.</strong><br><br>The Administration & Extension building houses University administrative offices, the Raleigh County WVU Extension Service office, a state-of the-art auditorium for campus community events and high-end educational kitchens where our Hospitality (Culinary) students learn their trade.",
-        "lat": 37.775844,
-        "lng": -81.190913
+        "title": "{{ item.name | item.alternate_name | default: item.name }}",
+        "img": "<img src=\"{{ thumbnailSrc }}\">",
+        "address": "<strong>Address</strong>",
+        "description": "{{ item.data.description }}",
+        "lat": "{{ item.data.lat | strip }}",
+        "lng": "{{ item.data.long | strip }}"
     },
     {
         "title": "Admissions (AMS)",
@@ -127,6 +135,7 @@
         "description": "<img src=\"https://cleanslate.wvu.edu/files/i/31d6f437-09a7-469d-83f4-1ab3558620cd/thumb330/vanmetergyme.jpg\"><br><img src=\"https://cleanslate.wvu.edu/files/i/4820c209-a83c-4c72-8c0a-e45e509ffd10/thumb330/vanmetergym-2.jpg\"><br><strong>350 S. Kanawha St.</strong><br>The Van Meter gymnasium serves as a practice and competition facility for a number of WVU Tech’s athletic teams.",
         "lat": 37.776050,
         "lng": -81.186276
-    }
+    }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}
   ]
+{%- endfor %}
 }
