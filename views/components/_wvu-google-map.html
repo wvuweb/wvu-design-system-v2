@@ -3,7 +3,7 @@
 {% liquid
   assign componentVersion = theme.data.component_versions.hero | default: '1'
   assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-shout text-wvu-blue h1 wvu-bar"
-  assign defaultListClasses = defaultListClasses | default: "wvu-ul-arrows wvu-ul-arrows-wvu-gold"
+  assign defaultListClasses = component.defaultListClasses | default: "wvu-ul-arrows wvu-ul-arrows-wvu-gold"
 %}
 
 {%- define_component component %}
