@@ -4,13 +4,13 @@
 -%}
 {
   "places": [
-    {%- for item in items -%}{
+    {%- for item in items -%}{%- if item.data.thumbnail_url != blank -%}{%- assign thumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' -%}{%- endif -%}{
         "title": "{{ item.name | item.alternate_name | default: item.name }}",
-        "img": "<img src=\"{{ thumbnailSrc }}\">",
+        "img": "",
         "address": "<strong>Address</strong>",
-        "description": "{{ item.data.description }}",
-        "lat": "{{ item.data.lat | strip }}",
-        "lng": "{{ item.data.long | strip }}"
+        "description": "",
+        "lat": "",
+        "lng": ""
     }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}{%- endfor -%}
   ]
 }
