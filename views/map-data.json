@@ -5,12 +5,12 @@
 {
   "places": [
     {%- for item in items -%}{
-        "title": "asdf",
-        "img": "asdf",
+        "title": "{{ item.name | item.alternate_name | default: item.name }}",
+        "img": "<img src=\"{{ thumbnailSrc }}\">",
         "address": "<strong>Address</strong>",
-        "description": "adsf",
-        "lat": "asdf",
-        "lng": "asdf"
+        "description": "{{ item.data.description }}",
+        "lat": "{{ item.data.lat | strip }}",
+        "lng": "{{ item.data.long | strip }}"
     }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}{%- endfor -%}
   ]
 }
