@@ -84,10 +84,8 @@
     var arrMarkers = [];
     var arrInfoWindows = [];
 
-    console.log(jsonSource + lat + long);
-
     function mapInit(){
-      var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
+      var centerCoord = new google.maps.LatLng(39.6480359, -79.9722896); // WVU Morgantown Campus 39.6480359, -79.9722896
       // start Center Map
       function HomeControl(controlDiv, map) {
 
@@ -152,7 +150,7 @@
       map.controls[google.maps.ControlPosition.TOP].push(homeControlDiv);
       // end Center Map
 
-      $.getJSON(dataSrc, {}, function(data){
+      $.getJSON("https://designsystemv2demo.volutus.wvu.edu/map-data.json?=1223333", {}, function(data){
           $.each(data.places, function(i, item){
           $("#markers").append('<li><a class="text-decoration-none" href="#map" rel="' + i + '">' + item.title + '</a></li>');
           var marker = new google.maps.Marker({
