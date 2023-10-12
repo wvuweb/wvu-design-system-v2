@@ -1,0 +1,21 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.hero | default: '1'
+  assign defaultHeaderClasses = defaultHeaderClasses | default: "wvu-shout text-wvu-blue h1 wvu-bar"
+  assign defaultListClasses = defaultComponentClasses | default: "wvu-ul-arrows wvu-ul-arrows-wvu-gold"
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "google-map",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultHeaderClasses": "{{ defaultHeaderClasses }}",
+    "mainTagClasses": ""
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-hero/wvu-google-map--v1" component: component %}
+  {% else %}{% render "components/wvu-hero/wvu-google-map--v1" component: component %}
+{% endcase %}
