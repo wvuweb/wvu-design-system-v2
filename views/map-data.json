@@ -5,7 +5,7 @@
 {
   "places": [
     {%- for item in items -%}{
-        "title": "{{ item.name | item.alternate_name | default: item.name }}",
+        "title": "{{ item.alternate_name | default: item.name }}",
         "img": "",
         "address": "<strong>Address</strong>",
         "description": "",
