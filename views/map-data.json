@@ -1,6 +1,5 @@
 {%- liquid
-  assign root = startPage | default: site.root_page
-  assign items = root.descendants
+  assign items = page.children
   assign imgUrl = ""
   assign i = 0
 -%}
