@@ -1,6 +1,6 @@
 {%- liquid
   assign listClassesRegionName = 'wvu-CNAME__list-classes' | replace: 'CNAME', component.name
-  assign listClasses = page.content[listClassesRegionName] | default: component.defaultListClasses
+  assign listClasses = page.content[listClassesRegionName] | default: defaultListClasses
   assign latRegionName = 'wvu-CNAME__lat' | replace: 'CNAME', component.name
   assign longRegionName = 'wvu-CNAME__long' | replace: 'CNAME', component.name
   assign jsonUrlRegionName = 'wvu-CNAME__json-url' | replace: 'CNAME', component.name
