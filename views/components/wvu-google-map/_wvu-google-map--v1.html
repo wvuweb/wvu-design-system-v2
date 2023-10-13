@@ -78,14 +78,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
   <script defer>
     var map;
-    var jsonSource = document.getElementById("dataSrc").innerText;
+    var jsonSource = document.getElementById("dataSrc").innerText + "?=" + Math.floor(Math.random() * 100);
     var lat = document.getElementById("lat").innerText;
     var long = document.getElementById("long").innerText;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
     function mapInit(){
-      var centerCoord = new google.maps.LatLng(39.6480359, -79.9722896); // WVU Morgantown Campus 39.6480359, -79.9722896
+      var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
       // start Center Map
       function HomeControl(controlDiv, map) {
 
