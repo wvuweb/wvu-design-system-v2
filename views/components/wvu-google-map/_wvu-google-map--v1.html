@@ -76,7 +76,7 @@
 {% content_for "page_js" %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
-  <script>
+  <script defer>
     var map;
     var jsonSource = document.getElementById("dataSrc").innerText;
     var lat = document.getElementById("lat").innerText;
@@ -150,7 +150,7 @@
       map.controls[google.maps.ControlPosition.TOP].push(homeControlDiv);
       // end Center Map
 
-      $.getJSON("https://designsystemv2demo.volutus.wvu.edu/map-data.json?=1223333", {}, function(data){
+      $.getJSON(jsonSource, {}, function(data){
           $.each(data.places, function(i, item){
           $("#markers").append('<li><a class="text-decoration-none" href="#map" rel="' + i + '">' + item.title + '</a></li>');
           var marker = new google.maps.Marker({
