@@ -1,6 +1,6 @@
 {%- liquid
-  assign addressLineOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', component.name
-  assign addressLineTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', component.name
+  assign addressOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', component.name
+  assign addressTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', component.name
   assign mapLinkRegionName = 'wvu-CNAME__map-link' | replace: 'CNAME', component.name
 -%}
 
@@ -36,16 +36,18 @@
 
         {% if edit_mode %}
           <span class="d-inline-block badge bg-primary mb-1 no-preview">Address</span>
-          {% editable_region name: addressLineOneRegionName, scope: component.scope %}
-          {% editable_region name: addressLineTwoRegionName, scope: component.scope %}
-          {% editable_region name: mapLinkRegionName, scope: component.scope %}
+          <div class="mb-3">
+            Address Line 1: {% editable_region name: addressOneRegionName, scope: component.scope, type: "simple" %}
+            Address Line 2: {% editable_region name: addressTwoRegionName, scope: component.scope, type: "simple" %}
+            Map Link: {% editable_region name: mapLinkRegionName, scope: component.scope, type: "simple" %}
+          </div>
         {% endif %}
 
         {% unless edit_mode %}
           <p class="helvetica-neue-bold mb-3">
-            {{ page.content[addressLineOneRegionName] }}
-            {% if page.content[addressLineTwoRegionName] != blank %}
-              <br>{{ page.content[addressLineTwoRegionName] }}
+            {{ page.content[addressOneRegionName] }}
+            {% if page.content[addressTwoRegionName] != blank %}
+              <br>{{ page.content[addressTwoRegionName] }}
             {% endif %}
             {% if page.content[mapLinkRegionName] != blank %}
               <br><span class="fa-solid fa-map-marker"></span> <a class="text-decoration-none" href="{{ page.content[mapLinkRegionName] }}">View on Map</a>
