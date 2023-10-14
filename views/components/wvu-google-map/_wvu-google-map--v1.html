@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8 col-xxl-9 pe-md-0 relative">
+      <div id="map-container" class="col-md-8 col-xxl-9 pe-md-0 relative">
         <div id="map" class="h-100"></div>
       </div>
     </div>
@@ -82,7 +82,7 @@
 
 {% content_for "header_extras" %}
   <style>
-    #map {
+    #map-container {
       @media(max-width: 768px) {
         height: 600px;
       }
