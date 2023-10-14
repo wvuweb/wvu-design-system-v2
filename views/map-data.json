@@ -12,7 +12,7 @@
     {%- for item in items -%}{%- if item.data.thumbnail_url != blank -%}{%- assign thumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' -%}{%- endif -%}{
       "title": "{{ item.alternate_name | default: item.name }}",
       "img": "{% if item.data.thumbnail_url != blank %}<img class=\"w-100 mb-1\" src=\"{{ thumbnailSrc }}\" alt='{{ item.data.thumbnail_alt }}'>{% endif %}",
-      "address": "<address><strong>{{ item.content['wvu-place-1__address-line-1'] }}{% if item.content['wvu-place-1__address-line-2'] != blank %}<br>{{ item.content['wvu-place-1__address-line-2'] }}{% endif %}</strong></address>",
+      "address": "{% if item.content['wvu-place-1__address-line-1'] != blank %}<address><strong>{{ item.content['wvu-place-1__address-line-1'] }}{% if item.content['wvu-place-1__address-line-2'] != blank %}<br>{{ item.content['wvu-place-1__address-line-2'] }}{% endif %}</strong></address>{% endif %}",
       "description": "{% if item.data.description != blank %}<p>{{ item.data.description }}</p>{% endif %}",
       "lat": "{{ item.data.lat | strip }}",
       "lng": "{{ item.data.long | strip }}",
