@@ -16,7 +16,7 @@
       "description": "{% if item.data.description != blank %}<p>{{ item.data.description }}</p>{% endif %}",
       "lat": "{{ item.data.lat | strip }}",
       "lng": "{{ item.data.long | strip }}",
-      "url": "{% if item.content['wvu-place-1__map-link'] != blank %}<a class=\"text-primary text-decoration-none\" href=\"{{ item.content['wvu-place-1__map-link'] }}\">Visit Website<span class=\"visually-hidden\">: {{ item.alternate_name | default: item.name }}</span> <span class=\"fa-solid fa-arrow-right\"></span></a>{% endif %}"
+      "url": "{% if item.data.alternate_url != blank %}<a class=\"text-primary text-decoration-none\" href=\"{{ item.data.alternate_url }}\">Visit Website<span class=\"visually-hidden\">: {{ item.alternate_name | default: item.name }}</span> <span class=\"fa-solid fa-arrow-right\"></span></a>{% endif %}"
     }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}{%- endfor -%}
   ]
 }
