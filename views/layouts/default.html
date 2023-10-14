@@ -67,7 +67,7 @@
 
       {% case page.template_name %}
         {% when 'frontpage' or 'frontpage-college-or-department' or 'frontpage-conference-or-event' or 'frontpage-faculty-member' or 'frontpage-magazine' or 'frontpage-student-org' or 'photo_essay' %}
-        {% when 'article' or 'profile' or 'student' or 'faculty-member' or 'landing-page' or 'photo_essay' %}
+        {% when 'article' or 'profile' or 'student' or 'faculty-member' or 'landing-page' or 'photo_essay' or 'place' %}
           {% if page.data.breadcrumbs != '1' %}
             {% render "components/wvu-breadcrumbs" %}
           {% endif %}
