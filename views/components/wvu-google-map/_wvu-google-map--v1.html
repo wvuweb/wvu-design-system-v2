@@ -80,6 +80,16 @@
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
 {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
 
+{% content_for "header_extras" %}
+  <style>
+    #map {
+      @media(max-width: 768px) {
+        --bs-aspect-ratio: 120%;
+      }
+    }
+  </style>
+{% endcontent_for %}
+
 {% content_for "page_js" %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
