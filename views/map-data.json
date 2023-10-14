@@ -1,8 +1,7 @@
 {%- liquid
-  assign startPageId = page.data.startPage | default: page.id
-  assign startPage = site | get_page: startPageId
+  assign startPage = site | get_page: page.data.startPage
   assign root = startPage | default: site.root_page
-  assign label = page.data.customLabel
+  assign label = page.data.customLabel | default: 'map-location'
   assign limit = page.data.limit | default: 20
   assign items = root.descendants | filter_pages: by: "name", sort: "asc", tags: label, tags_match: "all", hidden: page.data.showHidden, random: false, limit: limit
   assign sortedItems = items | sort: "name"
