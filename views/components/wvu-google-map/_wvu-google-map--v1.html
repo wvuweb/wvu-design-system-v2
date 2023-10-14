@@ -49,7 +49,7 @@
             <p>Lorem ipsum.</p>
           {% endeditable_region_block %}
           {% if edit_mode %}
-            <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">List classes:
+            <small class="wvu-z-index-content d-block mt-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">List classes:
               <div class="mb-0 text-white">{% editable_region name: listClassesRegionName, type: "simple", scope: component.scope %}</div>
               {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
               <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultListClasses }}</pre>
