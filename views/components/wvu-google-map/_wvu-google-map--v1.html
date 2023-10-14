@@ -27,12 +27,12 @@
       <div class="col-md-4 col-xxl-3">
         <div class="px-3 px-lg-4 py-4 py-lg-5">
           {% if edit_mode %}
-            <div class="my-3 p-2 alert alert-info small">
+            <div class="my-3 p-2 alert alert-info small no-preview">
               <h2 class="h5 mb-1">Properties</h2>
               <p>Used to center map and define data source.</p>
               {% editable_region name: latRegionName type: "simple", scope: component.scope, placeholder="39.6480359" %}
               {% editable_region name: longRegionName type: "simple", scope: component.scope, placeholder="-79.9722896" %}
-              <h3 class="h6 mb-2 mt-2">JSON URL</h3>
+              <h3 class="h6 mb-1 mt-2">JSON URL</h3>
               {% editable_region name: jsonUrlRegionName type: "simple", scope: component.scope, placeholder="/map-data.json" %}
             </div>
             <small class="wvu-z-index-content d-block mb-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">Header classes:
