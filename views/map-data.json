@@ -1,5 +1,9 @@
 {%- liquid
-  assign items = page.children
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign items = root.descendants | filter_pages: by: "name", sort: "asc", tags: page.data.customLabel, tags_match: "all", hidden: page.data.showHidden, random: false, limit: page.data.limit
+  assign sortedItems = items | sort: "name"
   assign i = 0
 -%}
 {
