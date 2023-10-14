@@ -164,7 +164,7 @@
           arrMarkers[i] = marker;
           var infowindow = new google.maps.InfoWindow({
             maxWidth: 300,
-            content: "<div id='infoWindow' class='text-dark'><h3 class='mb-0'>" + item.title +"</h3>" + item.img + "<p>" + item.description + "</p></div>"
+            content: "<div id='infoWindow' class='text-dark'><h3 class='mb-0'>" + item.title + "</h3>" + item.img + item.address + item.description + item.url + "</div>"
           });
           arrInfoWindows[i] = infowindow;
           google.maps.event.addListener(marker, 'click', function() {
