@@ -49,6 +49,9 @@
             <p>Lorem ipsum.</p>
           {% endeditable_region_block %}
           {% if edit_mode %}
+            <div class="alert alert-info p-2 small mt-2">
+              <p><strong>Note:</strong> Map locations and markers will only populate on the live, published web page, not in Edit Mode.</p>
+            </div>
             <small class="wvu-z-index-content d-block mt-2 text-left text-muted p-1 bg-wvu-neutral--dark-gray bg-wvu-accent--blue-dark no-preview">List classes:
               <div class="mb-0 text-white">{% editable_region name: listClassesRegionName, type: "simple", scope: component.scope %}</div>
               {% comment %}<!-- Show the default classes in case the user forgets, or needs to revert back to the original styling. -->{% endcomment %}
