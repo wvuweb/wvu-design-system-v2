@@ -28,6 +28,27 @@
 
         <h1 class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom" id="{{ component.name }}-label">{{ page.alternate_name | default: page.name }}</h1>
 
+        {% if edit_mode %}
+          <span class="d-inline-block badge bg-primary mb-1 no-preview">Address</span>
+          <div class="mt-3">
+            {% editable_region name: addressLineOneRegionName, scope: component.scope %}
+            {% editable_region name: addressLineTwoRegionName, scope: component.scope %}
+            {% editable_region name: mapLinkRegionName, scope: component.scope %}
+          </div>
+        {% endif %}
+
+        {% unless edit_mode %}
+          <p class="helvetica-neue-bold">
+            {{ page.content[addressLineOneRegionName] }}
+            {% if page.content[addressLineTwoRegionName] != blank %}
+              <br>{{ page.content[addressLineTwoRegionName] }}
+            {% endif %}
+            {% if page.content[mapLinkRegionName] != blank %}
+              <br><span class="fa-solid fa-map-marker"></span> <a class="text-decoration-none" href="{{ page.content[mapLinkRegionName] }}">View on Map</a>
+            {% endif %}
+          </p>
+        {% endunless %}
+
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main</span>{% endif %}
         <div class="mt-3">
           {% editable_region_block name: component.region_names.main, scope: component.scope %}
