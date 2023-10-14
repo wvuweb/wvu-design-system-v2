@@ -1,5 +1,5 @@
 {%- liquid
-  assign startPage = site | get_page: component.featurettesID
+  assign startPage = site | get_page: page.id
   assign root = startPage | default: site.root_page
   assign label = page.data.customLabel | default: 'map-location'
   assign limit = page.data.limit | default: 20
