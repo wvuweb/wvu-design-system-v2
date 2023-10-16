@@ -103,7 +103,7 @@
     var jsonSource = document.getElementById("dataSrc").innerText + "?=" + Math.floor(Math.random() * 100);
     var lat = document.getElementById("lat").innerText;
     var long = document.getElementById("long").innerText;
-    var zoomLevel = document.getElementById("zoom").innerText;
+    const zoomLevel = document.getElementById("zoom").innerText;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
@@ -141,7 +141,7 @@
         // Setup the click event listeners: simply set the map to center of WVU Tech.
         google.maps.event.addDomListener(controlUI, 'click', function() {
           map.setCenter(centerCoord);
-        map.setZoom(16);
+        map.setZoom(zoomLevel);
         });
       } // end Center Map
 
