@@ -6,6 +6,7 @@
   assign jsonUrlRegionName = 'wvu-CNAME__json-url' | replace: 'CNAME', component.name
   assign lat = page.content[latRegionName] | default: "39.6480359"
   assign long = page.content[longRegionName] | default: "-79.9722896"
+  assign zoom = page.content[zoomRegionName] | default: "16"
   assign mapData = page.content[jsonUrlRegionName] | default: "/map-data.json"
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
@@ -20,6 +21,7 @@
   <div class="visually-hidden" aria-hidden="true">
     <div id="lat">{{ lat | strip }}</div>
     <div id="long">{{ long | strip }}</div>
+    <div id="zoom">{{ zoom | strip }}</div>
     <div id="dataSrc">{{ mapData | strip }}</div>
   </div>
   <div class="container-fluid mx-0 px-0">
@@ -34,6 +36,8 @@
                   <p>Used to center map and define data source.</p>
                   {% editable_region name: latRegionName type: "simple", scope: component.scope, placeholder="39.6480359" %}
                   {% editable_region name: longRegionName type: "simple", scope: component.scope, placeholder="-79.9722896" %}
+                  <h3 class="h6 mb-1 mt-2">Zoom Level</h3>
+                  {% editable_region name: zoomRegionName type: "simple", scope: component.scope, placeholder="16" %}
                   <h3 class="h6 mb-1 mt-2">JSON URL</h3>
                   {% editable_region name: jsonUrlRegionName type: "simple", scope: component.scope, placeholder="/map-data.json" %}
                 </div>
@@ -98,6 +102,7 @@
     var jsonSource = document.getElementById("dataSrc").innerText + "?=" + Math.floor(Math.random() * 100);
     var lat = document.getElementById("lat").innerText;
     var long = document.getElementById("long").innerText;
+    var zoomLevel = document.getElementById("zoom").innerText;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
@@ -135,12 +140,12 @@
         // Setup the click event listeners: simply set the map to center of WVU Tech.
         google.maps.event.addDomListener(controlUI, 'click', function() {
           map.setCenter(centerCoord);
-        map.setZoom(16);
+        map.setZoom(zoomLevel);
         });
       } // end Center Map
 
       var mapOptions = {
-        zoom: 16,
+        zoom: zoomLevel,
         center: centerCoord,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
