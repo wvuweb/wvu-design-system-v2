@@ -103,12 +103,12 @@
     var jsonSource = document.getElementById("dataSrc").innerText + "?=" + Math.floor(Math.random() * 100);
     var lat = document.getElementById("lat").innerText;
     var long = document.getElementById("long").innerText;
-    const zoomLevel = document.getElementById("zoom").innerText;
     var arrMarkers = [];
     var arrInfoWindows = [];
 
     function mapInit(){
       var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
+      var zoomLevel = document.getElementById("zoom").innerText;
       // start Center Map
       function HomeControl(controlDiv, map) {
 
@@ -146,7 +146,7 @@
       } // end Center Map
 
       var mapOptions = {
-        zoom: zoomLevel,
+        zoom: document.getElementById("zoom").innerText,
         center: centerCoord,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
