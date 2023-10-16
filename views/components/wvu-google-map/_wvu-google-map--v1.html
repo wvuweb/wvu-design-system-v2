@@ -3,6 +3,7 @@
   assign listClasses = page.content[listClassesRegionName] | default: component.defaultListClasses
   assign latRegionName = 'wvu-CNAME__lat' | replace: 'CNAME', component.name
   assign longRegionName = 'wvu-CNAME__long' | replace: 'CNAME', component.name
+  assign zoomRegionName = 'wvu-CNAME__zoom' | replace: 'CNAME', component.name
   assign jsonUrlRegionName = 'wvu-CNAME__json-url' | replace: 'CNAME', component.name
   assign lat = page.content[latRegionName] | default: "39.6480359"
   assign long = page.content[longRegionName] | default: "-79.9722896"
