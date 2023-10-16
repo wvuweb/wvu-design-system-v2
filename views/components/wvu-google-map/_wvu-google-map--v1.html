@@ -109,6 +109,7 @@
     function mapInit(){
       var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
       var zoomLevel = document.getElementById("zoom").innerText;
+      zoomLevel = number(zoomLevel)
       // start Center Map
       function HomeControl(controlDiv, map) {
 
