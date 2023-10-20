@@ -58,23 +58,7 @@
 </div>
 
 {% content_for "page_js" %}
-  {% link_javascript name: "vendor/parvus/parvus.min" %}
-  <script>
-    'use strict';
-
-      /**
-       * Setting up the Parvus gallery:
-       * https://github.com/deoostfrees/Parvus
-      */
-
-      /* global Parvus */
-
-      const prvs = new Parvus({
-        selector: '.js-parvus-lightbox',
-        lightboxIndicatorIcon: '',
-        fileTypes: /.*/i // NOTE: Required for URLs that don't end in an image file type extension.
-      });
-  </script>
+  {% link_javascript name: "vendor/parvus/parvus.min, parvus-gallery--custom" %}
 {% endcontent_for %}
 
 {% content_for "header_extras" %}
