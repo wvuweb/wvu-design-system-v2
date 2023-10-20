@@ -19,11 +19,11 @@
 -%}
 
 {% capture component_content %}
-  <div class="visually-hidden" aria-hidden="true">
-    <div id="lat">{{ lat | strip }}</div>
-    <div id="long">{{ long | strip }}</div>
-    <div id="zoom">{{ zoom | strip }}</div>
-    <div id="dataSrc">{{ mapData | strip }}</div>
+  <div class="d-none">
+    <div id="js-lat">{{ lat | strip }}</div>
+    <div id="js-long">{{ long | strip }}</div>
+    <div id="js-zoom">{{ zoom | strip }}</div>
+    <div id="js-dataSrc">{{ mapData | strip }}</div>
   </div>
   <div class="container-fluid mx-0 px-0">
     <div class="row mx-0 px-0">
@@ -65,7 +65,7 @@
                   <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultListClasses }}</pre>
                 </small>
               {% endif %}
-              <ul id="markers" class="{{ listClasses }} mb-0 mt-3"></ul>
+              <ul id="js-markers" class="{{ listClasses }} mb-0 mt-3"></ul>
               <div class="mt-3">
                 {% editable_region_block name: component.region_names.postscript scope: component.scope %}
                   <p>Lorem ipsum.</p>
@@ -76,7 +76,7 @@
         </div>
       </div>
       <div id="map-container" class="col-md-8 col-xxl-9 pe-md-0 relative">
-        <div id="map" class="h-100"></div>
+        <div id="js-map" class="h-100"></div>
       </div>
     </div>
   </div>
@@ -87,127 +87,15 @@
 
 {% content_for "header_extras" %}
   <style>
-    #map-container {
-      @media(max-width: 768px) {
-        height: 600px;
+    @media(max-width: 768px) {
+      #map-container {
+        min-height: 600px;
       }
     }
   </style>
 {% endcontent_for %}
 
 {% content_for "page_js" %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzg4DjNPpQLIH3Z5DfGVPufpPwVaxeSZc&callback=Function.prototype"></script>
-  <script defer>
-    var map;
-    var jsonSource = document.getElementById("dataSrc").innerText + "?=" + Math.floor(Math.random() * 100);
-    var lat = document.getElementById("lat").innerText;
-    var long = document.getElementById("long").innerText;
-    var arrMarkers = [];
-    var arrInfoWindows = [];
-
-    function mapInit(){
-      var centerCoord = new google.maps.LatLng(lat, long); // WVU Morgantown Campus 39.6480359, -79.9722896
-      var zoomLevel = document.getElementById("zoom").innerText;
-      zoomLevel = Number(zoomLevel);
-      // start Center Map
-      function HomeControl(controlDiv, map) {
-
-        // Set CSS styles for the DIV containing the control
-        // Setting padding to 5 px will offset the control
-        // from the edge of the map.
-        controlDiv.style.padding = '1px';
-
-        // Set CSS for the control border.
-        var controlUI = document.createElement('div');
-        controlUI.style.backgroundColor = '#4c4d4f';
-        controlUI.style.backgroundColor = '#4c4d4f';
-        controlUI.style.opacity = '0.8';
-        controlUI.style.color = '#f0ede4';
-        controlUI.style.borderStyle = 'solid';
-        controlUI.style.borderWidth = '2px';
-        controlUI.style.cursor = 'pointer';
-        controlUI.style.textAlign = 'center';
-        controlUI.title = 'Reset the map to center';
-        controlDiv.appendChild(controlUI);
-
-        // Set CSS for the control interior.
-        var controlText = document.createElement('div');
-        controlText.style.fontFamily = 'Helvetica, Arial,sans-serif';
-        controlText.style.fontSize = '0.75em';
-        controlText.style.padding = '0.689em';
-        controlText.innerHTML = 'Center Map';
-        controlUI.appendChild(controlText);
-
-        // Setup the click event listeners: simply set the map to center of WVU Tech.
-        google.maps.event.addDomListener(controlUI, 'click', function() {
-          map.setCenter(centerCoord);
-        map.setZoom(zoomLevel);
-        });
-      } // end Center Map
-
-      var mapOptions = {
-        zoom: zoomLevel,
-        center: centerCoord,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-
-        styles: [
-          {
-            featureType: "poi.business",
-            elementType: "labels",
-            stylers:
-            [
-              {
-                visibility: "off"
-              }
-            ]
-          }
-        ]
-      };
-
-      map = new google.maps.Map(document.getElementById("map"), mapOptions);
-      //start Center Map
-      var homeControlDiv = document.createElement('div');
-      var homeControl = new HomeControl(homeControlDiv, map);
-
-      homeControlDiv.index = 1;
-      map.controls[google.maps.ControlPosition.TOP].push(homeControlDiv);
-      // end Center Map
-
-      $.getJSON(jsonSource, {}, function(data){
-          $.each(data.places, function(i, item){
-          $("#markers").append('<li><a class="text-decoration-none" href="#map" rel="' + i + '">' + item.title + '</a></li>');
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(item.lat, item.lng),
-            map: map,
-            title: item.title
-          });
-          arrMarkers[i] = marker;
-          var infowindow = new google.maps.InfoWindow({
-            maxWidth: 300,
-            content: "<div id='infoWindow' class='text-dark'><h3 class='mb-0'>" + item.title + "</h3>" + item.img + item.address + item.description + item.url + "</div>"
-          });
-          arrInfoWindows[i] = infowindow;
-          google.maps.event.addListener(marker, 'click', function() {
-            //for(x=0; x < infowindow.length; x++){ infowindow[x].close(); }
-            for(x=0; x < arrInfoWindows.length; x++){ arrInfoWindows[x].close(); }
-            infowindow.open(map, marker);
-          });
-        });
-      });
-    }
-
-    $(function(){
-      // initialize map (create markers, infowindows and list)
-      mapInit();
-
-      // "live" bind click event
-      $(document).on("click", "#markers a", function(){
-        var i = $(this).attr("rel");
-        // this next line closes all open infowindows before opening the selected one
-        for(x=0; x < arrInfoWindows.length; x++){ arrInfoWindows[x].close(); }
-        arrInfoWindows[i].open(map, arrMarkers[i]);
-      });
-    });
-  </script>
+  {% link_javascript name: "google-map--v1", defer: true %}
 {% endcontent_for %}
