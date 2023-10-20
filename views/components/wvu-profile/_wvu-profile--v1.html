@@ -116,8 +116,12 @@
 
         {% if edit_mode or page.content[rNames.quote] != blank %}
           {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Quote</span>{% endif %}
-          <div class="iowan-old-style-black-italic h3 mt-3">
-            <p>“{% editable_region name: rNames.quote scope: component.scope, type: "simple" %}”</p>
+          <div class="h3 mt-3">
+            <p>
+              <span class="d-block iowan-old-style-black-italic">
+                “{% editable_region name: rNames.quote scope: component.scope, type: "simple" %}”
+              </span>
+            </p>
           </div>
         {% endif %}
 
