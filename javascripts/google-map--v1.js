@@ -88,7 +88,7 @@ const googleMap = (() => {
   // Render `<li>`s to the left side of the map:
   const renderPlacesList = (item, index) => {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `<button type="button" class="marker__btn btn-link bg-transparent border-0" data-index="${index}"></button>`;
+    listItem.innerHTML = `<button type="button" class="marker__btn btn-link bg-transparent border-0 text-start" data-index="${index}"></button>`;
     listItem.firstChild.innerText = item.title;
     getMarkersEl.appendChild(listItem);
   };
