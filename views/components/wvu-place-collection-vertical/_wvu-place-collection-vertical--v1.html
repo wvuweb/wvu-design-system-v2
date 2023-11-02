@@ -146,7 +146,7 @@
                   {% if hasInfo != blank %}
                     <div class="col-xl small">                   
                       {% if hasAddress != blank %}
-                        <h2 class="h6 text-uppercase">Address</h2>
+                        <h2 class="h6 text-uppercase mb-0">Address</h2>
                         <p class="helvetica-neue-bold">
                           {{ item.content[addressOneRegionName] }}
                           {% if item.content[addressTwoRegionName] != blank %}
@@ -159,7 +159,7 @@
                       {% endif %}
 
                       {% if hasContactInfo != blank %}
-                        <h2 class="h6 text-uppercase">Contact Info</h2>
+                        <h2 class="h6 text-uppercase mb-0">Contact Info</h2>
                         <p>
                           {% if item.content[phoneRegionName] != blank %}
                             <span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}<br>
@@ -176,60 +176,60 @@
 
                     {% if hasHours != blank %}
                       <div class="col-xl small">
-                        <h2 class="h6 text-uppercase">Hours</h2>
+                        <h2 class="h6 text-uppercase mb-0">Hours</h2>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">M</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[monRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">T</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[tuesRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">W</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[wedRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">Th</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[thursRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">F</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[friRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">Sat</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[satRegionName] | default: defaultHours }}
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-1">
+                          <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">Sun</span>
                           </div>
-                          <div class="col-11">
+                          <div class="col-10">
                             {{ item.content[sunRegionName] | default: defaultHours }}
                           </div>
                         </div>
@@ -238,7 +238,7 @@
                       
                     {% if item.content[parkingRegionName] != blank %}
                       <div class="col-xl small">
-                        <h2 class="h6 text-uppercase">Parking</h2>
+                        <h2 class="h6 text-uppercase mb-0">Parking</h2>
                         <div>
                           {{ item.content[parkingRegionName] }}
                         </div>
