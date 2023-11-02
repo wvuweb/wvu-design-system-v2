@@ -131,7 +131,7 @@
           {% assign hasAddress = page.content[addressOneRegionName] | append: page.content[addressTwoRegionName] | append: page.content[mapLinkRegionName] %}
           {% assign hasContactInfo = page.content[phoneRegionName] | append: page.content[emailRegionName] | append: page.content[websiteRegionName] %}
           {% assign hasHours = page.content[monRegionName] | append: age.content[tuesRegionName] | append: age.content[wedRegionName] | append: age.content[thursRegionName] | append: age.content[friRegionName] | append: age.content[satRegionName] | append: age.content[sunRegionName] %}
-          {% assign hasParking = page.content[parkingRegionName %}
+          {% assign hasParking = page.content[parkingRegionName] %}
           {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
 
           {% if hasInfo != blank %}
