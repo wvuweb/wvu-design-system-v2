@@ -157,7 +157,7 @@
                     <span class="fa-solid fa-phone"></span> {{ page.content[phoneRegionName] }}<br>
                   {% endif %}
                   {% if page.content[emailRegionName] != blank %}
-                    <span class="fa-solid fa-envelope"></span> {{ page.content[emailRegionName] }}<br>
+                    <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ page.content[emailRegionName] }}">{{ page.content[emailRegionName] }}</a><br>
                   {% endif %}
                   {% if page.content[websiteRegionName] != blank %}
                     <span class="fa-solid fa-link"></span> <a href="{{ page.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ page.alternate_name | default: page.name }}</span></a>
