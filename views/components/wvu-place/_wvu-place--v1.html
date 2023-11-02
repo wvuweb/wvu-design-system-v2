@@ -135,7 +135,7 @@
           {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
 
           {% if hasInfo != blank %}
-            <div class="mt-3 mb-3 p-3 border rounded">
+            <div class="mt-3 mb-3 p-3 border rounded small">
 
               {% if hasAdress != blank %}
                 <h2 class="h6 text-uppercase">Address</h2>
@@ -151,7 +151,7 @@
               {% endif %}
 
               {% if hasContactInfo != blank %}
-                <h2 class="h6 text-uppercase">Contact Info</h2>
+                <h2 class="h6 text-uppercase mt-3">Contact Info</h2>
                 <p>
                   {% if page.content[phoneRegionName] != blank %}
                     <span class="fa-solid fa-phone"></span> {{ page.content[phoneRegionName] }}<br>
@@ -166,7 +166,7 @@
               {% endif %}
 
               {% if hasHours != blank %}
-                <h2 class="h6 text-uppercase">Hours</h2>
+                <h2 class="h6 text-uppercase mt-3">Hours</h2>
                 <div class="row">
                   <div class="col-1">
                     <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">M</span>
@@ -226,7 +226,7 @@
               {% endif %}
 
               {% if page.content[parkingRegionName] != blank %}
-                <h2 class="h6 text-uppercase">Parking</h2>
+                <h2 class="h6 text-uppercase mt-3">Parking</h2>
                 <div>
                   {{ page.content[parkingRegionName] }}
                 </div>
