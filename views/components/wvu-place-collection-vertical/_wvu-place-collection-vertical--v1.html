@@ -94,7 +94,7 @@
           <div class="{{ itemClasses }}">
 
             <div class="row">
-              <div class="col-xl-3">
+              <div class="col-xl-2">
                 {% if item.data.thumbnail_url != blank %}
                   <div class="mb-2 position-relative">
                     {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
@@ -110,9 +110,9 @@
                   </div>
                 {% endif %}
               </div>
-              <div class="col-xl-9">
+              <div class="col-xl-10">
                 <div class="row">
-                  <div class="col-xl">
+                  <div class="col-xl-4">
                     <{{ htag }} class="card-title" id="{{ htag_id }}">
                       <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                         {{ item.alternate_name | default: item.name }}
@@ -146,7 +146,7 @@
                   {% if hasInfo != blank %}
                     <div class="col-xl small">                   
                       {% if hasAddress != blank %}
-                        <h2 class="h6 text-uppercase mb-0">Address</h2>
+                        <h2 class="h6 text-uppercase mb-1">Address</h2>
                         <p class="helvetica-neue-bold">
                           {{ item.content[addressOneRegionName] }}
                           {% if item.content[addressTwoRegionName] != blank %}
@@ -159,7 +159,7 @@
                       {% endif %}
 
                       {% if hasContactInfo != blank %}
-                        <h2 class="h6 text-uppercase mb-0">Contact Info</h2>
+                        <h2 class="h6 text-uppercase mb-1">Contact Info</h2>
                         <p>
                           {% if item.content[phoneRegionName] != blank %}
                             <span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}<br>
@@ -176,7 +176,7 @@
 
                     {% if hasHours != blank %}
                       <div class="col-xl small">
-                        <h2 class="h6 text-uppercase mb-0">Hours</h2>
+                        <h2 class="h6 text-uppercase mb-1">Hours</h2>
                         <div class="row">
                           <div class="col-2">
                             <span class="text-uppercase helvetica-neue-condensed-black">M</span>
@@ -238,7 +238,7 @@
                       
                     {% if item.content[parkingRegionName] != blank %}
                       <div class="col-xl small">
-                        <h2 class="h6 text-uppercase mb-0">Parking</h2>
+                        <h2 class="h6 text-uppercase mb-1">Parking</h2>
                         <div>
                           {{ item.content[parkingRegionName] }}
                         </div>
