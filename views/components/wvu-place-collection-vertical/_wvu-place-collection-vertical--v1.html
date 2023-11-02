@@ -144,9 +144,8 @@
                   {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
 
                   {% if hasInfo != blank %}
-                                        
-                    {% if hasAddress != blank %}
-                      <div class="col-xl small">
+                    <div class="col-xl small">                   
+                      {% if hasAddress != blank %}
                         <h2 class="h6 text-uppercase">Address</h2>
                         <p class="helvetica-neue-bold">
                           {{ item.content[addressOneRegionName] }}
@@ -157,11 +156,9 @@
                             <br><span class="fa-solid fa-map-marker"></span> <a class="text-decoration-none" href="{{ item.content[mapLinkRegionName] }}">View on Map</a>
                           {% endif %}
                         </p>
-                      </div>
-                    {% endif %}
+                      {% endif %}
 
-                    {% if hasContactInfo != blank %}
-                      <div class="col-xl small">
+                      {% if hasContactInfo != blank %}
                         <h2 class="h6 text-uppercase">Contact Info</h2>
                         <p>
                           {% if item.content[phoneRegionName] != blank %}
@@ -173,9 +170,9 @@
                           {% if item.content[websiteRegionName] != blank %}
                             <span class="fa-solid fa-link"></span> <a href="{{ item.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span></a>
                           {% endif %}
-                        </p>
-                      </div>
-                    {% endif %}
+                        </p>                      
+                      {% endif %}
+                    </div>
 
                     {% if hasHours != blank %}
                       <div class="col-xl small">
