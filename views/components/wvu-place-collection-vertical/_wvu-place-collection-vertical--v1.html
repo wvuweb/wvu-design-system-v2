@@ -144,7 +144,7 @@
                   {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
 
                   {% if hasInfo != blank %}
-                    <div class="col-12 col-xl-2 small mb-3">                   
+                    <div class="col-12 col-md-3 col-xl-2 small mb-3">                   
                       {% if hasAddress != blank %}
                         <h2 class="h6 text-uppercase mb-1">Address</h2>
                         <p class="helvetica-neue-bold">
@@ -175,7 +175,7 @@
                     </div>
 
                     {% if hasHours != blank %}
-                      <div class="col-12 col-xl-2 small mb-3">
+                      <div class="col-12 col-md-3 col-xl-2 small mb-3">
                         <h2 class="h6 text-uppercase mb-1">Hours</h2>
                         <div class="row">
                           <div class="col-2">
@@ -237,7 +237,7 @@
                     {% endif %}
                       
                     {% if item.content[parkingRegionName] != blank %}
-                      <div class="col-12 col-xl-2 small mb-3">
+                      <div class="col-12 col-md-3 col-xl-2 small mb-3">
                         <h2 class="h6 text-uppercase mb-1">Parking</h2>
                         <div>
                           {{ item.content[parkingRegionName] }}
