@@ -1,0 +1,25 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.place_collection_vertical | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "place-collection-vertical",
+    "defaultComponentClasses": "text-center",
+    "defaultRowClasses": "justify-content-start",
+    "defaultItemClasses": "mb-4 col-lg-8 mx-md-auto text-start",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "",
+    "defaultItemButtonText": "Read More",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-page-collection-vertical/wvu-place-collection-vertical--v1" component: component %}
+  {% else %}{% render "components/wvu-page-collection-vertical/wvu-place-collection-vertical--v1" component: component %}
+{% endcase %}

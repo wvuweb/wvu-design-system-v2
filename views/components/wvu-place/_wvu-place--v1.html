@@ -64,7 +64,7 @@
             <div class="mb-2">
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">M</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">M</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: monRegionName, scope: component.scope, type: "simple" %}
@@ -72,7 +72,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">T</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">T</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: tuesRegionName, scope: component.scope, type: "simple" %}
@@ -80,7 +80,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">W</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">W</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: wedRegionName, scope: component.scope, type: "simple" %}
@@ -88,7 +88,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Th</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">Th</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: thursRegionName, scope: component.scope, type: "simple" %}
@@ -96,7 +96,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">F</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">F</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: friRegionName, scope: component.scope, type: "simple" %}
@@ -104,7 +104,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Sat</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">Sat</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: satRegionName, scope: component.scope, type: "simple" %}
@@ -112,7 +112,7 @@
               </div>
               <div class="row">
                 <div class="col-1">
-                  <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Sun</span>
+                  <span class="text-uppercase helvetica-neue-condensed-black">Sun</span>
                 </div>
                 <div class="col-11">
                   {% editable_region name: sunRegionName, scope: component.scope, type: "simple" %}
@@ -130,7 +130,7 @@
 
           {% assign hasAddress = page.content[addressOneRegionName] | append: page.content[addressTwoRegionName] | append: page.content[mapLinkRegionName] %}
           {% assign hasContactInfo = page.content[phoneRegionName] | append: page.content[emailRegionName] | append: page.content[websiteRegionName] %}
-          {% assign hasHours = page.content[monRegionName] | append: age.content[tuesRegionName] | append: age.content[wedRegionName] | append: age.content[thursRegionName] | append: age.content[friRegionName] | append: age.content[satRegionName] | append: age.content[sunRegionName] %}
+          {% assign hasHours = page.content[monRegionName] | append: page.content[tuesRegionName] | append: page.content[wedRegionName] | append: page.content[thursRegionName] | append: page.content[friRegionName] | append: page.content[satRegionName] | append: page.content[sunRegionName] %}
           {% assign hasParking = page.content[parkingRegionName] %}
           {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
 
@@ -169,7 +169,7 @@
                 <h2 class="h6 text-uppercase mt-3">Hours</h2>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">M</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">M</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[monRegionName] | default: defaultHours }}
@@ -177,7 +177,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">T</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">T</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[tuesRegionName] | default: defaultHours }}
@@ -185,7 +185,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">W</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">W</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[wedRegionName] | default: defaultHours }}
@@ -193,7 +193,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Th</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">Th</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[thursRegionName] | default: defaultHours }}
@@ -201,7 +201,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">F</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">F</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[friRegionName] | default: defaultHours }}
@@ -209,7 +209,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Sat</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">Sat</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[satRegionName] | default: defaultHours }}
@@ -217,7 +217,7 @@
                 </div>
                 <div class="row">
                   <div class="col-1">
-                    <span class="text-wvu-accent--sunset text-uppercase helvetica-neue-condensed-black">Sun</span>
+                    <span class="text-uppercase helvetica-neue-condensed-black">Sun</span>
                   </div>
                   <div class="col-11">
                     {{ page.content[sunRegionName] | default: defaultHours }}

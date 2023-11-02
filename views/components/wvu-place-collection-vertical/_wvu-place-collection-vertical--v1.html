@@ -1,0 +1,275 @@
+{% comment %}<!-- Component: wvu-featurettes-vertical -->{% endcomment %}
+
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemClasses = page.content[component.region_names.itemClasses] | default: component.defaultItemClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign addressOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', 'wvu-place-1'
+  assign addressTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', 'wvu-place-1'
+  assign mapLinkRegionName = 'wvu-CNAME__map-link' | replace: 'CNAME', 'wvu-place-1'
+  assign phoneRegionName = 'wvu-CNAME__phone' | replace: 'CNAME', 'wvu-place-1'
+  assign emailRegionName = 'wvu-CNAME__email' | replace: 'CNAME', 'wvu-place-1'
+  assign websiteRegionName = 'wvu-CNAME__website' | replace: 'CNAME', 'wvu-place-1'
+  assign parkingRegionName = 'wvu-CNAME__parking' | replace: 'CNAME', 'wvu-place-1'
+  assign monRegionName = 'wvu-CNAME__mon' | replace: 'CNAME', 'wvu-place-1'
+  assign tuesRegionName = 'wvu-CNAME__tues' | replace: 'CNAME', 'wvu-place-1'
+  assign wedRegionName = 'wvu-CNAME__wed' | replace: 'CNAME', 'wvu-place-1'
+  assign thursRegionName = 'wvu-CNAME__thurs' | replace: 'CNAME', 'wvu-place-1'
+  assign friRegionName = 'wvu-CNAME__fri' | replace: 'CNAME', 'wvu-place-1'
+  assign satRegionName = 'wvu-CNAME__sat' | replace: 'CNAME', 'wvu-place-1'
+  assign sunRegionName = 'wvu-CNAME__sun' | replace: 'CNAME', 'wvu-place-1'
+  assign defaultHours = "CLOSED"
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random
+  assign itemCount = 0
+
+  assign componentLoopBy = component.loopBy
+  
+  case componentLoopBy
+    when "published_at" or "created_at" or "updated_at"
+      assign sortedItems = items | sort: componentLoopBy | reverse
+    else
+      assign sortedItems = items | sort: componentLoopBy
+  endcase
+
+  if component.loopOrder == "desc"
+    assign sortedItems = sortedItems | reverse
+  endif
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Page Collection Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+      {% endif %}
+
+      {% capture loopContent %}
+
+        {% for item in sortedItems limit: component.limit %}
+
+          {% liquid
+            if item.data.alternate_url != blank
+              assign link_href = item.data.alternate_url
+            else
+              assign link_href = item.url
+            endif
+
+            if itemReadMoreButtonText != 'none'
+              assign hideImgLink = 'aria-hidden="true" tabindex="-1" '
+            endif
+          %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          <div class="{{ itemClasses }}">
+
+            <div class="row">
+              <div class="col-lg-4">
+                {% if item.data.thumbnail_url != blank %}
+                  <div class="mb-2 position-relative">
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+                    {% if item.data.badge_label != blank %}
+                      <div class="badge text-uppercase helvetica-neue-bold p-1 mt-n1 ms-n1 small bg-danger text-white shadow-sm position-absolute">
+                        {{ item.data.badge_label }}
+                      </div>
+                    {% endif %}
+                    <a {{ hideImgLink }} title="{{ itemReadMoreButtonText }}: {{ item.name }}" href="{{ link_href }}">
+                      {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+                      <img class="card-img-top" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt }}">
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="col-lg-8">
+                <div class="row">
+                  <div class="col-xl-3">
+                    <{{ htag }} class="card-title" id="{{ htag_id }}">
+                      <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                        {{ item.alternate_name | default: item.name }}
+                      </a>
+                    </{{ htag }}>
+
+                    {%- if item.data.description != blank %}
+                      <p class="{{ itemBodyClasses }}">
+                        {{ item.data.description }}
+                      </p>
+                    {% else %}
+                      {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+                    {%- endif %}
+
+                    {% if itemReadMoreButtonText != 'none' %}
+                      {% if item.data.link_text != blank %}
+                        {% assign link_text = item.data.link_text %}
+                      {% else %}
+                        {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                      {% endif %}
+                      <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
+                    {% endif %}
+                  </div>
+                  
+                  {% assign hasAddress = item.content[addressOneRegionName] | append: item.content[addressTwoRegionName] | append: item.content[mapLinkRegionName] %}
+                  {% assign hasContactInfo = item.content[phoneRegionName] | append: item.content[emailRegionName] | append: item.content[websiteRegionName] %}
+                  {% assign hasHours = item.content[monRegionName] | append: item.content[tuesRegionName] | append: item.content[wedRegionName] | append: item.content[thursRegionName] | append: item.content[friRegionName] | append: item.content[satRegionName] | append: item.content[sunRegionName] %}
+                  {% assign hasParking = item.content[parkingRegionName] %}
+                  {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
+
+                  {% if hasInfo != blank %}
+                                        
+                    {% if hasAddress != blank %}
+                      <div class="col-xl">
+                        <h2 class="h6 text-uppercase">Address</h2>
+                        <p class="helvetica-neue-bold">
+                          {{ item.content[addressOneRegionName] }}
+                          {% if item.content[addressTwoRegionName] != blank %}
+                            <br>{{ item.content[addressTwoRegionName] }}
+                          {% endif %}
+                          {% if item.content[mapLinkRegionName] != blank %}
+                            <br><span class="fa-solid fa-map-marker"></span> <a class="text-decoration-none" href="{{ item.content[mapLinkRegionName] }}">View on Map</a>
+                          {% endif %}
+                        </p>
+                      </div>
+                    {% endif %}
+
+                    {% if hasContactInfo != blank %}
+                      <div class="col-xl">
+                        <h2 class="h6 text-uppercase mt-3">Contact Info</h2>
+                        <p>
+                          {% if item.content[phoneRegionName] != blank %}
+                            <span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}<br>
+                          {% endif %}
+                          {% if item.content[emailRegionName] != blank %}
+                            <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content[emailRegionName] }}">{{ item.content[emailRegionName] }}</a><br>
+                          {% endif %}
+                          {% if item.content[websiteRegionName] != blank %}
+                            <span class="fa-solid fa-link"></span> <a href="{{ item.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span></a>
+                          {% endif %}
+                        </p>
+                      </div>
+                    {% endif %}
+
+                    {% if hasHours != blank %}
+                      <div class="col-xl">
+                        <h2 class="h6 text-uppercase mt-3">Hours</h2>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">M</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[monRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">T</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[tuesRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">W</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[wedRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">Th</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[thursRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">F</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[friRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">Sat</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[satRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-1">
+                            <span class="text-uppercase helvetica-neue-condensed-black">Sun</span>
+                          </div>
+                          <div class="col-11">
+                            {{ item.content[sunRegionName] | default: defaultHours }}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                      
+                      {% if item.content[parkingRegionName] != blank %}
+                        <div class="col-xl">
+                          <h2 class="h6 text-uppercase mt-3">Parking</h2>
+                          <div>
+                            {{ item.content[parkingRegionName] }}
+                          </div>
+                        </div>
+                      {% endif %}
+
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+
+      {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+        <div class="mt-2">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
+          {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+            <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+          {% endeditable_region_block %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

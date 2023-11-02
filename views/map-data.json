@@ -9,14 +9,14 @@
 -%}
 {
   "places": [
-    {%- for item in items -%}{%- if item.data.thumbnail_url != blank -%}{%- assign thumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' -%}{%- endif -%}{
+    {%- for item in items -%}{% assign itemUrl = item.data.alternate_url | default: item.url %}{%- if item.data.thumbnail_url != blank -%}{%- assign thumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' -%}{%- endif -%}{
       "title": "{{ item.alternate_name | default: item.name }}",
       "img": "{% if item.data.thumbnail_url != blank %}<img class=\"w-100 mb-1\" src=\"{{ thumbnailSrc }}\" alt='{{ item.data.thumbnail_alt }}'>{% endif %}",
       "address": "{% if item.content['wvu-place-1__address-line-1'] != blank %}<address><strong>{{ item.content['wvu-place-1__address-line-1'] }}{% if item.content['wvu-place-1__address-line-2'] != blank %}<br>{{ item.content['wvu-place-1__address-line-2'] }}{% endif %}</strong></address>{% endif %}",
       "description": "{% if item.data.description != blank %}<p>{{ item.data.description }}</p>{% endif %}",
       "lat": "{{ item.data.lat | strip }}",
       "lng": "{{ item.data.long | strip }}",
-      "url": "{% if item.data.alternate_url != blank %}<a class=\"text-primary text-decoration-none\" href=\"{{ item.data.alternate_url }}\">Visit Website<span class=\"visually-hidden\">: {{ item.alternate_name | default: item.name }}</span> <span class=\"fa-solid fa-arrow-right\"></span></a>{% endif %}"
+      "url": "<a class=\"text-primary text-decoration-none\" href=\"{{ itemUrl }}\">Visit Page<span class=\"visually-hidden\">: {{ item.alternate_name | default: item.name }}</span> <span class=\"fa-solid fa-arrow-right\"></span></a>"
     }{%- assign i = i | plus: 1 -%}{%- if i < items.length -%},{%- endif -%}{%- endfor -%}
   ]
 }
