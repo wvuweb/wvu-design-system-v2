@@ -5,7 +5,7 @@
 {% assign social_img = site | first_random_image_tagged_with: label: thumbnailurl %}
 {% if social_img %}
   {% assign social_img_url = social_img | image_path: size: "1200x630" %}
-  <meta property="og:image" content="https://{{ site.domain }}{{ social_img_url }}" />
+  <meta property="og:image" content="https://{{ site.domain }}{{ social_img_url }}.jpg" />
   <meta name="twitter:image" content="https://{{ site.domain }}{{ social_img_url }}" />
 {% endif %}
 
