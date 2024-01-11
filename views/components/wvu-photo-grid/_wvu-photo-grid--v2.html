@@ -1,5 +1,4 @@
 {%- liquid
-  assign itemClasses = page.content[component.region_names.itemClasses] | default: defaultItemClasses
   assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
   assign itemBodyClasses = page.content[component.region_names.itemBodyClasses] | default: component.defaultItemBodyClasses
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
@@ -53,7 +52,7 @@
 
         {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
 
-        <div class="{{ itemClasses }} px-0">
+        <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }} px-0">
           <div class="h-100 mb-0 wvu-overflow-hidden wvu-background-size-cover p-3 bg-wvu-accent--blue-dark text-white text-left wvu-bg-size-cover wvu-bg-vignetting--80 wvu-bg-position-center shadow" style="background-image: url({{ itemThumbnailSrc }}); padding-top: 66.6667%">
             <div class="container position-relative wvu-z-index-content px-0 h-100">
               <div class="row h-100">
