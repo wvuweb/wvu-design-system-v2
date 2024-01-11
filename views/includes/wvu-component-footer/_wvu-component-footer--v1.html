@@ -178,6 +178,16 @@
             </p>
           </div>
         </div>
+      {% when 'photo-grid' %}
+        <div class="row mt-3">
+          <p class="mb-1 small">
+            {% if edit_mode %}Utility classes for items:{% endif %}
+            {% editable_region name: component.region_names.itemClasses, type: "simple", scope: component.scope %}
+          </p>
+          <p class="text-muted mb-0 mt-1 small">
+            <strong>Default classes:</strong> {{ footerItemClasses | default: "N/A" }}
+          </p>
+        </div>
     {% endcase %}
     {% case component.baseName %}
       {% when 'page-collection-icons' or 'page-collection-vertical-icons' %}<div class="col-lg text-white">
