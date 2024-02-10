@@ -44,9 +44,9 @@
     console.log("Image URL: " + img);
     var width = img.naturalWidth;
     var height = img.naturalHeight;
-    var ratio = Math.floor( width / height * 100);
+    var ratio = Math.floor(width / height * 100);
     console.log("Image Ratio: " + ratio + "/1");
     var bgContainer = document.getElementById('{{ bgRatioId }}');
-    bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/1 " !important;")
+    bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/1 !important;")
   </script>
 {% endcontent_for %}
