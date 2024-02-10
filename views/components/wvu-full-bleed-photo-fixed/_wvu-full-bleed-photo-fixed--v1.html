@@ -48,6 +48,11 @@
     var ratio = Math.floor(width / height * 100);
     console.log("Image Ratio: " + ratio + "/100");
     var bgContainer = document.getElementById('{{ bgRatioId }}');
-    bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/100 !important;")
+    bgContainer.classList.remove("wvu-bg-tint");
+    bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/100 !important;");
+    if (bgContainer.classList.contains("wvu-bg-tint") {
+      bgContainer.classList.remove("wvu-bg-tint");
+      bgContainer.classList.add("wvu-bg-tint");
+    })
   </script>
 {% endcontent_for %}
