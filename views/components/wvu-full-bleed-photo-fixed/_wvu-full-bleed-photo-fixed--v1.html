@@ -1,13 +1,15 @@
 {% assign bgLabel = page.slug | append: '-full-width-photo-fixed-' | append: component.number %}
+{% assign bgRatioId = page.slug | append: '-full-width-photo-fixed__ratio-' | append: component.number %}
 {% assign bgImages = site.files | filter_files: tags: bgLabel, tags_match: 'any', types: 'image', limit: 1, order: component.galleryLoopBy, sort: component.loopOrder, random: true %}
 {% for image in bgImages %}
   {%- capture bgImage -%}
-    {{ image | image_url: size: '1920x1280', format: 'webp' }}{% assign ratio = image.size %}
+    {{ image | image_url: size: '1920x1280', format: 'webp' }}
   {%- endcapture -%}
 {% endfor %}
 {% if edit_mode or page.content[component.region_names.header] != blank or page.content[component.region_names.header] != blank %}  
   {% assign bgClasses = 'wvu-bg-tint' %}
 {% endif %}
+{% assign ratio = bgImage %}
 <!-- ratio: {{ ratio }} -->
 <div class="ratio ratio-16x9 wvu-bg-fixed text-center text-white bg-dark wvu-bg-size-cover mb-4 {{ bgClasses }}" style="background-image: url('{{ bgImage }}')">
   <div class="w-100 h-100 d-flex justify-content-center align-items-center">
@@ -35,3 +37,13 @@
     </div>
   </div>
 </div>
+
+{% content_for "page_js" %}
+  <script>
+    const img = '{{ bgImage }}';
+    var width = img.clientWidth;
+    var height = img.clientHeight;
+    var bgContainer = document.getElementById('{{ bgRatioId }}');
+    bgContainer.setAttribute("style", "aspect-ratio: " + width + "/" + height + " !important;")
+  </script>
+{% endcontent_for %}
