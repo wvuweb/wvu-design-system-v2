@@ -40,8 +40,9 @@
 
 {% content_for "page_js" %}
   <script>
-    const img = '{{ bgImage }}';
-    console.log("Image URL: " + img);
+    const img = new Image();
+    img.src = '{{ bgImage }}';
+    console.log("Image URL: " + img.src);
     var width = img.naturalWidth;
     var height = img.naturalHeight;
     var ratio = Math.floor(width / height * 100);
