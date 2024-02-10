@@ -41,6 +41,7 @@
 {% content_for "page_js" %}
   <script>
     const img = '{{ bgImage }}';
+    console.log("Image URL: " + img);
     var width = img.clientWidth;
     var height = img.clientHeight;
     var bgContainer = document.getElementById('{{ bgRatioId }}');
