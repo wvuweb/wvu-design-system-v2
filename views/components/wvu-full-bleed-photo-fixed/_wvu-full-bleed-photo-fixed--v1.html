@@ -39,7 +39,7 @@
 </div>
 
 {% content_for "page_js" %}
-  <script>
+  <script defer>
     var img = new Image();
     img.src = '{{ bgImage }}';
     console.log("Image URL: " + img.src);
