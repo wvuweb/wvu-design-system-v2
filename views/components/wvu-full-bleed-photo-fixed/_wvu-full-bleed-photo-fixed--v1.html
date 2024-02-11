@@ -39,14 +39,14 @@
 
 {% content_for "page_js" %}
   <script defer>
-    var img = new Image();
-    img.src = '{{ bgImage }}';
-    console.log("Image URL: " + img.src);
-    var width = img.naturalWidth;
-    var height = img.naturalHeight;
-    var ratio = Math.floor(width / height * 100);
-    console.log("Image Ratio: " + ratio + "/100");
-    var bgContainer = document.getElementById('{{ bgRatioId }}');
-    bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); --bs-aspect-ratio: " + ratio + "/100 !important;");
+    // var img = new Image();
+    // img.src = '{{ bgImage }}';
+    // console.log("Image URL: " + img.src);
+    // var width = img.naturalWidth;
+    // var height = img.naturalHeight;
+    // var ratio = Math.floor(width / height * 100);
+    // console.log("Image Ratio: " + ratio + "/100");
+    // var bgContainer = document.getElementById('{{ bgRatioId }}');
+    // bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/100 !important;");
   </script>
 {% endcontent_for %}
