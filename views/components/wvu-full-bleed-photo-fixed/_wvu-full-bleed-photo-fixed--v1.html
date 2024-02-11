@@ -11,6 +11,7 @@
 {% endif %}
 {% assign ratio = bgImage %}
 <!-- ratio: {{ ratio }} -->
+
 <div id="{{ bgRatioId }}" class="ratio ratio-16x9 wvu-bg-fixed text-center text-white bg-dark wvu-bg-size-cover mb-4 {{ bgClasses }}" style="background-image: url('{{ bgImage }}')">
   <div class="w-100 h-100 d-flex justify-content-center align-items-center">
     <div class="container py-5">
@@ -48,7 +49,6 @@
     var ratio = Math.floor(width / height * 100);
     console.log("Image Ratio: " + ratio + "/100");
     var bgContainer = document.getElementById('{{ bgRatioId }}');
-    bgContainer.classList.remove("wvu-bg-tint");
     bgContainer.setAttribute("style", "background-image: url('{{ bgImage }}'); aspect-ratio: " + ratio + "/100 !important;");
   </script>
 {% endcontent_for %}
