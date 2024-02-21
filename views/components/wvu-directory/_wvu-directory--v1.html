@@ -32,72 +32,83 @@
       {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
     {% endif %}
 
-    <div class="table-responsive-md">
-      <table class="table">
-        <caption class="caption-top visually-hidden">Directory</caption>
-        <tbody class="border-top-0">
-          {% for item in items.all %}
+    <ul class="list-unstyled">
+      {% for item in items.all %}
 
-            {% liquid
-              if item.data.alternate_url != blank
-                assign link_href = item.data.alternate_url
-              else
-                assign link_href = item.url
-              endif
-            %}
+        {% liquid
+          if item.data.alternate_url != blank
+            assign link_href = item.data.alternate_url
+          else
+            assign link_href = item.url
+          endif
+        %}
 
-            <tr class="border-bottom border-light">
-              <th scope="row" class="py-2 w-25">
-                <div class="row">
-                  <div class="col-4">
-                    {% if item.data.thumbnail_url_sq != blank %}
-                      {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '200x200', format: 'webp' %}
-                      <img class="rounded-circle shadow d-inline-block" src="{{ itemThumbnailSrc }}" alt="{{ item.content['wvu-profile-1__name'] | default: item.name }} headshot" />
-                    {% endif %}
-                  </div>
-                  <div class="col-8 align-self-center">
-                    {% if item.content['wvu-profile-1__name'] != blank %}
-                      <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
-                    {% else %}
-                      <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
-                    {% endif %}
-                    {%- if item.content['wvu-profile-1__title'] != blank %}
-                      <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
-                    {%- endif %}
-                  </div>
+        <li class="border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2">
+          <div class="row">          
+            <div class="col-12 col-sm-3 col-lg-3 mb-2 mb-sm-0">
+              <div class="row">
+                <div class="col-lg-3 my-2 my-lg-0">
+                  {% if item.data.thumbnail_url_sq != blank %}
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '200x200', format: 'webp' %}
+                    <img class="rounded-circle shadow d-inline-block" src="{{ itemThumbnailSrc }}" alt="{{ item.content['wvu-profile-1__name'] | default: item.name }} headshot" />
+                  {% endif %}
                 </div>
-              </th>
-              <td class="align-middle">
-                {%- if item.content['wvu-profile-1__phone'] != blank %}
-                  <span aria-hidden="true" class="fa-solid fa-phone"></span> <a href="tel:{{ item.content['wvu-profile-1__phone'] }}">{{ item.content['wvu-profile-1__phone'] }}</a>
-                {%- endif %}
-              </td>
-              <td class="align-middle">
-                {%- if item.content['wvu-profile-1__email'] != blank %}
-                  <span aria-hidden="true" class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content['wvu-profile-1__email'] }}"> {{ item.content['wvu-profile-1__email'] }}</a>
-                {%- endif %}
-              </td>
-              <td class="align-middle">
-                {%- if item.content['wvu-profile-1__office'] != blank %}
-                  <span aria-hidden="true" class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
-                {%- endif %}
-              </td>
-              {% if itemReadMoreButtonText != 'none' %}
-                {% if item.data.link_text != blank %}
-                  {% assign link_text = item.data.link_text %}
-                {% else %}
-                  {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
-                {% endif %}
+                <div class="col-lg-9 align-self-center d-sm-none d-lg-block">
+                  {% if item.content['wvu-profile-1__name'] != blank %}
+                    <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
+                  {% else %}
+                    <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
+                  {% endif %}
+                  {%- if item.content['wvu-profile-1__title'] != blank %}
+                    <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
+                  {%- endif %}
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-8 col-lg-9">
+              <div class="row h-100 flex-column flex-lg-row justify-content-center">
+                <div class="col-12 mb-2 d-none d-sm-block d-lg-none">
+                  {% if item.content['wvu-profile-1__name'] != blank %}
+                    <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
+                  {% else %}
+                    <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
+                  {% endif %}
+                  {%- if item.content['wvu-profile-1__title'] != blank %}
+                    <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg align-self-center">
+                  {%- if item.content['wvu-profile-1__phone'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-phone"></span> <a href="tel:{{ item.content['wvu-profile-1__phone'] }}">{{ item.content['wvu-profile-1__phone'] }}</a>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg-5 align-self-center">
+                  {%- if item.content['wvu-profile-1__email'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content['wvu-profile-1__email'] }}"> {{ item.content['wvu-profile-1__email'] }}</a>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg align-self-center">
+                  {%- if item.content['wvu-profile-1__office'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
+                  {%- endif %}
+                </div>
+                {% if itemReadMoreButtonText != 'none' %}
+                  {% if item.data.link_text != blank %}
+                    {% assign link_text = item.data.link_text %}
+                  {% else %}
+                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                  {% endif %}
 
-                <td class="align-middle">
-                  <span aria-hidden="true" class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
-                </td>
-              {% endif %}
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+                  <div class="col-12 col-lg align-self-center">
+                    <span aria-hidden="true" class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
 
     {% comment %}
     {% assign pagination = items | blog_pagination %}
