@@ -47,7 +47,7 @@
     {% endif %}
 
     <ul class="list-unstyled">
-      {% for item in items.all %}
+      {% for item in sortedItems %}
 
         {% liquid
           if item.data.alternate_url != blank
