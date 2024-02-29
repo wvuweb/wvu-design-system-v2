@@ -61,23 +61,25 @@
               </div>
             {% endif %}
 
-            {% assign schools = page.data.schoolFilters | split: "," %}
-            <div class="option-combo school mt-4">
-              <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by School:</legend>
-              <div class="filter option-set js-radio-button-group" data-filter-group="school">
-                <div class="form-check">
-                  <input class="form-check-input active selected" type="radio" name="school" id="radioAny3" data-filter-value="" checked>
-                  <label class="form-check-label" for="radioAny3">Any</label>
-                </div>
-                {% for schoolFilter in schools %}
-                  {% assign school = schoolFilter | replace: " ", "-" | downcase %}
+            {% if page.data.schoolFilters != blank %}
+              {% assign schools = page.data.schoolFilters | split: "," %}
+              <div class="option-combo school mt-4">
+                <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by School:</legend>
+                <div class="filter option-set js-radio-button-group" data-filter-group="school">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="school" id="radio-{{ school }}" data-filter-value=".{{ school }}">
-                    <label class="form-check-label" for="radio-{{ school }}">{{ schoolFilter }}</label>
+                    <input class="form-check-input active selected" type="radio" name="school" id="radioAny3" data-filter-value="" checked>
+                    <label class="form-check-label" for="radioAny3">Any</label>
                   </div>
-                {% endfor %}
+                  {% for schoolFilter in schools %}
+                    {% assign school = schoolFilter | replace: " ", "-" | downcase %}
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="school" id="radio-{{ school }}" data-filter-value=".{{ school }}">
+                      <label class="form-check-label" for="radio-{{ school }}">{{ schoolFilter }}</label>
+                    </div>
+                  {% endfor %}
+                </div>
               </div>
-            </div>
+            {% endif %}
 
           </div>
 
