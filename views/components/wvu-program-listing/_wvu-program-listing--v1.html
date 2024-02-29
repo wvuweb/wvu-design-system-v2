@@ -61,7 +61,7 @@
               </div>
             {% endif %}
 
-            {% comment %}
+            {% assign schools = page.data.schoolFilters | split: "," %}
             <div class="option-combo school mt-4">
               <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by School:</legend>
               <div class="filter option-set js-radio-button-group" data-filter-group="school">
@@ -69,21 +69,17 @@
                   <input class="form-check-input active selected" type="radio" name="school" id="radioAny3" data-filter-value="" checked>
                   <label class="form-check-label" for="radioAny3">Any</label>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="school" id="radioCWB" data-filter-value=".school-of-counseling-and-well-being">
-                  <label class="form-check-label" for="radioCWB">School of Counseling and Well-Being</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="school" id="radioSOE" data-filter-value=".school-of-education">
-                  <label class="form-check-label" for="radioSOE">School of Education</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="school" id="radioSOSS" data-filter-value=".school-of-sport-sciences">
-                  <label class="form-check-label" for="radioSOSS">School of Sport Sciences</label>
-                </div>
+                {% assign i = 0 %}
+                {% for schoolFilter in schools %}
+                  {% assign school = schoolFilter[i] | replace: " ", "-" | downcase %}
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="school" id="radio-{{ school }}" data-filter-value=".{{ school }}">
+                    <label class="form-check-label" for="radio-{{ school }}">{{ schoolFilter }}</label>
+                  </div>
+                  {% assign i = i | plus: 1 %}
+                {% endfor %}
               </div>
             </div>
-            {% endcomment %}
 
           </div>
 
