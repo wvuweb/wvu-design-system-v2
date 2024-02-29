@@ -29,6 +29,7 @@
   endif
 -%}
 
+<!-- Loop By: {{ component.loopBy }} -->
 {% capture component_content %}
   <div class="container wvu-z-index-content">
     {%- if edit_mode or page.content[component.region_names.header] != blank %}
