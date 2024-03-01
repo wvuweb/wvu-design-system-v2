@@ -45,6 +45,8 @@ custom_data_attributes:
   - header_subhead:
     type: checkbox
     title: Show header subhead
+  - horizontalNavColors:
+    title: Horizontal Nav Colors
   - icon_code:
     title: Icon Code
   - include_masonry:
@@ -100,7 +102,6 @@ custom_site_attributes:
   - has_alternate_logo
   - has_co_brand
   - has_standard_footer
-  - horizontalNavColors
   - instagram_url
   - is_demo_site
   - linkedin_url
