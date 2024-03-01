@@ -20,7 +20,7 @@
     {% assign subsectionLink = page.url %}
     {% assign submenuDepth = page.depth | plus: 1 %}
     {% if item.data.horizontalNavColors != blank %}
-      {% assign colorPalette = item.data.horizontalNavColors | split: "," %}
+      {% assign colorPalette = page.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
     {% endif %}
@@ -31,7 +31,7 @@
   <div class="container">
     <div class="d-md-flex align-items-stretch">
       <a href="{{ subsectionLink }}" class="{{ brandColor }} wvu-shout text-decoration-none d-inline-block py-2 ms-2 ms-lg-0 me-2">{{ subsectionName }}</a>
-      {% ancestor_menu start_depth: submenuDepth, max_depth: submenuDepth, ul_class: "small wvu-nav__items menu-items navbar-nav mr-auto", li_class: "nav-item h-100", link_class: "text-white h-100 py-1 d-md-flex align-items-center text-decoration-none iowan-old-style-black nav-link px-2 px-lg-1", active_class: "bg-wvu-neutral--off-white text-dark", open_class: "nav-secondary--open" %}
+      {% ancestor_menu start_depth: submenuDepth, max_depth: submenuDepth, ul_class: "small wvu-nav__items menu-items navbar-nav mr-auto", li_class: "nav-item h-100", link_class: "text-light h-100 py-1 d-md-flex align-items-center text-decoration-none iowan-old-style-black nav-link px-2 px-lg-1", active_class: "bg-wvu-neutral--off-white text-dark", open_class: "nav-secondary--open" %}
     </div> <!-- /.nav-collapse -->
   </div> <!-- /.container -->
 </section>
