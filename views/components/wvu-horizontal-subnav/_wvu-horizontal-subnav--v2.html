@@ -19,7 +19,7 @@
     {% assign subsectionName = page.name %}
     {% assign subsectionLink = page.url %}
     {% assign submenuDepth = page.depth | plus: 1 %}
-    {% if item.data.horizontalNavColors != blank %}
+    {% if page.data.horizontalNavColors != blank %}
       {% assign colorPalette = page.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
