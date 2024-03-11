@@ -85,130 +85,134 @@
       <!-- end header -->
       <!-- question grouping -->
       {% for questionGrouping in section.children %}
-        {% comment %}
-          <p>
-            {{ questionGrouping.alternate_name | default: questionGrouping.name }}
-          </p>
-        {% endcomment %}
-        {% assign questionGroupLabel = questionGrouping.slug | append: '-profile' %}
-        {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
-        {% assign sortedProfiles = profiles | sort: componentLoopBy %}
-        {% for profile in sortedProfiles %}
-          {% assign questionAnchor = questionGroupLabel | append: '-' | append: forloop.index %}
-          <!-- background image -->
-          {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
-          <div class="d-xl-none w-100" style="z-index: -1;">
-            <div class="ratio ratio-16x9 bg-dark w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
-            </div>
+        <div>
+          <div class="sticky-top">
+            <span class="d-inline-block me-n3 mb-n5 mb-xl-n3 h3 wvu-text-letter-spacing bg-dark p-1 position-absolute" style="right: 0; bottom: 0;">
+              <span class="text-wvu-accent--sunset">[ </span>
+              <span class="iowan-old-style-italic text-lowercase text-white">{{ questionGrouping.alternate_name | default: questionGrouping.name }}</span>
+              <span class="text-wvu-accent--sunset"> ]</span>
+            </span>
           </div>
-          <div class="d-none d-xl-block sticky-xl-top wvu-h-xl-100vh w-100" style="z-index: -1;">
-            <div class="bg-dark wvu-h-xl-100vh w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
+          {% assign questionGroupLabel = questionGrouping.slug | append: '-profile' %}
+          {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
+          {% assign sortedProfiles = profiles | sort: componentLoopBy %}
+          {% for profile in sortedProfiles %}
+            {% assign questionAnchor = questionGroupLabel | append: '-' | append: forloop.index %}
+            <!-- background image -->
+            {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
+            <div class="d-xl-none w-100" style="z-index: -1;">
+              <div class="ratio ratio-16x9 bg-dark w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
+              </div>
             </div>
-          </div>
-          <!-- end background image -->
-          <!-- container fluid -->
-          <div class="container-fluid wvu-z-index-content px-0">
-            <div class="row mx-0">
-              <!-- featurettes -->
-              {% assign featuredPagesLabel = profile.slug | append: '-featured' %}
-              {% assign featuredPages = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: featuredPagesLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
-              {% assign sortedPages = featuredPages | sort: componentLoopBy %}
-              <div class="col-xl-6 order-2 order-xl-1 me-xl-auto px-0 position-relative">
-                <div class="wvu-h-xl-200vh w-100 bg-dark wvu-bg-xl-transparent">
-                  <div class="sticky-top w-100 pb-xl-4 wvu-pt-xl-70vh">
-                    <div class="border-top border-1 border-white w-100 pt-xl-2 ps-xl-4">
-                      <div class="row gx-1">
-                        {% for page in sortedPages %}
-                          {% liquid
-                            if page.data.alternate_url != blank
-                              assign link_href = page.data.alternate_url
-                            else
-                              assign link_href = page.url
-                            endif
-                          %}
-                          <div class="col-md-6 ms-auto text-white">
-                            <div class="wvu-bg-tint p-3">
-                              <div class="wvu-z-index-content">
-                                <h3 class="mb-1 text-wvu-accent--yellow h4">
-                                  {{ page.alternate_name | default: page.name }}
-                                </h3>
-                                <p class="small">
-                                  {{ page.data.description }}
-                                </p>
-                                <a href="{{ link_href }}" class="btn btn-sm btn-outline-white">
-                                  Read More<span class="visually-hidden">: {{ page.name }}</span> <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
-                                </a>
+            <div class="d-none d-xl-block sticky-xl-top wvu-h-xl-100vh w-100" style="z-index: -1;">
+              <div class="bg-dark wvu-h-xl-100vh w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
+              </div>
+            </div>
+            <!-- end background image -->
+            <!-- container fluid -->
+            <div class="container-fluid wvu-z-index-content px-0">
+              <div class="row mx-0">
+                <!-- featurettes -->
+                {% assign featuredPagesLabel = profile.slug | append: '-featured' %}
+                {% assign featuredPages = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: featuredPagesLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
+                {% assign sortedPages = featuredPages | sort: componentLoopBy %}
+                <div class="col-xl-6 order-2 order-xl-1 me-xl-auto px-0 position-relative">
+                  <div class="wvu-h-xl-200vh w-100 bg-dark wvu-bg-xl-transparent">
+                    <div class="sticky-top w-100 pb-xl-4 wvu-pt-xl-70vh">
+                      <div class="border-top border-1 border-white w-100 pt-xl-2 ps-xl-4">
+                        <div class="row gx-1">
+                          {% for page in sortedPages %}
+                            {% liquid
+                              if page.data.alternate_url != blank
+                                assign link_href = page.data.alternate_url
+                              else
+                                assign link_href = page.url
+                              endif
+                            %}
+                            <div class="col-md-6 ms-auto text-white">
+                              <div class="wvu-bg-tint p-3">
+                                <div class="wvu-z-index-content">
+                                  <h3 class="mb-1 text-wvu-accent--yellow h4">
+                                    {{ page.alternate_name | default: page.name }}
+                                  </h3>
+                                  <p class="small">
+                                    {{ page.data.description }}
+                                  </p>
+                                  <a href="{{ link_href }}" class="btn btn-sm btn-outline-white">
+                                    Read More<span class="visually-hidden">: {{ page.name }}</span> <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                                  </a>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- end featurettes -->
-              <!-- sidebar -->
-              <div class="col-xl-3 order-1 order-xl-2 ms-auto px-0">
-                <div id="{{ questionAnchor }}" class="wvu-h-xl-200vh bg-wvu-accent--sunset">
-                  <div class="py-xl-6 sticky-top">
-                    <h2 class="bg-wvu-accent--sunset  wvu-bg-topo-dark mt-xl-4 p-3 ms-xl-n5 ms-xxl-n6 wvu-shout display-4 wvu-z-index-content">
-                      {{ profile.alternate_name | default: profile.name }}
-                    </h2>
-                    <div class="px-3 px-xl-4 position-relative">
-                      <p class="wvu-quote wvu-quote--dark iowan-old-style-black fs-5 mb-4 mb-xl-3 mb-xxl-4 mx-xl-n2 mx-xxl-0">
-                        {{ profile.content['wvu-profile-1__quote'] }}
-                      </p>
-                      <p class="small helvetica-neue-bold text-uppercase">
-                        <span class="d-block py-4 ms-n4 me-n4 py-xl-0 ms-xl-0 me-xl-0 wvu-text-xl-vertical wvu-shout position-absolute fs-1 lh-1 text-wvu-accent--sunset wvu-bg-xl-transparent bg-dark"
-                        style="top: 0; left: -30px;">{{ profile.content['wvu-profile-1__name'] }}</span>
-                      </p>
-                      <div class="d-flex justify-content-start mx-xl-n2 mx-xxl-0">
-                        <p class="border-end border-1 border-dark pe-1 me-1">
-                          <span class="wvu-shout d-inline-block">Morgantown, WV</span>
-                          <span class="helvetica-neue-light text-uppercase">{{ profile.content['wvu-profile-1__major'] }}</span>
-                        </p>
-                        <span class="lh-1">
-                          <span class="iowan-old-style-italic text-lowercase d-block mt-n1">class of</span>
-                          <span class="iowan-old-style-black fs-5 d-block d-block ms-2">2026</span>
-                        </span>
-                      </div>
-                      <div class="bg-dark text-white mt-4 mt-xl-3 mt-xxl-4 ms-xl-n4 ms-xxl-0 me-xl-n4 p-2 wvu-z-index-content">
-                        <div class="row">
-                          <div class="col">
-                            <div class="ratio ratio-16x9 bg-wvu-accent--blue-dark">
-      
-                            </div>
-                          </div>
-                          <div class="col">
-                            <h3 class="h6 wvu-shout my-1">
-                              Video Title
-                            </h3>
-                            <p class="small lh-1">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-                            </p>
-                            <span class="fa-solid fa-circle-play text-wvu-gold fs-3" aria-hidden="true">
-      
-                            </span>
-                          </div>
+                          {% endfor %}
                         </div>
                       </div>
-                      <div class="pt-2 ps-2 pb-1 pe-2 bg-wvu-accent--yellow ms-xl-n4 mt-xl-n1">
-                        <p class="mb-0 small text-end">
-                          <a class="text-decoration-none text-dark" href="#">
-                            View Profile<span class="visually-hidden">: {{ profile.content['wvu-profile-1__name'] }}</span> <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-                          </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- end featurettes -->
+                <!-- sidebar -->
+                <div class="col-xl-3 order-1 order-xl-2 ms-auto px-0">
+                  <div id="{{ questionAnchor }}" class="wvu-h-xl-200vh bg-wvu-accent--sunset">
+                    <div class="py-xl-6 sticky-top">
+                      <h2 class="bg-wvu-accent--sunset  wvu-bg-topo-dark mt-xl-4 p-3 ms-xl-n5 ms-xxl-n6 wvu-shout display-4 wvu-z-index-content">
+                        {{ profile.alternate_name | default: profile.name }}
+                      </h2>
+                      <div class="px-3 px-xl-4 position-relative">
+                        <p class="wvu-quote wvu-quote--dark iowan-old-style-black fs-5 mb-4 mb-xl-3 mb-xxl-4 mx-xl-n2 mx-xxl-0">
+                          {{ profile.content['wvu-profile-1__quote'] }}
                         </p>
+                        <p class="small helvetica-neue-bold text-uppercase">
+                          <span class="d-block py-4 ms-n4 me-n4 py-xl-0 ms-xl-0 me-xl-0 wvu-text-xl-vertical wvu-shout position-absolute fs-1 lh-1 text-wvu-accent--sunset wvu-bg-xl-transparent bg-dark"
+                          style="top: 0; left: -30px;">{{ profile.content['wvu-profile-1__name'] }}</span>
+                        </p>
+                        <div class="d-flex justify-content-start mx-xl-n2 mx-xxl-0">
+                          <p class="border-end border-1 border-dark pe-1 me-1">
+                            <span class="wvu-shout d-inline-block">Morgantown, WV</span>
+                            <span class="helvetica-neue-light text-uppercase">{{ profile.content['wvu-profile-1__major'] }}</span>
+                          </p>
+                          <span class="lh-1">
+                            <span class="iowan-old-style-italic text-lowercase d-block mt-n1">class of</span>
+                            <span class="iowan-old-style-black fs-5 d-block d-block ms-2">2026</span>
+                          </span>
+                        </div>
+                        <div class="bg-dark text-white mt-4 mt-xl-3 mt-xxl-4 ms-xl-n4 ms-xxl-0 me-xl-n4 p-2 wvu-z-index-content">
+                          <div class="row">
+                            <div class="col">
+                              <div class="ratio ratio-16x9 bg-wvu-accent--blue-dark">
+        
+                              </div>
+                            </div>
+                            <div class="col">
+                              <h3 class="h6 wvu-shout my-1">
+                                Video Title
+                              </h3>
+                              <p class="small lh-1">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+                              </p>
+                              <span class="fa-solid fa-circle-play text-wvu-gold fs-3" aria-hidden="true">
+        
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pt-2 ps-2 pb-1 pe-2 bg-wvu-accent--yellow ms-xl-n4 mt-xl-n1">
+                          <p class="mb-0 small text-end">
+                            <a class="text-decoration-none text-dark" href="#">
+                              View Profile<span class="visually-hidden">: {{ profile.content['wvu-profile-1__name'] }}</span> <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
+                            </a>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- end sidebar -->
               </div>
-              <!-- end sidebar -->
             </div>
-          </div>
-          <!-- end container fluid-->
-        {% endfor %}
+            <!-- end container fluid-->
+          {% endfor %}
+        </div>
       {% endfor %}
       <!-- end question grouping -->
     </div>
