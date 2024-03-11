@@ -51,7 +51,7 @@
             <ul class="dropdown-menu" style="">
               {% for question in section.children %}
                 <li>
-                  <a href="#">{{ question.alternate_name | default: question.name }}</a>
+                  <a href="#{{ question.slug }}-0">{{ question.alternate_name | default: question.name }}</a>
                 </li>
               {% endfor %}
             </ul>
@@ -91,6 +91,7 @@
         {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
         {% assign sortedProfiles = profiles | sort: componentLoopBy %}
         {% for profile in sortedProfiles %}
+          {% assign questionAnchor = questionGroupLabel | append: '-' | append: sortedProfiles.index %}
           <!-- background image -->
           {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
           <div class="d-xl-none w-100" style="z-index: -1;">
@@ -103,7 +104,7 @@
           </div>
           <!-- end background image -->
           <!-- container fluid -->
-          <div class="container-fluid wvu-z-index-content px-0">
+          <div id="{{ questionAnchor }}" class="container-fluid wvu-z-index-content px-0">
             <div class="row mx-0">
               <!-- featurettes -->
               {% assign featuredPagesLabel = profile.slug | append: '-featured' %}
