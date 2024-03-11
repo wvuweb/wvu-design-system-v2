@@ -1,0 +1,16 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.profiles_campaign | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "profiles-campaign"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/custom/wvu-profiles-campaign/wvu-profiles-campaign--v1" component: component %}
+  {% else %}{% render "components/custom/wvu-profiles-campaign/wvu-profile/wvu-profiles-campaign--v1" component: component %}
+{% endcase %}

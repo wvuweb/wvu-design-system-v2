@@ -1,0 +1,206 @@
+{%- liquid
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign sections = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign componentLoopBy = component.loopBy
+  assign backgroundColors = 'bg-wvu-accent--sunset,wvu-neutral--cream,wvu-accent--blue-dark'
+  assign primaryColors = ''
+  assign secondaryColors = ''
+-%}
+
+<style>
+  @media screen and (min-width: 1400px) {
+    .wvu-pt-xl-70vh { padding-top: 70vh !important; }
+    .wvu-h-xl-100vh { height: 100vh !important; }
+    .wvu-h-xl-150vh { height: 150vh !important; }
+    .wvu-h-xl-200vh { height: 200vh !important; }
+    .wvu-text-xl-vertical {
+      writing-mode: vertical-lr !important;
+      text-orientation: mixed !important;
+      rotate: 180deg !important;
+    }
+    .wvu-bg-xl-transparent { background-color: transparent !important; }
+  }
+  .wvu-bg-attach-fixed {
+    background-attachment: fixed !important;
+  }
+</style>
+
+<div class="position-relative mt-xl-n5">
+  <div class="fixed-bottom text-center">
+    <a class="p-1 bg-white text-dark text-decoration-none" href="#">Skip to Next Section
+      <span class="fa-regular fa-chevron-down" aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- sticky main nav -->
+  <div class="sticky-xl-top">
+    <div class="container wvu-z-index-max">
+      <div class="pt-xxl-2 ms-xxl-n3 me-xxl-n3">
+        <div class="btn-group w-100">
+          {% for section in sections %}
+            <button class="btn btn-light btn-lg text-start p-2" type="button">
+              <h3 class="wvu-shout mb-1 text-wvu-blue d-block">{{ section.name }}</h3>
+              <p class="lh-1 mb-0 fs-6">
+                {{ section.data.description }}
+              </p>
+            </button>
+            <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" style="">
+              {% for question in section.children %}
+                <li>
+                  <a href="#">Question 1</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- loop for each section -->
+  {% for section in sections %}
+    <!-- header -->
+    <div class="h-100 w-100 position-absolute" style="padding-bottom: 100vh">
+      <div class="sticky-xl-top">
+        <div class="container wvu-z-index-content position-absolute pt-xl-5 mt-5 mt-xl-4 ms-3 ms-xl-n1">
+          <div class="row">
+            <div class="col-md-6 col-xl-4 col-xxl-5 px-0">
+              <h2 class="display-1 wvu-shout text-wvu-gold position-relative d-inline-block d-xl-block">
+                {{ section.alternate_name | default: section.name }}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end header -->
+    <!-- question grouping -->
+    {% for questionGrouping in section.children %}
+      <p>
+        {{ questionGrouping.alternate_name | default: questionGrouping.name }}
+      </p>
+      {% assign questionGroupLabel = questionGrouping.slug | append: '-profile' %}
+      {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
+      {% assign sortedProfiles = profiles | sort: componentLoopBy %}
+      {% for profile in sortedProfiles %}
+        <!-- background image -->
+        {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+        <div class="d-xl-none w-100" style="z-index: -1;">
+          <div class="ratio ratio-16x9 bg-dark w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
+          </div>
+        </div>
+        <div class="d-none d-xl-block sticky-xl-top wvu-h-xl-100vh w-100" style="z-index: -1;">
+          <div class="bg-dark wvu-h-xl-100vh w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
+          </div>
+        </div>
+        <!-- end background image -->
+        <!-- container fluid -->
+        <div class="container-fluid wvu-z-index-content px-0">
+          <div class="row mx-0">
+            <!-- featurettes -->
+            {% assign featuredPagesLabel = profile.slug | append: '-featured' %}
+            {% assign featuredPages = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: featuredPagesLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
+            {% assign sortedPages = featuredPages | sort: componentLoopBy %}
+            <div class="col-xl-6 order-2 order-xl-1 me-xl-auto px-0 position-relative">
+              <div class="wvu-h-xl-200vh w-100 bg-dark wvu-bg-xl-transparent">
+                <div class="sticky-top w-100 pb-xl-4 wvu-pt-xl-70vh">
+                  <div class="border-top border-1 border-white w-100 pt-xl-2 ps-xl-4">
+                    <div class="row gx-1">
+                      {% for page in sortedPages %}
+                        {% liquid
+                          if page.data.alternate_url != blank
+                            assign link_href = page.data.alternate_url
+                          else
+                            assign link_href = page.url
+                          endif
+                        %}
+                        <div class="col-md-6 ms-auto text-white">
+                          <div class="wvu-bg-tint p-3">
+                            <div class="wvu-z-index-content">
+                              <h3 class="mb-1 text-wvu-accent--yellow h4">
+                                {{ page.alternate_name | default: page.name }}
+                              </h3>
+                              <p class="small">
+                                {{ page.data.description }}
+                              </p>
+                              <a href="{{ link_href }}" class="btn btn-sm btn-outline-white">
+                                Read More<span class="visually-hidden">: {{ page.name }}</span> <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end featurettes -->
+            <!-- sidebar -->
+            <div class="col-xl-3 order-1 order-xl-2 ms-auto px-0">
+              <div id="scrollspyHeading1" class="wvu-h-xl-200vh bg-wvu-accent--sunset">
+                <div class="py-xl-6 sticky-top">
+                  <h2 class="bg-wvu-accent--sunset  wvu-bg-topo-dark mt-xl-4 p-3 ms-xl-n5 ms-xxl-n6 wvu-shout display-4 wvu-z-index-content">
+                    {{ profile.alternate_name | default: profile.name }}
+                  </h2>
+                  <div class="px-3 px-xl-4 position-relative">
+                    <p class="wvu-quote wvu-quote--dark iowan-old-style-black fs-5 mb-4 mb-xl-3 mb-xxl-4 mx-xl-n2 mx-xxl-0">
+                      {{ profile.content['wvu-profile-1__quote'] }}
+                    </p>
+                    <p class="small helvetica-neue-bold text-uppercase">
+                      <span class="d-block py-4 ms-n4 me-n4 py-xl-0 ms-xl-0 me-xl-0 wvu-text-xl-vertical wvu-shout position-absolute fs-1 lh-1 text-wvu-accent--sunset wvu-bg-xl-transparent bg-dark"
+                      style="top: 0; left: -30px;">{{ profile.content['wvu-profile-1__name'] }}</span>
+                    </p>
+                    <div class="d-flex justify-content-start mx-xl-n2 mx-xxl-0">
+                      <p class="border-end border-1 border-dark pe-1 me-1">
+                        <span class="wvu-shout d-inline-block">Morgantown, WV</span>
+                        <span class="helvetica-neue-light text-uppercase">{{ profile.content['wvu-profile-1__major'] }}</span>
+                      </p>
+                      <span class="lh-1">
+                        <span class="iowan-old-style-italic text-lowercase d-block mt-n1">class of</span>
+                        <span class="iowan-old-style-black fs-5 d-block d-block ms-2">2026</span>
+                      </span>
+                    </div>
+                    <div class="bg-dark text-white mt-4 mt-xl-3 mt-xxl-4 ms-xl-n4 ms-xxl-0 me-xl-n4 p-2 wvu-z-index-content">
+                      <div class="row">
+                        <div class="col">
+                          <div class="ratio ratio-16x9 bg-wvu-accent--blue-dark">
+    
+                          </div>
+                        </div>
+                        <div class="col">
+                          <h3 class="h6 wvu-shout my-1">
+                            Video Title
+                          </h3>
+                          <p class="small lh-1">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
+                          </p>
+                          <span class="fa-solid fa-circle-play text-wvu-gold fs-3" aria-hidden="true">
+    
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pt-2 ps-2 pb-1 pe-2 bg-wvu-accent--yellow ms-xl-n4 mt-xl-n1">
+                      <p class="mb-0 small text-end">
+                        <a class="text-decoration-none text-dark" href="#">
+                          View Profile<span class="visually-hidden">: {{ profile.content['wvu-profile-1__name'] }}</span> <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end sidebar -->
+          </div>
+        </div>
+        <!-- end container fluid-->
+      {% endfor %}
+    {% endfor %}
+    <!-- end question grouping -->
+  {% endfor %}
+  <!-- end loop for each section -->
+</div>
