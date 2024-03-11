@@ -91,7 +91,7 @@
         {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
         {% assign sortedProfiles = profiles | sort: componentLoopBy %}
         {% for profile in sortedProfiles %}
-          {% assign questionAnchor = questionGroupLabel | append: '-' | append: sortedProfiles.index %}
+          {% assign questionAnchor = questionGroupLabel | append: '-' | append: forloop.index %}
           <!-- background image -->
           {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
           <div class="d-xl-none w-100" style="z-index: -1;">
