@@ -51,7 +51,7 @@
             <ul class="dropdown-menu" style="">
               {% for question in section.children %}
                 <li>
-                  <a href="#{{ question.slug }}-0">{{ question.alternate_name | default: question.name }}</a>
+                  <a href="#{{ question.slug }}-1">{{ question.alternate_name | default: question.name }}</a>
                 </li>
               {% endfor %}
             </ul>
