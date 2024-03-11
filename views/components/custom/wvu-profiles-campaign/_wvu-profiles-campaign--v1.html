@@ -87,11 +87,13 @@
       {% for questionGrouping in section.children %}
         <div>
           <div class="sticky-top">
-            <span class="d-inline-block h3 wvu-text-letter-spacing bg-dark p-1 mt-xl-6 ms-xl-6" style="right: 0; bottom: 0;">
-              <span class="text-wvu-accent--sunset">[ </span>
-              <span class="iowan-old-style-italic text-lowercase text-white">{{ questionGrouping.alternate_name | default: questionGrouping.name }}</span>
-              <span class="text-wvu-accent--sunset"> ]</span>
-            </span>
+            <div class="position-absolute w-100 pt-5">
+              <span class="d-inline-block h3 wvu-text-letter-spacing bg-dark p-1 mt-xl-6 ms-xl-6" style="right: 0; bottom: 0;">
+                <span class="text-wvu-accent--sunset">[ </span>
+                <span class="iowan-old-style-italic text-lowercase text-white">{{ questionGrouping.alternate_name | default: questionGrouping.name }}</span>
+                <span class="text-wvu-accent--sunset"> ]</span>
+              </span>
+            </div>
           </div>
           {% assign questionGroupLabel = questionGrouping.slug | append: '-profile' %}
           {% assign profiles = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: questionGroupLabel, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit %}
