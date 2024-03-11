@@ -87,7 +87,7 @@
       {% assign sortedProfiles = profiles | sort: componentLoopBy %}
       {% for profile in sortedProfiles %}
         <!-- background image -->
-        {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+        {% assign itemThumbnailSrc = profile.data.thumbnail_url | build_image_url: size: '1500x1000', format: 'webp' %}
         <div class="d-xl-none w-100" style="z-index: -1;">
           <div class="ratio ratio-16x9 bg-dark w-100 wvu-bg-size-cover wvu-bg-attach-fixed" style="content: ''; top: 0; left: 0; background-image: url('{{ itemThumbnailSrc }}');">
           </div>
