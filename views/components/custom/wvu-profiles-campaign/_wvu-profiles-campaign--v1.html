@@ -2,7 +2,7 @@
   assign startPage = site | get_page: component.featurettesID
   assign root = startPage | default: site.root_page
   assign componentLabels = component.customLabel | default: component.itemLabels
-  assign sections = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign sections = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: 50
   assign componentLoopBy = component.loopBy
   assign backgroundColors = 'bg-wvu-accent--sunset,wvu-neutral--cream,wvu-accent--blue-dark'
   assign primaryColors = ''
