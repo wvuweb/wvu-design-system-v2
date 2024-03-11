@@ -104,7 +104,7 @@
           </div>
           <!-- end background image -->
           <!-- container fluid -->
-          <div id="{{ questionAnchor }}" class="container-fluid wvu-z-index-content px-0">
+          <div class="container-fluid wvu-z-index-content px-0">
             <div class="row mx-0">
               <!-- featurettes -->
               {% assign featuredPagesLabel = profile.slug | append: '-featured' %}
@@ -147,7 +147,7 @@
               <!-- end featurettes -->
               <!-- sidebar -->
               <div class="col-xl-3 order-1 order-xl-2 ms-auto px-0">
-                <div id="scrollspyHeading1" class="wvu-h-xl-200vh bg-wvu-accent--sunset">
+                <div id="{{ questionAnchor }}" class="wvu-h-xl-200vh bg-wvu-accent--sunset">
                   <div class="py-xl-6 sticky-top">
                     <h2 class="bg-wvu-accent--sunset  wvu-bg-topo-dark mt-xl-4 p-3 ms-xl-n5 ms-xxl-n6 wvu-shout display-4 wvu-z-index-content">
                       {{ profile.alternate_name | default: profile.name }}
