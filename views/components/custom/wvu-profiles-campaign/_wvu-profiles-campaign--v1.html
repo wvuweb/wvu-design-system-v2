@@ -39,7 +39,8 @@
       <div class="pt-xxl-2 ms-xxl-n3 me-xxl-n3">
         <div class="btn-group w-100">
           {% for section in sections %}
-            {% assign firstChild = section.first %}
+            {% assign sectionChildren = section.children %}
+            {% assign firstChild = sectionChildren.first %}
             <button class="btn btn-light btn-lg text-start p-2 position-relative" type="button">
               <h3 class="wvu-shout mb-1 text-wvu-blue d-block">{{ section.name }}</h3>
               <p class="lh-1 mb-0 fs-6">
