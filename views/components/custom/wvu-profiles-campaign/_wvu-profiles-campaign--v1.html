@@ -61,8 +61,10 @@
     </div>
   </div>
   <!-- loop for each section -->
+  {% assign sectionCount = 0 %}
   {% for section in sections %}
-    <div class="position-relative mt-xl-n5 wvu-z-index-0">
+    {% assign sectionCount = sectionCount | plus: 1 %}
+    <div class="position-relative{% if sectionCount == 1 %} mt-xl-n5{% endif %} wvu-z-index-0">
       <!-- header -->
       <div class="h-100 w-100 position-absolute" style="padding-bottom: 100vh">
         <div class="sticky-xl-top">
