@@ -42,7 +42,7 @@
           {% for section in sections %}
             {% assign sectionChildren = section.children %}
             {% assign firstChild = sectionChildren.first %}
-            <button class="btn btn-dark btn-lg rounded-0 text-start p-2 position-relative{% unless sections.first %} border-start border-start-1 border-top-0 border-bottom-0 border-end-0 border-wvu-neutral--warm-gray-dark{% endunless %}" type="button">
+            <button class="btn btn-dark btn-lg rounded-0 text-start p-2 position-relative{% unless forloop.index == 1 %} border-start border-start-1 border-top-0 border-bottom-0 border-end-0 border-wvu-neutral--warm-gray-dark{% endunless %}" type="button">
               <h3 class="wvu-shout mb-1 text-wvu-gold d-block">{{ section.name }}</h3>
               <p class="lh-1 mb-0 fs-6">
                 {{ section.data.description }}
