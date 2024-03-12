@@ -88,10 +88,12 @@
         <div class="position-relative">
           <div class="h-100 w-100 position-absolute" style="padding-bottom: 100vh">
             <div class="sticky-xl-top">
-              <span class="d-inline-block h3 wvu-text-letter-spacing bg-dark p-1 mt-xl-6 ms-xl-6" style="right: 0; bottom: 0;">
-                <span class="text-wvu-accent--sunset">[ </span>
-                <span class="iowan-old-style-italic text-lowercase text-white">{{ questionGrouping.alternate_name | default: questionGrouping.name }}</span>
-                <span class="text-wvu-accent--sunset"> ]</span>
+              <span class="d-inline-block ms-xl-6 position-absolute" style="top: 27rem;">
+                  <span class="d-inline-block h3 wvu-text-letter-spacing bg-dark p-1">
+                  <span class="text-wvu-accent--sunset">[ </span>
+                  <span class="iowan-old-style-italic text-lowercase text-white">{{ questionGrouping.alternate_name | default: questionGrouping.name }}</span>
+                  <span class="text-wvu-accent--sunset"> ]</span>
+                </span>
               </span>
             </div>
           </div>
