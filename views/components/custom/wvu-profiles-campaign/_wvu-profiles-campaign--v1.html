@@ -123,6 +123,35 @@
                     <div class="sticky-top w-100 pb-xl-4 wvu-pt-xl-70vh">
                       <div class="border-top border-1 border-white w-100 pt-xl-2 ps-xl-4">
                         <div class="row gx-1">
+                          <div class="col-md-6 ms-auto text-white">
+                            <div class="wvu-bg-tint p-3">
+                              <div class="wvu-z-index-content">
+                                <h3 class="mb-1 text-wvu-accent--yellow h4">Test content</h3>
+                                <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                                  aliqua.
+                                </p>
+                                <a href="#" class="btn btn-sm btn-outline-white">Call to Action
+                                  <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 ms-auto text-white">
+                            <div class="wvu-bg-tint p-3">
+                              <div class="wvu-z-index-content">
+                                <h3 class="mb-1 text-wvu-accent--sunset h4">Test content with much longer heading</h3>
+                                <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                                  aliqua.
+                                </p>
+                                <a href="#" class="btn btn-sm btn-outline-white">Call to Action
+                                  <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          {% comment %}
                           {% for page in sortedPages %}
                             {% liquid
                               if page.data.alternate_url != blank
@@ -131,35 +160,6 @@
                                 assign link_href = page.url
                               endif
                             %}
-                            <div class="col-md-6 ms-auto text-white">
-                              <div class="wvu-bg-tint p-3">
-                                <div class="wvu-z-index-content">
-                                  <h3 class="mb-1 text-wvu-accent--yellow h4">Test content</h3>
-                                  <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua.
-                                  </p>
-                                  <a href="#" class="btn btn-sm btn-outline-white">Call to Action
-                                    <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ms-auto text-white">
-                              <div class="wvu-bg-tint p-3">
-                                <div class="wvu-z-index-content">
-                                  <h3 class="mb-1 text-wvu-accent--sunset h4">Test content with much longer heading</h3>
-                                  <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua.
-                                  </p>
-                                  <a href="#" class="btn btn-sm btn-outline-white">Call to Action
-                                    <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                            {% comment %}
                             <div class="col-md-6 ms-auto text-white">
                               <div class="wvu-bg-tint p-3">
                                 <div class="wvu-z-index-content">
@@ -175,8 +175,8 @@
                                 </div>
                               </div>
                             </div>
-                            {% endcomment %}
                           {% endfor %}
+                          {% endcomment %}
                         </div>
                       </div>
                     </div>
