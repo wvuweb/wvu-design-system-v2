@@ -41,14 +41,14 @@
           {% for section in sections %}
             {% assign sectionChildren = section.children %}
             {% assign firstChild = sectionChildren.first %}
-            <button class="btn btn-light btn-lg text-start p-2 position-relative" type="button">
-              <h3 class="wvu-shout mb-1 text-wvu-blue d-block">{{ section.name }}</h3>
+            <button class="btn btn-dark btn-lg rounded-0 text-start p-2 position-relative" type="button">
+              <h3 class="wvu-shout mb-1 text-wvu-gold d-block">{{ section.name }}</h3>
               <p class="lh-1 mb-0 fs-6">
                 {{ section.data.description }}
               </p>
               <a class="stretched-link" href="#{{ firstChild.slug }}-profile-1"></a>
             </button>
-            <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-lg btn-dark rounded-0 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" style="">
@@ -134,6 +134,35 @@
                             <div class="col-md-6 ms-auto text-white">
                               <div class="wvu-bg-tint p-3">
                                 <div class="wvu-z-index-content">
+                                  <h3 class="mb-1 text-wvu-accent--yellow h4">Test content</h3>
+                                  <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua.
+                                  </p>
+                                  <a href="#" class="btn btn-sm btn-outline-white">Call to Action
+                                    <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 ms-auto text-white">
+                              <div class="wvu-bg-tint p-3">
+                                <div class="wvu-z-index-content">
+                                  <h3 class="mb-1 text-wvu-accent--sunset h4">Test content with much longer heading</h3>
+                                  <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua.
+                                  </p>
+                                  <a href="#" class="btn btn-sm btn-outline-white">Call to Action
+                                    <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            {% comment %}
+                            <div class="col-md-6 ms-auto text-white">
+                              <div class="wvu-bg-tint p-3">
+                                <div class="wvu-z-index-content">
                                   <h3 class="mb-1 text-wvu-accent--yellow h4">
                                     {{ page.alternate_name | default: page.name }}
                                   </h3>
@@ -146,6 +175,7 @@
                                 </div>
                               </div>
                             </div>
+                            {% endcomment %}
                           {% endfor %}
                         </div>
                       </div>
