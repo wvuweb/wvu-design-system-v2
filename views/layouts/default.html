@@ -89,5 +89,9 @@
 
     {{ content_for.page_js }}
 
+    {% if site.data.chatbot_url != blank %}
+      <script type="text/javascript" src="{{ site.data.chatbot_url }}"></script>
+    {% endif %}
+
   </body>
 </html>

@@ -84,6 +84,7 @@ custom_site_attributes:
   - apply_link_2_url
   - apply_link_3
   - apply_link_3_url
+  - chatbot_url
   - classes_wvu_backpage_header
   - classes_wvu_backpage_header__h1
   - classes_wvu_backpage_header__subhead
