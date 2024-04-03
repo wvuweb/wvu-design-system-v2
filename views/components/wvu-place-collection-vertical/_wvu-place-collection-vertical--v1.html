@@ -185,16 +185,16 @@
                               {% if hasSocial != blank %}
                                 <span class="d-block">
                                   {% if item.content[facebookRegionName] != blank %}
-                                    <a href="{{ item.content[facebookeRegionName] }}"><span class="fa-brands fa-facebook"><span class="visually-hidden">Facebook</span></span></a>
+                                    <a href="{{ item.content[facebookeRegionName] }}"><span class="fa-brands fa-facebook"> <span class="visually-hidden">{{ item.name }} on </span>Facebook</span></a>
                                   {% endif %}
                                   {% if item.content[instagramRegionName] != blank %}
-                                    <a href="{{ item.content[instagramRegionName] }}"><span class="fa-brands fa-instagram"><span class="visually-hidden">Instagram</span></span></a>
+                                    <a href="{{ item.content[instagramRegionName] }}"><span class="fa-brands fa-instagram"> <span class="visually-hidden">{{ item.name }} on </span>Instagram</span></a>
                                   {% endif %}
                                   {% if item.content[twitterRegionName] != blank %}
-                                    <a href="{{ item.content[twitterRegionName] }}"><span class="fa-brands fa-twitter"><span class="visually-hidden">Twitter</span></span></a>
+                                    <a href="{{ item.content[twitterRegionName] }}"><span class="fa-brands fa-twitter"> <span class="visually-hidden">{{ item.name }} on </span>Twitter</span></a>
                                   {% endif %}
                                   {% if item.content[youtubeRegionName] != blank %}
-                                    <a href="{{ item.content[youtubeRegionName] }}"><span class="fa-brands fa-youtube"><span class="visually-hidden">Youtube</span></span></a>
+                                    <a href="{{ item.content[youtubeRegionName] }}"><span class="fa-brands fa-youtube"> <span class="visually-hidden">{{ item.name }} on </span>Youtube</a>
                                   {% endif %}
                                 </span>
                               {% endif %}
