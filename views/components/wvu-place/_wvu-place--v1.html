@@ -2,9 +2,14 @@
   assign addressOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', component.name
   assign addressTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', component.name
   assign mapLinkRegionName = 'wvu-CNAME__map-link' | replace: 'CNAME', component.name
+  assign contactRegionName = 'wvu-CNAME__contact' | replace: 'CNAME', component.name
   assign phoneRegionName = 'wvu-CNAME__phone' | replace: 'CNAME', component.name
   assign emailRegionName = 'wvu-CNAME__email' | replace: 'CNAME', component.name
   assign websiteRegionName = 'wvu-CNAME__website' | replace: 'CNAME', component.name
+  assign facebookRegionName = 'wvu-CNAME__facebook' | replace: 'CNAME', component.name
+  assign instagramRegionName = 'wvu-CNAME__instagram' | replace: 'CNAME', component.name
+  assign twitterRegionName = 'wvu-CNAME__twitter' | replace: 'CNAME', component.name
+  assign youtubeRegionName = 'wvu-CNAME__youtube' | replace: 'CNAME', component.name
   assign parkingRegionName = 'wvu-CNAME__parking' | replace: 'CNAME', component.name
   assign monRegionName = 'wvu-CNAME__mon' | replace: 'CNAME', component.name
   assign tuesRegionName = 'wvu-CNAME__tues' | replace: 'CNAME', component.name
@@ -56,9 +61,14 @@
             </div>
             <span class="d-inline-block badge bg-primary mb-1 no-preview">Contact Info</span>
             <div class="mb-2">
+              Contact: {% editable_region name: contactRegionName, scope: component.scope, type: "simple" %}
               Phone: {% editable_region name: phoneRegionName, scope: component.scope, type: "simple" %}
               Email: {% editable_region name: emailRegionName, scope: component.scope, type: "simple" %}
               Website: {% editable_region name: websiteRegionName, scope: component.scope, type: "simple" %}
+              Facebook: {% editable_region name: facebookRegionName, scope: component.scope, type: "simple" %}
+              Instagram: {% editable_region name: instagramRegionName, scope: component.scope, type: "simple" %}
+              Twitter: {% editable_region name: twitterRegionName, scope: component.scope, type: "simple" %}
+              YouTube: {% editable_region name: youtubeRegionName, scope: component.scope, type: "simple" %}
             </div>
             <span class="d-inline-block badge bg-primary mb-1 no-preview">Hours</span>
             <div class="mb-2">

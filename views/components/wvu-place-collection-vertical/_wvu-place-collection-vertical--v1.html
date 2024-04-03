@@ -10,9 +10,14 @@
   assign addressOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', 'place-1'
   assign addressTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', 'place-1'
   assign mapLinkRegionName = 'wvu-CNAME__map-link' | replace: 'CNAME', 'place-1'
+  assign contactRegionName = 'wvu-CNAME__contact' | replace: 'CNAME', 'contact-1'
   assign phoneRegionName = 'wvu-CNAME__phone' | replace: 'CNAME', 'place-1'
   assign emailRegionName = 'wvu-CNAME__email' | replace: 'CNAME', 'place-1'
   assign websiteRegionName = 'wvu-CNAME__website' | replace: 'CNAME', 'place-1'
+  assign facebookRegionName = 'wvu-CNAME__facebook' | replace: 'CNAME', 'place-1'
+  assign instagramRegionName = 'wvu-CNAME__instagram' | replace: 'CNAME', 'place-1'
+  assign twitterRegionName = 'wvu-CNAME__twitter' | replace: 'CNAME', 'place-1'
+  assign youtubeRegionName = 'wvu-CNAME__youtube' | replace: 'CNAME', 'place-1'
   assign parkingRegionName = 'wvu-CNAME__parking' | replace: 'CNAME', 'place-1'
   assign monRegionName = 'wvu-CNAME__mon' | replace: 'CNAME', 'place-1'
   assign tuesRegionName = 'wvu-CNAME__tues' | replace: 'CNAME', 'place-1'
@@ -142,6 +147,7 @@
                   {% assign hasHours = item.content[monRegionName] | append: item.content[tuesRegionName] | append: item.content[wedRegionName] | append: item.content[thursRegionName] | append: item.content[friRegionName] | append: item.content[satRegionName] | append: item.content[sunRegionName] %}
                   {% assign hasParking = item.content[parkingRegionName] %}
                   {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
+                  {% assign hasSocial = item.content[facebookRegionName] | append: item.content[instagramRegionName] | append: item.content[twitterRegionName] | append: item.content[youTubeRegionName] %}
 
                   {% if hasInfo != blank %}
                     <div class="col-12 col-md-6 col-xl-2 small">
@@ -164,14 +170,33 @@
                           {% if hasContactInfo != blank %}
                             <h2 class="h6 text-uppercase mb-1">Contact Info</h2>
                             <p>
+                              {% if item.content[contactRegionName] != blank %}
+                                <span class="d-block"><strong>{{ item.content[phoneRegionName] }}</strong></span>
+                              {% endif %}
                               {% if item.content[phoneRegionName] != blank %}
-                                <span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}<br>
+                                <span class="d-block"><span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}</span>
                               {% endif %}
                               {% if item.content[emailRegionName] != blank %}
-                                <span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content[emailRegionName] }}">{{ item.content[emailRegionName] }}</a><br>
+                                <span class="d-block"><span class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content[emailRegionName] }}">{{ item.content[emailRegionName] }}</a></span>
                               {% endif %}
                               {% if item.content[websiteRegionName] != blank %}
-                                <span class="fa-solid fa-link"></span> <a href="{{ item.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span></a>
+                                <span class="d-block"><span class="fa-solid fa-link"></span> <a href="{{ item.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ item.alternate_name | default: item.name }}</span></a></span>
+                              {% endif %}
+                              {% if hasSocial != blank %}
+                                <span class="d-block">
+                                  {% if item.content[facebookRegionName] != blank %}
+                                    <a href="{{ item.content[facebookeRegionName] }}"><span class="fa-brands fa-facebook"><span class="visually-hidden">Facebook</span></span></a>
+                                  {% endif %}
+                                  {% if item.content[instagramRegionName] != blank %}
+                                    <a href="{{ item.content[instagramRegionName] }}"><span class="fa-brands fa-instagram"><span class="visually-hidden">Instagram</span></span></a>
+                                  {% endif %}
+                                  {% if item.content[twitterRegionName] != blank %}
+                                    <a href="{{ item.content[twitterRegionName] }}"><span class="fa-brands fa-twitter"><span class="visually-hidden">Twitter</span></span></a>
+                                  {% endif %}
+                                  {% if item.content[youtubeRegionName] != blank %}
+                                    <a href="{{ item.content[youtubeRegionName] }}"><span class="fa-brands fa-youtube"><span class="visually-hidden">Youtube</span></span></a>
+                                  {% endif %}
+                                </span>
                               {% endif %}
                             </p>                      
                           {% endif %}
