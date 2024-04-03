@@ -171,7 +171,7 @@
                             <h2 class="h6 text-uppercase mb-1">Contact Info</h2>
                             <p>
                               {% if item.content[contactRegionName] != blank %}
-                                <span class="d-block"><strong>{{ item.content[contactRegionName] }}</strong></span>
+                                <span class="d-block"><span class="fa-solid fa-user"></span> <strong>{{ item.content[contactRegionName] }}</strong></span>
                               {% endif %}
                               {% if item.content[phoneRegionName] != blank %}
                                 <span class="d-block"><span class="fa-solid fa-phone"></span> {{ item.content[phoneRegionName] }}</span>
