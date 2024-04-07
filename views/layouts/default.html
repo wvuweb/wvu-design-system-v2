@@ -83,7 +83,7 @@
 
     {{ __TEMPLATE_CONTENT__ }}
 
-    {% if site.data.default_content_page_id != blank %}
+    {% if site.data.default_content_page_id != blank and page.template_name != 'default_content' %}
       {% assign defaultContent = site | get_page: site.data.default_content_page_id %}
       {% assign slots = defaultContent.slots | where: 'where_to_display', 'as_full_width_block' %}
       {% render "utilities/wvu-default-content-slots" defaultContent: defaultContent, slots: slots %}
