@@ -91,6 +91,7 @@ custom_site_attributes:
   - classes_wvu_breadcrumbs
   - classes_wvu_footer_links
   - co_brand_subtitle
+  - default_content_page_id
   - disable_component_styler
   - disable_primary_nav
   - emergency_alert_disabled
