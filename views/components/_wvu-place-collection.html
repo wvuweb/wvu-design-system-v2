@@ -2,19 +2,25 @@
 
 {% liquid
   assign componentVersion = theme.data.component_versions.place_collection | default: '1'
+  assign defaultComponentClasses = defaultComponentClasses | default: null
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
+  assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue"
+  assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
+  assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-primary btn-sm"
+  assign defaultItemButtonText = defaultItemButtonText | default: "Read More"
 %}
 
 {%- define_component component %}
   {
-    "baseName": "place-collection-vertical",
-    "defaultComponentClasses": "",
-    "defaultRowClasses": "justify-content-start",
+    "baseName": "place-collection",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultRowClasses": "{{ defaultRowClasses }}",
     "defaultItemClasses": null,
     "defaultHeaderClasses": "mb-4",
-    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue",
-    "defaultItemBodyClasses": null,
-    "defaultItemButtonClasses": "btn btn-primary",
-    "defaultItemButtonText": "Read More",
+    "defaultItemHeaderClasses": "{{ defaultItemHeaderClasses }}",
+    "defaultItemBodyClasses": "{{ defaultItemBodyClasses }}",
+    "defaultItemButtonClasses": "{{ defaultItemButtonClasses }}",
+    "defaultItemButtonText": "{{ defaultItemButtonText }}",
     "mainTagClasses": "py-5"
   }
 {%- enddefine_component %}
