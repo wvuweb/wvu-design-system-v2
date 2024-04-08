@@ -100,7 +100,7 @@
 
           <div class="{{ itemClasses }}">
             {% if item.data.thumbnail_url != blank %}
-              <div class="mb-2 position-relative">
+              <div class="mb-2 position-relative wvu-thumbnail-wrapper">
                 {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
                 {% if item.data.badge_label != blank %}
                   <div class="badge text-uppercase helvetica-neue-bold p-1 mt-n1 ms-n1 small bg-danger text-white shadow-sm position-absolute">
@@ -149,7 +149,6 @@
               {% endif %}
 
               {% if hasContactInfo != blank %}
-                <h2 class="h6 text-uppercase mb-1">Contact Info</h2>
                 <p>
                   {% if item.content[contactRegionName] != blank %}
                     <span class="d-block"><span class="fa-solid fa-user"></span> <strong>{{ item.content[contactRegionName] }}</strong></span>
@@ -176,73 +175,6 @@
                     <span class="d-block"><span class="fa-brands fa-youtube"></span> <a href="{{ item.content[youtubeRegionName] }}"><span class="visually-hidden">{{ item.name }} on </span>Youtube</a></span>
                   {% endif %}
                 </p>                      
-              {% endif %}
-
-              {% if hasHours != blank %}
-                <h2 class="h6 text-uppercase mb-1">Hours</h2>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">M</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[monRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">T</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[tuesRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">W</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[wedRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">Th</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[thursRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">F</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[friRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">Sat</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[satRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <span class="text-uppercase helvetica-neue-condensed-black">Sun</span>
-                  </div>
-                  <div class="col-10">
-                    {{ item.content[sunRegionName] | default: defaultHours }}
-                  </div>
-                </div>
-              {% endif %}
-                
-              {% if item.content[parkingRegionName] != blank %}
-                <h2 class="h6 text-uppercase mb-1">Parking</h2>
-                <div>
-                  {{ item.content[parkingRegionName] }}
-                </div>
               {% endif %}
             {% endif %}
 
