@@ -125,15 +125,6 @@
             {% else %}
               {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
             {%- endif %}
-
-            {% if itemReadMoreButtonText != 'none' %}
-              {% if item.data.link_text != blank %}
-                {% assign link_text = item.data.link_text %}
-              {% else %}
-                {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
-              {% endif %}
-              <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
-            {% endif %}
               
             {% assign hasAddress = item.content[addressOneRegionName] | append: item.content[addressTwoRegionName] | append: item.content[mapLinkRegionName] %}
             {% assign hasContactInfo = item.content[phoneRegionName] | append: item.content[emailRegionName] | append: item.content[websiteRegionName] %}
@@ -251,6 +242,15 @@
                   {{ item.content[parkingRegionName] }}
                 </div>
               {% endif %}
+            {% endif %}
+
+            {% if itemReadMoreButtonText != 'none' %}
+              {% if item.data.link_text != blank %}
+                {% assign link_text = item.data.link_text %}
+              {% else %}
+                {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+              {% endif %}
+              <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
             {% endif %}
           </div>
         {% endfor %}
