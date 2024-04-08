@@ -143,6 +143,7 @@
           {% assign hasHours = page.content[monRegionName] | append: page.content[tuesRegionName] | append: page.content[wedRegionName] | append: page.content[thursRegionName] | append: page.content[friRegionName] | append: page.content[satRegionName] | append: page.content[sunRegionName] %}
           {% assign hasParking = page.content[parkingRegionName] %}
           {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
+          {% assign hasSocial = page.content[facebookRegionName] | append: page.content[instagramRegionName] | append: page.content[twitterRegionName] | append: page.content[youtubeRegionName] %}
 
           {% if hasInfo != blank %}
             <div class="mt-3 mb-3 p-3 border rounded small">
@@ -171,6 +172,24 @@
                   {% endif %}
                   {% if page.content[websiteRegionName] != blank %}
                     <span class="fa-solid fa-link"></span> <a href="{{ page.content[websiteRegionName] }}">Visit Website<span class="visually-hidden">: {{ page.alternate_name | default: page.name }}</span></a>
+                  {% endif %}
+                </p>
+              {% endif %}
+
+              {% if hasSocial != blank %}
+                <h2 class="h6 text-uppercase mt-3">Follow</h2>
+                <p>
+                  {% if page.content[facebookRegionName] != blank %}
+                    <span class="fa-brands fa-facebook"></span> <a href="mailto:{{ page.content[facebookRegionName] }}">Facebook</a><br>
+                  {% endif %}
+                  {% if page.content[instagramRegionName] != blank %}
+                    <span class="fa-brands fa-instagram"></span> <a href="mailto:{{ page.content[instagramRegionName] }}">Instagram</a><br>
+                  {% endif %}
+                  {% if page.content[twitterRegionName] != blank %}
+                    <span class="fa-brands fa-twitter"></span> <a href="{{ page.content[twitterRegionName] }}">Twitter</a>
+                  {% endif %}
+                  {% if page.content[youtubeRegionName] != blank %}
+                    <span class="fa-brands fa-youtube"></span> <a href="{{ page.content[youtubeRegionName] }}">YouTube</span></a>
                   {% endif %}
                 </p>
               {% endif %}
