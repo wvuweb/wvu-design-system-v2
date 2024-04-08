@@ -67,6 +67,7 @@
               Website: {% editable_region name: websiteRegionName, scope: component.scope, type: "simple" %}
               Facebook: {% editable_region name: facebookRegionName, scope: component.scope, type: "simple" %}
               Instagram: {% editable_region name: instagramRegionName, scope: component.scope, type: "simple" %}
+              LinkedIn: {% editable_region name: linkedinRegionName, scope: component.scope, type: "simple" %}
               Twitter: {% editable_region name: twitterRegionName, scope: component.scope, type: "simple" %}
               YouTube: {% editable_region name: youtubeRegionName, scope: component.scope, type: "simple" %}
             </div>
@@ -184,6 +185,9 @@
                   {% endif %}
                   {% if page.content[instagramRegionName] != blank %}
                     <span class="fa-brands fa-instagram"></span> <a href="mailto:{{ page.content[instagramRegionName] }}">Instagram</a><br>
+                  {% endif %}
+                  {% if page.content[linkedinRegionName] != blank %}
+                    <span class="fa-brands fa-linkedin"></span> <a href="mailto:{{ page.content[linkedinRegionName] }}">LinkedIn</a><br>
                   {% endif %}
                   {% if page.content[twitterRegionName] != blank %}
                     <span class="fa-brands fa-twitter"></span> <a href="{{ page.content[twitterRegionName] }}">Twitter</a>
