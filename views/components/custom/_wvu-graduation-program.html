@@ -10,10 +10,11 @@
 
         <h2 class="wvu-shout">May 2024 Graduates</h2>
 
-        {% assign degrees = directory | keys %}
+        {% assign degrees = directory %}
 
+        {% assign i = 0 %}
         {% for degree in degrees %}
-          <h3 class="iowan-old-style">{{ degree }}</h3>
+          <h3 class="iowan-old-style">{{ degree[i] }}</h3>
           {% comment %}
           {% for major in degree %}
             <h4 class="wvu-shout h5 mt-4">Major</h4>
@@ -38,9 +39,8 @@
             </ul>
           {% endfor %}
           {% endcomment %}
+          {% assign i = i | plus: 1 %}
         {% endfor %}
-
-        {{ degrees }}
 
         <div class="p-3 p-lg-4 bg-light mt-4">
           <ul class="list-unstyled">
