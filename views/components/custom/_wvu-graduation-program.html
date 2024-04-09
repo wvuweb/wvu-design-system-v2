@@ -1,6 +1,6 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
 
-<main class="wvu-backpage-main py-5">
+<main class="wvu-backpage-main py-5 iowan-old-style">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="col-md-8">
@@ -17,15 +17,13 @@
             <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
               {% for student in major[1] %}
                 <li id="directory-id--{{ student.Name }}">
-                  <p>
-                    {{ student['Name'] }}
-                    {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
-                    {% if student['Foundations Scholar'] != blank %}☙{% endif %}
-                    {% if student['Laureate'] != blank %}⟡{% endif %}
-                    {% if student['Cum Laude'] != blank %}*{% endif %}
-                    {% if student['Magna Cum Laude'] != blank %}**{% endif %}
-                    {% if student['Summa Cum Laude'] != blank %}***{% endif %}
-                  </p>
+                  {{ student['Name'] }}
+                  {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
+                  {% if student['Foundations Scholar'] != blank %}☙{% endif %}
+                  {% if student['Laureate'] != blank %}⟡{% endif %}
+                  {% if student['Cum Laude'] != blank %}*{% endif %}
+                  {% if student['Magna Cum Laude'] != blank %}**{% endif %}
+                  {% if student['Summa Cum Laude'] != blank %}***{% endif %}
                 </li>
               {% endfor %}
               {% assign j = j | plus: 1 %}
