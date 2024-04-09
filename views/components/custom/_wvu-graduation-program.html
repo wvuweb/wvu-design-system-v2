@@ -10,12 +10,10 @@
 
         <h2 class="wvu-shout">May 2024 Graduates</h2>
 
-        {% assign i = 0 %}
         {% for degree in directory %}
-          <h3 class="iowan-old-style">{{ degree[i] }}</h3>
-          {% assign j = 0 %}
-          {% for major in degree[i] %}
-            <h4 class="wvu-shout h5 mt-4">{{ major[j] }}</h4>
+          <h3 class="iowan-old-style">{{ degree[0] }}</h3>
+          {% for major in degree[1] %}
+            <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
             <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
               {% for student in major[j] %}
                 {% for thing in student %}
