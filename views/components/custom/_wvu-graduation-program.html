@@ -12,8 +12,8 @@
 
         {% assign i = 0 %}
 
-        {% for degree in (i..directory.size) %}
-          <h3 class="iowan-old-style">{{ directory.degree }}</h3>
+        {% for i in (1..directory.size) %}
+          <h3 class="iowan-old-style">{{ directory[i] }}</h3>
           {% comment %}
           {% for major in degree %}
             <h4 class="wvu-shout h5 mt-4">Major</h4>
