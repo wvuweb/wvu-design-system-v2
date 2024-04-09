@@ -12,7 +12,7 @@
 
         {% for degree in directory %}
           <h3 class="iowan-old-style">Degree</h3>
-          {% for major in directory.degree %}
+          {% for major in degree %}
             <h4 class="wvu-shout h5 mt-4">Major</h4>
             <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
               {% for student in directory.degree.major %}
