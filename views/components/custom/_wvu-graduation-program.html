@@ -20,7 +20,7 @@
                   <!--- this includes an example of one of the honors designations; you'll need to add the others the same way. I'm really not sure what to do with the "Tentative Honors" field the registrar's office provides yet.
                   --->
                   <p>
-                    {{ student }}
+                    {{ student.Name }}
                     {% if person.excelScholar == true %}☸{% endif %}
                     {% if person.foundationsScholar == true %}☙{% endif %}
                     {% if person.laureateScholar == true %}⟡{% endif %}
