@@ -10,7 +10,7 @@
 
         <h2 class="wvu-shout">May 2024 Graduates</h2>
 
-        {% assign degrees = directory.data | keys %}
+        {% assign degrees = directory | keys %}
 
         {% for degree in degrees %}
           <h3 class="iowan-old-style">{{ degree }}</h3>
