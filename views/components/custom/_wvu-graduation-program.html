@@ -9,9 +9,10 @@
         </div>
 
         <h2 class="wvu-shout">May 2024 Graduates</h2>
+        {% assign degrees = directory | keys %}
         {% assign i = 0 %}
-        {% for degree in directory %}
-          <h3 class="iowan-old-style">{{ degree[i] }}</h3>
+        {% for degree in degrees %}
+          <h3 class="iowan-old-style">{{ degree }}</h3>
           {% comment %}
           {% assign majors = directory.degree %}
           {% for major in majors %}
