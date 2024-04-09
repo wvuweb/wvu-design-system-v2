@@ -11,7 +11,8 @@
         <h2 class="wvu-shout">May 2024 Graduates</h2>
 
         {% for degree in directory %}
-          <h3 class="iowan-old-style">Degree</h3>
+          <h3 class="iowan-old-style">{{ directory[degree] }}</h3>
+          {% comment %}
           {% assign majors = directory.degree %}
           {% for major in majors %}
             <h4 class="wvu-shout h5 mt-4">Major</h4>
@@ -34,6 +35,7 @@
               {% endfor %}
             <ul>
           {% endfor %}
+          {% endcomment %}
         {% endfor %}
 
         <div class="p-3 p-lg-4 bg-light mt-4">
