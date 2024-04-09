@@ -13,7 +13,7 @@
         {% assign degrees = directory | keys %}
 
         {% for degree in degrees %}
-          <h3 class="iowan-old-style">{{ degree }}</h3>
+          <h3 class="iowan-old-style">{{ degrees[degree] }}</h3>
           {% assign majors = directory.data[degree] | keys %}
           {% for major in majors %}
             <h4 class="wvu-shout h5 mt-4">{{ major }}</h4>
