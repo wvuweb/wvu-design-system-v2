@@ -4,7 +4,53 @@
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="col-md-8">
+        <h2 class="wvu-shout">May 2024 Graduates</h2>
 
+        {% assign degress = directory.data | keys %}
+
+        {% for degree in degrees %}
+          <h3 class="iowan-old-style">{{ degree }}</h3>
+          {% assign majors = directory.data[degree] | keys %}
+          {% for major in majors %}
+            <h4 class="wvu-shout h5 mt-4">{{ major }}</h4>
+            <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
+              {% assign students = directory.data[degree][major] %}
+              {% for student in students %}
+                <li id="directory-id--{{ student.Name }}" class="mb-3">
+                  <!--- this includes an example of one of the honors designations; you'll need to add the others the same way. I'm really not sure what to do with the "Tentative Honors" field the registrar's office provides yet.
+                  --->
+                  <p>
+                    {{ student.Name }}
+                    {% if person.excelScholar == true %}☸{% endif %}
+                    {% if person.foundationsScholar == true %}☙{% endif %}
+                    {% if person.laureateScholar == true %}⟡{% endif %}
+                    {% if person.cumLaude == true %}*{% endif %}
+                    {% if person.magnaCumLaude == true %}**{% endif %}
+                    {% if person.summaCumLaude == true %}***{% endif %}
+                  </p>
+                </li>
+              {% endfor %}
+            <ul>
+          {% endfor %}
+        {% endfor %}
+
+        <div class="p-3 p-lg-4 bg-light mt-4">
+          <ul class="list-unstyled">
+            <li>* Cum Laude</li>
+            <li>** Magna Cum Laude</li>
+            <li>*** Summa Cum Laude</li>
+            <li>☸ Honors EXCEL Scholar</li>
+            <li>☙ Honors Foundations Scholar</li>
+            <li>⟡ Honors Laureate</li>
+          </ul>
+          <p>
+            <span class="iowan-old-style-italic">Names listed in this program are taken from applications for graduation made
+              to the WVU Office of the University Registrar. This document is not an official
+              record of degrees awarded. Honors listed in this program are based upon the
+              next-to-last term of enrollment and are not official until all academic work
+              has been certified by the WVU Office of the University Registrar.</span>
+          </p>
+        </div>
       </div>
       <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-md-auto{% else %}ms-md-auto{% endif %}" aria-label="{{ componentSidebar }}">
         <div class="sticky-top pt-3 mt-n3">
@@ -12,52 +58,5 @@
         </div>
       </aside>
     </div>
-    <h2 class="wvu-shout">May 2024 Graduates</h2>
-
-      {% assign degress = directory.data | keys %}
-
-      {% for degree in degrees %}
-        <h3 class="iowan-old-style">{{ degree }}</h3>
-        {% assign majors = directory.data[degree] | keys %}
-        {% for major in majors %}
-          <h4 class="wvu-shout h5 mt-4">{{ major }}</h4>
-          <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
-            {% assign students = directory.data[degree][major] %}
-            {% for student in students %}
-              <li id="directory-id--{{ student.Name }}" class="mb-3">
-                <!--- this includes an example of one of the honors designations; you'll need to add the others the same way. I'm really not sure what to do with the "Tentative Honors" field the registrar's office provides yet.
-                --->
-                <p>
-                  {{ student.Name }}
-                  {% if person.excelScholar == true %}☸{% endif %}
-                  {% if person.foundationsScholar == true %}☙{% endif %}
-                  {% if person.laureateScholar == true %}⟡{% endif %}
-                  {% if person.cumLaude == true %}*{% endif %}
-                  {% if person.magnaCumLaude == true %}**{% endif %}
-                  {% if person.summaCumLaude == true %}***{% endif %}
-                </p>
-              </li>
-            {% endfor %}
-          <ul>
-        {% endfor %}
-      {% endfor %}
-
-      <div class="p-3 p-lg-4 bg-light mt-4">
-        <ul class="list-unstyled">
-          <li>* Cum Laude</li>
-          <li>** Magna Cum Laude</li>
-          <li>*** Summa Cum Laude</li>
-          <li>☸ Honors EXCEL Scholar</li>
-          <li>☙ Honors Foundations Scholar</li>
-          <li>⟡ Honors Laureate</li>
-        </ul>
-        <p>
-          <span class="iowan-old-style-italic">Names listed in this program are taken from applications for graduation made
-            to the WVU Office of the University Registrar. This document is not an official
-            record of degrees awarded. Honors listed in this program are based upon the
-            next-to-last term of enrollment and are not official until all academic work
-            has been certified by the WVU Office of the University Registrar.</span>
-        </p>
-      </div>
   </div>
 </section>
