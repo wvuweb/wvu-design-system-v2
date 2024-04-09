@@ -19,12 +19,12 @@
                 <li id="directory-id--{{ student.Name }}">
                   <p>
                     {{ student['Name'] }}
-                    {% if student.['EXCEL Scholar'] != blank %}☸{% endif %}
-                    {% if student.['Foundations Scholar'] != blank %}☙{% endif %}
-                    {% if student.['Laureate'] != blank %}⟡{% endif %}
-                    {% if student.['Cum Laude'] != blank %}*{% endif %}
-                    {% if student.['Magna Cum Laude'] != blank %}**{% endif %}
-                    {% if student.['Summa Cum Laude'] != blank %}***{% endif %}
+                    {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
+                    {% if student['Foundations Scholar'] != blank %}☙{% endif %}
+                    {% if student['Laureate'] != blank %}⟡{% endif %}
+                    {% if student['Cum Laude'] != blank %}*{% endif %}
+                    {% if student['Magna Cum Laude'] != blank %}**{% endif %}
+                    {% if student['Summa Cum Laude'] != blank %}***{% endif %}
                   </p>
                 </li>
               {% endfor %}
