@@ -2,11 +2,14 @@
 
 <main class="wvu-backpage-main py-5">
   <div class="container wvu-z-index-content">
+    <div class="mb-5">
+      {% editable_region name: 'dean-s-message' %}
+    </div>
     <div class="row">
       <div class="col-md-8">
         <h2 class="wvu-shout">May 2024 Graduates</h2>
 
-        {% assign degrees = directory.data | keys %}
+        {% assign degrees = directory | keys %}
 
         {% for degree in degrees %}
           <h3 class="iowan-old-style">{{ degree }}</h3>
