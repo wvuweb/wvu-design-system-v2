@@ -1,0 +1,145 @@
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: "Watch"
+  assign startPage = site | get_page: component.featurettesID
+  assign root = startPage | default: site.root_page
+  assign componentLabels = component.customLabel | default: component.itemLabels
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  assign componentLoopBy = component.loopBy
+  
+  case componentLoopBy
+    when "published_at" or "created_at" or "updated_at"
+      assign sortedItems = items | sort: componentLoopBy | reverse
+    else
+      assign sortedItems = items | sort: componentLoopBy
+  endcase
+
+  if component.loopOrder == "desc"
+    assign sortedItems = sortedItems | reverse
+  endif
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Page Collection Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+
+      {% if itemCount == 0 %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+      {% else %}
+        {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+        {% assign itemClasses = itemClasses | strip %}
+        {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+      {% endif %}
+
+      {% capture loopContent %}
+
+        {% for item in sortedItems limit: component.limit %}
+
+          {% liquid
+            if item.data.alternate_url != blank
+              assign link_href = item.data.alternate_url
+            else
+              assign link_href = item.url
+            endif
+          %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+
+          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+            <div class="d-block h-100 text-white text-decoration-none position-relative">
+              <div class="h-100 card bg-dark text-white shadow wvu-bg-tint wvu-bg-size-cover wvu-bg-position-center" style="background-image: url({{ itemThumbnailSrc }})">
+                <div class="wvu-z-index-content p-3 h-100">
+                  <{{ htag }} class="card-title {{ itemHeaderClasses }}" id="{{ htag_id }}">
+                    {{ item.alternate_name | default: item.name }}
+                  </{{ htag }}>
+                  {%- if item.data.description != blank %}
+                    <p class="{{ itemBodyClasses }}">
+                      {{ item.data.description }}
+                    </p>
+                  {% else %}
+                    {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+                  {%- endif %}
+
+                  {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                  {% assign modalId = item.slug %}
+
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                    {{ link_text }} <span class="fa-solid fa-circle-play"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="{{ modalId }}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title h5" id="exampleModalLabel">{{ item.data.video_title }}</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="ratio ratio-16x9">
+                    {% if item.data.video_url contains "https://www.youtube.com/watch?v=" %}
+                      {% assign videoId = item.data.video_url | split: 'https://www.youtube.com/watch?v=' %}
+                    {% elsif item.data.video_url contains "https://youtu.be/" %}
+                      {% assign videoId = item.data.video_url | split: 'https://youtu.be/' %}
+                    {% endif %}
+                    <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+
+      {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+        <div class="mt-3">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
+          {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+            <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+          {% endeditable_region_block %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}

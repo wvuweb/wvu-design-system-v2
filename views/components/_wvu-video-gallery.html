@@ -1,0 +1,25 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.video_gallery | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "video-gallery",
+    "defaultComponentClasses": null,
+    "defaultRowClasses": "justify-content-left mb-4",
+    "defaultItemClasses": "mb-4 mb-md-0 col-sm-6 col-md-4",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none",
+    "defaultItemBodyClasses": "mb-0",
+    "defaultItemButtonClasses": "btn btn-primary btn-sm",
+    "defaultItemButtonText": "Read More",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-video-gallery/wvu-video-gallery--v1" component: component %}
+  {% else %}{% render "components/wvu-video-gallery/wvu-video-gallery--v1" component: component %}
+{% endcase %}

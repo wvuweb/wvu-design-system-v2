@@ -71,6 +71,10 @@ custom_data_attributes:
   - useFACSS:
     type: checkbox
     title: Use FontAwesome CSS
+  - video_id:
+    title: Video ID
+  - video_title: 
+    title: Video Title
   - youtube_playlist_id:
     title: YouTube Playlist ID
 

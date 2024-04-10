@@ -70,6 +70,7 @@
       {% when 'twitter-widget' %}{% render "components/wvu-twitter-widget" slot: slot %}
       {% when 'subnav' %}{% render "components/wvu-subnav" slot: slot %}
       {% when 'video-feature' %}{% render "components/wvu-video-feature" slot: slot %}
+      {% when 'video-gallery' %}{% render "components/wvu-video-gallery" slot: slot %}
       {% when 'youtube-playlist' %}{% render "components/wvu-youtube-playlist" slot: slot %}
       {% else %}ERROR: Unsupported component '{{ slot.value }}'
     {% endcase %}
