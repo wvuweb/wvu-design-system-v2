@@ -99,31 +99,6 @@
               </div>
             </div>
           </div>
-
-          <div class="modal fade" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalId }}-label" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h3 class="modal-title h5" id="{{ modalId }}-label">{{ item.data.video_title }}</h3>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="ratio ratio-16x9">
-                    {% if item.data.video_url contains "https://www.youtube.com/watch?v=" %}
-                      {% assign videoId = item.data.video_url | split: 'https://www.youtube.com/watch?v=' %}
-                    {% elsif item.data.video_url contains "https://youtu.be/" %}
-                      {% assign videoId = item.data.video_url | split: 'https://youtu.be/' %}
-                    {% endif %}
-                    <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
         {% endfor %}
       {% endcapture %}
 
@@ -140,6 +115,33 @@
     </div>
   </div>
 {% endcapture %}
+
+{% for item in sortedItems limit: component.limit %}
+  <div class="modal fade" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalId }}-label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title h5" id="{{ modalId }}-label">{{ item.data.video_title }}</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            {% if item.data.video_url contains "https://www.youtube.com/watch?v=" %}
+              {% assign videoId = item.data.video_url | split: 'https://www.youtube.com/watch?v=' %}
+            {% elsif item.data.video_url contains "https://youtu.be/" %}
+              {% assign videoId = item.data.video_url | split: 'https://youtu.be/' %}
+            {% endif %}
+            <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
 {% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}
