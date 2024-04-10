@@ -117,6 +117,7 @@
 {% endcapture %}
 
 {% for item in sortedItems limit: component.limit %}
+  {% assign modalId = item.slug %}
   <div class="modal fade" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalId }}-label" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
