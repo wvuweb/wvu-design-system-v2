@@ -92,9 +92,9 @@
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% assign modalId = item.slug %}
 
-                  <a type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
