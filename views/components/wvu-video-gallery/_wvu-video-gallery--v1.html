@@ -92,7 +92,13 @@
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% assign modalId = item.slug %}
 
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
+                  {% if item.data.video_id contains "https://www.youtube.com/watch?v=" %}
+                    {% assign videoId = item.data.video_id | split: 'https://www.youtube.com/watch?v=' %}
+                  {% elsif item.data.video_id contains "https://youtu.be/" %}
+                    {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
+                  {% endif %}
+
+                  <button type="button" data-src="https://www.youtube.com/embed/{{ videoId }}" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
                   </button>
                 </div>
@@ -155,11 +161,11 @@
     });
   });
 
-  // // Add event listener for when the modal is opened
-  // document.getElementById('jackie-riggleman').addEventListener('shown.bs.modal', () => {
-  //   // Update the video source with autoplay and other options
-  //   document.getElementById('video-jackie-riggleman').src = videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0";
-  // });
+  // Add event listener for when the modal is opened
+  document.getElementById('jackie-riggleman').addEventListener('shown.bs.modal', () => {
+    // Update the video source with autoplay and other options
+    document.getElementById('video-jackie-riggleman').src = videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0";
+  });
 
   // Add event listener for when the modal is closed
   document.getElementById('jackie-riggleman').addEventListener('hide.bs.modal', () => {
