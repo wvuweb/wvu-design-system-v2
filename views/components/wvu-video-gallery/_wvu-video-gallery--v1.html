@@ -130,7 +130,7 @@
               {% elsif item.data.video_id contains "https://youtu.be/" %}
                 {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
               {% endif %}
-              <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe id="video-{{ modalId }}" src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -158,12 +158,12 @@
   // Add event listener for when the modal is opened
   document.getElementById('jackie-riggleman').addEventListener('shown.bs.modal', () => {
     // Update the video source with autoplay and other options
-    document.getElementById('video').src = videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0";
+    document.getElementById('video-jackie-riggleman').src = videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0";
   });
 
   // Add event listener for when the modal is closed
   document.getElementById('jackie-riggleman').addEventListener('hide.bs.modal', () => {
     // Stop the video by resetting the source
-    document.getElementById('video').src = videoSrc;
+    document.getElementById('video-jackie-riggleman').src = videoSrc;
   });
 </script>
