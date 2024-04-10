@@ -72,7 +72,7 @@ custom_data_attributes:
     type: checkbox
     title: Use FontAwesome CSS
   - video_id:
-    title: Video ID
+    title: YouTube URL
   - video_title: 
     title: Video Title
   - youtube_playlist_id:
