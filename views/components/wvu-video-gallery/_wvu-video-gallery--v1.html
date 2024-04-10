@@ -92,9 +92,9 @@
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% assign modalId = item.slug %}
 
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                  <a type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -132,10 +132,6 @@
               {% endif %}
               <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
