@@ -125,10 +125,10 @@
           </div>
           <div class="modal-body">
             <div class="ratio ratio-16x9">
-              {% if item.data.video_url contains "https://www.youtube.com/watch?v=" %}
-                {% assign videoId = item.data.video_url | split: 'https://www.youtube.com/watch?v=' %}
-              {% elsif item.data.video_url contains "https://youtu.be/" %}
-                {% assign videoId = item.data.video_url | split: 'https://youtu.be/' %}
+              {% if item.data.video_id contains "https://www.youtube.com/watch?v=" %}
+                {% assign videoId = item.data.video_id | split: 'https://www.youtube.com/watch?v=' %}
+              {% elsif item.data.video_id contains "https://youtu.be/" %}
+                {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
               {% endif %}
               <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
