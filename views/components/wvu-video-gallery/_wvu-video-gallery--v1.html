@@ -92,7 +92,7 @@
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% assign modalId = item.slug %}
 
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold text-wvu-gold text-decoration-none" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
                   </button>
                 </div>
@@ -100,11 +100,11 @@
             </div>
           </div>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="{{ modalId }}" aria-hidden="true">
+          <div class="modal fade" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalId }}-label" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h3 class="modal-title h5" id="exampleModalLabel">{{ item.data.video_title }}</h3>
+                  <h3 class="modal-title h5" id="{{ modalId }}-label">{{ item.data.video_title }}</h3>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
