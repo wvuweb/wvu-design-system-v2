@@ -45,13 +45,13 @@
 
         <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
           {%- if edit_mode or page.content[componentPanelPhoto] != blank %}
-            <div class="mb-2">
+            <div class="mb-2 wvu-featurettes-image">
               {% editable_region_block name: componentPanelPhoto, scope: component.scope %}
                 <img class="card-img-top" src="https://via.placeholder.com/960x640" alt="Placeholder">
               {% endeditable_region_block %}
             </div>
           {%- endif %}
-          <div>
+          <div class="wvu-featurettes-content">
             {%- if edit_mode or page.content[componentPanelHeader] != blank %}
               {% editable_region_block name: componentPanelHeader, scope: component.scope %}
                 <h3 class="wvu-shout h2 text-wvu-blue wvu-bar mb-2">Panel Header</h3>
