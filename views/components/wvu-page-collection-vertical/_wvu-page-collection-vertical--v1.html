@@ -79,7 +79,7 @@
           <div class="{{ itemClasses }}">
 
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-4 wvu-col-page-collection-thumbnail">
                 {% if item.data.thumbnail_url != blank %}
                   <div class="mb-2 position-relative">
                     {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
