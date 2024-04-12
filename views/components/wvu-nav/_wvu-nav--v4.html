@@ -20,66 +20,66 @@
 
     <div class="d-flex align-items-center">
       {% if site.data.facebook_url != blank or site.data.twitter_url != blank or site.data.flickr_url != blank or site.data.instagram_url != blank or site.data.linkedin_url != blank or site.data.syndication_url != blank or site.data.youtube_url != blank or site.data.github_url != blank %}
-        <ul class="list-inline mb-0 me-2 fs-4">
+        <ul class="list-inline mb-0 me-2">
           {% if site.data.facebook_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.facebook_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.facebook_url }}">
                 <span class="fab fa-facebook"></span><span class="visually-hidden">Facebook</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.twitter_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.twitter_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.twitter_url }}">
                 <span class="fab fa-twitter"></span><span class="visually-hidden">Twitter</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.flickr_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.flickr_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.flickr_url }}">
                 <span class="fab fa-flickr"></span><span class="visually-hidden">Flickr</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.instagram_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.instagram_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.instagram_url }}">
                 <span class="fab fa-instagram"></span><span class="visually-hidden">Instagram</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.linkedin_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.linkedin_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.linkedin_url }}">
                 <span class="fab fa-linkedin"></span><span class="visually-hidden">LinkedIn</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.syndication_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.syndication_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.syndication_url }}">
                 <span class="fas fa-rss"></span><span class="visually-hidden">RSS</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.youtube_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.youtube_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.youtube_url }}">
                 <span class="fab fa-youtube"></span><span class="visually-hidden">YouTube</span>
               </a>
             </li>
           {% endif %}
           {% if site.data.github_url != blank %}
             <li class="list-inline-item">
-              <a class="mb-0 text-decoration-none text-white-50" href="{{ site.data.github_url }}">
+              <a class="mb-0 text-decoration-none text-white-50 px-1" href="{{ site.data.github_url }}">
                 <span class="fab fa-github"></span><span class="visually-hidden">Github</span>
               </a>
             </li>
           {% endif %}
         </ul>
       {% endif %}
-      <button class="bg-transparent border-0 text-white py-2 px-2 py-lg-0 px-lg-0 fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#wvuNavSearchCollapse" aria-expanded="false" aria-controls="wvuNavSearchCollapse">
+      <button class="bg-transparent border-0 text-white py-2 px-2 py-lg-0 px-lg-1" type="button" data-bs-toggle="collapse" data-bs-target="#wvuNavSearchCollapse" aria-expanded="false" aria-controls="wvuNavSearchCollapse">
         <span aria-hidden="true" class="fa-solid fa-magnifying-glass"></span>
         <span class="visually-hidden">Toggle Search</span>
       </button>
