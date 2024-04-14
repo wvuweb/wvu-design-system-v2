@@ -66,6 +66,9 @@
                   {% if item.data.thumbnail_url_sq != blank %}
                     {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '960x640', format: 'webp' %}
                     <img class="rounded-circle shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
+                  {% elsif item.data.thumbnail_url != blank %}
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+                    <img class="shadow mb-2" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
                   {% endif %}
                 </div>
               </div>
