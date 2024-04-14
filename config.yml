@@ -38,7 +38,7 @@ custom_data_attributes:
     rows: 6
     tile: Description
     required: false
-    maxlength: 255
+    maxlength: 500
   - header_label:
     type: checkbox
     title: Show header label
