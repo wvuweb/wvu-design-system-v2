@@ -8,8 +8,6 @@
     assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-card"
     assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stats"
   endif
-    
-  {% endif %}
 
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
