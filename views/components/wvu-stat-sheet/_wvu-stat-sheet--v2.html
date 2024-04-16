@@ -1,8 +1,15 @@
 {%- liquid
   assign statClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-classes"
   assign defaultStatCardClasses = 'bg-wvu-gold text-wvu-accent--blue-dark py-5 px-3'
-  assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-card"
-  assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stats"
+  if component.scope == 'site'
+    assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-site-' | append: '-' | append: component.number | append: "__stat-card"
+    assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-site-' | append: '-' | append: component.number | append: "__stats"
+  else
+    assign statCardClassesEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stat-card"
+    assign statCardStatsEditableRegionName = component.baseName | prepend: 'wvu-' | append: '-' | append: component.number | append: "__stats"
+  endif
+    
+  {% endif %}
 
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
