@@ -145,7 +145,7 @@ const googleMap = (() => {
       var panPoint = lat + ', ' + lng;
       console.log('Panpoint: ' + panPoint);
       // map.panTo(panPoint);
-      map.setZoom(5);
+      // map.setZoom(5);
 
       // Close all open infoWindows before opening the selected one:
       arrInfoWindows.forEach(infoWindow => {
