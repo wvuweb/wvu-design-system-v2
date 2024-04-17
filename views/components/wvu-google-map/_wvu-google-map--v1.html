@@ -65,7 +65,9 @@
                   <strong class="text-muted">Default classes:</strong> <pre class="mb-0 text-muted">{{ component.defaultListClasses }}</pre>
                 </small>
               {% endif %}
-              <ul id="js-markers" class="{{ listClasses }} mb-0 mt-3"></ul>
+              <div class="d-none d-md-block">
+                <ul id="js-markers" class="{{ listClasses }} mb-0 mt-3"></ul>
+              </div>
               <div class="mt-3">
                 {% editable_region_block name: component.region_names.postscript scope: component.scope %}
                   <p>Lorem ipsum.</p>
