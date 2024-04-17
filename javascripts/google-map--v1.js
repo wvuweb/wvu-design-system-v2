@@ -140,11 +140,12 @@ const googleMap = (() => {
       if (!event.target.matches('#js-markers button')) return;
       const i = event.target.getAttribute('data-index');
       
-      // var lat = event.target.getAttribute('data-lat');
-      // var lng = event.target.getAttribute('data-lng');
-      // var panPoint = lat + ',' + lng;
-      // map.panTo(panPoint);
-      // map.setZoom(5);
+      var lat = event.target.getAttribute('data-lat');
+      var lng = event.target.getAttribute('data-lng');
+      var panPoint = lat + ', ' + lng;
+      console.log('Panpoint: ' + panPoint);
+      map.panTo(panPoint);
+      map.setZoom(5);
 
       // Close all open infoWindows before opening the selected one:
       arrInfoWindows.forEach(infoWindow => {
