@@ -131,8 +131,6 @@ const googleMap = (() => {
           infoWindow.close();
         });
         infoWindow.open(map, marker);
-        // map.setCenter(centerCoord);
-        map.setZoom(5);
       });
     });
   };
@@ -147,6 +145,8 @@ const googleMap = (() => {
         infoWindow.close();
       });
       arrInfoWindows[i].open(map, arrMarkers[i]);
+      // map.setCenter(centerCoord);
+      map.setZoom(5);
     }, false);
   };
 
