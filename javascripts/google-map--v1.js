@@ -94,6 +94,7 @@ const googleMap = (() => {
     listItem.addEventListener('click', (event) => {
       // map.setCenter(centerCoord);
       map.setZoom(5);
+      console.log('I got clicked.')
     });
   };
 
