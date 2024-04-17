@@ -141,7 +141,7 @@
         {% unless edit_mode %}
 
           {% assign hasAddress = page.content[addressOneRegionName] | append: page.content[addressTwoRegionName] | append: page.content[mapLinkRegionName] %}
-          {% assign hasContactInfo = page.content[phoneRegionName] | append: page.content[emailRegionName] | append: page.content[websiteRegionName] %}
+          {% assign hasContactInfo = page.content[contactRegionName] | page.content[phoneRegionName] | append: page.content[emailRegionName] | append: page.content[websiteRegionName] %}
           {% assign hasHours = page.content[monRegionName] | append: page.content[tuesRegionName] | append: page.content[wedRegionName] | append: page.content[thursRegionName] | append: page.content[friRegionName] | append: page.content[satRegionName] | append: page.content[sunRegionName] %}
           {% assign hasParking = page.content[parkingRegionName] %}
           {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasParking %}
@@ -166,6 +166,9 @@
               {% if hasContactInfo != blank %}
                 <h2 class="h6 text-uppercase mt-3">Contact Info</h2>
                 <p>
+                  {% if page.content[contactRegionName] != blank %}
+                    <span class="fa-solid fa-user"></span> {{ page.content[contactRegionName] }}<br>
+                  {% endif %}
                   {% if page.content[phoneRegionName] != blank %}
                     <span class="fa-solid fa-phone"></span> {{ page.content[phoneRegionName] }}<br>
                   {% endif %}
