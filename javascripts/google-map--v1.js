@@ -85,12 +85,6 @@ const googleMap = (() => {
     console.warn('Missing child pages: add child pages that use the \'Place\' template underneath this page. This makes markers show up on the map. Be sure to fill out each page\'s Custom Data. Right now, there\'s no data in the places array; hence, the blank map.');
   };
 
-  // const addPanZoom = (item) => {
-  //   var panPoint = new google.maps.LatLng(item.lat, item.lng);
-  //   map.setZoom(5);
-  //   map.panTo(panPoint);
-  // };
-
   // Render `<li>`s to the left side of the map:
   const renderPlacesList = (item, index) => {
     const listItem = document.createElement('li');
@@ -146,11 +140,11 @@ const googleMap = (() => {
       if (!event.target.matches('#js-markers button')) return;
       const i = event.target.getAttribute('data-index');
       
-      var lat = event.target.getAttribute('data-lat');
-      var lng = event.target.getAttribute('data-lng');
-      var panPoint = lat + ',' + lng;
-      map.panTo(panPoint);
-      map.setZoom(5);
+      // var lat = event.target.getAttribute('data-lat');
+      // var lng = event.target.getAttribute('data-lng');
+      // var panPoint = lat + ',' + lng;
+      // map.panTo(panPoint);
+      // map.setZoom(5);
 
       // Close all open infoWindows before opening the selected one:
       arrInfoWindows.forEach(infoWindow => {
