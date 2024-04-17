@@ -131,6 +131,8 @@ const googleMap = (() => {
           infoWindow.close();
         });
         infoWindow.open(map, marker);
+        // map.setCenter(centerCoord);
+        // map.setZoom(zoomLevel);
       });
     });
   };
