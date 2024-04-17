@@ -91,6 +91,10 @@ const googleMap = (() => {
     listItem.innerHTML = `<button type="button" class="marker__btn btn-link bg-transparent border-0 text-start" data-index="${index}"></button>`;
     listItem.firstChild.innerText = item.title;
     getMarkersEl.appendChild(listItem);
+    listItem.addEventListener('click', (event) => {
+      // map.setCenter(centerCoord);
+      map.setZoom(5);
+    });
   };
 
   // Render map markers (pins) and infoWindows:
@@ -168,7 +172,7 @@ const googleMap = (() => {
       document.addEventListener('click', (event) => {
         if (!event.target.matches('#js-center-map')) return;
         map.setCenter(centerCoord);
-        map.setZoom(5);
+        map.setZoom(zoomLevel);
       }, false);
     }
   }
