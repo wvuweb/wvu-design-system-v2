@@ -21,6 +21,7 @@ const googleMap = (() => {
   const getMarkersEl = document.querySelector('#js-markers');
   const getMapEl = document.querySelector('#js-map');
   const getZoomEl = document.querySelector('#js-zoom');
+  const getZoomSwitchEl = document.querySelector('#js-zoom-switch');
   const zoomLevel = Number(getZoomEl?.innerText);
   const centerCoord = new google.maps.LatLng(getLat, getLong);
   const arrMarkers = [];
