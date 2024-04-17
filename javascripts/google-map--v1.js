@@ -138,6 +138,7 @@ const googleMap = (() => {
   const infoWindowState = (map, markers) => {
     markers.addEventListener('click', (event) => {
       if (!event.target.matches('#js-markers button')) return;
+      map.setZoom(5);
       const i = event.target.getAttribute('data-index');
 
       // Close all open infoWindows before opening the selected one:
@@ -145,8 +146,6 @@ const googleMap = (() => {
         infoWindow.close();
       });
       arrInfoWindows[i].open(map, arrMarkers[i]);
-      // map.setCenter(centerCoord);
-      map.setZoom('5');
     }, false);
   };
 
