@@ -146,7 +146,7 @@ const googleMap = (() => {
       });
       arrInfoWindows[i].open(map, arrMarkers[i]);
       // map.setCenter(centerCoord);
-      map.setZoom(5);
+      map.setZoom('5');
     }, false);
   };
 
