@@ -132,7 +132,7 @@ const googleMap = (() => {
         });
         infoWindow.open(map, marker);
         // map.setCenter(centerCoord);
-        // map.setZoom(zoomLevel);
+        map.setZoom(5);
       });
     });
   };
