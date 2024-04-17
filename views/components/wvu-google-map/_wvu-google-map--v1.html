@@ -9,7 +9,7 @@
   assign lat = page.content[latRegionName] | default: "39.6480359"
   assign long = page.content[longRegionName] | default: "-79.9722896"
   assign zoom = page.content[zoomRegionName] | default: "16"
-  assign zoomSwitch = page.content[zoomSwitchRegionName] | default: "16"
+  assign zoomSwitch = page.content[zoomSwitchRegionName] | default: zoom | default: "16"
   assign mapData = page.content[jsonUrlRegionName] | default: "/map-data.json"
   if component.primaryHeading == 'h1'
     assign htag = 'h1'
