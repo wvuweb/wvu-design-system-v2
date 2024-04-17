@@ -23,6 +23,7 @@ const googleMap = (() => {
   const getZoomEl = document.querySelector('#js-zoom');
   const getZoomSwitchEl = document.querySelector('#js-zoom-switch');
   const zoomLevel = Number(getZoomEl?.innerText);
+  const zoomSwitchLevel = Number(getZoomSwitchEl?.innerText);
   const centerCoord = new google.maps.LatLng(getLat, getLong);
   const arrMarkers = [];
   const arrInfoWindows = [];
@@ -143,10 +144,10 @@ const googleMap = (() => {
       
       var lat = event.target.getAttribute('data-lat');
       var lng = event.target.getAttribute('data-lng');
-      var panPoint = lat + ', ' + lng;
+      var panPoint = new google.maps.LatLng(lat, lng);
       console.log('Panpoint: ' + panPoint);
-      // map.panTo(panPoint);
-      // map.setZoom(5);
+      map.panTo(panPoint);
+      map.setZoom(zoomSwitchLevel);
 
       // Close all open infoWindows before opening the selected one:
       arrInfoWindows.forEach(infoWindow => {
