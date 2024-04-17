@@ -20,14 +20,14 @@ custom_data_attributes:
 
 {% render "components/wvu-place" number: 1, main: true %}
 
-{% if page.data.include_video = '1' %}
+{% if page.data.include_video == '1' %}
   {% render "components/wvu-video-feature" number: 1 %}
 {% endif %}
 
-{% if page.data.include_events = '1' %}
+{% if page.data.include_events == '1' %}
   {% render "components/wvu-calendar-events" number: 1 %}
 {% endif %}
 
-{% if page.data.include_gallery = '1' %}
+{% if page.data.include_gallery == '1' %}
   {% render "components/wvu-photo-gallery" number: 1 %}
 {% endif %}
