@@ -148,7 +148,7 @@
                   {% assign hasHours = item.content[monRegionName] | append: item.content[tuesRegionName] | append: item.content[wedRegionName] | append: item.content[thursRegionName] | append: item.content[friRegionName] | append: item.content[satRegionName] | append: item.content[sunRegionName] %}
                   {% assign hasSocial = item.content[facebookRegionName] | append: item.content[instagramRegionName] | append: item.content[linkedinRegionName] | append: item.content[twitterRegionName] | append: item.content[youtubeRegionName] | append: item.content[satRegionName] | append: item.content[sunRegionName] %}
                   {% assign hasParking = item.content[parkingRegionName] %}
-                  {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: | hasSocial | append: hasParking %}
+                  {% assign hasInfo = hasAddress | append: hasContactInfo | append: hasHours | append: hasSocial | append: hasParking %}
 
                   {% if hasInfo != blank %}
                     <div class="col-12 col-md-6 col-xl small">
