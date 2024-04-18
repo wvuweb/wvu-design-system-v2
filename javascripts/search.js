@@ -23,7 +23,7 @@ function retrieveSearchResults(query) {
     includeScore: true,
     shouldSort: true,
     includeMatches: true,
-    minMatchCharLength: 3,
+    minMatchCharLength: 2,
     threshold: 0.3,
   });
   const searchResults = fuse.search(query);
