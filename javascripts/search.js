@@ -37,6 +37,7 @@ function generatePostHTML(post) {
 }
 
 const form = document.querySelector("#search-form");
+const searchResults = document.querySelector("#search-results");
 form.addEventListener("input", async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
