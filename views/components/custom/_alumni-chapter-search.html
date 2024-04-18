@@ -56,7 +56,7 @@
     {%- for item in items %}
       {
         "name": "{{ item.name }}",
-        "keywords": "{{ item.data.keywords }}",
+        "keywords": "{{ item.name }}",
         "href": "{{ item.url }}"
       }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
     {%- endfor %}
