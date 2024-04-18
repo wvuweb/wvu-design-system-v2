@@ -31,7 +31,7 @@
                 class="form-control p-2 border-end-0 border-top-0 border-start-0 border-bottom-1 border-bottom-dark mt-3"
                 placeholder="Search"
               />
-              <div id="search-results" class="btn-group-vertical position-absolute bg-white w-100 text-start"></div>
+              <div id="search-results" class="btn-group-vertical position-absolute bg-white w-100 text-start" style="left: 0;"></div>
             </form>
           </div>
         </div>
@@ -55,7 +55,7 @@
     {%- for item in items %}
       {
         "name": "{{ item.name }}",
-        "keywords": "{{ item.name }}",
+        "keywords": "{{ item.name }},{{ item.data.keywords | strip }}",
         "href": "{{ item.url }}"
       }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
     {%- endfor %}

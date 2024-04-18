@@ -32,7 +32,7 @@ function retrieveSearchResults(query) {
 
 function generatePostHTML(post) {
   return `
-    <a class="btn btn-outline-dark d-block text-start" href="${post.item.href}">${post.item.name}</a>
+    <a class="btn btn-outline-dark d-block text-start rounded-0" href="${post.item.href}">${post.item.name}</a>
   `;
 }
 
