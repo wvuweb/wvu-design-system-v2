@@ -12,13 +12,13 @@ import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/+esm';
 //   }
 // }
 
-const searchResults = document.querySelector("#search-results").innerText;
+const searchResults = document.querySelector("#search-data").innerText;
 const jsonResults = JSON.parse(searchResults);
 
 console.log('Json Results: ' + jsonResults);
 
 function retrieveSearchResults(query) {
-  const fuse = new Fuse(searchResults, {
+  const fuse = new Fuse(jsonResults, {
     keys: ["keywords"],
     includeScore: true,
     shouldSort: true,
