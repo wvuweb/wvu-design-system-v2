@@ -12,8 +12,8 @@ import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/+esm';
 //   }
 // }
 
-const searchResults = document.querySelector("#search-data").innerText;
-const jsonResults = JSON.parse(searchResults);
+const searchData = document.querySelector("#search-data").innerText;
+const jsonResults = JSON.parse(searchData);
 
 console.log('Json Results: ' + jsonResults);
 
