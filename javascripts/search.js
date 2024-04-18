@@ -15,6 +15,8 @@ import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/+esm';
 const searchResults = document.querySelector("#search-results").innerHTML;
 const jsonResults = JSON.parse(searchResults);
 
+console.log('Json Results: ' + jsonResults);
+
 function retrieveSearchResults(query) {
   const posts = jsonResults;
   const fuse = new Fuse(posts, {
