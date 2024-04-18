@@ -18,7 +18,7 @@ const jsonResults = JSON.parse(searchResults);
 console.log('Json Results: ' + jsonResults);
 
 function retrieveSearchResults(query) {
-  const fuse = new Fuse(jsonResults, {
+  const fuse = new Fuse(searchResults, {
     keys: ["keywords"],
     includeScore: true,
     shouldSort: true,
