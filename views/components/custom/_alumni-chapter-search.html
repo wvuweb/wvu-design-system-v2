@@ -1,0 +1,52 @@
+{%- define_component component %}
+  {
+    "baseName": "big-search",
+    "defaultComponentClasses": "text-center bg-wvu-gold wvu-bg-topo-dark text-wvu-blue",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+
+    {% if edit_mode or page.content[component.region_names.header] != blank %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+      {% editable_region_block name: component.region_names.header scope: component.scope %}
+        <h2 id="{{ component.name }}-label" class="display-2 wvu-shout mb-2">Big Search Header</h2>
+        <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
+      {% endeditable_region_block %}
+    {% endif %}
+
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col-md-6 mx-auto">
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <form id="search-form" autocomplete="off" class="position-relative w-100" action="https://search.wvu.edu/search">
+              <label for="search" class="visually-hidden">Search</label>
+              <input
+                autocomplete="off"
+                type="search"
+                name="search"
+                id="search"
+                class="form-control pe-2 ps-0 border-end-0 border-top-0 border-start-0 border-bottom-1 border-bottom-dark"
+                placeholder="Search"
+              />
+              <div id="search-results" class="btn-group-vertical position-absolute bg-white w-100 text-start"></div>
+              <span aria-hidden="true" class="fa-solid fa-magnifying-glass position-absolute" style="top: .73rem; right: 0px;"></span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
+      {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+        <p class="mb-0">Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
+      {% endeditable_region_block %}
+    {% endif %}
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}

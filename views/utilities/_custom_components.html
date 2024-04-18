@@ -4,5 +4,6 @@
   {% when 'global-calculator' %}{% render "components/custom/global-calculator" slot: slot %}
   {% when 'wvu-profiles-campaign' %}{% render "components/custom/wvu-profiles-campaign" slot: slot %}
   {% when 'wvu-graduation-program' %}{% render "components/custom/wvu-graduation-program" slot: slot %}
+  {% when 'alumni-chapter-search' %}{% render "components/custom/alumni-chapter-search" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}
