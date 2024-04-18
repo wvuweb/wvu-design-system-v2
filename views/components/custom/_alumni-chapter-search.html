@@ -46,7 +46,28 @@
       {% endeditable_region_block %}
     {% endif %}
   </div>
+  <div class="visually-hidden">
+    {%- liquid
+      assign startPage = site | get_page: 171476
+      assign items = startPage.children
+      assign i = 0
+    -%}
+    {% content_for "searchData" %}[
+    {%- for item in items %}
+      {
+        "name": "{{ item.name }}",
+        "keywords": "{{ item.data.keywords }}",
+        "href": "{{ item.url }}"
+      }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
+    {%- endfor %}
+    ]{% endcontent_for %}
+    <pre><code id="search-data">{{ content_for['searchData'] }}</code></pre>
+  </div>
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
 {% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for name="header_extras" %}
+  {% link_javascript name: "search", type: "module" %}
+{% endcontent_for %}
