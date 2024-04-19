@@ -25,6 +25,7 @@ function retrieveSearchResults(query) {
     includeMatches: true,
     minMatchCharLength: 2,
     threshold: 0.3,
+    distance: 1000,
   });
   const searchResults = fuse.search(query);
   return searchResults;
