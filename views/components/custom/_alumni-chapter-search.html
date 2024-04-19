@@ -7,17 +7,19 @@
 {%- enddefine_component %}
 
 {% capture component_content %}
-  <div class="container wvu-z-index-content">
+  <div class="container position-relative">
 
     {% if edit_mode or page.content[component.region_names.header] != blank %}
-      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
-      {% editable_region_block name: component.region_names.header scope: component.scope %}
-        <h2 id="{{ component.name }}-label" class="display-2 wvu-shout mb-2">Big Search Header</h2>
-        <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
-      {% endeditable_region_block %}
+      <div class="wvu-z-index-content">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-2 wvu-shout mb-2">Big Search Header</h2>
+          <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
+        {% endeditable_region_block %}
+      </div>
     {% endif %}
 
-    <div class="row d-flex justify-content-center my-2">
+    <div class="row d-flex justify-content-center my-2 wvu-z-index-content">
       <div class="col-md-6 mx-auto">
         <div class="row mb-2">
           <div class="col-md-12">
@@ -31,7 +33,7 @@
                 class="shadow form-control p-2 border-end-0 border-top-0 border-start-0 border-bottom-1 border-bottom-dark mt-3"
                 placeholder="Search"
               />
-              <div id="search-results" class="btn-group-vertical position-absolute bg-white w-100 text-start" style="left: 0;"></div>
+              <div id="search-results" class="wvu-z-index-max btn-group-vertical position-absolute bg-white w-100 text-start" style="left: 0;"></div>
             </form>
           </div>
         </div>
