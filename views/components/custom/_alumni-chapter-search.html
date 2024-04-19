@@ -41,10 +41,12 @@
     </div>
 
     {% if edit_mode or page.content[component.region_names.postscript] != blank %}
-      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
-      {% editable_region_block name: component.region_names.postscript scope: component.scope %}
-        <p class="mb-0">Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
-      {% endeditable_region_block %}
+      <div class="wvu-z-index-content">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
+        {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+          <p class="mb-0">Not sure what to search for? Browse our <a class="text-wvu-blue" href="#">categories</a>.</p>
+        {% endeditable_region_block %}
+      </div>
     {% endif %}
   </div>
   <div class="visually-hidden">
