@@ -12,31 +12,37 @@
 
   assign blogItems = blogItems | sort: "published_at" | reverse
 
+  assign magStoryAPIEndpoint = page.data.contentful_api_string
+  assign magStoryEntries = programAPIEndpoint | web_request | parse_json
+
 -%}
 <section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-8 col-lg-6">
-        <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url(https://magazine.wvu.edu/files/bb34d616-f022-4044-959e-c237d2e32d6c/1780x1780.webp?cb=2a1fa6adf7f8dd1abfa6b5c192f52640)">
-          <div class="row">
-            <div class="col-sm-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
-              <div class="bg-wvu-blue ms-lg-n2 ms-xxl-n5">
-                <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
-                  <span class="text-white helvetica-neue-light text-uppercase">Magazine</span>
-                </h3>
-                <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
-                  <h3 class="wvu-shout">Feared and Revered: All Eyes on AI</h3>
-                  <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium dolorem quelaudantium.
-                  </p>
-                  <a href="#" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">Read Story
-                    <span class="fa-regular fa-arrow-up-right-from-square" aria-hidden="true"></span>
-                  </a>
+        {% for magStory in magStoryEntries limit: 1 %}
+          {% assign backgroundImage = magStory.img | build_image_url: size: '960x640', format: 'webp' %}
+          <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url({{ backgroundImage }})">
+            <div class="row">
+              <div class="col-sm-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
+                <div class="bg-wvu-blue ms-lg-n2 ms-xxl-n5">
+                  <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
+                    <span class="text-white helvetica-neue-light text-uppercase">Magazine</span>
+                  </h3>
+                  <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
+                    <h3 class="wvu-shout">{{ magStory.title }}</h3>
+                    <p class="small">
+                      {{ magStory.description }}
+                    </p>
+                    <a href="{{ magStory.url }}" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">Read Story<span class="visually-hidden">: {{ magStory.title }}</span>
+                      <span class="fa-regular fa-arrow-up-right-from-square" aria-hidden="true"></span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="mb-4 mb-lg-0 col-md-4 col-lg-3">
         <div class="h-100 position-relative bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
