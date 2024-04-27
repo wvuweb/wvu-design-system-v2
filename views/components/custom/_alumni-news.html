@@ -71,14 +71,14 @@
                   </div>
                 {% endif %}
                 <div class="col-8">
-                  <h5 class="h6 mb-0">{{ spotlight.name | default: spotlight.alternate_name }}</h5>
+                  <h5 class="h6 mb-0">{{ spotlight.alternate_name | default: spotlight.name }}</h5>
                   <p class="mb-1">
                     {{ spotlight.data.description }}
                   </p>
                 </div>
               </div>
               <p>
-                <a href="{{ spotlight.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlight.name | default: spotlight.alternate_name }}</span>
+                <a href="{{ spotlight.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlight.alternate_name | default: spotlight.name }}</span>
                   <span class="fa-brands fa-youtube text-youtube" aria-hidden="true"></span>
                 </a>
                 <span class="text-black-50">|</span>
@@ -100,14 +100,14 @@
                 </div>
               {% endif %}
               <div class="col-8">
-                <h5 class="h6 mb-0">{{ podcastItems.name | default: podcastItems.alternate_name }}</h5>
+                <h5 class="h6 mb-0">{{ podcastItems.alternate_name | default: podcastItems.name }}</h5>
                 <p class="mb-1">
                   {{ podcastItems.data.description }}
                 </p>
               </div>
             </div>
             <p>
-              <a href="{{ podcastItems.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastItems.name | default: podcastItems.alternate_name }}</span>
+              <a href="{{ podcastItems.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastItems.alternate_name | default: podcastItems.name }}</span>
                 <span class="fa-regular fa-ear" aria-hidden="true"></span>
               </a>
               <a href="{{ podcastPage.url }}" class="text-decoration-none">All Podcasts
@@ -121,12 +121,12 @@
                 <span class="small">
                   <span class="fa-regular fa-rss" aria-hidden="true"></span> From Down the Hall</span>
               </h4>
-              <h5 class="h6 mb-0">{{ article.name | default: article.alternate_name }}</h5>
+              <h5 class="h6 mb-0">{{ article.alternate_name | default: article.name }}</h5>
               <p class="mb-1">
                 {{ article.data.description }}
               </p>
               <p>
-                <a href="{{ article.url }}" class="text-decoration-none">Read<span class="visually-hidden">: {{ article.name | default: article.alternate_name }}</span>
+                <a href="{{ article.url }}" class="text-decoration-none">Read<span class="visually-hidden">: {{ article.alternate_name | default: article.name }}</span>
                   <span class="fa-regular fa-glasses" aria-hidden="true"></span>
                 </a>
                 <span class="text-black-50">|</span>
