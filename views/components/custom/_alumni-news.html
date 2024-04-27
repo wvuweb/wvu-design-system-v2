@@ -76,7 +76,7 @@
                 </div>
               </div>
               <p>
-                <a href="{{ spotlight.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlightItems.name | default: spotlightItems.alternate_name }}</span>
+                <a href="{{ spotlight.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlight.name | default: spotlight.alternate_name }}</span>
                   <span class="fa-brands fa-youtube text-youtube" aria-hidden="true"></span>
                 </a>
                 <span class="text-black-50">|</span>
@@ -113,25 +113,27 @@
               </a>
             </p>
           </div>
-          <div class="col-sm-4 col-lg-12">
-            <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
-              <span class="small">
-                <span class="fa-regular fa-rss" aria-hidden="true"></span> From Down the Hall</span>
-            </h4>
-            <h5 class="h6 mb-0">{{ blogItems.name | default: blogItems.alternate_name }}</h5>
-            <p class="mb-1">
-              {{ blogItems.data.description }}
-            </p>
-            <p>
-              <a href="{{ blogItems.url }}" class="text-decoration-none">Read<span class="visually-hidden">: {{ blogItems.name | default: blogItems.alternate_name }}</span>
-                <span class="fa-regular fa-glasses" aria-hidden="true"></span>
-              </a>
-              <span class="text-black-50">|</span>
-              <a href="{{ blogPage.url }}" class="text-decoration-none">More Articles
-                <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
-              </a>
-            </p>
-          </div>
+          {% for article in blogItems %}
+            <div class="col-sm-4 col-lg-12">
+              <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
+                <span class="small">
+                  <span class="fa-regular fa-rss" aria-hidden="true"></span> From Down the Hall</span>
+              </h4>
+              <h5 class="h6 mb-0">{{ article.name | default: article.alternate_name }}</h5>
+              <p class="mb-1">
+                {{ article.data.description }}
+              </p>
+              <p>
+                <a href="{{ article.url }}" class="text-decoration-none">Read<span class="visually-hidden">: {{ article.name | default: article.alternate_name }}</span>
+                  <span class="fa-regular fa-glasses" aria-hidden="true"></span>
+                </a>
+                <span class="text-black-50">|</span>
+                <a href="{{ blogPage.url }}" class="text-decoration-none">More Articles
+                  <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                </a>
+              </p>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
