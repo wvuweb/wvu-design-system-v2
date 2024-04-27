@@ -56,34 +56,36 @@
       </div>
       <div class="col-lg-3 small">
         <div class="row">
-          <div class="col-sm-4 col-lg-12">
-            <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
-              <span class="small">
-                <span class="fa-regular fa-lightbulb-on" aria-hidden="true"></span> Spotlight</span>
-            </h4>
-            <div class="row gx-1 mb-1">
-              {% if spotlightItems.data.thumbnail_url_sq != blank %}
-                <div class="col">
-                  <div class="ratio ratio-1x1 bg-light"></div>
+          {% for spotlight in spotlightItems %}
+            <div class="col-sm-4 col-lg-12">
+              <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
+                <span class="small">
+                  <span class="fa-regular fa-lightbulb-on" aria-hidden="true"></span> Spotlight</span>
+              </h4>
+              <div class="row gx-1 mb-1">
+                {% if spotlight.data.thumbnail_url_sq != blank %}
+                  <div class="col">
+                    <div class="ratio ratio-1x1 bg-light"></div>
+                  </div>
+                {% endif %}
+                <div class="col-8">
+                  <h5 class="h6 mb-0">{{ spotlight.name | default: spotlight.alternate_name }}</h5>
+                  <p class="mb-1">
+                    {{ spotlight.data.description }}
+                  </p>
                 </div>
-              {% endif %}
-              <div class="col-8">
-                <h5 class="h6 mb-0">{{ spotlightsItems.name | default: spotlightItems.alternate_name }}</h5>
-                <p class="mb-1">
-                  {{ spotlightsItems.data.description }}
-                </p>
               </div>
+              <p>
+                <a href="{{ spotlight.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlightItems.name | default: spotlightItems.alternate_name }}</span>
+                  <span class="fa-brands fa-youtube text-youtube" aria-hidden="true"></span>
+                </a>
+                <span class="text-black-50">|</span>
+                <a href="{{ spotlightsPage.url }}" class="text-decoration-none">All Spotlights
+                  <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+                </a>
+              </p>
             </div>
-            <p>
-              <a href="{{ spotlightsItems.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlightItems.name | default: spotlightItems.alternate_name }}</span>
-                <span class="fa-brands fa-youtube text-youtube" aria-hidden="true"></span>
-              </a>
-              <span class="text-black-50">|</span>
-              <a href="{{ spotlightsPage.url }}" class="text-decoration-none">All Spotlights
-                <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
-              </a>
-            </p>
-          </div>
+          {% endfor %}
           <div class="col-sm-4 col-lg-12">
             <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
               <span class="small">
