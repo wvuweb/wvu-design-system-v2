@@ -5,5 +5,8 @@
   {% when 'wvu-profiles-campaign' %}{% render "components/custom/wvu-profiles-campaign" slot: slot %}
   {% when 'wvu-graduation-program' %}{% render "components/custom/wvu-graduation-program" slot: slot %}
   {% when 'alumni-chapter-search' %}{% render "components/custom/alumni-chapter-search" slot: slot %}
+  {% when 'alumni-double-hero' %}{% render "components/custom/alumni-double-hero" slot: slot %}
+  {% when 'alumni-events' %}{% render "components/custom/alumni-events" slot: slot %}
+  {% when 'alumni-news' %}{% render "components/custom/alumni-news" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}

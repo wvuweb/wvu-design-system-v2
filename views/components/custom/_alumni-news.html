@@ -1,0 +1,137 @@
+{%- liquid
+
+  assign newsPage = site | get_page: 170778
+  assign podcastPage = site | get_page: 170871
+  assign spotlightsPage = site | get_page: 171032
+  assign blogPage = site | get_page: 170875
+
+  assign newsPosterSrc = newsPage.data.thumbnail_url | build_image_url: size: '640x960', format: 'webp'
+
+  assign podcastItems = podcastPage.descendants | filter_pages: by: tags: 'featured-podcast', limit: 1, hidden: true
+  assign spotlightsItems = spotlightsPage.descendants | filter_pages: by: tags: 'featured-spotlight', limit: 1, hidden: true
+  assign blogItems = blogPage.descendants | filter_pages: by: limit: 1
+
+-%}
+<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5">
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="mb-4 mb-lg-0 col-md-8 col-lg-6">
+        <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url(https://magazine.wvu.edu/files/bb34d616-f022-4044-959e-c237d2e32d6c/1780x1780.webp?cb=2a1fa6adf7f8dd1abfa6b5c192f52640)">
+          <div class="row">
+            <div class="col-sm-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
+              <div class="bg-wvu-blue ms-lg-n2 ms-xxl-n5">
+                <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
+                  <span class="text-white helvetica-neue-light text-uppercase">Magazine</span>
+                </h3>
+                <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
+                  <h3 class="wvu-shout">Feared and Revered: All Eyes on AI</h3>
+                  <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                    accusantium dolorem quelaudantium.
+                  </p>
+                  <a href="#" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">Read Story
+                    <span class="fa-regular fa-arrow-up-right-from-square" aria-hidden="true"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4 mb-lg-0 col-md-4 col-lg-3">
+        <div class="h-100 bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
+        style="background-image: url('/files/9f64b793-4aef-417a-a771-d488586e2971/960x640.webp?cb=f2ce5097f2d81347d01eae190be4f451')">
+          <div class="wvu-z-index-content d-flex flex-column justify-content-end h-100">
+            <p class="small">
+              <span class="fa-regular fa-newspaper" aria-hidden="true"></span> WVUToday</p>
+            <h4 class="wvu-shout text-wvu-gold">Alumni News
+            </h4>
+            <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+              doloremquelaudantium.
+            </p>
+            <p class="mb-0">
+              <span class="fa-regular fa-arrow-down-right text-wvu-gold h4" aria-hidden="true"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 small">
+        <div class="row">
+          <div class="col-sm-4 col-lg-12">
+            <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
+              <span class="small">
+                <span class="fa-regular fa-lightbulb-on" aria-hidden="true"></span> Spotlight</span>
+            </h4>
+            <div class="row gx-1 mb-1">
+              {% if spotlightItems.data.thumbnail_url_sq != blank %}
+                <div class="col">
+                  <div class="ratio ratio-1x1 bg-light"></div>
+                </div>
+              {% endif %}
+              <div class="col-8">
+                <h5 class="h6 mb-0">{{ spotlightsItems.name | default: spotlightItems.alternate_name }}</h5>
+                <p class="mb-1">
+                  {{ spotlightsItems.data.description }}
+                </p>
+              </div>
+            </div>
+            <p>
+              <a href="{{ spotlightsItems.data.video_id }}" class="text-decoration-none">View Spotlight<span class="visually-hidden">: {{ spotlightItems.name | default: spotlightItems.alternate_name }}</span>
+                <span class="fa-brands fa-youtube text-youtube" aria-hidden="true"></span>
+              </a>
+              <span class="text-black-50">|</span>
+              <a href="{{ spotlightsPage.url }}" class="text-decoration-none">All Spotlights
+                <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+              </a>
+            </p>
+          </div>
+          <div class="col-sm-4 col-lg-12">
+            <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
+              <span class="small">
+                <span class="fa-regular fa-podcast" aria-hidden="true"></span> All 'Eeers Podcast</span>
+            </h4>
+            <div class="row gx-1 mb-1">
+              {% if podcastItems.data.thumbnail_url_sq != blank %}
+                <div class="col">
+                  <div class="ratio ratio-1x1 bg-light"></div>
+                </div>
+              {% endif %}
+              <div class="col-8">
+                <h5 class="h6 mb-0">{{ podcastItems.name | default: podcastItems.alternate_name }}</h5>
+                <p class="mb-1">
+                  {{ podcastItems.data.description }}
+                </p>
+              </div>
+            </div>
+            <p>
+              <a href="{{ podcastItems.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastItems.name | default: podcastItems.alternate_name }}</span>
+                <span class="fa-regular fa-ear" aria-hidden="true"></span>
+              </a>
+              <a href="{{ podcastPage.url }}" class="text-decoration-none">All Podcasts
+                <span class="fa-regular fa-arrow-cirlce-right" aria-hidden="true"></span>
+              </a>
+            </p>
+          </div>
+          <div class="col-sm-4 col-lg-12">
+            <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
+              <span class="small">
+                <span class="fa-regular fa-rss" aria-hidden="true"></span> From Down the Hall</span>
+            </h4>
+            <h5 class="h6 mb-0">{{ blogItems.name | default: blogItems.alternate_name }}</h5>
+            <p class="mb-1">
+              {{ blogItems.data.description }}
+            </p>
+            <p>
+              <a href="{{ blogItems.url }}" class="text-decoration-none">Read<span class="visually-hidden">: {{ blogItems.name | default: blogItems.alternate_name }}</span>
+                <span class="fa-regular fa-glasses" aria-hidden="true"></span>
+              </a>
+              <span class="text-black-50">|</span>
+              <a href="{{ blogPage.url }}" class="text-decoration-none">More Articles
+                <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
