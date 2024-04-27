@@ -20,7 +20,7 @@
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-8 col-lg-6">
-        {% for magStory in magStoryEntries limit: 1 %}
+        {% for magStory in magStoryEntries.stories limit: 1 %}
           {% assign backgroundImage = magStory.img | build_image_url: size: '960x640', format: 'webp' %}
           <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url({{ backgroundImage }})">
             <div class="row">
