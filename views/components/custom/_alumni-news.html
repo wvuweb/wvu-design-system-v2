@@ -16,13 +16,13 @@
   assign magStoryEntries = magStoryAPIEndpoint | web_request | parse_json
 
 -%}
-<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-4 py-sm-5">
+<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-4 py-md-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-3 mb-lg-0 col-lg-6">
         {% for magStory in magStoryEntries.stories limit: 1 %}
           {% assign magStoryImg = magStory.img | prepend: 'https://magazine.wvu.edu' %}
-          <div class="d-sm-none">
+          <div class="d-md-none">
             <div class="ratio ratio-16x9 wvu-bg-position-center wvu-bg-size-cover" style="background-image: url('{{ magStoryImg }}')"></div>
             <div class="bg-wvu-blue">
               <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
@@ -39,9 +39,9 @@
               </div>
             </div>
           </div>
-          <div class="d-none d-sm-block p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url('{{ magStoryImg }}')">
+          <div class="d-none d-md-block p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url('{{ magStoryImg }}')">
             <div class="row">
-              <div class="col-sm-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
+              <div class="col-md-6 col-lg-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
                 <div class="bg-wvu-blue ms-lg-n2 ms-xxl-n5">
                   <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
                     <span class="text-white helvetica-neue-light text-uppercase">Magazine</span>
@@ -61,7 +61,7 @@
           </div>
         {% endfor %}
       </div>
-      <div class="mb-3 mb-lg-0 col-sm-6 col-lg-3">
+      <div class="mb-3 mb-sm-0 col-sm-6 col-lg-3">
         <div class="h-100 position-relative bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
         style="background-image: url('{{ newsPosterSrc }}')">
           <div class="wvu-z-index-content d-flex flex-column justify-content-end h-100">
