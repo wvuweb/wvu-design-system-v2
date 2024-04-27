@@ -7,117 +7,32 @@
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
         <h3 class="wvu-shout wvu-bar text-wvu-blue">
-          Upcoming Events</h3>
-        <ul class="list-unstyled mt-3">
-          <li class="row mb-2 gx-1">
-            <div class="col-3">
-              <div class="bg-wvu-accent--sunset shadow-sm text-center">
-                <p class="mb-0 lh-lg px-1 small helvetica-neue-bold">
-                  APR
-                </p>
-                <div class="bg-white helvetica-neue-light fs-4">
-                  27
-                </div>
-              </div>
-            </div>
-            <div class="col-9">
-              <h4 class="mb-0 h6">
-                <a href="#" class="text-dark text-decoration-none">Emerald Coast Shrimp Boil Shindig</a>
-              </h4>
-              <p class="small">
-                <span class="fa-regular fa-clock" aria-hidden="true"></span> 03:00 PM
-                <br>
-                <span class="fa-regular fa-location-dot" aria-hidden="true"></span> Karen Garvin's Home</p>
-            </div>
-          </li>
-          <li class="row mb-2 gx-1">
-            <div class="col-3">
-              <div class="bg-wvu-accent--sunset shadow-sm text-center">
-                <p class="mb-0 lh-lg px-1 small helvetica-neue-bold">
-                  APR
-                </p>
-                <div class="bg-white helvetica-neue-light fs-4">
-                  27
-                </div>
-              </div>
-            </div>
-            <div class="col-9">
-              <h4 class="mb-0 h6">
-                <a href="#" class="text-dark text-decoration-none">Emerald Coast Shrimp Boil Shindig</a>
-              </h4>
-              <p class="small">
-                <span class="fa-regular fa-clock" aria-hidden="true"></span> 03:00 PM
-                <br>
-                <span class="fa-regular fa-location-dot" aria-hidden="true"></span> Karen Garvin's Home</p>
-            </div>
-          </li>
-          <li class="row mb-2 gx-1">
-            <div class="col-3">
-              <div class="bg-wvu-accent--sunset shadow-sm text-center">
-                <p class="mb-0 lh-lg px-1 small helvetica-neue-bold">
-                  APR
-                </p>
-                <div class="bg-white helvetica-neue-light fs-4">
-                  27
-                </div>
-              </div>
-            </div>
-            <div class="col-9">
-              <h4 class="mb-0 h6">
-                <a href="#" class="text-dark text-decoration-none">Emerald Coast Shrimp Boil Shindig</a>
-              </h4>
-              <p class="small">
-                <span class="fa-regular fa-clock" aria-hidden="true"></span> 03:00 PM
-                <br>
-                <span class="fa-regular fa-location-dot" aria-hidden="true"></span> Karen Garvin's Home</p>
-            </div>
-          </li>
-          <li class="row mb-2 gx-1">
-            <div class="col-3">
-              <div class="bg-wvu-accent--sunset shadow-sm text-center">
-                <p class="mb-0 lh-lg px-1 small helvetica-neue-bold">
-                  APR
-                </p>
-                <div class="bg-white helvetica-neue-light fs-4">
-                  27
-                </div>
-              </div>
-            </div>
-            <div class="col-9">
-              <h4 class="mb-0 h6">
-                <a href="#" class="text-dark text-decoration-none">Emerald Coast Shrimp Boil Shindig</a>
-              </h4>
-              <p class="small">
-                <span class="fa-regular fa-clock" aria-hidden="true"></span> 03:00 PM
-                <br>
-                <span class="fa-regular fa-location-dot" aria-hidden="true"></span> Karen Garvin's Home</p>
-            </div>
-          </li>
-        </ul>
-        <ul class="list-unstyled small">
-          <li>
-            <a href="#" class="text-decoration-none d-flex align-items-center">
-              <span class="fa-regular fa-calendar me-1" aria-hidden="true"></span> Full Calendar
-
-            </a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none d-flex align-items-center">
-              <span class="fa-regular fa-sportsball me-1" aria-hidden="true"></span> Sports Calendar
-
-            </a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none d-flex align-items-center">
-              <span class="fa-regular fa-party-horn me-1" aria-hidden="true"></span> Signature Events
-
-            </a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none d-flex align-items-center">
-              <span class="fa-regular fa-bullseye-pointer me-1" aria-hidden="true"></span> Submit an Event</a>
-          </li>
-        </ul>
+          {% editable_region name: 'alumni-events__header' type: 'simple', placeholder: 'Upcoming Events' %}
+        </h3>
+        {% editable_region_block name: 'alumni-events__feed' %}
+          <p>Put calendar feed here.</p>
+          <ul class="list-unstyled small">
+            <li>
+              <a href="#" class="text-decoration-none d-flex align-items-center">
+                <span class="fa-regular fa-calendar me-1" aria-hidden="true"></span> Full Calendar
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-decoration-none d-flex align-items-center">
+                <span class="fa-regular fa-sportsball me-1" aria-hidden="true"></span> Sports Calendar
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-decoration-none d-flex align-items-center">
+                <span class="fa-regular fa-party-horn me-1" aria-hidden="true"></span> Signature Events
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-decoration-none d-flex align-items-center">
+                <span class="fa-regular fa-bullseye-pointer me-1" aria-hidden="true"></span> Submit an Event</a>
+            </li>
+          </ul>
+        {% endeditable_region_block %}
       </div>
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
         <div class="wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
@@ -170,8 +85,6 @@
         <div class="mt-2 bg-light py-1 px-2">
 
           <p class="mb-0 small">
-            <a href="#" class="text-decoration-none">Search Awards
-              <span class="fa-regular fa-search" aria-hidden="true"></span> | </a>
             <a href="#" class="text-decoration-none">Nominate Someone
               <span class="fa-regular fa-pen-field" aria-hidden="true"></span>
             </a>
