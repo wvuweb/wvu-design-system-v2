@@ -1,4 +1,8 @@
-<section id="columns-2-1-1-1" aria-labelledby="columns-2-1-1-1-label" class=" py-5 ">
+{%- liquid
+  assign giftPage = site | get_page: 170781
+  assign giftPages = giftPage.children | filter_pages: hidden: true
+-%}
+<section aria-label="Featured Events and Giving" class="py-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
@@ -179,50 +183,16 @@
           <h3 class="iowan-old-style px-2 px-lg-3 pt-2">
             <span class="fa-regular fa-hand-holding d-block mb-1" aria-hidden="true"></span>Give Back</h3>
           <div class="mt-2 iowan-old-style-black small btn-group-vertical w-100">
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Make a Gift</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
+            <a href="/join-the-alumni-association" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
               <span>Become a Member</span>
               <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
             </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Volunteer Your Time</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Donate a Historical Item</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Donate Office Space</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Mountaineer Fund</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Erickson Alumni Center</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>The Tower Society</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
-
-            <a href="#" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
-              <span>Naming Opportunities</span>
-              <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
-            </a>
+            {% for page in giftPages %}
+              <a href="{{ page.url }}" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
+                <span>{{ page.alternate_name | default: page.name }}</span>
+                <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
+              </a>
+            {% endfor %}
           </div>
         </div>
       </div>
