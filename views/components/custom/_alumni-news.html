@@ -7,7 +7,6 @@
 
   assign newsPosterSrc = newsPage.data.thumbnail_url | build_image_url: size: '640x960', format: 'webp'
 
-  assign podcastItems = podcastPage.children | filter_pages: tags: 'featured-podcast', limit: 1, hidden: true
   assign spotlightItems = spotlightsPage.children | filter_pages: tags: 'home-spotlight', limit: 1, hidden: true
   assign blogItems = blogPage.articles | filter_pages: page: params.page, limit: 200, year: params.year, month: params.month, day: params.day
 
@@ -93,20 +92,15 @@
                 <span class="fa-regular fa-podcast" aria-hidden="true"></span> All 'Eeers Podcast</span>
             </h4>
             <div class="row gx-1">
-              {% if podcastItems.data.thumbnail_url_sq != blank %}
-                <div class="col-4">
-                  <div class="ratio ratio-1x1 bg-light"></div>
-                </div>
-              {% endif %}
               <div class="col">
-                <h5 class="h6 mb-0">{{ podcastItems.alternate_name | default: podcastItems.name }}</h5>
+                <h5 class="h6 mb-0">{{ podcastPage.content['alumni-podcast-hero__name'] }}</h5>
                 <p class="mb-1">
-                  {{ podcastItems.data.description }}
+                  {{ podcastPage.content['alumni-podcast-hero__blurb'] }}
                 </p>
               </div>
             </div>
             <p>
-              <a href="{{ podcastItems.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastItems.alternate_name | default: podcastItems.name }}</span>
+              <a href="{{ podcastPage.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastPage.content['alumni-podcast-hero__name'] }}</span>
                 <span class="fa-regular fa-ear" aria-hidden="true"></span>
               </a>
             </p>
