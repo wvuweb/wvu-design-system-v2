@@ -63,13 +63,13 @@
                 <span class="small">
                   <span class="fa-regular fa-lightbulb-on" aria-hidden="true"></span> Spotlight</span>
               </h4>
-              <div class="row gx-1 mb-1">
+              <div class="row gx-1">
                 {% if spotlight.data.thumbnail_url_sq != blank %}
-                  <div class="col">
+                  <div class="col-4">
                     <div class="ratio ratio-1x1 bg-light"></div>
                   </div>
                 {% endif %}
-                <div class="col-8">
+                <div class="col">
                   <h5 class="h6 mb-0">{{ spotlight.alternate_name | default: spotlight.name }}</h5>
                   <p class="mb-1">
                     {{ spotlight.data.description }}
@@ -92,13 +92,13 @@
               <span class="small">
                 <span class="fa-regular fa-podcast" aria-hidden="true"></span> All 'Eeers Podcast</span>
             </h4>
-            <div class="row gx-1 mb-1">
+            <div class="row gx-1">
               {% if podcastItems.data.thumbnail_url_sq != blank %}
-                <div class="col">
+                <div class="col-4">
                   <div class="ratio ratio-1x1 bg-light"></div>
                 </div>
               {% endif %}
-              <div class="col-8">
+              <div class="col">
                 <h5 class="h6 mb-0">{{ podcastItems.alternate_name | default: podcastItems.name }}</h5>
                 <p class="mb-1">
                   {{ podcastItems.data.description }}
