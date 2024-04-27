@@ -40,18 +40,17 @@
         </div>
       </div>
       <div class="mb-4 mb-lg-0 col-md-4 col-lg-3">
-        <div class="h-100 bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
-        style="background-image: url('/files/9f64b793-4aef-417a-a771-d488586e2971/960x640.webp?cb=f2ce5097f2d81347d01eae190be4f451')">
+        <div class="h-100 position-relative bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
+        style="background-image: url('{{ newsPosterSrc }}')">
           <div class="wvu-z-index-content d-flex flex-column justify-content-end h-100">
             <p class="small">
-              <span class="fa-regular fa-newspaper" aria-hidden="true"></span> WVUToday</p>
+              <span class="fa-regular fa-newspaper"></span> WVUToday</p>
             <h4 class="wvu-shout text-wvu-gold">Alumni News
             </h4>
-            <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-              doloremquelaudantium.
+            <p class="small"><a class="stretched-link text-white text-decoration-none" href="https://wvutoday.wvu.edu/stories?tags=Alumni">Check out alumni news on WVUToday.</a>
             </p>
             <p class="mb-0">
-              <span class="fa-regular fa-arrow-down-right text-wvu-gold h4" aria-hidden="true"></span>
+              <span class="fa-regular fa-arrow-down-right text-wvu-gold h4"></span>
             </p>
           </div>
         </div>
@@ -109,9 +108,6 @@
             <p>
               <a href="{{ podcastItems.url }}" class="text-decoration-none">Listen<span class="visually-hidden">: {{ podcastItems.alternate_name | default: podcastItems.name }}</span>
                 <span class="fa-regular fa-ear" aria-hidden="true"></span>
-              </a>
-              <a href="{{ podcastPage.url }}" class="text-decoration-none">All Podcasts
-                <span class="fa-regular fa-arrow-circle-right" aria-hidden="true"></span>
               </a>
             </p>
           </div>
