@@ -16,7 +16,7 @@
   assign magStoryEntries = magStoryAPIEndpoint | web_request | parse_json
 
 -%}
-<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5">
+<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5 py-sm-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-3 mb-lg-0 col-sm-8 col-lg-6">
@@ -24,7 +24,7 @@
           {% assign magStoryImg = magStory.img | prepend: 'https://magazine.wvu.edu' %}
           <div class="d-sm-none">
             <div class="ratio ratio-16x9 wvu-bg-position-center wvu-bg-size-cover" style="background-image: url('{{ magStoryImg }}')"></div>
-            <div class="bg-wvu-blue mx-3 ms-n3">
+            <div class="bg-wvu-blue mx-3 mt-n4 shadow">
               <h3 class="h6 small wvu-shout mx-3 text-wvu-gold mb-0 py-1">WVU
                 <span class="text-white helvetica-neue-light text-uppercase">Magazine</span>
               </h3>
