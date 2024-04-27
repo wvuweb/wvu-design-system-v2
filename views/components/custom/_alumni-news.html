@@ -11,7 +11,7 @@
   assign spotlightItems = spotlightsPage.children | filter_pages: tags: 'featured-spotlight', limit: 1, hidden: true
   assign blogItems = blogPage.articles | filter_pages: page: params.page, limit: 200, year: params.year, month: params.month, day: params.day
 
-  assign blogItems = blogItems | reverse
+  assign blogItems = blogItems | sort: "published_at" | reverse
 
 -%}
 <section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5">
