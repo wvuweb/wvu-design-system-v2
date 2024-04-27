@@ -11,7 +11,7 @@
   assign itemCount = 0
 
   assign componentLoopBy = component.loopBy
-  
+
   case componentLoopBy
     when "published_at" or "created_at" or "updated_at"
       assign sortedItems = items | sort: componentLoopBy | reverse
@@ -19,7 +19,7 @@
       assign sortedItems = items | sort: componentLoopBy
   endcase
 
-  if component.loopOrder == "desc"
+  if component.loopOrder == "desc" or component.reverseItems == '1'
     assign sortedItems = sortedItems | reverse
   endif
 
