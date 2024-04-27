@@ -68,6 +68,8 @@ custom_data_attributes:
     title: Thumnbail URL
   - thumbnail_url_sq:
     title: Thumnbail URL Square
+  - thumbnail_url_vert:
+    title: Thumnbail URL Vertical
   - useFACSS:
     type: checkbox
     title: Use FontAwesome CSS
