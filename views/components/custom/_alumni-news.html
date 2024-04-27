@@ -13,7 +13,7 @@
   assign blogItems = blogItems | sort: "published_at" | reverse
 
   assign magStoryAPIEndpoint = page.data.api_string
-  assign magStoryEntries = programAPIEndpoint | web_request | parse_json
+  assign magStoryEntries = magStoryAPIEndpoint | web_request | parse_json
 
 -%}
 <section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5">
