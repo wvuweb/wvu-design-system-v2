@@ -21,8 +21,8 @@
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-8 col-lg-6">
         {% for magStory in magStoryEntries.stories limit: 1 %}
-          {% assign backgroundImage = magStory.img | build_image_url: size: '960x640', format: 'webp' %}
-          <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url('{{ backgroundImage }}')">
+          {% assign magStoryImg = magStory.img | prepend: 'https://wvumag.wvu.edu' %}
+          <div class="p-4 wvu-bg-position-center wvu-bg-size-cover h-100" style="background-image: url('{{ magStoryImg }}')">
             <div class="row">
               <div class="col-sm-7 col-xl-5 col-xxl-4 me-md-auto wvu-z-index-content text-white">
                 <div class="bg-wvu-blue ms-lg-n2 ms-xxl-n5">
