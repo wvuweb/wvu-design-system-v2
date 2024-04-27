@@ -16,7 +16,7 @@
   assign magStoryEntries = magStoryAPIEndpoint | web_request | parse_json
 
 -%}
-<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5 py-sm-5">
+<section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-4 py-sm-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-3 mb-lg-0 col-lg-6">
@@ -80,7 +80,7 @@
       <div class="col-sm-6 col-lg-3 small">
         <div class="row">
           {% for spotlight in spotlightItems %}
-            <div class="col-sm-4 col-lg-12">
+            <div class="col-sm-12 col-lg-12">
               <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
                 <span class="small">
                   <span class="fa-regular fa-lightbulb-on" aria-hidden="true"></span> Spotlight</span>
@@ -109,7 +109,7 @@
               </p>
             </div>
           {% endfor %}
-          <div class="col-sm-4 col-lg-12">
+          <div class="col-sm-12 col-lg-12">
             <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
               <span class="small">
                 <span class="fa-regular fa-podcast" aria-hidden="true"></span> All 'Eeers Podcast</span>
@@ -129,7 +129,7 @@
             </p>
           </div>
           {% for article in blogItems limit: 1 %}
-            <div class="col-sm-4 col-lg-12">
+            <div class="col-sm-12 col-lg-12">
               <h4 class="h6 wvu-text-letter-spacing iowan-old-style-black text-wvu-blue text-uppercase mb-2 mb-0 border-top border-black-50 border-1 pt-1">
                 <span class="small">
                   <span class="fa-regular fa-rss" aria-hidden="true"></span> From Down the Hall</span>
