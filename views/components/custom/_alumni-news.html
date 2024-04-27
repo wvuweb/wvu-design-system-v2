@@ -19,7 +19,7 @@
 <section id="columns-2-1-1-1" aria-label="Alumni Stories" class="py-5 py-sm-5">
   <div class="container wvu-z-index-content">
     <div class="row">
-      <div class="mb-3 mb-lg-0 col-sm-8 col-lg-6">
+      <div class="mb-3 mb-lg-0 col-lg-6">
         {% for magStory in magStoryEntries.stories limit: 1 %}
           {% assign magStoryImg = magStory.img | prepend: 'https://magazine.wvu.edu' %}
           <div class="d-sm-none">
@@ -61,7 +61,7 @@
           </div>
         {% endfor %}
       </div>
-      <div class="mb-3 mb-lg-0 col-sm-4 col-lg-3">
+      <div class="mb-3 mb-lg-0 col-sm-6 col-lg-3">
         <div class="h-100 position-relative bg-wvu-blue text-white mb-2 d-flex flex-column justify-content-between p-2 p-xl-3 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
         style="background-image: url('{{ newsPosterSrc }}')">
           <div class="wvu-z-index-content d-flex flex-column justify-content-end h-100">
@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 small">
+      <div class="col-sm-6 col-lg-3 small">
         <div class="row">
           {% for spotlight in spotlightItems %}
             <div class="col-sm-4 col-lg-12">
