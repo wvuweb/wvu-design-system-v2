@@ -4,7 +4,7 @@
       <div class="col">
         <div class="h-100 d-flex w-100 align-items-center pe-4">
           <div>
-            {% editable_region_block name: 'alumni-podcast-hero__header' %}
+            {% editable_region_block name: 'site-alumni-podcast-hero__header', scope: 'site' %}
               <h1 id="columns-1-label" class="display-2 wvu-shout text-wvu-gold">All ’EERS Podcast</h1>
               <p class="h3 helvetica-neue-light mb-4">Alumni reflect on the moments that defined their Mountaineer journey.</p>
             {% endeditable_region_block %}
@@ -16,15 +16,15 @@
           <div class="wvu-z-index-content">
             <div class="wvu-shout text-wvu-accent--sunset mb-2">
               {% if edit_mode %}
-                {% editable_region name: 'alumni-podcast-hero__episode' type: 'simple', placeholder: 'Episode 15' %}
+                {% editable_region name: 'site-alumni-podcast-hero__episode' type: 'simple', scope: 'site', placeholder: 'Episode 15' %}
               {% else %}
                 <p class="mb-0">{{ page.content['alumni-podcast-hero__episode'] }}</p>
               {% endif %}
             </div>
-            <h2 class="my-0">{% editable_region name: 'alumni-podcast-hero__name' type: 'simple', placeholder: 'Julie Winegard' %}</h2>
+            <h2 class="my-0">{% editable_region name: 'site-alumni-podcast-hero__name' type: 'simple', scope: 'site' placeholder: 'Julie Winegard' %}</h2>
             <div class="helvetica-neue-light mb-2">
               {% if edit_mode %}
-                {% editable_region name: 'alumni-podcast-hero__subtitle' type: 'simple', placeholder: 'Associate Art Director at Columbia University' %}
+                {% editable_region name: 'site-alumni-podcast-hero__subtitle' type: 'simple', scope: 'site', placeholder: 'Associate Art Director at Columbia University' %}
               {% else %}
                 <p class="mb-0">
                   {{ page.content['alumni-podcast-hero__subtitle'] }}
@@ -33,14 +33,14 @@
             </div>
             <div class="mb-3">
               {% if edit_mode %}
-                {% editable_region name: 'alumni-podcast-hero__blurb' type: 'simple', placeholder: "In this episode of ALL 'EERS we talk to Julie Winegard, a New York City based designer and Illustrator who is currently the Associate Art Director at Columbia University." %}
+                {% editable_region name: 'site-alumni-podcast-hero__blurb' type: 'simple', scope: 'site', placeholder: "In this episode of ALL 'EERS we talk to Julie Winegard, a New York City based designer and Illustrator who is currently the Associate Art Director at Columbia University." %}
               {% else %}
                 <p class="mb-0">
                   {{ page.content['alumni-podcast-hero__blurb'] }}
                 </p>
               {% endif %}
             </div>
-            {% editable_region_block name: 'alumni-podcast-hero__podcast' %}
+            {% editable_region_block name: 'site-alumni-podcast-hero__podcast', scope: 'site' %}
               <p>Use the HTML snippet to paste in your podcast embed code.</p>
             {% endeditable_region_block %}
           </div>
