@@ -40,9 +40,9 @@
       </div>
       <div class="mb-3 mb-lg-0 col-md-6 col-lg-3">
         {% for poster in posterPages limit: 1 %}
-          {% assign posterThumbnailSrc = poster.data.thumbnail_url_vert | build_image_url: size: '640x960', format: 'webp' %}
+          {% assign posterThumbnailSrc = poster.data.thumbnail_url | build_image_url: size: '640x960', format: 'webp' %}
           <div class="d-md-none">
-            <div class="ratio ratio-16x9" style="background-image: url('{{ posterThumbnailSrc }}')"></div>
+            <div class="ratio ratio-16x9 wvu-bg-size-cover" style="background-image: url('{{ posterThumbnailSrc }}')"></div>
             <div class="bg-wvu-neutral--cream text-wvu-blue p-2">
               <div class="p-1">
                 <h3 class="wvu-shout">{{ poster.alternate_name | default: poster.name }}</h3>
