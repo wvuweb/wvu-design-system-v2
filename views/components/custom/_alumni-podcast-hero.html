@@ -16,15 +16,15 @@
           <div class="wvu-z-index-content">
             <div class="wvu-shout text-wvu-accent--sunset mb-2">
               {% if edit_mode %}
-                {% editable_region name: 'site-alumni-podcast-hero__episode' type: 'simple', scope: 'site', placeholder: 'Episode 15' %}
+                {% editable_region name: 'site-alumni-podcast-hero__episode', type: 'simple', scope: 'site', placeholder: 'Episode 15' %}
               {% else %}
                 <p class="mb-0">{{ page.content['alumni-podcast-hero__episode'] }}</p>
               {% endif %}
             </div>
-            <h2 class="my-0">{% editable_region name: 'site-alumni-podcast-hero__name' type: 'simple', scope: 'site' placeholder: 'Julie Winegard' %}</h2>
+            <h2 class="my-0">{% editable_region name: 'site-alumni-podcast-hero__name', type: 'simple', scope: 'site', placeholder: 'Julie Winegard' %}</h2>
             <div class="helvetica-neue-light mb-2">
               {% if edit_mode %}
-                {% editable_region name: 'site-alumni-podcast-hero__subtitle' type: 'simple', scope: 'site', placeholder: 'Associate Art Director at Columbia University' %}
+                {% editable_region name: 'site-alumni-podcast-hero__subtitle', type: 'simple', scope: 'site', placeholder: 'Associate Art Director at Columbia University' %}
               {% else %}
                 <p class="mb-0">
                   {{ page.content['alumni-podcast-hero__subtitle'] }}
@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
               {% if edit_mode %}
-                {% editable_region name: 'site-alumni-podcast-hero__blurb' type: 'simple', scope: 'site', placeholder: "In this episode of ALL 'EERS we talk to Julie Winegard, a New York City based designer and Illustrator who is currently the Associate Art Director at Columbia University." %}
+                {% editable_region name: 'site-alumni-podcast-hero__blurb', type: 'simple', scope: 'site', placeholder: "In this episode of ALL 'EERS we talk to Julie Winegard, a New York City based designer and Illustrator who is currently the Associate Art Director at Columbia University." %}
               {% else %}
                 <p class="mb-0">
                   {{ page.content['alumni-podcast-hero__blurb'] }}
