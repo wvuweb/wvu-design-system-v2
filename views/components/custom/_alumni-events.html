@@ -1,6 +1,12 @@
 {%- liquid
   assign giftPage = site | get_page: 170781
+  assign awardsPage = site | get_page: 170779
+  assign root = startPage | default: site.root_page
+  assign posterPages = root.descendants | filter_pages: tags: 'home-event-poster'
+  assign awardsPages = awardsPage.descendants | filter_pages: tags: 'home-award'
   assign giftPages = giftPage.children | filter_pages: hidden: true
+  assign awardsBgColors = 'bg-wvu-accent--blue-dark,bg-wvu-accent--blue-light' | split: ','
+  assign awardsTextColors = 'text-wvu-neutral--cream,text-wvu-blue' | split: ','
 -%}
 <section aria-label="Featured Events and Giving" class="py-5">
   <div class="container wvu-z-index-content">
@@ -35,57 +41,43 @@
         {% endeditable_region_block %}
       </div>
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
-        <div class="wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
-        style="background-image: url(https://alumniassociationv2.sandbox.wvu.edu/files/792b7b49-663b-4e80-829a-eccab657d7d5/1780x1780?cb=7667d2efc1588acdd529ceeee225398c)">
-
-          <div class="wvu-z-index-content text-white mb-4">
-
-
-            <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
-              <h3 class="wvu-shout">Event Poster Headline</h3>
-              <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                dolorem quelaudantium.
-              </p>
-              <a href="#" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info
-              </a>
+        {% for poster in posterPages limit: 1 %}
+          {% assign itemThumbnailSrc = poster.data.thumbnail_url_vert | build_image_url: size: '640x960', format: 'webp' %}
+          <div class="wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
+          style="background-image: url(https://alumniassociationv2.sandbox.wvu.edu/files/792b7b49-663b-4e80-829a-eccab657d7d5/1780x1780?cb=7667d2efc1588acdd529ceeee225398c)">
+            <div class="wvu-z-index-content text-white mb-4">
+              <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
+                <h3 class="wvu-shout">Event Poster Headline</h3>
+                <p class="small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                  dolorem quelaudantium.
+                </p>
+                <a href="#" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info
+                </a>
+              </div>
             </div>
           </div>
-
-
-
-        </div>
+        {% endfor %}
       </div>
 
       <div class="col-md-6 col-lg-3 d-flex flex-column">
         <div class="flex-fill d-flex flex-column justify-content-between">
-
-          <div class="flex-fill bg-wvu-accent--blue-dark text-wvu-neutral--cream mb-2 d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
-          style="background-image: url('/files/9f64b793-4aef-417a-a771-d488586e2971/960x640.webp?cb=f2ce5097f2d81347d01eae190be4f451')">
-            <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
-              <p class="small">
-                <span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
-              <h4 class="wvu-shout text-wvu-neutral--cream mb-0">Academy of Distinguished Alumni
-                <span class="fa-regular fa-arrow-down-right" aria-hidden="true"></span>
-              </h4>
+          {% for award in awardPages limit: 2 %}
+            {% assign awardThumbnailSrc = award.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
+            <div class="position-relative flex-fill {{ awardsBgColors[forloop.index] }} {{ awardsTextColors[forloop.index] }} mb-2 d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity" style="background-image: url('{{ awardThumbnailSrc }}')">
+              <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
+                <p class="small">
+                  <span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
+                <h4 class="wvu-shout text-wvu-neutral--cream mb-0"><a href="{{ award.url }}" class="stretched-link {{ awardsTextColors[forloop.index] }}">{{ award.alternate_name | default: award.name }}</a>
+                  <span class="fa-regular fa-arrow-down-right"></span>
+                </h4>
+              </div>
             </div>
-
-          </div>
-          <div class="flex-fill bg-wvu-accent--blue-light text-wvu-blue d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity"
-          style="background-image: url('/files/2de9ee61-3516-42cd-afeb-99cb33e20176/960x640.webp?cb=45aea3ba6dea1fea83dda85b450e76e0')">
-            <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
-              <p class="small">
-                <span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
-              <h4 class="wvu-shout mb-0">Homecoming and Alumni Service Awards
-                <span class="fa-regular fa-arrow-down-right" aria-hidden="true"></span>
-              </h4>
-            </div>
-
-          </div>
+          {% endfor %}
         </div>
         <div class="mt-2 bg-light py-1 px-2">
 
           <p class="mb-0 small">
-            <a href="#" class="text-decoration-none">Nominate Someone
+            <a href="/awards#action-hero-two-column-1" class="text-decoration-none">Nominate Someone
               <span class="fa-regular fa-pen-field" aria-hidden="true"></span>
             </a>
           </p>
