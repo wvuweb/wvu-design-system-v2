@@ -63,11 +63,11 @@
         <div class="flex-fill d-flex flex-column justify-content-between">
           {% for award in awardsPages limit: 2 %}
             {% assign awardThumbnailSrc = award.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
-            <div class="position-relative flex-fill {{ awardsBgColors[forloop.index] }} {{ awardsTextColors[forloop.index] }} mb-2 d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity" style="background-image: url('{{ awardThumbnailSrc }}')">
+            <div class="position-relative flex-fill {{ awardsBgColors[forloop.index] | plus: 1 }} {{ awardsTextColors[forloop.index] | plus: 1 }} mb-2 d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity" style="background-image: url('{{ awardThumbnailSrc }}')">
               <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
                 <p class="small">
                   <span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
-                <h4 class="wvu-shout text-wvu-neutral--cream mb-0"><a href="{{ award.url }}" class="stretched-link {{ awardsTextColors[forloop.index] }}">{{ award.alternate_name | default: award.name }}</a>
+                <h4 class="wvu-shout text-wvu-neutral--cream mb-0"><a href="{{ award.url }}" class="stretched-link text-decoration-none {{ awardsTextColors[forloop.index] | plus: 1 }}">{{ award.alternate_name | default: award.name }}</a>
                   <span class="fa-regular fa-arrow-down-right"></span>
                 </h4>
               </div>
