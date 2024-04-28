@@ -57,13 +57,13 @@
           <div class="d-none d-md-flex wvu-bg-position-center wvu-bg-size-cover h-100 align-items-end"
           style="background-image: url('{{ posterThumbnailSrc }}')">
             <div class="wvu-z-index-content mb-3">
-              <div class="bg-wvu-neutral--cream text-wvu-blue p-2">
-                <div class="p-1">
-                  <h3 class="wvu-shout">{{ poster.alternate_name | default: poster.name }}</h3>
+              <div class="wvu-bg-tint text-white p-2">
+                <div class="p-1 wvu-z-index-content">
+                  <h3 class="wvu-shout text-wvu-gold">{{ poster.alternate_name | default: poster.name }}</h3>
                   <p class="small">
                     {{ poster.data.description }}
                   </p>
-                  <a href="{{ poster.url }}" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info<span class="visually-hidden">: {{ poster.alternate_name | default: poster.name }}</span>
+                  <a href="{{ poster.url }}" class="btn btn-outline-wvu-gold btn-sm text-wvu-neutral--black">More Info<span class="visually-hidden">: {{ poster.alternate_name | default: poster.name }}</span>
                   </a>
                 </div>
               </div>
