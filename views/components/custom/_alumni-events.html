@@ -41,9 +41,22 @@
       <div class="mb-3 mb-lg-0 col-md-6 col-lg-3">
         {% for poster in posterPages limit: 1 %}
           {% assign posterThumbnailSrc = poster.data.thumbnail_url_vert | build_image_url: size: '640x960', format: 'webp' %}
-          <div class="wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
+          <div class="d-md-none">
+            <div class="ratio ratio-16x9" style="background-image: url('{{ posterThumbnailSrc }}')"></div>
+            <div class="bg-wvu-neutral--cream text-wvu-blue p-2">
+              <div class="p-1">
+                <h3 class="wvu-shout">{{ poster.alternate_name | default: poster.name }}</h3>
+                <p class="small">
+                  {{ poster.data.description }}
+                </p>
+                <a href="{{ poster.url }}" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info<span class="visually-hidden">: {{ poster.alternate_name | default: poster.name }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-md-block wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
           style="background-image: url('{{ posterThumbnailSrc }}')">
-            <div class="wvu-z-index-content text-white mb-3">
+            <div class="wvu-z-index-content mb-3">
               <div class="bg-wvu-neutral--cream text-wvu-blue p-2">
                 <div class="p-1">
                   <h3 class="wvu-shout">{{ poster.alternate_name | default: poster.name }}</h3>
@@ -75,7 +88,7 @@
             {% assign i = i | plus: 1 %}
           {% endfor %}
         </div>
-        <div class="mt-2 bg-light py-1 px-2 mb-3 mb-lg-0">
+        <div class="mt-2 bg-light py-1 px-2 mb-3 mb-md-0">
           <p class="mb-0 small">
             <a href="/awards#action-hero-two-column-1" class="text-decoration-none">Nominate Someone
               <span class="fa-regular fa-pen-field" aria-hidden="true"></span>
