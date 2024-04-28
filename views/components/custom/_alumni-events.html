@@ -6,7 +6,7 @@
   assign awardsPages = awardsPage.descendants | filter_pages: tags: 'home-award'
   assign giftPages = giftPage.children | filter_pages: hidden: true
 -%}
-<section aria-label="Featured Events and Giving" class="py-5">
+<section aria-label="Featured Events and Giving" class="py-3 py-lg-5">
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
@@ -66,9 +66,8 @@
             {% assign awardThumbnailSrc = award.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
             <div class="position-relative flex-fill {% cycle "bg-wvu-accent--blue-dark text-wvu-neutral--cream", "bg-wvu-accent--blue-light text-wvu-blue" %} {% if i == 1 %}mb-2{% endif %} d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity" style="background-image: url('{{ awardThumbnailSrc }}')">
               <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
-                <p class="small">
-                  <span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
-                <h4 class="wvu-shout mb-0"><a href="{{ award.url }}" class="stretched-link text-decoration-none {% cycle "text-wvu-neutral--cream", "text-wvu-blue" %}">{{ award.alternate_name | default: award.name }}</a>
+                <p class="small"><span class="fa-regular fa-award" aria-hidden="true"></span> Awards</p>
+                <h4 class="wvu-shout mb-0 pt-6 pt-lg-0"><a href="{{ award.url }}" class="stretched-link text-decoration-none {% cycle "text-wvu-neutral--cream", "text-wvu-blue" %}">{{ award.alternate_name | default: award.name }}</a>
                   <span class="fa-regular fa-arrow-down-right"></span>
                 </h4>
               </div>
@@ -76,8 +75,7 @@
             {% assign i = i | plus: 1 %}
           {% endfor %}
         </div>
-        <div class="mt-2 bg-light py-1 px-2">
-
+        <div class="mt-2 bg-light py-1 px-2 mb-3 mb-lg-0">
           <p class="mb-0 small">
             <a href="/awards#action-hero-two-column-1" class="text-decoration-none">Nominate Someone
               <span class="fa-regular fa-pen-field" aria-hidden="true"></span>
@@ -89,7 +87,7 @@
         <div class="bg-wvu-neutral--warm-gray-dark text-white h-100">
           <h3 class="iowan-old-style px-2 px-lg-3 pt-2">
             <span class="fa-regular fa-hand-holding d-block mb-1" aria-hidden="true"></span>Give Back</h3>
-          <div class="mt-2 iowan-old-style-black small btn-group-vertical w-100">
+          <div class="mt-2 iowan-old-style-black small btn-group-vertical w-100 mb-3">
             <a href="/join-the-alumni-association" class="text-start py-1 px-2 px-lg-3 btn btn-sm btn-wvu-neutral--warm-gray-dark text-decoration-none d-flex w-100 justify-content-between text-wvu-neutral--cream">
               <span>Become a Member</span>
               <span class="fa-regular fa-arrow-right" aria-hidden="true"></span>
