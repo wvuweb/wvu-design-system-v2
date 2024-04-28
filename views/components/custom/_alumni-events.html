@@ -49,7 +49,7 @@
                 <p class="small">
                   {{ poster.data.description }}
                 </p>
-                <a href="#" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info<span class="visually-hidden">: {{ poster.alternate_name | default: poster.name }}</span>
+                <a href="{{ poster.url }}" class="btn btn-outline-wvu-blue btn-sm text-wvu-neutral--black">More Info<span class="visually-hidden">: {{ poster.alternate_name | default: poster.name }}</span>
                 </a>
               </div>
             </div>
