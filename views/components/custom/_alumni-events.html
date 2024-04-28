@@ -38,13 +38,13 @@
           </ul>
         {% endeditable_region_block %}
       </div>
-      <div class="mb-4 mb-lg-0 col-md-6 col-lg-3">
+      <div class="mb-3 mb-lg-0 col-md-6 col-lg-3">
         {% for poster in posterPages limit: 1 %}
           {% assign posterThumbnailSrc = poster.data.thumbnail_url_vert | build_image_url: size: '640x960', format: 'webp' %}
           <div class="wvu-bg-position-center wvu-bg-size-cover h-100 d-flex align-items-end"
           style="background-image: url('{{ posterThumbnailSrc }}')">
-            <div class="wvu-z-index-content text-white mb-4">
-              <div class="bg-wvu-neutral--cream text-wvu-blue p-3">
+            <div class="wvu-z-index-content text-white mb-3">
+              <div class="bg-wvu-neutral--cream text-wvu-blue p-2">
                 <h3 class="wvu-shout">{{ poster.alternate_name | default: poster.name }}</h3>
                 <p class="small">
                   {{ poster.data.description }}
