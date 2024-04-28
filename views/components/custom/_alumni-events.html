@@ -61,7 +61,7 @@
 
       <div class="col-md-6 col-lg-3 d-flex flex-column">
         <div class="flex-fill d-flex flex-column justify-content-between">
-          {% for award in awardPages limit: 2 %}
+          {% for award in awardsPages limit: 2 %}
             {% assign awardThumbnailSrc = award.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
             <div class="position-relative flex-fill {{ awardsBgColors[forloop.index] }} {{ awardsTextColors[forloop.index] }} mb-2 d-flex flex-column justify-content-between p-2 wvu-bg-size-cover wvu-bg-blend-mode-luminosity" style="background-image: url('{{ awardThumbnailSrc }}')">
               <div class="wvu-z-index-content d-flex flex-column justify-content-between h-100">
