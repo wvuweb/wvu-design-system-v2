@@ -23,7 +23,7 @@
       <div class="col-md-6 mx-auto">
         <div class="row mb-2">
           <div class="col-md-12">
-            <form id="search-form" autocomplete="off" class="position-relative w-100" action="https://search.wvu.edu/search">
+            <form id="search-form" autocomplete="off" class="position-relative w-100">
               <label for="search" class="visually-hidden">Search</label>
               <input
                 autocomplete="off"
@@ -49,23 +49,25 @@
       </div>
     {% endif %}
   </div>
-  <div class="d-none">
-    {%- liquid
-      assign startPage = site | get_page: 171476
-      assign items = startPage.children
-      assign i = 0
-    -%}
-    {% content_for "searchData" %}[
-    {%- for item in items %}
-      {
-        "name": "{{ item.name }}",
-        "keywords": "{{ item.name }},{{ item.data.content_keys | strip }}",
-        "href": "{{ item.url }}"
-      }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
-    {%- endfor %}
-    ]{% endcontent_for %}
-    <pre><code id="search-data">{{ content_for['searchData'] }}</code></pre>
-  </div>
+  {% cache key: "cache_version_001", duration: 1440 %}
+    <div class="d-none">
+      {%- liquid
+        assign startPage = site | get_page: 171476
+        assign items = startPage.children
+        assign i = 0
+      -%}
+      {% content_for "searchData" %}[
+      {%- for item in items %}
+        {
+          "name": "{{ item.name }}",
+          "keywords": "{{ item.name }},{{ item.data.content_keys | strip }}",
+          "href": "{{ item.url }}"
+        }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
+      {%- endfor %}
+      ]{% endcontent_for %}
+      <pre><code id="search-data">{{ content_for['searchData'] }}</code></pre>
+    </div>
+  {% endcache %}
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
