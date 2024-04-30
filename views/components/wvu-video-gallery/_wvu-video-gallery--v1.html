@@ -90,13 +90,6 @@
                   {%- endif %}
 
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
-                  {% assign modalId = item.slug %}
-
-                  {% if item.data.video_id contains "https://www.youtube.com/watch?v=" %}
-                    {% assign videoId = item.data.video_id | split: 'https://www.youtube.com/watch?v=' %}
-                  {% elsif item.data.video_id contains "https://youtu.be/" %}
-                    {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
-                  {% endif %}
 
                   <a href="{{ video_id }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
@@ -105,7 +98,6 @@
               </div>
             </div>
           </div>
-          {% assign videoId = '' %}
         {% endfor %}
       {% endcapture %}
 
@@ -121,7 +113,6 @@
       {% endif %}
     </div>
   </div>
-  {% endfor %}
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
