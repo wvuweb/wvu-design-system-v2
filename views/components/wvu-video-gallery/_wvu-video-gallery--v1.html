@@ -98,9 +98,9 @@
                     {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
                   {% endif %}
 
-                  <button type="button" data-src="https://www.youtube.com/embed/{{ videoId }}" data-bs-toggle="modal" data-bs-target="#{{ modalId }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
+                  <a href="{{ video_id }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
