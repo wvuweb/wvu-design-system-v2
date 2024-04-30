@@ -121,59 +121,8 @@
       {% endif %}
     </div>
   </div>
-  {% for item in sortedItems limit: component.limit %}
-    {% assign modalId = item.slug %}
-    <div class="modal fade" id="{{ modalId }}" tabindex="-1" aria-labelledby="{{ modalId }}-label" aria-hidden="true">
-      <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title h5 text-dark" id="{{ modalId }}-label">{{ item.data.video_title }}</h3>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="ratio ratio-16x9">
-              {% if item.data.video_id contains "https://www.youtube.com/watch?v=" %}
-                {% assign videoId = item.data.video_id | split: 'https://www.youtube.com/watch?v=' %}
-              {% elsif item.data.video_id contains "https://youtu.be/" %}
-                {% assign videoId = item.data.video_id | split: 'https://youtu.be/' %}
-              {% endif %}
-              <iframe id="video-{{ modalId }}" src="https://www.youtube.com/embed/{{ videoId }}" title="{{ item.data.video_title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% assign videoId = '' %}
   {% endfor %}
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
 {% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}
-
-<script>
-  // Declare a variable to store the video source
-  let videoSrc;
-
-  // Add click event listener to all elements with class "video-btn"
-  document.querySelectorAll('.video-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      // Get the video source from the data-src attribute
-      videoSrc = button.dataset.src;
-      console.log(videoSrc);
-    });
-  });
-
-  {% for item in sortedItems limit: component.limit %}
-    // Add event listener for when the modal is opened
-    document.getElementById('{{ item.slug }}').addEventListener('shown.bs.modal', () => {
-      // Update the video source with autoplay and other options
-      document.getElementById('video-{{ item.slug }}').src = videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0";
-    });
-
-    // Add event listener for when the modal is closed
-    document.getElementById('{{ item.slug }}').addEventListener('hide.bs.modal', () => {
-      // Stop the video by resetting the source
-      document.getElementById('video-{{ item.slug }}').src = videoSrc;
-    });
-  {% endfor %}
-</script>
