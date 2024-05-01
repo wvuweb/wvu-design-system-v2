@@ -91,7 +91,7 @@
 
                   {% capture link_text %}{{ item.data.link_text | default: itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
 
-                  <a href="{{ video_id }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
+                  <a href="{{ page.data.video_id }}" class="btn btn-outline-wvu-gold video-btn" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %}>
                     {{ link_text }} <span class="fa-solid fa-circle-play"></span>
                   </a>
                 </div>
