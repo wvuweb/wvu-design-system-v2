@@ -1,6 +1,7 @@
 {%- liquid
   assign addressOneRegionName = 'wvu-CNAME__address-line-1' | replace: 'CNAME', component.name
   assign addressTwoRegionName = 'wvu-CNAME__address-line-2' | replace: 'CNAME', component.name
+  assign addressThreeRegionName = 'wvu-CNAME__address-line-3' | replace: 'CNAME', component.name
   assign mapLinkRegionName = 'wvu-CNAME__map-link' | replace: 'CNAME', component.name
   assign contactRegionName = 'wvu-CNAME__contact' | replace: 'CNAME', component.name
   assign phoneRegionName = 'wvu-CNAME__phone' | replace: 'CNAME', component.name
@@ -58,6 +59,7 @@
             <div class="mb-2">
               Address Line 1: {% editable_region name: addressOneRegionName, scope: component.scope, type: "simple" %}
               Address Line 2: {% editable_region name: addressTwoRegionName, scope: component.scope, type: "simple" %}
+              Address Line 3: {% editable_region name: addressThreeRegionName, scope: component.scope, type: "simple" %}
               Map Link: {% editable_region name: mapLinkRegionName, scope: component.scope, type: "simple" %}
             </div>
             <span class="d-inline-block badge bg-primary mb-1 no-preview">Contact Info</span>
@@ -140,7 +142,7 @@
 
         {% unless edit_mode %}
 
-          {% assign hasAddress = page.content[addressOneRegionName] | append: page.content[addressTwoRegionName] | append: page.content[mapLinkRegionName] %}
+          {% assign hasAddress = page.content[addressOneRegionName] | append: page.content[addressTwoRegionName] | append: page.content[addressThreeRegionName] | append: page.content[mapLinkRegionName] %}
           {% assign hasContactInfo = page.content[contactRegionName] | append: page.content[phoneRegionName] | append: page.content[emailRegionName] | append: page.content[websiteRegionName] %}
           {% assign hasHours = page.content[monRegionName] | append: page.content[tuesRegionName] | append: page.content[wedRegionName] | append: page.content[thursRegionName] | append: page.content[friRegionName] | append: page.content[satRegionName] | append: page.content[sunRegionName] %}
           {% assign hasParking = page.content[parkingRegionName] %}
@@ -156,6 +158,9 @@
                   {{ page.content[addressOneRegionName] }}
                   {% if page.content[addressTwoRegionName] != blank %}
                     <br>{{ page.content[addressTwoRegionName] }}
+                  {% endif %}
+                  {% if page.content[addressThreeRegionName] != blank %}
+                    <br>{{ page.content[addressThreeRegionName] }}
                   {% endif %}
                   {% if page.content[mapLinkRegionName] != blank %}
                     <br><span class="fa-solid fa-map-marker"></span> <a class="text-decoration-none" href="{{ page.content[mapLinkRegionName] }}">View on Map</a>
