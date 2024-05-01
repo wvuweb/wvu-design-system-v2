@@ -35,10 +35,10 @@
 
     <div class="row {{ rowClasses }}">
       {% for i in range %}
-        {%- capture componentPanelBackgroundImageURL %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__background-image-url{% endcapture %}
-        {%- capture componentPanelPhoto %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__photo{% endcapture %}
-        {%- capture componentPanelHeader %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__header{% endcapture %}
-        {%- capture componentPanelMain %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
+        {%- capture componentPanelBackgroundImageURL %}{% if component.scope == 'site' %}site-{% endif %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__background-image-url{% endcapture %}
+        {%- capture componentPanelPhoto %}{% if component.scope == 'site' %}site-{% endif %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__photo{% endcapture %}
+        {%- capture componentPanelHeader %}{% if component.scope == 'site' %}site-{% endif %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__header{% endcapture %}
+        {%- capture componentPanelMain %}{% if component.scope == 'site' %}site-{% endif %}wvu-featurettes_panel_{{ component.number }}-{{ i }}__main{% endcapture %}
 
         {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: component.limit component: component %}{% endcapture -%}
         {% assign itemClasses = itemClasses | strip %}
