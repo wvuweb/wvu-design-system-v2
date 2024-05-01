@@ -49,7 +49,7 @@
       </div>
     {% endif %}
   </div>
-  {% cache key: "cache_version_003", duration: 1440 %}
+  {% cache key: "cache_version_004", duration: 1440 %}
     <div class="d-none">
       {%- liquid
         assign startPage = site | get_page: 171476
@@ -61,7 +61,7 @@
         {
           "name": "{{ item.name }}",
           "keywords": "{{ item.name }},{{ item.data.content_keys | strip }}",
-          "href": "{{ site.url }}/{{ item.slug }}"
+          "href": "{{ site.url }}/chapters/{{ item.slug }}"
         }{% assign i = i | plus: 1 %}{% if i < items.length %},{% endif %}
       {%- endfor %}
       ]{% endcontent_for %}
