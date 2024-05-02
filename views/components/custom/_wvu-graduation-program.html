@@ -21,9 +21,13 @@
                   {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
                   {% if student['Foundations Scholar'] != blank %}☙{% endif %}
                   {% if student['Laureate'] != blank %}⟡{% endif %}
-                  {% if student['Cum Laude'] != blank %}*{% endif %}
-                  {% if student['Magna Cum Laude'] != blank %}**{% endif %}
-                  {% if student['Summa Cum Laude'] != blank %}***{% endif %}
+                  {% if student['Tentative Honors'] != blank %}
+                    {% case student['Tentative Honors'] %}
+                      {% when 'Summa Cum Laude' %}***
+                      {% when 'Magna Cum Laude' %}**
+                      {% when 'Cum Laude' %}*
+                    {% endcase %}
+                  {% endif %}
                 </li>
               {% endfor %}
               {% assign j = j | plus: 1 %}
