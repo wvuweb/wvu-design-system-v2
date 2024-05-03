@@ -190,13 +190,13 @@
                 <h2 class="h6 text-uppercase mt-3">Follow</h2>
                 <p>
                   {% if page.content[facebookRegionName] != blank %}
-                    <span class="fa-brands fa-facebook"></span> <a href="mailto:{{ page.content[facebookRegionName] }}">Facebook</a><br>
+                    <span class="fa-brands fa-facebook"></span> <a href="{{ page.content[facebookRegionName] }}">Facebook</a><br>
                   {% endif %}
                   {% if page.content[instagramRegionName] != blank %}
-                    <span class="fa-brands fa-instagram"></span> <a href="mailto:{{ page.content[instagramRegionName] }}">Instagram</a><br>
+                    <span class="fa-brands fa-instagram"></span> <a href="{{ page.content[instagramRegionName] }}">Instagram</a><br>
                   {% endif %}
                   {% if page.content[linkedinRegionName] != blank %}
-                    <span class="fa-brands fa-linkedin"></span> <a href="mailto:{{ page.content[linkedinRegionName] }}">LinkedIn</a><br>
+                    <span class="fa-brands fa-linkedin"></span> <a href="{{ page.content[linkedinRegionName] }}">LinkedIn</a><br>
                   {% endif %}
                   {% if page.content[twitterRegionName] != blank %}
                     <span class="fa-brands fa-twitter"></span> <a href="{{ page.content[twitterRegionName] }}">Twitter</a>
