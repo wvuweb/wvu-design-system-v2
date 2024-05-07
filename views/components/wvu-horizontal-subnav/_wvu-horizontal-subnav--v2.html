@@ -14,9 +14,6 @@
       {% assign colorPalette = item.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
-      {%- capture activeClass -%}
-        {{ bgColor | replace: 'bg-', 'text-' }} {{ bgColor | replace: 'text-', 'bg-' }}
-      {%- endcapture -%}
     {% endif %}
   {% elsif page.data.subsection_landing_page == '1' %}
     {% assign needsSubsectionMenu = 'true' %}
@@ -27,9 +24,6 @@
       {% assign colorPalette = page.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
-      {%- capture activeClass -%}
-        {{ bgColor | replace: 'bg-', 'text-' }} {{ bgColor | replace: 'text-', 'bg-' }}
-      {%- endcapture -%}
     {% endif %}
   {% endif %}
 {% endfor %}
