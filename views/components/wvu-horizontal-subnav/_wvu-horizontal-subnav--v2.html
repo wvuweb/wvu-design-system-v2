@@ -28,7 +28,7 @@
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
       {%- capture activeClass -%}
-        {{ bgColor | replace: 'bg-', 'text-' | replace: 'navbar-', '' }} {{ bgColor | replace: 'text-', 'bg-' | replace: 'navbar-', '' }}
+        {{ bgColor | replace: 'text-', '' | replace: 'bg-', 'text-' | replace: 'navbar-', '' }} {{ bgColor | replace: 'bg-', '' | replace: 'text-', 'bg-' | replace: 'navbar-', '' }}
       {%- endcapture -%}
     {% endif %}
   {% endif %}
