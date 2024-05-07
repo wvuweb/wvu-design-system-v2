@@ -1,5 +1,6 @@
 {% assign bgColor = 'navbar-dark bg-wvu-neutral--warm-gray-dark text-white' %}
 {% assign brandColor = 'text-wvu-gold' %}
+{% assign activeClass = 'bg-wvu-neutral--off-white text-dark' %}
 
 {% assign root = site.root_page %}
 {% assign items = page.ancestors %}
@@ -13,6 +14,9 @@
       {% assign colorPalette = item.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
+      {%- capture activeClass -%}
+        {{ bgColor | replace: 'bg-', 'text-' }} {{ bgColor | replace: 'text-', 'bg-' }}
+      {%- endcapture -%}
     {% endif %}
   {% elsif page.data.subsection_landing_page == '1' %}
     {% assign needsSubsectionMenu = 'true' %}
@@ -23,6 +27,9 @@
       {% assign colorPalette = page.data.horizontalNavColors | split: "," %}
       {% assign bgColor = colorPalette[0] %}
       {% assign brandColor = colorPalette[1] %}
+      {%- capture activeClass -%}
+        {{ bgColor | replace: 'bg-', 'text-' }} {{ bgColor | replace: 'text-', 'bg-' }}
+      {%- endcapture -%}
     {% endif %}
   {% endif %}
 {% endfor %}
@@ -31,7 +38,7 @@
   <div class="container">
     <div class="d-md-flex align-items-stretch">
       <a href="{{ subsectionLink }}" class="{{ brandColor }} wvu-shout text-decoration-none d-inline-block py-2 ms-2 ms-lg-0 me-2">{{ subsectionName }}</a>
-      {% ancestor_menu start_depth: submenuDepth, max_depth: submenuDepth, ul_class: "small wvu-nav__items menu-items navbar-nav mr-auto", li_class: "nav-item h-100", link_class: "h-100 py-1 d-md-flex align-items-center text-decoration-none iowan-old-style-black nav-link px-2 px-lg-1", active_class: "bg-wvu-neutral--off-white text-dark", open_class: "nav-secondary--open" %}
+      {% ancestor_menu start_depth: submenuDepth, max_depth: submenuDepth, ul_class: "small wvu-nav__items menu-items navbar-nav mr-auto", li_class: "nav-item h-100", link_class: "h-100 py-1 d-md-flex align-items-center text-decoration-none iowan-old-style-black nav-link px-2 px-lg-1", active_class: activeClass, open_class: "nav-secondary--open" %}
     </div> <!-- /.nav-collapse -->
   </div> <!-- /.container -->
 </section>
