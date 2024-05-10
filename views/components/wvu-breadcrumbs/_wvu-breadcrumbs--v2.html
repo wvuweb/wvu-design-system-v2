@@ -12,7 +12,7 @@
     {% endif %}
   {% when 'super_template' %}
     {% for slot in page.slots %}
-      {% if forloop.index == 0 and slot.value == 'hero' and slot.custom == blank %}
+      {% if forloop.index == 1 and slot.value == 'hero' and slot.custom == blank %}
         {% assign breadcrumbLinkClasses = 'wvu-bg-tint text-white' %}
       {% endif %}
     {% endfor %}
