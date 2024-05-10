@@ -189,6 +189,15 @@
               <strong>Default classes:</strong> {{ footerItemClasses | default: "N/A" }}
             </p>
           </div>
+          <div class="col-lg text-white">
+            <p class="mb-1 small">
+              {% if edit_mode %}Collection Items Button Text:{% endif %}
+              {% editable_region name: component.region_names.readMoreButtonText, type: "simple", scope: component.scope, placeholder="Read More" %}
+            </p>
+            <p class="text-muted mb-0 mt-1 small">
+              <strong>Default button text:</strong> Read More (type “none” to remove the buttons entirely)
+            </p>
+          </div>
         </div>
     {% endcase %}
     {% case component.baseName %}
