@@ -16,6 +16,7 @@
         {% assign breadcrumbLinkClasses = 'wvu-bg-tint text-white' %}
       {% endif %}
     {% endfor %}
+    {% assign breadcrumbPosition = 'position-absolute' %}
   {% else %}
     {% if breadcrumbLinkClasses == blank %}
       {% assign breadcrumbLinkClasses = site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
