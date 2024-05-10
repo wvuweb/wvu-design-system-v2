@@ -10,7 +10,7 @@
     {% if breadcrumbLinkClasses == blank %}
       {% assign breadcrumbLinkClasses = 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
     {% endif %}
-  {% when 'super_template %'}
+  {% when 'super_template' %}
     {% for slot in slots[0] %}
       {% if slot.value == 'hero' and slot.custom == blank %}
         {% assign breadcrumbLinkClasses = 'wvu-bg-tint text-white' %}
