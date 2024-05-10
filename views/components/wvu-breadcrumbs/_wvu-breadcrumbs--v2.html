@@ -1,9 +1,14 @@
-{% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | replace: "&nbsp;", "" | strip %}
+{% assign breadcrumbLinkClasses = page.content[component.region_names.classes] | default: component.defaultComponentClasses %}
+{% assign breadcrumbLinkClasses = breadcrumbLinkClasses | replace: "&nbsp;", "" | strip %}
+
+{% if breadcrumbLinkClasses == blank and page.data.backpage_header == '1' %}
+  {% assign breadcrumbLinkClasses = 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
+{% endif %}
 
 {% case page.template_name %}
   {% when 'profile' or 'student' or 'faculty-member' %}
     {% if breadcrumbLinkClasses == blank %}
-      {% assign breadcrumbLinkClasses = site.data.classes_wvu_breadcrumbs | default: 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
+      {% assign breadcrumbLinkClasses = 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
     {% endif %}
   {% else %}
     {% if breadcrumbLinkClasses == blank %}
