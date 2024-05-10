@@ -47,6 +47,15 @@
       </div>
       <div class="col-md-6 col-lg-7 col-xl-8 wvu-backpage-main">
 
+        {% if edit_mode or page.content[rNames.headerLabel] != blank %}
+          {% if edit_mode %}
+            <span class="d-inline-block badge bg-primary mb-1 no-preview">Header Label</span>
+          {% endif %}
+          <div class="fs-5 mb-0 helvetica-neue-bold text-uppercase">
+            {% editable_region name: rNames.headerLabel, scope: component.scope, type: "simple" %}
+          </div>
+        {% endif %}
+
         <h1 class="display-3 wvu-shout text-wvu-blue wvu-bar wvu-bar--bottom" id="{{ component.name }}-label">{{ page.alternate_name | default: page.name }}</h1>
 
         {% if edit_mode or page.content[rNames.profileName] != blank %}
