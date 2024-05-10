@@ -47,10 +47,8 @@
       </div>
       <div class="col-md-6 col-lg-7 col-xl-8 wvu-backpage-main">
 
-        {% if edit_mode or page.content[rNames.headerLabel] != blank %}
-          {% if edit_mode %}
-            <span class="d-inline-block badge bg-primary mb-1 no-preview">Header Label</span>
-          {% endif %}
+        {% if edit_mode %}
+          <span class="d-inline-block badge bg-primary mb-1 no-preview">Header Label</span>
           <div class="fs-5 mb-0 helvetica-neue-bold text-uppercase">
             {% editable_region name: rNames.headerLabel, scope: component.scope, type: "simple" %}
           </div>
