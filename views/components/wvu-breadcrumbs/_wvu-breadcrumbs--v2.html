@@ -3,13 +3,6 @@
 
 {% if breadcrumbLinkClasses == blank and page.data.backpage_header == '1' %}
   {% assign breadcrumbLinkClasses = 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
-  {% if page.template_name == 'super_template' %}
-    {% for slot in slots[0] %}
-      {% if slot.value == 'hero' and slot.custom == blank %}
-        {% assign breadcrumbLinkClasses = 'wvu-bg-tint text-white' %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
 {% endif %}
 
 {% case page.template_name %}
@@ -17,6 +10,12 @@
     {% if breadcrumbLinkClasses == blank %}
       {% assign breadcrumbLinkClasses = 'text-wvu-neutral--dark-gray text-wvu-accent--blue-dark' %}
     {% endif %}
+  {% when 'super_template %'}
+    {% for slot in slots[0] %}
+      {% if slot.value == 'hero' and slot.custom == blank %}
+        {% assign breadcrumbLinkClasses = 'wvu-bg-tint text-white' %}
+      {% endif %}
+    {% endfor %}
   {% else %}
     {% if breadcrumbLinkClasses == blank %}
       {% assign breadcrumbLinkClasses = site.data.classes_wvu_breadcrumbs | default: component.defaultComponentClasses %}
