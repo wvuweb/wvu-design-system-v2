@@ -79,17 +79,32 @@
             </p>
           {% endif %}
 
-          {% if item.content['wvu-profile-1__major'] != blank or item.content['wvu-profile-1__graduation-year'] != blank %}
-            <p>
-              <span class="text-uppercase">
-                {%- if item.content['wvu-profile-1__major'] != blank -%}
-                  {{ item.content['wvu-profile-1__major'] }}
-                {%- endif -%}
-                {%- if item.content['wvu-profile-1__graduation-year'] != blank -%}
-                  , Class of {{ item.content['wvu-profile-1__graduation-year'] }}
-                {%- endif -%}
-              </span>
-            </p>
+          {% if page.template_name == 'student' %}
+            {% if item.content['wvu-profile-1__major'] != blank or item.content['wvu-profile-1__graduation-year'] != blank %}
+              <p>
+                <span class="text-uppercase">
+                  {%- if item.content['wvu-profile-1__major'] != blank -%}
+                    {{ item.content['wvu-profile-1__major'] }}
+                  {%- endif -%}
+                  {%- if item.content['wvu-profile-1__graduation-year'] != blank -%}
+                    , Class of {{ item.content['wvu-profile-1__graduation-year'] }}
+                  {%- endif -%}
+                </span>
+              </p>
+            {% endif %}
+          {% else %}
+            {% if item.content['wvu-profile-1__title'] != blank or item.content['wvu-profile-1__organization'] != blank %}
+              <p>
+                <span class="text-uppercase">
+                  {%- if item.content['wvu-profile-1__title'] != blank -%}
+                    {{ item.content['wvu-profile-1__title'] }}
+                  {%- endif -%}
+                  {%- if item.content['wvu-profile-1__organization'] != blank -%}
+                    , Class of {{ item.content['wvu-profile-1__organization'] }}
+                  {%- endif -%}
+                </span>
+              </p>
+            {% endif %}
           {% endif %}
 
           <p class="{{ itemBodyClasses }}">
