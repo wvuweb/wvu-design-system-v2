@@ -34,9 +34,13 @@
                   </div>
                 </fieldset>
 
-                {% editable_region_block name: "show-other-types", scope: component.scope %}
-                  <p><a href="#">View Minors</a></p>
-                {% endeditable_region_block %}
+                {% if edit_mode or page.content['show-other-types'] != blank %}
+                  <div class="mt-2">
+                    {% editable_region_block name: "show-other-types", scope: component.scope %}
+                      <p><a href="#">View Minors</a></p>
+                    {% endeditable_region_block %}
+                  </div>
+                {% endif %}
 
               </div>
 
