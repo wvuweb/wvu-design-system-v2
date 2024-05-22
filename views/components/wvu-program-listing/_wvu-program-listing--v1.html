@@ -7,7 +7,7 @@
           <div class="clearfix">
 
             {% if page.data.disableProgramType != '1' %}
-              <div class="option-combo program-type">
+              <div class="option-combo program-type mb-4">
                 <fieldset>
                   <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by Program Type:</legend>
                   <div class="filter option-set js-radio-button-group" data-filter-group="program-type">
@@ -33,16 +33,17 @@
                     </div>
                   </div>
                 </fieldset>
-              </div>
 
-              {% editable_region_block name: "show-other-types", scope: component.scope %}
-                <p class="mb-4"><a href="#">View Minors</a></p>
-              {% endeditable_region_block %}
+                {% editable_region_block name: "show-other-types", scope: component.scope %}
+                  <p><a href="#">View Minors</a></p>
+                {% endeditable_region_block %}
+
+              </div>
 
             {% endif %}
 
             {% if page.data.disableDeliveryMethod != '1' %}
-              <div class="option-combo delivery-option">
+              <div class="option-combo delivery-option mb-4">
                 <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by Delivery Option:</legend>
                 <div class="filter option-set js-radio-button-group" data-filter-group="delivery-option">
                   <div class="form-check">
@@ -63,7 +64,7 @@
 
             {% if page.data.schoolFilters != blank %}
               {% assign schools = page.data.schoolFilters | split: "," %}
-              <div class="option-combo school mt-4">
+              <div class="option-combo school">
                 <legend class="h6 small text-uppercase mb-1 helvetica-neue-bold">Filter by School:</legend>
                 <div class="filter option-set js-radio-button-group" data-filter-group="school">
                   <div class="form-check">
