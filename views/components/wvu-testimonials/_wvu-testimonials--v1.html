@@ -92,6 +92,11 @@
                         <span class="d-block helvetica-neue-light">{{ item.content['wvu-profile-1__title'] }}</span><span class="d-block small {{ itemBodyClasses }}">{{ item.content['wvu-profile-1__organization'] }}</span>
                       </p>
                     {% endif %}
+                    {% if item.content['wvu-profile-1__major'] != blank or item.content['wvu-profile-1__graduation-year'] != blank %}
+                      <p>
+                        <span class="d-block helvetica-neue-light">{{ item.content['wvu-profile-1__major'] }}</span><span class="d-block small {{ itemBodyClasses }}">{{ item.content['wvu-profile-1__graduation-year'] }}</span>
+                      </p>
+                    {% endif %}
                   </div>
 
                   {% if itemReadMoreButtonText != 'none' %}
