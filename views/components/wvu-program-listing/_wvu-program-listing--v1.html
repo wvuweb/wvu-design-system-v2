@@ -163,7 +163,7 @@
                           {% if areasOfEmphasisCount >= 1 %}
                             <h3 class="border-bottom border-light h5 mt-3">Areas of Emphasis</h3>
                             <ul class="list-unstyled">
-                              {% for area in programEntry.areasOfEmphasis %}
+                              {% for area in myAreas %}
                                 <li><span class="fa-solid fa-angle-right text-wvu-gold" aria-hidden="true"></span> {{ area.title }}</li>
                               {% endfor %}
                             </ul>
