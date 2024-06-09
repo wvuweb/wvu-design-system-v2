@@ -77,6 +77,9 @@
                   {%- if item.content['wvu-profile-1__title'] != blank %}
                     <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
                   {%- endif %}
+                  {% if item.content['wvu-profile-1__organization'] != blank %}
+                    <span class="helvetica-neue-light d-block">{{ item.content.wvu-profile-1__organization }}</span>
+                  {% endif %}
                 </div>
               </div>
             </div>
