@@ -75,10 +75,10 @@
                     <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
                   {% endif %}
                   {%- if item.content['wvu-profile-1__title'] != blank %}
-                    <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
+                    <span class="small helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</span>
                   {%- endif %}
                   {% if item.content['wvu-profile-1__organization'] != blank %}
-                    <span class="helvetica-neue-light d-block">{{ item.content.wvu-profile-1__organization }}</span>
+                    <span class="small helvetica-neue-light d-block">{{ item.content.wvu-profile-1__organization }}</span>
                   {% endif %}
                 </div>
               </div>
