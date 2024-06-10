@@ -131,6 +131,7 @@ custom_site_attributes:
   - twitter_handle
   - twitter_url
   - twitter_widget_id
+  - use_contact_placeholders
   - wireframe_masthead_nav_slim
   - youtube_url
 
