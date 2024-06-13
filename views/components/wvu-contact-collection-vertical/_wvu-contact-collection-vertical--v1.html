@@ -105,7 +105,7 @@
                   {% if item.content.wvu-profile-1__office != blank %}
                     <p class="mb-0">
                       {% if item.content.wvu-profile-1__office-url != blank %}
-                        <span aria-hidden="true" class="fa-solid fa-building"></span> <a href="mailto:{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
+                        <span aria-hidden="true" class="fa-solid fa-building"></span> <a href="{{ item.content.wvu-profile-1__office-url }}">{{ item.content.wvu-profile-1__office }}</a>
                       {% else %}
                         <span aria-hidden="true" class="fa-solid fa-building"></span> {{ item.content.wvu-profile-1__office }}
                       {% endif %}
