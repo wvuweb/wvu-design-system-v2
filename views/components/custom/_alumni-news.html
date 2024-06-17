@@ -21,7 +21,7 @@
     <div class="row">
       <div class="mb-3 mb-lg-0 col-lg-6">
         {% for magStory in magStoryEntries.stories limit: 1 %}
-          {% assign magStoryImg = magStory.img | prepend: 'https://magazine.wvu.edu' %}
+          {% assign magStoryImg = magStory.img %}
           <div class="d-md-none">
             <div class="ratio ratio-16x9 wvu-bg-position-center wvu-bg-size-cover" style="background-image: url('{{ magStoryImg }}')"></div>
             <div class="bg-wvu-blue">
