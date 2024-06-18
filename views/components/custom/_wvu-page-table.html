@@ -1,0 +1,43 @@
+{%- liquid
+  assign root = site.root_page
+-%}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in root.children hidden: true %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.url }}</td>
+      </tr>
+      {% for child in item.children hidden: true %}
+        <tr>
+          <td>{{ child.name }}</td>
+          <td>{{ child.url }}</td>
+        </tr>
+        {% for grandChild in child.children hidden: true %}
+          <tr>
+            <td>{{ grandChild.name }}</td>
+            <td>{{ grandChild.url }}</td>
+          </tr>
+          {% for greatGrandchild in grandChild.children hidden: true %}
+            <tr>
+              <td>{{ greatGrandchild.name }}</td>
+              <td>{{ greatGrandchild.url }}</td>
+            </tr>
+            {% for greatGreatGrandchild in greatGrandChild.children hidden: true %}
+              <tr>
+                <td>{{ greatGreatGrandchild.name }}</td>
+                <td>{{ greatGreatGrandchild.url }}</td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>

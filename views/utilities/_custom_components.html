@@ -9,5 +9,6 @@
   {% when 'alumni-events' %}{% render "components/custom/alumni-events" slot: slot %}
   {% when 'alumni-news' %}{% render "components/custom/alumni-news" slot: slot %}
   {% when 'alumni-podcast-hero' %}{% render "components/custom/alumni-podcast-hero" slot: slot %}
+  {% when 'page-table' %}{% render "components/custom/wvu-page-table" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}
