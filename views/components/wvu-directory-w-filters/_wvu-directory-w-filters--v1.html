@@ -70,7 +70,7 @@
           {% assign filterLabels = page.content[filterLabelsRegionName] | split: ',' %}
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
-            <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
+            <label class="helvetica-neue-bold mb-1" for="{{ filterId }}">Filter by {{ page.content[filterRegionName] }}</label>
             <select class="form-select filters-select" id="{{ filterId }}" value-group="{{ page.content[filterRegionName] | replace: ' ', '-' | downcase }}">
               <option value="">Any {{ page.content[filterRegionName] }}</option>
               {% for item in filterLabels %}
