@@ -71,11 +71,11 @@
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
             <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
-            <select class="form-select filters-select" id="{{ filterId }}">
-              <option value="*">All {{ page.content[filterRegionName] }}</option>
+            <select class="form-select filters-select" id="{{ filterId }}" value-group="{{ page.content[filterRegionName] | replace: ' ', '-' | downcase }}">
+              <option value="">Any {{ page.content[filterRegionName] }}s</option>
               {% for item in filterLabels %}
                 {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
-                <option value="{{ itemLabel }}">{{ item }}</option>
+                <option value=".{{ itemLabel }}">{{ item }}</option>
               {% endfor %}
             </select>
           </div>
@@ -194,17 +194,36 @@
 
   <script>
 
+    // init Isotope
     var $grid = $('.directory').isotope({
       itemSelector: '.directory-item',
-      layoutMode: 'none',
+      layout: 'none',
       transitionDuration: 0
     });
 
-    $('.filters-select').on( 'change', function() {
-      // get filter value from option value
-      var filterValue = this.value;
+    // store filter for each group
+    var filters = {};
+
+    $('.filters-select').on( 'change', function( event ) {
+      var $select = $( event.target );
+      // get group key
+      var filterGroup = $select.attr('value-group');
+      // set filter for group
+      filters[ filterGroup ] = event.target.value;
+      // combine filters
+      var filterValue = concatValues( filters );
+      // set filter for Isotope
       $grid.isotope({ filter: filterValue });
     });
+
+    // flatten object by concatting values
+    function concatValues( obj ) {
+      var value = '';
+      for ( var prop in obj ) {
+        value += obj[ prop ];
+      }
+      return value;
+    }
 
   </script>
 
