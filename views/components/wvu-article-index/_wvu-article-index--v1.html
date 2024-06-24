@@ -1,4 +1,5 @@
 {%- liquid
+  articleSidebarRegionName = component.name | append: '__sidebar'
   assign disableAuthor = component.disableAuthor | default: page.data.disable_articles_author | default: false
   assign showHidden = component.hidden | default: false
 
@@ -137,6 +138,9 @@
               <p class="mb-0">New to creating articles, or just need a refresher? Check out our <a href="https://cleanslatecms.wvu.edu/how-to/content-publishing/basic-editing/blogs">blog tutorials</a>.
             </div>
           {% endif %}
+          <div class="mb-4">
+            {% editable_region name: articleSidebarRegionName, scope: component.scope %}
+          </div>
           {% render "components/wvu-article-archive" component: component %}
         </div>
       </aside>
