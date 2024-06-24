@@ -43,9 +43,9 @@
         {% for item in (1..numberOfFilters) %}
           {% assign filterRegionName = component.name | append: '__filter-name-' | append: foorloop.index %}
           {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: foorloop.index %}
-          <p>Filter Name:</p>
+          <p>Filter {{ forloop.index }} Name:</p>
           {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
-          <p>Filter Labels (comma-separated list, no spaces):</p>
+          <p>Filter {{ forloop.index }} Labels (comma-separated list, no spaces):</p>
           {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
         {% endfor %}
       </div>
