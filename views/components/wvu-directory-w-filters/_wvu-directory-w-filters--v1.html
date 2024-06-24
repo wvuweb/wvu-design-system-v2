@@ -70,7 +70,7 @@
           {% assign filterLabels = page.content[filterLabelsRegionName] | split: ',' %}
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
-            <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</div>
+            <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
             <select class="form-select filters-select" id="{{ filterId }}">
               {% for item in filterLabels %}
                 {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
@@ -193,8 +193,8 @@
 
   <script>
 
-    var $grid = $('.grid').isotope({
-      itemSelector: '.grid-item'
+    var $grid = $('.directory').isotope({
+      itemSelector: '.directory-item'
     });
 
     $('.filters-select').on( 'change', function() {
