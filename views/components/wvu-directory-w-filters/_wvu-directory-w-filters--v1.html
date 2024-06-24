@@ -46,7 +46,7 @@
           {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
           <p>Filter {{ filterIndex }} Name:</p>
           {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
-          <p>Filter {{ filterIndex }} Labels (comma-separated list, no spaces):</p>
+          <p>Filter {{ filterIndex }} Labels (comma-separated list):</p>
           {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
         {% endfor %}
       </div>
@@ -73,9 +73,8 @@
             <select class="form-select" aria-labelledby="{{ filterId }}">
               <label id="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
               {% for item in filterLabels %}
-                {% assign formattedItem = item | replace: ' ', '-' | downcase %}
-                {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
-                <option value="{{ formattedItem }}">{{ formattedItemName }}</option>
+                {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | downcase %}
+                <option value="{{ itemLabel }}">{{ item }}</option>
               {% endfor %}
             </select>
           </div>
