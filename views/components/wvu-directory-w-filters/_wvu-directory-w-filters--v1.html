@@ -38,15 +38,15 @@
 
     {% if edit_mode %}
       <div class="alert alert-info mb-4">
-        <p>Enter the number of filters, then save and refresh the page:</p>
+        <p class="mb-0">Enter the number of filters, then save and refresh the page:</p>
         {% editable_region name: numberOfFiltersRegionName type: 'simple', scope: component.scope %}
         {% for item in (1..numberOfFilters) %}
           {% assign filterIndex = forloop.index %}
           {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
           {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
-          <p>Filter {{ filterIndex }} Name:</p>
+          <p class="mb-0 mt-2">Filter {{ filterIndex }} Category:</p>
           {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
-          <p>Filter {{ filterIndex }} Labels (comma-separated list):</p>
+          <p class="mb-0 mt-2">Filter {{ filterIndex }} Filters (comma-separated list):</p>
           {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
         {% endfor %}
       </div>
