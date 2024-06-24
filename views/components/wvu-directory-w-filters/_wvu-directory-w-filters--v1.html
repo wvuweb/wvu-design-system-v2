@@ -101,7 +101,7 @@
 
         {%- assign labels = item.tags | split: "," %}
 
-        <li data-isotope='{ "itemSelector": ".directory-item", "getSortData": { "category": "[administration student-services]" }' class="directory-item border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2 {% for label in labels %}{{ label | replace: ' ', '' | downcase }} {% endfor %}">
+        <li class="directory-item border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2 {% for label in labels %}{{ label | replace: ' ', '' | downcase }} {% endfor %}">
           <div class="row">          
             <div class="col-12 col-sm-3 col-lg-3 mb-2 mb-sm-0">
               <div class="row">
