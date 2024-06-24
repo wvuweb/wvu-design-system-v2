@@ -34,21 +34,7 @@
 <!-- Loop By: {{ component.loopBy }} -->
 {% capture component_content %}
 
-  {% if edit_mode %}
-    <div class="alert alert-info mb-4">
-      <p>Enter the number of filters, then save and refresh the page:</p>
-      {% editable_region name: numberOfFiltersRegionName type: 'simple', scope: component.scope %}
-      {% assign numberOfFilters = page.content.numberOfFiltersRegionName | times: 1 %}
-      {% for item in (1..numberOfFilters) %}
-        {% assign filterRegionName = component.name | append: 'filter-name-' | append: foorloop.index %}
-        {% assign filterLabelsRegionName = component.name | append: 'filter-labels-' | append: foorloop.index %}
-        <p>Filter Name:</p>
-        {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
-        <p>Filter Labels (comma-separated list, no spaces):</p>
-        {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
-      {% endfor %}
-    </div>
-  {% endif }
+
   <div class="container wvu-z-index-content">
     {%- if edit_mode or page.content[component.region_names.header] != blank %}
       {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
@@ -59,22 +45,7 @@
       {% endeditable_region_block %}
     {%- endif %}
 
-    {% for item in (1..numberOfFilters) %}
-      {% assign filterRegionName = component.name | append: 'filter-name-' | append: foorloop.index %}
-      {% assign filterLabelsRegionName = component.name | append: 'filter-labels-' | append: foorloop.index %}
-      {% assign filterLabels = page.content.filterLabelsRegionName | split: ',' %}
-      {% assign filterId = page.content.filterRegionName | prepend: 'label-' | replace: ' ', '-' | downcase %}
-      <form>
-        <select class="form-select" aria-labelledby="{{ filterId }}">
-          <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
-          {% for item in filterLabels %}
-            {% assign formattedItem = item | replace: ' ', '-' | downcase %}
-            {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
-            <option value="{{ formattedItem }}">{{ formattedItemName }}</option>
-          {% endfor %}
-        </select>
-      </form>
-    {% endfor %}
+
 
     {% if edit_mode and itemCount == 0 %}
       {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
