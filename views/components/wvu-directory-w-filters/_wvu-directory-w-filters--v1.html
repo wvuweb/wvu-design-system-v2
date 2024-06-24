@@ -72,6 +72,7 @@
           <div class="col">
             <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
             <select class="form-select filters-select" id="{{ filterId }}">
+              <option value="*">All {{ page.content[filterRegionName] }}</option>
               {% for item in filterLabels %}
                 {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
                 <option value="{{ itemLabel }}">{{ item }}</option>
