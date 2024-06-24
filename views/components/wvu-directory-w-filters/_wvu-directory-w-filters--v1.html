@@ -71,7 +71,7 @@
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
             <select class="form-select" aria-labelledby="{{ filterId }}">
-              <p id="{{ filterId }}"><strong>{{ page.content[filterRegionName] }}</strong></p>
+              <div id="{{ filterId }}"><strong>{{ page.content[filterRegionName] }}</strong></div>
               {% for item in filterLabels %}
                 {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
                 <option value="{{ itemLabel }}">{{ item }}</option>
