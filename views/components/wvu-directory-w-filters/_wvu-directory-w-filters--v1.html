@@ -61,14 +61,14 @@
       {% endeditable_region_block %}
     {%- endif %}
 
-    {% for item in (1..numberOfFilters) %}
-      {% assign filterIndex = forloop.index %}
-      {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
-      {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
-      {% assign filterLabels = page.content.filterLabelsRegionName | split: ',' %}
-      {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
-      <form>
-        <div class="row">
+    <form>
+      <div class="row">
+        {% for item in (1..numberOfFilters) %}
+          {% assign filterIndex = forloop.index %}
+          {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
+          {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
+          {% assign filterLabels = page.content[filterLabelsRegionName] | split: ',' %}
+          {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
             <select class="form-select" aria-labelledby="{{ filterId }}">
               <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
@@ -79,9 +79,9 @@
               {% endfor %}
             </select>
           </div>
-        </div>
-      </form>
-    {% endfor %}
+        {% endfor %}
+      </div>
+    </form>
 
     {% if edit_mode and itemCount == 0 %}
       {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
