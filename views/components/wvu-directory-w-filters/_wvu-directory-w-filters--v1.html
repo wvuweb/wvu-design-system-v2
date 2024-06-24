@@ -30,7 +30,6 @@
 
   assign numberOfFiltersRegionName = component.name | append: '-number-of-filters'
   assign numberOfFilters = page.content[numberOfFiltersRegionName] | times: 1
-  assign labelsToFilter = page.content[filterLabelsRegionName] | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | replace: ',' ' ' | downcase
 -%}
 
 <!-- Loop By: {{ component.loopBy }} -->
@@ -194,11 +193,14 @@
 
   <script>
 
-    var $grid = $('.directory').isotope({
-      itemSelector: '.directory-item',
-      getSortData: {
-        category: '[data-category]'
-      }
+    var $grid = $('.grid').isotope({
+      itemSelector: '.grid-item'
+    });
+
+    $('.filters-select').on( 'change', function() {
+      // get filter value from option value
+      var filterValue = this.value;
+      $grid.isotope({ filter: filterValue });
     });
 
   </script>
