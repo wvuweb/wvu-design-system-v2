@@ -1,0 +1,191 @@
+{%- liquid
+  assign componentLimit = component.limit | default: 200
+  assign root = site.root_page
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign componentLabels = component.customLabel | default: component.itemLabels
+
+  assign items = root.descendants | filter_pages: by: component.loopBy, sort: component.loopOrder, tags: componentLabels, tags_match: component.loopLabelsMatch, hidden: component.showHidden, random: component.random, limit: component.limit
+  assign itemCount = 0
+
+  assign componentLoopBy = component.loopBy
+  
+  case componentLoopBy
+    when "published_at" or "created_at" or "updated_at"
+      assign sortedItems = items | sort: componentLoopBy | reverse
+    else
+      assign sortedItems = items | sort: componentLoopBy
+  endcase
+
+  if component.loopOrder == "desc"
+    assign sortedItems = sortedItems | reverse
+  endif
+
+  for items in items.all
+    assign itemCount = itemCount | plus: 1
+  endfor
+
+  if items > component.limit
+    assign itemCount = component.limit | times: 1
+  endif
+
+  assign numberOfFiltersRegionName = component.name | append: '-number-of-filters'
+-%}
+
+<!-- Loop By: {{ component.loopBy }} -->
+{% capture component_content %}
+
+  {% if edit_mode %}
+    <div class="alert alert-info mb-4">
+      <p>Enter the number of filters, then save and refresh the page:</p>
+      {% editable_region name: numberOfFiltersRegionName type: 'simple', scope: component.scope %}
+      {% assign numberOfFilters = page.content.numberOfFiltersRegionName | times: 1 %}
+      {% for item in (1..numberOfFilters) %}
+        {% assign filterRegionName = component.name | append: 'filter-name-' | append: foorloop.index %}
+        {% assign filterLabelsRegionName = component.name | append: 'filter-labels-' | append: foorloop.index %}
+        <p>Filter Name:</p>
+        {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
+        <p>Filter Labels (comma-separated list, no spaces):</p>
+        {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
+      {% endfor %}
+    </div>
+  {% endif }
+  <div class="container wvu-z-index-content">
+    {%- if edit_mode or page.content[component.region_names.header] != blank %}
+      {% comment %}<!-- This is just a label for the editable region that follows in order to make it clear to content editors what the region is for (in case they delete content and forget). -->{% endcomment %}
+      {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+      {% comment %}<!-- For the h2, apply an ID that will tell screanreaders to use this element as the label for the section. Also apply classes to the header. If supplied by user, use those. If not use default. -->{% endcomment %}
+      {% editable_region_block name: component.region_names.header scope: component.scope %}
+        <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue wvu-slash wvu-slash--skinny visually-hidden">Directory Headline</h2>
+      {% endeditable_region_block %}
+    {%- endif %}
+
+    {% for item in (1..numberOfFilters) %}
+      {% assign filterRegionName = component.name | append: 'filter-name-' | append: foorloop.index %}
+      {% assign filterLabelsRegionName = component.name | append: 'filter-labels-' | append: foorloop.index %}
+      {% assign filterLabels = page.content.filterLabelsRegionName | split: ',' %}
+      {% assign filterId = page.content.filterRegionName | prepend: 'label-' | replace: ' ', '-' | downcase %}
+      <form>
+        <select class="form-select" aria-labelledby="{{ filterId }}">
+          <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
+          {% for item in filterLabels %}
+            {% assign formattedItem = item | replace: ' ', '-' | downcase %}
+            {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
+            <option value="{{ formattedItem }}">{{ formattedItemName }}</option>
+          {% endfor %}
+        </select>
+      </form>
+    {% endfor %}
+
+    {% if edit_mode and itemCount == 0 %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-warning--v1" component: component %}
+    {% else %}
+      {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
+    {% endif %}
+
+    <ul class="list-unstyled">
+      {% for item in sortedItems %}
+
+        {% liquid
+          if item.data.alternate_url != blank
+            assign link_href = item.data.alternate_url
+          else
+            assign link_href = item.url
+          endif
+        %}
+
+        {%- assign labels = item.tags | split: "," %}
+
+        <li class="border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2 {% for label in labels %}{{ label | replace: ' ', '' | downcase }} {% endfor %}">
+          <div class="row">          
+            <div class="col-12 col-sm-3 col-lg-3 mb-2 mb-sm-0">
+              <div class="row">
+                <div class="col-lg-3 my-2 my-lg-0">
+                  {% if item.data.thumbnail_url_sq != blank %}
+                    {% assign itemThumbnailSrc = item.data.thumbnail_url_sq | build_image_url: size: '200x200', format: 'webp' %}
+                    <img class="rounded-circle shadow d-inline-block" src="{{ itemThumbnailSrc }}" alt="{{ item.content['wvu-profile-1__name'] | default: item.name }} headshot" />
+                  {% endif %}
+                </div>
+                <div class="col-lg-9 align-self-center d-sm-none d-lg-block">
+                  {% if item.content['wvu-profile-1__name'] != blank %}
+                    <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
+                  {% else %}
+                    <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
+                  {% endif %}
+                  {%- if item.content['wvu-profile-1__title'] != blank %}
+                    <span class="small helvetica-neue-bold d-block lh-sm">{{ item.content['wvu-profile-1__title'] }}</span>
+                  {%- endif %}
+                  {% if item.content['wvu-profile-1__organization'] != blank %}
+                    <span class="small helvetica-neue-light d-block lh-sm">{{ item.content.wvu-profile-1__organization }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-8 col-lg-9">
+              <div class="row h-100 flex-column flex-lg-row justify-content-center">
+                <div class="col-12 mb-2 d-none d-sm-block d-lg-none">
+                  {% if item.content['wvu-profile-1__name'] != blank %}
+                    <strong class="d-block">{{ item.content['wvu-profile-1__name'] | default: item.name }}</strong>
+                  {% else %}
+                    <strong class="d-block">{{ item.alternate_name | default: item.name }}</strong>
+                  {% endif %}
+                  {%- if item.content['wvu-profile-1__title'] != blank %}
+                    <small class="helvetica-neue-light d-block">{{ item.content['wvu-profile-1__title'] }}</small>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg align-self-center">
+                  {%- if item.content['wvu-profile-1__phone'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-phone"></span> <a href="tel:{{ item.content['wvu-profile-1__phone'] }}">{{ item.content['wvu-profile-1__phone'] }}</a>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg-5 align-self-center">
+                  {%- if item.content['wvu-profile-1__email'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-envelope"></span> <a href="mailto:{{ item.content['wvu-profile-1__email'] }}"> {{ item.content['wvu-profile-1__email'] }}</a>
+                  {%- endif %}
+                </div>
+                <div class="col-12 col-lg align-self-center">
+                  {%- if item.content['wvu-profile-1__office'] != blank %}
+                    <span aria-hidden="true" class="fa-solid fa-building"></span> {%- if item.content['wvu-profile-1__office-url'] != blank %} <a href="{{ item.content['wvu-profile-1__office-url'] }}">{{ item.content['wvu-profile-1__office'] }}</a>{% else %} {{ item.content['wvu-profile-1__office'] }}{%- endif %}
+                  {%- endif %}
+                </div>
+                {% if itemReadMoreButtonText != 'none' %}
+                  {% if item.data.link_text != blank %}
+                    {% assign link_text = item.data.link_text %}
+                  {% else %}
+                    {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                  {% endif %}
+
+                  <div class="col-12 col-lg align-self-center">
+                    <span aria-hidden="true" class="fa-solid fa-user-circle"></span> <a href="{{ link_href }}">{{ link_text }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% comment %}
+    {% assign pagination = items | blog_pagination %}
+    {% if pagination.total_pages > 1 %}
+      <nav class="btn-group" aria-label="Pagination">
+        <a href="{{ pagination.next_page_url }}" class="btn btn-secondary page-link{% if pagination.is_last_page %} disabled{% endif %}">Older Articles</a>
+        <a href="{{ pagination.prev_page_url }}" class="btn btn-secondary page-link{% if pagination.is_first_page %} disabled{% endif %}">Newer Articles</a>
+      </nav>
+    {% endif %}
+    {% endcomment %}
+
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" component: component %}
+
+{% content_for "page_js" %}
+
+  {% link_javascript name: "vendor/isotope/jquery-1.7.1.min, vendor/isotope/jquery.isotope.min" %}
+
+  <script>
+  </script>
+
+{% endcontent_for %}

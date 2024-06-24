@@ -1,0 +1,19 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.directory_w_filters | default: '1'
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "directory-w-filters",
+    "defaultComponentClasses": "",
+    "defaultItemButtonText": "Profile",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-directory/wvu-directory-w-filters--v1" component: component %}
+  {% else %}{% render "components/wvu-directory/wvu-directory-w-filters--v1" component: component %}
+{% endcase %}
