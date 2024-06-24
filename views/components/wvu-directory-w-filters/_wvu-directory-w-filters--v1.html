@@ -29,6 +29,7 @@
   endif
 
   assign numberOfFiltersRegionName = component.name | append: '-number-of-filters'
+  assign numberOfFilters = page.content[numberOfFiltersRegionName] | times: 1
 -%}
 
 <!-- Loop By: {{ component.loopBy }} -->
@@ -39,7 +40,6 @@
       <div class="alert alert-info mb-4">
         <p>Enter the number of filters, then save and refresh the page:</p>
         {% editable_region name: numberOfFiltersRegionName type: 'simple', scope: component.scope %}
-        {% assign numberOfFilters = page.content[numberOfFiltersRegionName] | times: 1 %}
         {% for item in (1..numberOfFilters) %}
           {% assign filterIndex = forloop.index %}
           {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
@@ -68,14 +68,18 @@
       {% assign filterLabels = page.content.filterLabelsRegionName | split: ',' %}
       {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
       <form>
-        <select class="form-select" aria-labelledby="{{ filterId }}">
-          <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
-          {% for item in filterLabels %}
-            {% assign formattedItem = item | replace: ' ', '-' | downcase %}
-            {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
-            <option value="{{ formattedItem }}">{{ formattedItemName }}</option>
-          {% endfor %}
-        </select>
+        <div class="row">
+          <div class="col">
+            <select class="form-select" aria-labelledby="{{ filterId }}">
+              <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
+              {% for item in filterLabels %}
+                {% assign formattedItem = item | replace: ' ', '-' | downcase %}
+                {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
+                <option value="{{ formattedItem }}">{{ formattedItemName }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
       </form>
     {% endfor %}
 
