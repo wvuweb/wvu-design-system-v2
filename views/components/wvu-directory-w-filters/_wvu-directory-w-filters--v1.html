@@ -195,7 +195,8 @@
 
     var $grid = $('.directory').isotope({
       itemSelector: '.directory-item',
-      layoutMode: 'fitRows'
+      layoutMode: 'none',
+      transitionDuration: 0
     });
 
     $('.filters-select').on( 'change', function() {
