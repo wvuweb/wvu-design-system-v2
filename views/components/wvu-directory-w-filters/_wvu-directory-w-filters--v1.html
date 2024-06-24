@@ -61,7 +61,7 @@
       {% endeditable_region_block %}
     {%- endif %}
 
-    <form>
+    <form class="mb-4">
       <div class="row">
         {% for item in (1..numberOfFilters) %}
           {% assign filterIndex = forloop.index %}
@@ -71,7 +71,7 @@
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
             <select class="form-select" aria-labelledby="{{ filterId }}">
-              <label id="{{ filterId }}">{{ page.content.filterRegionName }}</label>
+              <label id="{{ filterId }}">{{ page.content[filterRegionName] }}</label>
               {% for item in filterLabels %}
                 {% assign formattedItem = item | replace: ' ', '-' | downcase %}
                 {% assign formattedItemName = item | replace: '-', ' ' | capitalize %}
