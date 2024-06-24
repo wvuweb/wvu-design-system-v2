@@ -29,7 +29,7 @@
   endif
 
   assign numberOfFiltersRegionName = component.name | append: '-number-of-filters'
-  assign numberOfFilters = page.content[numberOfFiltersRegionName] | times: 1
+  assign numberOfFilters = page.content[numberOfFiltersRegionName] | strip | times: 1
 -%}
 
 <!-- Loop By: {{ component.loopBy }} -->
@@ -42,12 +42,28 @@
         {% editable_region name: numberOfFiltersRegionName type: 'simple', scope: component.scope %}
         {% for item in (1..numberOfFilters) %}
           {% assign filterIndex = forloop.index %}
-          {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
+          {% assign filterCategoryLabelRegionName = component.name | append: '__filter-category-label-' | append: filterIndex %}
+          {% assign filterCategoryValueRegionName = component.name | append: '__filter-category-value-' | append: filterIndex %}
           {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
-          <p class="mb-1 mt-2">Filter {{ filterIndex }} Category:</p>
-          {% editable_region name: filterRegionName type: 'simple', scope: component.scope %}
-          <p class="mb-1 mt-2">Filter {{ filterIndex }} Filters (comma-separated list):</p>
-          {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
+          {% assign filterValuesRegionName = component.name | append: '__filter-values-' | append: filterIndex %}
+          <div class="row">
+            <div class="col-lg mb-4 mb-lg-0">
+              <p class="mb-1 mt-2">Filter {{ filterIndex }} Category Label:</p>
+              {% editable_region name: filterCategoryLabelRegionName type: 'simple', scope: component.scope %}
+            </div>
+            <div class="col-lg mb-4 mb-lg-0">
+              <p class="mb-1 mt-2">Filter {{ filterIndex }} Category Value:</p>
+              {% editable_region name: filterCategoryValueRegionName type: 'simple', scope: component.scope %}
+            </div>
+            <div class="col-lg mb-4 mb-lg-0">
+              <p class="mb-1 mt-2">Filter {{ filterIndex }} Filter Labels (comma-separated list):</p>
+              {% editable_region name: filterLabelsRegionName type: 'simple', scope: component.scope %}
+            </div>
+            <div class="col-lg mb-4 mb-lg-0">
+              <p class="mb-1 mt-2">Filter {{ filterIndex }} Filter Values (comma-separated list, must map to labels):</p>
+              {% editable_region name: filterValuesRegionName type: 'simple', scope: component.scope %}
+            </div>
+          </div>
         {% endfor %}
       </div>
     {% endif %}
@@ -65,17 +81,19 @@
       <div class="row">
         {% for item in (1..numberOfFilters) %}
           {% assign filterIndex = forloop.index %}
-          {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
+          {% assign filterCategoryLabelRegionName = component.name | append: '__filter-category-label-' | append: filterIndex %}
+          {% assign filterCategoryValueRegionName = component.name | append: '__filter-category-value-' | append: filterIndex %}
           {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
+          {% assign filterValuesRegionName = component.name | append: '__filter-values-' | append: filterIndex %}
           {% assign filterLabels = page.content[filterLabelsRegionName] | split: ',' %}
-          {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
+          {% assign filterValues = page.content[filterValuesRegionName] | split: ',' %}
+          {% assign filterId = page.content[filterCategoryValueRegionName] | strip | prepend: 'label-' %}
           <div class="col">
-            <label class="helvetica-neue-bold mb-1" for="{{ filterId }}">Filter by {{ page.content[filterRegionName] }}</label>
-            <select class="form-select filters-select" id="{{ filterId }}" value-group="{{ page.content[filterRegionName] | replace: ' ', '-' | downcase }}">
-              <option value="">Any {{ page.content[filterRegionName] }}</option>
-              {% for item in filterLabels %}
-                {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
-                <option value=".{{ itemLabel }}">{{ item }}</option>
+            <label class="helvetica-neue-bold mb-1" for="{{ filterId }}">Filter by {{ page.content[filterCategoryLabelRegionName] }}</label>
+            <select class="form-select filters-select" id="{{ filterId }}" value-group="{{ page.content[filterCategoryValueRegionName] | strip }}">
+              <option value="">Any {{ page.content[filterCategoryLabelRegionName] }}</option>
+              {% for item in filterValues %}
+                <option value=".{{ item | strip }}">{{ filterLabels[forloop.index0] }}</option>
               {% endfor %}
             </select>
           </div>
