@@ -30,6 +30,7 @@
 
   assign numberOfFiltersRegionName = component.name | append: '-number-of-filters'
   assign numberOfFilters = page.content[numberOfFiltersRegionName] | times: 1
+  assign labelsToFilter = page.content[filterLabelsRegionName] | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | replace: ',' ' ' | downcase
 -%}
 
 <!-- Loop By: {{ component.loopBy }} -->
@@ -70,8 +71,8 @@
           {% assign filterLabels = page.content[filterLabelsRegionName] | split: ',' %}
           {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
           <div class="col">
-            <select class="form-select" aria-labelledby="{{ filterId }}">
-              <div id="{{ filterId }}"><strong>{{ page.content[filterRegionName] }}</strong></div>
+            <label for="{{ filterId }}">{{ page.content[filterRegionName] }}</div>
+            <select class="form-select filters-select" id="{{ filterId }}">
               {% for item in filterLabels %}
                 {% assign itemLabel = item | replace: ' ', '-' | replace: '&', '' | replace: '--', '-' | downcase %}
                 <option value="{{ itemLabel }}">{{ item }}</option>
@@ -88,7 +89,7 @@
       {% render "includes/wvu-collection-warnings/wvu-collection-labels-label-tooltip--v1" component: component %}
     {% endif %}
 
-    <ul class="list-unstyled">
+    <ul class="list-unstyled directory">
       {% for item in sortedItems %}
 
         {% liquid
@@ -101,7 +102,7 @@
 
         {%- assign labels = item.tags | split: "," %}
 
-        <li class="border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2 {% for label in labels %}{{ label | replace: ' ', '' | downcase }} {% endfor %}">
+        <li data-isotope='{ "itemSelector": ".directory-item", "getSortData": { "category": "[administration student-services]" }' class="directory-item border-bottom border-1 border-black-50 pt-2 pb-3 pb-sm-2 {% for label in labels %}{{ label | replace: ' ', '' | downcase }} {% endfor %}">
           <div class="row">          
             <div class="col-12 col-sm-3 col-lg-3 mb-2 mb-sm-0">
               <div class="row">
@@ -192,6 +193,14 @@
   {% link_javascript name: "vendor/isotope/jquery-1.7.1.min, vendor/isotope/jquery.isotope.min" %}
 
   <script>
+
+    var $grid = $('.directory').isotope({
+      itemSelector: '.directory-item',
+      getSortData: {
+        category: '[data-category]'
+      }
+    });
+
   </script>
 
 {% endcontent_for %}
