@@ -62,8 +62,9 @@
     {%- endif %}
 
     {% for item in (1..numberOfFilters) %}
-      {% assign filterRegionName = component.name | append: '__filter-name-' | append: foorloop.index %}
-      {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: foorloop.index %}
+      {% assign filterIndex = forloop.index %}
+      {% assign filterRegionName = component.name | append: '__filter-name-' | append: filterIndex %}
+      {% assign filterLabelsRegionName = component.name | append: '__filter-labels-' | append: filterIndex %}
       {% assign filterLabels = page.content.filterLabelsRegionName | split: ',' %}
       {% assign filterId = page.content[filterRegionName] | prepend: 'label-' | replace: ' ', '-' | downcase %}
       <form>
