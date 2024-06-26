@@ -111,11 +111,6 @@
                       {% endif %}
                     </p>
                   {% endif %}
-                  {% if item.content.wvu-profile-1__collection-extras != blank %}
-                    <div class="my-2">
-                      {{ item.content.wvu-profile-1__collection-extras }}
-                    </div>
-                  {% endif %}
                 </div>
 
                 {%- if item.data.description != blank %}
@@ -125,6 +120,12 @@
                 {% else %}
                   {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
                 {%- endif %}
+
+                {% if item.content.wvu-profile-1__collection-extras != blank %}
+                  <div class="my-2">
+                    {{ item.content.wvu-profile-1__collection-extras }}
+                  </div>
+                {% endif %}
 
                 {% if itemReadMoreButtonText != 'none' %}
                   {% if item.data.link_text != blank %}
