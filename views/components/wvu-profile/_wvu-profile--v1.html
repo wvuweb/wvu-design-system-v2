@@ -15,12 +15,19 @@
     "officeURL": "wvu-{{ component.name }}__office-url",
     "website": "wvu-{{ component.name }}__website",
     "quote": "wvu-{{ component.name }}__quote",
-    "headerLabel": "wvu-{{ component.name }}__header-label"
+    "headerLabel": "wvu-{{ component.name }}__header-label",
+    "collectionExtras": "wvu-{{ component.name }}__collection-extras"
   }
 {% endparse_json %}
 
 {% capture component_content %}
   <div class="container wvu-z-index-content">
+    {% if edit_mode and page.data.enable_collection_extras != blank %}
+      <div class="alert alert-info mb-4">
+        <p>Put extra info here that you want to show up in a People Collection, People Collection Vertical, Contact Collection, or Contact Collection Vertical component below the person’s contact info.</p>
+        {% editable_region name: rNames.collectionExtras %}
+      </div>
+    {% endif %}
     <div class="row">
       <div class="col-md-6 col-lg-5 col-xl-4 mb-3 mb-md-0">
         <div class="row">

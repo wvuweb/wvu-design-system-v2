@@ -111,6 +111,11 @@
                       {% endif %}
                     </p>
                   {% endif %}
+                  {% if item.content.wvu-profile-1__collection-extras != blank %}
+                    <div class="my-2">
+                      {{ item.content.wvu-profile-1__collection-extras }}
+                    </div>
+                  {% endif %}
                 </div>
 
                 {%- if item.data.description != blank %}
