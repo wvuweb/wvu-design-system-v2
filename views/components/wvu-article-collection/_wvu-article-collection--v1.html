@@ -88,7 +88,7 @@
 
           <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
             {% assign itemThumbnailSrc = item.data.thumbnail_url | build_image_url: size: '960x640', format: 'webp' %}
-            {% if itemThumbnailSrc != blank %}
+            {% if item.data.thumbnail_url != blank %}
               <div class="mb-2">
                 <a href="{{ link_href }}" title="{{ itemReadMoreButtonText }}: {{ item.name }}" {{ hideImgLink }}>
                   <img class="card-img-top" src="{{ itemThumbnailSrc }}" alt="{{ item.data.thumbnail_alt  }}">
