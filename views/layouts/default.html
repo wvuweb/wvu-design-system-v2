@@ -89,7 +89,9 @@
       {% render "utilities/wvu-default-content-slots" defaultContent: defaultContent, slots: slots %}
     {% endif %}
 
-    {% render "components/wvu-footer" scope: 'site' %}
+    {% if site.data.disable_footer != 'true' %}
+      {% render "components/wvu-footer" scope: 'site' %}
+    {% endif %}
 
     {% link_javascript name: "vendor/bootstrap/bootstrap.bundle.min" %}
 

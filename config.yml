@@ -99,6 +99,7 @@ custom_site_attributes:
   - co_brand_subtitle
   - default_content_page_id
   - disable_component_styler
+  - disable_footer
   - disable_primary_nav
   - emergency_alert_disabled
   - emergency_alert_json_url
