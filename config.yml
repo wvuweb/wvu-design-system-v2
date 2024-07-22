@@ -122,6 +122,7 @@ custom_site_attributes:
   - masthead_logo_url
   - masthead_title
   - nav_dropdowns
+  - search_action
   - syndication_url
   - show_apply_links
   - show_instructions

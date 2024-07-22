@@ -1,3 +1,5 @@
+{% assign searchAction = site.data.search_action | default: 'https://search.wvu.edu/search' %}
+
 <!-- WVU Nav v4 -->
 <nav aria-label="Main navigation" id="nav-primary" class="wvu-site-nav bg-wvu-accent--blue-dark navbar navbar-expand-lg p-0 navbar-dark w-100">
   <div class="container">
@@ -93,7 +95,7 @@
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
-              <form class="form-inline w-100" action="https://search.wvu.edu/search" method="get" role="search" aria-label="Site Search">
+              <form class="form-inline w-100" action="{{ searchAction }}" method="get" role="search" aria-label="Site Search">
                 <label id="search-label" for="q">
                   <span class="visually-hidden">Search</span>
                 </label>
