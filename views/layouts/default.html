@@ -101,5 +101,9 @@
       <script type="text/javascript" src="{{ site.data.chatbot_url }}"></script>
     {% endif %}
 
+    {% if page.data.include_jquery == '1' %}
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    {% endif %}
+
   </body>
 </html>

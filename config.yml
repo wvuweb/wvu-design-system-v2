@@ -49,6 +49,9 @@ custom_data_attributes:
     title: Horizontal Nav Colors
   - icon_code:
     title: Icon Code
+  - include_jquery:
+    type: checkbox
+    title: Include Jquery
   - include_masonry:
     type: checkbox
     title: Include Masonry
