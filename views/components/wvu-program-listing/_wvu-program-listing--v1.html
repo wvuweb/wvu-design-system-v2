@@ -176,7 +176,7 @@
                     {% if webAddress != blank %}
                       <div class="col-lg-4">
                         <div class="bg-white p-3 py-lg-4 pl-lg-0 pr-lg-4 h-100">
-                          {% if webAddress contains "https://online.wvu.edu/" or webAddress contains "https://mediacollege.wvu.edu" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+                          {% if webAddress contains "https://online.wvu.edu/" or webAddress contains "https://mediacollege.wvu.edu" or webAddress contains "https://marketingcommunications.wvu.edu" or webAddress contains "https://creativeartsandmedia.wvu.edu" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
                             <div class="btn-group-vertical w-100 shadow-sm">
                               <a class="btn btn-light text-start w-100 d-flex align-items-center" href="{{ webAddress }}">
                                 <span class="fa-solid fa-external-link-alt text-center" aria-hidden="true" style="width: 2rem;"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
