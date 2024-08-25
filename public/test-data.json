@@ -1,0 +1,652 @@
+{
+  "Morgantown": {
+    "residentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 30146
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8490,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 31716
+      },
+      "resHallWithDependents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 10530,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 33756
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 30146
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 34866
+      }
+    },
+    "residentGraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 10026,
+        "total": 31454
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8490,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 10026,
+        "total": 33024
+      },
+      "resHallWithDependents": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 10530,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 10026,
+        "total": 35064
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8190,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 10026,
+        "total": 32724
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 8688,
+        "total": 34866
+      }
+    },
+    "nonResidentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 27192,
+        "total": 49250
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8490,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 27192,
+        "total": 50820
+      },
+      "resHallWithDependents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 10530,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 27192,
+        "total": 52860
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 27192,
+        "total": 49250
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 1416,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 27192,
+        "total": 53970
+      }
+    },
+    "nonResidentGraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 28152,
+        "total": 50180
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8490,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 28152,
+        "total": 51750
+      },
+      "resHallWithDependents": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 10530,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 28152,
+        "total": 53790
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 8190,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 28152,
+        "total": 51450
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 1386,
+        "food": 6092,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 28152,
+        "total": 54900
+      }
+    }
+  },
+  "KeyserAssociates": {
+    "residentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4656,
+        "total": 25300
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4656,
+        "total": 24890
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4656,
+        "total": 25300
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4656,
+        "total": 30020
+      }
+    },
+    "residentUndergraduateWVInvest": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4186,
+        "total": 24830
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4186,
+        "total": 24420
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4186,
+        "total": 24830
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 4186,
+        "total": 29550
+      }
+    },
+    "nonResidentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 12576,
+        "total": 33820
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 12576,
+        "total": 33410
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 12576,
+        "total": 33820
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 12576,
+        "total": 38540
+      }
+    },
+    "metro": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 7752,
+        "total": 28996
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 7752,
+        "total": 28586
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 7752,
+        "total": 28996
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 7752,
+        "total": 33716
+      }
+    }
+  },
+  "KeyserBachelors": {
+    "residentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 5808,
+        "total": 26452
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 5808,
+        "total": 26042
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 5808,
+        "total": 26452
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 5808,
+        "total": 31172
+      }
+    },
+    "nonResidentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 14088,
+        "total": 35332
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 14088,
+        "total": 34922
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 14088,
+        "total": 35332
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 14088,
+        "total": 40052
+      }
+    },
+    "metro": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 9216,
+        "total": 30460
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6510,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 9216,
+        "total": 30050
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 9216,
+        "total": 30460
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 624,
+        "food": 6070,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 9216,
+        "total": 35180
+      }
+    }
+  },
+  "Beckley": {
+    "residentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 7536,
+        "total": 28020
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 7340,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 7536,
+        "total": 28440
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 7536,
+        "total": 28020
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1290,
+        "insurance": 2740,
+        "tuition": 7536,
+        "total": 32740
+      }
+    },
+    "nonResidentUndergraduate": {
+      "homeWithParents": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 20184,
+        "total": 41268
+      },
+      "resHall": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 7340,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 20184,
+        "total": 41688
+      },
+      "offCampus": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 6920,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 20184,
+        "total": 41268
+      },
+      "offCampusWithDependents": {
+        "supplies": 950,
+        "fees": 888,
+        "food": 5646,
+        "personal": 2050,
+        "housing": 11640,
+        "transportation": 1890,
+        "insurance": 2740,
+        "tuition": 20184,
+        "total": 45988
+      }
+    }
+  }
+}
