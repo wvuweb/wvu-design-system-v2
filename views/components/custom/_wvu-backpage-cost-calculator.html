@@ -17,7 +17,7 @@
 {% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request | parse_json %}
 
 {% capture component_content %}
-  Data: {{ data }}
+  Data:
   {% for x in data %}
     {% for y in x[1] %}
       {{ y[0] }}
