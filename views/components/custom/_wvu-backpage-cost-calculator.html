@@ -15,7 +15,6 @@
 {%- enddefine_component %}
 
 {% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request | parse_json %}
-{% assign data = data}
 
 {% capture component_content %}
   Data: {{ data }}
