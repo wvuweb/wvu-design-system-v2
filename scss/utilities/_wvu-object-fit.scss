@@ -1,9 +1,11 @@
 .wvu-object-fit-contain {
   object-fit: contain $global-important;
+  object-position: center $global-important;
 }
 
 .wvu-object-fit-contain-img {
   img {
     object-fit: contain $global-important;
+    object-position: center $global-important;
   }
 }
