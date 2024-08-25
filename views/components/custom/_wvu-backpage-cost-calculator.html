@@ -1,0 +1,156 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{%- define_component component %}
+  {
+    "baseName": "backpage",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "wvu-backpage-main",
+    "defaultItemClasses": "mb-3 mb-md-0",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "px-2 py-1 wvu-shout h6 text-white mb-0",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "iowan-old-style",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% assign jsonFile = site.files | filter_files: tags: other-costs %}
+{% assign data = jsonFile | web_request | parse_json %}
+
+{% for x in data %}
+  {{ x[0] }}
+  {% for y in x[1] %}
+    {{ y[0] }}
+    {% for s in y[1] %}
+      {{ s[0] }}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+
+{% capture component_content %}
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-8">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="lead mb-3 mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        {% endeditable_region_block %}
+      </div>
+      <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-md-auto{% else %}ms-md-auto{% endif %}" aria-label="{{ componentSidebar }}">
+        <div class="sticky-top pt-3 mt-n3">
+          <div class="p-3 bg-light">
+            <h2>Other Costs</h2>
+            <p>Additional costs explainer.</p>
+            <form class="mb-3">
+              <select id="cost-select" class="form-select" aria-label="Default select example">
+                <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Residence Halls wo Dependents</option>
+                <option id="at-home-parents" value="homeWithParents">Living at Home with Parents</option>
+                <option id="on-campus-dependents" value="resHallWithDependents">Living on Campus WVU Housing w Dependents</option>
+                <option id="off-campus" value="offCampus">Living Off Campus - Not with Parents</option>
+                <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus - Students with Dependents</option>
+              </select>
+            </form>
+            <div>
+              <table class="table caption-top text-capitalize">
+                <caption class="text-wvu-blue">Cost Per Semester</caption>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Cost</th>
+                  </tr>
+                </thead>
+                <tbody id="cost-table-body">
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Total</td>
+                    <td id="cost-table-total"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <p><a href="https://financialaid.wvu.edu/home/estimate-costs-aid">More about cost and aid</a></p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+
+{% content_for "page_js" %}
+<script defer>
+  // Get data
+  var data = {"Morgantown":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":8688,"total":30146},"resHall":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":8490,"transportation":1290,"insurance":2740,"tuition":8688,"total":31716},"resHallWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":10530,"transportation":1290,"insurance":2740,"tuition":8688,"total":33756},"offCampus":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":8688,"total":30146},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":8688,"total":34866}},"residentGraduate":{"homeWithParents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":10026,"total":31454},"resHall":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8490,"transportation":1290,"insurance":2740,"tuition":10026,"total":33024},"resHallWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":10530,"transportation":1290,"insurance":2740,"tuition":10026,"total":35064},"offCampus":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8190,"transportation":1290,"insurance":2740,"tuition":10026,"total":32724},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":8688,"total":34866}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":27192,"total":49250},"resHall":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":8490,"transportation":1890,"insurance":2740,"tuition":27192,"total":50820},"resHallWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":10530,"transportation":1890,"insurance":2740,"tuition":27192,"total":52860},"offCampus":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":27192,"total":49250},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":27192,"total":53970}},"nonResidentGraduate":{"homeWithParents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":28152,"total":50180},"resHall":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8490,"transportation":1890,"insurance":2740,"tuition":28152,"total":51750},"resHallWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":10530,"transportation":1890,"insurance":2740,"tuition":28152,"total":53790},"offCampus":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8190,"transportation":1890,"insurance":2740,"tuition":28152,"total":51450},"offCampusWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":28152,"total":54900}}},"KeyserAssociates":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4656,"total":25300},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":4656,"total":24890},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4656,"total":25300},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":4656,"total":30020}},"residentUndergraduateWVInvest":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4186,"total":24830},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":4186,"total":24420},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4186,"total":24830},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":4186,"total":29550}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":12576,"total":33820},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":12576,"total":33410},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":12576,"total":33820},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":12576,"total":38540}},"metro":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":7752,"total":28996},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":7752,"total":28586},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":7752,"total":28996},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":7752,"total":33716}}},"KeyserBachelors":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":5808,"total":26452},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":5808,"total":26042},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":5808,"total":26452},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":5808,"total":31172}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":14088,"total":35332},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":14088,"total":34922},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":14088,"total":35332},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":14088,"total":40052}},"metro":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":9216,"total":30460},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":9216,"total":30050},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":9216,"total":30460},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":9216,"total":35180}}},"Beckley":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":7536,"total":28020},"resHall":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":7340,"transportation":1290,"insurance":2740,"tuition":7536,"total":28440},"offCampus":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":7536,"total":28020},"offCampusWithDependents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":7536,"total":32740}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":20184,"total":41268},"resHall":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":7340,"transportation":1890,"insurance":2740,"tuition":20184,"total":41688},"offCampus":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":20184,"total":41268},"offCampusWithDependents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":20184,"total":45988}}}}
+  var categoryData = data.Morgantown.residentUndergraduate
+  var myCategory = categoryData.resHall
+  var tableBody = document.getElementById("cost-table-body")
+  var tableTotal = document.getElementById("cost-table-total")
+
+  // Initialize variables that will change
+  var newTableBody = ""
+  var newTableTotal = ""
+  var totalCost = 0
+
+  // Get select menu
+  var categoryDropdown = document.getElementById("cost-select")
+
+  // Populate initial data
+  for (cost in myCategory) {
+    let costNum = 0
+    // Exclude tuition cost from table (this is shown in the main body)
+    if (cost !== 'total' && cost !== 'tuition') {
+      // Add table row for each item
+      newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
+      // Convert cost string to num
+      costNum = Number(myCategory[cost])
+      // Tally cost
+      totalCost = totalCost + costNum
+    }
+  }
+
+  tableBody.innerHTML = newTableBody
+  tableTotal.innerHTML = "$" + totalCost
+
+  // Listen for dropdown menu change
+  categoryDropdown.addEventListener("change", function() {
+    // Clear table data
+    newTableBody = ""
+    totalCost = 0
+    // Assign category based on dropdown selection
+    let myCategory = this.value
+    // Get data based on category
+    console.log("Category" + myCategory)
+    if (myCategory === 'resHall') {
+      myCategory = categoryData.resHall
+    } else if (myCategory === 'homeWithParents') {
+      myCategory = categoryData.homeWithParents
+    } else if (myCategory === 'resHallWithDependents') {
+      myCategory = categoryData.resHallWithDependents
+    } else if (myCategory === 'offCampus') {
+      myCategory = categoryData.offCampus
+    } else if (myCategory === 'offCampusWithDependents') {
+      myCategory = categoryData.offCampusWithDependents
+    }
+    // Update table values with new data
+    for (cost in myCategory) {
+      let costNum = 0
+      // Exclude tuition cost from table (this is shown in the main body)
+      if (cost !== 'total' && cost !== 'tuition') {
+        // Add table row for each item
+        newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
+        // Convert cost string to num
+        costNum = Number(myCategory[cost])
+        // Tally cost
+        totalCost = totalCost + costNum
+      }
+    }
+
+    tableBody.innerHTML = newTableBody
+    tableTotal.innerHTML = "$" + totalCost
+  })
+
+</script>
+{% endcontent_for %}
