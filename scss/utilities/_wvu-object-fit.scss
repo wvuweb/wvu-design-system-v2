@@ -1,3 +1,9 @@
 .wvu-object-fit-contain {
   object-fit: contain $global-important;
 }
+
+.wvu-object-fit-contain-img {
+  img {
+    object-fit: contain $global-important;
+  }
+}
