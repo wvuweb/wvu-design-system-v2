@@ -18,6 +18,7 @@
 {% assign data = jsonFile | web_request | parse_json %}
 
 {% capture component_content %}
+  Data: {{ data }}
   {% for x in data %}
     {{ x[0] }}
     {% for y in x[1] %}
