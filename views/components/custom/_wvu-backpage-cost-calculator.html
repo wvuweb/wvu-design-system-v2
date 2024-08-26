@@ -89,6 +89,7 @@
       </aside>
     </div>
   </div>
+  <div id="jsonData" class="d-none">{{ data }}</div>
 {% endcapture %}
 
 {% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
@@ -96,25 +97,8 @@
 {% content_for "page_js" %}
 <script>
   // Get all data
-  var data = []
-  var request = new XMLHttpRequest();
-  request.open('GET', '/public/test-data.json', true);
-
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      // Success!
-      data = JSON.parse(request.responseText);
-    } else {
-      // We reached our target server, but it returned an error
-
-    }
-  };
-
-  request.onerror = function() {
-    // There was a connection error of some sort
-  };
-
-  request.send();
+  var dataElement = document.getElementById("jsonData")
+  var data = dataElement.innerHTML
 
   // Get select menu
   var categoryDropdown = document.getElementById("cost-select")
