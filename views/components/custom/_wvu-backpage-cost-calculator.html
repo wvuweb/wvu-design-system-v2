@@ -20,8 +20,8 @@
 {% assign graduateLevel = page.content['graduate-level'] | default: "Undergraduate" %}
 
 {% capture component_content %}
-  <div id="campus" class="d-none">{{- $campus -}}</div>
-  <div id="graduate-level" class="d-none">{{- $graduateLevel -}}</div>
+  <div id="campus" class="d-none">{{ campus }}</div>
+  <div id="graduate-level" class="d-none">{{ graduateLevel }}</div>
   <div class="container wvu-z-index-content">
     {% if edit_mode %}
       <p><code>Morgantown</code> or <code>Beckley</code> or <code>Keyser</code></p>
