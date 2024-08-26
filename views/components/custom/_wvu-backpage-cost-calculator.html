@@ -28,6 +28,8 @@
       {% editable_region name: 'campus', type: 'simple' %}
       <p><code>Graduate</code> or <code>Undergraduate</code></p>
       {% editable_region name: 'graduate-level', type: 'simple' %}
+      <p>JSON URL</p>
+      {% editable_region name: 'json-data', type: 'simple' %}
     {% endif %}
     <div class="row">
       <div class="col-md-8">
@@ -94,7 +96,25 @@
 {% content_for "page_js" %}
 <script>
   // Get all data
-  var data = '{{ data }}'
+
+  var data = new XMLHttpRequest();
+  request.open('GET', '/my/url', true);
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      // Success!
+      var data = JSON.parse(request.responseText);
+    } else {
+      // We reached our target server, but it returned an error
+
+    }
+  };
+
+  request.onerror = function() {
+    // There was a connection error of some sort
+  };
+
+  request.send();
 
   // Get select menu
   var categoryDropdown = document.getElementById("cost-select")
