@@ -43,13 +43,23 @@
             <h2>Other Costs</h2>
             <p>Additional costs explainer.</p>
             <form class="mb-3">
-              <select id="cost-select" class="form-select" aria-label="Default select example">
-                <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Residence Halls wo Dependents</option>
-                <option id="at-home-parents" value="homeWithParents">Living at Home with Parents</option>
-                <option id="on-campus-dependents" value="resHallWithDependents">Living on Campus WVU Housing w Dependents</option>
-                <option id="off-campus" value="offCampus">Living Off Campus - Not with Parents</option>
-                <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus - Students with Dependents</option>
-              </select>
+              <label for="cost-select" class="form-label">Housing Status</label>
+              <div class="mb-3">
+                <select id="cost-select" class="form-select" aria-label="Default select example">
+                  <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Residence Halls wo Dependents</option>
+                  <option id="at-home-parents" value="homeWithParents">Living at Home with Parents</option>
+                  <option id="on-campus-dependents" value="resHallWithDependents">Living on Campus WVU Housing w Dependents</option>
+                  <option id="off-campus" value="offCampus">Living Off Campus - Not with Parents</option>
+                  <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus - Students with Dependents</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="resident-select" class="form-label">Residency Status</label>
+                <select id="resident-select" class="form-select" aria-label="Default select example">
+                  <option id="resident" selected="" value="resident">WV Resident</option>
+                  <option id="non-resident" value="nonResident">Non-Resident</option>
+                </select>
+              </div>
             </form>
             <div>
               <table class="table caption-top text-capitalize">
@@ -61,6 +71,7 @@
                   </tr>
                 </thead>
                 <tbody id="cost-table-body">
+
                 </tbody>
                 <tfoot>
                   <tr>
