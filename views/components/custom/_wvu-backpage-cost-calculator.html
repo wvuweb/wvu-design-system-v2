@@ -15,6 +15,7 @@
 {%- enddefine_component %}
 
 {% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request %}
+{% psarsedData = data | parse_json %}
 
 {% assign campus = page.content['campus'] | default: "Morgantown" %}
 {% assign graduateLevel = page.content['graduate-level'] | default: "Undergraduate" %}
@@ -97,9 +98,8 @@
 {% content_for "page_js" %}
 <script>
   // Get all data
-  var dataElement = document.getElementById("jsonData")
-  var json = dataElement.innerHTML
-  const data = JSON.parse(json)
+  var json = "{{ data }}"
+  var data = JSON.stringify(json)
 
   // Get select menu
   var categoryDropdown = document.getElementById("cost-select")
