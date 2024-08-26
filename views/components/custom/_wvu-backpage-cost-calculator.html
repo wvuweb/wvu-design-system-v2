@@ -98,7 +98,7 @@
   // Get all data
 
   var data = new XMLHttpRequest();
-  request.open('GET', 'https://tuition.wvu.edu/public/test-data.json', true);
+  request.open('GET', '/public/test-data.json', true);
 
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
