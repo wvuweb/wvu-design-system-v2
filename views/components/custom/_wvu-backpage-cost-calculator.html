@@ -15,7 +15,7 @@
 {%- enddefine_component %}
 
 {% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request %}
-{% psarsedData = data | parse_json %}
+{% assign parsedData = data | parse_json %}
 
 {% assign campus = page.content['campus'] | default: "Morgantown" %}
 {% assign graduateLevel = page.content['graduate-level'] | default: "Undergraduate" %}
