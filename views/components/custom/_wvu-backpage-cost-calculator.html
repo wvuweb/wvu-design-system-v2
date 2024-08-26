@@ -16,16 +16,19 @@
 
 {% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request | parse_json %}
 
+{% assign campus = page.content['campus'] | default: "Morgantown" %}
+{% assign graduateLevel = page.content['graduate-level'] | default: "Undergraduate" %}
+
 {% capture component_content %}
-  Data:
-  {% for x in data %}
-    {% for y in x[1] %}
-      {% for s in y[1] %}
-        {{ s[0] }}
-      {% endfor %}
-    {% endfor %}
-  {% endfor %}
+  <div id="campus" class="d-none">{{- $campus -}}</div>
+  <div id="graduate-level" class="d-none">{{- $graduateLevel -}}</div>
   <div class="container wvu-z-index-content">
+    {% if edit_mode %}
+      <p><code>Morgantown</code> or <code>Beckley</code> or <code>Keyser</code></p>
+      {% editable_region name: 'campus', type: 'simple' %}
+      <p><code>Graduate</code> or <code>Undergraduate</code></p>
+      {% editable_region name: 'graduate-level', type: 'simple' %}
+    {% end }
     <div class="row">
       <div class="col-md-8">
         {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}
@@ -79,26 +82,53 @@
 
 {% content_for "page_js" %}
 <script defer>
-  // Get data
+  // Get all data
   var data = {"Morgantown":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":8688,"total":30146},"resHall":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":8490,"transportation":1290,"insurance":2740,"tuition":8688,"total":31716},"resHallWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":10530,"transportation":1290,"insurance":2740,"tuition":8688,"total":33756},"offCampus":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":8688,"total":30146},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":8688,"total":34866}},"residentGraduate":{"homeWithParents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":10026,"total":31454},"resHall":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8490,"transportation":1290,"insurance":2740,"tuition":10026,"total":33024},"resHallWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":10530,"transportation":1290,"insurance":2740,"tuition":10026,"total":35064},"offCampus":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8190,"transportation":1290,"insurance":2740,"tuition":10026,"total":32724},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":8688,"total":34866}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":27192,"total":49250},"resHall":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":8490,"transportation":1890,"insurance":2740,"tuition":27192,"total":50820},"resHallWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":10530,"transportation":1890,"insurance":2740,"tuition":27192,"total":52860},"offCampus":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":27192,"total":49250},"offCampusWithDependents":{"supplies":950,"fees":1416,"food":6092,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":27192,"total":53970}},"nonResidentGraduate":{"homeWithParents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":28152,"total":50180},"resHall":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8490,"transportation":1890,"insurance":2740,"tuition":28152,"total":51750},"resHallWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":10530,"transportation":1890,"insurance":2740,"tuition":28152,"total":53790},"offCampus":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":8190,"transportation":1890,"insurance":2740,"tuition":28152,"total":51450},"offCampusWithDependents":{"supplies":950,"fees":1386,"food":6092,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":28152,"total":54900}}},"KeyserAssociates":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4656,"total":25300},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":4656,"total":24890},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4656,"total":25300},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":4656,"total":30020}},"residentUndergraduateWVInvest":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4186,"total":24830},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":4186,"total":24420},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":4186,"total":24830},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":4186,"total":29550}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":12576,"total":33820},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":12576,"total":33410},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":12576,"total":33820},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":12576,"total":38540}},"metro":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":7752,"total":28996},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":7752,"total":28586},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":7752,"total":28996},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":7752,"total":33716}}},"KeyserBachelors":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":5808,"total":26452},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1290,"insurance":2740,"tuition":5808,"total":26042},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":5808,"total":26452},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":5808,"total":31172}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":14088,"total":35332},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":14088,"total":34922},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":14088,"total":35332},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":14088,"total":40052}},"metro":{"homeWithParents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":9216,"total":30460},"resHall":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6510,"transportation":1890,"insurance":2740,"tuition":9216,"total":30050},"offCampus":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":9216,"total":30460},"offCampusWithDependents":{"supplies":950,"fees":624,"food":6070,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":9216,"total":35180}}},"Beckley":{"residentUndergraduate":{"homeWithParents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":7536,"total":28020},"resHall":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":7340,"transportation":1290,"insurance":2740,"tuition":7536,"total":28440},"offCampus":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1290,"insurance":2740,"tuition":7536,"total":28020},"offCampusWithDependents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":11640,"transportation":1290,"insurance":2740,"tuition":7536,"total":32740}},"nonResidentUndergraduate":{"homeWithParents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":20184,"total":41268},"resHall":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":7340,"transportation":1890,"insurance":2740,"tuition":20184,"total":41688},"offCampus":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":6920,"transportation":1890,"insurance":2740,"tuition":20184,"total":41268},"offCampusWithDependents":{"supplies":950,"fees":888,"food":5646,"personal":2050,"housing":11640,"transportation":1890,"insurance":2740,"tuition":20184,"total":45988}}}}
-  var categoryData = data.Morgantown.residentUndergraduate
-  var myCategory = categoryData.resHall
+
+  // Get select menu
+  var categoryDropdown = document.getElementById("cost-select")
+
+  // Get residency menu
+  var residencyDropdown = document.getElementById("resident-select")
+
+  // Get campus and graduate level to grab correct data
+  var campus = document.getElementById("campus")
+  var graduateLevel = document.getElementById("graduate-level")
+  var campusValue = campus.innerHTML
+  var graduateLevelValue = graduateLevel.innerHTML
+  var campusData = []
+  var myCategory = []
+
+  if (campusValue === 'Morgantown') {
+    campusData = data.Morgantown
+  } else if (campusValue === "Keyser") {
+    campusData = data.KeyserBachelors
+  } else if (campusValue === "Beckley") {
+    campusData = data.Beckley
+  }
+
+  // Get category to populate table on page load
+  if (graduateLevelValue === 'Undergraduate') {
+    myCategory = campusData.residentUndergraduate.resHall
+  } else {
+    myCategory = campusData.residentGraduate.resHall
+  }
+  
   var tableBody = document.getElementById("cost-table-body")
   var tableTotal = document.getElementById("cost-table-total")
+
+  console.log("My category: " + myCategory)
 
   // Initialize variables that will change
   var newTableBody = ""
   var newTableTotal = ""
   var totalCost = 0
 
-  // Get select menu
-  var categoryDropdown = document.getElementById("cost-select")
-
   // Populate initial data
   for (cost in myCategory) {
     let costNum = 0
     // Exclude tuition cost from table (this is shown in the main body)
-    if (cost !== 'total' && cost !== 'tuition') {
+    if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
       // Add table row for each item
       newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
       // Convert cost string to num
@@ -118,24 +148,162 @@
     totalCost = 0
     // Assign category based on dropdown selection
     let myCategory = this.value
+    let otherCategory = residencyDropdown.value
+    console.log("Other value:" + otherCategory)
     // Get data based on category
     console.log("Category" + myCategory)
-    if (myCategory === 'resHall') {
-      myCategory = categoryData.resHall
-    } else if (myCategory === 'homeWithParents') {
-      myCategory = categoryData.homeWithParents
-    } else if (myCategory === 'resHallWithDependents') {
-      myCategory = categoryData.resHallWithDependents
-    } else if (myCategory === 'offCampus') {
-      myCategory = categoryData.offCampus
-    } else if (myCategory === 'offCampusWithDependents') {
-      myCategory = categoryData.offCampusWithDependents
+    if (graduateLevelValue === "Undergraduate") {
+      if (myCategory === 'resHall') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentUndergraduate.resHall
+        } else {
+          myCategory = campusData.nonResidentUndergraduate.resHall
+        }
+      } else if (myCategory === 'homeWithParents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentUndergraduate.homeWithParents
+        } else {
+          myCategory = campusData.nonResidentUndergraduate.homeWithParents
+        }
+      } else if (myCategory === 'resHallWithDependents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentUndergraduate.resHallWithDependents
+        } else {
+          myCategory = campusData.nonResidentUndergraduate.resHallWithDependents
+        }
+      } else if (myCategory === 'offCampus') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentUndergraduate.offCampus
+        } else {
+          myCategory = campusData.nonResidentUndergraduate.offCampus
+        }
+      } else if (myCategory === 'offCampusWithDependents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentUndergraduate.offCampusWithDependents
+        } else {
+          myCategory = campusData.nonResidentUndergraduate.offCampusWithDependents
+        }
+      }
+    } else {
+      if (myCategory === 'resHall') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentGraduate.resHall
+        } else {
+          myCategory = campusData.nonResidentGraduate.resHall
+        }
+      } else if (myCategory === 'homeWithParents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentGraduate.homeWithParents
+        } else {
+          myCategory = campusData.nonResidentGraduate.homeWithParents
+        }
+      } else if (myCategory === 'resHallWithDependents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentGraduate.resHallWithDependents
+        } else {
+          myCategory = campusData.nonResidentGraduate.resHallWithDependents
+        }
+      } else if (myCategory === 'offCampus') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentGraduate.offCampus
+        } else {
+          myCategory = campusData.nonResidentGraduate.offCampus
+        }
+      } else if (myCategory === 'offCampusWithDependents') {
+        if (otherCategory === 'resident') {
+          myCategory = campusData.residentGraduate.offCampusWithDependents
+        } else {
+          myCategory = campusData.nonResidentGraduate.offCampusWithDependents
+        }
+      }
     }
     // Update table values with new data
     for (cost in myCategory) {
       let costNum = 0
       // Exclude tuition cost from table (this is shown in the main body)
-      if (cost !== 'total' && cost !== 'tuition') {
+      if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
+        // Add table row for each item
+        newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
+        // Convert cost string to num
+        costNum = Number(myCategory[cost])
+        // Tally cost
+        totalCost = totalCost + costNum
+      }
+    }
+
+    tableBody.innerHTML = newTableBody
+    tableTotal.innerHTML = "$" + totalCost
+  })
+
+  // Listen for dropdown menu change
+  residencyDropdown.addEventListener("change", function() {
+    // Clear table data
+    newTableBody = ""
+    totalCost = 0
+    // Assign category based on dropdown selection
+    let myCategory = this.value
+    let otherCategory = categoryDropdown.value
+    // Get data based on category
+    console.log("Category" + myCategory)
+    if (graduateLevelValue === 'Undergraduate') {
+      if (myCategory === 'resident') {
+        if (otherCategory === 'resHall') {
+          myCategory = campusData.residentUndergraduate.resHall
+        } else if (otherCategory === 'homeWithParents') {
+          myCategory = campusData.residentUndergraduate.homeWithParents
+        } else if (otherCategory === 'resHallWithDependents') {
+          myCategory = campusData.residentUndergraduate.resHallWithDependents
+        } else if (otherCategory === 'offCampus') {
+          myCategory = campusData.residentUndergraduate.offCampus
+        } else if (otherCategory === 'offCampusWithDependents') {
+          myCategory = campusData.residentUndergraduate.offCampusWithDependents
+        }
+      } else if (myCategory === 'nonResident') {
+        if (otherCategory === 'resHall') {
+          myCategory = campusData.nonResidentUndergraduate.resHall
+        } else if (otherCategory === 'homeWithParents') {
+          myCategory = campusData.nonResidentUndergraduate.homeWithParents
+        } else if (otherCategory === 'resHallWithDependents') {
+          myCategory = campusData.nonResidentUndergraduate.resHallWithDependents
+        } else if (otherCategory === 'offCampus') {
+          myCategory = campusData.nonResidentUndergraduate.offCampus
+        } else if (otherCategory === 'offCampusWithDependents') {
+          myCategory = campusData.nonResidentUndergraduate.offCampusWithDependents
+        }
+      }
+    } else {
+      if (myCategory === 'resident') {
+        if (otherCategory === 'resHall') {
+          myCategory = campusData.residentGraduate.resHall
+        } else if (otherCategory === 'homeWithParents') {
+          myCategory = campusData.residentGraduate.homeWithParents
+        } else if (otherCategory === 'resHallWithDependents') {
+          myCategory = campusData.residentGraduate.resHallWithDependents
+        } else if (otherCategory === 'offCampus') {
+          myCategory = campusData.residentGraduate.offCampus
+        } else if (otherCategory === 'offCampusWithDependents') {
+          myCategory = campusData.residentUndergraduate.offCampusWithDependents
+        }
+      } else if (myCategory === 'nonResident') {
+        if (otherCategory === 'resHall') {
+          myCategory = campusData.nonResidentGraduate.resHall
+        } else if (otherCategory === 'homeWithParents') {
+          myCategory = campusData.nonResidentGraduate.homeWithParents
+        } else if (otherCategory === 'resHallWithDependents') {
+          myCategory = campusData.nonResidentGraduate.resHallWithDependents
+        } else if (otherCategory === 'offCampus') {
+          myCategory = campusData.nonResidentGraduate.offCampus
+        } else if (otherCategory === 'offCampusWithDependents') {
+          myCategory = campusData.nonResidentGraduate.offCampusWithDependents
+        }
+      }
+    }
+
+    // Update table values with new data
+    for (cost in myCategory) {
+      let costNum = 0
+      // Exclude tuition cost from table (this is shown in the main body)
+      if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
         // Add table row for each item
         newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
         // Convert cost string to num
