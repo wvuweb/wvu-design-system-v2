@@ -98,7 +98,7 @@
 {% content_for "page_js" %}
 <script>
   // Get all data
-  var json = "{{ data }}"
+  var json = {{ data }}
   var data = JSON.stringify(json)
 
   // Get select menu
