@@ -98,8 +98,8 @@
 <script>
   // Get all data
   var dataElement = document.getElementById("jsonData")
-  var data = dataElement.innerHTML
-  data = JSON.parse(data)
+  var json = dataElement.innerHTML
+  const data = JSON.parse(json)
 
   // Get select menu
   var categoryDropdown = document.getElementById("cost-select")
