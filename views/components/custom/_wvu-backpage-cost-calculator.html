@@ -76,7 +76,7 @@
                 <tfoot>
                   <tr>
                     <td>Total</td>
-                    <td id="cost-table-total"></td>
+                    <td id="cost-table-total" class="flash"></td>
                   </tr>
                 </tfoot>
               </table>
@@ -316,7 +316,7 @@
       // Exclude tuition cost from table (this is shown in the main body)
       if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
         // Add table row for each item
-        newTableBody = newTableBody + "<tr><td>" + cost + "</td><td>$" + myCategory[cost] + "</td></tr>"
+        newTableBody = newTableBody + "<tr><td>" + cost + '</td><td class="flash">$' + myCategory[cost] + "</td></tr>"
         // Convert cost string to num
         costNum = Number(myCategory[cost])
         // Tally cost
