@@ -98,8 +98,9 @@
 {% content_for "page_js" %}
 <script>
   // Get all data
-  var json = {{ data }}
-  var data = JSON.stringify(json)
+  var json = getElementById("jsonData")
+  json = json.innerHTML
+  var data = JSON.parse(json)
 
   // Get select menu
   var categoryDropdown = document.getElementById("cost-select")
