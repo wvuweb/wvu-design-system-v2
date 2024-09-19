@@ -1,0 +1,211 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{%- define_component component %}
+  {
+    "baseName": "backpage",
+    "needsARIALabel": true,
+    "defaultComponentClasses": "wvu-backpage-main",
+    "defaultItemClasses": "mb-3 mb-md-0",
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "px-2 py-1 wvu-shout h6 text-white mb-0",
+    "defaultItemBodyClasses": null,
+    "defaultItemButtonClasses": "iowan-old-style",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% assign data = 'https://tuition.wvu.edu/public/test-data.json' | web_request %}
+{% assign parsedData = data | parse_json %}
+
+{% assign campus = page.content['campus'] | default: "Morgantown" %}
+{% assign graduateLevel = page.content['graduate-level'] | default: "Undergraduate" %}
+
+{% capture component_content %}
+  <div id="campus" class="d-none">{{ campus }}</div>
+  <div id="graduate-level" class="d-none">{{ graduateLevel }}</div>
+  <div class="container wvu-z-index-content">
+    {% if edit_mode %}
+      <p><code>Morgantown</code> or <code>Beckley</code> or <code>Keyser</code></p>
+      {% editable_region name: 'campus', type: 'simple' %}
+      <p><code>Graduate</code> or <code>Undergraduate</code></p>
+      {% editable_region name: 'graduate-level', type: 'simple' %}
+    {% endif %}
+    <div class="row">
+      <div class="col-md-8">
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Main Content</span>{% endif %}
+        {% editable_region_block name: component.region_names.main, scope: component.scope %}
+          <p class="lead mb-3 mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+        {% endeditable_region_block %}
+      </div>
+      <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-md-auto{% else %}ms-md-auto{% endif %}" aria-label="{{ componentSidebar }}">
+        <div class="sticky-top pt-3 mt-n3">
+          <div class="p-3 bg-light">
+            <h2>Other Costs</h2>
+            <p>Additional costs explainer.</p>
+            <form class="mb-3">
+              <label for="cost-select" class="form-label">Housing Status</label>
+              <div class="mb-3">
+                <select id="cost-select" class="form-select" aria-label="Default select example">
+                  <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Residence Halls wo Dependents</option>
+                  <option id="at-home-parents" value="homeWithParents">Living at Home with Parents</option>
+                  <option id="on-campus-dependents" value="resHallWithDependents">Living on Campus WVU Housing w Dependents</option>
+                  <option id="off-campus" value="offCampus">Living Off Campus - Not with Parents</option>
+                  <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus - Students with Dependents</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="resident-select" class="form-label">Residency Status</label>
+                <select id="resident-select" class="form-select" aria-label="Default select example">
+                  <option id="resident" selected="" value="resident">WV Resident</option>
+                  <option id="non-resident" value="nonResident">Non-Resident</option>
+                </select>
+              </div>
+            </form>
+            <div>
+              <table class="table caption-top text-capitalize">
+                <caption class="text-wvu-blue">Cost Per Year</caption>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Cost</th>
+                  </tr>
+                </thead>
+                <tbody id="cost-table-body">
+
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Total</td>
+                    <td id="cost-table-total" class="flash"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <p><a href="https://financialaid.wvu.edu/home/estimate-costs-aid">More about cost and aid</a></p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div id="jsonData" class="d-none">{{ data }}</div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+
+{% content_for "page_js" %}
+<script>
+  const initTuitionTable = () => {
+      const tableBody = document.getElementById('cost-table-body');
+      const tableTotal = document.getElementById('cost-table-total');
+      const categoryDropdownElement = document.getElementById('cost-select');
+      const residencyDropdownElement = document.getElementById('resident-select');
+      const graduateElement = document.getElementById('graduate-level');
+      const campusElement = document.getElementById('campus');
+
+      const campusData = {};
+
+      const normalizeKey = (key) => {
+          return key.replace(/ /g, '_').toLowerCase();
+      };
+
+      const graduateLevel = normalizeKey(graduateElement.innerHTML);
+      const campusName = normalizeKey(campusElement.innerHTML);
+
+      const downloadData = async (fileName) => {
+          try {
+              const response = await fetch(
+                  `https://s3.amazonaws.com/static.wvu.edu/tuitionandcostdata/${fileName}`
+              );
+
+              const { tuition, otherCosts } = await response.json();
+
+              return { tuition, otherCosts };
+          } catch (err) {
+              console.log(err);
+          }
+      };
+
+      const setCampusData = async () => {
+          const fileName = `${campusName}.json`;
+          const { tuition, otherCosts } = await downloadData(fileName);
+
+          if (!tuition || !otherCosts) {
+              throw new Error('No JSON data found!');
+          }
+
+          campusData.campusTuition = tuition;
+          campusData.otherCosts = otherCosts;
+      };
+
+      const updateTable = () => {
+          const otherCosts = getOtherCosts();
+
+          const { newTableBodyString, newTotalCostString } =
+              buildOtherCostsTableData(otherCosts);
+
+          tableBody.innerHTML = newTableBodyString;
+          tableTotal.innerHTML = '$' + newTotalCostString;
+      };
+
+      const getOtherCosts = () => {
+          const residentStatus = normalizeKey(residencyDropdownElement.value);
+          const category = normalizeKey(categoryDropdownElement.value);
+
+          const returnCategory =
+              campusData?.otherCosts?.[normalizeKey(graduateLevel)]?.[
+                  normalizeKey(residentStatus)
+              ]?.[category];
+
+          if (!returnCategory) {
+              throw new Error(
+                  `Invalid category! residentStatus: ${residentStatus}, graduateLevel: ${graduateLevel}, category: ${category}`
+              );
+          }
+
+          return returnCategory;
+      };
+
+      const buildOtherCostsTableData = (otherCosts) => {
+          let newTableBodyString = '';
+          let newTotalCost = 0;
+
+          for (const cost in otherCosts) {
+              let costNum = 0;
+
+              if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
+                  newTableBodyString =
+                      newTableBodyString +
+                      '<tr><td>' +
+                      cost +
+                      '</td><td>$' +
+                      otherCosts[cost] +
+                      '</td></tr>';
+
+                  costNum = Number(otherCosts[cost]);
+
+                  newTotalCost += costNum;
+              }
+          }
+
+          const newTotalCostString = `${newTotalCost.toString()}`;
+
+          return { newTableBodyString, newTotalCostString };
+      };
+
+      setCampusData().then(() => {
+          try {
+              updateTable();
+
+              categoryDropdownElement.addEventListener('change', updateTable);
+              residencyDropdownElement.addEventListener('change', updateTable);
+          } catch (error) {
+              console.log(error);
+          }
+      });
+  };
+
+  initTuitionTable();
+
+</script>
+{% endcontent_for %}
