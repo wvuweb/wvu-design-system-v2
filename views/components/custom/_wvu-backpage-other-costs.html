@@ -41,17 +41,17 @@
       <aside class="wvu-sidebar col-lg-4 col-xl-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-lg-auto{% else %}ms-lg-auto{% endif %}" aria-label="{{ componentSidebar }}">
         <div class="sticky-top pt-3 mt-n3">
           <div class="p-3 bg-light">
-            <h2>Other Costs</h2>
+            <h2>Other Costs Per Year</h2>
             <p>Tuition and fees are not the only costs you may have while pursuing a degree. Select from the options below to see other costs.</p>
             <form class="mb-3">
               <label for="cost-select" class="form-label">Housing Status</label>
               <div class="mb-2">
                 <select id="cost-select" class="form-select" aria-label="Default select example">
-                  <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Residence Halls wo Dependents</option>
+                  <option id="on-campus-halls" selected="" value="resHall">Living on Campus WVU Housing without Dependents</option>
                   <option id="at-home-parents" value="homeWithParents">Living at Home with Parents</option>
-                  <option id="on-campus-dependents" value="resHallWithDependents">Living on Campus WVU Housing w Dependents</option>
+                  <option id="on-campus-dependents" value="resHallWithDependents">Living in WVU Housing with Dependents</option>
                   <option id="off-campus" value="offCampus">Living Off Campus - Not with Parents</option>
-                  <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus - Students with Dependents</option>
+                  <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus with Dependents</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -76,7 +76,7 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td>Total</td>
+                    <td>Other Costs Total</td>
                     <td id="cost-table-total" class="flash"></td>
                   </tr>
                 </tfoot>
