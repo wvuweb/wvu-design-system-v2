@@ -1,0 +1,31 @@
+{% comment %}<!-- See webstandards.wvu.edu/design-system for information about shared partials -->{% endcomment %}
+
+{% liquid
+  assign componentVersion = theme.data.component_versions.page_collection | default: '1'
+  assign defaultComponentClasses = defaultComponentClasses | default: null
+  assign defaultRowClasses = defaultRowClasses | default: "justify-content-start"
+  assign defaultItemHeaderClasses = defaultItemHeaderClasses | default: "h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue"
+  assign defaultItemBodyClasses = defaultItemBodyClasses | default: null
+  assign defaultItemButtonClasses = defaultItemButtonClasses | default: "btn btn-primary btn-sm"
+  assign defaultItemButtonText = defaultItemButtonText | default: "Read More"
+%}
+
+{%- define_component component %}
+  {
+    "baseName": "program-collection",
+    "defaultComponentClasses": "{{ defaultComponentClasses }}",
+    "defaultRowClasses": "{{ defaultRowClasses }}",
+    "defaultItemClasses": null,
+    "defaultHeaderClasses": "mb-4",
+    "defaultItemHeaderClasses": "{{ defaultItemHeaderClasses }}",
+    "defaultItemBodyClasses": "{{ defaultItemBodyClasses }}",
+    "defaultItemButtonClasses": "{{ defaultItemButtonClasses }}",
+    "defaultItemButtonText": "{{ defaultItemButtonText }}",
+    "mainTagClasses": "py-5"
+  }
+{%- enddefine_component %}
+
+{% case componentVersion %}
+  {% when 1 %}{% render "components/wvu-program-collection/wvu-program-collection--v1" component: component %}
+  {% else %}{% render "components/wvu-program-collection/wvu-program-collection--v1" component: component %}
+{% endcase %}

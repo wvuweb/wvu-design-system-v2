@@ -1,0 +1,105 @@
+{%- liquid
+  assign rowClasses = page.content[component.region_names.rowClasses] | default: component.defaultRowClasses
+  assign itemHeaderClasses = page.content[component.region_names.itemHeaderClasses] | default: component.defaultItemHeaderClasses
+  assign itemBodyClasses = page.content[component.region_names.itemBodyClasses]
+  assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
+  assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
+  assign jsonRegionName = component.name | append: '__json-url'
+
+  assign programAPIEndpoint = page.content[jsonRegionName]
+  assign programEntries = programAPIEndpoint | web_request | parse_json
+
+  if page.content[component.region_names.header] != blank
+    assign htag = 'h3'
+  else
+    assign htag = 'h2'
+  endif
+-%}
+
+{% capture component_content %}
+  <div class="wvu-z-index-content">
+    <div class="container wvu-z-index-content">
+
+      {% if edit_mode %}
+        <div class="alert alert-info p-4">
+          <h2 class="h6">Enter the JSON string for the programs you want to display</h2>
+          {% editable_region name: jsonRegionName, scope: component.scope, type: "simple" %}
+        </div>
+      {% endif %}
+
+      {% if edit_mode or page.content[component.region_names.header] != blank %}
+        {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Header</span>{% endif %}
+        {% editable_region_block name: component.region_names.header scope: component.scope %}
+          <h2 id="{{ component.name }}-label" class="display-3 wvu-shout text-wvu-blue">Page Collection Headline</h2>
+          <p class="h3 helvetica-neue-light text-wvu-blue mb-4">Subhead goes here.</p>
+        {% endeditable_region_block %}
+      {% endif %}
+
+      {%- capture itemClasses %}{% render "includes/wvu-column-classes/wvu-column-classes--v1" numberOfItems: itemCount component: component %}{% endcapture -%}
+      {% assign itemClasses = itemClasses | strip %}
+
+      {% capture loopContent %}
+
+        {% for programEntry in programEntries limit: component.limit %}
+
+          {% assign webAddress = "" %}
+
+          {% if programEntry.webAddressAdmissions %}
+            {% assign webAddress = programEntry.webAddressAdmissions %}
+          {% elsif programEntry.webAddressCourseCatalog %}
+            {% assign webAddress = programEntry.webAddressCourseCatalog %}
+          {% endif %}
+
+          {% assign programType = programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase %}
+          {% assign school = programEntry.division.title | replace: " ", "-" | downcase %}
+          {% if programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+            {% assign school = "school-of-sport-sciences school-of-education school-of-counseling-and-well-being" %}
+          {% endif %}
+          {% assign majorMinor = programEntry.type.title %}
+
+          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+            <div>
+              <{{ htag }} class="card-title" id="{{ htag_id }}">
+                <a title="{{ itemReadMoreButtonText }}: {{ item.name }}" class="{{ itemHeaderClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">
+                  {{ item.alternate_name | default: item.name }}
+                </a>
+              </{{ htag }}>
+              {%- if item.data.description != blank %}
+                <p class="{{ itemBodyClasses }}">
+                  {{ item.data.description }}
+                </p>
+              {% else %}
+                {% render "includes/wvu-collection-warnings/wvu-collection-description-warning--v1" component: component, itemName: item.name %}
+              {%- endif %}
+
+              {% if itemReadMoreButtonText != 'none' %}
+                {% if item.data.link_text != blank %}
+                  {% assign link_text = item.data.link_text %}
+                {% else %}
+                  {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
+                {% endif %}
+                <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endcapture %}
+
+      <div class="row {{ rowClasses }}">{{ loopContent }}</div>
+
+      {% if edit_mode or page.content[component.region_names.postscript] != blank %}
+        <div class="mt-2">
+          {% if edit_mode %}<span class="d-inline-block badge bg-primary mb-1 no-preview">Postscript</span>{% endif %}
+          {% editable_region_block name: component.region_names.postscript scope: component.scope %}
+            <p class="mb-0">Put additional info or <a href="#">links</a> here.</p>
+          {% endeditable_region_block %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render "utilities/wvu-component-tag/wvu-component-tag--v1" component: component, content: component_content %}
+{% render "includes/wvu-component-footer/wvu-component-footer--v1" footerItemClasses: itemClasses component: component %}

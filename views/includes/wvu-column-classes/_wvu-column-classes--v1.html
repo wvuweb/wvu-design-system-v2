@@ -1,5 +1,5 @@
 {%- case component.baseName %}
-  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-e' or 'site-page-collection-e' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' or 'place-collection' or 'site-place-collection' %}
+  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-e' or 'site-page-collection-e' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' or 'place-collection' or 'site-place-collection' or 'program-collection' %}
     {% case numberOfItems %}
       {% when 1 or 2 or 3 %}{% assign columnClasses = 'col-sm-6 col-md-4' %}
       {% when 4 %}{% assign columnClasses = 'col-sm-6 col-lg-3' %}
@@ -22,7 +22,7 @@
     {% endcase %}
 {%- endcase %}
 {% case component.baseName %}
-  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' or 'place-collection' or 'site-place-collection' %}
+  {% when 'article-collection' or 'site-article-collection' or 'contact-collection' or 'site-contact-collection' or 'featurettes' or 'site-featurettes' or 'page-collection' or 'site-page-collection' or 'page-collection-icons' or 'site-page-collection-icons' or 'people-collection' or 'site-people-collection' or 'place-collection' or 'site-place-collection' or 'program-collection' %}
     {% assign columnClasses = columnClasses | append: ' mb-4' %}
   {% when 'cards' or 'site-cards' or 'cards-e' or 'site-cards-e' or 'cards-w-overlay' or 'site-cards-w-overlay' or 'featurettes-cards' or 'site-featurettes-cards' or 'testimonials' or 'site-testimonials' or 'video-gallery' or 'site-video-gallery' %}
     {% assign columnClasses = columnClasses | append: ' mb-3' %}
