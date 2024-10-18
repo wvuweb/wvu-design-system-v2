@@ -23,10 +23,13 @@
     assign sortedItems = sortedItems | reverse
   endif
 
-  if page.content[component.region_names.header] != blank
-    assign htag = 'h3'
-  else
+  if component.primaryHeading == 'h1'
     assign htag = 'h2'
+  else
+    if page.content[component.region_names.header] != blank
+      assign htag = 'h3'
+    else
+      assign htag = 'h2'
   endif
 
   for items in items.all
