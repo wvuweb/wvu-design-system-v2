@@ -38,12 +38,12 @@
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
         {% endeditable_region_block %}
       </div>
-      <aside id="other-costs" class="wvu-sidebar col-lg-4 col-xl-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-lg-auto{% else %}ms-lg-auto{% endif %}" aria-label="{{ componentSidebar }}">
+      <aside id="other-costs" class="wvu-sidebar col-lg-4 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-lg-auto{% else %}ms-lg-auto{% endif %}" aria-label="{{ componentSidebar }}">
         <div class="sticky-top pt-3 mt-n3">
           <div class="p-3 bg-light">
             <h2>Other Costs Per Year</h2>
             <p>Tuition and fees are not the only costs you may have while pursuing a degree. Select from the options below to see other costs.</p>
-            <form class="mb-3">
+            <form class="mb-2">
               <label for="cost-select" class="form-label">Housing Status</label>
               <div class="mb-2">
                 <select id="cost-select" class="form-select" aria-label="Default select example">
@@ -54,7 +54,7 @@
                   <option id="off-campus-dependents" value="offCampusWithDependents">Living Off Campus with Dependents</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div class="mb-2">
                 <label for="resident-select" class="form-label">Residency Status</label>
                 <select id="resident-select" class="form-select" aria-label="Default select example">
                   <option id="resident" selected="" value="resident">WV Resident</option>
