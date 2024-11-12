@@ -139,13 +139,20 @@
       };
 
       const updateTable = () => {
-          const otherCosts = getOtherCosts();
+          try {
+              const otherCosts = getOtherCosts();
 
-          const { newTableBodyString, newTotalCostString } =
-              buildOtherCostsTableData(otherCosts);
+              const { newTableBodyString, newTotalCostString } =
+                  buildOtherCostsTableData(otherCosts);
 
-          tableBody.innerHTML = newTableBodyString;
-          tableTotal.innerHTML = '$' + newTotalCostString;
+              tableBody.innerHTML = newTableBodyString;
+              tableTotal.innerHTML = '$' + newTotalCostString;
+          } catch (error) {
+              window.alert(
+                  `There was an error updating the table. Please contact the site administrator about this issue. \n\n Error: ${error}`
+              );
+              console.log(error);
+          }
       };
 
       const getOtherCosts = () => {
@@ -193,16 +200,61 @@
           return { newTableBodyString, newTotalCostString };
       };
 
-      setCampusData().then(() => {
-          try {
+      const removeUnusedResidentOptions = () => {
+          const selectOptions =
+              residencyDropdownElement.querySelectorAll('option');
+
+          selectOptions.forEach((option) => {
+              const campusDataOption =
+                  campusData?.otherCosts?.[normalizeKey(graduateLevel)]?.[
+                      normalizeKey(option.value)
+                  ];
+          });
+      };
+
+      const removeUnusedCategoryOptions = () => {
+          const selectOptions =
+              categoryDropdownElement.querySelectorAll('option');
+
+          selectOptions.forEach((option) => {
+              const residentStatus = normalizeKey(residencyDropdownElement.value);
+
+              const campusDataOption =
+                  campusData?.otherCosts?.[normalizeKey(graduateLevel)]?.[
+                      normalizeKey(residentStatus)
+                  ]?.[normalizeKey(option.value)];
+
+              if (!campusDataOption) {
+                  console.info(
+                      `removing option: ${
+                          option.value
+                      } for residentStatus: ${residentStatus} and graduateLevel: ${graduateLevel} because campusData: ${JSON.stringify(
+                          campusData?.otherCosts?.[normalizeKey(graduateLevel)]?.[
+                              normalizeKey(residentStatus)
+                          ]
+                      )} has no member "${normalizeKey(option.value)}"`
+                  );
+
+                  option.remove();
+              }
+          });
+      };
+
+      try {
+          setCampusData().then(() => {
+              removeUnusedCategoryOptions();
+              removeUnusedResidentOptions();
               updateTable();
 
               categoryDropdownElement.addEventListener('change', updateTable);
               residencyDropdownElement.addEventListener('change', updateTable);
-          } catch (error) {
-              console.log(error);
-          }
-      });
+          });
+      } catch (error) {
+          window.alert(
+              `There was an error fetching campus data. Please contact the site administrator about this issue. \n\n Error: ${error}`
+          );
+          console.log(error);
+      }
   };
 
   initTuitionTable();
