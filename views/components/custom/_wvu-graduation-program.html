@@ -1,5 +1,13 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
 
+{% assign root = site.root_page %}
+{% assign items = page.ancestors %}
+{% for item in items.all %}
+  {% if item.data.subsection_landing_page == '1' %}
+    {% assign program = item.content['wvu-backpage-header-1__subhead'] %}
+  {% endif %}
+{% endfor %}
+
 <main class="wvu-backpage-main py-5 iowan-old-style">
   <div class="container wvu-z-index-content">
     <div class="row">
@@ -8,7 +16,7 @@
           {% editable_region name: 'dean-s-message' %}
         </div>
 
-        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">May 2024 Graduates</h2>
+        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">{{ program }} Graduates</h2>
 
         {% for degree in directory %}
           <h3 class="iowan-old-style">{{ degree[0] }}</h3>
