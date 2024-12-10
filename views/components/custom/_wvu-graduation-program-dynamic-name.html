@@ -4,7 +4,7 @@
 {% assign items = page.ancestors %}
 {% for item in items.all %}
   {% if item.data.subsection_landing_page == '1' %}
-    {% assign program = item.name %}
+    {% assign program = item.content['wvu-backpage-header-1__subhead'] %}
   {% endif %}
 {% endfor %}
 
