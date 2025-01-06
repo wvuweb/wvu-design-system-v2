@@ -44,7 +44,9 @@
 
           {% assign webAddress = "" %}
 
-          {% if programEntry.webAddressAdmissions %}
+          {% if programEntry.webAddressProgram %}
+            {% assign webAddress = programEntry.webAddressProgram %}
+          {% elsif programEntry.webAddressAdmissions %}
             {% assign webAddress = programEntry.webAddressAdmissions %}
           {% elsif programEntry.webAddressCourseCatalog %}
             {% assign webAddress = programEntry.webAddressCourseCatalog %}
@@ -76,13 +78,36 @@
               {% endif %}
               {% for deliveryOption in programEntry.courseDeliveryOptions %}
                 {% if deliveryOption == 'Online' %}
-                  <div class="badge bg-primary"><span class="fa-solid fa-laptop" aria-hidden="true"></span> Online</div>
+                  <div class="badge bg-primary mb-2"><span class="fa-solid fa-laptop" aria-hidden="true"></span> Online</div>
                 {% endif %}
               {% endfor %}
 
               <div class="{{ itemBodyClasses }}">
                 {{ programEntry.descriptionTeaser }}
               </div>
+
+              {% if webAddress != blank %}
+                {% if programEntry.webAddressProgram %}
+                  <a class="btn btn-primary" href="{{ webAddress }}">
+                    <span class="fa-solid fa-external-link-alt text-center" aria-hidden="true" style="width: 2rem;"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
+                  </a>
+                {% else %}
+                  {% if webAddress contains "https://online.wvu.edu/" or webAddress contains "https://mediacollege.wvu.edu" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+                    <a class="btn btn-primary" href="{{ webAddress }}">
+                      <span class="fa-solid fa-external-link-alt text-center" aria-hidden="true" style="width: 2rem;"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
+                    </a>
+                  {% elsif webAddress contains "http://catalog.wvu.edu/" %}
+                    <a class="btn btn-primary" href="{{ webAddress }}">
+                      <span class="fa-solid fa-external-link-alt text-center" aria-hidden="true" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>View in Course Catalog
+                    </a>
+                  {% else %}
+                    {% capture cardTitle %}{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %} (Online){% endif %} {{ programEntry.degreeDesignation.title }}{% endcapture %}
+                    <a class="btn btn-primary" href="{{ programEntry.webAddressAdmissions }}#wvu-main-content">
+                      <span class="fa-solid fa-file-alt text-center" aria-hidden="true" style="width: 2rem;"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Overview
+                    </a>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
             </div>
           </div>
         {% endfor %}
