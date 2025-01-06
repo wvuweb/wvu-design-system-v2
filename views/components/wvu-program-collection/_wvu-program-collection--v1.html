@@ -51,9 +51,10 @@
         {% for programEntry in programEntries limit: component.limit %}
 
           {% assign programType = page.content[programTypeRegionName] %}
-          {% assign programLevel = %}
+          {% assign school = page.content[schoolRegionName] %}
+          {% assign filters = programType | append: school %}
 
-          {% if programEntry.hepcLevel.hepcLevelKey == programType %}
+          {% if filters != blank and programEntry.hepcLevel.hepcLevelKey contains programType and programEntry.collegeOrSchool.title == school %}
 
             {% assign webAddress = "" %}
 
