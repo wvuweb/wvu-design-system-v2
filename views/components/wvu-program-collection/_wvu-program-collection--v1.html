@@ -50,7 +50,10 @@
 
         {% for programEntry in programEntries limit: component.limit %}
 
-          {% if programEntry.hepcLevelKey = page.content[programTypeRegionName] %}
+          {% assign programType = page.content[programTypeRegionName] %}
+          {% assign programLevel = }
+
+          {% if programEntry.hepcLevel.hepcLevelKey == programType %}
 
             {% assign webAddress = "" %}
 
