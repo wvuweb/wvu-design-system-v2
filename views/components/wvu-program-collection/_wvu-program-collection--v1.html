@@ -32,7 +32,6 @@
           <h2 class="h6 mt-3 mb-0">Enter the School:</h2>
           <p class="mb-0">Examples: <code>School of Theatre and Dance</code></p>
           {% editable_region name: schoolRegionName, scope: component.scope, type: "simple", placeholder: "all" %}
-          <p class="small mb-0"><em>NOTE: If you wish to include all items in each filter, you must enter "all" in the appropriate field.</em></p>
         </div>
       {% endif %}
 
@@ -54,8 +53,8 @@
           {% assign level = page.content[levelRegionName] %}
           {% assign school = page.content[schoolRegionName] %}
 
-          {% if programEntry.levelKey == level or level == "all" %}
-            {% if programEntry.division.title == school or school == "all" %}
+          {% if programEntry.levelKey == level or level == blank %}
+            {% if programEntry.division.title == school or school == blank %}
 
               {% assign webAddress = "" %}
 
