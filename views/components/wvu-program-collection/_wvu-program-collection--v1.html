@@ -5,7 +5,7 @@
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign jsonRegionName = component.name | append: '__json-url'
-  assign programTypeRegionName = component.name | append: '__program-type'
+  assign levelRegionName = component.name | append: '__level'
   assign schoolRegionName = component.name | append: '__school'
 
   assign programAPIEndpoint = page.content[jsonRegionName]
@@ -50,11 +50,10 @@
 
         {% for programEntry in programEntries limit: component.limit %}
 
-          {% assign programType = page.content[programTypeRegionName] %}
+          {% assign level = page.content[levelRegionName] %}
           {% assign school = page.content[schoolRegionName] %}
-          {% assign filters = programType | append: school %}
 
-          {% if programEntry.hepcLevel.hepcLevelKey == programType and programEntry.division.title == school %}
+          {% if programEntry.hepcLevel.levelKey == level and programEntry.division.title == school %}
 
             {% assign webAddress = "" %}
 
