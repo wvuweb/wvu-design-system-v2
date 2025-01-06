@@ -26,7 +26,7 @@
         <div class="alert alert-info p-4">
           <h2 class="h6 mb-0">Enter the JSON string for the programs you want to display</h2>
           {% editable_region name: jsonRegionName, scope: component.scope, type: "simple" %}
-          <h2 class="h6 mt-3 mb-0">Enter level:</h2>
+          <h2 class="h6 mt-3 mb-0">Enter the Level:</h2>
           <p class="mb-0">Examples: <code>undergraduate</code>, <code>gradute</code></p>
           {% editable_region name: levelRegionName, scope: component.scope, type: "simple" %}
           <h2 class="h6 mt-3 mb-0">Enter the School:</h2>
@@ -53,7 +53,7 @@
           {% assign level = page.content[levelRegionName] %}
           {% assign school = page.content[schoolRegionName] %}
 
-          {% if programEntry.hepcLevel.levelKey == level and programEntry.division.title == school %}
+          {% if programEntry.levelKey == level and programEntry.division.title == school %}
 
             {% assign webAddress = "" %}
 
