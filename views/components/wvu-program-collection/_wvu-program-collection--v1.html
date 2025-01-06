@@ -5,6 +5,8 @@
   assign itemButtonClasses = page.content[component.region_names.itemButtonClasses] | default: component.defaultItemButtonClasses
   assign itemReadMoreButtonText = page.content[component.region_names.readMoreButtonText] | default: component.defaultItemButtonText
   assign jsonRegionName = component.name | append: '__json-url'
+  assign programTypeRegionName = component.name | append: '__program-type'
+  assign schoolRegionName = component.name | append: '__school'
 
   assign programAPIEndpoint = page.content[jsonRegionName]
   assign programEntries = programAPIEndpoint | web_request | parse_json
@@ -24,6 +26,12 @@
         <div class="alert alert-info p-4">
           <h2 class="h6">Enter the JSON string for the programs you want to display</h2>
           {% editable_region name: jsonRegionName, scope: component.scope, type: "simple" %}
+          <h2 class="h6">Enter the program type:</h2>
+          <p>Examples: <pre>bachelor</pre></p>
+          {% editable_region name: programTypeRegionName, scope: component.scope, type: "simple" %}
+          <h2 class="h6">Enter the School:</h2>
+          <p>Examples: <pre>school-of-theatre-and-dance</pre></p>
+          {% editable_region name: schoolRegionName, scope: component.scope, type: "simple" %}
         </div>
       {% endif %}
 
@@ -42,74 +50,77 @@
 
         {% for programEntry in programEntries limit: component.limit %}
 
-          {% assign webAddress = "" %}
+          {% if programEntry.hepcLevelKey = page.content[programTypeRegionName] %}
 
-          {% if programEntry.webAddressProgram %}
-            {% assign webAddress = programEntry.webAddressProgram %}
-          {% elsif programEntry.webAddressAdmissions %}
-            {% assign webAddress = programEntry.webAddressAdmissions %}
-          {% elsif programEntry.webAddressCourseCatalog %}
-            {% assign webAddress = programEntry.webAddressCourseCatalog %}
-          {% endif %}
+            {% assign webAddress = "" %}
 
-          {% assign programType = programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase %}
-          {% assign school = programEntry.division.title | replace: " ", "-" | downcase %}
-          {% if programEntry.degreeDesignation.abbreviation == 'BMDS' %}
-            {% assign school = "school-of-sport-sciences school-of-education school-of-counseling-and-well-being" %}
-          {% endif %}
-          {% assign majorMinor = programEntry.type.title %}
+            {% if programEntry.webAddressProgram %}
+              {% assign webAddress = programEntry.webAddressProgram %}
+            {% elsif programEntry.webAddressAdmissions %}
+              {% assign webAddress = programEntry.webAddressAdmissions %}
+            {% elsif programEntry.webAddressCourseCatalog %}
+              {% assign webAddress = programEntry.webAddressCourseCatalog %}
+            {% endif %}
 
-          {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+            {% assign programType = programEntry.hepcLevel.title | replace: "'", '' | replace: ' ', '-' | downcase %}
+            {% assign school = programEntry.division.title | replace: " ", "-" | downcase %}
+            {% if programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+              {% assign school = "school-of-sport-sciences school-of-education school-of-counseling-and-well-being" %}
+            {% endif %}
+            {% assign majorMinor = programEntry.type.title %}
 
-          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
-            <div>
-              <{{ htag }} class="card-title" id="{{ htag_id }}">
+            {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
+
+            <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+              <div>
+                <{{ htag }} class="card-title" id="{{ htag_id }}">
+                  {% if webAddress != blank %}
+                    <a href="{{ webAddress }}" class="{{ itemHeaderClasses }}">{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %}<span class="visually-hidden"> (Online)</span>{% endif %}<span class="visually-hidden"> {{ programEntry.degreeDesignation.title }}</span></a>
+                  {% else %}
+                    {{ programEntry.title }}
+                  {% endif %}
+                </{{ htag }}>
+
+                {% if programEntry.degreeDesignation.title %}
+                  <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.degreeDesignation.title | replace: "'", '’' }}</div>
+                {% else %}
+                  <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.type.title | replace: "'", '’' }}</div>
+                {% endif %}
+                {% for deliveryOption in programEntry.courseDeliveryOptions %}
+                  {% if deliveryOption == 'Online' %}
+                    <div class="badge bg-primary mb-2"><span class="fa-solid fa-laptop" aria-hidden="true"></span> Online</div>
+                  {% endif %}
+                {% endfor %}
+
+                <div class="{{ itemBodyClasses }}">
+                  {{ programEntry.descriptionTeaser }}
+                </div>
+
                 {% if webAddress != blank %}
-                  <a href="{{ webAddress }}" class="{{ itemHeaderClasses }}">{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %}<span class="visually-hidden"> (Online)</span>{% endif %}<span class="visually-hidden"> {{ programEntry.degreeDesignation.title }}</span></a>
-                {% else %}
-                  {{ programEntry.title }}
-                {% endif %}
-              </{{ htag }}>
-
-              {% if programEntry.degreeDesignation.title %}
-                <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.degreeDesignation.title | replace: "'", '’' }}</div>
-              {% else %}
-                <div class="helvetica-neue-light text-uppercase mb-1">{{ programEntry.type.title | replace: "'", '’' }}</div>
-              {% endif %}
-              {% for deliveryOption in programEntry.courseDeliveryOptions %}
-                {% if deliveryOption == 'Online' %}
-                  <div class="badge bg-primary mb-2"><span class="fa-solid fa-laptop" aria-hidden="true"></span> Online</div>
-                {% endif %}
-              {% endfor %}
-
-              <div class="{{ itemBodyClasses }}">
-                {{ programEntry.descriptionTeaser }}
-              </div>
-
-              {% if webAddress != blank %}
-                {% if programEntry.webAddressProgram %}
-                  <a class="btn btn-primary" href="{{ webAddress }}">
-                    <span class="fa-solid fa-external-link-alt"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
-                  </a>
-                {% else %}
-                  {% if webAddress contains "https://online.wvu.edu/" or webAddress contains "https://mediacollege.wvu.edu" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+                  {% if programEntry.webAddressProgram %}
                     <a class="btn btn-primary" href="{{ webAddress }}">
                       <span class="fa-solid fa-external-link-alt"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
                     </a>
-                  {% elsif webAddress contains "http://catalog.wvu.edu/" %}
-                    <a class="btn btn-primary" href="{{ webAddress }}">
-                      <span class="fa-solid fa-external-link-alt"></span> <span class="visually-hidden">{{ cardTitle }}: </span>View in Course Catalog
-                    </a>
                   {% else %}
-                    {% capture cardTitle %}{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %} (Online){% endif %} {{ programEntry.degreeDesignation.title }}{% endcapture %}
-                    <a class="btn btn-primary" href="{{ programEntry.webAddressAdmissions }}#wvu-main-content">
-                      <span class="fa-solid fa-file-alt"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Overview
-                    </a>
+                    {% if webAddress contains "https://online.wvu.edu/" or webAddress contains "https://mediacollege.wvu.edu" or programEntry.degreeDesignation.abbreviation == 'BMDS' %}
+                      <a class="btn btn-primary" href="{{ webAddress }}">
+                        <span class="fa-solid fa-external-link-alt"></span> View Program Page<span class="visually-hidden">: {{ programEntry.title }}</span>
+                      </a>
+                    {% elsif webAddress contains "http://catalog.wvu.edu/" %}
+                      <a class="btn btn-primary" href="{{ webAddress }}">
+                        <span class="fa-solid fa-external-link-alt"></span> <span class="visually-hidden">{{ cardTitle }}: </span>View in Course Catalog
+                      </a>
+                    {% else %}
+                      {% capture cardTitle %}{{ programEntry.title }}{% if programEntry.courseDeliveryOptions[0] == 'Online' %} (Online){% endif %} {{ programEntry.degreeDesignation.title }}{% endcapture %}
+                      <a class="btn btn-primary" href="{{ programEntry.webAddressAdmissions }}#wvu-main-content">
+                        <span class="fa-solid fa-file-alt"></span> <span class="visually-hidden">{{ cardTitle }}: </span>Overview
+                      </a>
+                    {% endif %}
                   {% endif %}
                 {% endif %}
-              {% endif %}
+              </div>
             </div>
-          </div>
+          {% endif %}
         {% endfor %}
       {% endcapture %}
 
