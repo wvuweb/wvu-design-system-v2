@@ -54,7 +54,7 @@
           {% assign school = page.content[schoolRegionName] %}
           {% assign filters = programType | append: school %}
 
-          {% if filters != blank and programEntry.hepcLevel.hepcLevelKey contains programType and programEntry.collegeOrSchool.title == school %}
+          {% if programEntry.hepcLevel.hepcLevelKey == programType or programEntry.collegeOrSchool.title == school %}
 
             {% assign webAddress = "" %}
 
