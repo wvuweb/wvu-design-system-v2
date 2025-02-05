@@ -27,7 +27,7 @@
                   <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
                 {% endif %}
               {% else %}
-                {% if article.data.article_hide_author != '1' %}
+                {% if article.data.article_hide_author != '1' and article.content['wvu-article-1__author'] != blank %}
                   <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
                 {% endif %}
               {% endif %}
