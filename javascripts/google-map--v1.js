@@ -121,6 +121,7 @@ const googleMap = (() => {
             <div class="infoWindow__image">${item.img}</div>
             <div class="infoWindow__address">${item.address}</div>
             <div class="infoWindow__description">${item.description}</div>
+            <div class="infoWindow__extra">${item.extra}</div>
             <div class="infoWindow__url">${item.url}</div>
           </div>
         `

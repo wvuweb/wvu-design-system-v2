@@ -21,6 +21,7 @@
   assign satRegionName = 'wvu-CNAME__sat' | replace: 'CNAME', component.name
   assign sunRegionName = 'wvu-CNAME__sun' | replace: 'CNAME', component.name
   assign defaultHours = "CLOSED"
+  assign mapBubbleRegionName = 'wvu-CNAME__map-content' | replace: 'CNAME', component.name
 -%}
 
 {% capture component_content %}
@@ -55,6 +56,13 @@
 
         {% if edit_mode %}
           <div class="mt-3 mb-3 p-3 border rounded">
+            <span class="d-inline-block badge bg-primary mb-1 no-preview">Map Extras</span>
+            <div class="alert alert-info p-3 small">
+              <p class="mb-0">Use this if you have extra content you want to display in a Google Map component.</p>
+            </div>
+            <div class="mb-2">
+              {% editable_region name: mapBubbleRegionName, scope: component.scope %}
+            </div>
             <span class="d-inline-block badge bg-primary mb-1 no-preview">Address</span>
             <div class="mb-2">
               Address Line 1: {% editable_region name: addressOneRegionName, scope: component.scope, type: "simple" %}
