@@ -104,6 +104,7 @@ custom_site_attributes:
   - disable_component_styler
   - disable_footer
   - disable_primary_nav
+  - eeo_statement
   - emergency_alert_disabled
   - emergency_alert_json_url
   - enable_keywords
