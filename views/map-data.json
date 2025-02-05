@@ -14,7 +14,7 @@
       "img": "{% if item.data.thumbnail_url != blank %}<img class=\"w-100 mb-1\" src=\"{{ thumbnailSrc }}\" alt='{{ item.data.thumbnail_alt | replace: '"', '' }}'>{% endif %}",
       "address": "{% if item.content['wvu-place-1__address-line-1'] != blank %}<address><strong>{{ item.content['wvu-place-1__address-line-1'] }}{% if item.content['wvu-place-1__address-line-2'] != blank %}<br>{{ item.content['wvu-place-1__address-line-2'] }}{% endif %}{% if item.content['wvu-place-1__address-line-3'] != blank %}<br>{{ item.content['wvu-place-1__address-line-3'] }}{% endif %}</strong></address>{% endif %}",
       "description": "{% if item.data.description != blank %}<p>{{ item.data.description | replace: '"', '' }}</p>{% endif %}",
-      "extra": "{% if item.content['wvu-place-1__map-content'] != blank %}{{ item.content['wvu-place-1__map-content'] | replace: '"', '\"' | replace: "</", "<\/" }}{% endif %}",
+      "extra": "{% if item.content['wvu-place-1__map-content'] != blank %}{{ item.content['wvu-place-1__map-content'] | replace: '"', '\"' | replace: "</", "<\/" | replace: ":", " - " }}{% endif %}",
       "lat": "{{ item.data.lat | strip }}",
       "lng": "{{ item.data.long | strip }}",
       "url": "<a class=\"text-primary text-decoration-none\" href=\"{{ itemUrl }}\">Visit Page<span class=\"visually-hidden\">: {{ item.alternate_name | default: item.name | replace: '"', '' }}</span> <span class=\"fa-solid fa-arrow-right\"></span></a>"
