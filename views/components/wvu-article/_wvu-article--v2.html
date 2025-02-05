@@ -24,7 +24,11 @@
             <p class="small d-block mb-4">
               {% if article.parent.data.disable_articles_author != '1' %}
                 {% if article.data.article_hide_author != '1' %}
-                <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
+                  <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
+                {% endif %}
+              {% else %}
+                {% if article.data.article_hide_author != '1' %}
+                  <span class="wvu-article__author">{{ article.content['wvu-article-1__author'] | default: article.author.full_name }}</span><span class="wvu-article__separator"> | </span>
                 {% endif %}
               {% endif %}
               <time class="wvu-article__date-published" datetime="{{ article.published_at | date_iso8601 }}">{{ article.published_at | date: '%A, %B %d, %Y' | default: 'Not yet published' }}</time>
