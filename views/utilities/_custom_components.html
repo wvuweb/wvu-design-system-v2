@@ -12,5 +12,6 @@
   {% when 'page-table' %}{% render "components/custom/wvu-page-table" slot: slot %}
   {% when 'cost-calculator' %}{% render "components/custom/wvu-backpage-cost-calculator" slot: slot %}
   {% when 'other-costs' %}{% render "components/custom/wvu-backpage-other-costs" slot: slot %}
+  {% when 'hub-cost-and-resource-planner' %}{% render "components/custom/hub-cost-and-resource-planner" slot: slot %}
   {% else %}ERROR: Unsupported custom component '{{ slot.custom }}'
 {% endcase %}

@@ -1,0 +1,823 @@
+<!-- START OF CALCULATOR -->
+<style>
+  input[disabled] {
+    background-color: #f8f9fa;
+  }
+  input[readonly] {
+    background-color: #f8f9fa;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .table td.border-top--none {
+    border-top: 0;
+  }
+  .table td.valign--middle {
+    vertical-align: middle;
+  }
+  .bg-light--darkened {
+    background-color: #f5f5f5 !important;
+  }
+</style>
+
+<form style="margin-bottom: 0">
+
+  <style>
+     .wvu-bar.wvu-bar--blue:after {
+       background-color: #002855 !important
+     }
+  </style>
+  <div class="bg-wvu-gold mb-5">
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-lg-9 col-xl-8 mx-lg-auto">
+          <h2 class="h1 iowan-old-style-black-italic text-wvu-blue wvu-bar wvu-bar--bottom wvu-bar--blue mt-5">Where You Can Find This Information</h2>
+
+          <h3 class="mt-4">Estimated Cost of Attendance</h3>
+          <p>
+            First-time freshman students can find their estimated cost of attendance online through the WVU Portal to review starting in mid-December. If you will be in any of the other student categories for fall 2022 (continuing student, transfer, graduate/professional, etc.), you may review your estimated cost of attendance around mid-March. You can find your cost of attendance by going to Financial Aid Information in your WVU Portal and selecting the “Award Offer” tab. Under “Cost of Attendance,” you will see “Billable Items” and “Non Billable Items.” You will be asked to input the amounts you see for each semester and the totals for each item in order to calculate your remaining cost and the other payment options you may have available.
+          </p>
+
+          <h3 class="mt-4">Estimated Financial Aid</h3>
+          <p>
+            For students who have submitted a FAFSA, first-time freshman students can find their estimated financial aid online through the WVU Portal to review starting in mid-November. If you will be in any of the other student categories for fall 2022 (continuing student, transfer, graduate/professional, etc.), you may review your estimated financial aid around mid-March. You can find your estimated financial aid by going to your Financial Aid Information in your WVU Portal and selecting the “Award Offer” tab. Under “Options to Pay Net Cost,” you will see a list of the financial aid that you have been offered. You will be asked to input the amounts you see for each semester and the totals for each item in order to calculate your remaining cost and the other payment options you may have available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-8 mx-lg-auto">
+
+          <h2 class="h1 iowan-old-style-black-italic text-wvu-blue wvu-bar wvu-bar--bottom mt-5">Step 1. Enter Estimated Cost of Attendance</h2>
+          <p>
+            Your estimated costs include <strong>Billable</strong> (direct costs billed by the institution) and <strong>Non Billable</strong> items (educational expenses you may have while pursuing your degree which you will not usually see on your bill). Your Billable plus Non Billable costs equal your estimated cost of attendance for educational expenses and financial aid purposes. Your estimated cost can be impacted by changes to your student record, such as updates to your residency for tuition purposes, campus, college or program of study, <a href="https://financialaid.wvu.edu/home/disbursement-refunds/enrollment-standards/eligibility#cpos">enrollment in degree-pursuant courses</a>, and legislative changes. They can also be impacted by choices you make for books, supplies, housing, and other living expenses. For Non Billable expenses, you are encouraged to develop your own budget based on actual expenses.
+          </p>
+
+          <h3 class="mt-4">Enter Billable Items</h3>
+          <p>
+            Estimated Billable items are costs that you usually will see as part of your student bill. Once you have a financial aid or <a href="https://financialaid.wvu.edu/home/scholarships/renewal-requirements#institutional">institutional scholarship</a> offer for the aid year, you can <a href="https://financialaid.wvu.edu/home/estimate-costs-aid#FindCOA">find your estimated Billable Items online</a> through your Financial Aid Information in your <a href="https://portal.wvu.edu">WVU Portal</a>.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-cost-billable-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-cost-billable-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-cost-billable-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-cost-billable-row1">Total Estimated Billable Items</span></td>
+                  <td><input type="text" aria-labelledby="est-cost-billable-col-fall est-cost-billable-row1" class="form-control" data-section="est-cost" data-semester="fall" id="est-cost-billable-fall"></td>
+                  <td><input type="text" aria-labelledby="est-cost-billable-col-spring est-cost-billable-row1" class="form-control" data-section="est-cost" data-semester="spring" id="est-cost-billable-spring"></td>
+                  <td><input type="text" aria-labelledby="est-cost-billable-col-totals est-cost-billable-row1" class="form-control" id="est-cost-billable-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 class="mt-4">Enter Non Billable Items</h3>
+            <p>
+              Estimated Non Billable items are costs that you usually will NOT see as part of your student bill. These are estimates of other potential educational expenses you may have while pursuing your degree. Once you have a financial aid or <a href="https://financialaid.wvu.edu/home/scholarships/renewal-requirements#institutional">institutional scholarship</a> offer for the aid year, you can <a href="https://financialaid.wvu.edu/home/estimate-costs-aid#FindCOA">find your estimated Non Billable Items online</a> through your Financial Aid Information in your <a href="https://portal.wvu.edu">WVU Portal</a>.
+            </p>
+
+            <div class="table-responsive">
+              <table class="table" role=”presentation”>
+                <tbody>
+                  <tr>
+                    <td class="border-top--none"></td>
+                    <td id="est-cost-nonbillable-col-fall" class="bold border-top--none">Fall</td>
+                    <td id="est-cost-nonbillable-col-spring" class="bold border-top--none">Spring</td>
+                    <td id="est-cost-nonbillable-col-totals" class="bold border-top--none">Total</td>
+                  </tr>
+                  <tr>
+                    <td class="valign--middle"><span id="est-cost-nonbillable-row1">Total Estimated Non Billable Items</span></td>
+                    <td><input type="text" aria-labelledby="est-cost-nonbillable-col-fall est-cost-nonbillable-row1" class="form-control" data-section="est-cost" data-semester="fall" id="est-cost-nonbillable-fall"></td>
+                    <td><input type="text" aria-labelledby="est-cost-nonbillable-col-spring est-cost-nonbillable-row1" class="form-control" data-section="est-cost" data-semester="spring" id="est-cost-nonbillable-spring"></td>
+                    <td><input type="text" aria-labelledby="est-cost-nonbillable-col-totals est-cost-nonbillable-row1" class="form-control" id="est-cost-nonbillable-total" readonly="readonly"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="mt-4">Summary</h3>
+
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td class="border-top--none"></td>
+                    <td id="est-cost-col-fall" class="bold border-top--none">Fall</td>
+                    <td id="est-cost-col-spring" class="bold border-top--none">Spring</td>
+                    <td id="est-cost-col-totals" class="bold border-top--none">Total</td>
+                  </tr>
+                  <tr>
+                    <td class="valign--middle"><span id="est-cost-row1">Total Estimated Cost of Attendance for Financial Aid Purposes</span></td>
+                    <td><input type="text" aria-labelledby="est-cost-col-fall est-cost-row1" class="form-control" id="est-cost-fall" readonly="readonly"></td>
+                    <td><input type="text" aria-labelledby="est-cost-col-spring est-cost-row1" class="form-control" id="est-cost-spring" readonly="readonly"></td>
+                    <td><input type="text" aria-labelledby="est-cost-col-totals est-cost-row1" class="form-control" id="est-cost-total" readonly="readonly"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-8 mx-lg-auto">
+
+          <h2 class="h1 iowan-old-style-black-italic text-wvu-blue wvu-bar wvu-bar--bottom mt-5">Step 2. Enter Estimated Financial Aid and Payments</h2>
+          <p>
+            Estimated financial aid eligibility can be impacted by changes to your student record, such as updates to your residency for tuition purposes, campus, college or program of study, academic level, aid not listed in your financial aid offer (such as <a href="https://financialaid.wvu.edu/home/scholarships/external">external scholarships</a>, <a href="https://financialaid.wvu.edu/home/disbursement-refunds/enrollment-standards/eligibility#cpos">enrollment in degree-pursuant courses</a>, changes to information provided you your <a href="https://studentaid.gov/h/apply-for-aid/fafsa">FAFSA</a>, and legislative changes.
+          </p>
+
+          <h3 class="mt-4">Enter Estimated Gift Aid</h3>
+          <p>
+            Aid that usually does not have to be repaid.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-gift-scholarships-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-gift-scholarships-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-gift-scholarships-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-gift-scholarships-row1">Estimated Scholarships</span> <a href='' data-toggle="tooltip" data-placement="top" title="Scholarships are a type of 'free' aid that usually does not have to be repaid. They are usually offered based on merit and sometimes financial need. They may be composed of institutional scholarships, departmental scholarships, and external scholarships from other entities."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-fall est-gift-scholarships-row1" class="form-control" data-section="est-gift" data-semester="fall" id="est-gift-scholarships-fall"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-spring est-gift-scholarships-row1" class="form-control" data-section="est-gift" data-semester="spring" id="est-gift-scholarships-spring"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-totals est-gift-scholarships-row1" class="form-control" id="est-gift-scholarships-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-gift-scholarships-row2">Estimated Grants</span> <a href='' data-toggle="tooltip" data-placement="top" title="Grants are a type of 'free' aid that usually does not have to be repaid. Grants are based primarily on financial need, but some grants also have academic requirements."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-fall est-gift-scholarships-row2" class="form-control" data-section="est-gift" data-semester="fall" id="est-gift-grants-fall"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-spring est-gift-scholarships-row2" class="form-control" data-section="est-gift" data-semester="spring" id="est-gift-grants-spring"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-totals est-gift-scholarships-row2" class="form-control" id="est-gift-grants-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-gift-scholarships-row3">Estimated Waivers</span> <a href='' data-toggle="tooltip" data-placement="top" title="Waivers are a type of 'free' aid usually does not have to be repaid. Waivers usually apply to a specific cost, such as room and meals waivers for Resident Assistants or graduate waivers for University tuition."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-fall est-gift-scholarships-row3" class="form-control" data-section="est-gift" data-semester="fall" id="est-gift-waivers-fall"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-spring est-gift-scholarships-row3" class="form-control" data-section="est-gift" data-semester="spring" id="est-gift-waivers-spring"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-totals est-gift-scholarships-row3" class="form-control" id="est-gift-waivers-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-gift-scholarships-row4">Estimated Third-Party Sponsorships</span> <a href='' data-toggle="tooltip" data-placement="top" title="Third-party sponsorships are when a third-party 'sponsors' a student by paying institutional charges to the school on behalf of the student. Some examples of third-party sponsors are federal agencies, foreign embassies, and Vocational Rehabilitation Services."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-fall est-gift-scholarships-row4" class="form-control" data-section="est-gift" data-semester="fall" id="est-gift-sponsorships-fall"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-spring est-gift-scholarships-row4" class="form-control" data-section="est-gift" data-semester="spring" id="est-gift-sponsorships-spring"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-totals est-gift-scholarships-row4" class="form-control" id="est-gift-sponsorships-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-gift-scholarships-row5">Total Estimated Gift Aid</span></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-fall est-gift-scholarships-row5" class="form-control" id="est-gift-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-spring est-gift-scholarships-row5" class="form-control" id="est-gift-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-gift-scholarships-col-totals est-gift-scholarships-row5" class="form-control" id="est-gift-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Enter Estimated Federal Work-Study</h3>
+          <p>
+            Aid you earn while you work.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-workstudy-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-workstudy-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-workstudy-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-workstudy-row1">Estimated Work-Study</span> <a href='' data-toggle="tooltip" data-placement="top" title="Federal Work-Study is a part-time employment opportunity where you earn funds as you work. You apply for jobs and - if hired - will receive paychecks (via direct deposit) throughout the semester based on your hours worked. The amount offered is the maximum amount you could potentially earn, but your actual amount paid will be based on hours worked. These funds do not pay directly to the semester bill, so do not include this when calculating financial aid that will pay toward the balance due. More information on how to be considered for work-study and more can be found on our Federal Work-Study webpage."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-fall est-workstudy-row1" class="form-control" data-section="est-workstudy" data-semester="fall" id="est-workstudy-l-fall"></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-spring est-workstudy-row1" class="form-control" data-section="est-workstudy" data-semester="spring" id="est-workstudy-l-spring"></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-totals est-workstudy-row1" class="form-control" id="est-workstudy-l-total" readonly="readonly"></td>
+                </tr>
+                <tr style="visibility: none;">
+                  <td class="valign--middle"><span id="est-workstudy-row2">Total Work-Study</span></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-fall est-workstudy-row2" class="form-control" id="est-workstudy-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-spring est-workstudy-row2" class="form-control" id="est-workstudy-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-workstudy-col-totals est-workstudy-row2" class="form-control" id="est-workstudy-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Enter Estimated Loans</h3>
+          <p>
+            Borrowed aid that must be repaid, usual with interest. Since you must repay everything you borrow - plus interest - you should only borrow what you need to cover educational expenses. Find interest rates for federal loans on the <a href="https://studentaid.gov/understand-aid/types/loans/interest-rates#rates">Federal Student Aid interest webpage</a>. Please note that most federal loans (Subsidized, Unsubsidized, Graduate PLUS, and Parent PLUS) have <a href="https://studentaid.gov/understand-aid/types/loans/interest-rates#fees">loan processing fees</a> that are a percentage of the total loan, so plan accordingly for the disbursed amount to be less than the borrowed amount.
+          </p>
+          <p>
+            <strong>Input Estimated Loans:</strong> This is the amount you will borrow.<br>
+            <strong>Estimated Amount That May Disburse As Payment Due to Federal Origination Fees:</strong> Since most federal loans (Subsidized, Unsubsidized, Graduate PLUS, and Parent PLUS) have <a href="https://studentaid.gov/understand-aid/types/loans/interest-rates#fees">loan processing fees</a> that are a percentage of the total loan, the amount that disburses as payment on your student account will be less than the amount you accept/borrow.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td colspan="3" id="est-loans-cols" class="bold border-top--none">Input Estimated Loans</td>
+                  <td class="border-top--none"></td>
+                  <td colspan="3" id="est-loansdisburse-cols" class="bold border-top--none">Estimated Amount That May Disburse As Payment Due to Federal Origination Fees</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td aria-labelledby="est-loans-cols" id="est-loans-col-fall" class="bold">Fall</td>
+                  <td aria-labelledby="est-loans-cols" id="est-loans-col-spring" class="bold">Spring</td>
+                  <td aria-labelledby="est-loans-cols" id="est-loans-col-totals" class="bold">Total</td>
+                  <td></td>
+                  <td aria-labelledby="est-loansdisburse-cols" id="est-loansdisburse-col-fall" class="bold">Fall</td>
+                  <td aria-labelledby="est-loansdisburse-cols" id="est-loansdisburse-col-spring" class="bold">Spring</td>
+                  <td aria-labelledby="est-loansdisburse-cols" id="est-loansdisburse-col-totals" class="bold">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row1">Student Federal Subsidized Loan</span> <a href='' data-toggle="tooltip" data-placement="top" title="Federal Direct Subsidized and Unsubsidized Loans are borrowed funds that must be repaid (with interest). Loan amounts vary based upon factors such as grade level, financial aid cost of attendance, financial need, and other financial aid. Students must be enrolled at least half-time in degree-pursuant courses for the loans to disburse. An important distinction between a subsidized and an unsubsidized loan is that interest accrues on an unsubsidized loan and must either be paid during in-school periods or deferred and capitalized (added to the principal of the loan). The federal government pays the interest on subsidized loans while you are enrolled at least half-time. Students offered subsidized loans should borrow what they need from that loan before considering unsubsidized, PLUS, or private loan funds if needed. The interest rate is fixed."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row1" class="form-control" data-section="est-loans" data-item="fedsub" data-semester="fall" id="est-loans-fedsub-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row1" class="form-control" data-section="est-loans" data-item="fedsub" data-semester="spring" id="est-loans-fedsub-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row1" class="form-control" id="est-loans-fedsub-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row1" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-fedsub-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row1" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-fedsub-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row1" class="form-control" id="est-loansdisburse-fedsub-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row2">Student Federal Unsubsidized Loan</span> <a href='' data-toggle="tooltip" data-placement="top" title="Federal Direct Subsidized and Unsubsidized Loans are borrowed funds that must be repaid (with interest). Loan amounts vary based upon factors such as grade level, financial aid cost of attendance, financial need, and other financial aid. Students must be enrolled at least half-time in degree-pursuant courses for the loans to disburse. An important distinction between a subsidized and an unsubsidized loan is that interest accrues on an unsubsidized loan and must either be paid during in-school periods or deferred and capitalized (added to the principal of the loan). The federal government pays the interest on subsidized loans while you are enrolled at least half-time. Students offered subsidized loans should borrow what they need from that loan before considering unsubsidized, PLUS, or private loan funds if needed. The interest rate is fixed."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row2" class="form-control" data-section="est-loans" data-item="fedunsub" data-semester="fall" id="est-loans-fedunsub-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row2" class="form-control" data-section="est-loans" data-item="fedunsub" data-semester="spring" id="est-loans-fedunsub-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row2" class="form-control" id="est-loans-fedunsub-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row2" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-fedunsub-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row2" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-fedunsub-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row2" class="form-control" id="est-loansdisburse-fedunsub-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row3">Student Graduate PLUS Loan</span> <a href='' data-toggle="tooltip" data-placement="top" title="The Graduate PLUS Loan credit-based loan may be an option for graduate or professional students enrolled at least half time in degree-pursuant courses. These are borrowed funds that must be repaid (with interest). Students may borrow up to the cost of attendance minus other financial aid. The interest rate is fixed."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row3" class="form-control" data-section="est-loans" data-item="student-grad-plus" data-semester="fall" id="est-loans-student-grad-plus-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row3" class="form-control" data-section="est-loans" data-item="student-grad-plus" data-semester="spring" id="est-loans-student-grad-plus-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row3" class="form-control" id="est-loans-student-grad-plus-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row3" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-student-grad-plus-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row3" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-student-grad-plus-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row3" class="form-control" id="est-loansdisburse-student-grad-plus-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row4">Student Private or Other Loans</span> <a href='' data-toggle="tooltip" data-placement="top" title="Use this section to input private or other loans. Private loans are credit-based loans that students or their parent (depending on the lender) apply for through a private lender. Terms and conditions such as interest rate and repayment requirements are determined by the lender. Most loans require a student to be enrolled at least half-time to disburse."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row4" class="form-control" data-section="est-loans" data-item="student-private" data-semester="fall" id="est-loans-student-private-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row4" class="form-control" data-section="est-loans" data-item="student-private" data-semester="spring" id="est-loans-student-private-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row4" class="form-control" id="est-loans-student-private-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row4" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-student-private-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row4" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-student-private-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row4" class="form-control" id="est-loansdisburse-student-private-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row5">Parent PLUS Loan</span> <a href='' data-toggle="tooltip" data-placement="top" title="The Parent Loan for Undergraduate Students (PLUS) is a credit-based loan available to parents of undergraduate dependent students enrolled at least half-time in degree-pursuant courses. These are borrowed funds in the parent's name that the parent borrower must repay (with interest). The interest rate is fixed."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row5" class="form-control" data-section="est-loans" data-item="parent-plus" data-semester="fall" id="est-loans-parent-plus-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row5" class="form-control" data-section="est-loans" data-item="parent-plus" data-semester="spring" id="est-loans-parent-plus-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row5" class="form-control" id="est-loans-parent-plus-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row5" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-parent-plus-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row5" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-parent-plus-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row5" class="form-control" id="est-loansdisburse-parent-plus-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row6">Parent Private Loan or Other Loans</span> <a href='' data-toggle="tooltip" data-placement="top" title="Use this section to input private or other loans. Private loans are credit-based loans that students or their parent (depending on the lender) apply for through a private lender. Terms and conditions such as interest rate and repayment requirements are determined by the lender. Most loans require a student to be enrolled at least half-time to disburse."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row6" class="form-control" data-section="est-loans" data-item="parent-private" data-semester="fall" id="est-loans-parent-private-fall"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row6" class="form-control" data-section="est-loans" data-item="parent-private" data-semester="spring" id="est-loans-parent-private-spring"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row6" class="form-control" id="est-loans-parent-private-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row6" class="form-control" data-section="est-loansdisburse" data-semester="fall" id="est-loansdisburse-parent-private-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row6" class="form-control" data-section="est-loansdisburse" data-semester="spring" id="est-loansdisburse-parent-private-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row6" class="form-control" id="est-loansdisburse-parent-private-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-loans-row7">Total Estimated Borrowed Aid</span></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-fall est-loans-row7" class="form-control" id="est-loans-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-spring est-loans-row7" class="form-control" id="est-loans-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loans-cols est-loans-col-totals est-loans-row7" class="form-control" id="est-loans-total" readonly="readonly"></td>
+                  <td></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-fall est-loans-row7" class="form-control" id="est-loansdisburse-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-spring est-loans-row7" class="form-control" id="est-loansdisburse-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-loansdisburse-cols est-loansdisburse-col-totals est-loans-row7" class="form-control" id="est-loansdisburse-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Enter Estimated Out-of-Pocket Payments</h3>
+          <p>
+            No description for this one.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-oop-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-oop-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-oop-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-oop-row1">Academic Deposit Paid</span> <a href='' data-toggle="tooltip" data-placement="top" title="Academic deposits are usually paid for your first semester of attendance. Once charges are available for the semester, the deposit you paid in advance would release as payment toward the semester. Please note that it is only for that first semester. So, if you start in fall, you would have the full academic deposit release for fall and nothing for spring."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-fall est-oop-row1" class="form-control" data-section="est-oop" data-semester="fall" id="est-oop-deposit-academic-fall"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-spring est-oop-row1" class="form-control" data-section="est-oop" data-semester="spring" id="est-oop-deposit-academic-spring"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-totals est-oop-row1" class="form-control" id="est-oop-deposit-academic-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-oop-row2">Housing Deposit Paid</span> <a href='' data-toggle="tooltip" data-placement="top" title="Housing deposits are usually paid for your first semester living on campus. Once charges are available for the semester, the deposit you paid in advance would release as payment toward the semester. Please note that it is only for that first semester. So, if you start in fall, you would have the full academic deposit release for fall and nothing for spring."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-fall est-oop-row2" class="form-control" data-section="est-oop" data-semester="fall" id="est-oop-deposit-housing-fall"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-spring est-oop-row2" class="form-control" data-section="est-oop" data-semester="spring" id="est-oop-deposit-housing-spring"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-totals est-oop-row2" class="form-control" id="est-oop-deposit-housing-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-oop-row3">College Savings Plan (529)</span> <a href='' data-toggle="tooltip" data-placement="top" title="College savings plans - such as 529 or pre-paid college plans - are plans that people pay in to for educational expenses. Contact your plan manager for instructions on how to send funds to the University. Some plans only require a request from the plan holder while others will need an On Demand Statement printed from WVU MyAccount (students access through the WVU Portal)."><span class="fas fa-question-circle"><span class="sr-only">tooltip</span></span></a></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-fall est-oop-row3" class="form-control" data-section="est-oop" data-semester="fall" id="est-oop-529-fall"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-spring est-oop-row3" class="form-control" data-section="est-oop" data-semester="spring" id="est-oop-529-spring"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-totals est-oop-row3" class="form-control" id="est-oop-529-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-oop-row4">Total Estimated Payments</span></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-fall est-oop-row4" class="form-control" id="est-oop-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-spring est-oop-row4" class="form-control" id="est-oop-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-oop-col-totals est-oop-row4" class="form-control" id="est-oop-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="py-2">
+            <a href="#summary" class="btn btn-primary">View Estimated Summary</a> <a href="#payment" class="btn btn-primary">View Estimated Payment Options</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-8 mx-lg-auto">
+
+          <h2 id="summary" class="h1 iowan-old-style-black-italic text-wvu-blue wvu-bar wvu-bar--bottom mt-5">Estimated Summary</h2>
+
+          <h3 class="mt-4">Estimated Remaining Billable Costs After Aid and Payments</h3>
+          <p>
+            The estimated remaining billable costs after your financial aid and payments <strong>is for direct costs only (those billed by the institution) minus the aid and payments listed above</strong>. It does not include Federal Work-Study as an anticipated payment because work-study funds are earned throughout the semester based on hours worked and do not apply directly as payment toward your institutional expenses. This is an estimate of what your balance due may be for the semesters listed. If this amount is negative, that would be your estimated refund for the semester.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-balance-due-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-balance-due-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-balance-due-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-balance-due-row1">Estimated Balance Due</span> </td>
+                  <td><input type="text" aria-labelledby="est-balance-due-col-fall est-balance-due-row1" class="form-control" id="est-balance-due-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-balance-due-col-spring est-balance-due-row1" class="form-control" id="est-balance-due-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-balance-due-col-totals est-balance-due-row41" class="form-control" id="est-balance-due-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Estimated Remaining Cost of Attendance After Aid and Payments</h3>
+          <p>
+            If you want to plan for all of your educational expenses listed - both billable and non billable - this is the estimated cost of educational expenses not covered by aid and payments.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="est-remaining-cost-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="est-remaining-cost-col-spring" class="bold border-top--none">Spring</td>
+                  <td id="est-remaining-cost-col-totals" class="bold border-top--none">Total</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="est-remaining-cost-row1">Estimated Remaining Cost of Attendance</span></td>
+                  <td><input type="text" aria-labelledby="est-remaining-cost-col-fall est-remaining-cost-row1" class="form-control" id="est-remaining-cost-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-remaining-cost-col-spring est-remaining-cost-row1" class="form-control" id="est-remaining-cost-spring" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="est-remaining-cost-col-totals est-remaining-cost-row1" class="form-control" id="est-remaining-cost-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-5 bg-light--darkened">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-8 mx-lg-auto">
+
+          <h2 id="payment" class="h1 iowan-old-style-black-italic text-wvu-blue wvu-bar wvu-bar--bottom mt-5">Estimated Payment Options</h2>
+          <p>
+            If you want to plan for all of your educational expenses listed - both billable and non billable - this is the estimated cost of educational expenses not covered by aid and payments.
+          </p>
+
+          <h3 class="mt-4">Option 1: Pay Out-of-Pocket for the Semester</h3>
+          <p>
+            Estimated payment per semester - one for fall and one for spring. The balance for fall is due at the beginning of August and spring is due at the beginning of January. This is billable costs only (costs billed by the institution) minus financial aid listed above (both free and borrowed aid - excluding Federal Work-Study if applicable).
+          </p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="payment-oop-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="payment-oop-col-spring" class="bold border-top--none">Spring</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-oop-row1">Amount Due</span></td>
+                  <td><input type="text" aria-labelledby="payment-oop-col-fall payment-oop-row1" class="form-control" id="payment-oop-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="payment-oop-col-spring payment-oop-row1" class="form-control" id="payment-oop-spring" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Option 2: Monthly Payment Plan</h3>
+          <p>
+            If signed up for payment plan, payment is made over multiple months. Visit our <a href="https://studentaccounts.wvu.edu/payment-plan">Tuition Payment Plan webpage</a> for more information and the deadlines to sign up for each option. Signing up later means payments will be spread over fewer months, so the monthly payments will be higher. There is a $250 minimum for the semester to utilize the payment plan, so if your direct cost for fall is less than $250 you will see "Not Available" for the payment plan amount. No interest accrues, and there is a $35 enrollment fee per semester.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="payment-monthly-col-fall" class="bold border-top--none">Fall</td>
+                  <td id="payment-monthly-col-spring" class="bold border-top--none">Spring</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-monthly-row2">5 Monthly Payments</span></td>
+                  <td><input type="text" aria-labelledby="payment-monthly-col-fall payment-monthly-row2" class="form-control" id="payment-monthly-five-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="payment-monthly-col-spring payment-monthly-row2" class="form-control" id="payment-monthly-five-spring" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-monthly-row3">4 Monthly Payments</span></td>
+                  <td><input type="text" aria-labelledby="payment-monthly-col-fall payment-monthly-row3" class="form-control" id="payment-monthly-four-fall" readonly="readonly"></td>
+                  <td><input type="text" aria-labelledby="payment-monthly-col-spring payment-monthly-row3" class="form-control" id="payment-monthly-four-spring" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Option 3: Federal PLUS Loan</h3>
+          <p>
+            Credit-based loan that can be applied for by graduate/professional student for themselves or parents of dependent undergraduate students on behalf of the student. Amounts listed below include a 4.228% loan origination fee. You can apply on the <a href="https://studentaid.gov/">Federal Student Aid website</a>. The loan application usually becomes available by April for each upcoming academic year. Please note that PLUS Loan applications for less than $200 cannot be processed, so if your remaining cost is less than $200, you will see "Not Available."
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="payment-plus-col-full" class="bold border-top--none">Full-Year (Fall plus Spring)</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-plus-row1">To Cover Remaining Billable Costs</span></td>
+                  <td><input type="text" aria-labelledby="payment-plus-col-full payment-plus-row1" class="form-control" id="payment-plus-billable-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-plus-row2">To Cover Remaining Total Cost of Attendance</span></td>
+                  <td><input type="text" aria-labelledby="payment-plus-col-full payment-plus-row2" class="form-control" id="payment-plus-total-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="mt-4">Option 4: Private Loan</h3>
+          <p>
+            Credit-based loan that a student or parent may apply for (depending on the lender). Student may need a cosigner. Please note that most private lenders will not process applications that are less than $1,000. Learn more about comparing private lenders and options on our <a href="https://financialaid.wvu.edu/loans/private">Private Loans webpage</a>.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table" role=”presentation”>
+              <tbody>
+                <tr>
+                  <td class="border-top--none"></td>
+                  <td id="payment-private-col-full" class="bold border-top--none">Full-Year (Fall plus Spring)</td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-private-row1">To Cover Remaining Billable Costs</span></td>
+                  <td><input type="text" aria-labelledby="payment-private-col-full payment-private-row1" class="form-control" id="payment-private-billable-total" readonly="readonly"></td>
+                </tr>
+                <tr>
+                  <td class="valign--middle"><span id="payment-private-row2">To Cover Remaining Total Cost of Attendance</span></td>
+                  <td><input type="text" aria-labelledby="payment-private-col-full payment-private-row2" class="form-control" id="payment-private-total-total" readonly="readonly"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% content_for "page_js" %}
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+  // sections and semesters
+  var sections = ['est-cost', 'est-gift', 'est-workstudy', 'est-loans', 'est-loansdisburse', 'est-oop'];
+  var semesters = ['fall', 'spring'];
+
+  // function to add commas
+  function commaSeparateNumber(val) {
+    while (/(\d+)(\d{3})/.test(val.toString())){
+      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+    }
+    return val;
+  }
+
+  function sleep(milliseconds) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({})
+      }, milliseconds);
+    })
+  }
+
+  // function to automagically update row, semester and total totals on a per section basis
+  function updateSectionTotals(event) {
+
+    // figure out what we're playing with
+    var sectionID = event.target.id.replace('-fall','').replace('-spring','');
+    var sectionParts = event.target.id.split('-');
+    var semester = sectionParts[sectionParts.length-1];
+    var section = sectionParts[0]+'-'+sectionParts[1];
+
+    // figure out row numbers
+    var fallVal = parseFloat(document.getElementById(sectionID+'-fall').value.replace(',','').replace('$',''));
+    var springVal = parseFloat(document.getElementById(sectionID+'-spring').value.replace(',','').replace('$',''));
+    var fallValFinal = isNaN(fallVal) ? 0 : fallVal;
+    var springValFinal = isNaN(springVal) ? 0 : springVal;
+    var totalVal = fallValFinal + springValFinal;
+    document.getElementById(sectionID+'-total').value = commaSeparateNumber(totalVal.toFixed(2));
+
+    // figure out semester numbers
+    var els = document.querySelectorAll('[data-section~="'+section+'"][data-semester~="'+semester+'"]');
+    var totalSemester = 0;
+    for (var i = 0; i < els.length; i++) {
+      val = parseFloat(els[i].value.replace(',','').replace('$',''));
+      totalSemester += isNaN(val) ? 0 : val;
+    }
+    if (document.getElementById(section+'-'+semester) !== null) {
+      var el = document.getElementById(section+'-'+semester);
+      el.value = commaSeparateNumber(totalSemester.toFixed(2));
+      el.dispatchEvent(new Event('change'));
+    }
+
+    // figure out the total numbers
+    var els = document.querySelectorAll('[data-section~="'+section+'"]');
+    var total = 0;
+    for (var i = 0; i < els.length; i++) {
+      val = parseFloat(els[i].value.replace(',','').replace('$',''));
+      total += isNaN(val) ? 0 : val;
+    }
+    if (document.getElementById(section+'-total') !== null) {
+      document.getElementById(section+'-total').value = commaSeparateNumber(total.toFixed(2));
+    }
+
+  }
+
+  // function to automagically update the loan disbursement numbers for those items that have that
+  function updateDisbursementItemTotals(event) {
+
+    // figure out what we're playing with
+    var section = event.target.getAttribute('data-section');
+    var item = event.target.getAttribute('data-item');
+    var semester = event.target.getAttribute('data-semester');
+    var disburseID = section+'disburse-'+item+'-'+semester;
+    var total = parseFloat(event.target.value.replace(',','').replace('$',''));
+
+    if ((item === 'fedsub') || (item === 'fedunsub')) {
+      total = Math.floor(total-(total*0.01057));
+    } else if ((item === 'student-grad-plus') || (item === 'parent-plus')) {
+      total = Math.floor(total-(total*0.04228));
+    }
+
+    if (document.getElementById(disburseID) !== null) {
+      el = document.getElementById(disburseID);
+      el.value = commaSeparateNumber(total.toFixed(2));
+      el.dispatchEvent(new Event('change'));
+    }
+
+  }
+
+  // function to update the cost of aid after payment, iterate through sections that are supported by this one
+  function updateBillableCostAfterAidPaymentsTotals() {
+
+    var totalFall = parseFloat(document.getElementById('est-cost-billable-fall').value.replace(',','').replace('$',''));
+    var totalSpring = parseFloat(document.getElementById('est-cost-billable-spring').value.replace(',','').replace('$',''));
+    var totalTotal = parseFloat(document.getElementById('est-cost-billable-total').value.replace(',','').replace('$',''));
+    for (var m = 1; m < sections.length; m++) { // skip cost
+      if ((sections[m] !== 'est-workstudy') && (sections[m] !== 'est-loans')) { // skip loans disbursement
+        for (var n = 0; n < semesters.length; n++) {
+          var el = document.getElementById(sections[m]+'-'+semesters[n]);
+          val = parseFloat(el.value.replace(',','').replace('$',''));
+          if (semesters[n] === 'fall') {
+            totalFall -= isNaN(val) ? 0 : val;
+          } else {
+            totalSpring -= isNaN(val) ? 0 : val;
+          }
+        }
+      }
+    }
+    totalFall = (totalFall < 0) ? 0 : totalFall;
+    totalSpring = (totalSpring < 0) ? 0 : totalSpring;
+    totalTotal = 0;
+    if (totalFall > 0) {
+      totalTotal += totalFall;
+    }
+    if (totalSpring > 0) {
+      totalTotal += totalSpring;
+    }
+    //totalTotal = (totalTotal < 0) ? 0 : totalTotal;
+
+    totalFallOutput = isNaN(totalFall) ? '-' : commaSeparateNumber(totalFall.toFixed(2));
+    totalSpringOutput = isNaN(totalSpring) ? '-' : commaSeparateNumber(totalSpring.toFixed(2));
+    totalTotalOutput = isNaN(totalTotal) ? '-' : commaSeparateNumber(totalTotal.toFixed(2));
+
+    // update the estimated balance due
+    document.getElementById('est-balance-due-fall').value = totalFallOutput;
+    document.getElementById('est-balance-due-spring').value = totalSpringOutput;
+    document.getElementById('est-balance-due-total').value = totalTotalOutput;
+
+    // update pay out of pocket
+    document.getElementById('payment-oop-fall').value = totalFallOutput;
+    document.getElementById('payment-oop-spring').value = totalSpringOutput;
+
+    // update monthly payments
+    if (isNaN(totalFall)) {
+      totalFallSix = isNaN(totalFall) ? '-' : totalFall.toFixed(2);
+      totalFallFive = isNaN(totalFall) ? '-' : totalFall.toFixed(2);
+      totalFallFour = isNaN(totalFall) ? '-' : totalFall.toFixed(2);
+    } else if (totalFall < 250) {
+      totalFallSix = 'Not Available';
+      totalFallFive = 'Not Available';
+      totalFallFour = 'Not Available';
+    } else {
+      totalFallSix = commaSeparateNumber(Math.ceil(totalFall/6).toFixed(2));
+      totalFallFive = commaSeparateNumber(Math.ceil(totalFall/5).toFixed(2));
+      totalFallFour = commaSeparateNumber(Math.ceil(totalFall/4).toFixed(2));
+    }
+
+    if (isNaN(totalSpring)) {
+      totalSpringSix = isNaN(totalSpring) ? '-' : totalFall.toFixed(2);
+      totalSpringFive = isNaN(totalSpring) ? '-' : totalFall.toFixed(2);
+      totalSpringFour = isNaN(totalSpring) ? '-' : totalFall.toFixed(2);
+    } else if (totalSpring < 250) {
+      totalSpringSix = 'Not Available';
+      totalSpringFive = 'Not Available';
+      totalSpringFour = 'Not Available';
+    } else {
+      totalSpringSix = commaSeparateNumber(Math.ceil(totalSpring/6).toFixed(2));
+      totalSpringFive = commaSeparateNumber(Math.ceil(totalSpring/5).toFixed(2));
+      totalSpringFour = commaSeparateNumber(Math.ceil(totalSpring/4).toFixed(2));
+    }
+
+    //document.getElementById('payment-monthly-six-fall').value = totalFallSix;
+    //document.getElementById('payment-monthly-six-spring').value = totalSpringSix;
+    document.getElementById('payment-monthly-five-fall').value = totalFallFive;
+    document.getElementById('payment-monthly-five-spring').value = totalSpringFive;
+    document.getElementById('payment-monthly-four-fall').value = totalFallFour;
+    document.getElementById('payment-monthly-four-spring').value = totalSpringFour;
+
+    // update federal plus loan
+    if (isNaN(totalTotal)) {
+      totalTotalPlusLoan = '-';
+    } else {
+      totalTotalPlusLoan = Math.ceil(totalTotal/0.95772);
+      totalTotalPlusLoan = (totalTotalPlusLoan < 200) ? 'Not Available' : commaSeparateNumber(totalTotalPlusLoan.toFixed(2));
+    }
+    document.getElementById('payment-plus-billable-total').value = totalTotalPlusLoan;
+
+    // update private loans
+    document.getElementById('payment-private-billable-total').value = totalTotalOutput;
+
+  }
+
+  // function to update the cost of aid after payment, iterate through sections that are supported by this one
+  function updateRemainingCostAfterAidPaymentsTotals() {
+
+    var totalFall = parseFloat(document.getElementById('est-cost-fall').value.replace(',','').replace('$',''));
+    var totalSpring = parseFloat(document.getElementById('est-cost-spring').value.replace(',','').replace('$',''));
+    var totalTotal = parseFloat(document.getElementById('est-cost-total').value.replace(',','').replace('$',''));
+    for (var m = 1; m < sections.length; m++) { // skip cost
+      if (sections[m] !== 'est-loansdisburse') { // skip loans disbursement
+        for (var n = 0; n < semesters.length; n++) {
+          var el = document.getElementById(sections[m]+'-'+semesters[n]);
+          val = parseFloat(el.value.replace(',','').replace('$',''));
+          totalTotal -= isNaN(val) ? 0 : val;
+          if (semesters[n] === 'fall') {
+            totalFall -= isNaN(val) ? 0 : val;
+          } else {
+            totalSpring -= isNaN(val) ? 0 : val;
+          }
+        }
+      }
+    }
+    totalFall = (totalFall < 0) ? 0 : totalFall;
+    totalSpring = (totalSpring < 0) ? 0 : totalSpring;
+    totalTotal = 0;
+    if (totalFall > 0) {
+      totalTotal += totalFall;
+    }
+    if (totalSpring > 0) {
+      totalTotal += totalSpring;
+    }
+
+    totalFallOutput = isNaN(totalFall) ? '-' : commaSeparateNumber(totalFall.toFixed(2));
+    totalSpringOutput = isNaN(totalSpring) ? '-' : commaSeparateNumber(totalSpring.toFixed(2));
+    totalTotalOutput = isNaN(totalTotal) ? '-' : commaSeparateNumber(totalTotal.toFixed(2));
+
+    document.getElementById('est-remaining-cost-fall').value = totalFallOutput;
+    document.getElementById('est-remaining-cost-spring').value = totalSpringOutput;
+    document.getElementById('est-remaining-cost-total').value = totalTotalOutput;
+
+    // update federal plus loan
+    if (isNaN(totalTotal)) {
+      totalTotalPlusLoan = '-';
+    } else {
+      totalTotalPlusLoan = Math.ceil(totalTotal/0.95772);
+      totalTotalPlusLoan = (totalTotalPlusLoan < 200) ? 'Not Available' : commaSeparateNumber(totalTotalPlusLoan.toFixed(2));
+    }
+    document.getElementById('payment-plus-total-total').value = totalTotalPlusLoan;
+
+    // update private loans
+    document.getElementById('payment-private-total-total').value = totalTotalOutput;
+
+  }
+
+  // make sure both events for sectionTotals and Disbursement Items runs when editing loan details
+  function updateBoth(event) {
+      updateSectionTotals(event);
+      updateDisbursementItemTotals(event);
+  }
+
+  // sections should update themselves when numbers are entered
+  for (var j = 0; j < sections.length; j++) {
+    var els = document.querySelectorAll('[data-section~="'+sections[j]+'"]');
+    for (var k = 0; k < els.length; k++) {
+      els[k].onchange = updateSectionTotals;
+    }
+  }
+
+  // disbursement updates. needs to fire the section updates too
+  var els = document.querySelectorAll('[data-item]');
+  for (var p = 0; p < els.length; p++) {
+    els[p].onchange = updateBoth;
+  }
+
+  // cost of attendance after aid and payments update
+  for (var m = 0; m < sections.length; m++) {
+    for (var n = 0; n < semesters.length; n++) {
+      var el = document.getElementById(sections[m]+'-'+semesters[n]);
+      el.onchange = function(event) { // give the other stuff a chance to run
+        setTimeout(function() {
+          updateBillableCostAfterAidPaymentsTotals();
+          updateRemainingCostAfterAidPaymentsTotals();
+        }, 80);
+      };
+    }
+  }
+
+</script>
+
+{% endcontent_for %}
