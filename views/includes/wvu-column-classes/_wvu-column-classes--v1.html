@@ -17,8 +17,8 @@
   {% when 'photo-grid' %}
     {% case numberOfItems %}
       {% when 1 %}{% assign columnClasses = 'col' %}
-      {% when 3 %}{% assign columnClasses = 'col col-lg-6 col-xl-4' %}
-      {% else %}{% assign columnClasses = 'col col-lg-6' %}
+      {% when 3 %}{% assign columnClasses = 'col-12 col-lg-6 col-xl-4' %}
+      {% else %}{% assign columnClasses = 'col-12 col-lg-6' %}
     {% endcase %}
 {%- endcase %}
 {% case component.baseName %}
