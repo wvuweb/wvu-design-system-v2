@@ -125,6 +125,7 @@ custom_site_attributes:
   - masthead_link_2_title
   - masthead_logo_url
   - masthead_title
+  - masthead_title_2
   - nav_dropdowns
   - search_action
   - syndication_url

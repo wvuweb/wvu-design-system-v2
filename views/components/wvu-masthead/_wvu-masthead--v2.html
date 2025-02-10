@@ -17,7 +17,8 @@
             <a class="d-flex position-relative my-3 align-items-center justify-content-center justify-content-lg-start text-decoration-none {{ link_text_color }}" href="/">
               <span class="visually-hidden">West Virginia University </span>
               <span class="wvu-logo-lockup mt-n1">
-                {{ site.data.masthead_title | default: site.name }} (version 2)
+                {{ site.data.masthead_title | default: site.name }}
+                {% if site.data.masthead_title_2 != blank %}<span class="d-block">{{ site.data.masthead_title_2 }}</span>{% endif %}
               </span>
               {% if site.data.has_co_brand == '1' %}
                 <span class="wvu-co-branding d-inline-block align-self-center mx-2 my-n2 p-2 border-start">
@@ -37,6 +38,7 @@
             <span class="visually-hidden">West Virginia University </span>
             <span class="wvu-logo-lockup mt-n1">
               {{ site.data.masthead_title | default: site.name }}
+              {% if site.data.masthead_title_2 != blank %}<span class="d-block">{{ site.data.masthead_title_2 }}</span>{% endif %}
             </span>
             {% if site.data.has_co_brand != blank %}
               <span class="wvu-co-branding d-inline-block align-self-center mx-2 {% if site.data.co_brand_subtitle != blank %}my-n2 {% endif %}p-2 border-start">
