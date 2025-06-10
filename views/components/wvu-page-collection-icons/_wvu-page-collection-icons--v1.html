@@ -74,7 +74,7 @@
 
           {% capture htag_id %}{{ item.slug }}-{{ component.name }}-{{ item.id }}{% endcapture %}
 
-          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }}">
+          <div class="{{ page.content[component.region_names.itemClasses] | default: itemClasses }} position-relative">
             {% if item.data.icon_code != blank %}
               <div class="mb-2 d-flex justify-items-center">
                 <div class="{{ iconClasses }} h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center {{ iconClasses }}">
@@ -102,7 +102,7 @@
               {% else %}
                 {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
               {% endif %}
-              <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
+              <a class="{{ itemButtonClasses }} stretched-link" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
             {% endif %}
           </div>
         {% endfor %}
