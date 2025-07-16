@@ -146,7 +146,7 @@
                   buildOtherCostsTableData(otherCosts);
 
               tableBody.innerHTML = newTableBodyString;
-              tableTotal.innerHTML = '$' + newTotalCostString;
+              tableTotal.innerHTML = newTotalCostString;
           } catch (error) {
               window.alert(
                   `There was an error updating the table. Please contact the site administrator about this issue. \n\n Error: ${error}`
@@ -195,7 +195,7 @@
               }
           }
 
-          const newTotalCostString = `${newTotalCost.toString()}`;
+          const newTotalCostString = `$${newTotalCost.toLocaleString('en-US')}`;
 
           return { newTableBodyString, newTotalCostString };
       };
