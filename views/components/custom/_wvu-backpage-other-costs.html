@@ -178,18 +178,16 @@
           let newTotalCost = 0;
 
           for (const cost in otherCosts) {
-              let costNum = 0;
-
               if (cost !== 'total' && cost !== 'tuition' && cost !== 'fees') {
+                  const costNum = Number(otherCosts[cost]);
                   newTableBodyString =
                       newTableBodyString +
                       '<tr><td>' +
                       cost +
                       '</td><td>$' +
-                      otherCosts[cost] +
+                      costNum.toLocaleString('en-US') +
                       '</td></tr>';
 
-                  costNum = Number(otherCosts[cost]);
 
                   newTotalCost += costNum;
               }
