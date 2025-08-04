@@ -116,7 +116,7 @@
                   {% else %}
                     {% capture link_text %}{{ itemReadMoreButtonText }}<span class="visually-hidden">: {{ item.name }}</span>{% endcapture %}
                   {% endif %}
-                  <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
+                  <a class="{{ itemButtonClasses }}" {% if item.link_target != blank %}target="_{{ item.link_target }}"{% endif %} href="{{ link_href }}">{{ link_text }}</a>
                 {% endif %}
               </div>
             </div>
