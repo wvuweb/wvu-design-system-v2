@@ -59,7 +59,7 @@
 
       {% capture loopContent %}
 
-        {% for item in items.all %}
+        {% for item in sortedItems limit: component.limit %}
 
           {% liquid
             if item.data.alternate_url != blank
