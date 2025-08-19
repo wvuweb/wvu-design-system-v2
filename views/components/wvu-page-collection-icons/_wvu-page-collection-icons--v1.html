@@ -79,7 +79,7 @@
               <div class="mb-2 d-flex justify-content-center">
                 <a class="text-decoration-none" href="{{ link_href }}">
                   <div class="{{ iconClasses }} h1 rounded-circle p-4 d-flex mx-auto align-items-center justify-content-center {{ iconClasses }}">
-                    <span class="{{ item.data.icon_code }} position-absolute" aria-hidden="true"></span>
+                    <span class="{{ item.data.icon_code }} position-absolute" aria-hidden="true"></span><span class="visually-hidden">{{ item.alternate_name | default: item.name }}</span>
                   </div>
                 </a>
               </div>
