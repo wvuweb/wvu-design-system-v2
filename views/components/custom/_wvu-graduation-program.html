@@ -24,7 +24,7 @@
             <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
             <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
               {% for student in major[1] %}
-                <li id="directory-id--{{ student.Name }}">
+                <li id="directory-id--{{ student.Name | replace: " ", "-" | downcase }}">
                   {{ student['Name'] }}
                   {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
                   {% if student['Foundations Scholar'] != blank %}☙{% endif %}
