@@ -27,7 +27,7 @@
                 <li id="directory-id--{{ student.Name | replace: " ", "-" | downcase }}">
                   {{ student['Name'] }}
                   {% if student['Month'] == "August 2025" %}
-                    (August Graduate)
+                    <span class="rounded-pill small bg-light text-uppercase">August Graduate</span>
                   {% endif %}
                   {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
                   {% if student['Foundations Scholar'] != blank %}☙{% endif %}
