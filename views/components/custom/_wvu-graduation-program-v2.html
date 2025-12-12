@@ -3,7 +3,7 @@
 {% assign decemberGrads = directory | where: "[0].[1].[1].Month", "December 2025" %}
 {% assign augustGrads = directory | where: "[0].[1].[1].Month", "August 2025" %}
 
-{% assign decemberGrads = directory | where: "[0]", "Doctor of Philosophy" %}
+{% assign decemberGrads = directory | where: "[1]", "Doctor of Philosophy" %}
 
 {{ decemberGrads }}
 
