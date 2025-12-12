@@ -1,12 +1,12 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
-{% assign decemberGrads = "" | split: "," %}
-{% assign augustGrads = "" | split: "," %}
+{% assign decemberGrads = "" | split: "" %}
+{% assign augustGrads = "" | split: "" %}
 
 {% for degree in directory %}
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "December 2025" %}
-        {{ student['Name']}}{{ student['Month'] }}
+        {% assign item_as_array = degree | sort %}
         {% assign decemberGrads = decemberGrads | contact: item_as_array %}
       {% endif %}
     {% endfor %}
@@ -17,6 +17,7 @@
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "August 2025" %}
+        {% assign item_as_array = degree | sort %}
         {% assign augustGrads = augustGrads | push: degree %}
       {% endif %}
     {% endfor %}
