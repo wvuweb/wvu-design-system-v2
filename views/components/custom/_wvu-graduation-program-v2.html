@@ -6,6 +6,7 @@
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "December 2025" %}
+        December Yes
         {% assign decemberGrads = decemberGrads | push: degree %}
       {% endif %}
     {% endfor %}
@@ -16,11 +17,16 @@
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "August 2025" %}
+        August Yes
         {% assign augustGrads = augustGrads | push: degree %}
       {% endif %}
     {% endfor %}
   {% endfor %}
 {% endfor %}
+
+December Grads: {{ decemberGrads }}
+<br><br>
+August Grads: {{ augustGrads }}
 
 {% assign root = site.root_page %}
 {% assign items = page.ancestors %}
