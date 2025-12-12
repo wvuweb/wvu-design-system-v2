@@ -1,6 +1,6 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
-{% assign decemberGrads = "" | split: "" %}
-{% assign augustGrads = "" | split: "" %}
+{% assign decemberGrads = "" | split: "," %}
+{% assign augustGrads = "" | split: "," %}
 
 {% for degree in directory %}
   {% for major in degree[1] %}
