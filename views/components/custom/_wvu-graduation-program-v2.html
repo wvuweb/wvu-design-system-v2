@@ -6,7 +6,7 @@
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "December 2025" %}
-        December Yes
+        {{ student['Name'] }} {{ student['Month'] }}
         {% assign decemberGrads = decemberGrads | push: degree %}
       {% endif %}
     {% endfor %}
@@ -17,7 +17,7 @@
   {% for major in degree[1] %}
     {% for student in major[1] %}
       {% if student['Month'] == "August 2025" %}
-        August Yes
+        {{ student['Name'] }} {{ student['Month'] }}
         {% assign augustGrads = augustGrads | push: degree %}
       {% endif %}
     {% endfor %}
