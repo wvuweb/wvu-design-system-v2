@@ -1,32 +1,4 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
-{% assign decemberGrads = "" | split: "," %}
-{% assign augustGrads = "" | split: "," %}
-
-{% for degree in directory %}
-  {% for major in degree[1] %}
-    {% for student in major[1] %}
-      {% if student['Month'] == "December 2025" %}
-        {% assign item_as_array = degree | sort %}
-        {% assign decemberGrads = decemberGrads | concat: item_as_array %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-{% endfor %}
-
-{% for degree in directory %}
-  {% for major in degree[1] %}
-    {% for student in major[1] %}
-      {% if student['Month'] == "August 2025" %}
-        {% assign item_as_array = degree | sort %}
-        {% assign augustGrads = augustGrads | concat: item_as_array %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-{% endfor %}
-
-December Grads: {{ decemberGrads | size }}
-<br><br>
-August Grads: {{ augustGrads | size }}
 
 {% assign root = site.root_page %}
 {% assign items = page.ancestors %}
@@ -44,9 +16,9 @@ August Grads: {{ augustGrads | size }}
           {% editable_region name: 'dean-s-message' %}
         </div>
 
-        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">December Graduates</h2>
+        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">Graduates</h2>
 
-        {% for degree in decemberGrads %}
+        {% for degree in directory %}
           <h3 class="iowan-old-style">{{ degree[0] }}</h3>
           {% for major in degree[1] %}
             <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
@@ -64,33 +36,8 @@ August Grads: {{ augustGrads | size }}
                       {% when 'Cum Laude' %}*
                     {% endcase %}
                   {% endif %}
-                </li>
-              {% endfor %}
-              {% assign j = j | plus: 1 %}
-            </ul>
-          {% endfor %}
-          {% assign i = i | plus: 1 %}
-        {% endfor %}
-
-        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">August Graduates</h2>
-
-        {% for degree in augustGrads %}
-          <h3 class="iowan-old-style">{{ degree[0] }}</h3>
-          {% for major in degree[1] %}
-            <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
-            <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
-              {% for student in major[1] %}
-                <li id="directory-id--{{ student.Name | replace: " ", "-" | downcase }}">
-                  {{ student['Name'] }}
-                  {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
-                  {% if student['Foundations Scholar'] != blank %}☙{% endif %}
-                  {% if student['Laureate'] != blank %}⟡{% endif %}
-                  {% if student['Tentative Honors'] != blank %}
-                    {% case student['Tentative Honors'] %}
-                      {% when 'Summa Cum Laude' %}***
-                      {% when 'Magna Cum Laude' %}**
-                      {% when 'Cum Laude' %}*
-                    {% endcase %}
+                  {% if student['Month'] == "August 2025" %}
+                    (August Graduate)
                   {% endif %}
                 </li>
               {% endfor %}
