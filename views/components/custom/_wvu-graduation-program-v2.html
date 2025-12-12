@@ -1,0 +1,102 @@
+{% assign directory = page.data.api_string | web_request | parse_json %}
+{% assign decemberGrads = directory | where: "Month" "December 2025" %}
+{% assign augustGrads = directory | where: "Month" "August 2025" %}
+
+{% assign root = site.root_page %}
+{% assign items = page.ancestors %}
+{% for item in items.all %}
+  {% if item.data.subsection_landing_page == '1' %}
+    {% assign program = item.content['wvu-backpage-header-1__subhead'] %}
+  {% endif %}
+{% endfor %}
+
+<main class="wvu-backpage-main py-5 iowan-old-style">
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="mb-5">
+          {% editable_region name: 'dean-s-message' %}
+        </div>
+
+        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">December Graduates</h2>
+
+        {% for degree in decemberGrads %}
+          <h3 class="iowan-old-style">{{ degree[0] }}</h3>
+          {% for major in degree[1] %}
+            <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
+            <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
+              {% for student in major[1] %}
+                <li id="directory-id--{{ student.Name | replace: " ", "-" | downcase }}">
+                  {{ student['Name'] }}
+                  {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
+                  {% if student['Foundations Scholar'] != blank %}☙{% endif %}
+                  {% if student['Laureate'] != blank %}⟡{% endif %}
+                  {% if student['Tentative Honors'] != blank %}
+                    {% case student['Tentative Honors'] %}
+                      {% when 'Summa Cum Laude' %}***
+                      {% when 'Magna Cum Laude' %}**
+                      {% when 'Cum Laude' %}*
+                    {% endcase %}
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% assign j = j | plus: 1 %}
+            </ul>
+          {% endfor %}
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+
+        <h2 class="h1 wvu-shout text-wvu-blue display-5 wvu-bar wvu-bar--bottom">August Graduates</h2>
+
+        {% for degree in augustGrads %}
+          <h3 class="iowan-old-style">{{ degree[0] }}</h3>
+          {% for major in degree[1] %}
+            <h4 class="wvu-shout h5 mt-4">{{ major[0] }}</h4>
+            <ul class="wvu-ul-chevrons wvu-ul-chevrons-wvu-gold">
+              {% for student in major[1] %}
+                <li id="directory-id--{{ student.Name | replace: " ", "-" | downcase }}">
+                  {{ student['Name'] }}
+                  {% if student['EXCEL Scholar'] != blank %}☸{% endif %}
+                  {% if student['Foundations Scholar'] != blank %}☙{% endif %}
+                  {% if student['Laureate'] != blank %}⟡{% endif %}
+                  {% if student['Tentative Honors'] != blank %}
+                    {% case student['Tentative Honors'] %}
+                      {% when 'Summa Cum Laude' %}***
+                      {% when 'Magna Cum Laude' %}**
+                      {% when 'Cum Laude' %}*
+                    {% endcase %}
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% assign j = j | plus: 1 %}
+            </ul>
+          {% endfor %}
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+
+        <div class="p-3 p-lg-4 bg-light mt-4">
+          <ul class="list-unstyled">
+            <li>* Cum Laude</li>
+            <li>** Magna Cum Laude</li>
+            <li>*** Summa Cum Laude</li>
+            <li>☸ Honors EXCEL Scholar</li>
+            <li>☙ Honors Foundations Scholar</li>
+            <li>⟡ Honors Laureate</li>
+          </ul>
+          <p>
+            <span class="iowan-old-style-italic">Names listed in this program are taken from applications for graduation made
+              to the WVU Office of the University Registrar. This document is not an official
+              record of degrees awarded. Honors listed in this program are based upon the
+              next-to-last term of enrollment and are not official until all academic work
+              has been certified by the WVU Office of the University Registrar.</span>
+          </p>
+        </div>
+      </div>
+      <aside class="wvu-sidebar col-md-3 mt-4 mt-md-0 text-start {% if component.align == 'right'%}me-md-auto{% else %}ms-md-auto{% endif %}" aria-label="{{ componentSidebar }}">
+        <div class="sticky-top pt-3 mt-n3">
+          {% render "components/wvu-subnav" %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
