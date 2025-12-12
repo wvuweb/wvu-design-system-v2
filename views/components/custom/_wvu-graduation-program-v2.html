@@ -18,7 +18,7 @@
     {% for student in major[1] %}
       {% if student['Month'] == "August 2025" %}
         {% assign item_as_array = degree | sort %}
-        {% assign augustGrads = augustGrads | push: degree %}
+        {% assign augustGrads = augustGrads | push: item_as_array %}
       {% endif %}
     {% endfor %}
   {% endfor %}
