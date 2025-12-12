@@ -1,6 +1,6 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
 
-{% assign decemberGrads = directory | where: "[1]", "Doctor of Philosophy" %}
+{% assign decemberGrads = directory | where: "[0]", "Doctor of Philosophy" %}
 
 Test data: {{ decemberGrads }}
 
