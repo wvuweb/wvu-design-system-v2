@@ -1,11 +1,8 @@
 {% assign directory = page.data.api_string | web_request | parse_json %}
 
-{% assign decemberGrads = directory | where: "[0].[1].[1].Month", "December 2025" %}
-{% assign augustGrads = directory | where: "[0].[1].[1].Month", "August 2025" %}
-
 {% assign decemberGrads = directory | where: "[1]", "Doctor of Philosophy" %}
 
-{{ decemberGrads }}
+Test data: {{ decemberGrads }}
 
 {% assign root = site.root_page %}
 {% assign items = page.ancestors %}
