@@ -99,6 +99,7 @@
 
     {% if site.data.chatbot_url != blank %}
       <script type="text/javascript" src="{{ site.data.chatbot_url }}"></script>
+      <section aria-label="Chat with Us" data-ocelot-target></section>
     {% endif %}
 
     {% if page.data.include_jquery == '1' %}
